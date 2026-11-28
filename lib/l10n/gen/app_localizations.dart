@@ -1610,6 +1610,66 @@ abstract class AppLocalizations {
   /// **'https://tailscale.com/kb/1019/subnets'**
   String get sf6270ae66c;
 
+  /// fi: Etäyhteys Tailscalella (Home Assistant)
+  ///
+  /// In en, this message translates to:
+  /// **'Remote access with Tailscale (Home Assistant)'**
+  String get se3bc55fb9b;
+
+  /// fi: Yhdistä Molaplan Home Assistantiin myös kodin ulkopuolelta Tailscalen kautta. Paikallinen osoite ja Tailscale-osoite tal
+  ///
+  /// In en, this message translates to:
+  /// **'Reach Home Assistant from Molaplan even away from home, through Tailscale. The local address and the Tailscale address are stored on the same connection; the token is asked only once.'**
+  String get scee4e85804;
+
+  /// fi: Sopii, kun Home Assistant pyörii kotona ja haluat avata sen turvallisesti ilman porttiohjauksia. Selainversiossa https-o
+  ///
+  /// In en, this message translates to:
+  /// **'A good fit when Home Assistant runs at home and you want a secure path without port forwarding. In the web app an https address (Tailscale Serve) avoids the browser blocking http.'**
+  String get sbb981f6a83;
+
+  /// fi: Home Assistantissa: Asetukset → Lisäosat → Lisäosakauppa. Hae "Tailscale" (virallinen lisäosa), asenna, ota käyttöön Käy
+  ///
+  /// In en, this message translates to:
+  /// **'In Home Assistant: Settings → Add-ons → Add-on store. Search for \"Tailscale\" (the official add-on), install it, enable Start on boot and Watchdog, start it, open the Web UI and sign in or approve the machine.'**
+  String get s7cddac79fb;
+
+  /// fi: Tailscalen hallinnassa (login.tailscale.com → Machines): etsi Home Assistantin kone ja sen 100.x-osoite. Ota koneella kä
+  ///
+  /// In en, this message translates to:
+  /// **'In the Tailscale admin console (login.tailscale.com → Machines): find the Home Assistant machine and its 100.x IP. Turn on \"Disable key expiry\" for that machine and enable MagicDNS.'**
+  String get s9087785a57;
+
+  /// fi: Asenna Tailscale-sovellus laitteisiin, joissa Molaplan on, kirjaudu samalle tilille ja yhdistä. Kokeile selaimessa osoit
+  ///
+  /// In en, this message translates to:
+  /// **'Install the Tailscale app on the devices that run Molaplan, sign in with the same account and connect. Test in a browser with http://homeassistant:8123.'**
+  String get se70161f486;
+
+  /// fi: Valinnainen HTTPS selainversiota ja PWA:ta varten: ota hallinnan DNS-asetuksissa käyttöön HTTPS-varmenteet, aseta lisäos
+  ///
+  /// In en, this message translates to:
+  /// **'Optional HTTPS for the web app and PWA: enable HTTPS certificates in the admin DNS settings, set the add-on option proxy: true, and restart the add-on. The address looks like https://name.tailnet.ts.net. In configuration.yaml add http: use_x_forwarded_for: true and trusted_proxies: [127.0.0.1]. The browser blocks http from an https page, so the web app needs this https address or a connection through the home bridge.'**
+  String get s7d8746c6f3;
+
+  /// fi: Molaplanissa: kirjoita paikallinen osoite ja Tailscale-osoite samaan Home Assistant -yhteyteen (Tailscale-osoite on kohd
+  ///
+  /// In en, this message translates to:
+  /// **'In Molaplan: enter the local address and the Tailscale address on the same Home Assistant connection (the Tailscale address is under Advanced) and the same long-lived token. Molaplan tries the local address first and uses the Tailscale address when you are away from the home network.'**
+  String get s64cb4ebfec;
+
+  /// fi: login.tailscale.com
+  ///
+  /// In en, this message translates to:
+  /// **'https://login.tailscale.com'**
+  String get sb672e2003f;
+
+  /// fi: Tämän laitteen, jossa Molaplan on, pitää olla yhdistettynä samaan tailnetiin kuin Home Assistant. Ohje on yleinen eikä v
+  ///
+  /// In en, this message translates to:
+  /// **'The device running Molaplan must be connected to the same tailnet as Home Assistant. This guide is generic and does not refer to a particular installation.'**
+  String get s4afdb63b01;
+
   /// fi: WireGuard (reitittimen VPN)
   ///
   /// In en, this message translates to:
@@ -1831,6 +1891,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Mitsubishi CN105, Daikin S21/X50A (Faikin), Panasonic CN-CNT, Toshiba. Found automatically.'**
   String get sa35e37b4b4;
+
+  /// fi: Etäyhteys Tailscalella – ohje
+  ///
+  /// In en, this message translates to:
+  /// **'Remote access with Tailscale – guide'**
+  String get s0e4990cf25;
+
+  /// fi: Lisäosa Home Assistantiin, MagicDNS ja osoitteet Molaplanissa.
+  ///
+  /// In en, this message translates to:
+  /// **'The Home Assistant add-on, MagicDNS, and the addresses in Molaplan.'**
+  String get sbb740cfc71;
 
   /// fi: Sähkönkulutus
   ///
@@ -3769,6 +3841,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Search network'**
   String get s47d409fddd;
+
+  /// fi: Tailscale, Nabu Casa ja muut etäosoitteet. Tunnus kysytään vain kerran.
+  ///
+  /// In en, this message translates to:
+  /// **'Tailscale, Nabu Casa and other remote addresses. The token is asked only once.'**
+  String get s5d31b3c227;
 
   /// fi: Tunnista releet
   ///
@@ -5917,6 +5995,48 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Long-press to remove'**
   String get sdc485831ad;
+
+  /// fi: Mistä Home Assistantista?
+  ///
+  /// In en, this message translates to:
+  /// **'Which Home Assistant?'**
+  String get sf5bfc4217c;
+
+  /// fi: Poista käyttämätön yhteys
+  ///
+  /// In en, this message translates to:
+  /// **'Remove unused connection'**
+  String get sd3089f07cc;
+
+  /// fi: Poistetaanko yhteys?
+  ///
+  /// In en, this message translates to:
+  /// **'Remove the connection?'**
+  String get s1333776c9f;
+
+  /// fi: Lisää uusi Home Assistant
+  ///
+  /// In en, this message translates to:
+  /// **'Add a new Home Assistant'**
+  String get sd10b382b33;
+
+  /// fi: Toinen palvelin, uusi osoite ja tunnus.
+  ///
+  /// In en, this message translates to:
+  /// **'Another server, a new address and token.'**
+  String get s495db67f43;
+
+  /// fi: ei ruutuja
+  ///
+  /// In en, this message translates to:
+  /// **'no tiles'**
+  String get s4f62c41cb3;
+
+  /// fi: ruutua
+  ///
+  /// In en, this message translates to:
+  /// **'tiles'**
+  String get s92c338c3bd;
 
   /// fi: Näytä aina
   ///
@@ -9945,42 +10065,6 @@ abstract class AppLocalizations {
   /// **'Your own control terminal: HTTP, MQTT, Modbus TCP, Home Assistant, cameras, WebSocket, TCP and UDP. Without an account all settings stay on this device.'**
   String get sd178a1d809;
 
-  /// fi: Mistä Home Assistantista?
-  ///
-  /// In en, this message translates to:
-  /// **'Which Home Assistant?'**
-  String get sf5bfc4217c;
-
-  /// fi: Sinulla on useampi Home Assistant -yhteys. Käyttämättömän (ei ruutuja) voi poistaa.
-  ///
-  /// In en, this message translates to:
-  /// **'You have more than one Home Assistant connection. An unused one (no tiles) can be removed.'**
-  String get sbc210f9634;
-
-  /// fi: ei ruutuja
-  ///
-  /// In en, this message translates to:
-  /// **'no tiles'**
-  String get s4f62c41cb3;
-
-  /// fi: ruutua
-  ///
-  /// In en, this message translates to:
-  /// **'tiles'**
-  String get s92c338c3bd;
-
-  /// fi: Poista käyttämätön yhteys
-  ///
-  /// In en, this message translates to:
-  /// **'Remove unused connection'**
-  String get sd3089f07cc;
-
-  /// fi: Poistetaanko yhteys?
-  ///
-  /// In en, this message translates to:
-  /// **'Remove the connection?'**
-  String get s1333776c9f;
-
   /// fi: Jäähdytys
   ///
   /// In en, this message translates to:
@@ -12560,6 +12644,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'The connection will be removed from this device.'**
   String get sccd1325381;
+
+  /// fi: Tailscale, Nabu Casa ja muut etäosoitteet. Tunnus on tallennettu tähän yhteyteen.
+  ///
+  /// In en, this message translates to:
+  /// **'Tailscale, Nabu Casa and other remote addresses. The token is stored on this connection.'**
+  String get sd2a6c2f91d;
+
+  /// fi: Lisää entiteettejä
+  ///
+  /// In en, this message translates to:
+  /// **'Add entities'**
+  String get s57a2b4c869;
 
   /// fi: IR on yksisuuntainen: lämpöpumppu ei kerro takaisin, menikö komento perille. Ruuduissa näkyy viimeksi lähetetty tila.
   ///
@@ -18149,17 +18245,53 @@ abstract class AppLocalizations {
   /// **'Home Assistant'**
   String get sf0ef0140c3;
 
-  /// fi: Osoite
+  /// fi: Käytössä oleva osoite
   ///
   /// In en, this message translates to:
-  /// **'URL'**
-  String get sfcbb753f53;
+  /// **'Address in use'**
+  String get s66aa2ddbae;
+
+  /// fi: Tämä on juuri nyt käytössä oleva osoite (paikallinen, Tailscale tai etä). Muut osoitteet ovat kohdassa Edistyneet.
+  ///
+  /// In en, this message translates to:
+  /// **'The address currently in use (local, Tailscale or remote). Other addresses are under Advanced.'**
+  String get s4147d30345;
 
   /// fi: Pitkäikäinen käyttöoikeustunnus
   ///
   /// In en, this message translates to:
   /// **'Long-lived access token'**
   String get s1f90ee6992;
+
+  /// fi: Paikallinen osoite
+  ///
+  /// In en, this message translates to:
+  /// **'Local address'**
+  String get sbacaf1e7fb;
+
+  /// fi: Osoite kotiverkossa, esim. http://homeassistant.local:8123 tai kotiverkon IP.
+  ///
+  /// In en, this message translates to:
+  /// **'The address on the home network, e.g. http://homeassistant.local:8123 or a LAN IP.'**
+  String get s75ba232e22;
+
+  /// fi: Tailscale-osoite
+  ///
+  /// In en, this message translates to:
+  /// **'Tailscale address'**
+  String get s0b5c2ba45e;
+
+  /// fi: Etäosoite (Nabu Casa tai muu)
+  ///
+  /// In en, this message translates to:
+  /// **'Remote address (Nabu Casa or other)'**
+  String get sed1deea062;
+
+  /// fi: Nabu Casa- tai muu julkinen https-osoite, jos käytät sitä kodin ulkopuolella.
+  ///
+  /// In en, this message translates to:
+  /// **'A Nabu Casa or other public https address, if you use one away from home.'**
+  String get sfb69b76cde;
 
   /// fi: Reaaliaikaiset päivitykset (websocket)
   ///
@@ -18743,6 +18875,12 @@ abstract class AppLocalizations {
   /// **'WebSocket'**
   String get s3d43664fcc;
 
+  /// fi: Osoite
+  ///
+  /// In en, this message translates to:
+  /// **'URL'**
+  String get sfcbb753f53;
+
   /// fi: Otsakkeet (Nimi: arvo / rivi)
   ///
   /// In en, this message translates to:
@@ -19145,17 +19283,11 @@ abstract class AppLocalizations {
   /// **'Lights, alarm, sensors – pick from a list which ones become tiles.'**
   String get s76f6067b0f;
 
-  /// fi: Home Assistantin osoite
+  /// fi: Osoite, jolla avaat Home Assistantin kotiverkossa, esim. http://homeassistant.local:8123 tai kotiverkon IP. Etäosoitteet
   ///
   /// In en, this message translates to:
-  /// **'Home Assistant address'**
-  String get s9f70681d3f;
-
-  /// fi: Sama osoite, jolla avaat Home Assistantin selaimessa.
-  ///
-  /// In en, this message translates to:
-  /// **'The address you open Home Assistant with.'**
-  String get s123502628e;
+  /// **'The address you open Home Assistant with on the home network, e.g. http://homeassistant.local:8123 or a LAN IP. Remote addresses (Tailscale, Nabu Casa) are added under Advanced. The token is asked only once.'**
+  String get sef5698c9bb;
 
   /// fi: Pitkäikäinen tunnus (token)
   ///
@@ -19166,8 +19298,8 @@ abstract class AppLocalizations {
   /// fi: Home Assistant → klikkaa omaa nimeäsi vasemmalla alhaalla → Turvallisuus → Pitkäikäiset käyttöoikeustunnukset → Luo tunn
   ///
   /// In en, this message translates to:
-  /// **'Home Assistant → your profile → Security → Long-lived access tokens → Create token. Paste it here.'**
-  String get s4e3f2052b2;
+  /// **'Home Assistant → your profile → Security → Long-lived access tokens → Create token. Paste it here. The token is stored on this device and is not asked again when you add more entities.'**
+  String get s73debc1ec0;
 
   /// fi: Lämpöpumppu (Home Assistant)
   ///
@@ -19180,6 +19312,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Air heat pump shown in Home Assistant as a climate entity.'**
   String get s2afe650320;
+
+  /// fi: Home Assistantin osoite
+  ///
+  /// In en, this message translates to:
+  /// **'Home Assistant address'**
+  String get s9f70681d3f;
 
   /// fi: Jos Home Assistant on jo lisätty, sama yhteys otetaan käyttöön.
   ///
@@ -24934,6 +25072,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Phone as +358…'**
   String get sd936bbcc2d;
+
+  /// fi: Etäyhteys Tailscalen kautta: asenna Tailscale sekä tähän laitteeseen, jossa Molaplan on, että koneelle, jossa Home Assis
+  ///
+  /// In en, this message translates to:
+  /// **'Remote access through Tailscale: install Tailscale both on this device running Molaplan and on the machine running Home Assistant, and join them to the same tailnet. Then enter the Tailscale address, for example http://homeassistant:8123, a Tailscale IP (100.x.x.x:8123), or a Tailscale Serve https address (something.ts.net).\n\nWeb app (https): the browser blocks access to an insecure http address. Use a Tailscale Serve https address (*.ts.net) or route the connection through the home bridge.'**
+  String get se684d0b30c;
+
+  /// fi: Tämä selainversio on https-sivulla, joten se ei voi avata Home Assistantin http-osoitetta. Käytä Tailscale Serven https-
+  ///
+  /// In en, this message translates to:
+  /// **'This web app is on an https page, so it cannot open a Home Assistant http address. Use a Tailscale Serve https address (*.ts.net) or route the connection through the home bridge.'**
+  String get s2549c6a969;
+
+  /// fi: Paikallinen
+  ///
+  /// In en, this message translates to:
+  /// **'Local'**
+  String get s43f0f45aa9;
+
+  /// fi: Tailscale
+  ///
+  /// In en, this message translates to:
+  /// **'Tailscale'**
+  String get s7e7efa0889;
+
+  /// fi: Etä
+  ///
+  /// In en, this message translates to:
+  /// **'Remote'**
+  String get s3e96abe344;
 
   /// fi: Valo{p0}
   ///

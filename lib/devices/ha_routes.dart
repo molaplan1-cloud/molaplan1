@@ -3,6 +3,7 @@
 /// health check, local first. Generic – no site-specific defaults.
 library;
 
+import '../l10n/l10n.dart';
 import '../models/models.dart';
 import 'ha_setup.dart';
 
@@ -40,11 +41,11 @@ class HaRouteSelection {
   HaRouteKind? get kind => route?.kind;
 }
 
-/// Finnish / English labels for the route in use: Paikallinen / Tailscale / Etä.
-String haRouteLabel(HaRouteKind kind, {bool fi = true}) => switch (kind) {
-  HaRouteKind.local => fi ? 'Paikallinen' : 'Local',
-  HaRouteKind.tailscale => 'Tailscale',
-  HaRouteKind.remote => fi ? 'Etä' : 'Remote',
+/// Route-in-use labels: Paikallinen / Tailscale / Etä (via [tr] so sv/et/es work too).
+String haRouteLabel(HaRouteKind kind, {String lang = 'fi'}) => switch (kind) {
+  HaRouteKind.local => tr(lang, 'Paikallinen', 'Local'),
+  HaRouteKind.tailscale => tr(lang, 'Tailscale', 'Tailscale'),
+  HaRouteKind.remote => tr(lang, 'Etä', 'Remote'),
 };
 
 /// Tailscale CGNAT 100.64.0.0/10, MagicDNS / Serve (*.ts.net), or Tailscale IPv6 (fd7a:115c:a1e0::/48).

@@ -704,6 +704,16 @@
  },
  "se92301ff0a": "https://tailscale.com/download",
  "sf6270ae66c": "https://tailscale.com/kb/1019/subnets",
+ "se3bc55fb9b": "Acceso remoto con Tailscale (Home Assistant)",
+ "scee4e85804": "Conecta Home Assistant desde Molaplan también fuera de casa, a través de Tailscale. La dirección local y la dirección de Tailscale se guardan en la misma conexión; el token solo se pide una vez.",
+ "sbb981f6a83": "Es adecuado cuando Home Assistant funciona en casa y quieres un acceso seguro sin reenvío de puertos. En la aplicación web, una dirección https (Tailscale Serve) evita que el navegador bloquee http.",
+ "s7cddac79fb": "En Home Assistant: Ajustes → Complementos → Tienda de complementos. Busca \"Tailscale\" (el complemento oficial), instálalo, activa Iniciar al arrancar y Watchdog, inícialo, abre la interfaz web e inicia sesión o aprueba el equipo.",
+ "s9087785a57": "En la consola de administración de Tailscale (login.tailscale.com → Machines): busca el equipo de Home Assistant y su dirección 100.x. Activa \"Disable key expiry\" en ese equipo y habilita MagicDNS.",
+ "se70161f486": "Instala la aplicación Tailscale en los dispositivos que ejecutan Molaplan, inicia sesión con la misma cuenta y conéctate. Prueba en un navegador con http://homeassistant:8123.",
+ "s7d8746c6f3": "HTTPS opcional para la aplicación web y la PWA: activa los certificados HTTPS en los ajustes DNS de la consola de administración, pon la opción del complemento proxy: true y reinicia el complemento. La dirección tiene la forma https://name.tailnet.ts.net. En configuration.yaml añade http: use_x_forwarded_for: true y trusted_proxies: [127.0.0.1]. El navegador bloquea http desde una página https, así que la aplicación web necesita esta dirección https o una conexión a través del puente de casa.",
+ "s64cb4ebfec": "En Molaplan: introduce la dirección local y la dirección de Tailscale en la misma conexión de Home Assistant (la dirección de Tailscale está en Avanzado) y el mismo token de larga duración. Molaplan prueba primero la dirección local y usa la de Tailscale cuando no estás en la red doméstica.",
+ "sb672e2003f": "https://login.tailscale.com",
+ "s4afdb63b01": "El dispositivo que ejecuta Molaplan debe estar conectado a la misma tailnet que Home Assistant. Esta guía es general y no se refiere a una instalación concreta.",
  "s57f0b61334": "WireGuard (reuter VPN)",
  "@s57f0b61334": {
   "x-mt": true
@@ -837,6 +847,8 @@
  "@sa35e37b4b4": {
   "x-mt": true
  },
+ "s0e4990cf25": "Acceso remoto con Tailscale – guía",
+ "sbb740cfc71": "El complemento de Home Assistant, MagicDNS y las direcciones en Molaplan.",
  "sb8934a5835": "Consumo eléctrico",
  "s5409dc748f": "No se cuenta",
  "sf0bbcc217b": "Toda la vivienda",
@@ -1670,6 +1682,7 @@
  "@s47d409fddd": {
   "x-mt": true
  },
+ "s5d31b3c227": "Tailscale, Nabu Casa y otras direcciones remotas. El token solo se pide una vez.",
  "sa62eebe6bd": "Detectar relés",
  "@sa62eebe6bd": {
   "x-mt": true
@@ -2850,6 +2863,28 @@
  "sb2fa876c32": "Brillo",
  "s34cc93ca61": "Favoritos",
  "sdc485831ad": "Mantén pulsado para quitar",
+ "sf5bfc4217c": "¿Qué asistente de casa?",
+ "@sf5bfc4217c": {
+  "x-mt": true
+ },
+ "sd3089f07cc": "Eliminar la conexión no utilizada",
+ "@sd3089f07cc": {
+  "x-mt": true
+ },
+ "s1333776c9f": "¿Retirar la conexión?",
+ "@s1333776c9f": {
+  "x-mt": true
+ },
+ "sd10b382b33": "Añadir un nuevo Home Assistant",
+ "s495db67f43": "Otro servidor, una dirección y un token nuevos.",
+ "s4f62c41cb3": "No hay cartas",
+ "@s4f62c41cb3": {
+  "x-mt": true
+ },
+ "s92c338c3bd": "tarjetas",
+ "@s92c338c3bd": {
+  "x-mt": true
+ },
  "s493a65113f": "Mostrar siempre",
  "sf328dcc536": "Vista del navegador",
  "se24b0e7f60": "Se aplica solo en este navegador. En otros dispositivos el recuadro permanece en su sitio.",
@@ -4877,30 +4912,6 @@
  "@sd178a1d809": {
   "x-mt": true
  },
- "sf5bfc4217c": "¿Qué asistente de casa?",
- "@sf5bfc4217c": {
-  "x-mt": true
- },
- "sbc210f9634": "Usted tiene más de una conexión Home Assistant. Una no usada (sin tarjetas) se puede eliminar.",
- "@sbc210f9634": {
-  "x-mt": true
- },
- "s4f62c41cb3": "No hay cartas",
- "@s4f62c41cb3": {
-  "x-mt": true
- },
- "s92c338c3bd": "tarjetas",
- "@s92c338c3bd": {
-  "x-mt": true
- },
- "sd3089f07cc": "Eliminar la conexión no utilizada",
- "@sd3089f07cc": {
-  "x-mt": true
- },
- "s1333776c9f": "¿Retirar la conexión?",
- "@s1333776c9f": {
-  "x-mt": true
- },
  "s8efb99df1d": "Enfriando",
  "s0b98d62330": "Calor y frío",
  "sa61efb9866": "calentando",
@@ -6172,6 +6183,8 @@
  "@sccd1325381": {
   "x-mt": true
  },
+ "sd2a6c2f91d": "Tailscale, Nabu Casa y otras direcciones remotas. El token está guardado en esta conexión.",
+ "s57a2b4c869": "Añadir entidades",
  "s837e0fc5e6": "IR es unidireccional: la bomba de calor no confirma los comandos. Los azulejos muestran el último estado enviado.",
  "@s837e0fc5e6": {
   "x-mt": true
@@ -9035,11 +9048,17 @@
   "x-mt": true
  },
  "sf0ef0140c3": "Home Assistant",
- "sfcbb753f53": "URL",
+ "s66aa2ddbae": "Dirección en uso",
+ "s4147d30345": "La dirección que se está usando ahora (local, Tailscale o remota). Las otras direcciones están en Avanzado.",
  "s1f90ee6992": "Token de acceso de larga duración",
  "@s1f90ee6992": {
   "x-mt": true
  },
+ "sbacaf1e7fb": "Dirección local",
+ "s75ba232e22": "La dirección en la red doméstica, p. ej. http://homeassistant.local:8123 o una IP de la red local.",
+ "s0b5c2ba45e": "Dirección de Tailscale",
+ "sed1deea062": "Dirección remota (Nabu Casa u otra)",
+ "sfb69b76cde": "Una dirección https pública de Nabu Casa u otra, si la usas fuera de casa.",
  "sccb0cca8e3": "Actualizaciones en vivo (websocket)",
  "@sccb0cca8e3": {
   "x-mt": true
@@ -9380,6 +9399,7 @@
  "s3660228d11": "QoS",
  "s1b07c9ba3d": "Retain",
  "s3d43664fcc": "WebSocket",
+ "sfcbb753f53": "URL",
  "s81479e1555": "Cabeceras (Nombre: valor por línea)",
  "s5811b38d7b": "Token (Authorization: Bearer)",
  "sd512dbbfc7": "Mensaje en conexión",
@@ -9597,19 +9617,12 @@
  "@s76f6067b0f": {
   "x-mt": true
  },
- "s9f70681d3f": "Dirección de Home Assistant",
- "s123502628e": "La dirección con la que abres Home Assistant.",
- "@s123502628e": {
-  "x-mt": true
- },
+ "sef5698c9bb": "La dirección con la que abres Home Assistant en la red doméstica, p. ej. http://homeassistant.local:8123 o una IP de la red local. Las direcciones remotas (Tailscale, Nabu Casa) se añaden en Avanzado. El token solo se pide una vez.",
  "s92e3c4cd40": "Token de larga vida",
  "@s92e3c4cd40": {
   "x-mt": true
  },
- "s4e3f2052b2": "Home Assistant → su perfil → Seguridad → Tokens de acceso a larga vida → Crear token. Pruébalo aquí.",
- "@s4e3f2052b2": {
-  "x-mt": true
- },
+ "s73debc1ec0": "Home Assistant → tu perfil → Seguridad → Tokens de acceso de larga duración → Crear token. Pégalo aquí. El token se guarda en este dispositivo y no se vuelve a pedir cuando añades más entidades.",
  "s54e063bd9c": "Bomba de calor (Auxiliar)",
  "@s54e063bd9c": {
   "x-mt": true
@@ -9618,6 +9631,7 @@
  "@s2afe650320": {
   "x-mt": true
  },
+ "s9f70681d3f": "Dirección de Home Assistant",
  "s48fdd98530": "Si ya se ha añadido, se reutiliza la misma conexión.",
  "@s48fdd98530": {
   "x-mt": true
@@ -13034,6 +13048,10 @@
  "@sd936bbcc2d": {
   "x-mt": true
  },
+ "se684d0b30c": "Acceso remoto a través de Tailscale: instala Tailscale tanto en este dispositivo que ejecuta Molaplan como en el equipo que ejecuta Home Assistant, y únelos a la misma tailnet. Luego introduce la dirección de Tailscale, por ejemplo http://homeassistant:8123, una IP de Tailscale (100.x.x.x:8123) o una dirección https de Tailscale Serve (algo.ts.net).\n\nAplicación web (https): el navegador bloquea el acceso a una dirección http no segura. Usa una dirección https de Tailscale Serve (*.ts.net) o enruta la conexión a través del puente de casa.",
+ "s2549c6a969": "Esta aplicación web está en una página https, así que no puede abrir una dirección http de Home Assistant. Usa una dirección https de Tailscale Serve (*.ts.net) o enruta la conexión a través del puente de casa.",
+ "s7e7efa0889": "Tailscale",
+ "s3e96abe344": "Remoto",
  "s1a9acfbc67": "Luz {p0}",
  "@s1a9acfbc67": {
   "x-mt": true
@@ -13073,6 +13091,10 @@
  },
  "s06444f278d": "posición (100 = cerrada)",
  "@s06444f278d": {
+  "x-mt": true
+ },
+ "s43f0f45aa9": "Local",
+ "@s43f0f45aa9": {
   "x-mt": true
  }
 }

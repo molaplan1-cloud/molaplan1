@@ -28,9 +28,11 @@ void main() {
       expect(isTailscaleHost('100.63.0.1'), isFalse);
       expect(classifyHaUrl('https://abcd1234.ui.nabu.casa'), HaRouteKind.remote);
       expect(classifyHaUrl('https://ha.example.com'), HaRouteKind.remote);
-      expect(haRouteLabel(HaRouteKind.local, fi: true), 'Paikallinen');
-      expect(haRouteLabel(HaRouteKind.tailscale, fi: true), 'Tailscale');
-      expect(haRouteLabel(HaRouteKind.remote, fi: true), 'Etä');
+      expect(haRouteLabel(HaRouteKind.local), 'Paikallinen');
+      expect(haRouteLabel(HaRouteKind.tailscale), 'Tailscale');
+      expect(haRouteLabel(HaRouteKind.remote), 'Etä');
+      expect(haRouteLabel(HaRouteKind.local, lang: 'en'), 'Local');
+      expect(haRouteLabel(HaRouteKind.remote, lang: 'en'), 'Remote');
     });
 
     test('Tailscale addresses try http on 8123 first; Serve *.ts.net prefers https', () {

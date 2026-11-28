@@ -119,7 +119,7 @@ class HaRouteChip extends StatelessWidget {
   Widget build(BuildContext context) {
     final k = kind ?? (connection != null ? haRouteKindOf(connection!) : null) ?? (url != null ? classifyHaUrl(url!) : null);
     if (k == null) return const SizedBox.shrink();
-    final fi = AppScope.of(context).lang != 'en';
+    final lang = AppScope.of(context).lang;
     final icon = switch (k) {
       HaRouteKind.local => Icons.home_outlined,
       HaRouteKind.tailscale => Icons.vpn_lock_outlined,
@@ -128,7 +128,7 @@ class HaRouteChip extends StatelessWidget {
     return Chip(
       key: ValueKey('ha-route-${k.name}'),
       avatar: Icon(icon, size: 16),
-      label: Text(haRouteLabel(k, fi: fi)),
+      label: Text(haRouteLabel(k, lang: lang)),
       visualDensity: VisualDensity.compact,
       materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
     );

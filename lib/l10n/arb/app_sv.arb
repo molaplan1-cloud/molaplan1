@@ -707,6 +707,16 @@
  },
  "se92301ff0a": "https://tailscale.com/download",
  "sf6270ae66c": "https://tailscale.com/kb/1019/subnets",
+ "se3bc55fb9b": "Fjärråtkomst med Tailscale (Home Assistant)",
+ "scee4e85804": "Anslut till Home Assistant från Molaplan även när du är borta från hemmet, via Tailscale. Den lokala adressen och Tailscale-adressen sparas på samma anslutning; token frågas bara en gång.",
+ "sbb981f6a83": "Passar när Home Assistant körs hemma och du vill ha en säker väg utan portforwarding. I webbappen undviker en https-adress (Tailscale Serve) att webbläsaren blockerar http.",
+ "s7cddac79fb": "I Home Assistant: Inställningar → Tillägg → Tilläggsbutik. Sök efter \"Tailscale\" (det officiella tillägget), installera det, aktivera Starta vid uppstart och Watchdog, starta tillägget, öppna webbgränssnittet och logga in eller godkänn enheten.",
+ "s9087785a57": "I Tailscales administratörskonsol (login.tailscale.com → Machines): hitta Home Assistant-datorn och dess 100.x-adress. Aktivera \"Disable key expiry\" för den datorn och slå på MagicDNS.",
+ "se70161f486": "Installera Tailscale-appen på enheterna där Molaplan körs, logga in med samma konto och anslut. Testa i en webbläsare med http://homeassistant:8123.",
+ "s7d8746c6f3": "Valfritt HTTPS för webbappen och PWA: aktivera HTTPS-certifikat i DNS-inställningarna i administratörskonsolen, sätt tilläggsalternativet proxy: true och starta om tillägget. Adressen ser ut som https://name.tailnet.ts.net. I configuration.yaml lägg till http: use_x_forwarded_for: true och trusted_proxies: [127.0.0.1]. Webbläsaren blockerar http från en https-sida, så webbappen behöver den här https-adressen eller en anslutning via hembryggan.",
+ "s64cb4ebfec": "I Molaplan: ange den lokala adressen och Tailscale-adressen på samma Home Assistant-anslutning (Tailscale-adressen finns under Avancerat) och samma långlivade token. Molaplan provar först den lokala adressen och använder Tailscale-adressen när du inte är i hemnätverket.",
+ "sb672e2003f": "https://login.tailscale.com",
+ "s4afdb63b01": "Enheten där Molaplan körs måste vara ansluten till samma tailnet som Home Assistant. Den här guiden är allmän och syftar inte på en viss installation.",
  "s57f0b61334": "WireGuard (router VPN)",
  "@s57f0b61334": {
   "x-mt": true
@@ -840,6 +850,8 @@
  "@sa35e37b4b4": {
   "x-mt": true
  },
+ "s0e4990cf25": "Fjärråtkomst med Tailscale – guide",
+ "sbb740cfc71": "Tillägget till Home Assistant, MagicDNS och adresserna i Molaplan.",
  "sb8934a5835": "Elförbrukning",
  "s5409dc748f": "Räknas inte",
  "sf0bbcc217b": "Hela fastigheten",
@@ -1676,6 +1688,7 @@
  "@s47d409fddd": {
   "x-mt": true
  },
+ "s5d31b3c227": "Tailscale, Nabu Casa och andra fjärradresser. Token frågas bara en gång.",
  "sa62eebe6bd": "Detektera reläer",
  "@sa62eebe6bd": {
   "x-mt": true
@@ -2853,6 +2866,28 @@
  "sb2fa876c32": "Ljusstyrka",
  "s34cc93ca61": "Favoriter",
  "sdc485831ad": "Tryck länge för att ta bort",
+ "sf5bfc4217c": "Vilken hemassistent?",
+ "@sf5bfc4217c": {
+  "x-mt": true
+ },
+ "sd3089f07cc": "Ta bort oanvänd anslutning",
+ "@sd3089f07cc": {
+  "x-mt": true
+ },
+ "s1333776c9f": "Ta bort anslutningen?",
+ "@s1333776c9f": {
+  "x-mt": true
+ },
+ "sd10b382b33": "Lägg till en ny Home Assistant",
+ "s495db67f43": "En annan server, en ny adress och token.",
+ "s4f62c41cb3": "Inga kort",
+ "@s4f62c41cb3": {
+  "x-mt": true
+ },
+ "s92c338c3bd": "kort",
+ "@s92c338c3bd": {
+  "x-mt": true
+ },
  "s493a65113f": "Visa alltid",
  "sf328dcc536": "Webbläsarvy",
  "se24b0e7f60": "Gäller bara den här webbläsaren. På andra enheter stannar rutan på sin plats.",
@@ -4883,30 +4918,6 @@
  "@sd178a1d809": {
   "x-mt": true
  },
- "sf5bfc4217c": "Vilken hemassistent?",
- "@sf5bfc4217c": {
-  "x-mt": true
- },
- "sbc210f9634": "Du har mer än en Home Assistant-anslutning. En oanvänd (inga kort) kan tas bort.",
- "@sbc210f9634": {
-  "x-mt": true
- },
- "s4f62c41cb3": "Inga kort",
- "@s4f62c41cb3": {
-  "x-mt": true
- },
- "s92c338c3bd": "kort",
- "@s92c338c3bd": {
-  "x-mt": true
- },
- "sd3089f07cc": "Ta bort oanvänd anslutning",
- "@sd3089f07cc": {
-  "x-mt": true
- },
- "s1333776c9f": "Ta bort anslutningen?",
- "@s1333776c9f": {
-  "x-mt": true
- },
  "s8efb99df1d": "Kyler",
  "s0b98d62330": "Värme och kyla",
  "sa61efb9866": "värmer",
@@ -6178,6 +6189,8 @@
  "@sccd1325381": {
   "x-mt": true
  },
+ "sd2a6c2f91d": "Tailscale, Nabu Casa och andra fjärradresser. Token är sparad på den här anslutningen.",
+ "s57a2b4c869": "Lägg till entiteter",
  "s837e0fc5e6": "IR är envägs: värmepumpen bekräftar inte kommandon. Tiles visar det sista skickade tillståndet.",
  "@s837e0fc5e6": {
   "x-mt": true
@@ -9038,11 +9051,17 @@
   "x-mt": true
  },
  "sf0ef0140c3": "Home Assistant",
- "sfcbb753f53": "URL",
+ "s66aa2ddbae": "Adress som används",
+ "s4147d30345": "Adressen som används just nu (lokal, Tailscale eller fjärr). Andra adresser finns under Avancerat.",
  "s1f90ee6992": "Långlivad access token",
  "@s1f90ee6992": {
   "x-mt": true
  },
+ "sbacaf1e7fb": "Lokal adress",
+ "s75ba232e22": "Adressen i hemnätverket, t.ex. http://homeassistant.local:8123 eller en IP i det lokala nätet.",
+ "s0b5c2ba45e": "Tailscale-adress",
+ "sed1deea062": "Fjärradress (Nabu Casa eller annan)",
+ "sfb69b76cde": "En Nabu Casa- eller annan publik https-adress, om du använder en när du är borta från hemmet.",
  "sccb0cca8e3": "Liveuppdateringar (websocket)",
  "s8f8e1cfad3": "Entity Id",
  "@s8f8e1cfad3": {
@@ -9383,6 +9402,7 @@
  "s3660228d11": "QoS",
  "s1b07c9ba3d": "Retain",
  "s3d43664fcc": "WebSocket",
+ "sfcbb753f53": "URL",
  "s81479e1555": "Headers (Namn: värde per rad)",
  "@s81479e1555": {
   "x-mt": true
@@ -9603,28 +9623,22 @@
  "@s76f6067b0f": {
   "x-mt": true
  },
- "s9f70681d3f": "Home Assistant Adress",
- "@s9f70681d3f": {
-  "x-mt": true
- },
- "s123502628e": "Adressen du öppnar Home Assistant med.",
- "@s123502628e": {
-  "x-mt": true
- },
+ "sef5698c9bb": "Adressen som du öppnar Home Assistant med i hemnätverket, t.ex. http://homeassistant.local:8123 eller en IP i det lokala nätet. Fjärradresser (Tailscale, Nabu Casa) läggs till under Avancerat. Token frågas bara en gång.",
  "s92e3c4cd40": "Långlivad token",
  "@s92e3c4cd40": {
   "x-mt": true
  },
- "s4e3f2052b2": "Hem Assistent → din profil → Säkerhet → Långlivade åtkomsttokens → Skapa token. Klistra det här.",
- "@s4e3f2052b2": {
-  "x-mt": true
- },
+ "s73debc1ec0": "Home Assistant → din profil → Säkerhet → Långlivade åtkomsttoken → Skapa token. Klistra in den här. Token sparas på den här enheten och frågas inte igen när du lägger till fler entiteter.",
  "s54e063bd9c": "Värmepump (Home Assistant)",
  "@s54e063bd9c": {
   "x-mt": true
  },
  "s2afe650320": "Luftvärmepump som visas i Home Assistant som en klimatenhet.",
  "@s2afe650320": {
+  "x-mt": true
+ },
+ "s9f70681d3f": "Home Assistant Adress",
+ "@s9f70681d3f": {
   "x-mt": true
  },
  "s48fdd98530": "Om det redan har lagts till återanvänds samma anslutning.",
@@ -13046,6 +13060,10 @@
  "@sd936bbcc2d": {
   "x-mt": true
  },
+ "se684d0b30c": "Fjärråtkomst via Tailscale: installera Tailscale både på den här enheten där Molaplan körs och på datorn där Home Assistant körs, och anslut dem till samma tailnet. Ange sedan Tailscale-adressen, till exempel http://homeassistant:8123, en Tailscale-IP (100.x.x.x:8123) eller en https-adress från Tailscale Serve (något.ts.net).\n\nWebbapp (https): webbläsaren blockerar åtkomst till en osäker http-adress. Använd en https-adress från Tailscale Serve (*.ts.net) eller koppla anslutningen via hembryggan.",
+ "s2549c6a969": "Den här webbappen är på en https-sida, så den kan inte öppna en http-adress till Home Assistant. Använd en https-adress från Tailscale Serve (*.ts.net) eller koppla anslutningen via hembryggan.",
+ "s7e7efa0889": "Tailscale",
+ "s3e96abe344": "Fjärr",
  "s1a9acfbc67": "Ljus {p0}",
  "@s1a9acfbc67": {
   "x-mt": true
@@ -13085,6 +13103,10 @@
  },
  "s06444f278d": "position (100 = stängd)",
  "@s06444f278d": {
+  "x-mt": true
+ },
+ "s43f0f45aa9": "Lokal",
+ "@s43f0f45aa9": {
   "x-mt": true
  }
 }

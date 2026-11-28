@@ -835,6 +835,44 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sf6270ae66c => 'https://tailscale.com/kb/1019/subnets';
 
   @override
+  String get se3bc55fb9b => 'Acceso remoto con Tailscale (Home Assistant)';
+
+  @override
+  String get scee4e85804 =>
+      'Conecta Home Assistant desde Molaplan también fuera de casa, a través de Tailscale. La dirección local y la dirección de Tailscale se guardan en la misma conexión; el token solo se pide una vez.';
+
+  @override
+  String get sbb981f6a83 =>
+      'Es adecuado cuando Home Assistant funciona en casa y quieres un acceso seguro sin reenvío de puertos. En la aplicación web, una dirección https (Tailscale Serve) evita que el navegador bloquee http.';
+
+  @override
+  String get s7cddac79fb =>
+      'En Home Assistant: Ajustes → Complementos → Tienda de complementos. Busca \"Tailscale\" (el complemento oficial), instálalo, activa Iniciar al arrancar y Watchdog, inícialo, abre la interfaz web e inicia sesión o aprueba el equipo.';
+
+  @override
+  String get s9087785a57 =>
+      'En la consola de administración de Tailscale (login.tailscale.com → Machines): busca el equipo de Home Assistant y su dirección 100.x. Activa \"Disable key expiry\" en ese equipo y habilita MagicDNS.';
+
+  @override
+  String get se70161f486 =>
+      'Instala la aplicación Tailscale en los dispositivos que ejecutan Molaplan, inicia sesión con la misma cuenta y conéctate. Prueba en un navegador con http://homeassistant:8123.';
+
+  @override
+  String get s7d8746c6f3 =>
+      'HTTPS opcional para la aplicación web y la PWA: activa los certificados HTTPS en los ajustes DNS de la consola de administración, pon la opción del complemento proxy: true y reinicia el complemento. La dirección tiene la forma https://name.tailnet.ts.net. En configuration.yaml añade http: use_x_forwarded_for: true y trusted_proxies: [127.0.0.1]. El navegador bloquea http desde una página https, así que la aplicación web necesita esta dirección https o una conexión a través del puente de casa.';
+
+  @override
+  String get s64cb4ebfec =>
+      'En Molaplan: introduce la dirección local y la dirección de Tailscale en la misma conexión de Home Assistant (la dirección de Tailscale está en Avanzado) y el mismo token de larga duración. Molaplan prueba primero la dirección local y usa la de Tailscale cuando no estás en la red doméstica.';
+
+  @override
+  String get sb672e2003f => 'https://login.tailscale.com';
+
+  @override
+  String get s4afdb63b01 =>
+      'El dispositivo que ejecuta Molaplan debe estar conectado a la misma tailnet que Home Assistant. Esta guía es general y no se refiere a una instalación concreta.';
+
+  @override
   String get s57f0b61334 => 'WireGuard (reuter VPN)';
 
   @override
@@ -969,6 +1007,13 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get sa35e37b4b4 =>
       'Mitsubishi CN105, Daikin S21/X50A (Faikin), Panasonic CN-CNT, Toshiba. Se encuentra automáticamente.';
+
+  @override
+  String get s0e4990cf25 => 'Acceso remoto con Tailscale – guía';
+
+  @override
+  String get sbb740cfc71 =>
+      'El complemento de Home Assistant, MagicDNS y las direcciones en Molaplan.';
 
   @override
   String get sb8934a5835 => 'Consumo eléctrico';
@@ -2065,6 +2110,10 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get s47d409fddd => 'Red de búsqueda';
+
+  @override
+  String get s5d31b3c227 =>
+      'Tailscale, Nabu Casa y otras direcciones remotas. El token solo se pide una vez.';
 
   @override
   String get sa62eebe6bd => 'Detectar relés';
@@ -3287,6 +3336,27 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get sdc485831ad => 'Mantén pulsado para quitar';
+
+  @override
+  String get sf5bfc4217c => '¿Qué asistente de casa?';
+
+  @override
+  String get sd3089f07cc => 'Eliminar la conexión no utilizada';
+
+  @override
+  String get s1333776c9f => '¿Retirar la conexión?';
+
+  @override
+  String get sd10b382b33 => 'Añadir un nuevo Home Assistant';
+
+  @override
+  String get s495db67f43 => 'Otro servidor, una dirección y un token nuevos.';
+
+  @override
+  String get s4f62c41cb3 => 'No hay cartas';
+
+  @override
+  String get s92c338c3bd => 'tarjetas';
 
   @override
   String get s493a65113f => 'Mostrar siempre';
@@ -5499,25 +5569,6 @@ class AppLocalizationsEs extends AppLocalizations {
       'Su propia terminal de control: HTTP, MQTT, Modbus TCP, Home Assistant, cameras, WebSocket, TCP y UDP. Sin una cuenta, todos los ajustes permanecen en este dispositivo.';
 
   @override
-  String get sf5bfc4217c => '¿Qué asistente de casa?';
-
-  @override
-  String get sbc210f9634 =>
-      'Usted tiene más de una conexión Home Assistant. Una no usada (sin tarjetas) se puede eliminar.';
-
-  @override
-  String get s4f62c41cb3 => 'No hay cartas';
-
-  @override
-  String get s92c338c3bd => 'tarjetas';
-
-  @override
-  String get sd3089f07cc => 'Eliminar la conexión no utilizada';
-
-  @override
-  String get s1333776c9f => '¿Retirar la conexión?';
-
-  @override
   String get s8efb99df1d => 'Enfriando';
 
   @override
@@ -6992,6 +7043,13 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get sccd1325381 => 'La conexión se eliminará de este dispositivo.';
+
+  @override
+  String get sd2a6c2f91d =>
+      'Tailscale, Nabu Casa y otras direcciones remotas. El token está guardado en esta conexión.';
+
+  @override
+  String get s57a2b4c869 => 'Añadir entidades';
 
   @override
   String get s837e0fc5e6 =>
@@ -10150,10 +10208,31 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sf0ef0140c3 => 'Home Assistant';
 
   @override
-  String get sfcbb753f53 => 'URL';
+  String get s66aa2ddbae => 'Dirección en uso';
+
+  @override
+  String get s4147d30345 =>
+      'La dirección que se está usando ahora (local, Tailscale o remota). Las otras direcciones están en Avanzado.';
 
   @override
   String get s1f90ee6992 => 'Token de acceso de larga duración';
+
+  @override
+  String get sbacaf1e7fb => 'Dirección local';
+
+  @override
+  String get s75ba232e22 =>
+      'La dirección en la red doméstica, p. ej. http://homeassistant.local:8123 o una IP de la red local.';
+
+  @override
+  String get s0b5c2ba45e => 'Dirección de Tailscale';
+
+  @override
+  String get sed1deea062 => 'Dirección remota (Nabu Casa u otra)';
+
+  @override
+  String get sfb69b76cde =>
+      'Una dirección https pública de Nabu Casa u otra, si la usas fuera de casa.';
 
   @override
   String get sccb0cca8e3 => 'Actualizaciones en vivo (websocket)';
@@ -10499,6 +10578,9 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s3d43664fcc => 'WebSocket';
 
   @override
+  String get sfcbb753f53 => 'URL';
+
+  @override
   String get s81479e1555 => 'Cabeceras (Nombre: valor por línea)';
 
   @override
@@ -10725,17 +10807,15 @@ class AppLocalizationsEs extends AppLocalizations {
       'Luces, alarma, sensores – elige una lista que se convierten en tarjetas.';
 
   @override
-  String get s9f70681d3f => 'Dirección de Home Assistant';
-
-  @override
-  String get s123502628e => 'La dirección con la que abres Home Assistant.';
+  String get sef5698c9bb =>
+      'La dirección con la que abres Home Assistant en la red doméstica, p. ej. http://homeassistant.local:8123 o una IP de la red local. Las direcciones remotas (Tailscale, Nabu Casa) se añaden en Avanzado. El token solo se pide una vez.';
 
   @override
   String get s92e3c4cd40 => 'Token de larga vida';
 
   @override
-  String get s4e3f2052b2 =>
-      'Home Assistant → su perfil → Seguridad → Tokens de acceso a larga vida → Crear token. Pruébalo aquí.';
+  String get s73debc1ec0 =>
+      'Home Assistant → tu perfil → Seguridad → Tokens de acceso de larga duración → Crear token. Pégalo aquí. El token se guarda en este dispositivo y no se vuelve a pedir cuando añades más entidades.';
 
   @override
   String get s54e063bd9c => 'Bomba de calor (Auxiliar)';
@@ -10743,6 +10823,9 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get s2afe650320 =>
       'Bomba de calor de aire mostrada en Home Assistant como entidad climática.';
+
+  @override
+  String get s9f70681d3f => 'Dirección de Home Assistant';
 
   @override
   String get s48fdd98530 =>
@@ -14132,6 +14215,23 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get sd936bbcc2d => 'Teléfono como +358...';
+
+  @override
+  String get se684d0b30c =>
+      'Acceso remoto a través de Tailscale: instala Tailscale tanto en este dispositivo que ejecuta Molaplan como en el equipo que ejecuta Home Assistant, y únelos a la misma tailnet. Luego introduce la dirección de Tailscale, por ejemplo http://homeassistant:8123, una IP de Tailscale (100.x.x.x:8123) o una dirección https de Tailscale Serve (algo.ts.net).\n\nAplicación web (https): el navegador bloquea el acceso a una dirección http no segura. Usa una dirección https de Tailscale Serve (*.ts.net) o enruta la conexión a través del puente de casa.';
+
+  @override
+  String get s2549c6a969 =>
+      'Esta aplicación web está en una página https, así que no puede abrir una dirección http de Home Assistant. Usa una dirección https de Tailscale Serve (*.ts.net) o enruta la conexión a través del puente de casa.';
+
+  @override
+  String get s43f0f45aa9 => 'Local';
+
+  @override
+  String get s7e7efa0889 => 'Tailscale';
+
+  @override
+  String get s3e96abe344 => 'Remoto';
 
   @override
   String s1a9acfbc67(String p0) {

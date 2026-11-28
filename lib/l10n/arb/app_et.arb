@@ -707,6 +707,16 @@
  },
  "se92301ff0a": "https://tailscale.com/download",
  "sf6270ae66c": "https://tailscale.com/kb/1019/subnets",
+ "se3bc55fb9b": "Kaugjuurdepääs Tailscale''iga (Home Assistant)",
+ "scee4e85804": "Ühendu Home Assistantiga Molaplanist ka kodust eemal, Tailscale''i kaudu. Kohalik aadress ja Tailscale''i aadress salvestatakse samale ühendusele; tokenit küsitakse ainult üks kord.",
+ "sbb981f6a83": "Sobib, kui Home Assistant töötab kodus ja soovid turvalist ühendust ilma pordi suunamiseta. Veebirakenduses väldib https-aadress (Tailscale Serve) seda, et brauser blokeeriks http-ühenduse.",
+ "s7cddac79fb": "Home Assistantis: Seaded → Lisandmoodulid → Lisandmoodulite pood. Otsi \"Tailscale\" (ametlik lisandmoodul), paigalda see, lülita sisse Käivita alglaadimisel ja Watchdog, käivita lisandmoodul, ava veebiliides ning logi sisse või kiida seade heaks.",
+ "s9087785a57": "Tailscale''i halduskonsoolis (login.tailscale.com → Machines): leia Home Assistanti masin ja selle 100.x-aadress. Lülita selle masina jaoks sisse \"Disable key expiry\" ja luba MagicDNS.",
+ "se70161f486": "Paigalda Tailscale''i rakendus seadmetesse, kus töötab Molaplan, logi sisse sama kontoga ja ühendu. Proovi brauseris aadressi http://homeassistant:8123.",
+ "s7d8746c6f3": "Valikuline HTTPS veebirakenduse ja PWA jaoks: lülita halduse DNS-seadetes sisse HTTPS-sertifikaadid, sea lisandmoodulis proxy: true ja taaskäivita lisandmoodul. Aadress on kujul https://name.tailnet.ts.net. Lisa configuration.yaml-faili: http: use_x_forwarded_for: true ja trusted_proxies: [127.0.0.1]. Brauser blokeerib http-ühenduse https-lehelt, seega vajab veebirakendus seda https-aadressi või ühendust kodusilla kaudu.",
+ "s64cb4ebfec": "Molaplanis: sisesta kohalik aadress ja Tailscale''i aadress samale Home Assistanti ühendusele (Tailscale''i aadress on jaotises Täpsem) ning sama pikaajaline token. Molaplan proovib esmalt kohalikku aadressi ja kasutab Tailscale''i aadressi, kui sa ei ole koduvõrgus.",
+ "sb672e2003f": "https://login.tailscale.com",
+ "s4afdb63b01": "Seade, kus töötab Molaplan, peab olema ühendatud samasse tailneti kui Home Assistant. See juhend on üldine ega viita konkreetsele paigaldusele.",
  "s57f0b61334": "WireGuard (ruuter VPN)",
  "@s57f0b61334": {
   "x-mt": true
@@ -840,6 +850,8 @@
  "@sa35e37b4b4": {
   "x-mt": true
  },
+ "s0e4990cf25": "Kaugjuurdepääs Tailscale''iga – juhend",
+ "sbb740cfc71": "Home Assistanti lisandmoodul, MagicDNS ja aadressid Molaplanis.",
  "sb8934a5835": "Elektritarbimine",
  "s5409dc748f": "Ei arvestata",
  "sf0bbcc217b": "Kogu objekt",
@@ -1676,6 +1688,7 @@
  "@s47d409fddd": {
   "x-mt": true
  },
+ "s5d31b3c227": "Tailscale, Nabu Casa ja muud kaugaadressid. Tokenit küsitakse ainult üks kord.",
  "sa62eebe6bd": "Releede tuvastamine",
  "@sa62eebe6bd": {
   "x-mt": true
@@ -2856,6 +2869,28 @@
  "sb2fa876c32": "Heledus",
  "s34cc93ca61": "Lemmikud",
  "sdc485831ad": "Eemaldamiseks vajuta pikalt",
+ "sf5bfc4217c": "Milline koduabiline?",
+ "@sf5bfc4217c": {
+  "x-mt": true
+ },
+ "sd3089f07cc": "Kasutamata ühenduse eemaldamine",
+ "@sd3089f07cc": {
+  "x-mt": true
+ },
+ "s1333776c9f": "Eemaldage ühendus?",
+ "@s1333776c9f": {
+  "x-mt": true
+ },
+ "sd10b382b33": "Lisa uus Home Assistant",
+ "s495db67f43": "Teine server, uus aadress ja token.",
+ "s4f62c41cb3": "kaarte",
+ "@s4f62c41cb3": {
+  "x-mt": true
+ },
+ "s92c338c3bd": "kaarte",
+ "@s92c338c3bd": {
+  "x-mt": true
+ },
  "s493a65113f": "Näita alati",
  "sf328dcc536": "Brauserivaade",
  "se24b0e7f60": "Kehtib ainult selles brauseris. Teistes seadmetes jääb ruut paigale.",
@@ -4895,30 +4930,6 @@
  "@sd178a1d809": {
   "x-mt": true
  },
- "sf5bfc4217c": "Milline koduabiline?",
- "@sf5bfc4217c": {
-  "x-mt": true
- },
- "sbc210f9634": "Sul on rohkem kui üks koduabilise ühendus. Kasutamata ühenduse (kaarte pole) saab eemaldada.",
- "@sbc210f9634": {
-  "x-mt": true
- },
- "s4f62c41cb3": "kaarte",
- "@s4f62c41cb3": {
-  "x-mt": true
- },
- "s92c338c3bd": "kaarte",
- "@s92c338c3bd": {
-  "x-mt": true
- },
- "sd3089f07cc": "Kasutamata ühenduse eemaldamine",
- "@sd3089f07cc": {
-  "x-mt": true
- },
- "s1333776c9f": "Eemaldage ühendus?",
- "@s1333776c9f": {
-  "x-mt": true
- },
  "s8efb99df1d": "Jahutab",
  "s0b98d62330": "Küte ja jahutus",
  "sa61efb9866": "kütab",
@@ -6199,6 +6210,8 @@
  "@sccd1325381": {
   "x-mt": true
  },
+ "sd2a6c2f91d": "Tailscale, Nabu Casa ja muud kaugaadressid. Token on salvestatud sellele ühendusele.",
+ "s57a2b4c869": "Lisa olemid",
  "s837e0fc5e6": "IR on ühesuunaline: soojuspump ei kinnita käske. Plaadid näitavad viimast saadetud olekut.",
  "@s837e0fc5e6": {
   "x-mt": true
@@ -9074,11 +9087,17 @@
   "x-mt": true
  },
  "sf0ef0140c3": "Home Assistant",
- "sfcbb753f53": "URL",
+ "s66aa2ddbae": "Kasutusel olev aadress",
+ "s4147d30345": "Praegu kasutusel olev aadress (kohalik, Tailscale või kaug). Muud aadressid on jaotises Täpsem.",
  "s1f90ee6992": "Pikaajaline juurdepääsuluba",
  "@s1f90ee6992": {
   "x-mt": true
  },
+ "sbacaf1e7fb": "Kohalik aadress",
+ "s75ba232e22": "Aadress koduvõrgus, nt http://homeassistant.local:8123 või koduvõrgu IP.",
+ "s0b5c2ba45e": "Tailscale''i aadress",
+ "sed1deea062": "Kaugaadress (Nabu Casa või muu)",
+ "sfb69b76cde": "Nabu Casa või muu avalik https-aadress, kui kasutad seda kodust eemal.",
  "sccb0cca8e3": "Otseuudised (veebipesa)",
  "@sccb0cca8e3": {
   "x-mt": true
@@ -9431,6 +9450,7 @@
  "s3660228d11": "QoS",
  "s1b07c9ba3d": "Retain",
  "s3d43664fcc": "WebSocket",
+ "sfcbb753f53": "URL",
  "s81479e1555": "Päised (Nimi: väärtus rea kohta)",
  "@s81479e1555": {
   "x-mt": true
@@ -9651,28 +9671,22 @@
  "@s76f6067b0f": {
   "x-mt": true
  },
- "s9f70681d3f": "Koduabilise aadress",
- "@s9f70681d3f": {
-  "x-mt": true
- },
- "s123502628e": "Aadress, millega avad koduabilise.",
- "@s123502628e": {
-  "x-mt": true
- },
+ "sef5698c9bb": "Aadress, millega avad Home Assistanti koduvõrgus, nt http://homeassistant.local:8123 või koduvõrgu IP. Kaugaadressid (Tailscale, Nabu Casa) lisatakse jaotises Täpsem. Tokenit küsitakse ainult üks kord.",
  "s92e3c4cd40": "Pikaealine märk",
  "@s92e3c4cd40": {
   "x-mt": true
  },
- "s4e3f2052b2": "Home Assistant → oma profiili → Turvalisus → Pikaajaline juurdepääsu märgid → Loo token. Paiguta siia.",
- "@s4e3f2052b2": {
-  "x-mt": true
- },
+ "s73debc1ec0": "Home Assistant → sinu profiil → Turvalisus → Pikaajalised juurdepääsutokenid → Loo token. Kleebi see siia. Token salvestatakse sellesse seadmesse ja seda ei küsita uuesti, kui lisad veel olemeid.",
  "s54e063bd9c": "Soojuspump (koduabiline)",
  "@s54e063bd9c": {
   "x-mt": true
  },
  "s2afe650320": "Õhksoojuspump, mida näidatakse Home Assistantis kliimaüksusena.",
  "@s2afe650320": {
+  "x-mt": true
+ },
+ "s9f70681d3f": "Koduabilise aadress",
+ "@s9f70681d3f": {
   "x-mt": true
  },
  "s48fdd98530": "Kui see on juba lisatud, kasutatakse sama ühendust uuesti.",
@@ -13094,6 +13108,10 @@
  "@sd936bbcc2d": {
   "x-mt": true
  },
+ "se684d0b30c": "Kaugjuurdepääs Tailscale''i kaudu: paigalda Tailscale nii sellesse seadmesse, kus töötab Molaplan, kui ka masinasse, kus töötab Home Assistant, ja ühenda need samasse tailneti. Seejärel sisesta Tailscale''i aadress, näiteks http://homeassistant:8123, Tailscale''i IP (100.x.x.x:8123) või Tailscale Serve''i https-aadress (midagi.ts.net).\n\nVeebirakendus (https): brauser blokeerib juurdepääsu turvamata http-aadressile. Kasuta Tailscale Serve''i https-aadressi (*.ts.net) või suuna ühendus kodusilla kaudu.",
+ "s2549c6a969": "See veebirakendus on https-lehel, seega ei saa see avada Home Assistanti http-aadressi. Kasuta Tailscale Serve''i https-aadressi (*.ts.net) või suuna ühendus kodusilla kaudu.",
+ "s7e7efa0889": "Tailscale",
+ "s3e96abe344": "Kaug",
  "s1a9acfbc67": "- Light{p0}",
  "@s1a9acfbc67": {
   "x-mt": true
@@ -13133,6 +13151,10 @@
  },
  "s06444f278d": "asukoht (100 = suletud)",
  "@s06444f278d": {
+  "x-mt": true
+ },
+ "s43f0f45aa9": "Kohalik",
+ "@s43f0f45aa9": {
   "x-mt": true
  }
 }

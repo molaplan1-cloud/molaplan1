@@ -827,6 +827,44 @@ class AppLocalizationsEt extends AppLocalizations {
   String get sf6270ae66c => 'https://tailscale.com/kb/1019/subnets';
 
   @override
+  String get se3bc55fb9b => 'Kaugjuurdepääs Tailscale\'iga (Home Assistant)';
+
+  @override
+  String get scee4e85804 =>
+      'Ühendu Home Assistantiga Molaplanist ka kodust eemal, Tailscale\'i kaudu. Kohalik aadress ja Tailscale\'i aadress salvestatakse samale ühendusele; tokenit küsitakse ainult üks kord.';
+
+  @override
+  String get sbb981f6a83 =>
+      'Sobib, kui Home Assistant töötab kodus ja soovid turvalist ühendust ilma pordi suunamiseta. Veebirakenduses väldib https-aadress (Tailscale Serve) seda, et brauser blokeeriks http-ühenduse.';
+
+  @override
+  String get s7cddac79fb =>
+      'Home Assistantis: Seaded → Lisandmoodulid → Lisandmoodulite pood. Otsi \"Tailscale\" (ametlik lisandmoodul), paigalda see, lülita sisse Käivita alglaadimisel ja Watchdog, käivita lisandmoodul, ava veebiliides ning logi sisse või kiida seade heaks.';
+
+  @override
+  String get s9087785a57 =>
+      'Tailscale\'i halduskonsoolis (login.tailscale.com → Machines): leia Home Assistanti masin ja selle 100.x-aadress. Lülita selle masina jaoks sisse \"Disable key expiry\" ja luba MagicDNS.';
+
+  @override
+  String get se70161f486 =>
+      'Paigalda Tailscale\'i rakendus seadmetesse, kus töötab Molaplan, logi sisse sama kontoga ja ühendu. Proovi brauseris aadressi http://homeassistant:8123.';
+
+  @override
+  String get s7d8746c6f3 =>
+      'Valikuline HTTPS veebirakenduse ja PWA jaoks: lülita halduse DNS-seadetes sisse HTTPS-sertifikaadid, sea lisandmoodulis proxy: true ja taaskäivita lisandmoodul. Aadress on kujul https://name.tailnet.ts.net. Lisa configuration.yaml-faili: http: use_x_forwarded_for: true ja trusted_proxies: [127.0.0.1]. Brauser blokeerib http-ühenduse https-lehelt, seega vajab veebirakendus seda https-aadressi või ühendust kodusilla kaudu.';
+
+  @override
+  String get s64cb4ebfec =>
+      'Molaplanis: sisesta kohalik aadress ja Tailscale\'i aadress samale Home Assistanti ühendusele (Tailscale\'i aadress on jaotises Täpsem) ning sama pikaajaline token. Molaplan proovib esmalt kohalikku aadressi ja kasutab Tailscale\'i aadressi, kui sa ei ole koduvõrgus.';
+
+  @override
+  String get sb672e2003f => 'https://login.tailscale.com';
+
+  @override
+  String get s4afdb63b01 =>
+      'Seade, kus töötab Molaplan, peab olema ühendatud samasse tailneti kui Home Assistant. See juhend on üldine ega viita konkreetsele paigaldusele.';
+
+  @override
   String get s57f0b61334 => 'WireGuard (ruuter VPN)';
 
   @override
@@ -959,6 +997,13 @@ class AppLocalizationsEt extends AppLocalizations {
   @override
   String get sa35e37b4b4 =>
       'Mitsubishi CN105, Daikin S21/X50A (Faikin), Panasonic CN-CNT, Toshiba. Leiti automaatselt.';
+
+  @override
+  String get s0e4990cf25 => 'Kaugjuurdepääs Tailscale\'iga – juhend';
+
+  @override
+  String get sbb740cfc71 =>
+      'Home Assistanti lisandmoodul, MagicDNS ja aadressid Molaplanis.';
 
   @override
   String get sb8934a5835 => 'Elektritarbimine';
@@ -2046,6 +2091,10 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get s47d409fddd => 'Otsinguvõrk';
+
+  @override
+  String get s5d31b3c227 =>
+      'Tailscale, Nabu Casa ja muud kaugaadressid. Tokenit küsitakse ainult üks kord.';
 
   @override
   String get sa62eebe6bd => 'Releede tuvastamine';
@@ -3254,6 +3303,27 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get sdc485831ad => 'Eemaldamiseks vajuta pikalt';
+
+  @override
+  String get sf5bfc4217c => 'Milline koduabiline?';
+
+  @override
+  String get sd3089f07cc => 'Kasutamata ühenduse eemaldamine';
+
+  @override
+  String get s1333776c9f => 'Eemaldage ühendus?';
+
+  @override
+  String get sd10b382b33 => 'Lisa uus Home Assistant';
+
+  @override
+  String get s495db67f43 => 'Teine server, uus aadress ja token.';
+
+  @override
+  String get s4f62c41cb3 => 'kaarte';
+
+  @override
+  String get s92c338c3bd => 'kaarte';
 
   @override
   String get s493a65113f => 'Näita alati';
@@ -5444,25 +5514,6 @@ class AppLocalizationsEt extends AppLocalizations {
       'Oma juhtimisterminal: HTTP, MQTT, Modbus TCP, Home Assistant, kaamerad, WebSocket, TCP ja UDP. Ilma kontota jäävad kõik seaded sellesse seadmesse.';
 
   @override
-  String get sf5bfc4217c => 'Milline koduabiline?';
-
-  @override
-  String get sbc210f9634 =>
-      'Sul on rohkem kui üks koduabilise ühendus. Kasutamata ühenduse (kaarte pole) saab eemaldada.';
-
-  @override
-  String get s4f62c41cb3 => 'kaarte';
-
-  @override
-  String get s92c338c3bd => 'kaarte';
-
-  @override
-  String get sd3089f07cc => 'Kasutamata ühenduse eemaldamine';
-
-  @override
-  String get s1333776c9f => 'Eemaldage ühendus?';
-
-  @override
   String get s8efb99df1d => 'Jahutab';
 
   @override
@@ -6922,6 +6973,13 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get sccd1325381 => 'Ühendus eemaldatakse sellest seadmest.';
+
+  @override
+  String get sd2a6c2f91d =>
+      'Tailscale, Nabu Casa ja muud kaugaadressid. Token on salvestatud sellele ühendusele.';
+
+  @override
+  String get s57a2b4c869 => 'Lisa olemid';
 
   @override
   String get s837e0fc5e6 =>
@@ -10044,10 +10102,31 @@ class AppLocalizationsEt extends AppLocalizations {
   String get sf0ef0140c3 => 'Home Assistant';
 
   @override
-  String get sfcbb753f53 => 'URL';
+  String get s66aa2ddbae => 'Kasutusel olev aadress';
+
+  @override
+  String get s4147d30345 =>
+      'Praegu kasutusel olev aadress (kohalik, Tailscale või kaug). Muud aadressid on jaotises Täpsem.';
 
   @override
   String get s1f90ee6992 => 'Pikaajaline juurdepääsuluba';
+
+  @override
+  String get sbacaf1e7fb => 'Kohalik aadress';
+
+  @override
+  String get s75ba232e22 =>
+      'Aadress koduvõrgus, nt http://homeassistant.local:8123 või koduvõrgu IP.';
+
+  @override
+  String get s0b5c2ba45e => 'Tailscale\'i aadress';
+
+  @override
+  String get sed1deea062 => 'Kaugaadress (Nabu Casa või muu)';
+
+  @override
+  String get sfb69b76cde =>
+      'Nabu Casa või muu avalik https-aadress, kui kasutad seda kodust eemal.';
 
   @override
   String get sccb0cca8e3 => 'Otseuudised (veebipesa)';
@@ -10391,6 +10470,9 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s3d43664fcc => 'WebSocket';
 
   @override
+  String get sfcbb753f53 => 'URL';
+
+  @override
   String get s81479e1555 => 'Päised (Nimi: väärtus rea kohta)';
 
   @override
@@ -10613,17 +10695,15 @@ class AppLocalizationsEt extends AppLocalizations {
       'Tuled, alarm, andurid - vali nimekirjast, millised neist saavad kaardid.';
 
   @override
-  String get s9f70681d3f => 'Koduabilise aadress';
-
-  @override
-  String get s123502628e => 'Aadress, millega avad koduabilise.';
+  String get sef5698c9bb =>
+      'Aadress, millega avad Home Assistanti koduvõrgus, nt http://homeassistant.local:8123 või koduvõrgu IP. Kaugaadressid (Tailscale, Nabu Casa) lisatakse jaotises Täpsem. Tokenit küsitakse ainult üks kord.';
 
   @override
   String get s92e3c4cd40 => 'Pikaealine märk';
 
   @override
-  String get s4e3f2052b2 =>
-      'Home Assistant → oma profiili → Turvalisus → Pikaajaline juurdepääsu märgid → Loo token. Paiguta siia.';
+  String get s73debc1ec0 =>
+      'Home Assistant → sinu profiil → Turvalisus → Pikaajalised juurdepääsutokenid → Loo token. Kleebi see siia. Token salvestatakse sellesse seadmesse ja seda ei küsita uuesti, kui lisad veel olemeid.';
 
   @override
   String get s54e063bd9c => 'Soojuspump (koduabiline)';
@@ -10631,6 +10711,9 @@ class AppLocalizationsEt extends AppLocalizations {
   @override
   String get s2afe650320 =>
       'Õhksoojuspump, mida näidatakse Home Assistantis kliimaüksusena.';
+
+  @override
+  String get s9f70681d3f => 'Koduabilise aadress';
 
   @override
   String get s48fdd98530 =>
@@ -13972,6 +14055,23 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get sd936bbcc2d => 'Telefon: +358...';
+
+  @override
+  String get se684d0b30c =>
+      'Kaugjuurdepääs Tailscale\'i kaudu: paigalda Tailscale nii sellesse seadmesse, kus töötab Molaplan, kui ka masinasse, kus töötab Home Assistant, ja ühenda need samasse tailneti. Seejärel sisesta Tailscale\'i aadress, näiteks http://homeassistant:8123, Tailscale\'i IP (100.x.x.x:8123) või Tailscale Serve\'i https-aadress (midagi.ts.net).\n\nVeebirakendus (https): brauser blokeerib juurdepääsu turvamata http-aadressile. Kasuta Tailscale Serve\'i https-aadressi (*.ts.net) või suuna ühendus kodusilla kaudu.';
+
+  @override
+  String get s2549c6a969 =>
+      'See veebirakendus on https-lehel, seega ei saa see avada Home Assistanti http-aadressi. Kasuta Tailscale Serve\'i https-aadressi (*.ts.net) või suuna ühendus kodusilla kaudu.';
+
+  @override
+  String get s43f0f45aa9 => 'Kohalik';
+
+  @override
+  String get s7e7efa0889 => 'Tailscale';
+
+  @override
+  String get s3e96abe344 => 'Kaug';
 
   @override
   String s1a9acfbc67(String p0) {

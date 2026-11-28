@@ -826,6 +826,44 @@ class AppLocalizationsSv extends AppLocalizations {
   String get sf6270ae66c => 'https://tailscale.com/kb/1019/subnets';
 
   @override
+  String get se3bc55fb9b => 'Fjärråtkomst med Tailscale (Home Assistant)';
+
+  @override
+  String get scee4e85804 =>
+      'Anslut till Home Assistant från Molaplan även när du är borta från hemmet, via Tailscale. Den lokala adressen och Tailscale-adressen sparas på samma anslutning; token frågas bara en gång.';
+
+  @override
+  String get sbb981f6a83 =>
+      'Passar när Home Assistant körs hemma och du vill ha en säker väg utan portforwarding. I webbappen undviker en https-adress (Tailscale Serve) att webbläsaren blockerar http.';
+
+  @override
+  String get s7cddac79fb =>
+      'I Home Assistant: Inställningar → Tillägg → Tilläggsbutik. Sök efter \"Tailscale\" (det officiella tillägget), installera det, aktivera Starta vid uppstart och Watchdog, starta tillägget, öppna webbgränssnittet och logga in eller godkänn enheten.';
+
+  @override
+  String get s9087785a57 =>
+      'I Tailscales administratörskonsol (login.tailscale.com → Machines): hitta Home Assistant-datorn och dess 100.x-adress. Aktivera \"Disable key expiry\" för den datorn och slå på MagicDNS.';
+
+  @override
+  String get se70161f486 =>
+      'Installera Tailscale-appen på enheterna där Molaplan körs, logga in med samma konto och anslut. Testa i en webbläsare med http://homeassistant:8123.';
+
+  @override
+  String get s7d8746c6f3 =>
+      'Valfritt HTTPS för webbappen och PWA: aktivera HTTPS-certifikat i DNS-inställningarna i administratörskonsolen, sätt tilläggsalternativet proxy: true och starta om tillägget. Adressen ser ut som https://name.tailnet.ts.net. I configuration.yaml lägg till http: use_x_forwarded_for: true och trusted_proxies: [127.0.0.1]. Webbläsaren blockerar http från en https-sida, så webbappen behöver den här https-adressen eller en anslutning via hembryggan.';
+
+  @override
+  String get s64cb4ebfec =>
+      'I Molaplan: ange den lokala adressen och Tailscale-adressen på samma Home Assistant-anslutning (Tailscale-adressen finns under Avancerat) och samma långlivade token. Molaplan provar först den lokala adressen och använder Tailscale-adressen när du inte är i hemnätverket.';
+
+  @override
+  String get sb672e2003f => 'https://login.tailscale.com';
+
+  @override
+  String get s4afdb63b01 =>
+      'Enheten där Molaplan körs måste vara ansluten till samma tailnet som Home Assistant. Den här guiden är allmän och syftar inte på en viss installation.';
+
+  @override
   String get s57f0b61334 => 'WireGuard (router VPN)';
 
   @override
@@ -958,6 +996,13 @@ class AppLocalizationsSv extends AppLocalizations {
   @override
   String get sa35e37b4b4 =>
       'Mitsubishi CN105, Daikin S21/X50A (Faikin), Panasonic CN-CNT, Toshiba. Hittades automatiskt.';
+
+  @override
+  String get s0e4990cf25 => 'Fjärråtkomst med Tailscale – guide';
+
+  @override
+  String get sbb740cfc71 =>
+      'Tillägget till Home Assistant, MagicDNS och adresserna i Molaplan.';
 
   @override
   String get sb8934a5835 => 'Elförbrukning';
@@ -2045,6 +2090,10 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get s47d409fddd => 'Sök nätverk';
+
+  @override
+  String get s5d31b3c227 =>
+      'Tailscale, Nabu Casa och andra fjärradresser. Token frågas bara en gång.';
 
   @override
   String get sa62eebe6bd => 'Detektera reläer';
@@ -3254,6 +3303,27 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get sdc485831ad => 'Tryck länge för att ta bort';
+
+  @override
+  String get sf5bfc4217c => 'Vilken hemassistent?';
+
+  @override
+  String get sd3089f07cc => 'Ta bort oanvänd anslutning';
+
+  @override
+  String get s1333776c9f => 'Ta bort anslutningen?';
+
+  @override
+  String get sd10b382b33 => 'Lägg till en ny Home Assistant';
+
+  @override
+  String get s495db67f43 => 'En annan server, en ny adress och token.';
+
+  @override
+  String get s4f62c41cb3 => 'Inga kort';
+
+  @override
+  String get s92c338c3bd => 'kort';
 
   @override
   String get s493a65113f => 'Visa alltid';
@@ -5449,25 +5519,6 @@ class AppLocalizationsSv extends AppLocalizations {
       'Din egen kontrollterminal: HTTP, MQTT, Modbus TCP, Home Assistant, kameror, WebSocket, TCP och UDP. Utan ett konto stannar alla inställningar på den här enheten.';
 
   @override
-  String get sf5bfc4217c => 'Vilken hemassistent?';
-
-  @override
-  String get sbc210f9634 =>
-      'Du har mer än en Home Assistant-anslutning. En oanvänd (inga kort) kan tas bort.';
-
-  @override
-  String get s4f62c41cb3 => 'Inga kort';
-
-  @override
-  String get s92c338c3bd => 'kort';
-
-  @override
-  String get sd3089f07cc => 'Ta bort oanvänd anslutning';
-
-  @override
-  String get s1333776c9f => 'Ta bort anslutningen?';
-
-  @override
   String get s8efb99df1d => 'Kyler';
 
   @override
@@ -6930,6 +6981,13 @@ class AppLocalizationsSv extends AppLocalizations {
   @override
   String get sccd1325381 =>
       'Anslutningen kommer att tas bort från den här enheten.';
+
+  @override
+  String get sd2a6c2f91d =>
+      'Tailscale, Nabu Casa och andra fjärradresser. Token är sparad på den här anslutningen.';
+
+  @override
+  String get s57a2b4c869 => 'Lägg till entiteter';
 
   @override
   String get s837e0fc5e6 =>
@@ -10065,10 +10123,31 @@ class AppLocalizationsSv extends AppLocalizations {
   String get sf0ef0140c3 => 'Home Assistant';
 
   @override
-  String get sfcbb753f53 => 'URL';
+  String get s66aa2ddbae => 'Adress som används';
+
+  @override
+  String get s4147d30345 =>
+      'Adressen som används just nu (lokal, Tailscale eller fjärr). Andra adresser finns under Avancerat.';
 
   @override
   String get s1f90ee6992 => 'Långlivad access token';
+
+  @override
+  String get sbacaf1e7fb => 'Lokal adress';
+
+  @override
+  String get s75ba232e22 =>
+      'Adressen i hemnätverket, t.ex. http://homeassistant.local:8123 eller en IP i det lokala nätet.';
+
+  @override
+  String get s0b5c2ba45e => 'Tailscale-adress';
+
+  @override
+  String get sed1deea062 => 'Fjärradress (Nabu Casa eller annan)';
+
+  @override
+  String get sfb69b76cde =>
+      'En Nabu Casa- eller annan publik https-adress, om du använder en när du är borta från hemmet.';
 
   @override
   String get sccb0cca8e3 => 'Liveuppdateringar (websocket)';
@@ -10414,6 +10493,9 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s3d43664fcc => 'WebSocket';
 
   @override
+  String get sfcbb753f53 => 'URL';
+
+  @override
   String get s81479e1555 => 'Headers (Namn: värde per rad)';
 
   @override
@@ -10635,17 +10717,15 @@ class AppLocalizationsSv extends AppLocalizations {
       'Ljus, larm, sensorer – välj från en lista som blir kort.';
 
   @override
-  String get s9f70681d3f => 'Home Assistant Adress';
-
-  @override
-  String get s123502628e => 'Adressen du öppnar Home Assistant med.';
+  String get sef5698c9bb =>
+      'Adressen som du öppnar Home Assistant med i hemnätverket, t.ex. http://homeassistant.local:8123 eller en IP i det lokala nätet. Fjärradresser (Tailscale, Nabu Casa) läggs till under Avancerat. Token frågas bara en gång.';
 
   @override
   String get s92e3c4cd40 => 'Långlivad token';
 
   @override
-  String get s4e3f2052b2 =>
-      'Hem Assistent → din profil → Säkerhet → Långlivade åtkomsttokens → Skapa token. Klistra det här.';
+  String get s73debc1ec0 =>
+      'Home Assistant → din profil → Säkerhet → Långlivade åtkomsttoken → Skapa token. Klistra in den här. Token sparas på den här enheten och frågas inte igen när du lägger till fler entiteter.';
 
   @override
   String get s54e063bd9c => 'Värmepump (Home Assistant)';
@@ -10653,6 +10733,9 @@ class AppLocalizationsSv extends AppLocalizations {
   @override
   String get s2afe650320 =>
       'Luftvärmepump som visas i Home Assistant som en klimatenhet.';
+
+  @override
+  String get s9f70681d3f => 'Home Assistant Adress';
 
   @override
   String get s48fdd98530 =>
@@ -13998,6 +14081,23 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get sd936bbcc2d => 'Telefon som +358...';
+
+  @override
+  String get se684d0b30c =>
+      'Fjärråtkomst via Tailscale: installera Tailscale både på den här enheten där Molaplan körs och på datorn där Home Assistant körs, och anslut dem till samma tailnet. Ange sedan Tailscale-adressen, till exempel http://homeassistant:8123, en Tailscale-IP (100.x.x.x:8123) eller en https-adress från Tailscale Serve (något.ts.net).\n\nWebbapp (https): webbläsaren blockerar åtkomst till en osäker http-adress. Använd en https-adress från Tailscale Serve (*.ts.net) eller koppla anslutningen via hembryggan.';
+
+  @override
+  String get s2549c6a969 =>
+      'Den här webbappen är på en https-sida, så den kan inte öppna en http-adress till Home Assistant. Använd en https-adress från Tailscale Serve (*.ts.net) eller koppla anslutningen via hembryggan.';
+
+  @override
+  String get s43f0f45aa9 => 'Lokal';
+
+  @override
+  String get s7e7efa0889 => 'Tailscale';
+
+  @override
+  String get s3e96abe344 => 'Fjärr';
 
   @override
   String s1a9acfbc67(String p0) {

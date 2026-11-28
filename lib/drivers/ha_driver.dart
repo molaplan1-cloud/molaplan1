@@ -375,7 +375,7 @@ class HomeAssistantDriver extends Driver {
     if (r.statusCode >= 400) throw DriverException('HTTP ${r.statusCode}');
     final m = jsonDecode(r.body);
     final kind = activeRouteKind;
-    final label = kind == null ? '' : ' · ${haRouteLabel(kind, fi: true)}';
+    final label = kind == null ? '' : ' · ${haRouteLabel(kind, lang: driverLang)}';
     final msg = m is Map ? (m['message'] ?? 'OK').toString() : 'OK';
     return '$msg$label';
   }
