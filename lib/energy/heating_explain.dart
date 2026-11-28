@@ -90,6 +90,94 @@ class HeatError {
     };
   }
 
+  /// t335u: why it fails, in one sentence. [elsewhere]: the home bridge is on another network than this
+  /// device (this device can reach the device, the bridge cannot).
+  String why(HeatText x, {bool elsewhere = false, String subject = ''}) {
+    final what = subject.isEmpty ? x.t('laite', 'the device') : subject;
+    final net =
+        kind == HeatErrorKind.timeout ||
+        kind == HeatErrorKind.unreachable ||
+        kind == HeatErrorKind.refused ||
+        kind == HeatErrorKind.dns;
+    if (net && elsewhere) {
+      return x.t(
+        'Kotisilta ei pääse osoitteeseen, jossa $what on: se on todennäköisesti toisessa verkossa kuin $what. Tämä laite pääsee siihen, siksi muut ruudut toimivat.',
+        'The home bridge cannot reach the address of $what: it is most likely on another network than $what. This device can reach it, which is why the other tiles work.',
+      );
+    }
+    return switch (kind) {
+      HeatErrorKind.timeout || HeatErrorKind.unreachable || HeatErrorKind.refused || HeatErrorKind.dns => x.t(
+        'Kotisilta ei saanut yhteyttä laitteeseen $what. Se on pois päältä, poissa verkosta tai kotisilta on eri verkossa.',
+        'The home bridge could not connect to $what. It is switched off, off the network, or the bridge is on another network.',
+      ),
+      _ => text(x, subject: subject),
+    };
+  }
+
+  /// t335u: numbered steps to fix it.
+  List<String> steps(HeatText x, {bool elsewhere = false}) {
+    switch (kind) {
+      case HeatErrorKind.timeout:
+      case HeatErrorKind.unreachable:
+      case HeatErrorKind.refused:
+      case HeatErrorKind.dns:
+        return [
+          if (elsewhere) ...[
+            x.t(
+              'Aseta kotisilta samaan verkkoon laitteen kanssa: avaa Molaplan aina päällä olevalla laitteella, joka on laitteen verkossa (esim. kotona oleva PC tai tabletti), ja valitse Asetukset → Etäkäyttö → Käytä tätä laitetta kotisiltana. Pariuta puhelin ja PC sen jälkeen uudelleen.',
+              'Put the home bridge on the same network as the device: open Molaplan on an always-on device in the device\'s network (e.g. a PC or tablet at home) and choose Settings → Remote access → Use this device as the home bridge. Then pair your phone and PC with it again.',
+            ),
+            x.t(
+              'Tai ohjaa laitetta sellaisella yhteydellä, jonka kotisilta tavoittaa mistä tahansa (esim. valmistajan pilvi, kuten Shelly Cloud).',
+              'Or control the device through a connection the bridge can reach from anywhere (for example the maker\'s cloud, like Shelly Cloud).',
+            ),
+          ] else ...[
+            x.t(
+              'Tarkista, että laite on päällä ja sen virta- ja Wi-Fi-valo palaa.',
+              'Check that the device is switched on and its power and Wi-Fi light is on.',
+            ),
+            x.t(
+              'Tarkista, että laite ja kotisilta ovat samassa verkossa (osoitteiden kolme ensimmäistä numeroa ovat samat).',
+              'Check that the device and the home bridge are on the same network (the first three numbers of their addresses are the same).',
+            ),
+            x.t(
+              'Jos laitteen osoite on vaihtunut, päivitä se yhteyden asetuksista.',
+              'If the device\'s address has changed, update it in the connection settings.',
+            ),
+          ],
+          x.t(
+            'Älykäs lämmitys yrittää uudelleen minuutin välein. Siihen asti rele pysyy viimeisessä tilassaan eikä lämmitys ohjaudu.',
+            'Smart heating retries every minute. Until then the relay stays in its last state and the heating is not controlled.',
+          ),
+        ];
+      case HeatErrorKind.auth:
+        return [
+          x.t(
+            'Avaa laitteen yhteys ja tarkista käyttäjätunnus ja salasana.',
+            'Open the device connection and check the username and password.',
+          ),
+        ];
+      case HeatErrorKind.notFound:
+      case HeatErrorKind.noCommand:
+        return [
+          x.t(
+            'Avaa releen ruutu ja tarkista osoite sekä päälle/pois-komennot.',
+            'Open the relay tile and check its address and on/off commands.',
+          ),
+        ];
+      case HeatErrorKind.deviceError:
+        return [
+          x.t('Käynnistä laite uudelleen (virta pois ja päälle).', 'Restart the device (power off and on).'),
+          x.t(
+            'Jos virhe jatkuu, tarkista laitteen asetukset ja ohjelmisto.',
+            'If the error continues, check the device settings and firmware.',
+          ),
+        ];
+      case HeatErrorKind.other:
+        return [x.t('Katso tarkempi syy kohdasta Tekniset tiedot.', 'See the exact reason under Technical details.')];
+    }
+  }
+
   /// What the user can do about it.
   String hint(HeatText x) => switch (kind) {
     HeatErrorKind.timeout || HeatErrorKind.unreachable || HeatErrorKind.refused || HeatErrorKind.dns => x.t(
@@ -324,6 +412,8 @@ class HeatExplanation {
     this.mode = 'normal',
     this.modeUntil,
     this.on,
+    this.want,
+    this.changedAt,
     this.target,
     this.reason = '',
     this.safety = false,
@@ -367,7 +457,15 @@ class HeatExplanation {
   /// 'normal' | 'holiday' | 'fireplace' | 'manual' | 'off'
   final String mode;
   final DateTime? modeUntil;
+
+  /// The relay state last confirmed by a command that went through (null = never confirmed).
   final bool? on;
+
+  /// What the rules decide now (t335u). Known even when the device does not answer.
+  final bool? want;
+
+  /// When the relay last changed by a command that went through.
+  final DateTime? changedAt;
   final double? target;
   final String reason;
   final bool safety;
@@ -429,6 +527,8 @@ class HeatExplanation {
     'mode': mode,
     if (modeUntil != null) 'modeUntil': modeUntil!.millisecondsSinceEpoch,
     'on': ?on,
+    'want': ?want,
+    if (changedAt != null) 'changedAt': changedAt!.millisecondsSinceEpoch,
     'target': ?target,
     'reason': reason,
     if (safety) 'safety': true,
@@ -472,6 +572,8 @@ class HeatExplanation {
       mode: '${j['mode'] ?? 'normal'}',
       modeUntil: t(j['modeUntil']),
       on: j['on'] as bool?,
+      want: j['want'] as bool?,
+      changedAt: t(j['changedAt']),
       target: d('target'),
       reason: '${j['reason'] ?? ''}',
       safety: j['safety'] == true,
@@ -510,21 +612,61 @@ class HeatExplanation {
 
   // ---- texts
 
-  /// Big word of the tile: PÄÄLLÄ / POIS / ?
+  /// The state to show big (t335u): the confirmed relay state, else the decision. A device that does
+  /// not answer never replaces it; null only when neither is known.
+  bool? get shownOn => control == 'thermostat' ? heating : (on ?? want);
+
+  /// The shown state is what the rules want and the relay confirmed (or nothing contradicts it).
+  bool get confirmed => control == 'thermostat' || (on != null && (want == null || on == want) && !hasError);
+
+  /// Big word of the tile: PÄÄLLÄ / POIS, or a calm 'Tila tuntematon' when nothing is known.
   String stateWord(HeatText x) {
     if (!enabled || mode == 'off') return x.t('POIS KÄYTÖSTÄ', 'DISABLED');
     if (control == 'thermostat') {
       return target == null ? '–' : x.t('Tavoite ${x.n(target!)} °C', 'Target ${x.n(target!)} °C');
     }
-    if (on == null) return hasError ? x.t('EI VASTAA', 'NO REPLY') : '–';
-    return on! ? x.t('PÄÄLLÄ', 'ON') : x.t('POIS', 'OFF');
+    final s = shownOn;
+    if (s == null) return hasError ? x.t('Tila tuntematon', 'State unknown') : '–';
+    return s ? x.t('PÄÄLLÄ', 'ON') : x.t('POIS', 'OFF');
+  }
+
+  /// Small line under the big word when the device did not confirm it (null = nothing to add):
+  /// the state is a decision or the last known one, with its age.
+  String? stateNote(HeatText x, {DateTime? now}) {
+    if (control == 'thermostat' || !enabled || mode == 'off' || !hasError) return null;
+    final t = now ?? DateTime.now();
+    String age(DateTime d) {
+      final m = t.difference(d).inMinutes;
+      return m < 1
+          ? x.t('juuri äsken', 'just now')
+          : x.t('${x.span(Duration(minutes: m))} sitten', '${x.span(Duration(minutes: m))} ago');
+    }
+
+    String word(bool v) => v ? x.t('päällä', 'on') : x.t('pois', 'off');
+    if (on == null) {
+      return want == null
+          ? x.t('Laite ei ole vastannut, tilaa ei tiedetä', 'The device has not answered, its state is not known')
+          : x.t(
+              'Päätös: ${word(want!)} – laite ei ole vahvistanut sitä',
+              'Decision: ${word(want!)} – the device has not confirmed it',
+            );
+    }
+    final since = changedAt;
+    final last = since == null
+        ? ''
+        : x.t(' (klo ${x.hm(since)}, ${age(since)})', ' (at ${x.hm(since)}, ${age(since)})');
+    if (want != null && want != on) {
+      return x.t(
+        'Viimeksi ohjattu: ${word(on!)}$last – päätös ${word(want!)} ei mennyt perille',
+        'Last set: ${word(on!)}$last – the decision ${word(want!)} did not get through',
+      );
+    }
+    return x.t('Viimeksi ohjattu: ${word(on!)}$last', 'Last set: ${word(on!)}$last');
   }
 
   /// One plain sentence: why the device is on or off now.
   String reasonText(HeatText x, {DateTime? now}) {
     String n(num? v, [int d = 1]) => v == null ? '–' : x.n(v, d);
-    final err = heatError;
-    if (err != null && on == null) return err.text(x);
     if (!enabled) return x.t('Ohjaus on pois käytöstä', 'Control is switched off');
     if (mode == 'off') return x.t('Älykäs lämmitys on pois päältä', 'Smart heating is off');
     final fb = fallback
@@ -673,6 +815,7 @@ HeatExplanation explainLoad(
   // Without live state the decision is made here from the same rules.
   var isPreview = preview || st == null || s.reason.isEmpty;
   var on = s.on;
+  bool? want = s.want;
   var target = s.target;
   var reason = s.reason;
   var safety = s.safety;
@@ -700,12 +843,29 @@ HeatExplanation explainLoad(
     } else {
       final d = decideSwitch(c, l, xi);
       on = d.on;
+      want = d.on;
       reason = d.reason;
       safety = d.safety;
       fallback = d.fallback;
       setpoint = d.setpoint;
       shift = d.shift;
     }
+  }
+  if (!isPreview && !thermo && want == null && on == null) {
+    // An older home bridge does not report its decision: rebuild it here from the same rules, so the
+    // tile can show it even when the device never answered.
+    final xi = HeatInputs(
+      now: now,
+      cost: x.cost,
+      outdoor: x.outdoor,
+      temp: temp,
+      holiday: x.holiday,
+      holidayEnd: x.holidayEnd,
+      fireplace: x.fireplace,
+      manualOn: manual != null && manual.activeAt(now) ? manual.on : null,
+      manualUntil: manual?.until,
+    );
+    want = decideSwitch(c, l, xi).on;
   }
   final sensorState = st != null && s.reason.isNotEmpty
       ? s.sensor
@@ -912,6 +1072,8 @@ HeatExplanation explainLoad(
     mode: mode,
     modeUntil: modeUntil,
     on: on,
+    want: want,
+    changedAt: s.changedAt,
     target: target,
     reason: reason,
     safety: safety,

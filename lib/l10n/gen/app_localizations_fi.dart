@@ -1451,6 +1451,18 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s09f5da65e0 => 'Vaihda Shelly Cloudiin';
 
   @override
+  String get s6f985060ba => 'Mitä voit tehdä';
+
+  @override
+  String get sf77125583f => 'Tekniset tiedot';
+
+  @override
+  String get s97c9304643 => 'Aika';
+
+  @override
+  String get s1e593aeca2 => 'Sulje';
+
+  @override
   String get sf5768a876d => 'Pois käytöstä';
 
   @override
@@ -1524,6 +1536,13 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s9c543b2106 => 'Arvio – kotisilta ei vastaa vielä';
 
   @override
+  String get s4678cef2a1 =>
+      'Kokonaishinta: pörssi + alv + marginaali + siirto + vero';
+
+  @override
+  String get s80a6e15c66 => 'pörssi';
+
+  @override
   String get see998ca830 => 'pidetään päällä';
 
   @override
@@ -1539,13 +1558,10 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s8653f173b6 => 'Lämpötila';
 
   @override
-  String get sb730159a01 => 'Hinta nyt';
+  String get s3c6fedc117 => 'Hinta nyt (kokonaishinta)';
 
   @override
   String get s7dfe0e7977 => 'Seuraava muutos';
-
-  @override
-  String get sf77125583f => 'Tekniset tiedot';
 
   @override
   String get s5555a716bb =>
@@ -1585,6 +1601,11 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get s63c3e9c766 => 'ei hintatietoa';
+
+  @override
+  String s50b49fb20d(String p0) {
+    return ' (pörssi alv:llä $p0 c)';
+  }
 
   @override
   String s8c60756474(String p0, String p1) {
@@ -1714,9 +1735,6 @@ class AppLocalizationsFi extends AppLocalizations {
   @override
   String get s2bf22ca429 =>
       'Tähän laitteeseen ei saada yhteyttä selaimesta. Se toimii Molaplan-sovelluksessa, tai täältä, kun kotisilta on päällä.';
-
-  @override
-  String get s1e593aeca2 => 'Sulje';
 
   @override
   String get sc6e6f17ad4 =>
@@ -3076,6 +3094,24 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get sdc485831ad => 'Pitkä painallus poistaa';
+
+  @override
+  String sa59af4f48b(String p0) {
+    return '$p0 laitetta piilotettu – ei käytettävissä selaimessa';
+  }
+
+  @override
+  String get s493a65113f => 'Näytä aina';
+
+  @override
+  String get sf328dcc536 => 'Selainnäkymä';
+
+  @override
+  String get se24b0e7f60 =>
+      'Koskee vain tätä selainta. Muissa laitteissa ruutu pysyy paikallaan.';
+
+  @override
+  String get sbfd72f3328 => 'Piilota automaattisesti';
 
   @override
   String get sfe54134176 => 'Kaikki laitteet';
@@ -5203,6 +5239,13 @@ class AppLocalizationsFi extends AppLocalizations {
       'Kotiverkon ulkopuolella vain kotiverkossa toimivat ruudut piilotetaan. Oletuksena ne näkyvät harmaina paikallaan.';
 
   @override
+  String get se9702be418 => 'Piilota selaimessa toimimattomat';
+
+  @override
+  String get s25a2d52c2d =>
+      'Selainversiossa piilotetaan ruudut, joihin ei saada yhteyttä tästä selaimesta, ja ruudut, jotka eivät ole vastanneet noin kymmeneen minuuttiin. Piilotetut saa näkyviin näkymän alareunasta. Koskee vain tätä selainta.';
+
+  @override
   String get s419166b895 => 'Kello ja sää etusivulla';
 
   @override
@@ -6460,6 +6503,9 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s2b2118a93b => 'Vanha tieto';
 
   @override
+  String get sb730159a01 => 'Hinta nyt';
+
+  @override
   String get s68fcfcfed1 => 'Halvin tunti tänään';
 
   @override
@@ -7437,6 +7483,10 @@ class AppLocalizationsFi extends AppLocalizations {
   String s162c54ed4c(String p0) {
     return '$p0: valmis';
   }
+
+  @override
+  String get s1e9eca6676 =>
+      'Pörssihinta nyt alv:llä. Siirto, vero ja marginaali eivät ole mukana – Älykäs lämmitys vertaa kokonaishintaa.';
 
   @override
   String get se26e839c2f => 'maanantai';
@@ -10891,6 +10941,61 @@ class AppLocalizationsFi extends AppLocalizations {
   String get sd0e9fc6760 => 'Ohjaus ei onnistunut';
 
   @override
+  String get s340968669a => 'laite';
+
+  @override
+  String s151c5be078(String p0, String p1) {
+    return 'Kotisilta ei pääse osoitteeseen, jossa $p0 on: se on todennäköisesti toisessa verkossa kuin $p1. Tämä laite pääsee siihen, siksi muut ruudut toimivat.';
+  }
+
+  @override
+  String s99ea566004(String p0) {
+    return 'Kotisilta ei saanut yhteyttä laitteeseen $p0. Se on pois päältä, poissa verkosta tai kotisilta on eri verkossa.';
+  }
+
+  @override
+  String get sb32685da2f =>
+      'Aseta kotisilta samaan verkkoon laitteen kanssa: avaa Molaplan aina päällä olevalla laitteella, joka on laitteen verkossa (esim. kotona oleva PC tai tabletti), ja valitse Asetukset → Etäkäyttö → Käytä tätä laitetta kotisiltana. Pariuta puhelin ja PC sen jälkeen uudelleen.';
+
+  @override
+  String get s22dde7740f =>
+      'Tai ohjaa laitetta sellaisella yhteydellä, jonka kotisilta tavoittaa mistä tahansa (esim. valmistajan pilvi, kuten Shelly Cloud).';
+
+  @override
+  String get sd4f0e6f8e1 =>
+      'Tarkista, että laite on päällä ja sen virta- ja Wi-Fi-valo palaa.';
+
+  @override
+  String get s8277eb958e =>
+      'Tarkista, että laite ja kotisilta ovat samassa verkossa (osoitteiden kolme ensimmäistä numeroa ovat samat).';
+
+  @override
+  String get sab9dae06af =>
+      'Jos laitteen osoite on vaihtunut, päivitä se yhteyden asetuksista.';
+
+  @override
+  String get sdafab85176 =>
+      'Älykäs lämmitys yrittää uudelleen minuutin välein. Siihen asti rele pysyy viimeisessä tilassaan eikä lämmitys ohjaudu.';
+
+  @override
+  String get s5a3b74d726 =>
+      'Avaa laitteen yhteys ja tarkista käyttäjätunnus ja salasana.';
+
+  @override
+  String get s7157b2a937 =>
+      'Avaa releen ruutu ja tarkista osoite sekä päälle/pois-komennot.';
+
+  @override
+  String get s419117d6ca => 'Käynnistä laite uudelleen (virta pois ja päälle).';
+
+  @override
+  String get sc28a06ee09 =>
+      'Jos virhe jatkuu, tarkista laitteen asetukset ja ohjelmisto.';
+
+  @override
+  String get s8e9e56f68f => 'Katso tarkempi syy kohdasta Tekniset tiedot.';
+
+  @override
   String get sc056006180 =>
       'Tarkista, että laite on päällä ja samassa verkossa kotisillan kanssa. Älykäs lämmitys yrittää uudelleen minuutin välein; kunnes se onnistuu, laite jää nykyiseen tilaansa.';
 
@@ -10904,9 +11009,6 @@ class AppLocalizationsFi extends AppLocalizations {
   @override
   String get s54dbdeb56b =>
       'Laite vastasi mutta ei hyväksynyt komentoa. Kokeile käynnistää laite uudelleen.';
-
-  @override
-  String get s8e9e56f68f => 'Katso tarkempi syy kohdasta Tekniset tiedot.';
 
   @override
   String get s7279e2bdb1 => 'Manuaalinen ohitus';
@@ -11079,13 +11181,44 @@ class AppLocalizationsFi extends AppLocalizations {
   }
 
   @override
-  String get sedcddfbb2f => 'EI VASTAA';
+  String get s5811eb3006 => 'Tila tuntematon';
 
   @override
   String get s6ab8f97950 => 'PÄÄLLÄ';
 
   @override
   String get s509c668d7e => 'POIS';
+
+  @override
+  String get sfd2975e5c4 => 'juuri äsken';
+
+  @override
+  String s1cb1af7851(String p0) {
+    return '$p0 sitten';
+  }
+
+  @override
+  String get s04780b98b7 => 'Laite ei ole vastannut, tilaa ei tiedetä';
+
+  @override
+  String s69b9359f3f(String p0) {
+    return 'Päätös: $p0 – laite ei ole vahvistanut sitä';
+  }
+
+  @override
+  String s5989e2e782(String p0, String p1) {
+    return ' (klo $p0, $p1)';
+  }
+
+  @override
+  String s9cb6ebafaa(String p0, String p1, String p2) {
+    return 'Viimeksi ohjattu: $p0$p1 – päätös $p2 ei mennyt perille';
+  }
+
+  @override
+  String s9151a2843d(String p0, String p1) {
+    return 'Viimeksi ohjattu: $p0$p1';
+  }
 
   @override
   String get s70d43f1209 => 'Ohjaus on pois käytöstä';
@@ -12160,6 +12293,30 @@ class AppLocalizationsFi extends AppLocalizations {
   @override
   String get sbaecc9fbed =>
       'Laite on varattu (toinen sovellus ohjaa) – yritä minuutin päästä.';
+
+  @override
+  String get s98ffbf5518 => 'Laite ei ole vastannut tarpeeksi pitkään.';
+
+  @override
+  String get s5972cf4f3b =>
+      'Still-kuvaa ei saatu tehtyä videovirrasta selaimessa.';
+
+  @override
+  String get s786c05c9e1 => 'Tätä laitetta ei voi käyttää selaimesta.';
+
+  @override
+  String get s70aa3dc5be => 'Ruutu tulee näkyviin heti, kun laite vastaa.';
+
+  @override
+  String get scdf43305db =>
+      'Asenna ffmpeg kotisillan tietokoneelle, tai käytä Molaplan-sovellusta kotisiltana.';
+
+  @override
+  String get s1882976d8c => 'Laite toimii Molaplan-sovelluksessa.';
+
+  @override
+  String get sb3a5e212e2 =>
+      'Lisää kotisilta, niin tämä toimii myös selaimessa.';
 
   @override
   String get s4cac4725b8 => 'Ryhmän laitteet eivät vastaa';
@@ -13297,53 +13454,4 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get s06444f278d => 'asento (100 = kiinni)';
-
-  @override
-  String get s1882976d8c => 'Laite toimii Molaplan-sovelluksessa.';
-
-  @override
-  String get s25a2d52c2d =>
-      'Selainversiossa piilotetaan ruudut, joihin ei saada yhteyttä tästä selaimesta, ja ruudut, jotka eivät ole vastanneet noin kymmeneen minuuttiin. Piilotetut saa näkyviin näkymän alareunasta. Koskee vain tätä selainta.';
-
-  @override
-  String get s493a65113f => 'Näytä aina';
-
-  @override
-  String get s5972cf4f3b =>
-      'Still-kuvaa ei saatu tehtyä videovirrasta selaimessa.';
-
-  @override
-  String get s70aa3dc5be => 'Ruutu tulee näkyviin heti, kun laite vastaa.';
-
-  @override
-  String get s786c05c9e1 => 'Tätä laitetta ei voi käyttää selaimesta.';
-
-  @override
-  String get s98ffbf5518 => 'Laite ei ole vastannut tarpeeksi pitkään.';
-
-  @override
-  String sa59af4f48b(String p0) {
-    return '$p0 laitetta piilotettu – ei käytettävissä selaimessa';
-  }
-
-  @override
-  String get sb3a5e212e2 =>
-      'Lisää kotisilta, niin tämä toimii myös selaimessa.';
-
-  @override
-  String get sbfd72f3328 => 'Piilota automaattisesti';
-
-  @override
-  String get scdf43305db =>
-      'Asenna ffmpeg kotisillan tietokoneelle, tai käytä Molaplan-sovellusta kotisiltana.';
-
-  @override
-  String get se24b0e7f60 =>
-      'Koskee vain tätä selainta. Muissa laitteissa ruutu pysyy paikallaan.';
-
-  @override
-  String get se9702be418 => 'Piilota selaimessa toimimattomat';
-
-  @override
-  String get sf328dcc536 => 'Selainnäkymä';
 }

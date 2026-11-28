@@ -1030,6 +1030,9 @@ class LoadStatus {
   LoadStatus();
 
   bool? on;
+
+  /// What the rules decided this minute (t335u): known even when the device did not answer.
+  bool? want;
   double? target;
   String reason = '';
   bool safety = false;
@@ -1061,6 +1064,7 @@ class LoadStatus {
 
   Map<String, dynamic> toJson() => {
     'on': ?on,
+    'want': ?want,
     'target': ?target,
     'reason': reason,
     if (safety) 'safety': true,
@@ -1085,6 +1089,7 @@ class LoadStatus {
     DateTime? t(Object? v) => v is num ? DateTime.fromMillisecondsSinceEpoch(v.toInt()) : null;
     s
       ..on = j['on'] as bool?
+      ..want = j['want'] as bool?
       ..target = (j['target'] as num?)?.toDouble()
       ..reason = '${j['reason'] ?? ''}'
       ..safety = j['safety'] == true
@@ -1588,6 +1593,7 @@ class SmartHeatingRunner {
         st
           ..temp = temp
           ..reason = d.reason
+          ..want = d.on
           ..safety = d.safety
           ..setpoint = d.setpoint
           ..shift = d.shift

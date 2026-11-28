@@ -1443,6 +1443,18 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s09f5da65e0 => 'Byt till Shelly Cloud';
 
   @override
+  String get s6f985060ba => 'Vad du kan göra';
+
+  @override
+  String get sf77125583f => 'Tekniska detaljer';
+
+  @override
+  String get s97c9304643 => 'Tid';
+
+  @override
+  String get s1e593aeca2 => 'Stäng';
+
+  @override
   String get sf5768a876d => 'Inaktiverad';
 
   @override
@@ -1516,6 +1528,13 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s9c543b2106 => 'Uppskattning – hembron har ännu inte svarat';
 
   @override
+  String get s4678cef2a1 =>
+      'Totalt pris: spot + moms + marginal + överföring + skatt';
+
+  @override
+  String get s80a6e15c66 => 'Plats';
+
+  @override
   String get see998ca830 => 'hålls på';
 
   @override
@@ -1531,13 +1550,10 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s8653f173b6 => 'Temperatur';
 
   @override
-  String get sb730159a01 => 'Pris nu';
+  String get s3c6fedc117 => 'Pris nu (totalt)';
 
   @override
   String get s7dfe0e7977 => 'Nästa förändring';
-
-  @override
-  String get sf77125583f => 'Tekniska detaljer';
 
   @override
   String get s5555a716bb =>
@@ -1577,6 +1593,11 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get s63c3e9c766 => 'Inga prisdata';
+
+  @override
+  String s50b49fb20d(String p0) {
+    return ' (Spot med moms $p0 c)';
+  }
 
   @override
   String s8c60756474(String p0, String p1) {
@@ -1704,9 +1725,6 @@ class AppLocalizationsSv extends AppLocalizations {
   @override
   String get s2bf22ca429 =>
       'Den här enheten kan inte nås från webbläsaren. Det fungerar i Molaplan-appen, eller härifrån när en hemmabro är på.';
-
-  @override
-  String get s1e593aeca2 => 'Stäng';
 
   @override
   String get sc6e6f17ad4 =>
@@ -3060,6 +3078,24 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get sdc485831ad => 'Tryck länge för att ta bort';
+
+  @override
+  String sa59af4f48b(String p0) {
+    return '$p0 rutor dolda – inte tillgängliga i webbläsaren';
+  }
+
+  @override
+  String get s493a65113f => 'Visa alltid';
+
+  @override
+  String get sf328dcc536 => 'Webbläsarvy';
+
+  @override
+  String get se24b0e7f60 =>
+      'Gäller bara den här webbläsaren. På andra enheter stannar rutan på sin plats.';
+
+  @override
+  String get sbfd72f3328 => 'Dölj automatiskt';
 
   @override
   String get sfe54134176 => 'Alla enheter';
@@ -5188,6 +5224,13 @@ class AppLocalizationsSv extends AppLocalizations {
       'Borta hemifrån döljs rutor som bara fungerar i hemnätverket. Som standard står de kvar, gråtonade.';
 
   @override
+  String get se9702be418 => 'Dölj rutor som inte fungerar i webbläsaren';
+
+  @override
+  String get s25a2d52c2d =>
+      'I webbläsaren döljs rutor som den här webbläsaren inte når, och rutor som inte har svarat på ungefär tio minuter. Dolda rutor öppnas från nederkanten av vyn. Gäller bara den här webbläsaren.';
+
+  @override
   String get s419166b895 => 'Klocka och väder på hemskärmen';
 
   @override
@@ -6443,6 +6486,9 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s2b2118a93b => 'Gamla data';
 
   @override
+  String get sb730159a01 => 'Pris nu';
+
+  @override
   String get s68fcfcfed1 => 'Billigaste timmen i dag';
 
   @override
@@ -7419,6 +7465,10 @@ class AppLocalizationsSv extends AppLocalizations {
   String s162c54ed4c(String p0) {
     return '$p0: gjort';
   }
+
+  @override
+  String get s1e9eca6676 =>
+      'Spotpriset nu med moms. Överföring, skatt och marginal ingår inte – Smart uppvärmning jämför det totala priset.';
 
   @override
   String get se26e839c2f => 'Måndag Måndag Måndag';
@@ -10836,6 +10886,61 @@ class AppLocalizationsSv extends AppLocalizations {
   String get sd0e9fc6760 => 'Kontrollen fungerade inte';
 
   @override
+  String get s340968669a => 'Enheten';
+
+  @override
+  String s151c5be078(String p0, String p1) {
+    return 'Hembron kan inte nå adressen till $p0: det är troligtvis på ett annat nätverk än $p0. Den här enheten kan nå den, vilket är anledningen till att de andra korten fungerar.';
+  }
+
+  @override
+  String s99ea566004(String p0) {
+    return 'Hembron kunde inte ansluta till $p0. Det är avstängt, utanför nätverket, eller bron är på ett annat nätverk.';
+  }
+
+  @override
+  String get sb32685da2f =>
+      'Sätt hembron på samma nätverk som enheten: öppna Molaplan på en alltid-på-enhet i enhetens nätverk (t.ex. en dator eller surfplatta hemma) och välj Inställningar → Fjärråtkomst → Använd den här enheten som hemmabron. Sedan para din telefon och PC med den igen.';
+
+  @override
+  String get s22dde7740f =>
+      'Eller styra enheten genom en anslutning kan bron nå från var som helst (till exempel tillverkarens moln, som Shelly Cloud).';
+
+  @override
+  String get sd4f0e6f8e1 =>
+      'Kontrollera att enheten är påslagen och dess kraft och Wi-Fi-ljus är på.';
+
+  @override
+  String get s8277eb958e =>
+      'Kontrollera att enheten och hembron är på samma nätverk (de tre första siffrorna av deras adresser är desamma).';
+
+  @override
+  String get sab9dae06af =>
+      'Om enhetens adress har ändrats, uppdatera den i anslutningsinställningarna.';
+
+  @override
+  String get sdafab85176 =>
+      'Smart värme retries varje minut. Fram till dess stannar reläet i sitt sista tillstånd och värmen kontrolleras inte.';
+
+  @override
+  String get s5a3b74d726 =>
+      'Öppna enhetsanslutningen och kontrollera användarnamnet och lösenordet.';
+
+  @override
+  String get s7157b2a937 =>
+      'Öppna reläkortet och kontrollera dess adress och på / av kommandon.';
+
+  @override
+  String get s419117d6ca => 'Starta om enheten (styr av och på).';
+
+  @override
+  String get sc28a06ee09 =>
+      'Om felet fortsätter, kontrollera enhetens inställningar och firmware.';
+
+  @override
+  String get s8e9e56f68f => 'Se den exakta orsaken under tekniska detaljer.';
+
+  @override
   String get sc056006180 =>
       'Kontrollera att enheten är på och på samma nätverk som hemmabron. Smart värme retries varje minut; tills det fungerar enheten stannar i sitt nuvarande tillstånd.';
 
@@ -10850,9 +10955,6 @@ class AppLocalizationsSv extends AppLocalizations {
   @override
   String get s54dbdeb56b =>
       'Enheten svarade men accepterade inte kommandot. Försök att starta om enheten.';
-
-  @override
-  String get s8e9e56f68f => 'Se den exakta orsaken under tekniska detaljer.';
 
   @override
   String get s7279e2bdb1 => 'Manuell överridning';
@@ -11025,13 +11127,45 @@ class AppLocalizationsSv extends AppLocalizations {
   }
 
   @override
-  String get sedcddfbb2f => 'INGEN REPLY';
+  String get s5811eb3006 => 'State okänd';
 
   @override
   String get s6ab8f97950 => 'ON';
 
   @override
   String get s509c668d7e => 'OFF';
+
+  @override
+  String get sfd2975e5c4 => 'Just nu';
+
+  @override
+  String s1cb1af7851(String p0) {
+    return '$p0 sedan';
+  }
+
+  @override
+  String get s04780b98b7 =>
+      'Enheten har inte svarat, dess tillstånd är inte känt';
+
+  @override
+  String s69b9359f3f(String p0) {
+    return 'Beslut: $p0 – enheten har inte bekräftat det';
+  }
+
+  @override
+  String s5989e2e782(String p0, String p1) {
+    return ' (vid $p0, $p1)';
+  }
+
+  @override
+  String s9cb6ebafaa(String p0, String p1, String p2) {
+    return 'Sista uppsättningen: $p0$p1 – beslutet $p2 gick inte igenom';
+  }
+
+  @override
+  String s9151a2843d(String p0, String p1) {
+    return 'Sista set: $p0$p1';
+  }
 
   @override
   String get s70d43f1209 => 'Kontrollen är avstängd';
@@ -12106,6 +12240,31 @@ class AppLocalizationsSv extends AppLocalizations {
   @override
   String get sbaecc9fbed =>
       'Enheten är upptagen (en annan app) - försök på en minut.';
+
+  @override
+  String get s98ffbf5518 => 'Enheten har inte svarat på ett tag.';
+
+  @override
+  String get s5972cf4f3b =>
+      'En stillbild kunde inte tas från videoströmmen i webbläsaren.';
+
+  @override
+  String get s786c05c9e1 =>
+      'Den här enheten kan inte användas från webbläsaren.';
+
+  @override
+  String get s70aa3dc5be => 'Rutan kommer tillbaka så snart enheten svarar.';
+
+  @override
+  String get scdf43305db =>
+      'Installera ffmpeg på hemmabrons dator, eller använd Molaplan-appen som hemmabro.';
+
+  @override
+  String get s1882976d8c => 'Enheten fungerar i Molaplan-appen.';
+
+  @override
+  String get sb3a5e212e2 =>
+      'Lägg till en hemmabro, så fungerar detta också i webbläsaren.';
 
   @override
   String get s4cac4725b8 => 'Gruppens enheter svarar inte';
@@ -13244,54 +13403,4 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get s06444f278d => 'position (100 = stängd)';
-
-  @override
-  String get s1882976d8c => 'Enheten fungerar i Molaplan-appen.';
-
-  @override
-  String get s25a2d52c2d =>
-      'I webbläsaren döljs rutor som den här webbläsaren inte når, och rutor som inte har svarat på ungefär tio minuter. Dolda rutor öppnas från nederkanten av vyn. Gäller bara den här webbläsaren.';
-
-  @override
-  String get s493a65113f => 'Visa alltid';
-
-  @override
-  String get s5972cf4f3b =>
-      'En stillbild kunde inte tas från videoströmmen i webbläsaren.';
-
-  @override
-  String get s70aa3dc5be => 'Rutan kommer tillbaka så snart enheten svarar.';
-
-  @override
-  String get s786c05c9e1 =>
-      'Den här enheten kan inte användas från webbläsaren.';
-
-  @override
-  String get s98ffbf5518 => 'Enheten har inte svarat på ett tag.';
-
-  @override
-  String sa59af4f48b(String p0) {
-    return '$p0 rutor dolda – inte tillgängliga i webbläsaren';
-  }
-
-  @override
-  String get sb3a5e212e2 =>
-      'Lägg till en hemmabro, så fungerar detta också i webbläsaren.';
-
-  @override
-  String get sbfd72f3328 => 'Dölj automatiskt';
-
-  @override
-  String get scdf43305db =>
-      'Installera ffmpeg på hemmabrons dator, eller använd Molaplan-appen som hemmabro.';
-
-  @override
-  String get se24b0e7f60 =>
-      'Gäller bara den här webbläsaren. På andra enheter stannar rutan på sin plats.';
-
-  @override
-  String get se9702be418 => 'Dölj rutor som inte fungerar i webbläsaren';
-
-  @override
-  String get sf328dcc536 => 'Webbläsarvy';
 }

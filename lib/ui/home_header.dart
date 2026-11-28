@@ -267,23 +267,36 @@ class _HomeStripState extends State<HomeStrip> {
                 ],
               ),
             if (_price != null)
-              Container(
-                key: const ValueKey('strip-price'),
-                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-                decoration: BoxDecoration(
-                  color: priceColor(_price!).withValues(alpha: 0.18),
-                  borderRadius: BorderRadius.circular(20),
+              Tooltip(
+                message: tr(
+                  lang,
+                  'Pörssihinta nyt alv:llä. Siirto, vero ja marginaali eivät ole mukana – Älykäs lämmitys vertaa kokonaishintaa.',
+                  'Spot price now with VAT. Transfer, tax and margin are not included – Smart heating compares the total price.',
                 ),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Icon(Icons.bolt, size: 16, color: priceColor(_price!)),
-                    const SizedBox(width: 2),
-                    Text(
-                      '${_price!.toStringAsFixed(1).replaceAll('.', lang == 'en' ? '.' : ',')} c/kWh',
-                      style: text.labelLarge?.copyWith(fontWeight: FontWeight.w600),
-                    ),
-                  ],
+                child: Container(
+                  key: const ValueKey('strip-price'),
+                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                  decoration: BoxDecoration(
+                    color: priceColor(_price!).withValues(alpha: 0.18),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(Icons.bolt, size: 16, color: priceColor(_price!)),
+                      const SizedBox(width: 2),
+                      Text(
+                        '${_price!.toStringAsFixed(1).replaceAll('.', lang == 'en' ? '.' : ',')} c/kWh',
+                        style: text.labelLarge?.copyWith(fontWeight: FontWeight.w600),
+                      ),
+                      const SizedBox(width: 4),
+                      Text(
+                        tr(lang, 'pörssi', 'spot'),
+                        key: const ValueKey('strip-price-label'),
+                        style: text.labelSmall?.copyWith(color: cs.onSurfaceVariant),
+                      ),
+                    ],
+                  ),
                 ),
               ),
           ];

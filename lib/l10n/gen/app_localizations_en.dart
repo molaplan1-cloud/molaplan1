@@ -1445,6 +1445,18 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s09f5da65e0 => 'Switch to Shelly Cloud';
 
   @override
+  String get s6f985060ba => 'What you can do';
+
+  @override
+  String get sf77125583f => 'Technical details';
+
+  @override
+  String get s97c9304643 => 'Time';
+
+  @override
+  String get s1e593aeca2 => 'Close';
+
+  @override
   String get sf5768a876d => 'Disabled';
 
   @override
@@ -1518,6 +1530,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s9c543b2106 => 'Estimate – the home bridge has not answered yet';
 
   @override
+  String get s4678cef2a1 => 'Total price: spot + VAT + margin + transfer + tax';
+
+  @override
+  String get s80a6e15c66 => 'spot';
+
+  @override
   String get see998ca830 => 'kept on';
 
   @override
@@ -1533,13 +1551,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s8653f173b6 => 'Temperature';
 
   @override
-  String get sb730159a01 => 'Price now';
+  String get s3c6fedc117 => 'Price now (total)';
 
   @override
   String get s7dfe0e7977 => 'Next change';
-
-  @override
-  String get sf77125583f => 'Technical details';
 
   @override
   String get s5555a716bb =>
@@ -1579,6 +1594,11 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get s63c3e9c766 => 'no price data';
+
+  @override
+  String s50b49fb20d(String p0) {
+    return ' (spot with VAT $p0 c)';
+  }
 
   @override
   String s8c60756474(String p0, String p1) {
@@ -1708,9 +1728,6 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get s2bf22ca429 =>
       'This device cannot be reached from the browser. It works in the Molaplan app, or from here when a home bridge is on.';
-
-  @override
-  String get s1e593aeca2 => 'Close';
 
   @override
   String get sc6e6f17ad4 =>
@@ -3059,6 +3076,24 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get sdc485831ad => 'Long-press to remove';
+
+  @override
+  String sa59af4f48b(String p0) {
+    return '$p0 devices hidden – not available in the browser';
+  }
+
+  @override
+  String get s493a65113f => 'Always show';
+
+  @override
+  String get sf328dcc536 => 'Browser view';
+
+  @override
+  String get se24b0e7f60 =>
+      'Applies only in this browser. On other devices the tile stays in place.';
+
+  @override
+  String get sbfd72f3328 => 'Hide automatically';
 
   @override
   String get sfe54134176 => 'All devices';
@@ -5184,6 +5219,13 @@ class AppLocalizationsEn extends AppLocalizations {
       'Away from home, tiles that only work on the home network are hidden. By default they stay in place, greyed out.';
 
   @override
+  String get se9702be418 => 'Hide tiles that don\'t work in the browser';
+
+  @override
+  String get s25a2d52c2d =>
+      'In the browser, tiles this browser cannot reach, and tiles that have not answered for about ten minutes, are hidden. Hidden tiles can be opened from the bottom of the view. This browser only.';
+
+  @override
   String get s419166b895 => 'Clock and weather on the home screen';
 
   @override
@@ -6438,6 +6480,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s2b2118a93b => 'Old data';
 
   @override
+  String get sb730159a01 => 'Price now';
+
+  @override
   String get s68fcfcfed1 => 'Cheapest hour today';
 
   @override
@@ -7411,6 +7456,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String s162c54ed4c(String p0) {
     return '$p0: done';
   }
+
+  @override
+  String get s1e9eca6676 =>
+      'Spot price now with VAT. Transfer, tax and margin are not included – Smart heating compares the total price.';
 
   @override
   String get se26e839c2f => 'Monday';
@@ -10830,6 +10879,61 @@ class AppLocalizationsEn extends AppLocalizations {
   String get sd0e9fc6760 => 'The control did not work';
 
   @override
+  String get s340968669a => 'the device';
+
+  @override
+  String s151c5be078(String p0, String p1) {
+    return 'The home bridge cannot reach the address of $p0: it is most likely on another network than $p0. This device can reach it, which is why the other tiles work.';
+  }
+
+  @override
+  String s99ea566004(String p0) {
+    return 'The home bridge could not connect to $p0. It is switched off, off the network, or the bridge is on another network.';
+  }
+
+  @override
+  String get sb32685da2f =>
+      'Put the home bridge on the same network as the device: open Molaplan on an always-on device in the device\'s network (e.g. a PC or tablet at home) and choose Settings → Remote access → Use this device as the home bridge. Then pair your phone and PC with it again.';
+
+  @override
+  String get s22dde7740f =>
+      'Or control the device through a connection the bridge can reach from anywhere (for example the maker\'s cloud, like Shelly Cloud).';
+
+  @override
+  String get sd4f0e6f8e1 =>
+      'Check that the device is switched on and its power and Wi-Fi light is on.';
+
+  @override
+  String get s8277eb958e =>
+      'Check that the device and the home bridge are on the same network (the first three numbers of their addresses are the same).';
+
+  @override
+  String get sab9dae06af =>
+      'If the device\'s address has changed, update it in the connection settings.';
+
+  @override
+  String get sdafab85176 =>
+      'Smart heating retries every minute. Until then the relay stays in its last state and the heating is not controlled.';
+
+  @override
+  String get s5a3b74d726 =>
+      'Open the device connection and check the username and password.';
+
+  @override
+  String get s7157b2a937 =>
+      'Open the relay tile and check its address and on/off commands.';
+
+  @override
+  String get s419117d6ca => 'Restart the device (power off and on).';
+
+  @override
+  String get sc28a06ee09 =>
+      'If the error continues, check the device settings and firmware.';
+
+  @override
+  String get s8e9e56f68f => 'See the exact reason under Technical details.';
+
+  @override
   String get sc056006180 =>
       'Check that the device is on and on the same network as the home bridge. Smart heating retries every minute; until it works the device stays in its current state.';
 
@@ -10844,9 +10948,6 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get s54dbdeb56b =>
       'The device answered but did not accept the command. Try restarting the device.';
-
-  @override
-  String get s8e9e56f68f => 'See the exact reason under Technical details.';
 
   @override
   String get s7279e2bdb1 => 'Manual override';
@@ -11019,13 +11120,45 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get sedcddfbb2f => 'NO REPLY';
+  String get s5811eb3006 => 'State unknown';
 
   @override
   String get s6ab8f97950 => 'ON';
 
   @override
   String get s509c668d7e => 'OFF';
+
+  @override
+  String get sfd2975e5c4 => 'just now';
+
+  @override
+  String s1cb1af7851(String p0) {
+    return '$p0 ago';
+  }
+
+  @override
+  String get s04780b98b7 =>
+      'The device has not answered, its state is not known';
+
+  @override
+  String s69b9359f3f(String p0) {
+    return 'Decision: $p0 – the device has not confirmed it';
+  }
+
+  @override
+  String s5989e2e782(String p0, String p1) {
+    return ' (at $p0, $p1)';
+  }
+
+  @override
+  String s9cb6ebafaa(String p0, String p1, String p2) {
+    return 'Last set: $p0$p1 – the decision $p2 did not get through';
+  }
+
+  @override
+  String s9151a2843d(String p0, String p1) {
+    return 'Last set: $p0$p1';
+  }
 
   @override
   String get s70d43f1209 => 'Control is switched off';
@@ -12094,6 +12227,31 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get sbaecc9fbed => 'The unit is busy (another app) – try in a minute.';
+
+  @override
+  String get s98ffbf5518 => 'The device has not answered for a while.';
+
+  @override
+  String get s5972cf4f3b =>
+      'A still picture could not be made from the video stream in the browser.';
+
+  @override
+  String get s786c05c9e1 => 'This device cannot be used from the browser.';
+
+  @override
+  String get s70aa3dc5be =>
+      'The tile comes back as soon as the device answers.';
+
+  @override
+  String get scdf43305db =>
+      'Install ffmpeg on the home-bridge computer, or use the Molaplan app as the home bridge.';
+
+  @override
+  String get s1882976d8c => 'The device works in the Molaplan app.';
+
+  @override
+  String get sb3a5e212e2 =>
+      'Add a home bridge so this also works in the browser.';
 
   @override
   String get s4cac4725b8 => 'The group\'s devices are not answering';
@@ -13230,54 +13388,4 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get s06444f278d => 'position (100 = closed)';
-
-  @override
-  String get s1882976d8c => 'The device works in the Molaplan app.';
-
-  @override
-  String get s25a2d52c2d =>
-      'In the browser, tiles this browser cannot reach, and tiles that have not answered for about ten minutes, are hidden. Hidden tiles can be opened from the bottom of the view. This browser only.';
-
-  @override
-  String get s493a65113f => 'Always show';
-
-  @override
-  String get s5972cf4f3b =>
-      'A still picture could not be made from the video stream in the browser.';
-
-  @override
-  String get s70aa3dc5be =>
-      'The tile comes back as soon as the device answers.';
-
-  @override
-  String get s786c05c9e1 => 'This device cannot be used from the browser.';
-
-  @override
-  String get s98ffbf5518 => 'The device has not answered for a while.';
-
-  @override
-  String sa59af4f48b(String p0) {
-    return '$p0 devices hidden – not available in the browser';
-  }
-
-  @override
-  String get sb3a5e212e2 =>
-      'Add a home bridge so this also works in the browser.';
-
-  @override
-  String get sbfd72f3328 => 'Hide automatically';
-
-  @override
-  String get scdf43305db =>
-      'Install ffmpeg on the home-bridge computer, or use the Molaplan app as the home bridge.';
-
-  @override
-  String get se24b0e7f60 =>
-      'Applies only in this browser. On other devices the tile stays in place.';
-
-  @override
-  String get se9702be418 => 'Hide tiles that don\'t work in the browser';
-
-  @override
-  String get sf328dcc536 => 'Browser view';
 }

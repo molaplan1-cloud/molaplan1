@@ -19,6 +19,10 @@ import 'package:molaplan/state/storage.dart';
 import 'package:molaplan/state/stores.dart';
 import 'package:molaplan/ui/app_scope.dart';
 import 'package:molaplan/ui/heating_view.dart';
+import 'package:molaplan/ui/home_header.dart';
+
+import 'v03_test.dart' show FakeRemote;
+
 import 'package:molaplan/ui/smart_heating_pages.dart';
 
 const dayPrices = <double>[
@@ -87,11 +91,15 @@ Map<String, dynamic> bridgeStatus(
   String? error,
   String sensor = 'ok',
   bool fallback = false,
+  bool? want,
+  DateTime? changedAt,
 }) {
   final c = st.smartHeating!;
   final l = c.loads.firstWhere((x) => x.id == loadId);
   final s = LoadStatus()
     ..on = on
+    ..want = want
+    ..changedAt = changedAt
     ..reason = reason
     ..temp = temp
     ..error = error
@@ -194,29 +202,174 @@ void main() {
     await end(tester);
   });
 
-  testWidgets('errors are plain words; the raw exception text is shown only under Tekniset tiedot (R614)', (
+  testWidgets('a device that does not answer keeps the decision as the big word; the warning names it (t335u, R614)', (
     tester,
   ) async {
     await wide(tester);
     final st = await makeState();
     const raw = 'TimeoutException after 0:00:10.000000: Future not completed';
-    st.heatingStatus = bridgeStatus(st, now: DateTime(2026, 11, 25, 3, 30), on: null, reason: 'cheap', error: raw);
+    st.heatingStatus = bridgeStatus(
+      st,
+      now: DateTime(2026, 11, 25, 3, 30),
+      on: null,
+      want: true,
+      reason: 'cheap',
+      error: raw,
+    );
     await addHeatingTile(st);
     await tester.pumpWidget(MolaplanApp(key: UniqueKey(), state: st));
     await settle(tester);
-    expect(find.text('EI VASTAA'), findsOneWidget);
-    expect(find.textContaining('Laite ei vastaa (aikakatkaisu 10 s)'), findsWidgets);
+    // Big word = the decision, never the alarm.
+    expect(find.text('EI VASTAA'), findsNothing);
+    expect(find.text('PÄÄLLÄ'), findsOneWidget);
+    expect(find.textContaining('Halpa tunti'), findsOneWidget);
+    expect(find.byKey(const ValueKey('heat-state-note')), findsOneWidget);
+    expect(find.text('Päätös: päällä – laite ei ole vahvistanut sitä'), findsOneWidget);
+    // The warning names the relay's tile and is plain; the raw text is nowhere on the tile.
+    expect(find.text('Lattian rele ei vastaa (aikakatkaisu 10 s)'), findsOneWidget);
     expect(find.textContaining('TimeoutException'), findsNothing);
     expect(find.textContaining('Future not completed'), findsNothing);
-    // The detail page: explained, with what to do, and the raw text behind 'Tekniset tiedot'.
-    await tester.tap(find.byKey(const ValueKey('heat-state')));
+    // Tap on the warning: why, the steps, and the raw text behind 'Tekniset tiedot'.
+    await tester.tap(find.byKey(const ValueKey('heat-warning')));
     await settle(tester);
-    expect(find.byKey(const ValueKey('heat-error')), findsOneWidget);
+    expect(find.byKey(const ValueKey('heat-problem')), findsOneWidget);
+    expect(find.byKey(const ValueKey('heat-problem-why')), findsOneWidget);
+    expect(find.textContaining('Kotisilta ei saanut yhteyttä laitteeseen Lattian rele'), findsOneWidget);
+    expect(find.byKey(const ValueKey('heat-step-0')), findsOneWidget);
     expect(find.textContaining('yrittää uudelleen minuutin välein'), findsOneWidget);
     expect(find.textContaining('TimeoutException'), findsNothing);
     await tester.tap(find.byKey(const ValueKey('heat-tech')));
     await settle(tester);
     expect(find.textContaining('TimeoutException after 0:00:10'), findsOneWidget);
+    expect(find.textContaining('Laite: Lattian rele'), findsOneWidget);
+    await tester.tap(find.text('Sulje'));
+    await settle(tester);
+    expect(find.byKey(const ValueKey('heat-problem')), findsNothing);
+    // The detail page: the same facts in Tilannekuva.
+    await tester.tap(find.byKey(const ValueKey('heat-state')));
+    await settle(tester);
+    expect(find.byKey(const ValueKey('heat-snapshot-state')), findsOneWidget);
+    expect(find.byKey(const ValueKey('heat-error')), findsOneWidget);
+    expect(find.byKey(const ValueKey('heat-snapshot-note')), findsOneWidget);
+    expect(find.textContaining('yrittää uudelleen minuutin välein'), findsOneWidget);
+    expect(find.textContaining('TimeoutException'), findsNothing);
+    await tester.tap(find.byKey(const ValueKey('heat-tech')));
+    await settle(tester);
+    expect(find.textContaining('TimeoutException after 0:00:10'), findsOneWidget);
+    await end(tester);
+  });
+
+  testWidgets('the bridge is on another network: the warning says so and gives the steps for it (t335u)', (
+    tester,
+  ) async {
+    await wide(tester);
+    final st = await makeState();
+    const raw = 'TimeoutException after 0:00:10.000000: Future not completed';
+    final status = bridgeStatus(st, now: DateTime(2026, 11, 25, 3, 30), want: false, reason: 'not_cheap', error: raw);
+    st.remote.router.client = FakeRemote((op, _) => op == 'rules' ? {'heating': status} : null);
+    st.remote.router.applySameNetwork(false);
+    expect(st.rulesRunWhere, 'bridge');
+    expect(heatBridgeElsewhere(st, st.smartHeating!.loads.first), isTrue);
+    st.heatingStatus = status;
+    await addHeatingTile(st);
+    await tester.pumpWidget(MolaplanApp(key: UniqueKey(), state: st));
+    await settle(tester);
+    expect(find.text('POIS'), findsOneWidget);
+    await tester.tap(find.byKey(const ValueKey('heat-warning')));
+    await settle(tester);
+    expect(find.textContaining('toisessa verkossa kuin Lattian rele'), findsOneWidget);
+    expect(find.textContaining('Käytä tätä laitetta kotisiltana'), findsOneWidget);
+    expect(find.textContaining('Shelly Cloud'), findsOneWidget);
+    expect(find.textContaining('rele pysyy viimeisessä tilassaan'), findsOneWidget);
+    await tester.tap(find.text('Sulje'));
+    await settle(tester);
+    // The same network, nothing read directly: no claim about another network.
+    st.remote.router.applySameNetwork(true);
+    expect(heatBridgeElsewhere(st, st.smartHeating!.loads.first), isFalse);
+    await end(tester);
+  });
+
+  testWidgets('the last known state shows with its age and the decision that did not get through (t335u)', (
+    tester,
+  ) async {
+    await wide(tester);
+    final st = await makeState();
+    final now = DateTime.now();
+    st.heatingStatus = bridgeStatus(
+      st,
+      now: now,
+      on: true,
+      want: false,
+      reason: 'not_cheap',
+      changedAt: now.subtract(const Duration(minutes: 82)),
+      error: 'SocketException: Connection timed out',
+    );
+    await addHeatingTile(st);
+    await tester.pumpWidget(MolaplanApp(key: UniqueKey(), state: st));
+    await settle(tester);
+    expect(find.text('PÄÄLLÄ'), findsOneWidget);
+    expect(find.textContaining('Viimeksi ohjattu: päällä'), findsOneWidget);
+    expect(find.textContaining('1 h 22 min sitten'), findsOneWidget);
+    expect(find.textContaining('päätös pois ei mennyt perille'), findsOneWidget);
+    expect(find.text('EI VASTAA'), findsNothing);
+    await end(tester);
+  });
+
+  testWidgets('a combined tile marks the device that does not answer by its name (t335u)', (tester) async {
+    await wide(tester);
+    final st = await makeState(second: true);
+    st.heatingStatus = bridgeStatus(
+      st,
+      now: DateTime(2026, 11, 25, 3, 30),
+      want: false,
+      reason: 'not_cheap',
+      error: 'TimeoutException after 0:00:10.000000: Future not completed',
+    );
+    await addHeatingTile(st);
+    await tester.pumpWidget(MolaplanApp(key: UniqueKey(), state: st));
+    await settle(tester);
+    expect(find.byKey(const ValueKey('heat-row-warn-L1')), findsOneWidget);
+    expect(find.text('Lattian rele ei vastaa (aikakatkaisu 10 s)'), findsOneWidget);
+    expect(find.text('EI VASTAA'), findsNothing);
+    await end(tester);
+  });
+
+  testWidgets('the tile says its price is the total price, with the spot price beside it (t335u)', (tester) async {
+    await wide(tester);
+    final st = await makeState();
+    final h = DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day, DateTime.now().hour);
+    PriceService.shared.put(
+      PriceSeries(st.energyZone, [for (var i = -24; i < 24; i++) PricePoint(h.add(Duration(hours: i)), 3600, 100)]),
+    );
+    st.heatingStatus = bridgeStatus(st, now: DateTime(2026, 11, 25, 3, 30), on: true, reason: 'cheap');
+    await addHeatingTile(st);
+    await tester.pumpWidget(MolaplanApp(key: UniqueKey(), state: st));
+    await settle(tester);
+    final spot = const HeatText('fi').n(100 / 10 * (1 + st.contract.vat / 100));
+    final note = tester.widget<Text>(find.byKey(const ValueKey('heat-price-note'))).data!;
+    expect(note, startsWith('Kokonaishinta: pörssi + alv + marginaali + siirto + vero'));
+    expect(note, contains('pörssi $spot c'));
+    await end(tester);
+  });
+
+  testWidgets('the clock strip says its price is the spot price (t335u)', (tester) async {
+    await wide(tester);
+    final st = await makeState();
+    final h = DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day, DateTime.now().hour);
+    PriceService.shared.put(
+      PriceSeries(st.energyZone, [for (var i = -24; i < 24; i++) PricePoint(h.add(Duration(hours: i)), 3600, 100)]),
+    );
+    await tester.pumpWidget(
+      AppScope(
+        state: st,
+        child: const MaterialApp(home: Scaffold(body: HomeStrip())),
+      ),
+    );
+    await tester.runAsync(() => Future<void>.delayed(const Duration(milliseconds: 100)));
+    await settle(tester);
+    expect(find.byKey(const ValueKey('strip-price')), findsOneWidget);
+    expect(find.byKey(const ValueKey('strip-price-label')), findsOneWidget);
+    expect(find.text('pörssi'), findsOneWidget);
     await end(tester);
   });
 

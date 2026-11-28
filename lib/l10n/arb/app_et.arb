@@ -1122,6 +1122,8 @@
   "x-mt": true
  },
  "s09f5da65e0": "Lülita Shelly Cloudile",
+ "sf77125583f": "Tehnilised üksikasjad",
+ "s1e593aeca2": "Sulge",
  "sf5768a876d": "Keelatud",
  "@sf5768a876d": {
   "x-mt": true
@@ -1219,12 +1221,10 @@
  "@s8653f173b6": {
   "x-mt": true
  },
- "sb730159a01": "Hind praegu",
  "s7dfe0e7977": "Järgmine muutus",
  "@s7dfe0e7977": {
   "x-mt": true
  },
- "sf77125583f": "Tehnilised üksikasjad",
  "s5555a716bb": "See on hinnang hindade ja seadete järgi: kodusild ei ole veel vastanud, nii et seadme tegelik seisund on teadmata.",
  "@s5555a716bb": {
   "x-mt": true
@@ -1375,7 +1375,6 @@
  "@s2bf22ca429": {
   "x-mt": true
  },
- "s1e593aeca2": "Sulge",
  "sc6e6f17ad4": "Brauseri versioon: saad juhtida kaugjuurdepääsetavaid seadmeid. Täielik kontroll rakendusega – veel",
  "@sc6e6f17ad4": {
   "x-mt": true
@@ -2666,6 +2665,11 @@
  "sb2fa876c32": "Heledus",
  "s34cc93ca61": "Lemmikud",
  "sdc485831ad": "Eemaldamiseks vajuta pikalt",
+ "sa59af4f48b": "{p0} ruutu peidetud – pole brauseris saadaval",
+ "s493a65113f": "Näita alati",
+ "sf328dcc536": "Brauserivaade",
+ "se24b0e7f60": "Kehtib ainult selles brauseris. Teistes seadmetes jääb ruut paigale.",
+ "sbfd72f3328": "Peida automaatselt",
  "sfe54134176": "Kõik seadmed",
  "s23baecde5b": "seadmeid",
  "@s23baecde5b": {
@@ -4658,6 +4662,8 @@
  "s8382da3467": "Tavaline",
  "s7c1cd8314e": "Peida ruudud, mis eemalt ei tööta",
  "sa0cbbafb4e": "Kodust eemal peidetakse ruudud, mis töötavad ainult koduvõrgus. Vaikimisi jäävad need paigale hallina.",
+ "se9702be418": "Peida ruudud, mis brauseris ei tööta",
+ "s25a2d52c2d": "Brauseris peidetakse ruudud, milleni see brauser ei ulatu, ja ruudud, mis ei ole umbes kümme minutit vastanud. Peidetud ruudud saab avada vaate allosast. Kehtib ainult selles brauseris.",
  "s419166b895": "Kell ja ilm avaekraanil",
  "@s419166b895": {
   "x-mt": true
@@ -5755,6 +5761,7 @@
  "@s2b2118a93b": {
   "x-mt": true
  },
+ "sb730159a01": "Hind praegu",
  "s68fcfcfed1": "Odavaim tund täna",
  "s86ff059f5e": "Keskmine täna",
  "s7b911d48c6": "Kalleim tund täna",
@@ -6754,6 +6761,18 @@
  "@s70089507bf": {
   "x-mt": true
  },
+ "s496aaf125a": "Seade vastab, kuid ONVIFi port on suletud",
+ "@s496aaf125a": {
+  "x-mt": true
+ },
+ "scfbd591df7": "Seade vastab, kuid ONVIF-port on suletud (proovitud pordid {p0})",
+ "@scfbd591df7": {
+  "x-mt": true
+ },
+ "s8be90444f0": "Kontrollige kaamera ONVIF-i porti ja sisestage see vajadusel (Tapo: 2020). Tapo rakendus → kaamera → Täpsemad sätted → Kaamera konto: loo seal kasutaja ja parool (mitte oma Tapo pilve sisselogimine).",
+ "@s8be90444f0": {
+  "x-mt": true
+ },
  "s7e11595f9e": "Kodusild on maas",
  "@s7e11595f9e": {
   "x-mt": true
@@ -6798,6 +6817,10 @@
  },
  "sbb1730fa00": "Aadress {p0} ei ole selle seadmega samas võrgus ({p1}. x). Tavaliselt on see seade erineval Wi-Fi- l kui {p2}.\n\nLiituge sama Wi-Fi-ga või seadistage kodu sild.",
  "@sbb1730fa00": {
+  "x-mt": true
+ },
+ "s8947447763": "Aadress on teistsuguses võrgus kui see seade - kaamerani jõutakse läbi kodusilla.",
+ "@s8947447763": {
   "x-mt": true
  },
  "s915c9a0db3": "Vali vähemalt üks",
@@ -10078,6 +10101,10 @@
  "@sd0e9fc6760": {
   "x-mt": true
  },
+ "s8e9e56f68f": "Vaadake täpset põhjust tehniliste üksikasjade all.",
+ "@s8e9e56f68f": {
+  "x-mt": true
+ },
  "sc056006180": "Kontrolli, kas seade on kodusillaga samas võrgus sisse ja sisse. Nutikas kütmine proovib iga minut uuesti, kuni see töötab, jääb seade oma praegusesse olekusse.",
  "@sc056006180": {
   "x-mt": true
@@ -10092,10 +10119,6 @@
  },
  "s54dbdeb56b": "Seade vastas, kuid ei võtnud käsku vastu. Proovi seade uuesti käivitada.",
  "@s54dbdeb56b": {
-  "x-mt": true
- },
- "s8e9e56f68f": "Vaadake täpset põhjust tehniliste üksikasjade all.",
- "@s8e9e56f68f": {
   "x-mt": true
  },
  "s7279e2bdb1": "Käsitsi tühistamine",
@@ -10269,10 +10292,6 @@
  "s136e7941a4": "DISABLED",
  "s8847ee78e0": "Eesmärk {p0} °C",
  "@s8847ee78e0": {
-  "x-mt": true
- },
- "sedcddfbb2f": "EI VASTUTA",
- "@sedcddfbb2f": {
   "x-mt": true
  },
  "s6ab8f97950": "ON",
@@ -11443,6 +11462,13 @@
  "@sbaecc9fbed": {
   "x-mt": true
  },
+ "s98ffbf5518": "Seade ei ole juba mõnda aega vastanud.",
+ "s5972cf4f3b": "Videovoost ei õnnestunud brauseris pilti teha.",
+ "s786c05c9e1": "Seda seadet ei saa brauserist kasutada.",
+ "s70aa3dc5be": "Ruut tuleb tagasi kohe, kui seade vastab.",
+ "scdf43305db": "Paigaldage ffmpeg kodusilla arvutisse või kasutage kodusillana Molaplani rakendust.",
+ "s1882976d8c": "Seade töötab Molaplani rakenduses.",
+ "sb3a5e212e2": "Lisage kodusild, siis see toimib ka brauseris.",
  "s4cac4725b8": "Grupi seadmed ei vasta",
  "@s4cac4725b8": {
   "x-mt": true
@@ -12400,6 +12426,10 @@
  "@s61c9b76fa1": {
   "x-mt": true
  },
+ "s69d3885720": "Kaamera kasutaja ja parool (sageli admin). Kaamera seadistustes võib olla vajalik sisse lülitada ONVIF. Tapo kasutab porti 2020 ja vajab kaamerakontot (Tapo äpp → camera → Täpsemad seadistused → Kaamera konto), mitte Tapo pilve sisselogimist.",
+ "@s69d3885720": {
+  "x-mt": true
+ },
  "s32270de47a": "Turvakaamera",
  "@s32270de47a": {
   "x-mt": true
@@ -12410,6 +12440,10 @@
  },
  "se8ea97c5eb": "Kaamera rakenduses (seadme info) või ruuteri seadmete loendis.",
  "@se8ea97c5eb": {
+  "x-mt": true
+ },
+ "sf361b8971e": "Jäta tühjaks, et proovida tavalisi porte (80, 2020, 8000, 8080...). Tapo: 2020.",
+ "@sf361b8971e": {
   "x-mt": true
  },
  "s1577068729": "kaamera",
@@ -12586,42 +12620,116 @@
  "@s06444f278d": {
   "x-mt": true
  },
- "s496aaf125a": "Seade vastab, kuid ONVIFi port on suletud",
- "@s496aaf125a": {
+ "s6f985060ba": "Mida sa teha saad?",
+ "@s6f985060ba": {
   "x-mt": true
  },
- "scfbd591df7": "Seade vastab, kuid ONVIF-port on suletud (proovitud pordid {p0})",
- "@scfbd591df7": {
+ "s97c9304643": "Aeg",
+ "@s97c9304643": {
   "x-mt": true
  },
- "s8be90444f0": "Kontrollige kaamera ONVIF-i porti ja sisestage see vajadusel (Tapo: 2020). Tapo rakendus → kaamera → Täpsemad sätted → Kaamera konto: loo seal kasutaja ja parool (mitte oma Tapo pilve sisselogimine).",
- "@s8be90444f0": {
+ "s4678cef2a1": "Koguhind: hetkehind + käibemaks + marginaal + siirdehind + maks",
+ "@s4678cef2a1": {
   "x-mt": true
  },
- "s8947447763": "Aadress on teistsuguses võrgus kui see seade - kaamerani jõutakse läbi kodusilla.",
- "@s8947447763": {
+ "s80a6e15c66": "kohake",
+ "@s80a6e15c66": {
   "x-mt": true
  },
- "s69d3885720": "Kaamera kasutaja ja parool (sageli admin). Kaamera seadistustes võib olla vajalik sisse lülitada ONVIF. Tapo kasutab porti 2020 ja vajab kaamerakontot (Tapo äpp → camera → Täpsemad seadistused → Kaamera konto), mitte Tapo pilve sisselogimist.",
- "@s69d3885720": {
+ "s3c6fedc117": "Hind nüüd (kokku)",
+ "@s3c6fedc117": {
   "x-mt": true
  },
- "sf361b8971e": "Jäta tühjaks, et proovida tavalisi porte (80, 2020, 8000, 8080...). Tapo: 2020.",
- "@sf361b8971e": {
+ "s50b49fb20d": " (koht käibemaksuga {p0} c)",
+ "@s50b49fb20d": {
   "x-mt": true
  },
- "s1882976d8c": "Seade töötab Molaplani rakenduses.",
- "s25a2d52c2d": "Brauseris peidetakse ruudud, milleni see brauser ei ulatu, ja ruudud, mis ei ole umbes kümme minutit vastanud. Peidetud ruudud saab avada vaate allosast. Kehtib ainult selles brauseris.",
- "s493a65113f": "Näita alati",
- "s5972cf4f3b": "Videovoost ei õnnestunud brauseris pilti teha.",
- "s70aa3dc5be": "Ruut tuleb tagasi kohe, kui seade vastab.",
- "s786c05c9e1": "Seda seadet ei saa brauserist kasutada.",
- "s98ffbf5518": "Seade ei ole juba mõnda aega vastanud.",
- "sa59af4f48b": "{p0} ruutu peidetud – pole brauseris saadaval",
- "sb3a5e212e2": "Lisage kodusild, siis see toimib ka brauseris.",
- "sbfd72f3328": "Peida automaatselt",
- "scdf43305db": "Paigaldage ffmpeg kodusilla arvutisse või kasutage kodusillana Molaplani rakendust.",
- "se24b0e7f60": "Kehtib ainult selles brauseris. Teistes seadmetes jääb ruut paigale.",
- "se9702be418": "Peida ruudud, mis brauseris ei tööta",
- "sf328dcc536": "Brauserivaade"
+ "s1e9eca6676": "Hetkehind nüüd käibemaksuga. Siirde-, maksu- ja marginaal ei sisalda – Nutikas kütmine võrdleb koguhinda.",
+ "@s1e9eca6676": {
+  "x-mt": true
+ },
+ "s340968669a": "seadeldist",
+ "@s340968669a": {
+  "x-mt": true
+ },
+ "s151c5be078": "Kodusild ei jõua {p0} aadressini: see on tõenäoliselt mõnes muus võrgus kui {p0}. See seade võib selleni jõuda, mistõttu toimivad ka teised kaardid.",
+ "@s151c5be078": {
+  "x-mt": true
+ },
+ "s99ea566004": "Kodusild ei saa ühenduda {p0} - ga. See lülitatakse välja, võrgust välja või sild asub teises võrgus.",
+ "@s99ea566004": {
+  "x-mt": true
+ },
+ "sb32685da2f": "Paigaldatakse samasse seadmesse, kui see on nii, nagu see on, kui see on nii, et see on nii, et see on nii, et see on nii, nagu see on, kui see on olemas, ja kui see on nii, siis avage see nii, et see on nii, nagu see on, ja valige Seadistused → Kaugjuurdepääs → Kasuta seda seadet kodusillana. Seejärel ühendage telefon ja arvuti uuesti.",
+ "@sb32685da2f": {
+  "x-mt": true
+ },
+ "s22dde7740f": "Või juhtida seadet ühenduse kaudu, mille sild võib ulatuda kõikjalt (näiteks valmistaja pilv, nagu Shelly Cloud).",
+ "@s22dde7740f": {
+  "x-mt": true
+ },
+ "sd4f0e6f8e1": "Kontrollige, kas seade on sisse lülitatud ja selle võimsus ja Wi-Fi valgus on sisse lülitatud.",
+ "@sd4f0e6f8e1": {
+  "x-mt": true
+ },
+ "s8277eb958e": "Kontrollige, kas seade ja kodusild on samas võrgus (nende aadresside kolm esimest numbrit on samad).",
+ "@s8277eb958e": {
+  "x-mt": true
+ },
+ "sab9dae06af": "Kui seadme aadress on muutunud, uuendage seda ühenduse seadetes.",
+ "@sab9dae06af": {
+  "x-mt": true
+ },
+ "sdafab85176": "Nutikas soojendus proovib iga minut. Kuni selle ajani jääb relee oma viimasesse olekusse ja kütet ei kontrollita.",
+ "@sdafab85176": {
+  "x-mt": true
+ },
+ "s5a3b74d726": "Avage seadme ühendus ja kontrollige kasutajanime ja parooli.",
+ "@s5a3b74d726": {
+  "x-mt": true
+ },
+ "s7157b2a937": "Avage releekaart ja kontrollige selle aadressi ja sisse/välja käske.",
+ "@s7157b2a937": {
+  "x-mt": true
+ },
+ "s419117d6ca": "Taaskäivitage seade (vool välja ja sisse).",
+ "@s419117d6ca": {
+  "x-mt": true
+ },
+ "sc28a06ee09": "Kui viga jätkub, kontrollige seadme seadeid ja püsivara.",
+ "@sc28a06ee09": {
+  "x-mt": true
+ },
+ "s5811eb3006": "Teadmata riik",
+ "@s5811eb3006": {
+  "x-mt": true
+ },
+ "sfd2975e5c4": "praegu",
+ "@sfd2975e5c4": {
+  "x-mt": true
+ },
+ "s1cb1af7851": "{p0} tagasi",
+ "@s1cb1af7851": {
+  "x-mt": true
+ },
+ "s04780b98b7": "Seade ei ole vastanud, selle seisund ei ole teada",
+ "@s04780b98b7": {
+  "x-mt": true
+ },
+ "s69b9359f3f": "Otsus: {p0} – seade ei ole seda kinnitanud",
+ "@s69b9359f3f": {
+  "x-mt": true
+ },
+ "s5989e2e782": " (at {p0}, {p1})",
+ "@s5989e2e782": {
+  "x-mt": true
+ },
+ "s9cb6ebafaa": "Viimane sett: {p0}{p1} – otsus {p2} ei jõudnud läbi",
+ "@s9cb6ebafaa": {
+  "x-mt": true
+ },
+ "s9151a2843d": "Viimane sett: {p0}{p1}",
+ "@s9151a2843d": {
+  "x-mt": true
+ }
 }

@@ -778,27 +778,27 @@
  "scb28b11e70": "New dashboard",
  "@scb28b11e70": {
   "description": "fi: Uusi näkymä",
-  "x-where": "ui/home_page.dart:113"
+  "x-where": "ui/home_page.dart:125"
  },
  "s1f9799af4e": "e.g. Cottage",
  "@s1f9799af4e": {
   "description": "fi: esim. Mökki",
-  "x-where": "ui/home_page.dart:114"
+  "x-where": "ui/home_page.dart:126"
  },
  "s3a13f9d077": "Rename dashboard",
  "@s3a13f9d077": {
   "description": "fi: Nimeä näkymä",
-  "x-where": "ui/home_page.dart:126"
+  "x-where": "ui/home_page.dart:140"
  },
  "sa5bf37213b": "Delete dashboard?",
  "@sa5bf37213b": {
   "description": "fi: Poistetaanko näkymä?",
-  "x-where": "ui/home_page.dart:134"
+  "x-where": "ui/home_page.dart:150"
  },
  "s10671afc00": "\"{p0}\" and its {p1} tiles will be deleted.",
  "@s10671afc00": {
   "description": "fi: \"{p0}\" ja sen {p1} ruutua poistetaan.",
-  "x-where": "ui/home_page.dart:135",
+  "x-where": "ui/home_page.dart:151",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -811,12 +811,12 @@
  "sc1845eb440": "Delete",
  "@sc1845eb440": {
   "description": "fi: Poista",
-  "x-where": "ui/home_page.dart:140"
+  "x-where": "ui/home_page.dart:156"
  },
  "s897761b5f4": "Dashboard \"{p0}\" deleted",
  "@s897761b5f4": {
   "description": "fi: Näkymä \"{p0}\" poistettu",
-  "x-where": "ui/home_page.dart:147",
+  "x-where": "ui/home_page.dart:165",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -826,117 +826,117 @@
  "scc5cf9957d": "Choose tile type",
  "@scc5cf9957d": {
   "description": "fi: Valitse ruudun tyyppi",
-  "x-where": "ui/home_page.dart:168"
+  "x-where": "ui/home_page.dart:192"
  },
  "s7cf6340503": "New device with ready tiles",
  "@s7cf6340503": {
   "description": "fi: Uusi laite valmiilla ruuduilla",
-  "x-where": "ui/home_page.dart:174"
+  "x-where": "ui/home_page.dart:199"
  },
  "se6ca707cf3": "Easiest: Shelly, ESP32-CAM, Home Assistant…",
  "@se6ca707cf3": {
   "description": "fi: Helpoin tapa: Shelly, ESP32-CAM, Home Assistant, IV-kone…",
-  "x-where": "ui/home_page.dart:176"
+  "x-where": "ui/home_page.dart:206"
  },
  "s0789f5f14f": "DASHBOARDS",
  "@s0789f5f14f": {
   "description": "fi: NÄKYMÄT",
-  "x-where": "ui/home_page.dart:261"
+  "x-where": "ui/home_page.dart:314"
  },
  "sedb7b77645": "All",
  "@sedb7b77645": {
   "description": "fi: Kaikki",
-  "x-where": "ui/home_page.dart:274"
+  "x-where": "ui/home_page.dart:333"
  },
  "s78d94155f1": "Connections",
  "@s78d94155f1": {
   "description": "fi: Yhteydet",
-  "x-where": "ui/home_page.dart:318"
+  "x-where": "ui/home_page.dart:385"
  },
  "se9ca7cb470": "Automations",
  "@se9ca7cb470": {
   "description": "fi: Automaatiot",
-  "x-where": "ui/home_page.dart:329"
+  "x-where": "ui/home_page.dart:403"
  },
  "s798f7b2876": "Smart heating",
  "@s798f7b2876": {
   "description": "fi: Älykäs lämmitys",
-  "x-where": "ui/home_page.dart:343"
+  "x-where": "ui/home_page.dart:426"
  },
  "s356d822497": "off",
  "@s356d822497": {
   "description": "fi: pois",
-  "x-where": "ui/home_page.dart:347"
+  "x-where": "ui/home_page.dart:433"
  },
  "s41bb837a83": "Notifications and reminders",
  "@s41bb837a83": {
   "description": "fi: Ilmoitukset ja muistutukset",
-  "x-where": "ui/home_page.dart:360"
+  "x-where": "ui/home_page.dart:454"
  },
  "s49de879696": "Energy",
  "@s49de879696": {
   "description": "fi: Energia",
-  "x-where": "ui/home_page.dart:373"
+  "x-where": "ui/home_page.dart:479"
  },
  "s1da81fd6c3": "Settings",
  "@s1da81fd6c3": {
   "description": "fi: Asetukset",
-  "x-where": "ui/home_page.dart:382"
+  "x-where": "ui/home_page.dart:493"
  },
  "s59622d792b": "Rename",
  "@s59622d792b": {
   "description": "fi: Nimeä",
-  "x-where": "ui/home_page.dart:462"
+  "x-where": "ui/home_page.dart:584"
  },
  "sfb3e3c456c": "Delete dashboard",
  "@sfb3e3c456c": {
   "description": "fi: Poista näkymä",
-  "x-where": "ui/home_page.dart:467"
+  "x-where": "ui/home_page.dart:589"
  },
  "s2acab0eccd": "Done",
  "@s2acab0eccd": {
   "description": "fi: Valmis",
-  "x-where": "ui/home_page.dart:475"
+  "x-where": "ui/home_page.dart:597"
  },
  "s187d328bb1": "Edit",
  "@s187d328bb1": {
   "description": "fi: Muokkaa",
-  "x-where": "ui/home_page.dart:479"
+  "x-where": "ui/home_page.dart:601"
  },
  "s71af34b8e9": "Empty dashboard",
  "@s71af34b8e9": {
   "description": "fi: Tyhjä näkymä",
-  "x-where": "ui/home_page.dart:581"
+  "x-where": "ui/home_page.dart:711"
  },
  "s6a210970eb": "Your device tiles appear here: temperatures, switches, cameras and shortcuts. Start by adding a device.",
  "@s6a210970eb": {
   "description": "fi: Täällä näkyvät laitteidesi ruudut: lämpötilat, kytkimet, kamerat ja pikakomennot. Aloita lisäämällä laite.",
-  "x-where": "ui/home_page.dart:584"
+  "x-where": "ui/home_page.dart:716"
  },
  "s4229fb4103": "Add your first device",
  "@s4229fb4103": {
   "description": "fi: Lisää ensimmäinen laite",
-  "x-where": "ui/home_page.dart:602"
+  "x-where": "ui/home_page.dart:737"
  },
  "s41c3cebc48": "Add device",
  "@s41c3cebc48": {
   "description": "fi: Lisää laite",
-  "x-where": "ui/home_page.dart:603"
+  "x-where": "ui/home_page.dart:742"
  },
  "s147f47be4c": "Add a tile",
  "@s147f47be4c": {
   "description": "fi: Lisää ruutu",
-  "x-where": "ui/home_page.dart:614"
+  "x-where": "ui/home_page.dart:754"
  },
  "sf67e0d5752": "Delete tile?",
  "@sf67e0d5752": {
   "description": "fi: Poistetaanko ruutu?",
-  "x-where": "ui/home_page.dart:773"
+  "x-where": "ui/home_page.dart:974"
  },
  "s97f46743e0": "Tile \"{p0}\" deleted",
  "@s97f46743e0": {
   "description": "fi: Ruutu \"{p0}\" poistettu",
-  "x-where": "ui/home_page.dart:782",
+  "x-where": "ui/home_page.dart:983",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -946,17 +946,17 @@
  "sbeef9a7f21": "Move",
  "@sbeef9a7f21": {
   "description": "fi: Siirrä",
-  "x-where": "ui/home_page.dart:888"
+  "x-where": "ui/home_page.dart:1101"
  },
  "sdb0cb19db6": "Move left",
  "@sdb0cb19db6": {
   "description": "fi: Siirrä vasemmalle",
-  "x-where": "ui/home_page.dart:904"
+  "x-where": "ui/home_page.dart:1117"
  },
  "s5570ed5144": "Move right",
  "@s5570ed5144": {
   "description": "fi: Siirrä oikealle",
-  "x-where": "ui/home_page.dart:910"
+  "x-where": "ui/home_page.dart:1123"
  },
  "sc3abd09cd9": "Custom colour",
  "@sc3abd09cd9": {
@@ -2251,20 +2251,40 @@
   "description": "fi: Vaihda Shelly Cloudiin",
   "x-where": "ui/tile_status.dart:605"
  },
+ "s6f985060ba": "What you can do",
+ "@s6f985060ba": {
+  "description": "fi: Mitä voit tehdä",
+  "x-where": "ui/heating_view.dart:202"
+ },
+ "sf77125583f": "Technical details",
+ "@sf77125583f": {
+  "description": "fi: Tekniset tiedot",
+  "x-where": "ui/heating_view.dart:212"
+ },
+ "s97c9304643": "Time",
+ "@s97c9304643": {
+  "description": "fi: Aika",
+  "x-where": "ui/heating_view.dart:218"
+ },
+ "s1e593aeca2": "Close",
+ "@s1e593aeca2": {
+  "description": "fi: Sulje",
+  "x-where": "ui/heating_view.dart:230"
+ },
  "sf5768a876d": "Disabled",
  "@sf5768a876d": {
   "description": "fi: Pois käytöstä",
-  "x-where": "ui/heating_view.dart:149"
+  "x-where": "ui/heating_view.dart:249"
  },
  "s8724f302ef": "Manual",
  "@s8724f302ef": {
   "description": "fi: Käsiohjaus",
-  "x-where": "ui/heating_view.dart:153"
+  "x-where": "ui/heating_view.dart:253"
  },
  "s76bce4b6c2": "Manual {p0}",
  "@s76bce4b6c2": {
   "description": "fi: Käsiohjaus {p0}",
-  "x-where": "ui/heating_view.dart:154",
+  "x-where": "ui/heating_view.dart:254",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -2274,57 +2294,57 @@
  "s221a4ab646": "Fireplace mode",
  "@s221a4ab646": {
   "description": "fi: Takka-tila",
-  "x-where": "ui/heating_view.dart:156"
+  "x-where": "ui/heating_view.dart:256"
  },
  "s5da1e65941": "Holiday mode",
  "@s5da1e65941": {
   "description": "fi: Lomatila",
-  "x-where": "ui/heating_view.dart:158"
+  "x-where": "ui/heating_view.dart:258"
  },
  "se50792831f": "Temperature control",
  "@se50792831f": {
   "description": "fi: Lämpötilaohjaus",
-  "x-where": "ui/heating_view.dart:160"
+  "x-where": "ui/heating_view.dart:260"
  },
  "sd408a5dbe9": "Cheapest hours",
  "@sd408a5dbe9": {
   "description": "fi: Halvimmat tunnit",
-  "x-where": "ui/heating_view.dart:162"
+  "x-where": "ui/heating_view.dart:262"
  },
  "s5c33c7b488": "Skip expensive",
  "@s5c33c7b488": {
   "description": "fi: Kalleimpien ohitus",
-  "x-where": "ui/heating_view.dart:163"
+  "x-where": "ui/heating_view.dart:263"
  },
  "seaa748138e": "By the weather",
  "@seaa748138e": {
   "description": "fi: Sään mukaan",
-  "x-where": "ui/heating_view.dart:164"
+  "x-where": "ui/heating_view.dart:264"
  },
  "saf3ce7f717": "Smart heating: set it up",
  "@saf3ce7f717": {
   "description": "fi: Älykäs lämmitys: ota käyttöön",
-  "x-where": "ui/heating_view.dart:235"
+  "x-where": "ui/heating_view.dart:335"
  },
  "scde8147260": "Smart heating: add a device",
  "@scde8147260": {
   "description": "fi: Älykäs lämmitys: lisää laite",
-  "x-where": "ui/heating_view.dart:236"
+  "x-where": "ui/heating_view.dart:336"
  },
  "sea2ac9b443": "Heating device removed",
  "@sea2ac9b443": {
   "description": "fi: Lämmityslaite poistettu",
-  "x-where": "ui/heating_view.dart:249"
+  "x-where": "ui/heating_view.dart:349"
  },
  "s27e0af845d": "No home bridge: heating is not controlled yet. Set up remote access on a device at home.",
  "@s27e0af845d": {
   "description": "fi: Ei kotisiltaa: lämmitys ei ohjaudu vielä. Ota etäyhteys käyttöön kotona olevalla laitteella.",
-  "x-where": "ui/heating_view.dart:340"
+  "x-where": "ui/heating_view.dart:440"
  },
  "s04fcb24bc5": "Now {p0} · setpoint {p1}",
  "@s04fcb24bc5": {
   "description": "fi: Nyt {p0} · tavoite {p1}",
-  "x-where": "ui/heating_view.dart:373",
+  "x-where": "ui/heating_view.dart:483",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -2337,7 +2357,7 @@
  "s3c3d6b5485": "Temperature {p0}",
  "@s3c3d6b5485": {
   "description": "fi: Lämpötila {p0}",
-  "x-where": "ui/heating_view.dart:377",
+  "x-where": "ui/heating_view.dart:487",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -2347,7 +2367,7 @@
  "s670a6ed937": "{p0} c/kWh",
  "@s670a6ed937": {
   "description": "fi: {p0} c/kWh",
-  "x-where": "ui/heating_view.dart:384",
+  "x-where": "ui/heating_view.dart:494",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -2357,7 +2377,7 @@
  "s8272e84b1c": "{p0} c/kWh · limit {p1} c",
  "@s8272e84b1c": {
   "description": "fi: {p0} c/kWh · raja {p1} c",
-  "x-where": "ui/heating_view.dart:385",
+  "x-where": "ui/heating_view.dart:495",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -2370,7 +2390,7 @@
  "s8235ae91c4": "Sensor not answering – {p0}",
  "@s8235ae91c4": {
   "description": "fi: Anturi ei vastaa – {p0}",
-  "x-where": "ui/heating_view.dart:433",
+  "x-where": "ui/heating_view.dart:553",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -2380,82 +2400,87 @@
  "s0be7b030a0": "Estimate from prices – no home bridge",
  "@s0be7b030a0": {
   "description": "fi: Arvio hinnoista – ei kotisiltaa",
-  "x-where": "ui/heating_view.dart:461"
+  "x-where": "ui/heating_view.dart:593"
  },
  "s9c543b2106": "Estimate – the home bridge has not answered yet",
  "@s9c543b2106": {
   "description": "fi: Arvio – kotisilta ei vastaa vielä",
-  "x-where": "ui/heating_view.dart:462"
+  "x-where": "ui/heating_view.dart:594"
+ },
+ "s4678cef2a1": "Total price: spot + VAT + margin + transfer + tax",
+ "@s4678cef2a1": {
+  "description": "fi: Kokonaishinta: pörssi + alv + marginaali + siirto + vero",
+  "x-where": "ui/heating_view.dart:605"
+ },
+ "s80a6e15c66": "spot",
+ "@s80a6e15c66": {
+  "description": "fi: pörssi",
+  "x-where": "ui/heating_view.dart:609"
  },
  "see998ca830": "kept on",
  "@see998ca830": {
   "description": "fi: pidetään päällä",
-  "x-where": "ui/heating_view.dart:556"
+  "x-where": "ui/heating_view.dart:714"
  },
  "s9eb36d05e1": "kept off",
  "@s9eb36d05e1": {
   "description": "fi: pidetään pois",
-  "x-where": "ui/heating_view.dart:557"
+  "x-where": "ui/heating_view.dart:715"
  },
  "s871e341710": "price schedule",
  "@s871e341710": {
   "description": "fi: hintaohjaus",
-  "x-where": "ui/heating_view.dart:558"
+  "x-where": "ui/heating_view.dart:716"
  },
  "s579f396ae5": "Situation",
  "@s579f396ae5": {
   "description": "fi: Tilannekuva",
-  "x-where": "ui/heating_view.dart:592"
+  "x-where": "ui/heating_view.dart:750"
  },
  "s8653f173b6": "Temperature",
  "@s8653f173b6": {
   "description": "fi: Lämpötila",
-  "x-where": "ui/heating_view.dart:613"
+  "x-where": "ui/heating_view.dart:777"
  },
- "sb730159a01": "Price now",
- "@sb730159a01": {
-  "description": "fi: Hinta nyt",
-  "x-where": "ui/heating_view.dart:614"
+ "s3c6fedc117": "Price now (total)",
+ "@s3c6fedc117": {
+  "description": "fi: Hinta nyt (kokonaishinta)",
+  "x-where": "ui/heating_view.dart:781"
  },
  "s7dfe0e7977": "Next change",
  "@s7dfe0e7977": {
   "description": "fi: Seuraava muutos",
-  "x-where": "ui/heating_view.dart:615"
- },
- "sf77125583f": "Technical details",
- "@sf77125583f": {
-  "description": "fi: Tekniset tiedot",
-  "x-where": "ui/heating_view.dart:628"
+  "x-where": "ui/heating_view.dart:784"
  },
  "s5555a716bb": "This is an estimate from prices and settings: the home bridge has not answered yet, so the real state of the device is unknown.",
  "@s5555a716bb": {
   "description": "fi: Tämä on arvio hinnoista ja asetuksista: kotisilta ei ole vielä vastannut, joten laitteen todellista tilaa ei tiedetä.",
-  "x-where": "ui/heating_view.dart:634"
+  "x-where": "ui/heating_view.dart:808"
  },
  "sbe50b10e9e": "End manual override",
  "@sbe50b10e9e": {
   "description": "fi: Lopeta käsiohjaus",
-  "x-where": "ui/heating_view.dart:648"
+  "x-where": "ui/heating_view.dart:822"
  },
  "s728ddd7778": "Manual override…",
  "@s728ddd7778": {
   "description": "fi: Käsiohjaus…",
-  "x-where": "ui/heating_view.dart:655"
+  "x-where": "ui/heating_view.dart:829"
  },
  "sd661031615": "no sensor",
  "@sd661031615": {
   "description": "fi: ei anturia",
-  "x-where": "ui/heating_view.dart:669"
+  "x-where": "ui/heating_view.dart:843"
  },
  "scfb407cd2d": "sensor not answering",
  "@scfb407cd2d": {
   "description": "fi: anturi ei vastaa",
-  "x-where": "ui/heating_view.dart:670"
+  "x-where": "ui/heating_view.dart:844"
  },
  "s1284293e15": "setpoint {p0} ± {p1}",
  "@s1284293e15": {
   "description": "fi: tavoite {p0} ± {p1}",
-  "x-where": "ui/heating_view.dart:673",
+  "x-where": "ui/heating_view.dart:847",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -2468,7 +2493,7 @@
  "s07a15cf1d3": "upper limit {p0}",
  "@s07a15cf1d3": {
   "description": "fi: yläraja {p0}",
-  "x-where": "ui/heating_view.dart:678",
+  "x-where": "ui/heating_view.dart:852",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -2478,7 +2503,7 @@
  "s4e43228e07": "min {p0}",
  "@s4e43228e07": {
   "description": "fi: min {p0}",
-  "x-where": "ui/heating_view.dart:679",
+  "x-where": "ui/heating_view.dart:853",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -2488,7 +2513,7 @@
  "sd4db0fbbb5": "frost {p0}",
  "@sd4db0fbbb5": {
   "description": "fi: jäätymissuoja {p0}",
-  "x-where": "ui/heating_view.dart:680",
+  "x-where": "ui/heating_view.dart:854",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -2498,12 +2523,22 @@
  "s63c3e9c766": "no price data",
  "@s63c3e9c766": {
   "description": "fi: ei hintatietoa",
-  "x-where": "ui/heating_view.dart:686"
+  "x-where": "ui/heating_view.dart:860"
+ },
+ "s50b49fb20d": " (spot with VAT {p0} c)",
+ "@s50b49fb20d": {
+  "description": "fi:  (pörssi alv:llä {p0} c)",
+  "x-where": "ui/heating_view.dart:862",
+  "placeholders": {
+   "p0": {
+    "type": "String"
+   }
+  }
  },
  "s8c60756474": "{p0} (skipped at ≥ {p1} c)",
  "@s8c60756474": {
   "description": "fi: {p0} (ohitetaan, kun ≥ {p1} c)",
-  "x-where": "ui/heating_view.dart:690",
+  "x-where": "ui/heating_view.dart:865",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -2516,7 +2551,7 @@
  "sff29b84ddc": "{p0} (on at ≤ {p1} c)",
  "@sff29b84ddc": {
   "description": "fi: {p0} (päällä, kun ≤ {p1} c)",
-  "x-where": "ui/heating_view.dart:691",
+  "x-where": "ui/heating_view.dart:866",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -2529,27 +2564,27 @@
  "s750dcb984f": "Why? The rules and their state",
  "@s750dcb984f": {
   "description": "fi: Miksi näin? Säännöt ja niiden tila",
-  "x-where": "ui/heating_view.dart:781"
+  "x-where": "ui/heating_view.dart:966"
  },
  "s39d300e3ea": "decides now",
  "@s39d300e3ea": {
   "description": "fi: ratkaisee nyt",
-  "x-where": "ui/heating_view.dart:809"
+  "x-where": "ui/heating_view.dart:994"
  },
  "s55153c17b8": "Next 24 h: price and planned heating hours",
  "@s55153c17b8": {
   "description": "fi: Seuraavat 24 h: hinta ja suunnitellut lämmitystunnit",
-  "x-where": "ui/heating_view.dart:858"
+  "x-where": "ui/heating_view.dart:1043"
  },
  "sfb5a3f7da0": "No price data yet.",
  "@sfb5a3f7da0": {
   "description": "fi: Hintatietoa ei ole vielä.",
-  "x-where": "ui/heating_view.dart:898"
+  "x-where": "ui/heating_view.dart:1083"
  },
  "sba9d60d97c": "Orange = heating planned on. A taller bar = a more expensive hour ({p0}–{p1} c/kWh).",
  "@sba9d60d97c": {
   "description": "fi: Oranssi = lämmitys suunnitellusti päällä. Korkeampi pylväs = kalliimpi tunti ({p0}–{p1} c/kWh).",
-  "x-where": "ui/heating_view.dart:900",
+  "x-where": "ui/heating_view.dart:1085",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -2562,7 +2597,7 @@
  "s3030d2947a": "A taller bar = a more expensive hour ({p0}–{p1} c/kWh). The plan shows when the home bridge has answered.",
  "@s3030d2947a": {
   "description": "fi: Korkeampi pylväs = kalliimpi tunti ({p0}–{p1} c/kWh). Suunnitelma näkyy, kun kotisilta on vastannut.",
-  "x-where": "ui/heating_view.dart:904",
+  "x-where": "ui/heating_view.dart:1089",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -2575,62 +2610,62 @@
  "s3d99bc591b": "Manual override",
  "@s3d99bc591b": {
   "description": "fi: Käsiohjaus",
-  "x-where": "ui/heating_view.dart:940"
+  "x-where": "ui/heating_view.dart:1125"
  },
  "sb65a9ab4a9": "The target temperature is raised or lowered for the chosen time, then automatic control continues.",
  "@sb65a9ab4a9": {
   "description": "fi: Tavoitelämpötilaa nostetaan tai lasketaan valituksi ajaksi, sitten automaattinen ohjaus jatkuu.",
-  "x-where": "ui/heating_view.dart:947"
+  "x-where": "ui/heating_view.dart:1132"
  },
  "sb1c3627dc7": "Heating is forced on or off for the chosen time, then automatic control continues.",
  "@sb1c3627dc7": {
   "description": "fi: Lämmitys pakotetaan päälle tai pois valituksi ajaksi, sitten automaattinen ohjaus jatkuu.",
-  "x-where": "ui/heating_view.dart:951"
+  "x-where": "ui/heating_view.dart:1136"
  },
  "seeaa40c11e": "Boost",
  "@seeaa40c11e": {
   "description": "fi: Tehostus",
-  "x-where": "ui/heating_view.dart:962"
+  "x-where": "ui/heating_view.dart:1147"
  },
  "s4cd3d92d4c": "On",
  "@s4cd3d92d4c": {
   "description": "fi: Päälle",
-  "x-where": "ui/heating_view.dart:962"
+  "x-where": "ui/heating_view.dart:1147"
  },
  "sdb7d34e8e1": "Saving",
  "@sdb7d34e8e1": {
   "description": "fi: Säästö",
-  "x-where": "ui/heating_view.dart:966"
+  "x-where": "ui/heating_view.dart:1151"
  },
  "s33831dd49f": "Off",
  "@s33831dd49f": {
   "description": "fi: Pois",
-  "x-where": "ui/heating_view.dart:966"
+  "x-where": "ui/heating_view.dart:1151"
  },
  "s3ef843cf90": "The safety limits (frost protection and minimum temperature) still apply.",
  "@s3ef843cf90": {
   "description": "fi: Turvarajat (jäätymissuoja ja vähimmäislämpötila) ovat silti voimassa.",
-  "x-where": "ui/heating_view.dart:983"
+  "x-where": "ui/heating_view.dart:1168"
  },
  "s3077b295d1": "Apply",
  "@s3077b295d1": {
   "description": "fi: Ota käyttöön",
-  "x-where": "ui/heating_view.dart:996"
+  "x-where": "ui/heating_view.dart:1181"
  },
  "s7926a59e29": "No reading",
  "@s7926a59e29": {
   "description": "fi: Ei lämpötilaa",
-  "x-where": "ui/heating_view.dart:1045"
+  "x-where": "ui/heating_view.dart:1230"
  },
  "s29fd8d5b5e": "Now",
  "@s29fd8d5b5e": {
   "description": "fi: Nyt",
-  "x-where": "ui/heating_view.dart:1046"
+  "x-where": "ui/heating_view.dart:1231"
  },
  "s961397a99b": "Setpoint {p0} °C",
  "@s961397a99b": {
   "description": "fi: Tavoite {p0} °C",
-  "x-where": "ui/heating_view.dart:1060",
+  "x-where": "ui/heating_view.dart:1245",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -2640,7 +2675,7 @@
  "sc47170dbe0": "Setpoint {p0} °C (price: {p1} °C this hour)",
  "@sc47170dbe0": {
   "description": "fi: Tavoite {p0} °C (hinta: {p1} °C tällä tunnilla)",
-  "x-where": "ui/heating_view.dart:1061",
+  "x-where": "ui/heating_view.dart:1246",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -2719,11 +2754,6 @@
  "@s2bf22ca429": {
   "description": "fi: Tähän laitteeseen ei saada yhteyttä selaimesta. Se toimii Molaplan-sovelluksessa, tai täältä, kun kotisilta on päällä.",
   "x-where": "ui/web_info.dart:251"
- },
- "s1e593aeca2": "Close",
- "@s1e593aeca2": {
-  "description": "fi: Sulje",
-  "x-where": "ui/web_info.dart:266"
  },
  "sc6e6f17ad4": "Browser version: you control remotely reachable devices. Full control with the app – more ›",
  "@sc6e6f17ad4": {
@@ -4906,6 +4936,36 @@
   "description": "fi: Pitkä painallus poistaa",
   "x-where": "ui/light_sheet.dart:302"
  },
+ "sa59af4f48b": "{p0} devices hidden – not available in the browser",
+ "@sa59af4f48b": {
+  "description": "fi: {p0} laitetta piilotettu – ei käytettävissä selaimessa",
+  "x-where": "ui/browser_hidden_row.dart:57",
+  "placeholders": {
+   "p0": {
+    "type": "String"
+   }
+  }
+ },
+ "s493a65113f": "Always show",
+ "@s493a65113f": {
+  "description": "fi: Näytä aina",
+  "x-where": "ui/browser_hidden_row.dart:145"
+ },
+ "sf328dcc536": "Browser view",
+ "@sf328dcc536": {
+  "description": "fi: Selainnäkymä",
+  "x-where": "ui/browser_hidden_row.dart:178"
+ },
+ "se24b0e7f60": "Applies only in this browser. On other devices the tile stays in place.",
+ "@se24b0e7f60": {
+  "description": "fi: Koskee vain tätä selainta. Muissa laitteissa ruutu pysyy paikallaan.",
+  "x-where": "ui/browser_hidden_row.dart:183"
+ },
+ "sbfd72f3328": "Hide automatically",
+ "@sbfd72f3328": {
+  "description": "fi: Piilota automaattisesti",
+  "x-where": "ui/browser_hidden_row.dart:197"
+ },
  "sfe54134176": "All devices",
  "@sfe54134176": {
   "description": "fi: Kaikki laitteet",
@@ -5571,27 +5631,27 @@
  "sa0bd9ad5b1": "Example camera – add your own with Add device",
  "@sa0bd9ad5b1": {
   "description": "fi: Esimerkkikamera – lisää oma kamerasi Lisää laite -painikkeella",
-  "x-where": "ui/camera_view.dart:62"
+  "x-where": "ui/camera_view.dart:88"
  },
  "s4529c1010a": "Choose a camera connection",
  "@s4529c1010a": {
   "description": "fi: Valitse kamerayhteys",
-  "x-where": "ui/camera_view.dart:72"
+  "x-where": "ui/camera_view.dart:99"
  },
  "s0ab7f9db7c": "No video address is stored for this camera. Remove it and add it again, or type the RTSP address by hand.",
  "@s0ab7f9db7c": {
   "description": "fi: Kameralle ei ole tallennettu videon osoitetta. Poista kamera ja lisää se uudelleen, tai kirjoita RTSP-osoite käsin.",
-  "x-where": "ui/camera_view.dart:98"
+  "x-where": "ui/camera_view.dart:130"
  },
  "sda6d2b0dbe": "A still picture could not be made from the video stream. The home bridge computer needs ffmpeg, or use the Molaplan app as the home bridge.",
  "@sda6d2b0dbe": {
   "description": "fi: Still-kuvaa ei saatu tehtyä videovirrasta. Kotisillan tietokoneella tarvitaan ffmpeg tai Molaplan-sovellus kotisiltana.",
-  "x-where": "ui/camera_view.dart:162"
+  "x-where": "ui/camera_view.dart:197"
  },
  "sb8cbbd3d99": "The camera ({p0}) does not answer from this device. Check that this device is on the same network as the camera and that RTSP is on in the camera.",
  "@sb8cbbd3d99": {
   "description": "fi: Kamera ({p0}) ei vastaa tältä laitteelta. Tarkista, että laite on samassa verkossa kuin kamera ja että kameran RTSP on p",
-  "x-where": "ui/camera_view.dart:185",
+  "x-where": "ui/camera_view.dart:223",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -5601,17 +5661,17 @@
  "s4a6a89a47e": "The camera refused the username or password (RTSP 401). Check them in the camera''s ONVIF/RTSP settings.",
  "@s4a6a89a47e": {
   "description": "fi: Kamera hylkäsi tunnuksen tai salasanan (RTSP 401). Tarkista ne kameran ONVIF/RTSP-asetuksista.",
-  "x-where": "ui/camera_view.dart:191"
+  "x-where": "ui/camera_view.dart:229"
  },
  "s5f36d79393": "The camera does not know this video address (RTSP 404). Add the camera again or type the RTSP address by hand.",
  "@s5f36d79393": {
   "description": "fi: Kamera ei tunne videon osoitetta (RTSP 404). Lisää kamera uudelleen tai kirjoita RTSP-osoite käsin.",
-  "x-where": "ui/camera_view.dart:197"
+  "x-where": "ui/camera_view.dart:235"
  },
  "s4c88b1dfe4": "The camera answered, but the video could not be played{p0}. Try again; if it keeps failing, see the technical details.",
  "@s4c88b1dfe4": {
   "description": "fi: Kamera vastasi, mutta kuvaa ei saatu toistettua{p0}. Yritä uudelleen; jos vika jatkuu, katso tekniset tiedot.",
-  "x-where": "ui/camera_view.dart:204",
+  "x-where": "ui/camera_view.dart:242",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -5621,7 +5681,7 @@
  "sedafd495a6": "The camera answered RTSP {p0} and no picture came. Check the username and password and that RTSP is on.",
  "@sedafd495a6": {
   "description": "fi: Kamera vastasi RTSP {p0}, eikä kuvaa saatu. Tarkista tunnus ja salasana ja että RTSP on päällä.",
-  "x-where": "ui/camera_view.dart:209",
+  "x-where": "ui/camera_view.dart:247",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -5631,17 +5691,17 @@
  "sc95fb5440b": "Stream ended",
  "@sc95fb5440b": {
   "description": "fi: Virta päättyi",
-  "x-where": "ui/camera_view.dart:260"
+  "x-where": "ui/camera_view.dart:309"
  },
  "s200542b930": "Try again",
  "@s200542b930": {
   "description": "fi: Yritä uudelleen",
-  "x-where": "ui/camera_view.dart:381"
+  "x-where": "ui/camera_view.dart:442"
  },
  "s359970020b": "PTZ command failed ({p0}). Check that you are on the home network.",
  "@s359970020b": {
   "description": "fi: PTZ-ohjaus ei onnistunut ({p0}). Tarkista, että olet kotiverkossa.",
-  "x-where": "ui/camera_view.dart:431",
+  "x-where": "ui/camera_view.dart:499",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -5651,607 +5711,607 @@
  "s1cf33c1fbc": "Value",
  "@s1cf33c1fbc": {
   "description": "fi: Tila / arvo",
-  "x-where": "ui/tile_editor.dart:27"
+  "x-where": "ui/tile_editor.dart:28"
  },
  "s86029171be": "Toggle",
  "@s86029171be": {
   "description": "fi: Kytkin",
-  "x-where": "ui/tile_editor.dart:28"
+  "x-where": "ui/tile_editor.dart:29"
  },
  "s4ddce888df": "Button / shortcut",
  "@s4ddce888df": {
   "description": "fi: Painike / pikakomento",
-  "x-where": "ui/tile_editor.dart:29"
+  "x-where": "ui/tile_editor.dart:30"
  },
  "s357fc9c3fe": "Slider / setpoint",
  "@s357fc9c3fe": {
   "description": "fi: Liukusäädin / asetusarvo",
-  "x-where": "ui/tile_editor.dart:30"
+  "x-where": "ui/tile_editor.dart:31"
  },
  "seeb6c38c8e": "Camera",
  "@seeb6c38c8e": {
   "description": "fi: Kamera",
-  "x-where": "ui/tile_editor.dart:35"
+  "x-where": "ui/tile_editor.dart:36"
  },
  "s14da6beba5": "Shows a reading, e.g. temperature.",
  "@s14da6beba5": {
   "description": "fi: Näyttää lukeman, esim. lämpötilan tai tehon.",
-  "x-where": "ui/tile_editor.dart:40"
+  "x-where": "ui/tile_editor.dart:41"
  },
  "se4b1d203df": "On/off, e.g. a light or alarm.",
  "@se4b1d203df": {
   "description": "fi: Päälle/pois, esim. valo tai hälytys.",
-  "x-where": "ui/tile_editor.dart:45"
+  "x-where": "ui/tile_editor.dart:46"
  },
  "sc2197ab417": "One tap does one or many things.",
  "@sc2197ab417": {
   "description": "fi: Yksi painallus tekee yhden tai monta asiaa.",
-  "x-where": "ui/tile_editor.dart:50"
+  "x-where": "ui/tile_editor.dart:51"
  },
  "sd611704caf": "Adjust a value, e.g. temperature.",
  "@sd611704caf": {
   "description": "fi: Säädä arvoa, esim. lämpötilaa tai puhallinta.",
-  "x-where": "ui/tile_editor.dart:55"
+  "x-where": "ui/tile_editor.dart:56"
  },
  "sacfc0c0b41": "Shows a camera image.",
  "@sacfc0c0b41": {
   "description": "fi: Näyttää kameran kuvan.",
-  "x-where": "ui/tile_editor.dart:60"
+  "x-where": "ui/tile_editor.dart:61"
  },
  "s7172c54c2c": "Keeps the temperature at the set value.",
  "@s7172c54c2c": {
   "description": "fi: Pitää lämpötilan halutussa arvossa.",
-  "x-where": "ui/tile_editor.dart:65"
+  "x-where": "ui/tile_editor.dart:66"
  },
  "s4b9bb0710d": "Fix the colour range limits before saving.",
  "@s4b9bb0710d": {
   "description": "fi: Korjaa värialueiden rajat ennen tallennusta.",
-  "x-where": "ui/tile_editor.dart:142"
+  "x-where": "ui/tile_editor.dart:144"
  },
  "s76e7a995de": "Value read",
  "@s76e7a995de": {
   "description": "fi: Luettu arvo",
-  "x-where": "ui/tile_editor.dart:188"
+  "x-where": "ui/tile_editor.dart:194"
  },
  "sdced476aeb": "Script",
  "@sdced476aeb": {
   "description": "fi: Skripti",
-  "x-where": "ui/tile_editor.dart:273"
+  "x-where": "ui/tile_editor.dart:279"
  },
  "sdaa7d4de12": "Scene",
  "@sdaa7d4de12": {
   "description": "fi: Tilanne",
-  "x-where": "ui/tile_editor.dart:274"
+  "x-where": "ui/tile_editor.dart:280"
  },
  "sae3489a6c9": "Control a device",
  "@sae3489a6c9": {
   "description": "fi: Ohjaa laitetta",
-  "x-where": "ui/tile_editor.dart:278"
+  "x-where": "ui/tile_editor.dart:284"
  },
  "s4e1f25d257": "Own command",
  "@s4e1f25d257": {
   "description": "fi: Oma komento",
-  "x-where": "ui/tile_editor.dart:281"
+  "x-where": "ui/tile_editor.dart:287"
  },
  "sea15760b77": "What does the button do?",
  "@sea15760b77": {
   "description": "fi: Mitä nappi tekee?",
-  "x-where": "ui/tile_editor.dart:292"
+  "x-where": "ui/tile_editor.dart:298"
  },
  "s630ee9894e": "Pick a script, a scene or a device. The button works in the app and, when you are away, through remote access.",
  "@s630ee9894e": {
   "description": "fi: Valitse skripti, tilanne tai laite. Nappi toimii sovelluksessa ja kodin ulkopuolelta etäkäytön kautta.",
-  "x-where": "ui/tile_editor.dart:293"
+  "x-where": "ui/tile_editor.dart:299"
  },
  "s1173c2dbf9": "No scripts yet. Make one under Automations.",
  "@s1173c2dbf9": {
   "description": "fi: Skriptejä ei vielä ole. Tee skripti kohdassa Automaatiot.",
-  "x-where": "ui/tile_editor.dart:329"
+  "x-where": "ui/tile_editor.dart:335"
  },
  "s7b42ecba51": "No scenes yet. Save one under Automations.",
  "@s7b42ecba51": {
   "description": "fi: Tilanteita ei vielä ole. Tallenna tilanne kohdassa Automaatiot.",
-  "x-where": "ui/tile_editor.dart:357"
+  "x-where": "ui/tile_editor.dart:363"
  },
  "s589d73245e": "No switchable devices yet. Add a switch first.",
  "@s589d73245e": {
   "description": "fi: Ohjattavia laitteita ei vielä ole. Lisää ensin kytkin.",
-  "x-where": "ui/tile_editor.dart:385"
+  "x-where": "ui/tile_editor.dart:391"
  },
  "s750f16460c": "Toggle",
  "@s750f16460c": {
   "description": "fi: Vaihda",
-  "x-where": "ui/tile_editor.dart:425"
+  "x-where": "ui/tile_editor.dart:431"
  },
  "sc5edd6d3d1": "New tile",
  "@sc5edd6d3d1": {
   "description": "fi: Uusi ruutu",
-  "x-where": "ui/tile_editor.dart:476"
+  "x-where": "ui/tile_editor.dart:486"
  },
  "sa684fd0716": "Edit tile",
  "@sa684fd0716": {
   "description": "fi: Muokkaa ruutua",
-  "x-where": "ui/tile_editor.dart:477"
+  "x-where": "ui/tile_editor.dart:487"
  },
  "sa7b6366b62": "Measurement: display, trend, colour limits, alarms, decimals and scaling.",
  "@sa7b6366b62": {
   "description": "fi: Mittaus: näyttötapa, trendi, värirajat, hälytykset, desimaalit ja skaalaus.",
-  "x-where": "ui/tile_editor.dart:521"
+  "x-where": "ui/tile_editor.dart:531"
  },
  "sae41bebdab": "Control: confirmation, lock / PIN, min / max / step, invert and momentary.",
  "@sae41bebdab": {
   "description": "fi: Ohjaus: vahvistus, lukitus / PIN, min / max / askel, käänteinen ja hetkellinen.",
-  "x-where": "ui/tile_editor.dart:526"
+  "x-where": "ui/tile_editor.dart:536"
  },
  "s8a8673aafe": "Title",
  "@s8a8673aafe": {
   "description": "fi: Otsikko",
-  "x-where": "ui/tile_editor.dart:543"
+  "x-where": "ui/tile_editor.dart:553"
  },
  "sf83143ae23": "Room temperature sensor",
  "@sf83143ae23": {
   "description": "fi: Huoneen lämpöanturi",
-  "x-where": "ui/tile_editor.dart:555"
+  "x-where": "ui/tile_editor.dart:570"
  },
  "s19485c79b2": "None",
  "@s19485c79b2": {
   "description": "fi: Ei valittu",
-  "x-where": "ui/tile_editor.dart:563"
+  "x-where": "ui/tile_editor.dart:578"
  },
  "s0483226428": "Choose a temperature sensor",
  "@s0483226428": {
   "description": "fi: Valitse lämpöanturi",
-  "x-where": "ui/tile_editor.dart:577"
+  "x-where": "ui/tile_editor.dart:592"
  },
  "sfeab9bd26f": "Width",
  "@sfeab9bd26f": {
   "description": "fi: Leveys",
-  "x-where": "ui/tile_editor.dart:631"
+  "x-where": "ui/tile_editor.dart:646"
  },
  "s58be670598": "Height",
  "@s58be670598": {
   "description": "fi: Korkeus",
-  "x-where": "ui/tile_editor.dart:638"
+  "x-where": "ui/tile_editor.dart:653"
  },
  "sd7314e8237": "Display",
  "@sd7314e8237": {
   "description": "fi: Näyttötapa",
-  "x-where": "ui/tile_editor.dart:652"
+  "x-where": "ui/tile_editor.dart:667"
  },
  "s1c72b8c56a": "Trend length",
  "@s1c72b8c56a": {
   "description": "fi: Trendin pituus",
-  "x-where": "ui/tile_editor.dart:682"
+  "x-where": "ui/tile_editor.dart:697"
  },
  "s6bb0c0c7e3": "Gauge minimum",
  "@s6bb0c0c7e3": {
   "description": "fi: Mittarin minimi",
-  "x-where": "ui/tile_editor.dart:718"
+  "x-where": "ui/tile_editor.dart:733"
  },
  "sa444aab286": "Automatic",
  "@sa444aab286": {
   "description": "fi: Automaattinen",
-  "x-where": "ui/tile_editor.dart:723"
+  "x-where": "ui/tile_editor.dart:738"
  },
  "sbf29caff87": "Gauge maximum",
  "@sbf29caff87": {
   "description": "fi: Mittarin maksimi",
-  "x-where": "ui/tile_editor.dart:742"
+  "x-where": "ui/tile_editor.dart:757"
  },
  "sea30815e6a": "Technical tile settings appear when you turn on \"Advanced\" in Settings.",
  "@sea30815e6a": {
   "description": "fi: Ruudun tekniset asetukset (mistä tila luetaan, mitä komento lähettää) näkyvät, kun otat Asetuksista käyttöön \"Edistyneet",
-  "x-where": "ui/tile_editor.dart:761"
+  "x-where": "ui/tile_editor.dart:776"
  },
  "s382afc832f": "State source",
  "@s382afc832f": {
   "description": "fi: Tilan luku",
-  "x-where": "ui/tile_editor.dart:774"
+  "x-where": "ui/tile_editor.dart:789"
  },
  "s581aee3e96": "Optional: where the current state is read from.",
  "@s581aee3e96": {
   "description": "fi: Valinnainen: mistä nykyinen tila luetaan.",
-  "x-where": "ui/tile_editor.dart:776"
+  "x-where": "ui/tile_editor.dart:791"
  },
  "s3adc51170c": "Raw combination (Advanced)",
  "@s3adc51170c": {
   "description": "fi: Raaka yhdistelmä (Edistyneet)",
-  "x-where": "ui/tile_editor.dart:811"
+  "x-where": "ui/tile_editor.dart:826"
  },
  "s5f542e17e2": "⚠ Every tile type is allowed on every connection. A wrong combination can show misleading data, e.g. \"On\" for the electricity price.",
  "@s5f542e17e2": {
   "description": "fi: ⚠ Kaikki ruututyypit sallitaan kaikille yhteyksille. Väärä yhdistelmä voi näyttää harhaanjohtavaa tietoa, esim. \"Päällä\"",
-  "x-where": "ui/tile_editor.dart:819"
+  "x-where": "ui/tile_editor.dart:834"
  },
  "scb988b1a4a": "Off: only the tile types the connection supports.",
  "@scb988b1a4a": {
   "description": "fi: Pois: vain yhteyden tukemat ruututyypit.",
-  "x-where": "ui/tile_editor.dart:824"
+  "x-where": "ui/tile_editor.dart:839"
  },
  "se6b18b17d9": "Poll interval (s, 0 = none)",
  "@se6b18b17d9": {
   "description": "fi: Päivitysväli (s, 0 = ei kyselyä)",
-  "x-where": "ui/tile_editor.dart:833"
+  "x-where": "ui/tile_editor.dart:848"
  },
  "s01f2b1ee0c": "MQTT, Home Assistant and WebSocket update live without polling.",
  "@s01f2b1ee0c": {
   "description": "fi: MQTT, Home Assistant ja WebSocket päivittyvät reaaliajassa ilman kyselyä.",
-  "x-where": "ui/tile_editor.dart:840"
+  "x-where": "ui/tile_editor.dart:855"
  },
  "s937448ecf5": "Test read",
  "@s937448ecf5": {
   "description": "fi: Testaa luku",
-  "x-where": "ui/tile_editor.dart:853"
+  "x-where": "ui/tile_editor.dart:868"
  },
  "s5cbdea7f7e": "Display",
  "@s5cbdea7f7e": {
   "description": "fi: Näyttö",
-  "x-where": "ui/tile_editor.dart:875"
+  "x-where": "ui/tile_editor.dart:890"
  },
  "se6af4b33df": "Unit",
  "@se6af4b33df": {
   "description": "fi: Yksikkö",
-  "x-where": "ui/tile_editor.dart:883"
+  "x-where": "ui/tile_editor.dart:898"
  },
  "sd5498697da": "Decimals",
  "@sd5498697da": {
   "description": "fi: Desimaalit",
-  "x-where": "ui/tile_editor.dart:892"
+  "x-where": "ui/tile_editor.dart:907"
  },
  "s4f7007db78": "Value names",
  "@s4f7007db78": {
   "description": "fi: Arvojen nimet",
-  "x-where": "ui/tile_editor.dart:904"
+  "x-where": "ui/tile_editor.dart:919"
  },
  "s4aae179c52": "0=Off;1=Home;2=Away",
  "@s4aae179c52": {
   "description": "fi: 0=Pois;1=Kotona;2=Poissa",
-  "x-where": "ui/tile_editor.dart:905"
+  "x-where": "ui/tile_editor.dart:920"
  },
  "s0c12fda7ca": "Toggle commands",
  "@s0c12fda7ca": {
   "description": "fi: Kytkimen komennot",
-  "x-where": "ui/tile_editor.dart:919"
+  "x-where": "ui/tile_editor.dart:934"
  },
  "s3a9d9e16ef": "\"On\" values (comma separated, empty = auto)",
  "@s3a9d9e16ef": {
   "description": "fi: \"Päällä\"-arvot (pilkuin, tyhjä = automaattinen)",
-  "x-where": "ui/tile_editor.dart:925"
+  "x-where": "ui/tile_editor.dart:940"
  },
  "s1509c5a2a6": "ON command",
  "@s1509c5a2a6": {
   "description": "fi: PÄÄLLE-komento",
-  "x-where": "ui/tile_editor.dart:935"
+  "x-where": "ui/tile_editor.dart:950"
  },
  "s2a1e131afd": "OFF command",
  "@s2a1e131afd": {
   "description": "fi: POIS-komento",
-  "x-where": "ui/tile_editor.dart:941"
+  "x-where": "ui/tile_editor.dart:956"
  },
  "s0201de52c0": "'{{value}} in the command is replaced by the slider value.'",
  "@s0201de52c0": {
   "description": "fi: Komennossa {{value}} korvataan säätimen arvolla.",
-  "x-where": "ui/tile_editor.dart:951"
+  "x-where": "ui/tile_editor.dart:966"
  },
  "sc30c9a7e51": "Step",
  "@sc30c9a7e51": {
   "description": "fi: Askel",
-  "x-where": "ui/tile_editor.dart:979"
+  "x-where": "ui/tile_editor.dart:994"
  },
  "s4d6451a63a": "Set command",
  "@s4d6451a63a": {
   "description": "fi: Asetuskomento",
-  "x-where": "ui/tile_editor.dart:989"
+  "x-where": "ui/tile_editor.dart:1004"
  },
  "sa4082e1a79": "Commands (run in order)",
  "@sa4082e1a79": {
   "description": "fi: Komennot (suoritetaan järjestyksessä)",
-  "x-where": "ui/tile_editor.dart:998"
+  "x-where": "ui/tile_editor.dart:1013"
  },
  "s467488e572": "A shortcut can control several devices in sequence, with delays.",
  "@s467488e572": {
   "description": "fi: Pikakomento voi ohjata useaa laitetta peräkkäin, viiveillä.",
-  "x-where": "ui/tile_editor.dart:1003"
+  "x-where": "ui/tile_editor.dart:1018"
  },
  "sad43973fb3": "Add command",
  "@sad43973fb3": {
   "description": "fi: Lisää komento",
-  "x-where": "ui/tile_editor.dart:1034"
+  "x-where": "ui/tile_editor.dart:1049"
  },
  "sdaef43c622": "Ask for confirmation",
  "@sdaef43c622": {
   "description": "fi: Kysy vahvistus ennen komentoa",
-  "x-where": "ui/tile_editor.dart:1041"
+  "x-where": "ui/tile_editor.dart:1056"
  },
  "s8daad6220b": "Power use",
  "@s8daad6220b": {
   "description": "fi: Kulutus",
-  "x-where": "ui/tile_editor.dart:1078"
+  "x-where": "ui/tile_editor.dart:1096"
  },
  "s32f3e14297": "Used by the energy flow and energy tracking when the device has no power reading of its own.",
  "@s32f3e14297": {
   "description": "fi: Energiavirta- ja energiaseuranta käyttävät tätä, kun laitteella ei ole omaa tehomittausta.",
-  "x-where": "ui/tile_editor.dart:1079"
+  "x-where": "ui/tile_editor.dart:1097"
  },
  "sdb421f416a": "Automatic (constant)",
  "@sdb421f416a": {
   "description": "fi: Automaattinen (vakio)",
-  "x-where": "ui/tile_editor.dart:1092"
+  "x-where": "ui/tile_editor.dart:1110"
  },
  "s786bfe3da8": "Automatic (variable)",
  "@s786bfe3da8": {
   "description": "fi: Automaattinen (muuttuva)",
-  "x-where": "ui/tile_editor.dart:1093"
+  "x-where": "ui/tile_editor.dart:1111"
  },
  "sff135454cc": "Constant power",
  "@sff135454cc": {
   "description": "fi: Vakioteho",
-  "x-where": "ui/tile_editor.dart:1096"
+  "x-where": "ui/tile_editor.dart:1120"
  },
  "s3a93ea412d": "Variable power",
  "@s3a93ea412d": {
   "description": "fi: Muuttuva teho",
-  "x-where": "ui/tile_editor.dart:1097"
+  "x-where": "ui/tile_editor.dart:1124"
  },
  "s7e84a42a54": "Nominal power (W)",
  "@s7e84a42a54": {
   "description": "fi: Nimellisteho (W)",
-  "x-where": "ui/tile_editor.dart:1110"
+  "x-where": "ui/tile_editor.dart:1138"
  },
  "s2819df9628": "e.g. 2000",
  "@s2819df9628": {
   "description": "fi: esim. 2000",
-  "x-where": "ui/tile_editor.dart:1111"
+  "x-where": "ui/tile_editor.dart:1139"
  },
  "s4eda7736bd": "While the device is on, its use is estimated as this power (e.g. a heater, sauna, pump or lights). The estimate shows with ≈ and is logged as an estimate.",
  "@s4eda7736bd": {
   "description": "fi: Kun laite on päällä, sen kulutukseksi arvioidaan tämä teho (esim. lämmitin, sauna, pumppu, valot). Arvio näkyy ≈-merkill",
-  "x-where": "ui/tile_editor.dart:1121"
+  "x-where": "ui/tile_editor.dart:1149"
  },
  "s83db0a9f12": "A variable-power device (e.g. a heat pump, inverter or charger) is not estimated by hand because its power varies. Use the device''s own power reading or a separate meter.",
  "@s83db0a9f12": {
   "description": "fi: Muuttuvatehoisen laitteen (esim. lämpöpumppu, invertteri, latausasema) kulutusta ei arvioida käsin, koska teho vaihtelee",
-  "x-where": "ui/tile_editor.dart:1131"
+  "x-where": "ui/tile_editor.dart:1159"
  },
  "s5210a5ad23": "Connection",
  "@s5210a5ad23": {
   "description": "fi: Yhteys",
-  "x-where": "ui/tile_editor.dart:1232"
+  "x-where": "ui/tile_editor.dart:1260"
  },
  "s776d8b06bf": "New connection",
  "@s776d8b06bf": {
   "description": "fi: Uusi yhteys",
-  "x-where": "ui/tile_editor.dart:1253"
+  "x-where": "ui/tile_editor.dart:1281"
  },
  "s96705fc3df": "Command sent",
  "@s96705fc3df": {
   "description": "fi: Komento lähetetty",
-  "x-where": "ui/tile_editor.dart:1298"
+  "x-where": "ui/tile_editor.dart:1326"
  },
  "sb41db1e809": "Try",
  "@sb41db1e809": {
   "description": "fi: Kokeile",
-  "x-where": "ui/tile_editor.dart:1312"
+  "x-where": "ui/tile_editor.dart:1340"
  },
  "s77d2309fd5": "Delay before (ms)",
  "@s77d2309fd5": {
   "description": "fi: Viive ennen (ms)",
-  "x-where": "ui/tile_editor.dart:1343"
+  "x-where": "ui/tile_editor.dart:1371"
  },
  "sc18ac46162": "Bars",
  "@sc18ac46162": {
   "description": "fi: Pylväät",
-  "x-where": "ui/tile_editor.dart:1394"
+  "x-where": "ui/tile_editor.dart:1422"
  },
  "sc0e069225b": "Trend + Now line",
  "@sc0e069225b": {
   "description": "fi: Trendi + Nyt-viiva",
-  "x-where": "ui/tile_editor.dart:1395"
+  "x-where": "ui/tile_editor.dart:1423"
  },
  "s07647fa07d": "Range",
  "@s07647fa07d": {
   "description": "fi: Aikaväli",
-  "x-where": "ui/tile_editor.dart:1408"
+  "x-where": "ui/tile_editor.dart:1436"
  },
  "sbf6aaf9bb8": "Resolution",
  "@sbf6aaf9bb8": {
   "description": "fi: Tarkkuus",
-  "x-where": "ui/tile_editor.dart:1417"
+  "x-where": "ui/tile_editor.dart:1445"
  },
  "sd032c3efec": "Auto",
  "@sd032c3efec": {
   "description": "fi: Auto",
-  "x-where": "ui/tile_editor.dart:1422"
+  "x-where": "ui/tile_editor.dart:1450"
  },
  "sa6dc2ff399": "15 min",
  "@sa6dc2ff399": {
   "description": "fi: 15 min",
-  "x-where": "ui/tile_editor.dart:1423"
+  "x-where": "ui/tile_editor.dart:1451"
  },
  "s96093c8f41": "1 h",
  "@s96093c8f41": {
   "description": "fi: 1 h",
-  "x-where": "ui/tile_editor.dart:1424"
+  "x-where": "ui/tile_editor.dart:1452"
  },
  "s0a3e006fda": "Colouring",
  "@s0a3e006fda": {
   "description": "fi: Väritys",
-  "x-where": "ui/tile_editor.dart:1430"
+  "x-where": "ui/tile_editor.dart:1458"
  },
  "sb6bfec83a2": "Relative (day min–max)",
  "@sb6bfec83a2": {
   "description": "fi: Suhteellinen (päivän min–max)",
-  "x-where": "ui/tile_editor.dart:1438"
+  "x-where": "ui/tile_editor.dart:1466"
  },
  "sd13fe2ac25": "Absolute thresholds",
  "@sd13fe2ac25": {
   "description": "fi: Kiinteät rajat",
-  "x-where": "ui/tile_editor.dart:1444"
+  "x-where": "ui/tile_editor.dart:1472"
  },
  "s717db0e103": "Fixed colour",
  "@s717db0e103": {
   "description": "fi: Yksi väri",
-  "x-where": "ui/tile_editor.dart:1445"
+  "x-where": "ui/tile_editor.dart:1473"
  },
  "sdc398885dc": "Advanced settings",
  "@sdc398885dc": {
   "description": "fi: Lisäasetukset",
-  "x-where": "ui/tile_editor.dart:1472"
+  "x-where": "ui/tile_editor.dart:1500"
  },
  "s8feeef3110": "Show tomorrow when available",
  "@s8feeef3110": {
   "description": "fi: Näytä huomenna kun saatavilla",
-  "x-where": "ui/tile_editor.dart:1480"
+  "x-where": "ui/tile_editor.dart:1508"
  },
  "sad692e6ae5": "Tomorrow''s prices appear by themselves once published (around 14:00).",
  "@sad692e6ae5": {
   "description": "fi: Huomisen hinnat tulevat näkyviin itsestään, kun ne julkaistaan (n. klo 14).",
-  "x-where": "ui/tile_editor.dart:1487"
+  "x-where": "ui/tile_editor.dart:1515"
  },
  "s3221d2c8b7": "Bar width",
  "@s3221d2c8b7": {
   "description": "fi: Pylvään leveys",
-  "x-where": "ui/tile_editor.dart:1497"
+  "x-where": "ui/tile_editor.dart:1525"
  },
  "s2c890951b7": "Thin",
  "@s2c890951b7": {
   "description": "fi: Ohut",
-  "x-where": "ui/tile_editor.dart:1505"
+  "x-where": "ui/tile_editor.dart:1533"
  },
  "s0223c26f61": "Medium",
  "@s0223c26f61": {
   "description": "fi: Keskitaso",
-  "x-where": "ui/tile_editor.dart:1506"
+  "x-where": "ui/tile_editor.dart:1534"
  },
  "se6264a30f1": "Space between bars",
  "@se6264a30f1": {
   "description": "fi: Pylväiden väli",
-  "x-where": "ui/tile_editor.dart:1515"
+  "x-where": "ui/tile_editor.dart:1543"
  },
  "s93a0675c8f": "None",
  "@s93a0675c8f": {
   "description": "fi: Ei väliä",
-  "x-where": "ui/tile_editor.dart:1522"
+  "x-where": "ui/tile_editor.dart:1550"
  },
  "s124beecddd": "Thin gap",
  "@s124beecddd": {
   "description": "fi: Ohut väli",
-  "x-where": "ui/tile_editor.dart:1523"
+  "x-where": "ui/tile_editor.dart:1551"
  },
  "saca843874b": "Between hours",
  "@saca843874b": {
   "description": "fi: Tuntien välissä",
-  "x-where": "ui/tile_editor.dart:1524"
+  "x-where": "ui/tile_editor.dart:1552"
  },
  "s4b97930585": "Min and max markers",
  "@s4b97930585": {
   "description": "fi: Min- ja max-merkinnät",
-  "x-where": "ui/tile_editor.dart:1546"
+  "x-where": "ui/tile_editor.dart:1574"
  },
  "seef35b192d": "Now line",
  "@seef35b192d": {
   "description": "fi: Nyt-viiva",
-  "x-where": "ui/tile_editor.dart:1554"
+  "x-where": "ui/tile_editor.dart:1582"
  },
  "s8c6a205222": "Stats row (now, min, avg, max)",
  "@s8c6a205222": {
   "description": "fi: Tilastorivi (nyt, min, ka, max)",
-  "x-where": "ui/tile_editor.dart:1562"
+  "x-where": "ui/tile_editor.dart:1590"
  },
  "sbeeaa6cf12": "Automatic y-axis",
  "@sbeeaa6cf12": {
   "description": "fi: Y-asteikko automaattinen",
-  "x-where": "ui/tile_editor.dart:1575"
+  "x-where": "ui/tile_editor.dart:1603"
  },
  "s29e7f8092d": "Y-axis maximum (c/kWh)",
  "@s29e7f8092d": {
   "description": "fi: Y-asteikon maksimi (c/kWh)",
-  "x-where": "ui/tile_editor.dart:1580"
+  "x-where": "ui/tile_editor.dart:1608"
  },
  "sd84d7d09c2": "Include VAT",
  "@sd84d7d09c2": {
   "description": "fi: Sisällytä ALV",
-  "x-where": "ui/tile_editor.dart:1596"
+  "x-where": "ui/tile_editor.dart:1624"
  },
  "s6817cff974": "Include margin",
  "@s6817cff974": {
   "description": "fi: Sisällytä marginaali",
-  "x-where": "ui/tile_editor.dart:1605"
+  "x-where": "ui/tile_editor.dart:1633"
  },
  "sd85f1b089e": "Line / fixed colour",
  "@sd85f1b089e": {
   "description": "fi: Viivan / kiinteä väri",
-  "x-where": "ui/tile_editor.dart:1619"
+  "x-where": "ui/tile_editor.dart:1647"
  },
  "s147f0af2a4": "Theme colour",
  "@s147f0af2a4": {
   "description": "fi: Teeman väri",
-  "x-where": "ui/tile_editor.dart:1630"
+  "x-where": "ui/tile_editor.dart:1658"
  },
  "sdf5278fadb": "Colour ranges (c/kWh)",
  "@sdf5278fadb": {
   "description": "fi: Värialueet (c/kWh)",
-  "x-where": "ui/tile_editor.dart:1674"
+  "x-where": "ui/tile_editor.dart:1702"
  },
  "s0d88d3856f": "No own colour (relative level)",
  "@s0d88d3856f": {
   "description": "fi: Ei omaa väriä (suhteellinen taso)",
-  "x-where": "ui/tile_editor.dart:1675"
+  "x-where": "ui/tile_editor.dart:1703"
  },
  "sb06bee9921": "Show",
  "@sb06bee9921": {
   "description": "fi: Näytä",
-  "x-where": "ui/tile_editor.dart:1715"
+  "x-where": "ui/tile_editor.dart:1743"
  },
  "s2594346d86": "Guide lines",
  "@s2594346d86": {
   "description": "fi: Apuviivat",
-  "x-where": "ui/tile_editor.dart:1719"
+  "x-where": "ui/tile_editor.dart:1747"
  },
  "sfdffaffea4": "None",
  "@sfdffaffea4": {
   "description": "fi: Ei",
-  "x-where": "ui/tile_editor.dart:1721"
+  "x-where": "ui/tile_editor.dart:1749"
  },
  "sd6c2de0256": "Horizontal",
  "@sd6c2de0256": {
   "description": "fi: Vaaka",
-  "x-where": "ui/tile_editor.dart:1722"
+  "x-where": "ui/tile_editor.dart:1750"
  },
  "sb8ef66c33e": "Grid",
  "@sb8ef66c33e": {
   "description": "fi: Ruudukko",
-  "x-where": "ui/tile_editor.dart:1723"
+  "x-where": "ui/tile_editor.dart:1751"
  },
  "s0bee1b8ed3": "Value scale",
  "@s0bee1b8ed3": {
   "description": "fi: Arvoasteikko",
-  "x-where": "ui/tile_editor.dart:1727"
+  "x-where": "ui/tile_editor.dart:1755"
  },
  "sd4e9b57931": "Time axis",
  "@sd4e9b57931": {
   "description": "fi: Aika-akseli",
-  "x-where": "ui/tile_editor.dart:1734"
+  "x-where": "ui/tile_editor.dart:1762"
  },
  "s7abdb12fef": "Data point markers",
  "@s7abdb12fef": {
   "description": "fi: Datapisteet viivalla",
-  "x-where": "ui/tile_editor.dart:1742"
+  "x-where": "ui/tile_editor.dart:1770"
  },
  "s29135ed75a": "Auto: axes and guide lines show when the tile is at least 2×2.",
  "@s29135ed75a": {
   "description": "fi: Auto: akselit ja apuviivat näkyvät, kun ruutu on vähintään 2×2.",
-  "x-where": "ui/tile_editor.dart:1747"
+  "x-where": "ui/tile_editor.dart:1775"
  },
  "s638c648b40": "Stream",
  "@s638c648b40": {
   "description": "fi: Kuvavirta",
-  "x-where": "ui/tile_editor.dart:1767"
+  "x-where": "ui/tile_editor.dart:1795"
  },
  "s32ef3895b8": "Lens / channel {p0}",
  "@s32ef3895b8": {
   "description": "fi: Linssi / kanava {p0}",
-  "x-where": "ui/tile_editor.dart:1777",
+  "x-where": "ui/tile_editor.dart:1805",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -6261,32 +6321,32 @@
  "s939603242a": "Colours by value",
  "@s939603242a": {
   "description": "fi: Värit arvon mukaan",
-  "x-where": "ui/tile_editor.dart:1809"
+  "x-where": "ui/tile_editor.dart:1837"
  },
  "s45f927bc62": "Custom",
  "@s45f927bc62": {
   "description": "fi: Omat rajat",
-  "x-where": "ui/tile_editor.dart:1845"
+  "x-where": "ui/tile_editor.dart:1873"
  },
  "s319dab47d8": "Smooth",
  "@s319dab47d8": {
   "description": "fi: Liukuva",
-  "x-where": "ui/tile_editor.dart:1858"
+  "x-where": "ui/tile_editor.dart:1886"
  },
  "s613fbec20e": "Steps",
  "@s613fbec20e": {
   "description": "fi: Jyrkkä",
-  "x-where": "ui/tile_editor.dart:1862"
+  "x-where": "ui/tile_editor.dart:1890"
  },
  "s25d9db075e": "Own limits and colours: Settings → Advanced.",
  "@s25d9db075e": {
   "description": "fi: Omat rajat ja värit: Asetukset → Edistyneet.",
-  "x-where": "ui/tile_editor.dart:1872"
+  "x-where": "ui/tile_editor.dart:1900"
  },
  "s90b5b7e33f": "Colour ranges",
  "@s90b5b7e33f": {
   "description": "fi: Värialueet",
-  "x-where": "ui/tile_editor.dart:1902"
+  "x-where": "ui/tile_editor.dart:1930"
  },
  "sa26ae27039": "Skip the most expensive hours",
  "@sa26ae27039": {
@@ -8271,312 +8331,322 @@
  "s149c1e54d6": "Configuration exported",
  "@s149c1e54d6": {
   "description": "fi: Asetukset viety",
-  "x-where": "ui/settings_page.dart:52"
+  "x-where": "ui/settings_page.dart:55"
  },
  "s35f445793b": "Import configuration",
  "@s35f445793b": {
   "description": "fi: Tuo asetukset",
-  "x-where": "ui/settings_page.dart:63"
+  "x-where": "ui/settings_page.dart:68"
  },
  "sd55be829e3": "Replace current configuration?",
  "@sd55be829e3": {
   "description": "fi: Korvataanko nykyiset asetukset?",
-  "x-where": "ui/settings_page.dart:70"
+  "x-where": "ui/settings_page.dart:75"
  },
  "s852dd1795e": "All current connections and dashboards are replaced by the file contents.",
  "@s852dd1795e": {
   "description": "fi: Kaikki nykyiset yhteydet ja näkymät korvataan tiedoston sisällöllä.",
-  "x-where": "ui/settings_page.dart:71"
+  "x-where": "ui/settings_page.dart:80"
  },
  "s580678cb10": "Import",
  "@s580678cb10": {
   "description": "fi: Tuo",
-  "x-where": "ui/settings_page.dart:76"
+  "x-where": "ui/settings_page.dart:85"
  },
  "s5f2ec17730": "Configuration imported",
  "@s5f2ec17730": {
   "description": "fi: Asetukset tuotu",
-  "x-where": "ui/settings_page.dart:80"
+  "x-where": "ui/settings_page.dart:92"
  },
  "sa87fff54f3": "Import failed",
  "@sa87fff54f3": {
   "description": "fi: Tuonti epäonnistui",
-  "x-where": "ui/settings_page.dart:82"
+  "x-where": "ui/settings_page.dart:99"
  },
  "s2fd2bfedb8": "Account",
  "@s2fd2bfedb8": {
   "description": "fi: Tili",
-  "x-where": "ui/settings_page.dart:99"
+  "x-where": "ui/settings_page.dart:119"
  },
  "s4c0ff416ab": "The same homes and tiles on all your devices.",
  "@s4c0ff416ab": {
   "description": "fi: Samat kodit ja ruudut kaikilla laitteillasi.",
-  "x-where": "ui/settings_page.dart:103"
+  "x-where": "ui/settings_page.dart:123"
  },
  "scc7e418ee3": "Sign in to have the same homes, devices and tiles on PC, tablet and phone. Optional.",
  "@scc7e418ee3": {
   "description": "fi: Kirjaudu, niin kodit, laitteet ja ruudut ovat samat PC:llä, tabletilla ja puhelimella. Vapaaehtoinen.",
-  "x-where": "ui/settings_page.dart:108"
+  "x-where": "ui/settings_page.dart:128"
  },
  "sb386aff4b7": "Downloads",
  "@sb386aff4b7": {
   "description": "fi: Lataukset",
-  "x-where": "ui/settings_page.dart:143"
+  "x-where": "ui/settings_page.dart:179"
  },
  "sbb264ce105": "Downloading the PC app from the shop requires an account (the same one as on the order).",
  "@sbb264ce105": {
   "description": "fi: PC-sovelluksen lataus kaupan sivulta vaatii tilin (saman kuin tilauksessa).",
-  "x-where": "ui/settings_page.dart:146"
+  "x-where": "ui/settings_page.dart:184"
  },
  "se5ab008127": "Open downloads",
  "@se5ab008127": {
   "description": "fi: Avaa lataukset",
-  "x-where": "ui/settings_page.dart:157"
+  "x-where": "ui/settings_page.dart:196"
  },
  "s08d62fd281": "Appearance",
  "@s08d62fd281": {
   "description": "fi: Ulkoasu",
-  "x-where": "ui/settings_page.dart:167"
+  "x-where": "ui/settings_page.dart:208"
  },
  "s2b8a2754c6": "Theme",
  "@s2b8a2754c6": {
   "description": "fi: Teema",
-  "x-where": "ui/settings_page.dart:169"
+  "x-where": "ui/settings_page.dart:212"
  },
  "s79f67deb42": "Light",
  "@s79f67deb42": {
   "description": "fi: Vaalea",
-  "x-where": "ui/settings_page.dart:177"
+  "x-where": "ui/settings_page.dart:220"
  },
  "s0d6fb52039": "Dark",
  "@s0d6fb52039": {
   "description": "fi: Tumma",
-  "x-where": "ui/settings_page.dart:182"
+  "x-where": "ui/settings_page.dart:225"
  },
  "s70dd7fdd58": "By sunrise and sunset",
  "@s70dd7fdd58": {
   "description": "fi: Auringonnousun ja -laskun mukaan",
-  "x-where": "ui/settings_page.dart:199"
+  "x-where": "ui/settings_page.dart:243"
  },
  "s21206b61f7": "Needs the home location (Energy › Home). Until then the device setting is followed.",
  "@s21206b61f7": {
   "description": "fi: Vaatii kodin sijainnin (Energia › Koti). Siihen asti seurataan laitteen asetusta.",
-  "x-where": "ui/settings_page.dart:202"
+  "x-where": "ui/settings_page.dart:251"
  },
  "s4e23920823": "Light by day, dark in the evening. Off: follows the device setting.",
  "@s4e23920823": {
   "description": "fi: Vaalea päivällä, tumma illalla. Pois päältä: seuraa laitteen asetusta.",
-  "x-where": "ui/settings_page.dart:207"
+  "x-where": "ui/settings_page.dart:256"
  },
  "s4b847ce63e": "The choice applies to this device and is saved to your account as the default for new devices.",
  "@s4b847ce63e": {
   "description": "fi: Valinta koskee tätä laitetta ja tallentuu tiliisi uusien laitteiden oletukseksi.",
-  "x-where": "ui/settings_page.dart:217"
+  "x-where": "ui/settings_page.dart:266"
  },
  "s5ebc02022b": "Show as hourly average",
  "@s5ebc02022b": {
   "description": "fi: Näytä tuntikeskiarvona",
-  "x-where": "ui/settings_page.dart:231"
+  "x-where": "ui/settings_page.dart:281"
  },
  "s68b4d332ca": "Price, cheapest hours and price control per hour (hourly-billed contract). Off: 15 min where the area publishes 15-min prices.",
  "@s68b4d332ca": {
   "description": "fi: Sähkön hinta, halvimmat tunnit ja hintaohjaukset tunneittain (tuntihinnoiteltu sopimus). Pois: 15 min, kun alueen hinnat",
-  "x-where": "ui/settings_page.dart:233"
+  "x-where": "ui/settings_page.dart:288"
  },
  "saf496a12a3": "Morning card: also show the priciest hour",
  "@saf496a12a3": {
   "description": "fi: Aamukortti: näytä myös kallein tunti",
-  "x-where": "ui/settings_page.dart:249"
+  "x-where": "ui/settings_page.dart:304"
  },
  "sc53b1b78c0": "The cheapest hour of the next 24 h is always shown with its price.",
  "@sc53b1b78c0": {
   "description": "fi: Halvin tunti näytetään aina seuraavalta 24 tunnilta hintoineen.",
-  "x-where": "ui/settings_page.dart:252"
+  "x-where": "ui/settings_page.dart:311"
  },
  "s0625d54b38": "Tile size",
  "@s0625d54b38": {
   "description": "fi: Laattakoko",
-  "x-where": "ui/settings_page.dart:260"
+  "x-where": "ui/settings_page.dart:320"
  },
  "s8382da3467": "Normal",
  "@s8382da3467": {
   "description": "fi: Normaali",
-  "x-where": "ui/settings_page.dart:266"
+  "x-where": "ui/settings_page.dart:333"
  },
  "s7c1cd8314e": "Hide tiles that don''t work remotely",
  "@s7c1cd8314e": {
   "description": "fi: Piilota etänä toimimattomat",
-  "x-where": "ui/settings_page.dart:276"
+  "x-where": "ui/settings_page.dart:348"
  },
  "sa0cbbafb4e": "Away from home, tiles that only work on the home network are hidden. By default they stay in place, greyed out.",
  "@sa0cbbafb4e": {
   "description": "fi: Kotiverkon ulkopuolella vain kotiverkossa toimivat ruudut piilotetaan. Oletuksena ne näkyvät harmaina paikallaan.",
-  "x-where": "ui/settings_page.dart:278"
+  "x-where": "ui/settings_page.dart:355"
+ },
+ "se9702be418": "Hide tiles that don''t work in the browser",
+ "@se9702be418": {
+  "description": "fi: Piilota selaimessa toimimattomat",
+  "x-where": "ui/settings_page.dart:369"
+ },
+ "s25a2d52c2d": "In the browser, tiles this browser cannot reach, and tiles that have not answered for about ten minutes, are hidden. Hidden tiles can be opened from the bottom of the view. This browser only.",
+ "@s25a2d52c2d": {
+  "description": "fi: Selainversiossa piilotetaan ruudut, joihin ei saada yhteyttä tästä selaimesta, ja ruudut, jotka eivät ole vastanneet noi",
+  "x-where": "ui/settings_page.dart:376"
  },
  "s419166b895": "Clock and weather on the home screen",
  "@s419166b895": {
   "description": "fi: Kello ja sää etusivulla",
-  "x-where": "ui/settings_page.dart:290"
+  "x-where": "ui/settings_page.dart:389"
  },
  "sec30a8f23e": "Time, date, weather and electricity price at the top of the view. This device only.",
  "@sec30a8f23e": {
   "description": "fi: Kellonaika, päivä, sää ja sähkön hinta näkymän yläreunassa. Koskee vain tätä laitetta.",
-  "x-where": "ui/settings_page.dart:292"
+  "x-where": "ui/settings_page.dart:396"
  },
  "sf7205b268f": "Animations",
  "@sf7205b268f": {
   "description": "fi: Animaatiot",
-  "x-where": "ui/settings_page.dart:304"
+  "x-where": "ui/settings_page.dart:408"
  },
  "s1535c6411d": "Soft transitions when a device changes state. Off = calmer and lighter for an older tablet. This device only.",
  "@s1535c6411d": {
   "description": "fi: Pehmeät siirtymät, kun laite vaihtaa tilaa. Pois päältä = rauhallisempi ja kevyempi vanhalle tabletille. Koskee vain tät",
-  "x-where": "ui/settings_page.dart:306"
+  "x-where": "ui/settings_page.dart:410"
  },
  "s21f870dbc2": "Shows technical settings: connections (HTTP, MQTT, Modbus…), payloads, JSON paths and tile sources. Most people don''t need these.",
  "@s21f870dbc2": {
   "description": "fi: Näyttää tekniset asetukset: yhteydet (HTTP, MQTT, Modbus…), viestit, JSON-polut ja ruutujen lähteet. Useimmat eivät tarv",
-  "x-where": "ui/settings_page.dart:321"
+  "x-where": "ui/settings_page.dart:425"
  },
  "sc84689a549": "Devices and integrations",
  "@sc84689a549": {
   "description": "fi: Laitteet ja integraatiot",
-  "x-where": "ui/settings_page.dart:335"
+  "x-where": "ui/settings_page.dart:440"
  },
  "s2b6f77fa62": "Logs and trends",
  "@s2b6f77fa62": {
   "description": "fi: Lokit ja trendit",
-  "x-where": "ui/settings_page.dart:355"
+  "x-where": "ui/settings_page.dart:475"
  },
  "sca4c8b88b7": "Home Assistant: add devices",
  "@sca4c8b88b7": {
   "description": "fi: Home Assistant: lisää laitteita",
-  "x-where": "ui/settings_page.dart:366"
+  "x-where": "ui/settings_page.dart:488"
  },
  "saec69088a5": "Control your home from outside too.",
  "@saec69088a5": {
   "description": "fi: Ohjaa kotia myös kodin ulkopuolelta.",
-  "x-where": "ui/settings_page.dart:374"
+  "x-where": "ui/settings_page.dart:504"
  },
  "s417eb9a875": "Set up remote access",
  "@s417eb9a875": {
   "description": "fi: Ota etäkäyttö käyttöön",
-  "x-where": "ui/settings_page.dart:392"
+  "x-where": "ui/settings_page.dart:529"
  },
  "scc3d01ee5e": "Guides: VPN, Nabu Casa, cloud MQTT",
  "@scc3d01ee5e": {
   "description": "fi: Ohjeet: VPN, Nabu Casa, pilvi-MQTT",
-  "x-where": "ui/settings_page.dart:400"
+  "x-where": "ui/settings_page.dart:544"
  },
  "s844e081db8": "Sharing",
  "@s844e081db8": {
   "description": "fi: Jakaminen",
-  "x-where": "ui/settings_page.dart:407"
+  "x-where": "ui/settings_page.dart:556"
  },
  "s535358a517": "Give someone, or an installer, access to the devices you choose.",
  "@s535358a517": {
   "description": "fi: Anna toiselle tai asentajalle pääsy valitsemiisi laitteisiin.",
-  "x-where": "ui/settings_page.dart:410"
+  "x-where": "ui/settings_page.dart:561"
  },
  "s25c286a743": "Sharing – new invite",
  "@s25c286a743": {
   "description": "fi: Jakaminen – uusi kutsu",
-  "x-where": "ui/settings_page.dart:432"
+  "x-where": "ui/settings_page.dart:586"
  },
  "s90ba544719": "Help",
  "@s90ba544719": {
   "description": "fi: Ohjeet",
-  "x-where": "ui/settings_page.dart:448"
+  "x-where": "ui/settings_page.dart:610"
  },
  "sb915c42792": "Show the getting-started guide",
  "@sb915c42792": {
   "description": "fi: Näytä aloitusopas",
-  "x-where": "ui/settings_page.dart:456"
+  "x-where": "ui/settings_page.dart:622"
  },
  "sd337a7ddd5": "Backup and transfer",
  "@sd337a7ddd5": {
   "description": "fi: Varmuuskopio ja siirto",
-  "x-where": "ui/settings_page.dart:460"
+  "x-where": "ui/settings_page.dart:632"
  },
  "s07c1048b4f": "Export the configuration to a JSON file and import it on another device (e.g. PC → phone).",
  "@s07c1048b4f": {
   "description": "fi: Vie asetukset JSON-tiedostoon ja tuo ne toiselle laitteelle (esim. PC → puhelin).",
-  "x-where": "ui/settings_page.dart:463"
+  "x-where": "ui/settings_page.dart:637"
  },
  "s2f797098e7": "Include passwords and tokens",
  "@s2f797098e7": {
   "description": "fi: Sisällytä salasanat ja tokenit",
-  "x-where": "ui/settings_page.dart:472"
+  "x-where": "ui/settings_page.dart:647"
  },
  "s26f72949e3": "The file is then unencrypted – keep it safe.",
  "@s26f72949e3": {
   "description": "fi: Tiedosto on silloin salaamaton – säilytä se turvassa.",
-  "x-where": "ui/settings_page.dart:474"
+  "x-where": "ui/settings_page.dart:654"
  },
  "sdb12678e52": "Export",
  "@sdb12678e52": {
   "description": "fi: Vie",
-  "x-where": "ui/settings_page.dart:490"
+  "x-where": "ui/settings_page.dart:670"
  },
  "s34686ffb09": "Example",
  "@s34686ffb09": {
   "description": "fi: Esimerkki",
-  "x-where": "ui/settings_page.dart:500"
+  "x-where": "ui/settings_page.dart:681"
  },
  "sc8327738b3": "Add an example dashboard (camera, alarm, lights, ventilation). The example devices never connect anywhere – add your own with Add device.",
  "@sc8327738b3": {
   "description": "fi: Lisää esimerkkinäkymä (kamera, hälytys, valot, IV-kone). Esimerkkilaitteet eivät ota yhteyttä mihinkään – lisää omat lai",
-  "x-where": "ui/settings_page.dart:503"
+  "x-where": "ui/settings_page.dart:686"
  },
  "sec02c7c071": "Add example dashboard",
  "@sec02c7c071": {
   "description": "fi: Lisää esimerkkinäkymä",
-  "x-where": "ui/settings_page.dart:519"
+  "x-where": "ui/settings_page.dart:703"
  },
  "s057b871ed2": "browser version",
  "@s057b871ed2": {
   "description": "fi: selainversio",
-  "x-where": "ui/settings_page.dart:525"
+  "x-where": "ui/settings_page.dart:714"
  },
  "s522d6584c5": "Check for updates",
  "@s522d6584c5": {
   "description": "fi: Tarkista päivitykset",
-  "x-where": "ui/settings_page.dart:542"
+  "x-where": "ui/settings_page.dart:737"
  },
  "sd178a1d809": "Your own control terminal: HTTP, MQTT, Modbus TCP, Home Assistant, cameras, WebSocket, TCP and UDP. Without an account all settings stay on this device.",
  "@sd178a1d809": {
   "description": "fi: Oma ohjauspääte: HTTP, MQTT, Modbus TCP, Home Assistant, kamerat, WebSocket, TCP ja UDP. Ilman tiliä kaikki asetukset py",
-  "x-where": "ui/settings_page.dart:547"
+  "x-where": "ui/settings_page.dart:743"
  },
  "sf5bfc4217c": "Which Home Assistant?",
  "@sf5bfc4217c": {
   "description": "fi: Mistä Home Assistantista?",
-  "x-where": "ui/settings_page.dart:583"
+  "x-where": "ui/settings_page.dart:781"
  },
  "sbc210f9634": "You have more than one Home Assistant connection. An unused one (no tiles) can be removed.",
  "@sbc210f9634": {
   "description": "fi: Sinulla on useampi Home Assistant -yhteys. Käyttämättömän (ei ruutuja) voi poistaa.",
-  "x-where": "ui/settings_page.dart:585"
+  "x-where": "ui/settings_page.dart:784"
  },
  "s4f62c41cb3": "no tiles",
  "@s4f62c41cb3": {
   "description": "fi: ei ruutuja",
-  "x-where": "ui/settings_page.dart:598"
+  "x-where": "ui/settings_page.dart:797"
  },
  "s92c338c3bd": "tiles",
  "@s92c338c3bd": {
   "description": "fi: ruutua",
-  "x-where": "ui/settings_page.dart:598"
+  "x-where": "ui/settings_page.dart:797"
  },
  "sd3089f07cc": "Remove unused connection",
  "@sd3089f07cc": {
   "description": "fi: Poista käyttämätön yhteys",
-  "x-where": "ui/settings_page.dart:604"
+  "x-where": "ui/settings_page.dart:804"
  },
  "s1333776c9f": "Remove the connection?",
  "@s1333776c9f": {
   "description": "fi: Poistetaanko yhteys?",
-  "x-where": "ui/settings_page.dart:609"
+  "x-where": "ui/settings_page.dart:813"
  },
  "s8efb99df1d": "Cooling",
  "@s8efb99df1d": {
@@ -10508,6 +10578,11 @@
   "description": "fi: Vanha tieto",
   "x-where": "ui/price_tile.dart:307"
  },
+ "sb730159a01": "Price now",
+ "@sb730159a01": {
+  "description": "fi: Hinta nyt",
+  "x-where": "ui/price_tile.dart:308"
+ },
  "s68fcfcfed1": "Cheapest hour today",
  "@s68fcfcfed1": {
   "description": "fi: Halvin tunti tänään",
@@ -11476,72 +11551,72 @@
  "s58aaa6dade": "The view is locked",
  "@s58aaa6dade": {
   "description": "fi: Näkymä on lukittu",
-  "x-where": "ui/control_view.dart:70"
+  "x-where": "ui/control_view.dart:75"
  },
  "sdf1af3409c": "Unlock",
  "@sdf1af3409c": {
   "description": "fi: Avaa lukitus",
-  "x-where": "ui/control_view.dart:185"
+  "x-where": "ui/control_view.dart:253"
  },
  "s4629a1695c": "Menu",
  "@s4629a1695c": {
   "description": "fi: Valikko",
-  "x-where": "ui/control_view.dart:192"
+  "x-where": "ui/control_view.dart:260"
  },
  "scd04aa5d9e": "Edit the view",
  "@scd04aa5d9e": {
   "description": "fi: Muokkaa näkymää",
-  "x-where": "ui/control_view.dart:227"
+  "x-where": "ui/control_view.dart:312"
  },
  "sf98121cd3d": "Room photo",
  "@sf98121cd3d": {
   "description": "fi: Huoneen kuva",
-  "x-where": "ui/control_view.dart:232"
+  "x-where": "ui/control_view.dart:320"
  },
  "s365492a7d0": "Lock the view",
  "@s365492a7d0": {
   "description": "fi: Lukitse näkymä",
-  "x-where": "ui/control_view.dart:278"
+  "x-where": "ui/control_view.dart:387"
  },
  "sb2f38410ee": "Devices can still be controlled, but editing, settings and adding devices are hidden. Unlock from the gear icon.",
  "@sb2f38410ee": {
   "description": "fi: Laitteita voi edelleen ohjata, mutta muokkaus, asetukset ja laitteiden lisäys piilotetaan. Avaa lukitus rataskuvakkeesta",
-  "x-where": "ui/control_view.dart:306"
+  "x-where": "ui/control_view.dart:416"
  },
  "se497d27174": "PIN code (optional)",
  "@se497d27174": {
   "description": "fi: PIN-koodi (valinnainen)",
-  "x-where": "ui/control_view.dart:320"
+  "x-where": "ui/control_view.dart:433"
  },
  "sd21180a166": "Without a PIN one tap unlocks.",
  "@sd21180a166": {
   "description": "fi: Ilman PIN-koodia lukitus avataan yhdellä napautuksella.",
-  "x-where": "ui/control_view.dart:321"
+  "x-where": "ui/control_view.dart:438"
  },
  "sd86ff8e28a": "Lock",
  "@sd86ff8e28a": {
   "description": "fi: Lukitse",
-  "x-where": "ui/control_view.dart:336"
+  "x-where": "ui/control_view.dart:456"
  },
  "s872f93a062": "Unlock?",
  "@s872f93a062": {
   "description": "fi: Avaa lukitus?",
-  "x-where": "ui/control_view.dart:350"
+  "x-where": "ui/control_view.dart:470"
  },
  "s0cd88e27f4": "Editing and settings become visible again.",
  "@s0cd88e27f4": {
   "description": "fi: Muokkaus ja asetukset tulevat taas näkyviin.",
-  "x-where": "ui/control_view.dart:351"
+  "x-where": "ui/control_view.dart:471"
  },
  "sa5283191be": "Unlock",
  "@sa5283191be": {
   "description": "fi: Avaa",
-  "x-where": "ui/control_view.dart:352"
+  "x-where": "ui/control_view.dart:476"
  },
  "sca710b76b5": "Wrong PIN code",
  "@sca710b76b5": {
   "description": "fi: Väärä PIN-koodi",
-  "x-where": "ui/control_view.dart:382"
+  "x-where": "ui/control_view.dart:512"
  },
  "s72a2328ddd": "Lights",
  "@s72a2328ddd": {
@@ -12063,40 +12138,45 @@
    }
   }
  },
+ "s1e9eca6676": "Spot price now with VAT. Transfer, tax and margin are not included – Smart heating compares the total price.",
+ "@s1e9eca6676": {
+  "description": "fi: Pörssihinta nyt alv:llä. Siirto, vero ja marginaali eivät ole mukana – Älykäs lämmitys vertaa kokonaishintaa.",
+  "x-where": "ui/home_header.dart:271"
+ },
  "se26e839c2f": "Monday",
  "@se26e839c2f": {
   "description": "fi: maanantai",
-  "x-where": "ui/home_header.dart:370"
+  "x-where": "ui/home_header.dart:383"
  },
  "s763254941f": "Tuesday",
  "@s763254941f": {
   "description": "fi: tiistai",
-  "x-where": "ui/home_header.dart:371"
+  "x-where": "ui/home_header.dart:384"
  },
  "sf3448cdd52": "Wednesday",
  "@sf3448cdd52": {
   "description": "fi: keskiviikko",
-  "x-where": "ui/home_header.dart:372"
+  "x-where": "ui/home_header.dart:385"
  },
  "sc34ca7eddb": "Thursday",
  "@sc34ca7eddb": {
   "description": "fi: torstai",
-  "x-where": "ui/home_header.dart:373"
+  "x-where": "ui/home_header.dart:386"
  },
  "sfa82438bec": "Friday",
  "@sfa82438bec": {
   "description": "fi: perjantai",
-  "x-where": "ui/home_header.dart:374"
+  "x-where": "ui/home_header.dart:387"
  },
  "s517c348371": "Saturday",
  "@s517c348371": {
   "description": "fi: lauantai",
-  "x-where": "ui/home_header.dart:375"
+  "x-where": "ui/home_header.dart:388"
  },
  "sb1f0e72163": "Sunday",
  "@sb1f0e72163": {
   "description": "fi: sunnuntai",
-  "x-where": "ui/home_header.dart:376"
+  "x-where": "ui/home_header.dart:389"
  },
  "sd24649df81": "The browser cannot reach devices on your home network",
  "@sd24649df81": {
@@ -17141,17 +17221,17 @@
  "sa2dc343545": "Fireplace mode ended: the room is cooling. Heating is back to normal.",
  "@sa2dc343545": {
   "description": "fi: Takka-tila päättyi: huone on alkanut jäähtyä. Lämmitys palaa normaaliksi.",
-  "x-where": "energy/smart_heating.dart:1332"
+  "x-where": "energy/smart_heating.dart:1337"
  },
  "s78afbd052c": "Fireplace mode ended (time is up). Heating is back to normal.",
  "@s78afbd052c": {
   "description": "fi: Takka-tila päättyi (aika täynnä). Lämmitys palaa normaaliksi.",
-  "x-where": "energy/smart_heating.dart:1336"
+  "x-where": "energy/smart_heating.dart:1341"
  },
  "s1f08341033": "Fireplace mode stopped. Heating is back to normal.",
  "@s1f08341033": {
   "description": "fi: Takka-tila lopetettiin. Lämmitys palaa normaaliksi.",
-  "x-where": "energy/smart_heating.dart:1340"
+  "x-where": "energy/smart_heating.dart:1345"
  },
  "sdd5e97b1e2": "Clear",
  "@sdd5e97b1e2": {
@@ -17555,80 +17635,158 @@
   "description": "fi: Ohjaus ei onnistunut",
   "x-where": "energy/heating_explain.dart:89"
  },
- "sc056006180": "Check that the device is on and on the same network as the home bridge. Smart heating retries every minute; until it works the device stays in its current state.",
- "@sc056006180": {
-  "description": "fi: Tarkista, että laite on päällä ja samassa verkossa kotisillan kanssa. Älykäs lämmitys yrittää uudelleen minuutin välein;",
-  "x-where": "energy/heating_explain.dart:95"
+ "s340968669a": "the device",
+ "@s340968669a": {
+  "description": "fi: laite",
+  "x-where": "energy/heating_explain.dart:96"
  },
- "s7a1cda0d24": "Check the device password in the connection settings.",
- "@s7a1cda0d24": {
-  "description": "fi: Tarkista laitteen salasana yhteyden asetuksista.",
-  "x-where": "energy/heating_explain.dart:99"
+ "s151c5be078": "The home bridge cannot reach the address of {p0}: it is most likely on another network than {p0}. This device can reach it, which is why the other tiles work.",
+ "@s151c5be078": {
+  "description": "fi: Kotisilta ei pääse osoitteeseen, jossa {p0} on: se on todennäköisesti toisessa verkossa kuin {p1}. Tämä laite pääsee sii",
+  "x-where": "energy/heating_explain.dart:103",
+  "placeholders": {
+   "p0": {
+    "type": "String"
+   },
+   "p1": {
+    "type": "String"
+   }
+  }
  },
- "s4dc27a3272": "Check the device address and command in the tile settings.",
- "@s4dc27a3272": {
-  "description": "fi: Tarkista laitteen osoite ja komento ruudun asetuksista.",
-  "x-where": "energy/heating_explain.dart:103"
+ "s99ea566004": "The home bridge could not connect to {p0}. It is switched off, off the network, or the bridge is on another network.",
+ "@s99ea566004": {
+  "description": "fi: Kotisilta ei saanut yhteyttä laitteeseen {p0}. Se on pois päältä, poissa verkosta tai kotisilta on eri verkossa.",
+  "x-where": "energy/heating_explain.dart:109",
+  "placeholders": {
+   "p0": {
+    "type": "String"
+   }
+  }
  },
- "s54dbdeb56b": "The device answered but did not accept the command. Try restarting the device.",
- "@s54dbdeb56b": {
-  "description": "fi: Laite vastasi mutta ei hyväksynyt komentoa. Kokeile käynnistää laite uudelleen.",
-  "x-where": "energy/heating_explain.dart:107"
+ "sb32685da2f": "Put the home bridge on the same network as the device: open Molaplan on an always-on device in the device''s network (e.g. a PC or tablet at home) and choose Settings → Remote access → Use this device as the home bridge. Then pair your phone and PC with it again.",
+ "@sb32685da2f": {
+  "description": "fi: Aseta kotisilta samaan verkkoon laitteen kanssa: avaa Molaplan aina päällä olevalla laitteella, joka on laitteen verkoss",
+  "x-where": "energy/heating_explain.dart:126"
+ },
+ "s22dde7740f": "Or control the device through a connection the bridge can reach from anywhere (for example the maker''s cloud, like Shelly Cloud).",
+ "@s22dde7740f": {
+  "description": "fi: Tai ohjaa laitetta sellaisella yhteydellä, jonka kotisilta tavoittaa mistä tahansa (esim. valmistajan pilvi, kuten Shell",
+  "x-where": "energy/heating_explain.dart:130"
+ },
+ "sd4f0e6f8e1": "Check that the device is switched on and its power and Wi-Fi light is on.",
+ "@sd4f0e6f8e1": {
+  "description": "fi: Tarkista, että laite on päällä ja sen virta- ja Wi-Fi-valo palaa.",
+  "x-where": "energy/heating_explain.dart:135"
+ },
+ "s8277eb958e": "Check that the device and the home bridge are on the same network (the first three numbers of their addresses are the same).",
+ "@s8277eb958e": {
+  "description": "fi: Tarkista, että laite ja kotisilta ovat samassa verkossa (osoitteiden kolme ensimmäistä numeroa ovat samat).",
+  "x-where": "energy/heating_explain.dart:139"
+ },
+ "sab9dae06af": "If the device''s address has changed, update it in the connection settings.",
+ "@sab9dae06af": {
+  "description": "fi: Jos laitteen osoite on vaihtunut, päivitä se yhteyden asetuksista.",
+  "x-where": "energy/heating_explain.dart:143"
+ },
+ "sdafab85176": "Smart heating retries every minute. Until then the relay stays in its last state and the heating is not controlled.",
+ "@sdafab85176": {
+  "description": "fi: Älykäs lämmitys yrittää uudelleen minuutin välein. Siihen asti rele pysyy viimeisessä tilassaan eikä lämmitys ohjaudu.",
+  "x-where": "energy/heating_explain.dart:148"
+ },
+ "s5a3b74d726": "Open the device connection and check the username and password.",
+ "@s5a3b74d726": {
+  "description": "fi: Avaa laitteen yhteys ja tarkista käyttäjätunnus ja salasana.",
+  "x-where": "energy/heating_explain.dart:155"
+ },
+ "s7157b2a937": "Open the relay tile and check its address and on/off commands.",
+ "@s7157b2a937": {
+  "description": "fi: Avaa releen ruutu ja tarkista osoite sekä päälle/pois-komennot.",
+  "x-where": "energy/heating_explain.dart:163"
+ },
+ "s419117d6ca": "Restart the device (power off and on).",
+ "@s419117d6ca": {
+  "description": "fi: Käynnistä laite uudelleen (virta pois ja päälle).",
+  "x-where": "energy/heating_explain.dart:170"
+ },
+ "sc28a06ee09": "If the error continues, check the device settings and firmware.",
+ "@sc28a06ee09": {
+  "description": "fi: Jos virhe jatkuu, tarkista laitteen asetukset ja ohjelmisto.",
+  "x-where": "energy/heating_explain.dart:171"
  },
  "s8e9e56f68f": "See the exact reason under Technical details.",
  "@s8e9e56f68f": {
   "description": "fi: Katso tarkempi syy kohdasta Tekniset tiedot.",
-  "x-where": "energy/heating_explain.dart:111"
+  "x-where": "energy/heating_explain.dart:177"
+ },
+ "sc056006180": "Check that the device is on and on the same network as the home bridge. Smart heating retries every minute; until it works the device stays in its current state.",
+ "@sc056006180": {
+  "description": "fi: Tarkista, että laite on päällä ja samassa verkossa kotisillan kanssa. Älykäs lämmitys yrittää uudelleen minuutin välein;",
+  "x-where": "energy/heating_explain.dart:183"
+ },
+ "s7a1cda0d24": "Check the device password in the connection settings.",
+ "@s7a1cda0d24": {
+  "description": "fi: Tarkista laitteen salasana yhteyden asetuksista.",
+  "x-where": "energy/heating_explain.dart:187"
+ },
+ "s4dc27a3272": "Check the device address and command in the tile settings.",
+ "@s4dc27a3272": {
+  "description": "fi: Tarkista laitteen osoite ja komento ruudun asetuksista.",
+  "x-where": "energy/heating_explain.dart:191"
+ },
+ "s54dbdeb56b": "The device answered but did not accept the command. Try restarting the device.",
+ "@s54dbdeb56b": {
+  "description": "fi: Laite vastasi mutta ei hyväksynyt komentoa. Kokeile käynnistää laite uudelleen.",
+  "x-where": "energy/heating_explain.dart:195"
  },
  "s7279e2bdb1": "Manual override",
  "@s7279e2bdb1": {
   "description": "fi: Manuaalinen ohitus",
-  "x-where": "energy/heating_explain.dart:180"
+  "x-where": "energy/heating_explain.dart:268"
  },
  "s8accab3bb7": "Price shifts the setpoint",
  "@s8accab3bb7": {
   "description": "fi: Hinta siirtää tavoitetta",
-  "x-where": "energy/heating_explain.dart:184"
+  "x-where": "energy/heating_explain.dart:272"
  },
  "s78188d956e": "Room warm enough",
  "@s78188d956e": {
   "description": "fi: Huone riittävän lämmin",
-  "x-where": "energy/heating_explain.dart:185"
+  "x-where": "energy/heating_explain.dart:273"
  },
  "saa76f06f20": "Skipping expensive hours",
  "@saa76f06f20": {
   "description": "fi: Kalleimpien tuntien ohitus",
-  "x-where": "energy/heating_explain.dart:187"
+  "x-where": "energy/heating_explain.dart:275"
  },
  "s846c49053e": "Longest break",
  "@s846c49053e": {
   "description": "fi: Pisin tauko",
-  "x-where": "energy/heating_explain.dart:189"
+  "x-where": "energy/heating_explain.dart:277"
  },
  "se79c5ead71": "Price data",
  "@se79c5ead71": {
   "description": "fi: Hintatiedot",
-  "x-where": "energy/heating_explain.dart:192"
+  "x-where": "energy/heating_explain.dart:280"
  },
  "sa30e1a2c14": "Temperature sensor",
  "@sa30e1a2c14": {
   "description": "fi: Lämpöanturi",
-  "x-where": "energy/heating_explain.dart:193"
+  "x-where": "energy/heating_explain.dart:281"
  },
  "s39147d043d": "Not in use",
  "@s39147d043d": {
   "description": "fi: Ei käytössä",
-  "x-where": "energy/heating_explain.dart:204"
+  "x-where": "energy/heating_explain.dart:292"
  },
  "s7d4144c0a0": "No temperature – cannot be checked",
  "@s7d4144c0a0": {
   "description": "fi: Ei lämpötilaa – ei voi tarkistaa",
-  "x-where": "energy/heating_explain.dart:205"
+  "x-where": "energy/heating_explain.dart:293"
  },
  "s70d66e5f81": "{p0} °C is below {p1} °C – heating on",
  "@s70d66e5f81": {
   "description": "fi: {p0} °C on alle {p1} °C – lämmitys päällä",
-  "x-where": "energy/heating_explain.dart:207",
+  "x-where": "energy/heating_explain.dart:295",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -17641,7 +17799,7 @@
  "sd93442ff7c": "{p0} °C, limit {p1} °C",
  "@sd93442ff7c": {
   "description": "fi: {p0} °C, raja {p1} °C",
-  "x-where": "energy/heating_explain.dart:211",
+  "x-where": "energy/heating_explain.dart:299",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -17654,7 +17812,7 @@
  "s9bf02da8ca": "On for {p0} (until {p1})",
  "@s9bf02da8ca": {
   "description": "fi: Päällä {p0} (asti {p1})",
-  "x-where": "energy/heating_explain.dart:224",
+  "x-where": "energy/heating_explain.dart:312",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -17667,7 +17825,7 @@
  "sb8c4753e09": "Off for {p0} (until {p1})",
  "@sb8c4753e09": {
   "description": "fi: Pois {p0} (asti {p1})",
-  "x-where": "energy/heating_explain.dart:225",
+  "x-where": "energy/heating_explain.dart:313",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -17680,12 +17838,12 @@
  "sc9f92f4156": "The fireplace heats: electric heating is reduced",
  "@sc9f92f4156": {
   "description": "fi: Takka lämmittää: sähkölämmitystä vähennetään",
-  "x-where": "energy/heating_explain.dart:228"
+  "x-where": "energy/heating_explain.dart:316"
  },
  "sf78c1a349f": "Away: keeping {p0} °C",
  "@sf78c1a349f": {
   "description": "fi: Poissa: pidetään {p0} °C",
-  "x-where": "energy/heating_explain.dart:232",
+  "x-where": "energy/heating_explain.dart:320",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -17695,12 +17853,12 @@
  "s5faeeab2c8": "Not in force now",
  "@s5faeeab2c8": {
   "description": "fi: Ei voimassa nyt",
-  "x-where": "energy/heating_explain.dart:234"
+  "x-where": "energy/heating_explain.dart:322"
  },
  "s2226c324ef": "The sensor is not answering – {p0}",
  "@s2226c324ef": {
   "description": "fi: Anturi ei vastaa – {p0}",
-  "x-where": "energy/heating_explain.dart:237",
+  "x-where": "energy/heating_explain.dart:325",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -17710,7 +17868,7 @@
  "se363372312": "{p0} °C, setpoint {p1} °C ± {p2} °C (on below {p3}, off above {p4} °C)",
  "@se363372312": {
   "description": "fi: {p0} °C, tavoite {p1} °C ± {p2} °C (päällä alle {p3}, pois yli {p4} °C)",
-  "x-where": "energy/heating_explain.dart:242",
+  "x-where": "energy/heating_explain.dart:330",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -17732,12 +17890,12 @@
  "s0f95c71a7a": "No change in this hour",
  "@s0f95c71a7a": {
   "description": "fi: Ei muutosta tällä tunnilla",
-  "x-where": "energy/heating_explain.dart:249"
+  "x-where": "energy/heating_explain.dart:337"
  },
  "sc634878941": "Cheap hour: setpoint +{p0} °C",
  "@sc634878941": {
   "description": "fi: Halpa tunti: tavoite +{p0} °C",
-  "x-where": "energy/heating_explain.dart:251",
+  "x-where": "energy/heating_explain.dart:339",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -17747,7 +17905,7 @@
  "sedcfc0a927": "Expensive hour: setpoint {p0} °C",
  "@sedcfc0a927": {
   "description": "fi: Kallis tunti: tavoite {p0} °C",
-  "x-where": "energy/heating_explain.dart:252",
+  "x-where": "energy/heating_explain.dart:340",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -17757,7 +17915,7 @@
  "s642427fe2b": "{p0} °C ≥ {p1} °C – not heating",
  "@s642427fe2b": {
   "description": "fi: {p0} °C ≥ {p1} °C – ei lämmitetä",
-  "x-where": "energy/heating_explain.dart:255",
+  "x-where": "energy/heating_explain.dart:343",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -17770,7 +17928,7 @@
  "sda0b91c359": "{p0} °C, upper limit {p1} °C",
  "@sda0b91c359": {
   "description": "fi: {p0} °C, yläraja {p1} °C",
-  "x-where": "energy/heating_explain.dart:258",
+  "x-where": "energy/heating_explain.dart:346",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -17783,7 +17941,7 @@
  "sf3a33e9bc5": "{p0} cheapest hours a day: now {p1} c/kWh {p2} limit {p3} c",
  "@sf3a33e9bc5": {
   "description": "fi: {p0} halvinta tuntia päivässä: nyt {p1} c/kWh {p2} raja {p3} c",
-  "x-where": "energy/heating_explain.dart:264",
+  "x-where": "energy/heating_explain.dart:352",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -17802,7 +17960,7 @@
  "s428ce35d71": "{p0} most expensive hours skipped: now {p1} c/kWh {p2} limit {p3} c",
  "@s428ce35d71": {
   "description": "fi: {p0} kalleinta tuntia ohitetaan: nyt {p1} c/kWh {p2} raja {p3} c",
-  "x-where": "energy/heating_explain.dart:273",
+  "x-where": "energy/heating_explain.dart:361",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -17821,12 +17979,12 @@
  "s6200d2086c": "No forecast",
  "@s6200d2086c": {
   "description": "fi: Ei ennustetta",
-  "x-where": "energy/heating_explain.dart:278"
+  "x-where": "energy/heating_explain.dart:366"
  },
  "s29d9986638": "Forecast {p0} °C on average → {p1} heating hours a day",
  "@s29d9986638": {
   "description": "fi: Ennuste keskimäärin {p0} °C → {p1} lämmitystuntia päivässä",
-  "x-where": "energy/heating_explain.dart:279",
+  "x-where": "energy/heating_explain.dart:367",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -17839,12 +17997,12 @@
  "sdcf4412899": "Off for too long – heating for an hour",
  "@sdcf4412899": {
   "description": "fi: Pois ollut liian pitkään – lämmitetään tunti",
-  "x-where": "energy/heating_explain.dart:285"
+  "x-where": "energy/heating_explain.dart:373"
  },
  "s8a9723fbbb": "Off for at most {p0} h at a time",
  "@s8a9723fbbb": {
   "description": "fi: Enintään {p0} h kerrallaan pois",
-  "x-where": "energy/heating_explain.dart:286",
+  "x-where": "energy/heating_explain.dart:374",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -17854,12 +18012,12 @@
  "s9fe316f0b6": "No limit",
  "@s9fe316f0b6": {
   "description": "fi: Ei rajoitusta",
-  "x-where": "energy/heating_explain.dart:289"
+  "x-where": "energy/heating_explain.dart:377"
  },
  "s70094ce99b": "Waiting: at least {p0} min",
  "@s70094ce99b": {
   "description": "fi: Odottaa: vähintään {p0} min",
-  "x-where": "energy/heating_explain.dart:291",
+  "x-where": "energy/heating_explain.dart:379",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -17869,7 +18027,7 @@
  "s71d72597eb": "At least {p0} min",
  "@s71d72597eb": {
   "description": "fi: Vähintään {p0} min",
-  "x-where": "energy/heating_explain.dart:292",
+  "x-where": "energy/heating_explain.dart:380",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -17879,27 +18037,27 @@
  "s84cf358040": "No prices – heating runs normally",
  "@s84cf358040": {
   "description": "fi: Hintoja ei ole – lämmitys toimii tavallisesti",
-  "x-where": "energy/heating_explain.dart:295"
+  "x-where": "energy/heating_explain.dart:383"
  },
  "s0e19d6ac09": "Prices available",
  "@s0e19d6ac09": {
   "description": "fi: Hinnat saatu",
-  "x-where": "energy/heating_explain.dart:296"
+  "x-where": "energy/heating_explain.dart:384"
  },
  "s9583d61085": "No sensor chosen",
  "@s9583d61085": {
   "description": "fi: Ei anturia valittu",
-  "x-where": "energy/heating_explain.dart:299"
+  "x-where": "energy/heating_explain.dart:387"
  },
  "s756b49f274": "Not answering",
  "@s756b49f274": {
   "description": "fi: Ei vastaa",
-  "x-where": "energy/heating_explain.dart:300"
+  "x-where": "energy/heating_explain.dart:388"
  },
  "s3ddc69fd91": "Answering: {p0} °C",
  "@s3ddc69fd91": {
   "description": "fi: Vastaa: {p0} °C",
-  "x-where": "energy/heating_explain.dart:301",
+  "x-where": "energy/heating_explain.dart:389",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -17909,72 +18067,144 @@
  "sa0c950bdca": "Not responding",
  "@sa0c950bdca": {
   "description": "fi: Ei vastaa",
-  "x-where": "energy/heating_explain.dart:304"
+  "x-where": "energy/heating_explain.dart:392"
  },
  "sc3b0eaf426": "Responding",
  "@sc3b0eaf426": {
   "description": "fi: Vastaa",
-  "x-where": "energy/heating_explain.dart:304"
+  "x-where": "energy/heating_explain.dart:392"
  },
  "sa3f65879ff": "heating is kept on",
  "@sa3f65879ff": {
   "description": "fi: lämmitys pidetään päällä",
-  "x-where": "energy/heating_explain.dart:311"
+  "x-where": "energy/heating_explain.dart:399"
  },
  "s5906232c68": "heating is kept off",
  "@s5906232c68": {
   "description": "fi: lämmitys pidetään pois",
-  "x-where": "energy/heating_explain.dart:312"
+  "x-where": "energy/heating_explain.dart:400"
  },
  "sc084b8cbdf": "following the price schedule",
  "@sc084b8cbdf": {
   "description": "fi: noudatetaan hintaohjausta",
-  "x-where": "energy/heating_explain.dart:313"
+  "x-where": "energy/heating_explain.dart:401"
  },
  "s136e7941a4": "DISABLED",
  "@s136e7941a4": {
   "description": "fi: POIS KÄYTÖSTÄ",
-  "x-where": "energy/heating_explain.dart:515"
+  "x-where": "energy/heating_explain.dart:624"
  },
  "s8847ee78e0": "Target {p0} °C",
  "@s8847ee78e0": {
   "description": "fi: Tavoite {p0} °C",
-  "x-where": "energy/heating_explain.dart:517",
+  "x-where": "energy/heating_explain.dart:626",
   "placeholders": {
    "p0": {
     "type": "String"
    }
   }
  },
- "sedcddfbb2f": "NO REPLY",
- "@sedcddfbb2f": {
-  "description": "fi: EI VASTAA",
-  "x-where": "energy/heating_explain.dart:519"
+ "s5811eb3006": "State unknown",
+ "@s5811eb3006": {
+  "description": "fi: Tila tuntematon",
+  "x-where": "energy/heating_explain.dart:629"
  },
  "s6ab8f97950": "ON",
  "@s6ab8f97950": {
   "description": "fi: PÄÄLLÄ",
-  "x-where": "energy/heating_explain.dart:520"
+  "x-where": "energy/heating_explain.dart:630"
  },
  "s509c668d7e": "OFF",
  "@s509c668d7e": {
   "description": "fi: POIS",
-  "x-where": "energy/heating_explain.dart:520"
+  "x-where": "energy/heating_explain.dart:630"
+ },
+ "sfd2975e5c4": "just now",
+ "@sfd2975e5c4": {
+  "description": "fi: juuri äsken",
+  "x-where": "energy/heating_explain.dart:641"
+ },
+ "s1cb1af7851": "{p0} ago",
+ "@s1cb1af7851": {
+  "description": "fi: {p0} sitten",
+  "x-where": "energy/heating_explain.dart:642",
+  "placeholders": {
+   "p0": {
+    "type": "String"
+   }
+  }
+ },
+ "s04780b98b7": "The device has not answered, its state is not known",
+ "@s04780b98b7": {
+  "description": "fi: Laite ei ole vastannut, tilaa ei tiedetä",
+  "x-where": "energy/heating_explain.dart:648"
+ },
+ "s69b9359f3f": "Decision: {p0} – the device has not confirmed it",
+ "@s69b9359f3f": {
+  "description": "fi: Päätös: {p0} – laite ei ole vahvistanut sitä",
+  "x-where": "energy/heating_explain.dart:649",
+  "placeholders": {
+   "p0": {
+    "type": "String"
+   }
+  }
+ },
+ "s5989e2e782": " (at {p0}, {p1})",
+ "@s5989e2e782": {
+  "description": "fi:  (klo {p0}, {p1})",
+  "x-where": "energy/heating_explain.dart:657",
+  "placeholders": {
+   "p0": {
+    "type": "String"
+   },
+   "p1": {
+    "type": "String"
+   }
+  }
+ },
+ "s9cb6ebafaa": "Last set: {p0}{p1} – the decision {p2} did not get through",
+ "@s9cb6ebafaa": {
+  "description": "fi: Viimeksi ohjattu: {p0}{p1} – päätös {p2} ei mennyt perille",
+  "x-where": "energy/heating_explain.dart:659",
+  "placeholders": {
+   "p0": {
+    "type": "String"
+   },
+   "p1": {
+    "type": "String"
+   },
+   "p2": {
+    "type": "String"
+   }
+  }
+ },
+ "s9151a2843d": "Last set: {p0}{p1}",
+ "@s9151a2843d": {
+  "description": "fi: Viimeksi ohjattu: {p0}{p1}",
+  "x-where": "energy/heating_explain.dart:664",
+  "placeholders": {
+   "p0": {
+    "type": "String"
+   },
+   "p1": {
+    "type": "String"
+   }
+  }
  },
  "s70d43f1209": "Control is switched off",
  "@s70d43f1209": {
   "description": "fi: Ohjaus on pois käytöstä",
-  "x-where": "energy/heating_explain.dart:528"
+  "x-where": "energy/heating_explain.dart:670"
  },
  "s4f7ef5d46a": "Sensor not answering – following the price schedule: ",
  "@s4f7ef5d46a": {
   "description": "fi: Anturi ei vastaa – noudatetaan hintaohjausta: ",
-  "x-where": "energy/heating_explain.dart:531"
+  "x-where": "energy/heating_explain.dart:673"
  },
  "s9e31ebc1e8": "Frost protection: {p0} °C is below {p1} °C",
  "@s9e31ebc1e8": {
   "description": "fi: Jäätymissuoja: {p0} °C on alle {p1} °C",
-  "x-where": "energy/heating_explain.dart:536",
+  "x-where": "energy/heating_explain.dart:678",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -17987,7 +18217,7 @@
  "s7cdb2a0cb6": "Temperature {p0} °C below the minimum {p1} °C",
  "@s7cdb2a0cb6": {
   "description": "fi: Lämpötila {p0} °C alle minimin {p1} °C",
-  "x-where": "energy/heating_explain.dart:541",
+  "x-where": "energy/heating_explain.dart:683",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -18000,7 +18230,7 @@
  "sf3b0d012da": "Manual override: on{p0}",
  "@sf3b0d012da": {
   "description": "fi: Manuaalinen ohitus: päällä{p0}",
-  "x-where": "energy/heating_explain.dart:550",
+  "x-where": "energy/heating_explain.dart:692",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -18010,7 +18240,7 @@
  "s14be0441f7": "Manual override: off{p0}",
  "@s14be0441f7": {
   "description": "fi: Manuaalinen ohitus: pois{p0}",
-  "x-where": "energy/heating_explain.dart:551",
+  "x-where": "energy/heating_explain.dart:693",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -18020,22 +18250,22 @@
  "sd735da4378": "Fireplace mode: electric heating is reduced",
  "@sd735da4378": {
   "description": "fi: Takka-tila: sähkölämmitystä vähennetään",
-  "x-where": "energy/heating_explain.dart:553"
+  "x-where": "energy/heating_explain.dart:695"
  },
  "s482b48b34c": "Holiday mode: the room is kept cooler",
  "@s482b48b34c": {
   "description": "fi: Lomatila: huone pidetään viileämpänä",
-  "x-where": "energy/heating_explain.dart:556"
+  "x-where": "energy/heating_explain.dart:698"
  },
  "s6a24d44a71": "Holiday mode: heating for your return",
  "@s6a24d44a71": {
   "description": "fi: Lomatila: lämmitetään paluuta varten",
-  "x-where": "energy/heating_explain.dart:559"
+  "x-where": "energy/heating_explain.dart:701"
  },
  "s247db88d99": "Warm enough ({p0} °C ≥ {p1} °C)",
  "@s247db88d99": {
   "description": "fi: Tarpeeksi lämmin ({p0} °C ≥ {p1} °C)",
-  "x-where": "energy/heating_explain.dart:561",
+  "x-where": "energy/heating_explain.dart:703",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -18048,7 +18278,7 @@
  "s0d09da9167": "Cheap hour ({p0} c/kWh ≤ limit {p1} c)",
  "@s0d09da9167": {
   "description": "fi: Halpa tunti ({p0} c/kWh ≤ raja {p1} c)",
-  "x-where": "energy/heating_explain.dart:567",
+  "x-where": "energy/heating_explain.dart:709",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -18061,7 +18291,7 @@
  "sbbcaad0790": "Heating so that the break does not get too long ({p0} c/kWh)",
  "@sbbcaad0790": {
   "description": "fi: Lämmitetään, ettei tauko veny liian pitkäksi ({p0} c/kWh)",
-  "x-where": "energy/heating_explain.dart:567",
+  "x-where": "energy/heating_explain.dart:709",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -18071,7 +18301,7 @@
  "sf56f514430": "{p0} c/kWh > limit {p1} c",
  "@sf56f514430": {
   "description": "fi: {p0} c/kWh > raja {p1} c",
-  "x-where": "energy/heating_explain.dart:571",
+  "x-where": "energy/heating_explain.dart:713",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -18084,7 +18314,7 @@
  "s9cdd4b289a": "Expensive hour – the storing floor is enough ({p0})",
  "@s9cdd4b289a": {
   "description": "fi: Kallis tunti – varaava lattia riittää ({p0})",
-  "x-where": "energy/heating_explain.dart:573",
+  "x-where": "energy/heating_explain.dart:715",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -18094,7 +18324,7 @@
  "sbf758df617": "Not a cheap hour – waiting ({p0})",
  "@sbf758df617": {
   "description": "fi: Ei halpa tunti – odottaa ({p0})",
-  "x-where": "energy/heating_explain.dart:573",
+  "x-where": "energy/heating_explain.dart:715",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -18104,7 +18334,7 @@
  "s03e2decc6e": "{p0} c/kWh ≥ limit {p1} c",
  "@s03e2decc6e": {
   "description": "fi: {p0} c/kWh ≥ raja {p1} c",
-  "x-where": "energy/heating_explain.dart:575",
+  "x-where": "energy/heating_explain.dart:717",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -18117,7 +18347,7 @@
  "s8285023fb8": "Expensive hour skipped ({p0})",
  "@s8285023fb8": {
   "description": "fi: Kallis tunti ohitetaan ({p0})",
-  "x-where": "energy/heating_explain.dart:576",
+  "x-where": "energy/heating_explain.dart:718",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -18127,17 +18357,17 @@
  "s8851083ec4": "Normal heating",
  "@s8851083ec4": {
   "description": "fi: Normaali lämmitys",
-  "x-where": "energy/heating_explain.dart:578"
+  "x-where": "energy/heating_explain.dart:720"
  },
  "s452449f24c": "No price data – heating runs normally",
  "@s452449f24c": {
   "description": "fi: Ei hintatietoa – lämmitys toimii tavallisesti",
-  "x-where": "energy/heating_explain.dart:580"
+  "x-where": "energy/heating_explain.dart:722"
  },
  "sadbee991d6": "Temperature {p0} °C is below the setpoint {p1} °C – heating",
  "@sadbee991d6": {
   "description": "fi: Lämpötila {p0} °C alle tavoitteen {p1} °C – lämmitetään",
-  "x-where": "energy/heating_explain.dart:582",
+  "x-where": "energy/heating_explain.dart:724",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -18150,7 +18380,7 @@
  "s0e20e8780d": "Setpoint {p0} °C reached ({p1} °C)",
  "@s0e20e8780d": {
   "description": "fi: Tavoite {p0} °C saavutettu ({p1} °C)",
-  "x-where": "energy/heating_explain.dart:587",
+  "x-where": "energy/heating_explain.dart:729",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -18163,7 +18393,7 @@
  "s3f74d751fe": "Heating until {p0} °C",
  "@s3f74d751fe": {
   "description": "fi: Lämmitetään, kunnes {p0} °C",
-  "x-where": "energy/heating_explain.dart:592",
+  "x-where": "energy/heating_explain.dart:734",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -18173,7 +18403,7 @@
  "s91276ece64": "Off until the temperature drops below {p0} °C",
  "@s91276ece64": {
   "description": "fi: Pois, kunnes lämpötila laskee alle {p0} °C",
-  "x-where": "energy/heating_explain.dart:597",
+  "x-where": "energy/heating_explain.dart:739",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -18183,52 +18413,52 @@
  "s4437d2666a": "Sensor not answering – heating is kept on",
  "@s4437d2666a": {
   "description": "fi: Anturi ei vastaa – lämmitys pidetään päällä",
-  "x-where": "energy/heating_explain.dart:602"
+  "x-where": "energy/heating_explain.dart:744"
  },
  "s127c973eb9": "Sensor not answering – heating is kept off",
  "@s127c973eb9": {
   "description": "fi: Anturi ei vastaa – lämmitys pidetään pois",
-  "x-where": "energy/heating_explain.dart:604"
+  "x-where": "energy/heating_explain.dart:746"
  },
  "s7e2afd388e": "Safety limit: off for too long – heating for an hour",
  "@s7e2afd388e": {
   "description": "fi: Turvaraja: pois liian pitkään – lämmitetään tunti",
-  "x-where": "energy/heating_explain.dart:606"
+  "x-where": "energy/heating_explain.dart:748"
  },
  "s630919f15c": "Kept on: the minimum on time is not over",
  "@s630919f15c": {
   "description": "fi: Pidetään päällä: vähimmäisaika ei ole täynnä",
-  "x-where": "energy/heating_explain.dart:611"
+  "x-where": "energy/heating_explain.dart:753"
  },
  "sf5f33530ca": "Kept off: the minimum off time is not over",
  "@sf5f33530ca": {
   "description": "fi: Pidetään pois: vähimmäisaika ei ole täynnä",
-  "x-where": "energy/heating_explain.dart:613"
+  "x-where": "energy/heating_explain.dart:755"
  },
  "sd36f9bf75a": "Pre-heating before an expensive or cold spell",
  "@sd36f9bf75a": {
   "description": "fi: Esilämmitys ennen kallista tai kylmää jaksoa",
-  "x-where": "energy/heating_explain.dart:615"
+  "x-where": "energy/heating_explain.dart:757"
  },
  "s8ea3994a9b": "Saving while expensive",
  "@s8ea3994a9b": {
   "description": "fi: Säästö kalliina aikana",
-  "x-where": "energy/heating_explain.dart:617"
+  "x-where": "energy/heating_explain.dart:759"
  },
  "s8ec3c3bdb9": "No information yet",
  "@s8ec3c3bdb9": {
   "description": "fi: Ei tietoa vielä",
-  "x-where": "energy/heating_explain.dart:619"
+  "x-where": "energy/heating_explain.dart:761"
  },
  "sd80668c71a": "The next change depends on the temperature",
  "@sd80668c71a": {
   "description": "fi: Seuraava muutos riippuu lämpötilasta",
-  "x-where": "energy/heating_explain.dart:625"
+  "x-where": "energy/heating_explain.dart:767"
  },
  "s723147d2b2": "Automatic control resumes at {p0}",
  "@s723147d2b2": {
   "description": "fi: Automaattinen ohjaus jatkuu klo {p0}",
-  "x-where": "energy/heating_explain.dart:629",
+  "x-where": "energy/heating_explain.dart:771",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -18238,7 +18468,7 @@
  "sc2c736c508": "Next on at {p0}",
  "@sc2c736c508": {
   "description": "fi: Seuraavaksi päälle klo {p0}",
-  "x-where": "energy/heating_explain.dart:631",
+  "x-where": "energy/heating_explain.dart:773",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -18248,7 +18478,7 @@
  "s2c7a2c7c84": "Next off at {p0}",
  "@s2c7a2c7c84": {
   "description": "fi: Seuraavaksi pois klo {p0}",
-  "x-where": "energy/heating_explain.dart:632",
+  "x-where": "energy/heating_explain.dart:774",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -18258,7 +18488,7 @@
  "s6ebbbbc4a0": "Temperature control and the safety limits (frost protection, minimum temperature) are off, and {p0}.",
  "@s6ebbbbc4a0": {
   "description": "fi: Lämpötilaohjaus ja turvarajat (jäätymissuoja, vähimmäislämpötila) eivät ole käytössä, ja {p0}.",
-  "x-where": "energy/heating_explain.dart:639",
+  "x-where": "energy/heating_explain.dart:781",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -18268,17 +18498,17 @@
  "sdba1212edb": "The safety limits (frost protection, minimum temperature) are off, and heating follows the price schedule.",
  "@sdba1212edb": {
   "description": "fi: Turvarajat (jäätymissuoja, vähimmäislämpötila) eivät ole käytössä, ja lämmitys noudattaa hintaohjausta.",
-  "x-where": "energy/heating_explain.dart:643"
+  "x-where": "energy/heating_explain.dart:785"
  },
  "sbf916076f9": "The temperature sensor is not answering.",
  "@sbf916076f9": {
   "description": "fi: Lämpöanturi ei vastaa.",
-  "x-where": "energy/heating_explain.dart:647"
+  "x-where": "energy/heating_explain.dart:789"
  },
  "s9fad63ec58": "Check the sensor battery and network, or choose another sensor.",
  "@s9fad63ec58": {
   "description": "fi: Tarkista anturin paristo ja verkkoyhteys tai valitse toinen anturi.",
-  "x-where": "energy/heating_explain.dart:648"
+  "x-where": "energy/heating_explain.dart:790"
  },
  "s0a81072a1f": "Find it in your router''s device list or the maker''s app (device info). Reserve a fixed IP for it.",
  "@s0a81072a1f": {
@@ -19656,6 +19886,41 @@
   "description": "fi: Laite on varattu (toinen sovellus ohjaa) – yritä minuutin päästä.",
   "x-where": "heatpumps/mhi_wfrac.dart:306"
  },
+ "s98ffbf5518": "The device has not answered for a while.",
+ "@s98ffbf5518": {
+  "description": "fi: Laite ei ole vastannut tarpeeksi pitkään.",
+  "x-where": "state/browser_tile_hide.dart:316"
+ },
+ "s5972cf4f3b": "A still picture could not be made from the video stream in the browser.",
+ "@s5972cf4f3b": {
+  "description": "fi: Still-kuvaa ei saatu tehtyä videovirrasta selaimessa.",
+  "x-where": "state/browser_tile_hide.dart:327"
+ },
+ "s786c05c9e1": "This device cannot be used from the browser.",
+ "@s786c05c9e1": {
+  "description": "fi: Tätä laitetta ei voi käyttää selaimesta.",
+  "x-where": "state/browser_tile_hide.dart:332"
+ },
+ "s70aa3dc5be": "The tile comes back as soon as the device answers.",
+ "@s70aa3dc5be": {
+  "description": "fi: Ruutu tulee näkyviin heti, kun laite vastaa.",
+  "x-where": "state/browser_tile_hide.dart:344"
+ },
+ "scdf43305db": "Install ffmpeg on the home-bridge computer, or use the Molaplan app as the home bridge.",
+ "@scdf43305db": {
+  "description": "fi: Asenna ffmpeg kotisillan tietokoneelle, tai käytä Molaplan-sovellusta kotisiltana.",
+  "x-where": "state/browser_tile_hide.dart:355"
+ },
+ "s1882976d8c": "The device works in the Molaplan app.",
+ "@s1882976d8c": {
+  "description": "fi: Laite toimii Molaplan-sovelluksessa.",
+  "x-where": "state/browser_tile_hide.dart:361"
+ },
+ "sb3a5e212e2": "Add a home bridge so this also works in the browser.",
+ "@sb3a5e212e2": {
+  "description": "fi: Lisää kotisilta, niin tämä toimii myös selaimessa.",
+  "x-where": "state/browser_tile_hide.dart:366"
+ },
  "s4cac4725b8": "The group''s devices are not answering",
  "@s4cac4725b8": {
   "description": "fi: Ryhmän laitteet eivät vastaa",
@@ -19669,7 +19934,7 @@
  "sb9964cfb3b": "Power {p0}",
  "@sb9964cfb3b": {
   "description": "fi: Teho {p0}",
-  "x-where": "state/app_state.dart:1427",
+  "x-where": "state/app_state.dart:1652",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -19679,7 +19944,7 @@
  "s08d04d58a9": "Channel {p0}",
  "@s08d04d58a9": {
   "description": "fi: Kanava {p0}",
-  "x-where": "state/app_state.dart:1428",
+  "x-where": "state/app_state.dart:1653",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -21456,33 +21721,5 @@
  "@s06444f278d": {
   "description": "fi: asento (100 = kiinni)",
   "x-where": "devices/dirigera.dart:319"
- },
- "s1882976d8c": "The device works in the Molaplan app.",
- "@s1882976d8c": {"description": "fi: Laite toimii Molaplan-sovelluksessa.", "x-where": "state/browser_tile_hide.dart"},
- "s25a2d52c2d": "In the browser, tiles this browser cannot reach, and tiles that have not answered for about ten minutes, are hidden. Hidden tiles can be opened from the bottom of the view. This browser only.",
- "@s25a2d52c2d": {"description": "fi: Selainversiossa piilotetaan ruudut, joihin ei saada yhteyttä tästä selaimesta, ja ruudut, jotka eivät ole vastanneet noin kymmeneen minuuttiin. Piilotetut saa näkyviin näkymän alareunasta. Koskee vain tätä selainta.", "x-where": "ui/settings_page.dart:282"},
- "s493a65113f": "Always show",
- "@s493a65113f": {"description": "fi: Näytä aina", "x-where": "ui/browser_hidden_row.dart:113"},
- "s5972cf4f3b": "A still picture could not be made from the video stream in the browser.",
- "@s5972cf4f3b": {"description": "fi: Still-kuvaa ei saatu tehtyä videovirrasta selaimessa.", "x-where": "state/browser_tile_hide.dart"},
- "s70aa3dc5be": "The tile comes back as soon as the device answers.",
- "@s70aa3dc5be": {"description": "fi: Ruutu tulee näkyviin heti, kun laite vastaa.", "x-where": "state/browser_tile_hide.dart"},
- "s786c05c9e1": "This device cannot be used from the browser.",
- "@s786c05c9e1": {"description": "fi: Tätä laitetta ei voi käyttää selaimesta.", "x-where": "state/browser_tile_hide.dart"},
- "s98ffbf5518": "The device has not answered for a while.",
- "@s98ffbf5518": {"description": "fi: Laite ei ole vastannut tarpeeksi pitkään.", "x-where": "state/browser_tile_hide.dart"},
- "sa59af4f48b": "{p0} devices hidden – not available in the browser",
- "@sa59af4f48b": {"description": "fi: {p0} laitetta piilotettu – ei käytettävissä selaimessa", "x-where": "ui/browser_hidden_row.dart:49", "placeholders": {"p0": {"type": "String"}}},
- "sb3a5e212e2": "Add a home bridge so this also works in the browser.",
- "@sb3a5e212e2": {"description": "fi: Lisää kotisilta, niin tämä toimii myös selaimessa.", "x-where": "state/browser_tile_hide.dart"},
- "sbfd72f3328": "Hide automatically",
- "@sbfd72f3328": {"description": "fi: Piilota automaattisesti", "x-where": "ui/browser_hidden_row.dart:157"},
- "scdf43305db": "Install ffmpeg on the home-bridge computer, or use the Molaplan app as the home bridge.",
- "@scdf43305db": {"description": "fi: Asenna ffmpeg kotisillan tietokoneelle, tai käytä Molaplan-sovellusta kotisiltana.", "x-where": "state/browser_tile_hide.dart"},
- "se24b0e7f60": "Applies only in this browser. On other devices the tile stays in place.",
- "@se24b0e7f60": {"description": "fi: Koskee vain tätä selainta. Muissa laitteissa ruutu pysyy paikallaan.", "x-where": "ui/browser_hidden_row.dart:145"},
- "se9702be418": "Hide tiles that don''t work in the browser",
- "@se9702be418": {"description": "fi: Piilota selaimessa toimimattomat", "x-where": "ui/settings_page.dart:278"},
- "sf328dcc536": "Browser view",
- "@sf328dcc536": {"description": "fi: Selainnäkymä", "x-where": "ui/browser_hidden_row.dart:141"}
+ }
 }

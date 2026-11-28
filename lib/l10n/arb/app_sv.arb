@@ -1122,6 +1122,8 @@
   "x-mt": true
  },
  "s09f5da65e0": "Byt till Shelly Cloud",
+ "sf77125583f": "Tekniska detaljer",
+ "s1e593aeca2": "Stäng",
  "sf5768a876d": "Inaktiverad",
  "@sf5768a876d": {
   "x-mt": true
@@ -1219,12 +1221,10 @@
  "@s8653f173b6": {
   "x-mt": true
  },
- "sb730159a01": "Pris nu",
  "s7dfe0e7977": "Nästa förändring",
  "@s7dfe0e7977": {
   "x-mt": true
  },
- "sf77125583f": "Tekniska detaljer",
  "s5555a716bb": "Detta är en uppskattning från priser och inställningar: hembron har ännu inte svarat, så enhetens verkliga tillstånd är okänt.",
  "@s5555a716bb": {
   "x-mt": true
@@ -1375,7 +1375,6 @@
  "@s2bf22ca429": {
   "x-mt": true
  },
- "s1e593aeca2": "Stäng",
  "sc6e6f17ad4": "Webbläsarversion: du styr fjärrstyrbara enheter. Full kontroll med appen - mer ›",
  "@sc6e6f17ad4": {
   "x-mt": true
@@ -2663,6 +2662,11 @@
  "sb2fa876c32": "Ljusstyrka",
  "s34cc93ca61": "Favoriter",
  "sdc485831ad": "Tryck länge för att ta bort",
+ "sa59af4f48b": "{p0} rutor dolda – inte tillgängliga i webbläsaren",
+ "s493a65113f": "Visa alltid",
+ "sf328dcc536": "Webbläsarvy",
+ "se24b0e7f60": "Gäller bara den här webbläsaren. På andra enheter stannar rutan på sin plats.",
+ "sbfd72f3328": "Dölj automatiskt",
  "sfe54134176": "Alla enheter",
  "s23baecde5b": "Enheter",
  "@s23baecde5b": {
@@ -4646,6 +4650,8 @@
  "s8382da3467": "Normal",
  "s7c1cd8314e": "Dölj rutor som inte fungerar på distans",
  "sa0cbbafb4e": "Borta hemifrån döljs rutor som bara fungerar i hemnätverket. Som standard står de kvar, gråtonade.",
+ "se9702be418": "Dölj rutor som inte fungerar i webbläsaren",
+ "s25a2d52c2d": "I webbläsaren döljs rutor som den här webbläsaren inte når, och rutor som inte har svarat på ungefär tio minuter. Dolda rutor öppnas från nederkanten av vyn. Gäller bara den här webbläsaren.",
  "s419166b895": "Klocka och väder på hemskärmen",
  "@s419166b895": {
   "x-mt": true
@@ -5734,6 +5740,7 @@
  "@s2b2118a93b": {
   "x-mt": true
  },
+ "sb730159a01": "Pris nu",
  "s68fcfcfed1": "Billigaste timmen i dag",
  "s86ff059f5e": "Medelpris i dag",
  "s7b911d48c6": "Dyraste timmen i dag",
@@ -6733,6 +6740,18 @@
  "@s70089507bf": {
   "x-mt": true
  },
+ "s496aaf125a": "Enheten svarar, men ONVIF-porten är stängd",
+ "@s496aaf125a": {
+  "x-mt": true
+ },
+ "scfbd591df7": "Enheten svarar, men ONVIF-porten är stängd (styrda portar {p0})",
+ "@scfbd591df7": {
+  "x-mt": true
+ },
+ "s8be90444f0": "Kontrollera kamerans ONVIF-port och skriv den om det behövs (Tapo: 2020). Tapo-app → kamera → Avancerade inställningar → Kamerakonto: skapa en användare och lösenord där (inte din Tapo-molninloggning).",
+ "@s8be90444f0": {
+  "x-mt": true
+ },
  "s7e11595f9e": "Hembron är avstängd",
  "@s7e11595f9e": {
   "x-mt": true
@@ -6777,6 +6796,10 @@
  },
  "sbb1730fa00": "Adress {p0} är inte på samma nätverk som den här enheten ({p1}.x). Vanligtvis är den här enheten på ett annat Wi-Fi än {p2}.\n\nGå med i samma Wi-Fi, eller ställa in hembron.",
  "@sbb1730fa00": {
+  "x-mt": true
+ },
+ "s8947447763": "Adressen är på ett annat nätverk än den här enheten - kameran nås genom hembron.",
+ "@s8947447763": {
   "x-mt": true
  },
  "s915c9a0db3": "Välj minst en",
@@ -10036,6 +10059,10 @@
  "@sd0e9fc6760": {
   "x-mt": true
  },
+ "s8e9e56f68f": "Se den exakta orsaken under tekniska detaljer.",
+ "@s8e9e56f68f": {
+  "x-mt": true
+ },
  "sc056006180": "Kontrollera att enheten är på och på samma nätverk som hemmabron. Smart värme retries varje minut; tills det fungerar enheten stannar i sitt nuvarande tillstånd.",
  "@sc056006180": {
   "x-mt": true
@@ -10050,10 +10077,6 @@
  },
  "s54dbdeb56b": "Enheten svarade men accepterade inte kommandot. Försök att starta om enheten.",
  "@s54dbdeb56b": {
-  "x-mt": true
- },
- "s8e9e56f68f": "Se den exakta orsaken under tekniska detaljer.",
- "@s8e9e56f68f": {
   "x-mt": true
  },
  "s7279e2bdb1": "Manuell överridning",
@@ -10227,10 +10250,6 @@
  "s136e7941a4": "DISABLED",
  "s8847ee78e0": "Mål {p0} °C",
  "@s8847ee78e0": {
-  "x-mt": true
- },
- "sedcddfbb2f": "INGEN REPLY",
- "@sedcddfbb2f": {
   "x-mt": true
  },
  "s6ab8f97950": "ON",
@@ -11401,6 +11420,13 @@
  "@sbaecc9fbed": {
   "x-mt": true
  },
+ "s98ffbf5518": "Enheten har inte svarat på ett tag.",
+ "s5972cf4f3b": "En stillbild kunde inte tas från videoströmmen i webbläsaren.",
+ "s786c05c9e1": "Den här enheten kan inte användas från webbläsaren.",
+ "s70aa3dc5be": "Rutan kommer tillbaka så snart enheten svarar.",
+ "scdf43305db": "Installera ffmpeg på hemmabrons dator, eller använd Molaplan-appen som hemmabro.",
+ "s1882976d8c": "Enheten fungerar i Molaplan-appen.",
+ "sb3a5e212e2": "Lägg till en hemmabro, så fungerar detta också i webbläsaren.",
  "s4cac4725b8": "Gruppens enheter svarar inte",
  "@s4cac4725b8": {
   "x-mt": true
@@ -12355,6 +12381,10 @@
  "@s61c9b76fa1": {
   "x-mt": true
  },
+ "s69d3885720": "Kameraanvändaren och lösenordet (ofta admin). ONVIF kan behöva aktiveras i kamerainställningarna. Tapo använder port 2020 och behöver ett kamerakonto (Tapo app → kamera → Avancerade inställningar → Kamerakonto), inte din Tapo molninloggning.",
+ "@s69d3885720": {
+  "x-mt": true
+ },
  "s32270de47a": "Säkerhetskamera",
  "@s32270de47a": {
   "x-mt": true
@@ -12365,6 +12395,10 @@
  },
  "se8ea97c5eb": "I kameraappen (enhetsinformation) eller routerns enhetslista.",
  "@se8ea97c5eb": {
+  "x-mt": true
+ },
+ "sf361b8971e": "Lämna tom för att prova de vanliga hamnarna (80, 2020, 8000, 8080...). Tapo: 2020.",
+ "@sf361b8971e": {
   "x-mt": true
  },
  "s1577068729": "Kamera kamera",
@@ -12541,42 +12575,116 @@
  "@s06444f278d": {
   "x-mt": true
  },
- "s496aaf125a": "Enheten svarar, men ONVIF-porten är stängd",
- "@s496aaf125a": {
+ "s6f985060ba": "Vad du kan göra",
+ "@s6f985060ba": {
   "x-mt": true
  },
- "scfbd591df7": "Enheten svarar, men ONVIF-porten är stängd (styrda portar {p0})",
- "@scfbd591df7": {
+ "s97c9304643": "Tid",
+ "@s97c9304643": {
   "x-mt": true
  },
- "s8be90444f0": "Kontrollera kamerans ONVIF-port och skriv den om det behövs (Tapo: 2020). Tapo-app → kamera → Avancerade inställningar → Kamerakonto: skapa en användare och lösenord där (inte din Tapo-molninloggning).",
- "@s8be90444f0": {
+ "s4678cef2a1": "Totalt pris: spot + moms + marginal + överföring + skatt",
+ "@s4678cef2a1": {
   "x-mt": true
  },
- "s8947447763": "Adressen är på ett annat nätverk än den här enheten - kameran nås genom hembron.",
- "@s8947447763": {
+ "s80a6e15c66": "Plats",
+ "@s80a6e15c66": {
   "x-mt": true
  },
- "s69d3885720": "Kameraanvändaren och lösenordet (ofta admin). ONVIF kan behöva aktiveras i kamerainställningarna. Tapo använder port 2020 och behöver ett kamerakonto (Tapo app → kamera → Avancerade inställningar → Kamerakonto), inte din Tapo molninloggning.",
- "@s69d3885720": {
+ "s3c6fedc117": "Pris nu (totalt)",
+ "@s3c6fedc117": {
   "x-mt": true
  },
- "sf361b8971e": "Lämna tom för att prova de vanliga hamnarna (80, 2020, 8000, 8080...). Tapo: 2020.",
- "@sf361b8971e": {
+ "s50b49fb20d": " (Spot med moms {p0} c)",
+ "@s50b49fb20d": {
   "x-mt": true
  },
- "s1882976d8c": "Enheten fungerar i Molaplan-appen.",
- "s25a2d52c2d": "I webbläsaren döljs rutor som den här webbläsaren inte når, och rutor som inte har svarat på ungefär tio minuter. Dolda rutor öppnas från nederkanten av vyn. Gäller bara den här webbläsaren.",
- "s493a65113f": "Visa alltid",
- "s5972cf4f3b": "En stillbild kunde inte tas från videoströmmen i webbläsaren.",
- "s70aa3dc5be": "Rutan kommer tillbaka så snart enheten svarar.",
- "s786c05c9e1": "Den här enheten kan inte användas från webbläsaren.",
- "s98ffbf5518": "Enheten har inte svarat på ett tag.",
- "sa59af4f48b": "{p0} rutor dolda – inte tillgängliga i webbläsaren",
- "sb3a5e212e2": "Lägg till en hemmabro, så fungerar detta också i webbläsaren.",
- "sbfd72f3328": "Dölj automatiskt",
- "scdf43305db": "Installera ffmpeg på hemmabrons dator, eller använd Molaplan-appen som hemmabro.",
- "se24b0e7f60": "Gäller bara den här webbläsaren. På andra enheter stannar rutan på sin plats.",
- "se9702be418": "Dölj rutor som inte fungerar i webbläsaren",
- "sf328dcc536": "Webbläsarvy"
+ "s1e9eca6676": "Spotpriset nu med moms. Överföring, skatt och marginal ingår inte – Smart uppvärmning jämför det totala priset.",
+ "@s1e9eca6676": {
+  "x-mt": true
+ },
+ "s340968669a": "Enheten",
+ "@s340968669a": {
+  "x-mt": true
+ },
+ "s151c5be078": "Hembron kan inte nå adressen till {p0}: det är troligtvis på ett annat nätverk än {p0}. Den här enheten kan nå den, vilket är anledningen till att de andra korten fungerar.",
+ "@s151c5be078": {
+  "x-mt": true
+ },
+ "s99ea566004": "Hembron kunde inte ansluta till {p0}. Det är avstängt, utanför nätverket, eller bron är på ett annat nätverk.",
+ "@s99ea566004": {
+  "x-mt": true
+ },
+ "sb32685da2f": "Sätt hembron på samma nätverk som enheten: öppna Molaplan på en alltid-på-enhet i enhetens nätverk (t.ex. en dator eller surfplatta hemma) och välj Inställningar → Fjärråtkomst → Använd den här enheten som hemmabron. Sedan para din telefon och PC med den igen.",
+ "@sb32685da2f": {
+  "x-mt": true
+ },
+ "s22dde7740f": "Eller styra enheten genom en anslutning kan bron nå från var som helst (till exempel tillverkarens moln, som Shelly Cloud).",
+ "@s22dde7740f": {
+  "x-mt": true
+ },
+ "sd4f0e6f8e1": "Kontrollera att enheten är påslagen och dess kraft och Wi-Fi-ljus är på.",
+ "@sd4f0e6f8e1": {
+  "x-mt": true
+ },
+ "s8277eb958e": "Kontrollera att enheten och hembron är på samma nätverk (de tre första siffrorna av deras adresser är desamma).",
+ "@s8277eb958e": {
+  "x-mt": true
+ },
+ "sab9dae06af": "Om enhetens adress har ändrats, uppdatera den i anslutningsinställningarna.",
+ "@sab9dae06af": {
+  "x-mt": true
+ },
+ "sdafab85176": "Smart värme retries varje minut. Fram till dess stannar reläet i sitt sista tillstånd och värmen kontrolleras inte.",
+ "@sdafab85176": {
+  "x-mt": true
+ },
+ "s5a3b74d726": "Öppna enhetsanslutningen och kontrollera användarnamnet och lösenordet.",
+ "@s5a3b74d726": {
+  "x-mt": true
+ },
+ "s7157b2a937": "Öppna reläkortet och kontrollera dess adress och på / av kommandon.",
+ "@s7157b2a937": {
+  "x-mt": true
+ },
+ "s419117d6ca": "Starta om enheten (styr av och på).",
+ "@s419117d6ca": {
+  "x-mt": true
+ },
+ "sc28a06ee09": "Om felet fortsätter, kontrollera enhetens inställningar och firmware.",
+ "@sc28a06ee09": {
+  "x-mt": true
+ },
+ "s5811eb3006": "State okänd",
+ "@s5811eb3006": {
+  "x-mt": true
+ },
+ "sfd2975e5c4": "Just nu",
+ "@sfd2975e5c4": {
+  "x-mt": true
+ },
+ "s1cb1af7851": "{p0} sedan",
+ "@s1cb1af7851": {
+  "x-mt": true
+ },
+ "s04780b98b7": "Enheten har inte svarat, dess tillstånd är inte känt",
+ "@s04780b98b7": {
+  "x-mt": true
+ },
+ "s69b9359f3f": "Beslut: {p0} – enheten har inte bekräftat det",
+ "@s69b9359f3f": {
+  "x-mt": true
+ },
+ "s5989e2e782": " (vid {p0}, {p1})",
+ "@s5989e2e782": {
+  "x-mt": true
+ },
+ "s9cb6ebafaa": "Sista uppsättningen: {p0}{p1} – beslutet {p2} gick inte igenom",
+ "@s9cb6ebafaa": {
+  "x-mt": true
+ },
+ "s9151a2843d": "Sista set: {p0}{p1}",
+ "@s9151a2843d": {
+  "x-mt": true
+ }
 }

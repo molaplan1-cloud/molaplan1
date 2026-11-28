@@ -1456,6 +1456,18 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s09f5da65e0 => 'Cambiar a Shelly Cloud';
 
   @override
+  String get s6f985060ba => '¿Qué puedes hacer?';
+
+  @override
+  String get sf77125583f => 'Detalles técnicos';
+
+  @override
+  String get s97c9304643 => 'Hora';
+
+  @override
+  String get s1e593aeca2 => 'Cerrar';
+
+  @override
   String get sf5768a876d => 'Discapacitados';
 
   @override
@@ -1530,6 +1542,13 @@ class AppLocalizationsEs extends AppLocalizations {
       'Estimación – el puente de casa no ha respondido todavía';
 
   @override
+  String get s4678cef2a1 =>
+      'Precio total: lugar + IVA + margen + transferencia + impuesto';
+
+  @override
+  String get s80a6e15c66 => 'spot';
+
+  @override
   String get see998ca830 => 'mantenidos';
 
   @override
@@ -1545,13 +1564,10 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s8653f173b6 => 'Temperatura';
 
   @override
-  String get sb730159a01 => 'Precio ahora';
+  String get s3c6fedc117 => 'Precio ahora (total)';
 
   @override
   String get s7dfe0e7977 => 'Siguiente cambio';
-
-  @override
-  String get sf77125583f => 'Detalles técnicos';
 
   @override
   String get s5555a716bb =>
@@ -1591,6 +1607,11 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get s63c3e9c766 => 'no datos de precios';
+
+  @override
+  String s50b49fb20d(String p0) {
+    return ' (spot con IVA $p0 c)';
+  }
 
   @override
   String s8c60756474(String p0, String p1) {
@@ -1722,9 +1743,6 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get s2bf22ca429 =>
       'Este dispositivo no se puede alcanzar desde el navegador. Funciona en la aplicación Molaplan, o desde aquí cuando se encuentra un puente casero.';
-
-  @override
-  String get s1e593aeca2 => 'Cerrar';
 
   @override
   String get sc6e6f17ad4 =>
@@ -3091,6 +3109,24 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get sdc485831ad => 'Mantén pulsado para quitar';
+
+  @override
+  String sa59af4f48b(String p0) {
+    return '$p0 recuadros ocultos – no disponibles en el navegador';
+  }
+
+  @override
+  String get s493a65113f => 'Mostrar siempre';
+
+  @override
+  String get sf328dcc536 => 'Vista del navegador';
+
+  @override
+  String get se24b0e7f60 =>
+      'Se aplica solo en este navegador. En otros dispositivos el recuadro permanece en su sitio.';
+
+  @override
+  String get sbfd72f3328 => 'Ocultar automáticamente';
 
   @override
   String get sfe54134176 => 'Todos los dispositivos';
@@ -5234,6 +5270,14 @@ class AppLocalizationsEs extends AppLocalizations {
       'Fuera de casa se ocultan los recuadros que solo funcionan en la red de casa. Por defecto se quedan en su sitio, en gris.';
 
   @override
+  String get se9702be418 =>
+      'Ocultar recuadros que no funcionan en el navegador';
+
+  @override
+  String get s25a2d52c2d =>
+      'En el navegador se ocultan los recuadros a los que este navegador no puede acceder y los que no han respondido durante unos diez minutos. Los recuadros ocultos se abren desde la parte inferior de la vista. Solo este navegador.';
+
+  @override
   String get s419166b895 => 'Reloj y clima en la pantalla de inicio';
 
   @override
@@ -6501,6 +6545,9 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s2b2118a93b => 'Datos antiguos';
 
   @override
+  String get sb730159a01 => 'Precio ahora';
+
+  @override
   String get s68fcfcfed1 => 'Hora más barata hoy';
 
   @override
@@ -7479,6 +7526,10 @@ class AppLocalizationsEs extends AppLocalizations {
   String s162c54ed4c(String p0) {
     return '$p0: hecho';
   }
+
+  @override
+  String get s1e9eca6676 =>
+      'Precio del sitio ahora con IVA. Transferencia, impuestos y margen no están incluidos – La calefacción inteligente compara el precio total.';
 
   @override
   String get se26e839c2f => 'Lunes';
@@ -10933,6 +10984,61 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sd0e9fc6760 => 'El control no funcionó';
 
   @override
+  String get s340968669a => 'el dispositivo';
+
+  @override
+  String s151c5be078(String p0, String p1) {
+    return 'El puente casero no puede llegar a la dirección de $p0: es muy probable en otra red que $p0. Este dispositivo puede llegar a ella, por lo que las otras tarjetas funcionan.';
+  }
+
+  @override
+  String s99ea566004(String p0) {
+    return 'El puente casero no podía conectarse a $p0. Se apaga, fuera de la red, o el puente está en otra red.';
+  }
+
+  @override
+  String get sb32685da2f =>
+      'Ponga el puente de inicio en la misma red que el dispositivo: abra Molaplan en un dispositivo siempre conectado en la red del dispositivo (por ejemplo, un PC o una tableta en casa) y seleccione Ajustes → Acceso remoto → Utilice este dispositivo como el puente de inicio. A continuación, emparejar su teléfono y PC con él de nuevo.';
+
+  @override
+  String get s22dde7740f =>
+      'O controlar el dispositivo a través de una conexión el puente puede llegar desde cualquier lugar (por ejemplo, la nube del fabricante, como Shelly Cloud).';
+
+  @override
+  String get sd4f0e6f8e1 =>
+      'Compruebe que el dispositivo está encendido y su luz de potencia y Wi-Fi está encendido.';
+
+  @override
+  String get s8277eb958e =>
+      'Compruebe que el dispositivo y el puente de inicio están en la misma red (los tres primeros números de sus direcciones son los mismos).';
+
+  @override
+  String get sab9dae06af =>
+      'Si la dirección del dispositivo ha cambiado, actualícela en la configuración de conexión.';
+
+  @override
+  String get sdafab85176 =>
+      'Calentamiento inteligente cada minuto. Hasta entonces el relé permanece en su último estado y la calefacción no está controlada.';
+
+  @override
+  String get s5a3b74d726 =>
+      'Abra la conexión del dispositivo y compruebe el nombre de usuario y contraseña.';
+
+  @override
+  String get s7157b2a937 =>
+      'Abra la tarjeta de relé y compruebe su dirección y comandos on/off.';
+
+  @override
+  String get s419117d6ca => 'Reinicie el dispositivo (enciende y encienda).';
+
+  @override
+  String get sc28a06ee09 =>
+      'Si el error continúa, compruebe la configuración del dispositivo y el firmware.';
+
+  @override
+  String get s8e9e56f68f => 'Vea la razón exacta bajo detalles técnicos.';
+
+  @override
   String get sc056006180 =>
       'Compruebe que el dispositivo está encendido y en la misma red que el puente casero. calefacción inteligente se alimenta cada minuto; hasta que funciona el dispositivo se queda en su estado actual.';
 
@@ -10947,9 +11053,6 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get s54dbdeb56b =>
       'El dispositivo respondió pero no aceptó el comando. Intente reiniciar el dispositivo.';
-
-  @override
-  String get s8e9e56f68f => 'Vea la razón exacta bajo detalles técnicos.';
 
   @override
   String get s7279e2bdb1 => 'Anulación manual';
@@ -11125,13 +11228,45 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
-  String get sedcddfbb2f => 'NO REPLY';
+  String get s5811eb3006 => 'Estado desconocido';
 
   @override
   String get s6ab8f97950 => 'ON';
 
   @override
   String get s509c668d7e => 'OFF';
+
+  @override
+  String get sfd2975e5c4 => 'ahora';
+
+  @override
+  String s1cb1af7851(String p0) {
+    return '$p0 ago';
+  }
+
+  @override
+  String get s04780b98b7 =>
+      'El dispositivo no ha respondido, su estado no es conocido';
+
+  @override
+  String s69b9359f3f(String p0) {
+    return 'Decisión: $p0 – el dispositivo no lo ha confirmado';
+  }
+
+  @override
+  String s5989e2e782(String p0, String p1) {
+    return ' (a $p0, $p1)';
+  }
+
+  @override
+  String s9cb6ebafaa(String p0, String p1, String p2) {
+    return 'Último set: $p0$p1 – la decisión $p2 no se logró';
+  }
+
+  @override
+  String s9151a2843d(String p0, String p1) {
+    return 'Último set: $p0$p1';
+  }
 
   @override
   String get s70d43f1209 => 'El control se apaga';
@@ -12226,6 +12361,34 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get sbaecc9fbed =>
       'La unidad está ocupada (otra aplicación) – intente en un minuto.';
+
+  @override
+  String get s98ffbf5518 =>
+      'El dispositivo no ha respondido durante un tiempo.';
+
+  @override
+  String get s5972cf4f3b =>
+      'No se pudo crear una imagen fija a partir de la secuencia de vídeo en el navegador.';
+
+  @override
+  String get s786c05c9e1 =>
+      'Este dispositivo no se puede usar desde el navegador.';
+
+  @override
+  String get s70aa3dc5be =>
+      'El recuadro vuelve a aparecer en cuanto el dispositivo responde.';
+
+  @override
+  String get scdf43305db =>
+      'Instala ffmpeg en el ordenador del puente de casa, o usa la aplicación Molaplan como puente de casa.';
+
+  @override
+  String get s1882976d8c =>
+      'El dispositivo funciona en la aplicación Molaplan.';
+
+  @override
+  String get sb3a5e212e2 =>
+      'Añade un puente de casa para que esto también funcione en el navegador.';
 
   @override
   String get s4cac4725b8 => 'Los dispositivos del grupo no responden';
@@ -13370,58 +13533,4 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get s06444f278d => 'posición (100 = cerrada)';
-
-  @override
-  String get s1882976d8c =>
-      'El dispositivo funciona en la aplicación Molaplan.';
-
-  @override
-  String get s25a2d52c2d =>
-      'En el navegador se ocultan los recuadros a los que este navegador no puede acceder y los que no han respondido durante unos diez minutos. Los recuadros ocultos se abren desde la parte inferior de la vista. Solo este navegador.';
-
-  @override
-  String get s493a65113f => 'Mostrar siempre';
-
-  @override
-  String get s5972cf4f3b =>
-      'No se pudo crear una imagen fija a partir de la secuencia de vídeo en el navegador.';
-
-  @override
-  String get s70aa3dc5be =>
-      'El recuadro vuelve a aparecer en cuanto el dispositivo responde.';
-
-  @override
-  String get s786c05c9e1 =>
-      'Este dispositivo no se puede usar desde el navegador.';
-
-  @override
-  String get s98ffbf5518 =>
-      'El dispositivo no ha respondido durante un tiempo.';
-
-  @override
-  String sa59af4f48b(String p0) {
-    return '$p0 recuadros ocultos – no disponibles en el navegador';
-  }
-
-  @override
-  String get sb3a5e212e2 =>
-      'Añade un puente de casa para que esto también funcione en el navegador.';
-
-  @override
-  String get sbfd72f3328 => 'Ocultar automáticamente';
-
-  @override
-  String get scdf43305db =>
-      'Instala ffmpeg en el ordenador del puente de casa, o usa la aplicación Molaplan como puente de casa.';
-
-  @override
-  String get se24b0e7f60 =>
-      'Se aplica solo en este navegador. En otros dispositivos el recuadro permanece en su sitio.';
-
-  @override
-  String get se9702be418 =>
-      'Ocultar recuadros que no funcionan en el navegador';
-
-  @override
-  String get sf328dcc536 => 'Vista del navegador';
 }

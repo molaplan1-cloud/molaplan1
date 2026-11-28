@@ -16,6 +16,7 @@ import 'package:molaplan/ui/app_scope.dart';
 import 'package:molaplan/ui/heating_view.dart';
 import 'package:molaplan/ui/smart_heating_pages.dart';
 
+import 'heating_tile_t331_test.dart' as t show bridgeStatus;
 import 'heating_tile_t331_test.dart' show bridgeStatus, d0, dayPrices, makeState, settle;
 
 Future<void> _font(String family, String file) async {
@@ -188,6 +189,47 @@ void main() {
     ).expand();
     await settle(tester);
     await _save(tester, dir, '6-edistyneet-hystereesi-ESIMERKKIDATA.png');
+    // t335u: a relay that does not answer – the decision stays the big word, the warning names the device.
+    await tester.pumpWidget(const SizedBox());
+    await tester.pump(const Duration(minutes: 3));
+    loads['L1'] =
+        (t.bridgeStatus(
+              st,
+              now: now,
+              loadId: 'L1',
+              on: null,
+              want: false,
+              reason: 'not_cheap',
+              error: 'TimeoutException after 0:00:10.000000: Future not completed',
+            )['loads']
+            as Map)['L1'];
+    st.heatingStatus = {'enabled': true, 'mode': 'normal', 'fireplace': <String, dynamic>{}, 'loads': loads, 'v': 2};
+    tester.view.physicalSize = const Size(820, 520);
+    final tile = heatingTileConfig('fi', loadId: 'L1', title: 'Älykäs lämmitys');
+    await tester.pumpWidget(
+      _page(
+        st,
+        Scaffold(
+          body: Padding(
+            padding: const EdgeInsets.fromLTRB(16, 56, 16, 16),
+            child: Align(
+              alignment: Alignment.topLeft,
+              child: SizedBox(width: 400, height: 300, child: HeatingTile(tile: tile)),
+            ),
+          ),
+        ),
+      ),
+    );
+    await settle(tester);
+    await _save(tester, dir, '7-laite-ei-vastaa-paatos-nakyy-ESIMERKKIDATA.png');
+    await tester.tap(find.byKey(const ValueKey('heat-warning')));
+    await settle(tester);
+    tester.view.physicalSize = const Size(820, 1000);
+    await tester.pump();
+    await _save(tester, dir, '8-varoituksen-ohjeet-ja-tekniset-tiedot-ESIMERKKIDATA.png');
+    await tester.tap(find.byKey(const ValueKey('heat-tech')));
+    await settle(tester);
+    await _save(tester, dir, '9-tekniset-tiedot-auki-ESIMERKKIDATA.png');
     await tester.pumpWidget(const SizedBox());
     await tester.pump(const Duration(minutes: 3));
   }, skip: dir == null);

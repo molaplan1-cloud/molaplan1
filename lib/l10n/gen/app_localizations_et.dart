@@ -1443,6 +1443,18 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s09f5da65e0 => 'Lülita Shelly Cloudile';
 
   @override
+  String get s6f985060ba => 'Mida sa teha saad?';
+
+  @override
+  String get sf77125583f => 'Tehnilised üksikasjad';
+
+  @override
+  String get s97c9304643 => 'Aeg';
+
+  @override
+  String get s1e593aeca2 => 'Sulge';
+
+  @override
   String get sf5768a876d => 'Keelatud';
 
   @override
@@ -1516,6 +1528,13 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s9c543b2106 => 'Hinnang – kodusild pole veel vastanud';
 
   @override
+  String get s4678cef2a1 =>
+      'Koguhind: hetkehind + käibemaks + marginaal + siirdehind + maks';
+
+  @override
+  String get s80a6e15c66 => 'kohake';
+
+  @override
   String get see998ca830 => 'hoiti';
 
   @override
@@ -1531,13 +1550,10 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s8653f173b6 => 'Õhutemperatuur';
 
   @override
-  String get sb730159a01 => 'Hind praegu';
+  String get s3c6fedc117 => 'Hind nüüd (kokku)';
 
   @override
   String get s7dfe0e7977 => 'Järgmine muutus';
-
-  @override
-  String get sf77125583f => 'Tehnilised üksikasjad';
 
   @override
   String get s5555a716bb =>
@@ -1577,6 +1593,11 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get s63c3e9c766 => 'hinnaandmed puuduvad';
+
+  @override
+  String s50b49fb20d(String p0) {
+    return ' (koht käibemaksuga $p0 c)';
+  }
 
   @override
   String s8c60756474(String p0, String p1) {
@@ -1705,9 +1726,6 @@ class AppLocalizationsEt extends AppLocalizations {
   @override
   String get s2bf22ca429 =>
       'Seadet ei saa brauserist kätte. See töötab Molaplani rakenduses või siit, kui kodusild on sisse lülitatud.';
-
-  @override
-  String get s1e593aeca2 => 'Sulge';
 
   @override
   String get sc6e6f17ad4 =>
@@ -3059,6 +3077,24 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get sdc485831ad => 'Eemaldamiseks vajuta pikalt';
+
+  @override
+  String sa59af4f48b(String p0) {
+    return '$p0 ruutu peidetud – pole brauseris saadaval';
+  }
+
+  @override
+  String get s493a65113f => 'Näita alati';
+
+  @override
+  String get sf328dcc536 => 'Brauserivaade';
+
+  @override
+  String get se24b0e7f60 =>
+      'Kehtib ainult selles brauseris. Teistes seadmetes jääb ruut paigale.';
+
+  @override
+  String get sbfd72f3328 => 'Peida automaatselt';
 
   @override
   String get sfe54134176 => 'Kõik seadmed';
@@ -5182,6 +5218,13 @@ class AppLocalizationsEt extends AppLocalizations {
       'Kodust eemal peidetakse ruudud, mis töötavad ainult koduvõrgus. Vaikimisi jäävad need paigale hallina.';
 
   @override
+  String get se9702be418 => 'Peida ruudud, mis brauseris ei tööta';
+
+  @override
+  String get s25a2d52c2d =>
+      'Brauseris peidetakse ruudud, milleni see brauser ei ulatu, ja ruudud, mis ei ole umbes kümme minutit vastanud. Peidetud ruudud saab avada vaate allosast. Kehtib ainult selles brauseris.';
+
+  @override
   String get s419166b895 => 'Kell ja ilm avaekraanil';
 
   @override
@@ -6437,6 +6480,9 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s2b2118a93b => 'Vanad andmed';
 
   @override
+  String get sb730159a01 => 'Hind praegu';
+
+  @override
   String get s68fcfcfed1 => 'Odavaim tund täna';
 
   @override
@@ -7410,6 +7456,10 @@ class AppLocalizationsEt extends AppLocalizations {
   String s162c54ed4c(String p0) {
     return '$p0: tehtud';
   }
+
+  @override
+  String get s1e9eca6676 =>
+      'Hetkehind nüüd käibemaksuga. Siirde-, maksu- ja marginaal ei sisalda – Nutikas kütmine võrdleb koguhinda.';
 
   @override
   String get se26e839c2f => 'Esmaspäev';
@@ -10818,6 +10868,62 @@ class AppLocalizationsEt extends AppLocalizations {
   String get sd0e9fc6760 => 'Kontroll ei toiminud';
 
   @override
+  String get s340968669a => 'seadeldist';
+
+  @override
+  String s151c5be078(String p0, String p1) {
+    return 'Kodusild ei jõua $p0 aadressini: see on tõenäoliselt mõnes muus võrgus kui $p0. See seade võib selleni jõuda, mistõttu toimivad ka teised kaardid.';
+  }
+
+  @override
+  String s99ea566004(String p0) {
+    return 'Kodusild ei saa ühenduda $p0 - ga. See lülitatakse välja, võrgust välja või sild asub teises võrgus.';
+  }
+
+  @override
+  String get sb32685da2f =>
+      'Paigaldatakse samasse seadmesse, kui see on nii, nagu see on, kui see on nii, et see on nii, et see on nii, et see on nii, nagu see on, kui see on olemas, ja kui see on nii, siis avage see nii, et see on nii, nagu see on, ja valige Seadistused → Kaugjuurdepääs → Kasuta seda seadet kodusillana. Seejärel ühendage telefon ja arvuti uuesti.';
+
+  @override
+  String get s22dde7740f =>
+      'Või juhtida seadet ühenduse kaudu, mille sild võib ulatuda kõikjalt (näiteks valmistaja pilv, nagu Shelly Cloud).';
+
+  @override
+  String get sd4f0e6f8e1 =>
+      'Kontrollige, kas seade on sisse lülitatud ja selle võimsus ja Wi-Fi valgus on sisse lülitatud.';
+
+  @override
+  String get s8277eb958e =>
+      'Kontrollige, kas seade ja kodusild on samas võrgus (nende aadresside kolm esimest numbrit on samad).';
+
+  @override
+  String get sab9dae06af =>
+      'Kui seadme aadress on muutunud, uuendage seda ühenduse seadetes.';
+
+  @override
+  String get sdafab85176 =>
+      'Nutikas soojendus proovib iga minut. Kuni selle ajani jääb relee oma viimasesse olekusse ja kütet ei kontrollita.';
+
+  @override
+  String get s5a3b74d726 =>
+      'Avage seadme ühendus ja kontrollige kasutajanime ja parooli.';
+
+  @override
+  String get s7157b2a937 =>
+      'Avage releekaart ja kontrollige selle aadressi ja sisse/välja käske.';
+
+  @override
+  String get s419117d6ca => 'Taaskäivitage seade (vool välja ja sisse).';
+
+  @override
+  String get sc28a06ee09 =>
+      'Kui viga jätkub, kontrollige seadme seadeid ja püsivara.';
+
+  @override
+  String get s8e9e56f68f =>
+      'Vaadake täpset põhjust tehniliste üksikasjade all.';
+
+  @override
   String get sc056006180 =>
       'Kontrolli, kas seade on kodusillaga samas võrgus sisse ja sisse. Nutikas kütmine proovib iga minut uuesti, kuni see töötab, jääb seade oma praegusesse olekusse.';
 
@@ -10831,10 +10937,6 @@ class AppLocalizationsEt extends AppLocalizations {
   @override
   String get s54dbdeb56b =>
       'Seade vastas, kuid ei võtnud käsku vastu. Proovi seade uuesti käivitada.';
-
-  @override
-  String get s8e9e56f68f =>
-      'Vaadake täpset põhjust tehniliste üksikasjade all.';
 
   @override
   String get s7279e2bdb1 => 'Käsitsi tühistamine';
@@ -11007,13 +11109,44 @@ class AppLocalizationsEt extends AppLocalizations {
   }
 
   @override
-  String get sedcddfbb2f => 'EI VASTUTA';
+  String get s5811eb3006 => 'Teadmata riik';
 
   @override
   String get s6ab8f97950 => 'ON';
 
   @override
   String get s509c668d7e => 'OFF';
+
+  @override
+  String get sfd2975e5c4 => 'praegu';
+
+  @override
+  String s1cb1af7851(String p0) {
+    return '$p0 tagasi';
+  }
+
+  @override
+  String get s04780b98b7 => 'Seade ei ole vastanud, selle seisund ei ole teada';
+
+  @override
+  String s69b9359f3f(String p0) {
+    return 'Otsus: $p0 – seade ei ole seda kinnitanud';
+  }
+
+  @override
+  String s5989e2e782(String p0, String p1) {
+    return ' (at $p0, $p1)';
+  }
+
+  @override
+  String s9cb6ebafaa(String p0, String p1, String p2) {
+    return 'Viimane sett: $p0$p1 – otsus $p2 ei jõudnud läbi';
+  }
+
+  @override
+  String s9151a2843d(String p0, String p1) {
+    return 'Viimane sett: $p0$p1';
+  }
 
   @override
   String get s70d43f1209 => 'Kontroll on välja lülitatud';
@@ -12086,6 +12219,28 @@ class AppLocalizationsEt extends AppLocalizations {
   @override
   String get sbaecc9fbed =>
       'Seade on hõivatud (teine rakendus) - proovige minuti jooksul.';
+
+  @override
+  String get s98ffbf5518 => 'Seade ei ole juba mõnda aega vastanud.';
+
+  @override
+  String get s5972cf4f3b => 'Videovoost ei õnnestunud brauseris pilti teha.';
+
+  @override
+  String get s786c05c9e1 => 'Seda seadet ei saa brauserist kasutada.';
+
+  @override
+  String get s70aa3dc5be => 'Ruut tuleb tagasi kohe, kui seade vastab.';
+
+  @override
+  String get scdf43305db =>
+      'Paigaldage ffmpeg kodusilla arvutisse või kasutage kodusillana Molaplani rakendust.';
+
+  @override
+  String get s1882976d8c => 'Seade töötab Molaplani rakenduses.';
+
+  @override
+  String get sb3a5e212e2 => 'Lisage kodusild, siis see toimib ka brauseris.';
 
   @override
   String get s4cac4725b8 => 'Grupi seadmed ei vasta';
@@ -13224,51 +13379,4 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get s06444f278d => 'asukoht (100 = suletud)';
-
-  @override
-  String get s1882976d8c => 'Seade töötab Molaplani rakenduses.';
-
-  @override
-  String get s25a2d52c2d =>
-      'Brauseris peidetakse ruudud, milleni see brauser ei ulatu, ja ruudud, mis ei ole umbes kümme minutit vastanud. Peidetud ruudud saab avada vaate allosast. Kehtib ainult selles brauseris.';
-
-  @override
-  String get s493a65113f => 'Näita alati';
-
-  @override
-  String get s5972cf4f3b => 'Videovoost ei õnnestunud brauseris pilti teha.';
-
-  @override
-  String get s70aa3dc5be => 'Ruut tuleb tagasi kohe, kui seade vastab.';
-
-  @override
-  String get s786c05c9e1 => 'Seda seadet ei saa brauserist kasutada.';
-
-  @override
-  String get s98ffbf5518 => 'Seade ei ole juba mõnda aega vastanud.';
-
-  @override
-  String sa59af4f48b(String p0) {
-    return '$p0 ruutu peidetud – pole brauseris saadaval';
-  }
-
-  @override
-  String get sb3a5e212e2 => 'Lisage kodusild, siis see toimib ka brauseris.';
-
-  @override
-  String get sbfd72f3328 => 'Peida automaatselt';
-
-  @override
-  String get scdf43305db =>
-      'Paigaldage ffmpeg kodusilla arvutisse või kasutage kodusillana Molaplani rakendust.';
-
-  @override
-  String get se24b0e7f60 =>
-      'Kehtib ainult selles brauseris. Teistes seadmetes jääb ruut paigale.';
-
-  @override
-  String get se9702be418 => 'Peida ruudud, mis brauseris ei tööta';
-
-  @override
-  String get sf328dcc536 => 'Brauserivaade';
 }

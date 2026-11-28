@@ -2732,6 +2732,30 @@ abstract class AppLocalizations {
   /// **'Switch to Shelly Cloud'**
   String get s09f5da65e0;
 
+  /// fi: Mitä voit tehdä
+  ///
+  /// In en, this message translates to:
+  /// **'What you can do'**
+  String get s6f985060ba;
+
+  /// fi: Tekniset tiedot
+  ///
+  /// In en, this message translates to:
+  /// **'Technical details'**
+  String get sf77125583f;
+
+  /// fi: Aika
+  ///
+  /// In en, this message translates to:
+  /// **'Time'**
+  String get s97c9304643;
+
+  /// fi: Sulje
+  ///
+  /// In en, this message translates to:
+  /// **'Close'**
+  String get s1e593aeca2;
+
   /// fi: Pois käytöstä
   ///
   /// In en, this message translates to:
@@ -2852,6 +2876,18 @@ abstract class AppLocalizations {
   /// **'Estimate – the home bridge has not answered yet'**
   String get s9c543b2106;
 
+  /// fi: Kokonaishinta: pörssi + alv + marginaali + siirto + vero
+  ///
+  /// In en, this message translates to:
+  /// **'Total price: spot + VAT + margin + transfer + tax'**
+  String get s4678cef2a1;
+
+  /// fi: pörssi
+  ///
+  /// In en, this message translates to:
+  /// **'spot'**
+  String get s80a6e15c66;
+
   /// fi: pidetään päällä
   ///
   /// In en, this message translates to:
@@ -2882,23 +2918,17 @@ abstract class AppLocalizations {
   /// **'Temperature'**
   String get s8653f173b6;
 
-  /// fi: Hinta nyt
+  /// fi: Hinta nyt (kokonaishinta)
   ///
   /// In en, this message translates to:
-  /// **'Price now'**
-  String get sb730159a01;
+  /// **'Price now (total)'**
+  String get s3c6fedc117;
 
   /// fi: Seuraava muutos
   ///
   /// In en, this message translates to:
   /// **'Next change'**
   String get s7dfe0e7977;
-
-  /// fi: Tekniset tiedot
-  ///
-  /// In en, this message translates to:
-  /// **'Technical details'**
-  String get sf77125583f;
 
   /// fi: Tämä on arvio hinnoista ja asetuksista: kotisilta ei ole vielä vastannut, joten laitteen todellista tilaa ei tiedetä.
   ///
@@ -2959,6 +2989,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'no price data'**
   String get s63c3e9c766;
+
+  /// fi:  (pörssi alv:llä {p0} c)
+  ///
+  /// In en, this message translates to:
+  /// **' (spot with VAT {p0} c)'**
+  String s50b49fb20d(String p0);
 
   /// fi: {p0} (ohitetaan, kun ≥ {p1} c)
   ///
@@ -3169,12 +3205,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'This device cannot be reached from the browser. It works in the Molaplan app, or from here when a home bridge is on.'**
   String get s2bf22ca429;
-
-  /// fi: Sulje
-  ///
-  /// In en, this message translates to:
-  /// **'Close'**
-  String get s1e593aeca2;
 
   /// fi: Selainversio: ohjaat etäkäytettäviä laitteita. Täysi ohjaus sovelluksella – lisätietoja ›
   ///
@@ -5587,6 +5617,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Long-press to remove'**
   String get sdc485831ad;
+
+  /// fi: {p0} laitetta piilotettu – ei käytettävissä selaimessa
+  ///
+  /// In en, this message translates to:
+  /// **'{p0} devices hidden – not available in the browser'**
+  String sa59af4f48b(String p0);
+
+  /// fi: Näytä aina
+  ///
+  /// In en, this message translates to:
+  /// **'Always show'**
+  String get s493a65113f;
+
+  /// fi: Selainnäkymä
+  ///
+  /// In en, this message translates to:
+  /// **'Browser view'**
+  String get sf328dcc536;
+
+  /// fi: Koskee vain tätä selainta. Muissa laitteissa ruutu pysyy paikallaan.
+  ///
+  /// In en, this message translates to:
+  /// **'Applies only in this browser. On other devices the tile stays in place.'**
+  String get se24b0e7f60;
+
+  /// fi: Piilota automaattisesti
+  ///
+  /// In en, this message translates to:
+  /// **'Hide automatically'**
+  String get sbfd72f3328;
 
   /// fi: Kaikki laitteet
   ///
@@ -9495,6 +9555,18 @@ abstract class AppLocalizations {
   /// **'Away from home, tiles that only work on the home network are hidden. By default they stay in place, greyed out.'**
   String get sa0cbbafb4e;
 
+  /// fi: Piilota selaimessa toimimattomat
+  ///
+  /// In en, this message translates to:
+  /// **'Hide tiles that don\'\'t work in the browser'**
+  String get se9702be418;
+
+  /// fi: Selainversiossa piilotetaan ruudut, joihin ei saada yhteyttä tästä selaimesta, ja ruudut, jotka eivät ole vastanneet noi
+  ///
+  /// In en, this message translates to:
+  /// **'In the browser, tiles this browser cannot reach, and tiles that have not answered for about ten minutes, are hidden. Hidden tiles can be opened from the bottom of the view. This browser only.'**
+  String get s25a2d52c2d;
+
   /// fi: Kello ja sää etusivulla
   ///
   /// In en, this message translates to:
@@ -11733,6 +11805,12 @@ abstract class AppLocalizations {
   /// **'Old data'**
   String get s2b2118a93b;
 
+  /// fi: Hinta nyt
+  ///
+  /// In en, this message translates to:
+  /// **'Price now'**
+  String get sb730159a01;
+
   /// fi: Halvin tunti tänään
   ///
   /// In en, this message translates to:
@@ -13550,6 +13628,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'{p0}: done'**
   String s162c54ed4c(String p0);
+
+  /// fi: Pörssihinta nyt alv:llä. Siirto, vero ja marginaali eivät ole mukana – Älykäs lämmitys vertaa kokonaishintaa.
+  ///
+  /// In en, this message translates to:
+  /// **'Spot price now with VAT. Transfer, tax and margin are not included – Smart heating compares the total price.'**
+  String get s1e9eca6676;
 
   /// fi: maanantai
   ///
@@ -19517,6 +19601,90 @@ abstract class AppLocalizations {
   /// **'The control did not work'**
   String get sd0e9fc6760;
 
+  /// fi: laite
+  ///
+  /// In en, this message translates to:
+  /// **'the device'**
+  String get s340968669a;
+
+  /// fi: Kotisilta ei pääse osoitteeseen, jossa {p0} on: se on todennäköisesti toisessa verkossa kuin {p1}. Tämä laite pääsee sii
+  ///
+  /// In en, this message translates to:
+  /// **'The home bridge cannot reach the address of {p0}: it is most likely on another network than {p0}. This device can reach it, which is why the other tiles work.'**
+  String s151c5be078(String p0, String p1);
+
+  /// fi: Kotisilta ei saanut yhteyttä laitteeseen {p0}. Se on pois päältä, poissa verkosta tai kotisilta on eri verkossa.
+  ///
+  /// In en, this message translates to:
+  /// **'The home bridge could not connect to {p0}. It is switched off, off the network, or the bridge is on another network.'**
+  String s99ea566004(String p0);
+
+  /// fi: Aseta kotisilta samaan verkkoon laitteen kanssa: avaa Molaplan aina päällä olevalla laitteella, joka on laitteen verkoss
+  ///
+  /// In en, this message translates to:
+  /// **'Put the home bridge on the same network as the device: open Molaplan on an always-on device in the device\'\'s network (e.g. a PC or tablet at home) and choose Settings → Remote access → Use this device as the home bridge. Then pair your phone and PC with it again.'**
+  String get sb32685da2f;
+
+  /// fi: Tai ohjaa laitetta sellaisella yhteydellä, jonka kotisilta tavoittaa mistä tahansa (esim. valmistajan pilvi, kuten Shell
+  ///
+  /// In en, this message translates to:
+  /// **'Or control the device through a connection the bridge can reach from anywhere (for example the maker\'\'s cloud, like Shelly Cloud).'**
+  String get s22dde7740f;
+
+  /// fi: Tarkista, että laite on päällä ja sen virta- ja Wi-Fi-valo palaa.
+  ///
+  /// In en, this message translates to:
+  /// **'Check that the device is switched on and its power and Wi-Fi light is on.'**
+  String get sd4f0e6f8e1;
+
+  /// fi: Tarkista, että laite ja kotisilta ovat samassa verkossa (osoitteiden kolme ensimmäistä numeroa ovat samat).
+  ///
+  /// In en, this message translates to:
+  /// **'Check that the device and the home bridge are on the same network (the first three numbers of their addresses are the same).'**
+  String get s8277eb958e;
+
+  /// fi: Jos laitteen osoite on vaihtunut, päivitä se yhteyden asetuksista.
+  ///
+  /// In en, this message translates to:
+  /// **'If the device\'\'s address has changed, update it in the connection settings.'**
+  String get sab9dae06af;
+
+  /// fi: Älykäs lämmitys yrittää uudelleen minuutin välein. Siihen asti rele pysyy viimeisessä tilassaan eikä lämmitys ohjaudu.
+  ///
+  /// In en, this message translates to:
+  /// **'Smart heating retries every minute. Until then the relay stays in its last state and the heating is not controlled.'**
+  String get sdafab85176;
+
+  /// fi: Avaa laitteen yhteys ja tarkista käyttäjätunnus ja salasana.
+  ///
+  /// In en, this message translates to:
+  /// **'Open the device connection and check the username and password.'**
+  String get s5a3b74d726;
+
+  /// fi: Avaa releen ruutu ja tarkista osoite sekä päälle/pois-komennot.
+  ///
+  /// In en, this message translates to:
+  /// **'Open the relay tile and check its address and on/off commands.'**
+  String get s7157b2a937;
+
+  /// fi: Käynnistä laite uudelleen (virta pois ja päälle).
+  ///
+  /// In en, this message translates to:
+  /// **'Restart the device (power off and on).'**
+  String get s419117d6ca;
+
+  /// fi: Jos virhe jatkuu, tarkista laitteen asetukset ja ohjelmisto.
+  ///
+  /// In en, this message translates to:
+  /// **'If the error continues, check the device settings and firmware.'**
+  String get sc28a06ee09;
+
+  /// fi: Katso tarkempi syy kohdasta Tekniset tiedot.
+  ///
+  /// In en, this message translates to:
+  /// **'See the exact reason under Technical details.'**
+  String get s8e9e56f68f;
+
   /// fi: Tarkista, että laite on päällä ja samassa verkossa kotisillan kanssa. Älykäs lämmitys yrittää uudelleen minuutin välein;
   ///
   /// In en, this message translates to:
@@ -19540,12 +19708,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'The device answered but did not accept the command. Try restarting the device.'**
   String get s54dbdeb56b;
-
-  /// fi: Katso tarkempi syy kohdasta Tekniset tiedot.
-  ///
-  /// In en, this message translates to:
-  /// **'See the exact reason under Technical details.'**
-  String get s8e9e56f68f;
 
   /// fi: Manuaalinen ohitus
   ///
@@ -19811,11 +19973,11 @@ abstract class AppLocalizations {
   /// **'Target {p0} °C'**
   String s8847ee78e0(String p0);
 
-  /// fi: EI VASTAA
+  /// fi: Tila tuntematon
   ///
   /// In en, this message translates to:
-  /// **'NO REPLY'**
-  String get sedcddfbb2f;
+  /// **'State unknown'**
+  String get s5811eb3006;
 
   /// fi: PÄÄLLÄ
   ///
@@ -19828,6 +19990,48 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'OFF'**
   String get s509c668d7e;
+
+  /// fi: juuri äsken
+  ///
+  /// In en, this message translates to:
+  /// **'just now'**
+  String get sfd2975e5c4;
+
+  /// fi: {p0} sitten
+  ///
+  /// In en, this message translates to:
+  /// **'{p0} ago'**
+  String s1cb1af7851(String p0);
+
+  /// fi: Laite ei ole vastannut, tilaa ei tiedetä
+  ///
+  /// In en, this message translates to:
+  /// **'The device has not answered, its state is not known'**
+  String get s04780b98b7;
+
+  /// fi: Päätös: {p0} – laite ei ole vahvistanut sitä
+  ///
+  /// In en, this message translates to:
+  /// **'Decision: {p0} – the device has not confirmed it'**
+  String s69b9359f3f(String p0);
+
+  /// fi:  (klo {p0}, {p1})
+  ///
+  /// In en, this message translates to:
+  /// **' (at {p0}, {p1})'**
+  String s5989e2e782(String p0, String p1);
+
+  /// fi: Viimeksi ohjattu: {p0}{p1} – päätös {p2} ei mennyt perille
+  ///
+  /// In en, this message translates to:
+  /// **'Last set: {p0}{p1} – the decision {p2} did not get through'**
+  String s9cb6ebafaa(String p0, String p1, String p2);
+
+  /// fi: Viimeksi ohjattu: {p0}{p1}
+  ///
+  /// In en, this message translates to:
+  /// **'Last set: {p0}{p1}'**
+  String s9151a2843d(String p0, String p1);
 
   /// fi: Ohjaus on pois käytöstä
   ///
@@ -21640,6 +21844,48 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'The unit is busy (another app) – try in a minute.'**
   String get sbaecc9fbed;
+
+  /// fi: Laite ei ole vastannut tarpeeksi pitkään.
+  ///
+  /// In en, this message translates to:
+  /// **'The device has not answered for a while.'**
+  String get s98ffbf5518;
+
+  /// fi: Still-kuvaa ei saatu tehtyä videovirrasta selaimessa.
+  ///
+  /// In en, this message translates to:
+  /// **'A still picture could not be made from the video stream in the browser.'**
+  String get s5972cf4f3b;
+
+  /// fi: Tätä laitetta ei voi käyttää selaimesta.
+  ///
+  /// In en, this message translates to:
+  /// **'This device cannot be used from the browser.'**
+  String get s786c05c9e1;
+
+  /// fi: Ruutu tulee näkyviin heti, kun laite vastaa.
+  ///
+  /// In en, this message translates to:
+  /// **'The tile comes back as soon as the device answers.'**
+  String get s70aa3dc5be;
+
+  /// fi: Asenna ffmpeg kotisillan tietokoneelle, tai käytä Molaplan-sovellusta kotisiltana.
+  ///
+  /// In en, this message translates to:
+  /// **'Install ffmpeg on the home-bridge computer, or use the Molaplan app as the home bridge.'**
+  String get scdf43305db;
+
+  /// fi: Laite toimii Molaplan-sovelluksessa.
+  ///
+  /// In en, this message translates to:
+  /// **'The device works in the Molaplan app.'**
+  String get s1882976d8c;
+
+  /// fi: Lisää kotisilta, niin tämä toimii myös selaimessa.
+  ///
+  /// In en, this message translates to:
+  /// **'Add a home bridge so this also works in the browser.'**
+  String get sb3a5e212e2;
 
   /// fi: Ryhmän laitteet eivät vastaa
   ///
@@ -23668,90 +23914,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'position (100 = closed)'**
   String get s06444f278d;
-
-  /// fi: Laite toimii Molaplan-sovelluksessa.
-  ///
-  /// In en, this message translates to:
-  /// **'The device works in the Molaplan app.'**
-  String get s1882976d8c;
-
-  /// fi: Selainversiossa piilotetaan ruudut, joihin ei saada yhteyttä tästä selaimesta, ja ruudut, jotka eivät ole vastanneet noin kymmeneen minuuttiin. Piilotetut saa näkyviin näkymän alareunasta. Koskee vain tätä selainta.
-  ///
-  /// In en, this message translates to:
-  /// **'In the browser, tiles this browser cannot reach, and tiles that have not answered for about ten minutes, are hidden. Hidden tiles can be opened from the bottom of the view. This browser only.'**
-  String get s25a2d52c2d;
-
-  /// fi: Näytä aina
-  ///
-  /// In en, this message translates to:
-  /// **'Always show'**
-  String get s493a65113f;
-
-  /// fi: Still-kuvaa ei saatu tehtyä videovirrasta selaimessa.
-  ///
-  /// In en, this message translates to:
-  /// **'A still picture could not be made from the video stream in the browser.'**
-  String get s5972cf4f3b;
-
-  /// fi: Ruutu tulee näkyviin heti, kun laite vastaa.
-  ///
-  /// In en, this message translates to:
-  /// **'The tile comes back as soon as the device answers.'**
-  String get s70aa3dc5be;
-
-  /// fi: Tätä laitetta ei voi käyttää selaimesta.
-  ///
-  /// In en, this message translates to:
-  /// **'This device cannot be used from the browser.'**
-  String get s786c05c9e1;
-
-  /// fi: Laite ei ole vastannut tarpeeksi pitkään.
-  ///
-  /// In en, this message translates to:
-  /// **'The device has not answered for a while.'**
-  String get s98ffbf5518;
-
-  /// fi: {p0} laitetta piilotettu – ei käytettävissä selaimessa
-  ///
-  /// In en, this message translates to:
-  /// **'{p0} devices hidden – not available in the browser'**
-  String sa59af4f48b(String p0);
-
-  /// fi: Lisää kotisilta, niin tämä toimii myös selaimessa.
-  ///
-  /// In en, this message translates to:
-  /// **'Add a home bridge so this also works in the browser.'**
-  String get sb3a5e212e2;
-
-  /// fi: Piilota automaattisesti
-  ///
-  /// In en, this message translates to:
-  /// **'Hide automatically'**
-  String get sbfd72f3328;
-
-  /// fi: Asenna ffmpeg kotisillan tietokoneelle, tai käytä Molaplan-sovellusta kotisiltana.
-  ///
-  /// In en, this message translates to:
-  /// **'Install ffmpeg on the home-bridge computer, or use the Molaplan app as the home bridge.'**
-  String get scdf43305db;
-
-  /// fi: Koskee vain tätä selainta. Muissa laitteissa ruutu pysyy paikallaan.
-  ///
-  /// In en, this message translates to:
-  /// **'Applies only in this browser. On other devices the tile stays in place.'**
-  String get se24b0e7f60;
-
-  /// fi: Piilota selaimessa toimimattomat
-  ///
-  /// In en, this message translates to:
-  /// **'Hide tiles that don\'\'t work in the browser'**
-  String get se9702be418;
-
-  /// fi: Selainnäkymä
-  ///
-  /// In en, this message translates to:
-  /// **'Browser view'**
-  String get sf328dcc536;
 }
 
 class _AppLocalizationsDelegate

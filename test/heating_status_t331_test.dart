@@ -201,19 +201,97 @@ void main() {
       expect(text(''), 'Ei tietoa vielä');
     });
 
-    test('an error without a known state is the reason; a device that is disabled says so', () {
-      final e = HeatExplanation(
+    test('a device that does not answer never replaces the decision with EI VASTAA (t335u)', () {
+      const raw = 'TimeoutException after 0:00:10.000000: Future not completed';
+      final t = at(12, 32);
+      // Decision known, relay never confirmed: the decision is the big word, with a calm note.
+      final d = HeatExplanation(loadId: 'x', control: 'switch', template: 'cheapest', want: false, error: raw);
+      expect(d.stateWord(fi), 'POIS');
+      expect(d.shownOn, isFalse);
+      expect(d.confirmed, isFalse);
+      expect(d.stateNote(fi, now: t), 'Päätös: pois – laite ei ole vahvistanut sitä');
+      expect(d.stateNote(const HeatText('en'), now: t), 'Decision: off – the device has not confirmed it');
+      // Last known state with its age, and the decision that did not get through.
+      final last = HeatExplanation(
         loadId: 'x',
         control: 'switch',
-        template: 'weather',
-        error: 'TimeoutException after 0:00:10.000000: Future not completed',
+        template: 'cheapest',
+        on: true,
+        want: false,
+        changedAt: at(11, 10),
+        error: raw,
       );
-      expect(e.reasonText(fi), 'Laite ei vastaa (aikakatkaisu 10 s)');
-      expect(e.stateWord(fi), 'EI VASTAA');
+      expect(last.stateWord(fi), 'PÄÄLLÄ');
+      expect(
+        last.stateNote(fi, now: t),
+        'Viimeksi ohjattu: päällä (klo 11.10, 1 h 22 min sitten) – päätös pois ei mennyt perille',
+      );
+      final same = HeatExplanation(
+        loadId: 'x',
+        control: 'switch',
+        template: 'cheapest',
+        on: false,
+        want: false,
+        changedAt: at(12, 32),
+        error: raw,
+      );
+      expect(same.stateNote(fi, now: t), 'Viimeksi ohjattu: pois (klo 12.32, juuri äsken)');
+      // Nothing known at all: calm 'Tila tuntematon', never the alarm word.
+      final none = HeatExplanation(loadId: 'x', control: 'switch', template: 'cheapest', error: raw);
+      expect(none.stateWord(fi), 'Tila tuntematon');
+      expect(none.stateWord(const HeatText('en')), 'State unknown');
+      expect(none.shownOn, isNull);
+      expect(none.stateNote(fi, now: t), 'Laite ei ole vastannut, tilaa ei tiedetä');
+      // Without an error there is no note, and the reason is the rule's, not the error.
+      final ok = HeatExplanation(loadId: 'x', control: 'switch', template: 'cheapest', on: true, want: true);
+      expect(ok.stateNote(fi), isNull);
+      expect(ok.confirmed, isTrue);
+      expect(d.reasonText(fi), isNot(contains('ei vastaa')));
       expect(
         HeatExplanation(loadId: 'x', control: 'switch', template: 'weather', enabled: false).reasonText(fi),
         'Ohjaus on pois käytöstä',
       );
+    });
+
+    test('an old bridge sends no decision: it is rebuilt from the same rules (t335u)', () {
+      final floor = HeatLoad(id: 'f', type: 'concrete_floor', tileId: 't');
+      final c = cfg([floor]);
+      final st = LoadStatus()
+        ..reason = 'not_cheap'
+        ..error = 'TimeoutException after 0:00:10.000000: Future not completed'
+        ..at = at(3);
+      final e = explainLoad(c, floor, inp(at(3), temp: 20.5), st: st);
+      expect(e.on, isNull);
+      expect(e.want, isNotNull, reason: 'decided here with the same rules');
+      expect(e.stateWord(fi), isIn(['PÄÄLLÄ', 'POIS']));
+      expect(e.preview, isFalse);
+      // The bridge's own decision wins when it sends one.
+      final withWant = LoadStatus()
+        ..reason = 'not_cheap'
+        ..want = false
+        ..error = st.error;
+      expect(explainLoad(c, floor, inp(at(3), temp: 20.5), st: withWant).want, isFalse);
+      expect(LoadStatus.fromJson(withWant.toJson()).want, isFalse);
+    });
+
+    test('why and steps name the cause; another network for the bridge gets its own steps (t335u)', () {
+      const raw = 'TimeoutException after 0:00:10.000000: Future not completed';
+      final e = classifyHeatError(raw);
+      expect(e.text(fi, subject: 'Lattian rele'), 'Lattian rele ei vastaa (aikakatkaisu 10 s)');
+      expect(e.why(fi, subject: 'Lattian rele'), contains('Kotisilta ei saanut yhteyttä laitteeseen Lattian rele'));
+      final elsewhere = e.why(fi, elsewhere: true, subject: 'Lattian rele');
+      expect(elsewhere, contains('toisessa verkossa'));
+      expect(elsewhere, contains('Tämä laite pääsee siihen'));
+      final plain = e.steps(fi);
+      expect(plain.first, contains('päällä'));
+      expect(plain.last, contains('yrittää uudelleen minuutin välein'));
+      final other = e.steps(fi, elsewhere: true);
+      expect(other.first, contains('Käytä tätä laitetta kotisiltana'));
+      expect(other[1], contains('Shelly Cloud'));
+      expect(other.last, contains('rele pysyy viimeisessä tilassaan'));
+      expect(e.steps(const HeatText('en'), elsewhere: true).first, contains('Use this device as the home bridge'));
+      expect(classifyHeatError('HTTP 401').steps(fi).single, contains('salasana'));
+      expect(classifyHeatError('HTTP 401').why(fi, elsewhere: true), contains('hylkäsi'));
     });
   });
 
@@ -592,8 +670,12 @@ void main() {
       expect(ex.hasError, isTrue);
       expect(ex.on, isNull);
       expect(ex.heatError!.text(fi), 'Laite ei vastaa (aikakatkaisu 10 s)');
-      expect(ex.stateWord(fi), 'EI VASTAA');
-      expect(ex.reasonText(fi), 'Laite ei vastaa (aikakatkaisu 10 s)');
+      // t335u: the decision stays the big word; the failed command is a note.
+      expect(ex.want, isNotNull);
+      expect(ex.stateWord(fi), ex.want! ? 'PÄÄLLÄ' : 'POIS');
+      expect(ex.stateNote(fi, now: now), startsWith('Päätös: '));
+      expect(ex.reasonText(fi), isNot(contains('ei vastaa')));
+      expect(r.statusJson()['loads']['f']['want'], ex.want);
       expect(ex.checks.any((k) => k.id == 'device' && k.state == 'active'), isTrue);
       expect(ex.error, contains('TimeoutException'));
       r.dispose();

@@ -15,6 +15,7 @@ import '../l10n/l10n.dart';
 import '../models/models.dart';
 import '../prices/prices.dart';
 import '../state/app_state.dart';
+import '../state/tile_runtime.dart';
 import 'app_scope.dart';
 import 'motion.dart';
 import 'smart_heating_pages.dart';
@@ -135,12 +136,111 @@ HeatExplanation heatExplain(AppState st, HeatLoad l) {
 
 // ------------------------------------------------------------------ look
 
+/// t335u: the relay tile a heating device switches (its name is what the user knows it by).
+String heatDeviceName(AppState st, HeatLoad l) {
+  for (final d in st.config.dashboards) {
+    for (final t in d.tiles) {
+      if (t.id == l.tileId && t.title.isNotEmpty) return t.title;
+    }
+  }
+  return loadNameIn(st.config, l);
+}
+
+/// t335u: does this device reach the relay while the home bridge cannot? True when the app knows it is
+/// on another network than the bridge, or has just reached the relay's connection itself.
+bool heatBridgeElsewhere(AppState st, HeatLoad l) {
+  if (st.rulesRunWhere != 'bridge') return false;
+  final r = st.remote.router;
+  String? conn;
+  for (final d in st.config.dashboards) {
+    for (final t in d.tiles) {
+      if (t.id == l.tileId) conn = t.connectionId;
+    }
+  }
+  if (r.awayFromBridge || r.localHere(conn)) return true;
+  // This device reads the relay's own tile directly (not through the bridge) and just got a value.
+  if (r.preferRemote || l.tileId == null) return false;
+  final now = DateTime.now();
+  for (final rt in TileRuntime.live[l.tileId] ?? const <TileRuntime>{}) {
+    final u = rt.updated;
+    if (rt.error == null && u != null && now.difference(u) < const Duration(minutes: 3)) return true;
+  }
+  return false;
+}
+
+/// Spot price now in c/kWh with VAT only – the figure of the clock strip, for comparison.
+double? heatSpotNow(AppState st) {
+  final p = PriceService.shared.cached(st.energyZone)?.at(DateTime.now());
+  if (p == null) return null;
+  return p.eurMwh / 10 * (1 + st.contract.vat / 100);
+}
+
+/// t335u: tap on the warning: what happened, which device, the steps and the raw text.
+Future<void> showHeatProblem(BuildContext context, AppState st, HeatLoad l, HeatExplanation e) {
+  final x = HeatText(st.lang);
+  final err = e.heatError;
+  if (err == null) return Future.value();
+  final name = heatDeviceName(st, l);
+  final elsewhere = heatBridgeElsewhere(st, l);
+  final steps = err.steps(x, elsewhere: elsewhere);
+  return showDialog<void>(
+    context: context,
+    builder: (d) => AlertDialog(
+      key: const ValueKey('heat-problem'),
+      title: Text(err.text(x, subject: name)),
+      content: SingleChildScrollView(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              err.why(x, elsewhere: elsewhere, subject: name),
+              key: const ValueKey('heat-problem-why'),
+            ),
+            if (e.stateNote(x) != null) ...[const SizedBox(height: 8), Text(e.stateNote(x)!)],
+            const SizedBox(height: 12),
+            Text(x.t('Mitä voit tehdä', 'What you can do'), style: Theme.of(d).textTheme.titleSmall),
+            for (var i = 0; i < steps.length; i++)
+              Padding(
+                padding: const EdgeInsets.only(top: 6),
+                child: Text('${i + 1}. ${steps[i]}', key: ValueKey('heat-step-$i')),
+              ),
+            ExpansionTile(
+              key: const ValueKey('heat-tech'),
+              tilePadding: EdgeInsets.zero,
+              dense: true,
+              title: Text(x.t('Tekniset tiedot', 'Technical details')),
+              children: [
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: SelectableText(
+                    [
+                      if (e.errorAt != null) '${x.t('Aika', 'Time')}: ${x.hm(e.errorAt!)}',
+                      '${x.t('Laite', 'Device')}: $name',
+                      e.error ?? '',
+                    ].join('\n'),
+                    style: Theme.of(d).textTheme.bodySmall,
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+      actions: [TextButton(onPressed: () => Navigator.pop(d), child: Text(x.t('Sulje', 'Close')))],
+    ),
+  );
+}
+
 Color heatColor(BuildContext context, HeatExplanation e) {
   final cs = Theme.of(context).colorScheme;
   if (!e.enabled || e.mode == 'off') return cs.outline;
-  if (e.heating == null) return e.hasError ? cs.error : cs.outline;
+  // t335u: a device that does not answer never turns the status red: the decision (or the last known
+  // state) keeps its colour, 'Tila tuntematon' is calm grey.
+  final on = e.shownOn;
+  if (on == null) return cs.outline;
   if (e.safety) return Colors.red;
-  return e.heating! ? Colors.deepOrange : Colors.blueGrey;
+  return on ? Colors.deepOrange : Colors.blueGrey;
 }
 
 String heatModeLabel(HeatText x, HeatExplanation e) {
@@ -255,7 +355,7 @@ class _HeatingTileState extends State<HeatingTile> {
     final color = single ? heatColor(context, first) : cs.outline;
     final anyLive = st.heatingStatus != null;
     return MotionCard(
-      color: single && first.heating == true ? color.withValues(alpha: 0.2) : cs.surfaceContainer,
+      color: single && first.shownOn == true && first.confirmed ? color.withValues(alpha: 0.2) : cs.surfaceContainer,
       child: InkWell(
         key: ValueKey('heat-tile-${widget.tile.id}'),
         onTap: () => _open(single ? loads.first.id : null),
@@ -352,12 +452,22 @@ class _HeatingTileState extends State<HeatingTile> {
             Text(
               e.stateWord(x),
               key: const ValueKey('heat-state'),
-              style: text.headlineMedium?.copyWith(color: color, fontWeight: FontWeight.w800),
+              style: (e.shownOn == null ? text.titleLarge : text.headlineMedium)?.copyWith(
+                color: color,
+                fontWeight: FontWeight.w800,
+              ),
             ),
             const SizedBox(width: 8),
             Flexible(child: _chip(context, heatModeIcon(e), heatModeLabel(x, e), color: color)),
           ],
         ),
+        if (e.stateNote(x) != null)
+          Text(
+            e.stateNote(x)!,
+            key: const ValueKey('heat-state-note'),
+            style: text.labelSmall?.copyWith(color: cs.onSurfaceVariant),
+            maxLines: 2,
+          ),
         const SizedBox(height: 4),
         Text(e.reasonText(x), key: const ValueKey('heat-reason'), style: text.bodyMedium, maxLines: 3),
         const SizedBox(height: 6),
@@ -389,6 +499,16 @@ class _HeatingTileState extends State<HeatingTile> {
               ),
           ],
         ),
+        if (e.price != null)
+          Padding(
+            padding: const EdgeInsets.only(top: 2),
+            child: Text(
+              _priceNote(x, st),
+              key: const ValueKey('heat-price-note'),
+              style: text.labelSmall?.copyWith(color: cs.onSurfaceVariant),
+              maxLines: 2,
+            ),
+          ),
         if (e.tempControl && l.enabled && !widget.editing) ...[
           const SizedBox(height: 4),
           Row(
@@ -441,16 +561,28 @@ class _HeatingTileState extends State<HeatingTile> {
             ],
           ),
         ],
-        if (err != null && e.on != null) ...[
+        if (err != null) ...[
           const SizedBox(height: 4),
-          Row(
-            children: [
-              Icon(Icons.error_outline, size: 14, color: cs.error),
-              const SizedBox(width: 4),
-              Flexible(
-                child: Text(err.text(x), style: text.bodySmall?.copyWith(color: cs.error), maxLines: 2),
+          InkWell(
+            key: const ValueKey('heat-warning'),
+            onTap: () => showHeatProblem(context, st, l, e),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 2),
+              child: Row(
+                children: [
+                  Icon(Icons.warning_amber_rounded, size: 14, color: cs.tertiary),
+                  const SizedBox(width: 4),
+                  Flexible(
+                    child: Text(
+                      err.text(x, subject: heatDeviceName(st, l)),
+                      style: text.bodySmall?.copyWith(color: cs.tertiary),
+                      maxLines: 2,
+                    ),
+                  ),
+                  Icon(Icons.chevron_right, size: 14, color: cs.tertiary),
+                ],
               ),
-            ],
+            ),
           ),
         ],
         if (e.preview)
@@ -465,6 +597,16 @@ class _HeatingTileState extends State<HeatingTile> {
           ),
       ],
     );
+  }
+
+  /// t335u: the tile's price is the whole consumer price; the clock strip shows the spot price only.
+  static String _priceNote(HeatText x, AppState st) {
+    final spot = heatSpotNow(st);
+    final base = x.t(
+      'Kokonaishinta: pörssi + alv + marginaali + siirto + vero',
+      'Total price: spot + VAT + margin + transfer + tax',
+    );
+    return spot == null ? base : '$base (${x.t('pörssi', 'spot')} ${x.n(spot)} c)';
   }
 
   Future<void> _nudge(AppState st, HeatLoad l, double d) async {
@@ -540,6 +682,22 @@ class _HeatingTileState extends State<HeatingTile> {
                           overflow: TextOverflow.ellipsis,
                         ),
                         Text(e.reasonText(x), style: text.bodySmall, maxLines: 2, overflow: TextOverflow.ellipsis),
+                        if (e.hasError)
+                          Row(
+                            key: ValueKey('heat-row-warn-${l.id}'),
+                            children: [
+                              Icon(Icons.warning_amber_rounded, size: 12, color: cs.tertiary),
+                              const SizedBox(width: 3),
+                              Flexible(
+                                child: Text(
+                                  e.heatError!.text(x, subject: heatDeviceName(AppScope.read(context), l)),
+                                  style: text.labelSmall?.copyWith(color: cs.tertiary),
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ),
+                            ],
+                          ),
                       ],
                     ),
                   ),
@@ -581,7 +739,7 @@ class HeatSnapshot extends StatelessWidget {
     final next = e.nextText(x);
     return Card(
       key: const ValueKey('heat-snapshot'),
-      color: e.heating == true ? color.withValues(alpha: 0.14) : null,
+      color: e.shownOn == true && e.confirmed ? color.withValues(alpha: 0.14) : null,
       child: Padding(
         padding: const EdgeInsets.all(14),
         child: Column(
@@ -603,6 +761,12 @@ class HeatSnapshot extends StatelessWidget {
               key: const ValueKey('heat-snapshot-state'),
               style: text.displaySmall?.copyWith(color: color, fontWeight: FontWeight.w800),
             ),
+            if (e.stateNote(x) != null)
+              Text(
+                e.stateNote(x)!,
+                key: const ValueKey('heat-snapshot-note'),
+                style: text.bodySmall?.copyWith(color: cs.onSurfaceVariant),
+              ),
             const SizedBox(height: 4),
             Text(e.reasonText(x), key: const ValueKey('heat-snapshot-reason'), style: text.titleMedium),
             const SizedBox(height: 10),
@@ -611,7 +775,12 @@ class HeatSnapshot extends StatelessWidget {
               runSpacing: 8,
               children: [
                 _fact(context, Icons.thermostat, x.t('Lämpötila', 'Temperature'), _tempFact(x, e)),
-                _fact(context, Icons.bolt, x.t('Hinta nyt', 'Price now'), _priceFact(x, e)),
+                _fact(
+                  context,
+                  Icons.bolt,
+                  x.t('Hinta nyt (kokonaishinta)', 'Price now (total)'),
+                  _priceFact(x, e, heatSpotNow(st)),
+                ),
                 if (next != null) _fact(context, Icons.schedule, x.t('Seuraava muutos', 'Next change'), next),
               ],
             ),
@@ -620,11 +789,16 @@ class HeatSnapshot extends StatelessWidget {
             if (err != null)
               _note(
                 context,
-                Icons.error_outline,
-                '${err.text(x)}. ${err.hint(x)}',
-                cs.error,
+                Icons.warning_amber_rounded,
+                '${err.text(x, subject: heatDeviceName(st, load))}. ${err.why(x, elsewhere: heatBridgeElsewhere(st, load), subject: heatDeviceName(st, load))}',
+                cs.tertiary,
                 key: const ValueKey('heat-error'),
-                tech: e.error,
+                steps: err.steps(x, elsewhere: heatBridgeElsewhere(st, load)),
+                tech: [
+                  if (e.errorAt != null) '${x.t('Aika', 'Time')}: ${x.hm(e.errorAt!)}',
+                  '${x.t('Laite', 'Device')}: ${heatDeviceName(st, load)}',
+                  e.error ?? '',
+                ].join('\n'),
                 techLabel: x.t('Tekniset tiedot', 'Technical details'),
               ),
             if (e.preview)
@@ -682,9 +856,10 @@ class HeatSnapshot extends StatelessWidget {
     return '${_deg(x, e.temp)} (${lim.join(', ')})';
   }
 
-  static String _priceFact(HeatText x, HeatExplanation e) {
+  static String _priceFact(HeatText x, HeatExplanation e, [double? spot]) {
     if (e.price == null) return x.t('ei hintatietoa', 'no price data');
-    final p = '${x.n(e.price!)} c/kWh';
+    final p =
+        '${x.n(e.price!)} c/kWh${spot == null ? '' : x.t(' (pörssi alv:llä ${x.n(spot)} c)', ' (spot with VAT ${x.n(spot)} c)')}';
     if (e.limit == null) return p;
     return e.limitKind == 'skip'
         ? x.t('$p (ohitetaan, kun ≥ ${x.n(e.limit!)} c)', '$p (skipped at ≥ ${x.n(e.limit!)} c)')
@@ -723,6 +898,7 @@ class HeatSnapshot extends StatelessWidget {
     Key? key,
     String? tech,
     String? techLabel,
+    List<String> steps = const [],
   }) {
     final text = Theme.of(context).textTheme;
     return Padding(
@@ -741,6 +917,15 @@ class HeatSnapshot extends StatelessWidget {
               ),
             ],
           ),
+          if (steps.isNotEmpty) ...[
+            const SizedBox(height: 6),
+            Text(tr(AppScope.of(context).lang, 'Mitä voit tehdä', 'What you can do'), style: text.titleSmall),
+            for (var i = 0; i < steps.length; i++)
+              Padding(
+                padding: const EdgeInsets.only(top: 4),
+                child: Text('${i + 1}. ${steps[i]}', key: ValueKey('heat-step-$i'), style: text.bodyMedium),
+              ),
+          ],
           if (tech != null && techLabel != null)
             ExpansionTile(
               key: const ValueKey('heat-tech'),

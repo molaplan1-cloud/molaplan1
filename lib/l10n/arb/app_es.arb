@@ -1119,6 +1119,8 @@
   "x-mt": true
  },
  "s09f5da65e0": "Cambiar a Shelly Cloud",
+ "sf77125583f": "Detalles técnicos",
+ "s1e593aeca2": "Cerrar",
  "sf5768a876d": "Discapacitados",
  "@sf5768a876d": {
   "x-mt": true
@@ -1216,12 +1218,10 @@
  "@s8653f173b6": {
   "x-mt": true
  },
- "sb730159a01": "Precio ahora",
  "s7dfe0e7977": "Siguiente cambio",
  "@s7dfe0e7977": {
   "x-mt": true
  },
- "sf77125583f": "Detalles técnicos",
  "s5555a716bb": "Se trata de una estimación de precios y ajustes: el puente casero no ha respondido todavía, por lo que el estado real del dispositivo es desconocido.",
  "@s5555a716bb": {
   "x-mt": true
@@ -1372,7 +1372,6 @@
  "@s2bf22ca429": {
   "x-mt": true
  },
- "s1e593aeca2": "Cerrar",
  "sc6e6f17ad4": "Versión del navegador: controla dispositivos de alcance remoto. Control completo con la aplicación – más ›",
  "@sc6e6f17ad4": {
   "x-mt": true
@@ -2660,6 +2659,11 @@
  "sb2fa876c32": "Brillo",
  "s34cc93ca61": "Favoritos",
  "sdc485831ad": "Mantén pulsado para quitar",
+ "sa59af4f48b": "{p0} recuadros ocultos – no disponibles en el navegador",
+ "s493a65113f": "Mostrar siempre",
+ "sf328dcc536": "Vista del navegador",
+ "se24b0e7f60": "Se aplica solo en este navegador. En otros dispositivos el recuadro permanece en su sitio.",
+ "sbfd72f3328": "Ocultar automáticamente",
  "sfe54134176": "Todos los dispositivos",
  "s23baecde5b": "dispositivos",
  "@s23baecde5b": {
@@ -4643,6 +4647,8 @@
  "s8382da3467": "Normal",
  "s7c1cd8314e": "Ocultar recuadros que no funcionan a distancia",
  "sa0cbbafb4e": "Fuera de casa se ocultan los recuadros que solo funcionan en la red de casa. Por defecto se quedan en su sitio, en gris.",
+ "se9702be418": "Ocultar recuadros que no funcionan en el navegador",
+ "s25a2d52c2d": "En el navegador se ocultan los recuadros a los que este navegador no puede acceder y los que no han respondido durante unos diez minutos. Los recuadros ocultos se abren desde la parte inferior de la vista. Solo este navegador.",
  "s419166b895": "Reloj y clima en la pantalla de inicio",
  "@s419166b895": {
   "x-mt": true
@@ -5731,6 +5737,7 @@
  "@s2b2118a93b": {
   "x-mt": true
  },
+ "sb730159a01": "Precio ahora",
  "s68fcfcfed1": "Hora más barata hoy",
  "s86ff059f5e": "Precio medio hoy",
  "s7b911d48c6": "Hora más cara hoy",
@@ -6727,6 +6734,18 @@
  "@s70089507bf": {
   "x-mt": true
  },
+ "s496aaf125a": "El dispositivo responde, pero el puerto ONVIF está cerrado",
+ "@s496aaf125a": {
+  "x-mt": true
+ },
+ "scfbd591df7": "El dispositivo responde, pero el puerto ONVIF está cerrado (puertos entristecidos {p0})",
+ "@scfbd591df7": {
+  "x-mt": true
+ },
+ "s8be90444f0": "Compruebe el puerto ONVIF de la cámara y escribalo si es necesario (Tapo: 2020). Aplicación Tapo → cámara → Ajustes avanzados → Cuenta de la cámara: crear un usuario y contraseña allí (no su login en la nube de Tapo).",
+ "@s8be90444f0": {
+  "x-mt": true
+ },
  "s7e11595f9e": "El puente de casa está apagado",
  "@s7e11595f9e": {
   "x-mt": true
@@ -6768,6 +6787,10 @@
  },
  "sbb1730fa00": "Dirección {p0} no está en la misma red que este dispositivo ({p1}.x). Generalmente este dispositivo está en un Wi-Fi diferente que {p2}.\n\nÚnete al mismo Wi-Fi, o establece el puente de inicio.",
  "@sbb1730fa00": {
+  "x-mt": true
+ },
+ "s8947447763": "La dirección está en una red diferente a este dispositivo – la cámara se alcanza a través del puente de inicio.",
+ "@s8947447763": {
   "x-mt": true
  },
  "s915c9a0db3": "Elige al menos uno",
@@ -10018,6 +10041,10 @@
  "@sd0e9fc6760": {
   "x-mt": true
  },
+ "s8e9e56f68f": "Vea la razón exacta bajo detalles técnicos.",
+ "@s8e9e56f68f": {
+  "x-mt": true
+ },
  "sc056006180": "Compruebe que el dispositivo está encendido y en la misma red que el puente casero. calefacción inteligente se alimenta cada minuto; hasta que funciona el dispositivo se queda en su estado actual.",
  "@sc056006180": {
   "x-mt": true
@@ -10032,10 +10059,6 @@
  },
  "s54dbdeb56b": "El dispositivo respondió pero no aceptó el comando. Intente reiniciar el dispositivo.",
  "@s54dbdeb56b": {
-  "x-mt": true
- },
- "s8e9e56f68f": "Vea la razón exacta bajo detalles técnicos.",
- "@s8e9e56f68f": {
   "x-mt": true
  },
  "s7279e2bdb1": "Anulación manual",
@@ -10209,10 +10232,6 @@
  "s136e7941a4": "DISABLED",
  "s8847ee78e0": "Objetivo {p0} °C",
  "@s8847ee78e0": {
-  "x-mt": true
- },
- "sedcddfbb2f": "NO REPLY",
- "@sedcddfbb2f": {
   "x-mt": true
  },
  "s6ab8f97950": "ON",
@@ -11383,6 +11402,13 @@
  "@sbaecc9fbed": {
   "x-mt": true
  },
+ "s98ffbf5518": "El dispositivo no ha respondido durante un tiempo.",
+ "s5972cf4f3b": "No se pudo crear una imagen fija a partir de la secuencia de vídeo en el navegador.",
+ "s786c05c9e1": "Este dispositivo no se puede usar desde el navegador.",
+ "s70aa3dc5be": "El recuadro vuelve a aparecer en cuanto el dispositivo responde.",
+ "scdf43305db": "Instala ffmpeg en el ordenador del puente de casa, o usa la aplicación Molaplan como puente de casa.",
+ "s1882976d8c": "El dispositivo funciona en la aplicación Molaplan.",
+ "sb3a5e212e2": "Añade un puente de casa para que esto también funcione en el navegador.",
  "s4cac4725b8": "Los dispositivos del grupo no responden",
  "@s4cac4725b8": {
   "x-mt": true
@@ -12337,6 +12363,10 @@
  "@s61c9b76fa1": {
   "x-mt": true
  },
+ "s69d3885720": "El usuario de la cámara y la contraseña (a menudo admin). ONVIF puede tener que estar habilitado en la configuración de la cámara. Tapo utiliza el puerto 2020 y necesita una cuenta de cámara (Tapo app → cámara → Ajustes avanzados → Cuenta de la cámara), no su login en la nube de Tapo.",
+ "@s69d3885720": {
+  "x-mt": true
+ },
  "s32270de47a": "Cámara de seguridad",
  "@s32270de47a": {
   "x-mt": true
@@ -12347,6 +12377,10 @@
  },
  "se8ea97c5eb": "En la aplicación de cámara (información del dispositivo) o en la lista de dispositivos del router.",
  "@se8ea97c5eb": {
+  "x-mt": true
+ },
+ "sf361b8971e": "Dejar vacío para probar los puertos habituales (80, 2020, 8000, 8080...). Tapo: 2020.",
+ "@sf361b8971e": {
   "x-mt": true
  },
  "s1577068729": "cámara",
@@ -12523,42 +12557,116 @@
  "@s06444f278d": {
   "x-mt": true
  },
- "s496aaf125a": "El dispositivo responde, pero el puerto ONVIF está cerrado",
- "@s496aaf125a": {
+ "s6f985060ba": "¿Qué puedes hacer?",
+ "@s6f985060ba": {
   "x-mt": true
  },
- "scfbd591df7": "El dispositivo responde, pero el puerto ONVIF está cerrado (puertos entristecidos {p0})",
- "@scfbd591df7": {
+ "s97c9304643": "Hora",
+ "@s97c9304643": {
   "x-mt": true
  },
- "s8be90444f0": "Compruebe el puerto ONVIF de la cámara y escribalo si es necesario (Tapo: 2020). Aplicación Tapo → cámara → Ajustes avanzados → Cuenta de la cámara: crear un usuario y contraseña allí (no su login en la nube de Tapo).",
- "@s8be90444f0": {
+ "s4678cef2a1": "Precio total: lugar + IVA + margen + transferencia + impuesto",
+ "@s4678cef2a1": {
   "x-mt": true
  },
- "s8947447763": "La dirección está en una red diferente a este dispositivo – la cámara se alcanza a través del puente de inicio.",
- "@s8947447763": {
+ "s80a6e15c66": "spot",
+ "@s80a6e15c66": {
   "x-mt": true
  },
- "s69d3885720": "El usuario de la cámara y la contraseña (a menudo admin). ONVIF puede tener que estar habilitado en la configuración de la cámara. Tapo utiliza el puerto 2020 y necesita una cuenta de cámara (Tapo app → cámara → Ajustes avanzados → Cuenta de la cámara), no su login en la nube de Tapo.",
- "@s69d3885720": {
+ "s3c6fedc117": "Precio ahora (total)",
+ "@s3c6fedc117": {
   "x-mt": true
  },
- "sf361b8971e": "Dejar vacío para probar los puertos habituales (80, 2020, 8000, 8080...). Tapo: 2020.",
- "@sf361b8971e": {
+ "s50b49fb20d": " (spot con IVA {p0} c)",
+ "@s50b49fb20d": {
   "x-mt": true
  },
- "s1882976d8c": "El dispositivo funciona en la aplicación Molaplan.",
- "s25a2d52c2d": "En el navegador se ocultan los recuadros a los que este navegador no puede acceder y los que no han respondido durante unos diez minutos. Los recuadros ocultos se abren desde la parte inferior de la vista. Solo este navegador.",
- "s493a65113f": "Mostrar siempre",
- "s5972cf4f3b": "No se pudo crear una imagen fija a partir de la secuencia de vídeo en el navegador.",
- "s70aa3dc5be": "El recuadro vuelve a aparecer en cuanto el dispositivo responde.",
- "s786c05c9e1": "Este dispositivo no se puede usar desde el navegador.",
- "s98ffbf5518": "El dispositivo no ha respondido durante un tiempo.",
- "sa59af4f48b": "{p0} recuadros ocultos – no disponibles en el navegador",
- "sb3a5e212e2": "Añade un puente de casa para que esto también funcione en el navegador.",
- "sbfd72f3328": "Ocultar automáticamente",
- "scdf43305db": "Instala ffmpeg en el ordenador del puente de casa, o usa la aplicación Molaplan como puente de casa.",
- "se24b0e7f60": "Se aplica solo en este navegador. En otros dispositivos el recuadro permanece en su sitio.",
- "se9702be418": "Ocultar recuadros que no funcionan en el navegador",
- "sf328dcc536": "Vista del navegador"
+ "s1e9eca6676": "Precio del sitio ahora con IVA. Transferencia, impuestos y margen no están incluidos – La calefacción inteligente compara el precio total.",
+ "@s1e9eca6676": {
+  "x-mt": true
+ },
+ "s340968669a": "el dispositivo",
+ "@s340968669a": {
+  "x-mt": true
+ },
+ "s151c5be078": "El puente casero no puede llegar a la dirección de {p0}: es muy probable en otra red que {p0}. Este dispositivo puede llegar a ella, por lo que las otras tarjetas funcionan.",
+ "@s151c5be078": {
+  "x-mt": true
+ },
+ "s99ea566004": "El puente casero no podía conectarse a {p0}. Se apaga, fuera de la red, o el puente está en otra red.",
+ "@s99ea566004": {
+  "x-mt": true
+ },
+ "sb32685da2f": "Ponga el puente de inicio en la misma red que el dispositivo: abra Molaplan en un dispositivo siempre conectado en la red del dispositivo (por ejemplo, un PC o una tableta en casa) y seleccione Ajustes → Acceso remoto → Utilice este dispositivo como el puente de inicio. A continuación, emparejar su teléfono y PC con él de nuevo.",
+ "@sb32685da2f": {
+  "x-mt": true
+ },
+ "s22dde7740f": "O controlar el dispositivo a través de una conexión el puente puede llegar desde cualquier lugar (por ejemplo, la nube del fabricante, como Shelly Cloud).",
+ "@s22dde7740f": {
+  "x-mt": true
+ },
+ "sd4f0e6f8e1": "Compruebe que el dispositivo está encendido y su luz de potencia y Wi-Fi está encendido.",
+ "@sd4f0e6f8e1": {
+  "x-mt": true
+ },
+ "s8277eb958e": "Compruebe que el dispositivo y el puente de inicio están en la misma red (los tres primeros números de sus direcciones son los mismos).",
+ "@s8277eb958e": {
+  "x-mt": true
+ },
+ "sab9dae06af": "Si la dirección del dispositivo ha cambiado, actualícela en la configuración de conexión.",
+ "@sab9dae06af": {
+  "x-mt": true
+ },
+ "sdafab85176": "Calentamiento inteligente cada minuto. Hasta entonces el relé permanece en su último estado y la calefacción no está controlada.",
+ "@sdafab85176": {
+  "x-mt": true
+ },
+ "s5a3b74d726": "Abra la conexión del dispositivo y compruebe el nombre de usuario y contraseña.",
+ "@s5a3b74d726": {
+  "x-mt": true
+ },
+ "s7157b2a937": "Abra la tarjeta de relé y compruebe su dirección y comandos on/off.",
+ "@s7157b2a937": {
+  "x-mt": true
+ },
+ "s419117d6ca": "Reinicie el dispositivo (enciende y encienda).",
+ "@s419117d6ca": {
+  "x-mt": true
+ },
+ "sc28a06ee09": "Si el error continúa, compruebe la configuración del dispositivo y el firmware.",
+ "@sc28a06ee09": {
+  "x-mt": true
+ },
+ "s5811eb3006": "Estado desconocido",
+ "@s5811eb3006": {
+  "x-mt": true
+ },
+ "sfd2975e5c4": "ahora",
+ "@sfd2975e5c4": {
+  "x-mt": true
+ },
+ "s1cb1af7851": "{p0} ago",
+ "@s1cb1af7851": {
+  "x-mt": true
+ },
+ "s04780b98b7": "El dispositivo no ha respondido, su estado no es conocido",
+ "@s04780b98b7": {
+  "x-mt": true
+ },
+ "s69b9359f3f": "Decisión: {p0} – el dispositivo no lo ha confirmado",
+ "@s69b9359f3f": {
+  "x-mt": true
+ },
+ "s5989e2e782": " (a {p0}, {p1})",
+ "@s5989e2e782": {
+  "x-mt": true
+ },
+ "s9cb6ebafaa": "Último set: {p0}{p1} – la decisión {p2} no se logró",
+ "@s9cb6ebafaa": {
+  "x-mt": true
+ },
+ "s9151a2843d": "Último set: {p0}{p1}",
+ "@s9151a2843d": {
+  "x-mt": true
+ }
 }

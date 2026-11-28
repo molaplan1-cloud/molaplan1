@@ -441,7 +441,7 @@ class _LoadCard extends StatelessWidget {
         key: ValueKey('sh-load-${load.id}'),
         leading: Icon(
           load.info.space ? Icons.heat_pump_outlined : Icons.water_drop_outlined,
-          color: e.heating == true ? Colors.deepOrange : null,
+          color: e.shownOn == true ? Colors.deepOrange : null,
         ),
         title: Text(name.isEmpty ? heatingTypeLabel(context, load.type) : name),
         subtitle: Text(
