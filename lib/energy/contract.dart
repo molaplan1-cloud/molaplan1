@@ -94,7 +94,12 @@ class ElectricityContract {
     PriceInput? transferNight,
     PriceInput? transferFee,
     PriceInput? tax,
+    this.sellType = 'none',
+    PriceInput? sellMargin,
+    PriceInput? sellFixed,
   }) : vat = vat ?? vatByCountry[country] ?? 25.5,
+       sellMargin = sellMargin ?? PriceInput(0.3, vatIncluded: false),
+       sellFixed = sellFixed ?? PriceInput(5, vatIncluded: false),
        margin = margin ?? PriceInput(0.5),
        fixed = fixed ?? PriceInput(10),
        day = day ?? PriceInput(11),
@@ -126,6 +131,26 @@ class ElectricityContract {
   PriceInput transferNight;
   PriceInput transferFee; // €/month
   PriceInput tax; // c/kWh
+
+  /// R685 (t337u): what sold (exported) electricity earns: 'none' (unknown – no income shown),
+  /// 'spot' (spot price − [sellMargin]) or 'fixed' ([sellFixed]). A household seller pays no VAT
+  /// on it, so both are used without VAT.
+  String sellType;
+  PriceInput sellMargin; // c/kWh off the spot price
+  PriceInput sellFixed; // c/kWh
+
+  /// Income c/kWh for exported electricity at [t]; null = no sell price (or spot missing).
+  double? sellAt(DateTime t, {double? spotEurMwh}) {
+    switch (sellType) {
+      case 'fixed':
+        return sellFixed.split(vat).$1;
+      case 'spot':
+        if (spotEurMwh == null) return null;
+        return spotEurMwh / 10 - sellMargin.split(vat).$1;
+      default:
+        return null;
+    }
+  }
 
   bool isNight(DateTime t) {
     final h = t.hour;
@@ -194,6 +219,9 @@ class ElectricityContract {
     'transferNight': transferNight.toJson(),
     'transferFee': transferFee.toJson(),
     'tax': tax.toJson(),
+    if (sellType != 'none') 'sellType': sellType,
+    'sellMargin': sellMargin.toJson(),
+    'sellFixed': sellFixed.toJson(),
   };
 
   factory ElectricityContract.fromJson(Map<String, dynamic> j) {
@@ -215,6 +243,9 @@ class ElectricityContract {
       transferNight: PriceInput.fromJson(j['transferNight'], 3.5),
       transferFee: PriceInput.fromJson(j['transferFee'], 15),
       tax: PriceInput.fromJson(j['tax'], defaultTaxByCountry[country] ?? 0),
+      sellType: const ['spot', 'fixed'].contains(j['sellType']) ? j['sellType'] as String : 'none',
+      sellMargin: PriceInput.fromJson(j['sellMargin'], 0.3, inc: false),
+      sellFixed: PriceInput.fromJson(j['sellFixed'], 5, inc: false),
     );
   }
 }

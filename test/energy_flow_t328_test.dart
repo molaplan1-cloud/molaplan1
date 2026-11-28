@@ -514,15 +514,15 @@ void main() {
       expect(find.byKey(const ValueKey('flow-row-home')), findsOneWidget);
       expect(find.byKey(const ValueKey('flow-row-grid_in')), findsOneWidget);
       expect(find.byKey(const ValueKey('flow-row-other')), findsOneWidget);
-      expect(find.text('0,25 kWh'), findsOneWidget);
-      expect(find.text('≈ 0,20 kWh'), findsOneWidget);
+      expect(find.textContaining('0,25 kWh'), findsOneWidget);
+      expect(find.textContaining('≈ 0,20 kWh'), findsOneWidget);
       await tester.pumpWidget(const SizedBox());
     });
 
     testWidgets('editor: pickers, consumers, save', (tester) async {
       final st = await appState(tester);
       final s = _seed(st);
-      tester.view.physicalSize = const Size(600, 2400);
+      tester.view.physicalSize = const Size(600, 3600);
       tester.view.devicePixelRatio = 1;
       addTearDown(tester.view.reset);
       final edit = s.flow.copy();

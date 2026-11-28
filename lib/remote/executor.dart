@@ -44,7 +44,11 @@ class RemoteExecutor {
     Driver Function(ConnectionConfig)? create,
     this.discover,
     this.scan,
+    this.flowEnergy,
   }) : _create = create ?? createDriver;
+
+  /// R684 (t337u): "flow_energy" op – the bridge's recorded kWh / € of an energy flow tile.
+  final Map<String, dynamic> Function(Map<String, dynamic> spec)? flowEnergy;
 
   /// "discover" op: finds devices of a brand on the bridge's LAN (phone away from home).
   /// Default: the brand's own LAN scan. The app adds mDNS on top.
@@ -112,6 +116,10 @@ class RemoteExecutor {
         return (scan ?? defaultScan)();
       case 'modbus_scan':
         return modbusScanJson(Map<String, dynamic>.from((r['spec'] as Map?) ?? const {}));
+      case 'flow_energy':
+        final fe = flowEnergy;
+        if (fe == null) throw DriverException('Unknown op $op');
+        return fe(Map<String, dynamic>.from((r['spec'] as Map?) ?? const {}));
     }
     final conn = r['conn'];
     if (conn is! Map) throw DriverException('Connection missing');

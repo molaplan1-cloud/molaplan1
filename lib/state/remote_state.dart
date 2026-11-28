@@ -41,6 +41,9 @@ class RemoteState extends ChangeNotifier {
 
   /// The app's own setup (with secrets), offered to paired phones to copy.
   final String Function()? configJson;
+
+  /// R684 (t337u): answers the "flow_energy" op when this device is the home bridge.
+  Map<String, dynamic> Function(Map<String, dynamic> spec)? flowEnergy;
   String relay;
   final router = RemoteRouter();
 
@@ -404,6 +407,7 @@ class RemoteState extends ChangeNotifier {
       executor: RemoteExecutor(
         configProvider: configJson == null ? null : () => jsonDecode(configJson!()) as Map<String, dynamic>,
         discover: bridgeDiscover,
+        flowEnergy: flowEnergy,
       ),
       approve: (n) => approver?.call(n) ?? Future.value(false),
       log: (m) => debugPrint('[bridge] $m'),

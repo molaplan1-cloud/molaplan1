@@ -17,7 +17,10 @@ import 'dart:math' as math;
 
 import '../core/template.dart' show isTruthy;
 import '../models/models.dart';
+import 'flow_look.dart';
 import 'meters.dart' show MeterInfo;
+
+export 'flow_look.dart';
 
 /// Read spec kind of an energy flow tile.
 const energyFlowKind = 'energyflow';
@@ -105,48 +108,182 @@ PowerReading? powerReadingOf(TileConfig t, Object? v, {String? connType}) {
 
 // ---------------------------------------------------------------- configuration
 
-/// An EV charger node: its power tile, optional car charge tile, sign inversion.
+/// R599 (t335u): one measurement of a summed node: a tile id (null = a phase slot not picked
+/// yet) and its own sign inversion.
+class PowerPart {
+  PowerPart(this.tile, {this.invert = false});
+  String? tile;
+  bool invert;
+
+  Map<String, dynamic> toJson() => {'t': ?tile, if (invert) 'i': true};
+  static PowerPart? fromJson(Object? j) {
+    if (j is! Map) return null;
+    final t = j['t'];
+    return PowerPart(t is String && t.isNotEmpty ? t : null, invert: j['i'] == true);
+  }
+}
+
+/// Phase labels of a three-phase grid connection.
+const phaseLabels = ['L1', 'L2', 'L3'];
+
+/// R599/R660 (t335u): the power of one node as the sum of one or more tiles. [phases] = the grid
+/// connection measured as L1, L2 and L3 (three labelled slots, one may still be empty).
+class PowerSum {
+  PowerSum([List<PowerPart>? parts, this.phases = false]) : parts = parts ?? [];
+
+  factory PowerSum.single(String? id, {bool invert = false}) =>
+      PowerSum(id == null ? [] : [PowerPart(id, invert: invert)]);
+
+  /// Three phase slots filled with [ids] (missing ones empty).
+  factory PowerSum.threePhase([List<String?> ids = const []]) =>
+      PowerSum([for (var i = 0; i < 3; i++) PowerPart(i < ids.length ? ids[i] : null)], true);
+
+  List<PowerPart> parts;
+  bool phases;
+
+  /// The first picked tile (kept in the old single-tile key for older app versions).
+  String? get first => parts.map((p) => p.tile).nonNulls.firstOrNull;
+
+  /// Sets the first measurement (the single picker of the editor).
+  set first(String? id) {
+    if (parts.isEmpty) {
+      if (id != null) parts.add(PowerPart(id));
+    } else if (id == null && !phases) {
+      parts.removeAt(0);
+    } else {
+      parts[0].tile = id;
+    }
+  }
+
+  Iterable<String> get ids => parts.map((p) => p.tile).nonNulls;
+  bool get isEmpty => ids.isEmpty;
+
+  /// More than the old single-tile form can say.
+  bool get isMulti => phases || parts.length > 1 || parts.any((p) => p.invert || p.tile == null);
+
+  /// Label of part [i]: L1–L3 for phases, else null (the tile's own name).
+  String? labelOf(int i) => phases && i < phaseLabels.length ? phaseLabels[i] : null;
+
+  /// One measurement → three phases (the old one becomes L1) and back (picked tiles are kept and
+  /// still summed).
+  void setPhases(bool on) {
+    if (on == phases) return;
+    if (on) {
+      final keep = parts.where((p) => p.tile != null).take(3).toList();
+      parts = [...keep, for (var i = keep.length; i < 3; i++) PowerPart(null)];
+    } else {
+      parts = parts.where((p) => p.tile != null).toList();
+    }
+    phases = on;
+  }
+
+  Map<String, dynamic> toJson() => {
+    'p': [for (final p in parts) p.toJson()],
+    if (phases) 'ph': true,
+  };
+
+  static PowerSum? fromJson(Object? j) {
+    if (j is! Map || j['p'] is! List) return null;
+    final parts = [for (final p in j['p'] as List) ?PowerPart.fromJson(p)];
+    final ph = j['ph'] == true;
+    if (ph) {
+      while (parts.length < 3) {
+        parts.add(PowerPart(null));
+      }
+    }
+    return PowerSum(ph ? parts.take(3).toList() : parts.where((p) => p.tile != null).toList(), ph);
+  }
+
+  PowerSum copy() => fromJson(toJson())!;
+}
+
+/// An EV charger node: its power tile(s), optional car charge tile, sign inversion.
 class EvSource {
-  EvSource({required this.tile, this.soc, this.invert = false});
-  String tile;
+  EvSource({String? tile, this.soc, this.invert = false, PowerSum? sum})
+    : sum = sum ?? PowerSum.single(tile);
+  PowerSum sum;
   String? soc;
   bool invert;
 
-  Map<String, dynamic> toJson() => {'tile': tile, 'soc': ?soc, if (invert) 'inv': true};
+  /// The first power tile (the node's name).
+  String get tile => sum.first ?? '';
+  set tile(String v) => sum.first = v;
+
+  Map<String, dynamic> toJson() => {
+    'tile': tile,
+    'soc': ?soc,
+    if (invert) 'inv': true,
+    if (sum.isMulti) 'sum': sum.toJson(),
+  };
   static EvSource? fromJson(Object? j) {
     if (j is! Map || j['tile'] is! String) return null;
-    return EvSource(tile: j['tile'] as String, soc: j['soc'] as String?, invert: j['inv'] == true);
+    return EvSource(
+      tile: j['tile'] as String,
+      soc: j['soc'] as String?,
+      invert: j['inv'] == true,
+      sum: PowerSum.fromJson(j['sum']),
+    );
   }
 }
 
 /// What an energy flow tile shows: ids of the source tiles (all optional).
 class EnergyFlowConfig {
   EnergyFlowConfig({
-    this.grid,
+    String? grid,
     this.gridInvert = false,
-    this.solar,
-    this.battery,
+    String? solar,
+    String? battery,
     this.batteryInvert = false,
     this.batterySoc,
-    this.home,
+    String? home,
     List<EvSource>? evs,
     List<String>? consumers,
+    Map<String, PowerSum>? consumerSums,
+    PowerSum? gridSum,
+    PowerSum? solarSum,
+    PowerSum? batterySum,
+    PowerSum? homeSum,
     this.price = true,
     this.motion = 'auto',
-  }) : evs = evs ?? [],
-       consumers = consumers ?? [];
+    FlowLook? look,
+  }) : look = look ?? FlowLook(),
+       gridSum = gridSum ?? PowerSum.single(grid),
+       solarSum = solarSum ?? PowerSum.single(solar),
+       batterySum = batterySum ?? PowerSum.single(battery),
+       homeSum = homeSum ?? PowerSum.single(home),
+       evs = evs ?? [],
+       consumers = consumers ?? [],
+       consumerSums = consumerSums ?? {};
 
-  String? grid;
+  /// R599 (t335u): every node may sum several tiles; the grid also as L1 + L2 + L3.
+  PowerSum gridSum;
+  PowerSum solarSum;
+  PowerSum batterySum;
+
+  /// A measured home consumption; empty = worked out from the balance.
+  PowerSum homeSum;
+
+  /// Inverts the grid total (after the per-phase inversions).
   bool gridInvert;
-  String? solar;
-  String? battery;
   bool batteryInvert;
   String? batterySoc;
-
-  /// A measured home consumption; null = worked out from the balance.
-  String? home;
   List<EvSource> evs;
+
+  /// Single devices by their (first) tile id; [consumerSums] adds more tiles to one of them.
   List<String> consumers;
+  Map<String, PowerSum> consumerSums;
+
+  String? get grid => gridSum.first;
+  set grid(String? v) => gridSum.first = v;
+  String? get solar => solarSum.first;
+  set solar(String? v) => solarSum.first = v;
+  String? get battery => batterySum.first;
+  set battery(String? v) => batterySum.first = v;
+  String? get home => homeSum.first;
+  set home(String? v) => homeSum.first = v;
+
+  /// The sum of consumer [id] (its own tile first).
+  PowerSum consumerSum(String id) => consumerSums[id] ?? PowerSum.single(id);
 
   /// Show the current electricity price at the grid node.
   bool price;
@@ -154,52 +291,72 @@ class EnergyFlowConfig {
   /// 'auto' (moving dots unless the device asks for less motion) or 'off' (static arrows).
   String motion;
 
-  Map<String, dynamic> toRead() => {
-    'kind': energyFlowKind,
-    'grid': ?grid,
-    if (gridInvert) 'gridInv': true,
-    'solar': ?solar,
-    'battery': ?battery,
-    if (batteryInvert) 'batInv': true,
-    'batterySoc': ?batterySoc,
-    'home': ?home,
-    if (evs.isNotEmpty) 'evs': [for (final e in evs) e.toJson()],
-    if (consumers.isNotEmpty) 'consumers': [...consumers],
-    if (!price) 'price': false,
-    if (motion != 'auto') 'motion': motion,
-  };
+  /// R670–R676 (t336u): icons, colours, background, lines and node size.
+  FlowLook look;
+
+  Map<String, dynamic> toRead() {
+    Map<String, dynamic> sum(String k, PowerSum s) => {k: ?s.first, if (s.isMulti) '${k}Sum': s.toJson()};
+    final cs = {
+      for (final c in consumers)
+        if (consumerSums[c] case final s? when s.parts.length > 1 || s.isMulti) c: s.toJson(),
+    };
+    return {
+      'kind': energyFlowKind,
+      ...sum('grid', gridSum),
+      if (gridInvert) 'gridInv': true,
+      ...sum('solar', solarSum),
+      ...sum('battery', batterySum),
+      if (batteryInvert) 'batInv': true,
+      'batterySoc': ?batterySoc,
+      ...sum('home', homeSum),
+      if (evs.isNotEmpty) 'evs': [for (final e in evs) e.toJson()],
+      if (consumers.isNotEmpty) 'consumers': [...consumers],
+      if (cs.isNotEmpty) 'consumerSums': cs,
+      if (!price) 'price': false,
+      if (motion != 'auto') 'motion': motion,
+      if (!look.isDefault) 'look': look.toJson(),
+    };
+  }
 
   factory EnergyFlowConfig.fromRead(Map<String, dynamic> r) {
     String? s(String k) => r[k] is String && (r[k] as String).isNotEmpty ? r[k] as String : null;
+    PowerSum sum(String k) => PowerSum.fromJson(r['${k}Sum']) ?? PowerSum.single(s(k));
+    final consumers = [
+      for (final c in (r['consumers'] is List ? r['consumers'] as List : const []))
+        if (c is String) c,
+    ];
+    final raw = r['consumerSums'] is Map ? r['consumerSums'] as Map : const {};
     return EnergyFlowConfig(
-      grid: s('grid'),
+      gridSum: sum('grid'),
       gridInvert: r['gridInv'] == true,
-      solar: s('solar'),
-      battery: s('battery'),
+      solarSum: sum('solar'),
+      batterySum: sum('battery'),
       batteryInvert: r['batInv'] == true,
       batterySoc: s('batterySoc'),
-      home: s('home'),
+      homeSum: sum('home'),
       evs: [
         for (final e in (r['evs'] is List ? r['evs'] as List : const [])) ?EvSource.fromJson(e),
       ],
-      consumers: [
-        for (final c in (r['consumers'] is List ? r['consumers'] as List : const []))
-          if (c is String) c,
-      ],
+      consumers: consumers,
+      consumerSums: {
+        for (final c in consumers)
+          if (PowerSum.fromJson(raw[c]) case final p? when p.first == c) c: p,
+      },
       price: r['price'] != false,
       motion: r['motion'] == 'off' ? 'off' : 'auto',
+      look: FlowLook.fromJson(r['look']),
     );
   }
 
   /// Every tile id this tile reads.
   Set<String> get sourceIds => {
-    ?grid,
-    ?solar,
-    ?battery,
+    ...gridSum.ids,
+    ...solarSum.ids,
+    ...batterySum.ids,
     ?batterySoc,
-    ?home,
-    for (final e in evs) ...[e.tile, ?e.soc],
-    ...consumers,
+    ...homeSum.ids,
+    for (final e in evs) ...[...e.sum.ids, ?e.soc],
+    for (final c in consumers) ...consumerSum(c).ids,
   };
 
   bool get isEmpty => sourceIds.isEmpty;
@@ -237,6 +394,159 @@ EnergyFlowConfig suggestEnergyFlow(Iterable<TileConfig> tiles, {Map<String, Mete
   return c;
 }
 
+// ---------------------------------------------------------------- sums and phases (t335u)
+
+/// R661: phase 1–3 of a power tile from its own name or how it is read ("L2", "Vaihe B",
+/// "Phase 3", "Kanava 1", "Channel 2", a `b_act_power` field, a meter channel such as
+/// `/emeter/1` or `em:0:b`); null = not a phase channel. Nothing brand-specific: any integration
+/// that names its channels this way is found.
+int? phaseIndexOf(TileConfig t) {
+  int? abc(String s) {
+    final i = 'abc'.indexOf(s.toLowerCase());
+    return i < 0 ? null : i + 1;
+  }
+
+  final fields = [t.read['jsonPath'], t.read['field'], t.read['key'], t.read['path']].whereType<String>().join(' ');
+  final f = RegExp(r'(?:^|[^a-z])([abc])_(?:act_|active_)?power').firstMatch(fields.toLowerCase());
+  if (f != null) return abc(f.group(1)!);
+  final comp = t.read['comp'];
+  if (comp is String) {
+    final c = RegExp(r':([abc])$').firstMatch(comp);
+    if (c != null) return abc(c.group(1)!);
+  }
+  final ph = t.read['phase'];
+  if (ph is String && ph.length == 1) {
+    final n = abc(ph) ?? int.tryParse(ph);
+    if (n != null && n >= 1 && n <= 3) return n;
+  }
+  final title = t.title.toLowerCase();
+  if (RegExp(r'yhteens|total|summa|\bsum\b|kokonais').hasMatch(title)) return null;
+  final m = RegExp(
+    r'(?:^|[^\p{L}])(?:l|vaihe|phase|fas|faas|fase|kanava|channel|ch|kanal|canal)\s*[-_.]?\s*([1-3]|[abc])(?![\p{L}\d])',
+    unicode: true,
+  ).firstMatch(title);
+  if (m != null) return abc(m.group(1)!) ?? int.parse(m.group(1)!);
+  final path = t.read['path'];
+  if (path is String) {
+    final p = RegExp(r'/emeter/([0-2])(?!\d)').firstMatch(path);
+    if (p != null) return int.parse(p.group(1)!) + 1;
+  }
+  if (comp is String) {
+    final p = RegExp(r'^emeters:([0-2])$').firstMatch(comp);
+    if (p != null) return int.parse(p.group(1)!) + 1;
+  }
+  return null;
+}
+
+/// Three power tiles of one device (one connection) that look like L1, L2 and L3.
+class PhaseCandidate {
+  const PhaseCandidate(this.ids, this.connectionId);
+  final List<String> ids;
+  final String? connectionId;
+}
+
+/// R661: every device offering three phase channels (W / kW tiles), in tile order.
+List<PhaseCandidate> phaseCandidates(Iterable<TileConfig> tiles) {
+  final groups = <String, Map<int, TileConfig>>{};
+  for (final t in tiles) {
+    if (isEnergyFlowTile(t) || t.type != TileType.value || !isPowerUnit(t.unit)) continue;
+    final i = phaseIndexOf(t);
+    if (i == null) continue;
+    groups.putIfAbsent(t.connectionId ?? '', () => {}).putIfAbsent(i, () => t);
+  }
+  return [
+    for (final e in groups.entries)
+      if (e.value.length == 3)
+        PhaseCandidate([for (var i = 1; i <= 3; i++) e.value[i]!.id], e.key.isEmpty ? null : e.key),
+  ];
+}
+
+/// One measurement of a summed node as read now.
+class PartReading {
+  const PartReading({this.tileId, this.label, this.w, this.missing = false, this.stale = false, this.estimated = false});
+  final String? tileId;
+
+  /// 'L1'…'L3' for grid phases, else null (the tile's name).
+  final String? label;
+
+  /// Signed W after the inversions (null = no reading).
+  final double? w;
+
+  /// Not picked, removed or no reading yet – left out of the total.
+  final bool missing;
+
+  /// The last reading is old (the device stopped answering) – still in the total, flagged.
+  final bool stale;
+  final bool estimated;
+}
+
+/// The total of a [PowerSum].
+class SumReading {
+  const SumReading({this.w, this.estimated = false, this.partial = false, this.parts = const []});
+
+  /// Null when no part has a reading.
+  final double? w;
+  final bool estimated;
+
+  /// R662: some part is missing or stale – the total is shown with a marker, never silently.
+  final bool partial;
+  final List<PartReading> parts;
+}
+
+/// R599/R662: sums the parts of [s] (each with its own inversion, then [invert] on the total).
+/// A part without a reading is left out and the total marked partial; a stale part keeps its
+/// last value and also marks the total partial.
+SumReading sumOf(
+  PowerSum s, {
+  bool invert = false,
+  required TileConfig? Function(String id) tileOf,
+  required PowerReading? Function(String id) reading,
+  bool Function(String id)? stale,
+}) {
+  final parts = <PartReading>[];
+  var total = 0.0;
+  var any = false, est = false, partial = false;
+  for (final (i, p) in s.parts.indexed) {
+    final label = s.labelOf(i);
+    final id = p.tile;
+    if (id == null || tileOf(id) == null) {
+      partial = true;
+      parts.add(PartReading(tileId: id, label: label, missing: true));
+      continue;
+    }
+    final r = reading(id);
+    if (r == null) {
+      partial = true;
+      parts.add(PartReading(tileId: id, label: label, missing: true));
+      continue;
+    }
+    final old = stale?.call(id) ?? false;
+    final w = (p.invert ? -r.w : r.w) * (invert ? -1 : 1);
+    total += w;
+    any = true;
+    est = est || r.estimated;
+    partial = partial || old;
+    parts.add(PartReading(tileId: id, label: label, w: w, stale: old, estimated: r.estimated));
+  }
+  return SumReading(w: any ? total : null, estimated: est, partial: any && partial, parts: parts);
+}
+
+/// R663: how unevenly the phases are loaded: (spread in W, index of the most loaded phase), or
+/// null with fewer than two phase readings.
+(double, int)? phaseImbalance(List<PartReading> phases) {
+  final ws = [
+    for (final (i, p) in phases.indexed)
+      if (p.w != null) (i, p.w!),
+  ];
+  if (ws.length < 2) return null;
+  final hi = ws.reduce((a, b) => b.$2 > a.$2 ? b : a);
+  final lo = ws.reduce((a, b) => b.$2 < a.$2 ? b : a);
+  return (hi.$2 - lo.$2, hi.$1);
+}
+
+/// A spread at or above this is called uneven (W).
+const phaseImbalanceW = 1500.0;
+
 // ---------------------------------------------------------------- flow model
 
 /// Node ids of the picture.
@@ -254,12 +564,26 @@ const flowMinW = 5.0;
 
 /// An EV charger or a single consumer behind the home.
 class FlowLoad {
-  const FlowLoad({required this.id, required this.tileId, this.w, this.estimated = false, this.soc});
+  const FlowLoad({
+    required this.id,
+    required this.tileId,
+    this.w,
+    this.estimated = false,
+    this.soc,
+    this.partial = false,
+    this.parts = const [],
+  });
   final String id;
   final String tileId;
   final double? w;
   final bool estimated;
   final double? soc;
+
+  /// R662: one of its summed tiles has no fresh reading.
+  final bool partial;
+
+  /// The summed tiles when there are several (t335u).
+  final List<PartReading> parts;
 }
 
 /// How the home consumption is known.
@@ -289,6 +613,9 @@ class FlowSnapshot {
     this.evs = const [],
     this.consumers = const [],
     this.edges = const [],
+    this.partial = const {},
+    this.parts = const {},
+    this.gridPhases = false,
   });
   final double? gridW;
   final double? solarW;
@@ -300,6 +627,18 @@ class FlowSnapshot {
   final List<FlowLoad> evs;
   final List<FlowLoad> consumers;
   final List<FlowEdge> edges;
+
+  /// R662 (t335u): nodes whose total misses a part or has a stale one.
+  final Set<String> partial;
+
+  /// Nodes summed from several tiles: each part as read now (grid phases L1–L3 first).
+  final Map<String, List<PartReading>> parts;
+
+  /// The grid is measured as L1 + L2 + L3.
+  final bool gridPhases;
+
+  /// The grid phases (empty unless [gridPhases]).
+  List<PartReading> get phases => gridPhases ? (parts[FlowNodeId.grid] ?? const []) : const [];
 
   double get gridImport => math.max(gridW ?? 0, 0);
   double get gridExport => math.max(-(gridW ?? 0), 0);
@@ -332,6 +671,9 @@ FlowSnapshot computeFlow({
   double? homeW,
   List<FlowLoad> evs = const [],
   List<FlowLoad> consumers = const [],
+  Set<String> partial = const {},
+  Map<String, List<PartReading>> parts = const {},
+  bool gridPhases = false,
 }) {
   final solar = solarW == null ? null : math.max(solarW, 0.0);
   double? home;
@@ -415,41 +757,63 @@ FlowSnapshot computeFlow({
     evs: evs,
     consumers: consumers,
     edges: edges,
+    partial: {
+      ...partial,
+      if ((src == HomeSource.balance &&
+              partial.any((n) => n == FlowNodeId.grid || n == FlowNodeId.solar || n == FlowNodeId.battery)) ||
+          (src == HomeSource.balance && evs.any((e) => e.partial && (e.w ?? 0) < 0)) ||
+          (src == HomeSource.sum && [...evs, ...consumers].any((l) => l.partial)))
+        FlowNodeId.home,
+    },
+    parts: parts,
+    gridPhases: gridPhases,
   );
 }
 
-/// The snapshot of config [f], reading tiles through [tileOf] / [reading] / [soc].
+/// The snapshot of config [f], reading tiles through [tileOf] / [reading] / [soc]; [stale] tells
+/// a tile whose last reading is old (R662).
 FlowSnapshot snapshotFor(
   EnergyFlowConfig f, {
   required TileConfig? Function(String id) tileOf,
   required PowerReading? Function(String id) reading,
   required double? Function(String id) soc,
+  bool Function(String id)? stale,
 }) {
-  PowerReading? r(String? id) => id == null || tileOf(id) == null ? null : reading(id);
-  double? signed(String? id, bool invert) {
-    final v = r(id)?.w;
-    return v == null ? null : (invert ? -v : v);
+  SumReading sum(PowerSum s, [bool invert = false]) =>
+      sumOf(s, invert: invert, tileOf: tileOf, reading: reading, stale: stale);
+  double? pct(String? id) => id == null || tileOf(id) == null ? null : soc(id);
+  final partial = <String>{};
+  final parts = <String, List<PartReading>>{};
+  double? node(String id, PowerSum s, SumReading r) {
+    if (r.partial) partial.add(id);
+    if (s.isMulti && s.parts.length > 1) parts[id] = r.parts;
+    return r.w;
   }
 
-  double? pct(String? id) => id == null || tileOf(id) == null ? null : soc(id);
-
+  final g = sum(f.gridSum, f.gridInvert);
+  final so = sum(f.solarSum);
+  final b = sum(f.batterySum, f.batteryInvert);
+  final h = sum(f.homeSum);
+  final solarW = node(FlowNodeId.solar, f.solarSum, so);
   return computeFlow(
-    gridW: signed(f.grid, f.gridInvert),
-    solarW: r(f.solar)?.w,
-    batteryW: signed(f.battery, f.batteryInvert),
+    gridW: node(FlowNodeId.grid, f.gridSum, g),
+    solarW: solarW,
+    batteryW: node(FlowNodeId.battery, f.batterySum, b),
     batterySoc: pct(f.batterySoc),
-    homeW: r(f.home)?.w,
+    homeW: node(FlowNodeId.home, f.homeSum, h),
     evs: [
       for (final (i, e) in f.evs.indexed)
-        if (tileOf(e.tile) != null)
+        if (e.sum.ids.any((id) => tileOf(id) != null))
           () {
-            final x = r(e.tile);
+            final x = sum(e.sum, e.invert);
             return FlowLoad(
               id: FlowNodeId.ev(i),
               tileId: e.tile,
-              w: x == null ? null : (e.invert ? -x.w : x.w),
-              estimated: x?.estimated ?? false,
+              w: x.w,
+              estimated: x.estimated,
               soc: pct(e.soc),
+              partial: x.partial,
+              parts: e.sum.parts.length > 1 ? x.parts : const [],
             );
           }(),
     ],
@@ -457,10 +821,21 @@ FlowSnapshot snapshotFor(
       for (final id in f.consumers)
         if (tileOf(id) != null)
           () {
-            final x = r(id);
-            return FlowLoad(id: FlowNodeId.consumer(id), tileId: id, w: x?.w, estimated: x?.estimated ?? false);
+            final cs = f.consumerSum(id);
+            final x = sum(cs);
+            return FlowLoad(
+              id: FlowNodeId.consumer(id),
+              tileId: id,
+              w: x.w,
+              estimated: x.estimated,
+              partial: x.partial,
+              parts: cs.parts.length > 1 ? x.parts : const [],
+            );
           }(),
     ],
+    partial: partial,
+    parts: parts,
+    gridPhases: f.gridSum.phases,
   );
 }
 

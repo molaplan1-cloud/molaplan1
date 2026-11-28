@@ -28,6 +28,7 @@ import '../energy/energy_flow.dart' show estimatedPowerW;
 import '../energy/smart_heating.dart';
 import '../energy/thermostat.dart';
 import '../prices/prices.dart';
+import 'flow_recorder.dart';
 import 'tile_runtime.dart';
 import 'home_launcher.dart';
 import 'tile_feed.dart';
@@ -100,6 +101,7 @@ class AppState extends ChangeNotifier implements SyncHost {
       store: secretStore,
       configJson: () => exportJson(includeSecrets: true),
     );
+    remote.flowEnergy = flowEnergyFor;
     remote.addListener(notifyListeners);
     this.bridgeService.listen((up) {
       remote.bridge?.networkChanged(up);
@@ -267,6 +269,20 @@ class AppState extends ChangeNotifier implements SyncHost {
     return c.unitAt(t, spotEurMwh: spot);
   }
 
+  /// R685 (t337u): what exported electricity earns at [t] (c/kWh, no VAT), as a [Vat2] for the
+  /// energy log; null without a sell price in the contract (or a missing spot price).
+  Vat2? sellPriceAt(DateTime t) {
+    final c = contract;
+    if (c.sellType == 'none') return null;
+    double? spot;
+    if (c.sellType == 'spot') {
+      spot = PriceService.shared.cached(energyZone)?.at(t)?.eurMwh;
+      if (spot == null) return null;
+    }
+    final v = c.sellAt(t, spotEurMwh: spot);
+    return v == null ? null : Vat2(v, v);
+  }
+
   /// Logs a reading of a meter tile (power W/kW or energy Wh/kWh).
   /// Today+tomorrow consumer prices (c/kWh incl. VAT) from the user's spot contract – energy,
   /// margin, transfer and tax – or null when no spot contract is set (the price connection's own
@@ -391,6 +407,10 @@ class AppState extends ChangeNotifier implements SyncHost {
   /// The last value a tile reported in this session (null = none yet).
   Object? lastTileValue(String id) => _lastTileValues[id];
 
+  /// R662 (t335u): when each tile last reported a value in this session (this device's clock).
+  final _lastTileAt = <String, DateTime>{};
+  DateTime? lastTileAt(String id) => _lastTileAt[id];
+
   /// R482 (t312u): user-built logs and trends ("Lokit ja trendit").
   late final LogCollector logs;
 
@@ -427,6 +447,7 @@ class AppState extends ChangeNotifier implements SyncHost {
 
   void onTileValue(TileConfig t, Object? v, [DateTime? at]) {
     _lastTileValues[t.id] = v;
+    _lastTileAt[t.id] = DateTime.now();
     unawaited(logs.onValue(t, v, at));
     // t290u: home-screen status widgets follow live values immediately.
     unawaited(syncLauncherTile(t, v, at));
@@ -495,6 +516,31 @@ class AppState extends ChangeNotifier implements SyncHost {
       unitPriceAt,
     );
     _energySaveTimer ??= Timer(const Duration(seconds: 60), saveEnergy);
+  }
+
+  /// R680 (t337u): energy flow nodes are recorded here whether or not the tile is shown.
+  late final flowRecorder = FlowRecorder(this);
+
+  /// New energy data: written to storage within a minute.
+  void energyChanged() {
+    if (energyStore is! MemoryConfigStore) {
+      _energySaveTimer ??= Timer(const Duration(seconds: 60), saveEnergy);
+    }
+  }
+
+  /// R684 (t337u): op 'flow_energy' on the home bridge – this device's kWh / € of energy flow tile
+  /// spec['tile'] for nodes spec['nodes'] in [spec['from'], spec['to']) (ms since epoch).
+  Map<String, dynamic> flowEnergyFor(Map<String, dynamic> spec) {
+    final tile = '${spec['tile'] ?? ''}';
+    final from = DateTime.fromMillisecondsSinceEpoch((spec['from'] as num?)?.toInt() ?? 0);
+    final to = DateTime.fromMillisecondsSinceEpoch((spec['to'] as num?)?.toInt() ?? 0);
+    final nodes = [for (final n in (spec['nodes'] is List ? spec['nodes'] as List : const [])) '$n'];
+    return {
+      'recording': flowRecorder.running,
+      'nodes': {
+        for (final n in nodes.take(64)) n: energyLog.sumRange(flowLogId(tile, n), from, to).toJson(),
+      },
+    };
   }
 
   /// R591 (t328u): an energy flow tile logs its node powers (kW) for "today" per node.

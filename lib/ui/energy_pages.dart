@@ -452,6 +452,34 @@ class _ContractPageState extends State<ContractPage> {
               onChanged: (s) => c.vat = double.tryParse(s.replaceAll(',', '.')) ?? c.vat,
             ),
           ),
+          // R685 (t337u): what sold electricity earns (shown as income in the energy flow details).
+          const SizedBox(height: 20),
+          Text(tx(context, 'Myyty sähkö', 'Sold electricity'), style: text.titleMedium),
+          Padding(
+            padding: const EdgeInsets.only(top: 4, bottom: 8),
+            child: Text(
+              tx(
+                context,
+                'Jos myyt sähköä verkkoon (esim. aurinkopaneeleista), myyntihinnalla myyty energia näkyy tulona.',
+                'If you sell electricity to the grid (e.g. from solar panels), the sell price shows sold energy as income.',
+              ),
+              style: text.bodySmall,
+            ),
+          ),
+          SegmentedButton<String>(
+            key: const ValueKey('contract-sell'),
+            segments: [
+              ButtonSegment(value: 'none', label: Text(tx(context, 'Ei myyntiä', 'Not selling'))),
+              ButtonSegment(value: 'spot', label: Text(tx(context, 'Pörssihinta', 'Spot price'))),
+              ButtonSegment(value: 'fixed', label: Text(tx(context, 'Kiinteä hinta', 'Fixed price'))),
+            ],
+            selected: {c.sellType},
+            onSelectionChanged: (v) => setState(() => c.sellType = v.first),
+          ),
+          if (c.sellType == 'spot')
+            _price(tx(context, 'Ostajan marginaali (vähennetään)', 'Buyer\'s margin (deducted)'), c.sellMargin, 'c/kWh', key: const ValueKey('f-sell-margin')),
+          if (c.sellType == 'fixed')
+            _price(tx(context, 'Myyntihinta', 'Sell price'), c.sellFixed, 'c/kWh', key: const ValueKey('f-sell-fixed')),
           const SizedBox(height: 24),
           FilledButton.icon(
             key: const ValueKey('contract-save'),

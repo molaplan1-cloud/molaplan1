@@ -24,8 +24,13 @@ import '../log/log_collector.dart' show priceNowOf;
 import '../log/log_def.dart' show isPriceChartTile;
 import '../models/models.dart';
 import '../state/app_state.dart';
+import '../state/flow_recorder.dart';
 import '../state/tile_runtime.dart';
 import 'app_scope.dart';
+import 'energy_flow_look.dart';
+import 'theme.dart' show molaplanTheme;
+
+export '../state/flow_recorder.dart' show flowAllTiles, flowLogId, flowSnapshotOf, flowStale, flowTileOf;
 
 // ---------------------------------------------------------------- colours
 
@@ -84,10 +89,15 @@ class FlowNodeView {
     this.sub,
     this.estimated = false,
     this.soc,
+    this.partial = false,
+    this.glyph,
   });
   final String id;
   final String label;
   final IconData icon;
+
+  /// R670/R671 (t336u): a drawn or device icon instead of [icon] ('pylon', 'sauna', 'ev'…).
+  final String? glyph;
   final Color color;
 
   /// Shown power (W, ≥ 0); null = no reading.
@@ -95,6 +105,9 @@ class FlowNodeView {
   final String? sub;
   final bool estimated;
   final double? soc;
+
+  /// R662 (t335u): the total misses a part or has a stale one – shown with a marker (*).
+  final bool partial;
 }
 
 String _pct(double v) => '${v.round()} %';
@@ -107,8 +120,11 @@ List<FlowNodeView> flowNodes(
   String Function(String tileId)? nameOf,
   double? price,
   int maxExtras = 4,
+  FlowStyle? style,
+  String Function(FlowLoad load, bool ev)? glyphOf,
 }) {
   String t(String fi, String en) => tr(lang, fi, en);
+  Color col(String id) => style?.node(id) ?? flowColorOf(id);
   String name(String id) => nameOf?.call(id) ?? id;
   final out = <FlowNodeView>[];
   if (s.gridW != null) {
@@ -119,15 +135,24 @@ List<FlowNodeView> flowNodes(
         id: FlowNodeId.grid,
         label: t('Verkko', 'Grid'),
         icon: Icons.electrical_services,
-        color: flowGridColor,
+        glyph: 'pylon',
+        color: col(FlowNodeId.grid),
         w: s.gridW!.abs(),
+        partial: s.partial.contains(FlowNodeId.grid),
         sub: [?dir, ?pr].join(' · ').ifEmpty,
       ),
     );
   }
   if (s.solarW != null) {
     out.add(
-      FlowNodeView(id: FlowNodeId.solar, label: t('Aurinko', 'Solar'), icon: Icons.wb_sunny_outlined, color: flowSolarColor, w: s.solarW),
+      FlowNodeView(
+        id: FlowNodeId.solar,
+        label: t('Aurinko', 'Solar'),
+        icon: Icons.wb_sunny_outlined,
+        color: col(FlowNodeId.solar),
+        w: s.solarW,
+        partial: s.partial.contains(FlowNodeId.solar),
+      ),
     );
   }
   if (s.batteryW != null || s.batterySoc != null) {
@@ -138,9 +163,10 @@ List<FlowNodeView> flowNodes(
         id: FlowNodeId.battery,
         label: t('Akku', 'Battery'),
         icon: Icons.battery_charging_full,
-        color: flowBatteryColor,
+        color: col(FlowNodeId.battery),
         w: s.batteryW?.abs(),
         soc: s.batterySoc,
+        partial: s.partial.contains(FlowNodeId.battery),
         sub: [if (s.batterySoc != null) _pct(s.batterySoc!), ?dir].join(' · ').ifEmpty,
       ),
     );
@@ -151,9 +177,10 @@ List<FlowNodeView> flowNodes(
         id: FlowNodeId.home,
         label: t('Koti', 'Home'),
         icon: Icons.home_outlined,
-        color: flowHomeColor,
+        color: col(FlowNodeId.home),
         w: s.homeW,
         estimated: s.homeEstimated,
+        partial: s.partial.contains(FlowNodeId.home),
         sub: s.homeEstimated ? t('arvio', 'estimate') : null,
       ),
     );
@@ -164,10 +191,12 @@ List<FlowNodeView> flowNodes(
         id: e.id,
         label: name(e.tileId),
         icon: Icons.ev_station_outlined,
-        color: flowEvColor,
+        glyph: glyphOf?.call(e, true) ?? 'ev',
+        color: col(e.id),
         w: e.w?.abs(),
         estimated: e.estimated,
         soc: e.soc,
+        partial: e.partial,
         sub: (e.w ?? 0) <= -flowMinW ? t('syöttää', 'feeding') : (e.soc == null ? null : _pct(e.soc!)),
       ),
     for (final c in s.consumers)
@@ -175,9 +204,11 @@ List<FlowNodeView> flowNodes(
         id: c.id,
         label: name(c.tileId),
         icon: Icons.power_outlined,
-        color: flowConsumerColor,
+        glyph: glyphOf?.call(c, false),
+        color: col(c.id),
         w: c.w,
         estimated: c.estimated,
+        partial: c.partial,
         sub: c.estimated ? t('arvio', 'estimate') : null,
       ),
   ];
@@ -191,9 +222,10 @@ List<FlowNodeView> flowNodes(
         id: 'more',
         label: tr(lang, '+$n muuta', '+$n more'),
         icon: Icons.more_horiz,
-        color: flowConsumerColor,
+        color: col('more'),
         w: rest.fold<double>(0, (a, x) => a + (x.w ?? 0)),
         estimated: rest.any((x) => x.estimated),
+        partial: rest.any((x) => x.partial),
       ),
     );
   } else {
@@ -225,7 +257,7 @@ const flowCompactLabelH = 13.0;
 
 /// Grid left, home right of the middle, solar on top, battery below, chargers and devices in a
 /// column on the right.
-FlowLayout flowLayout(Size size, List<FlowNodeView> nodes) {
+FlowLayout flowLayout(Size size, List<FlowNodeView> nodes, {double scale = 1}) {
   final W = size.width, H = size.height;
   final labelH = H < 260 ? flowCompactLabelH : flowLabelH;
   final ids = nodes.map((n) => n.id).toSet();
@@ -234,7 +266,9 @@ FlowLayout flowLayout(Size size, List<FlowNodeView> nodes) {
   final cols = extras.isEmpty ? const [0.15, 0.5, 0.85, 1.0] : const [0.12, 0.36, 0.6, 0.88];
   final colW = W / 4.3;
   final rowH = (H - rows * labelH) / (rows == 3 ? 3.1 : 1.4);
-  final r = math.min(colW / 2, rowH / 2).clamp(10.0, 44.0);
+  // R675: node size scale (the room limits it still).
+  final rMax = math.max(9.0, math.min(56.0, math.min(colW / 2 + 6, rowH / 2 + 6)));
+  final double r = (math.min(colW / 2, rowH / 2).clamp(10.0, 44.0) * scale).clamp(9.0, rMax).toDouble();
   final cellH = H / rows;
   double rowY(int i) => rows == 1 ? (H - labelH) / 2 : cellH * i + (cellH - labelH) / 2;
   final c = <String, Offset>{};
@@ -253,7 +287,7 @@ FlowLayout flowLayout(Size size, List<FlowNodeView> nodes) {
   if (extras.isNotEmpty) {
     final slot = H / extras.length;
     for (final (i, n) in extras.indexed) {
-      final re = math.min(r * 0.82, (slot - labelH) / 2 - 1).clamp(9.0, 40.0);
+      final re = math.min(r * 0.82, (slot - labelH) / 2 - 1).clamp(9.0, 48.0);
       c[n.id] = Offset(W * cols[3], slot * i + (slot - labelH) / 2);
       rad[n.id] = re;
     }
@@ -261,11 +295,23 @@ FlowLayout flowLayout(Size size, List<FlowNodeView> nodes) {
   return FlowLayout(c, rad, labelH: labelH);
 }
 
-/// The line between two nodes: straight along a row or column, otherwise a soft curve.
-Path flowPath(Offset a, Offset b) {
+/// The line between two nodes: straight along a row or column, otherwise a soft curve
+/// ([curve] 'curved'), a straight line ('straight') or right angles ('ortho', R674).
+Path flowPath(Offset a, Offset b, {String curve = 'curved'}) {
   final p = Path()..moveTo(a.dx, a.dy);
-  if ((a.dy - b.dy).abs() < 1 || (a.dx - b.dx).abs() < 1) {
+  if ((a.dy - b.dy).abs() < 1 || (a.dx - b.dx).abs() < 1 || curve == 'straight') {
     p.lineTo(b.dx, b.dy);
+  } else if (curve == 'ortho') {
+    // Vertical first when the nodes are stacked (solar / battery above / below), else horizontal.
+    if ((a.dx - b.dx).abs() < (a.dy - b.dy).abs() * 0.6) {
+      p
+        ..lineTo(a.dx, b.dy)
+        ..lineTo(b.dx, b.dy);
+    } else {
+      p
+        ..lineTo(b.dx, a.dy)
+        ..lineTo(b.dx, b.dy);
+    }
   } else {
     // Leave horizontally, arrive horizontally (a cubic "S").
     final mx = (a.dx + b.dx) / 2;
@@ -300,11 +346,17 @@ class EnergyFlowView extends StatefulWidget {
     this.animate = true,
     this.nameOf,
     this.price,
+    this.look,
+    this.glyphOf,
   });
   final FlowSnapshot snapshot;
   final bool animate;
   final String Function(String tileId)? nameOf;
   final double? price;
+
+  /// R670–R676 (t336u): colours, lines, motion, size (null = the defaults).
+  final FlowLook? look;
+  final String Function(FlowLoad load, bool ev)? glyphOf;
 
   /// Tests: never move (pumpAndSettle-friendly).
   static bool forceStatic = false;
@@ -349,10 +401,20 @@ class _EnergyFlowViewState extends State<EnergyFlowView> with SingleTickerProvid
         final size = Size(box.maxWidth, box.maxHeight);
         final labelH = size.height < 260 ? flowCompactLabelH : flowLabelH;
         final maxExtras = (size.height / (labelH + 24)).floor().clamp(1, 6);
-        final nodes = flowNodes(widget.snapshot, lang: lang, nameOf: widget.nameOf, price: widget.price, maxExtras: maxExtras);
-        final l = flowLayout(size, nodes);
+        final look = widget.look ?? FlowLook();
+        final style = FlowStyle(look, Theme.of(context).colorScheme);
+        final nodes = flowNodes(
+          widget.snapshot,
+          lang: lang,
+          nameOf: widget.nameOf,
+          price: widget.price,
+          maxExtras: maxExtras,
+          style: style,
+          glyphOf: widget.glyphOf,
+        );
+        final l = flowLayout(size, nodes, scale: look.size);
         final edges = flowPairs(widget.snapshot, l.centers.keys.toSet());
-        final animate = widget.animate && !EnergyFlowView.forceStatic && edges.isNotEmpty;
+        final animate = widget.animate && look.anim != 'none' && !EnergyFlowView.forceStatic && edges.isNotEmpty;
         _run(animate);
         return Stack(
           clipBehavior: Clip.none,
@@ -366,6 +428,7 @@ class _EnergyFlowViewState extends State<EnergyFlowView> with SingleTickerProvid
                     animate: animate,
                     time: _time,
                     base: Theme.of(context).colorScheme.outlineVariant,
+                    style: style,
                   ),
                 ),
               ),
@@ -373,9 +436,9 @@ class _EnergyFlowViewState extends State<EnergyFlowView> with SingleTickerProvid
             for (final n in nodes)
               if (l.centers[n.id] case final c?)
                 Positioned(
-                  left: c.dx - 46,
+                  left: c.dx - math.max(46, l.radius[n.id]! + 4),
                   top: c.dy - l.radius[n.id]!,
-                  width: 92,
+                  width: math.max(92, l.radius[n.id]! * 2 + 8),
                   height: l.radius[n.id]! * 2 + l.labelH,
                   child: _Node(node: n, r: l.radius[n.id]!, lang: lang, compact: l.compact),
                 ),
@@ -387,13 +450,24 @@ class _EnergyFlowViewState extends State<EnergyFlowView> with SingleTickerProvid
 }
 
 class _FlowPainter extends CustomPainter {
-  _FlowPainter({required this.layout, required this.edges, required this.animate, required this.time, required this.base})
-    : super(repaint: animate ? time : null);
+  _FlowPainter({
+    required this.layout,
+    required this.edges,
+    required this.animate,
+    required this.time,
+    required this.base,
+    required this.style,
+  }) : super(repaint: animate ? time : null);
   final FlowLayout layout;
   final List<FlowEdge> edges;
   final bool animate;
   final ValueNotifier<double> time;
   final Color base;
+  final FlowStyle style;
+
+  FlowLook get look => style.look;
+  Path _path(Offset a, Offset b) => flowPath(a, b, curve: look.curve);
+  Path _dash(Path p) => look.dashed ? flowDashed(p) : p;
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -406,19 +480,22 @@ class _FlowPainter extends CustomPainter {
     if (home != null) {
       for (final e in layout.centers.entries) {
         if (e.key == FlowNodeId.home) continue;
-        canvas.drawPath(flowPath(e.value, home), idle);
+        canvas.drawPath(_dash(_path(e.value, home)), idle);
       }
     }
     for (final e in edges) {
       final a = layout.centers[e.from], b = layout.centers[e.to];
       if (a == null || b == null) continue;
-      final color = flowColorOf(e.from == FlowNodeId.home ? e.to : e.from);
-      final path = flowPath(a, b);
-      final th = flowThickness(e.w);
+      final color = style.line(e.from == FlowNodeId.home ? e.to : e.from);
+      final path = _path(a, b);
+      final th = flowThickness(e.w) * look.thick;
+      // R674: 'pulse' – the line brightens and dims, faster with more power.
+      final pulse = animate && look.anim == 'pulse';
+      final alpha = pulse ? 0.35 + 0.6 * (0.5 + 0.5 * math.sin(time.value * flowSpeed(e.w) / 12)) : (animate ? 0.55 : 0.8);
       canvas.drawPath(
-        path,
+        _dash(path),
         Paint()
-          ..color = color.withValues(alpha: animate ? 0.55 : 0.8)
+          ..color = color.withValues(alpha: alpha)
           ..style = PaintingStyle.stroke
           ..strokeCap = StrokeCap.round
           ..strokeWidth = th,
@@ -428,7 +505,7 @@ class _FlowPainter extends CustomPainter {
       final ra = layout.radius[e.from] ?? 0, rb = layout.radius[e.to] ?? 0;
       final len = metric.length - ra - rb;
       if (len <= 4) continue;
-      if (animate) {
+      if (animate && !pulse) {
         _dots(canvas, metric, ra, len, e.w, color, th);
       } else {
         _arrow(canvas, metric, ra + len / 2, color, th);
@@ -476,7 +553,12 @@ class _FlowPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(_FlowPainter old) =>
-      old.layout != layout || old.edges != edges || old.animate != animate || old.base != base;
+      old.layout != layout ||
+      old.edges != edges ||
+      old.animate != animate ||
+      old.base != base ||
+      old.style.look != style.look ||
+      old.style.cs != style.cs;
 }
 
 class _Node extends StatelessWidget {
@@ -509,9 +591,20 @@ class _Node extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       // A small circle shows only the value (readable), a big one the icon too.
-                      if (r >= 24) Icon(node.icon, color: color, size: 22),
-                      Text(
-                        node.estimated ? '≈ $value' : value,
+                      if (r >= 24)
+                        node.glyph != null
+                            ? FlowGlyph(node.glyph!, color: color, size: 22)
+                            : Icon(node.icon, color: color, size: 22),
+                      Text.rich(
+                        TextSpan(
+                          text: node.estimated ? '≈ $value' : value,
+                          children: [
+                            // R662: a part of the sum is missing or stale.
+                            if (node.partial && node.w != null)
+                              TextSpan(text: '*', style: TextStyle(color: cs.error)),
+                          ],
+                        ),
+                        key: node.partial ? ValueKey('flow-partial-${node.id}') : null,
                         style: text.labelLarge?.copyWith(fontWeight: FontWeight.w700, color: cs.onSurface),
                       ),
                     ],
@@ -588,37 +681,6 @@ class _Ring extends CustomPainter {
 
 // ---------------------------------------------------------------- reading the app state
 
-/// Every tile of every view (once per id).
-List<TileConfig> flowAllTiles(AppState st) {
-  final seen = <String>{};
-  return [
-    for (final d in st.config.dashboards)
-      for (final t in d.tiles)
-        if (seen.add(t.id)) t,
-  ];
-}
-
-TileConfig? _tileOf(AppState st, String id) {
-  for (final d in st.config.dashboards) {
-    for (final t in d.tiles) {
-      if (t.id == id) return t;
-    }
-  }
-  return null;
-}
-
-/// The snapshot of [f] from the latest tile values.
-FlowSnapshot flowSnapshotOf(AppState st, EnergyFlowConfig f) => snapshotFor(
-  f,
-  tileOf: (id) => _tileOf(st, id),
-  reading: (id) {
-    final t = _tileOf(st, id);
-    if (t == null) return null;
-    return powerReadingOf(t, st.lastTileValue(id), connType: st.connection(t.connectionId)?.type);
-  },
-  soc: (id) => percentOf(st.lastTileValue(id)),
-);
-
 /// The current electricity price (c/kWh): a price chart tile's value, else the contract / the
 /// cached spot price.
 double? flowPriceNow(AppState st, [DateTime? at]) {
@@ -632,10 +694,16 @@ double? flowPriceNow(AppState st, [DateTime? at]) {
   return st.unitPriceAt(now)?.inc;
 }
 
-String flowNameOf(AppState st, String tileId) => _tileOf(st, tileId)?.title ?? '?';
+/// R671/R672 (t336u): the icon of a charger / device node – the user's pick, else suggested from
+/// the tile's name and kind.
+String Function(FlowLoad load, bool ev) flowGlyphOf(AppState st, EnergyFlowConfig f) => (l, ev) {
+  final own = f.look.icons[l.tileId];
+  if (own != null) return own;
+  final t = flowTileOf(st, l.tileId);
+  return suggestFlowIcon(t, ev: ev, connType: st.connection(t?.connectionId)?.type);
+};
 
-/// Energy log id of node [node] of flow tile [tileId] (today's kWh per node).
-String flowLogId(String tileId, String node) => 'flow:$tileId:$node';
+String flowNameOf(AppState st, String tileId) => flowTileOf(st, tileId)?.title ?? '?';
 
 // ---------------------------------------------------------------- the tile
 
@@ -651,7 +719,6 @@ class EnergyFlowTile extends StatefulWidget {
 class _EnergyFlowTileState extends State<EnergyFlowTile> {
   Timer? _timer;
   Timer? _first;
-  int _ticks = 0;
   final _own = <String, TileRuntime>{};
 
   EnergyFlowConfig get _f => EnergyFlowConfig.fromRead(widget.tile.read);
@@ -668,7 +735,6 @@ class _EnergyFlowTileState extends State<EnergyFlowTile> {
       if (!mounted) return;
       PowerSaver.check();
       _ensureSources();
-      if (++_ticks % 5 == 0) _record();
       setState(() {});
     });
   }
@@ -689,37 +755,9 @@ class _EnergyFlowTileState extends State<EnergyFlowTile> {
     for (final id in want) {
       if (_own.containsKey(id)) continue;
       if (TileRuntime.live[id]?.isNotEmpty ?? false) continue;
-      final t = _tileOf(st, id);
+      final t = flowTileOf(st, id);
       if (t == null || t.connectionId == null) continue;
       _own[id] = TileRuntime(t, st.driverFor)..start();
-    }
-  }
-
-  /// R591: node powers into the energy log every 10 s (today's kWh in the details).
-  void _record() {
-    final st = AppScope.read(context);
-    final s = flowSnapshotOf(st, _f);
-    final now = DateTime.now();
-    void rec(String node, double? w, [bool est = false]) {
-      if (w == null) return;
-      st.recordFlowPower(flowLogId(widget.tile.id, node), math.max(w, 0) / 1000, now, estimated: est);
-    }
-
-    if (s.gridW != null) {
-      rec('grid_in', s.gridImport);
-      rec('grid_out', s.gridExport);
-    }
-    rec('solar', s.solarW);
-    if (s.batteryW != null) {
-      rec('bat_in', s.batteryCharge);
-      rec('bat_out', s.batteryDischarge);
-    }
-    rec('home', s.homeW, s.homeEstimated);
-    for (final (i, e) in s.evs.indexed) {
-      rec('ev$i', e.w, e.estimated);
-    }
-    for (final c in s.consumers) {
-      rec('c:${c.tileId}', c.w, c.estimated);
     }
   }
 
@@ -755,12 +793,23 @@ class _EnergyFlowTileState extends State<EnergyFlowTile> {
             animate: flowAnimates(context, f),
             nameOf: (id) => flowNameOf(st, id),
             price: f.price && s.gridW != null ? flowPriceNow(st) : null,
+            look: f.look,
+            glyphOf: flowGlyphOf(st, f),
           );
-    return Card(
-      clipBehavior: Clip.antiAlias,
-      color: widget.tile.color != null
+    // R673: the background – the normal card, transparent, dark or the user's colour.
+    final (bg, bright) = flowBackground(
+      f.look,
+      cs,
+      widget.tile.color != null
           ? Color.alphaBlend(Color(widget.tile.color!).withValues(alpha: 0.12), cs.surfaceContainer)
           : cs.surfaceContainer,
+    );
+    final card = Card(
+      clipBehavior: Clip.antiAlias,
+      color: bg,
+      elevation: f.look.bg == 'transparent' ? 0 : null,
+      shadowColor: f.look.bg == 'transparent' ? Colors.transparent : null,
+      surfaceTintColor: f.look.bg == 'transparent' ? Colors.transparent : null,
       child: InkWell(
         key: const ValueKey('flow-tile'),
         onTap: widget.editing
@@ -784,16 +833,131 @@ class _EnergyFlowTileState extends State<EnergyFlowTile> {
         ),
       ),
     );
+    if (bright == null || bright == Theme.of(context).brightness) return card;
+    return Theme(data: molaplanTheme(brightness: bright), child: card);
   }
 }
 
 // ---------------------------------------------------------------- details
 
-/// R591: power now and today's kWh per node.
-class EnergyFlowDetailPage extends StatelessWidget {
-  const EnergyFlowDetailPage({super.key, required this.tile, this.now});
+/// R680: the periods of the details.
+const flowPeriods = ['today', 'yesterday', 'week', 'month', 'year'];
+
+/// [from, to) of period [p] at [now] (week = from Monday).
+(DateTime, DateTime) flowPeriodRange(String p, DateTime now) {
+  final d0 = DateTime(now.year, now.month, now.day);
+  return switch (p) {
+    'yesterday' => (DateTime(now.year, now.month, now.day - 1), d0),
+    'week' => (DateTime(now.year, now.month, now.day - (now.weekday - 1)), now),
+    'month' => (DateTime(now.year, now.month), now),
+    'year' => (DateTime(now.year), now),
+    _ => (d0, now),
+  };
+}
+
+/// One row of the details: a node's energy id, name, colour, power now, whether it earns (sold).
+class _FlowRow {
+  const _FlowRow(this.id, this.label, this.color, {this.w, this.estimated = false, this.money = true, this.sold = false, this.value = false});
+  final String id;
+  final String label;
+  final Color color;
+  final double? w;
+  final bool estimated;
+
+  /// Show € (cost, or income for [sold]); [value] = solar's worth at the buy price.
+  final bool money;
+  final bool sold;
+  final bool value;
+}
+
+/// R680–R686 (t337u): power now and, for the chosen period (Tänään, Eilen, Tällä viikolla,
+/// Tässä kuussa, Tänä vuonna), kWh and € per node and per grid phase. The data comes from the home
+/// bridge when there is one (it records all the time), else from this device; gaps, partial
+/// readings, estimates and missing prices are marked.
+class EnergyFlowDetailPage extends StatefulWidget {
+  const EnergyFlowDetailPage({super.key, required this.tile, this.now, this.period = 'today'});
   final TileConfig tile;
   final DateTime? now;
+  final String period;
+
+  @override
+  State<EnergyFlowDetailPage> createState() => _EnergyFlowDetailPageState();
+}
+
+class _EnergyFlowDetailPageState extends State<EnergyFlowDetailPage> {
+  late String _period = widget.period;
+  Map<String, EnergyBucket>? _bridge;
+  bool _bridgeAsked = false;
+  int _ask = 0;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (!_bridgeAsked) {
+      _bridgeAsked = true;
+      _fetch();
+    }
+  }
+
+  /// R684: the home bridge's totals (it records continuously); null = not available.
+  Future<void> _fetch() async {
+    final st = AppScope.read(context);
+    if (st.remote.bridge != null || st.remote.router.client == null) return;
+    final n = ++_ask;
+    final t0 = widget.now ?? DateTime.now();
+    final (from, to) = flowPeriodRange(_period, t0);
+    final nodes = _rows(st, EnergyFlowConfig.fromRead((flowTileOf(st, widget.tile.id) ?? widget.tile).read), null)
+        .map((r) => r.id)
+        .toList();
+    try {
+      final v = await st.remote.router.viaRemote(
+        (c) => c.call(
+          'flow_energy',
+          spec: {'tile': widget.tile.id, 'from': from.millisecondsSinceEpoch, 'to': to.millisecondsSinceEpoch, 'nodes': nodes},
+          timeout: const Duration(seconds: 12),
+        ),
+      );
+      if (!mounted || n != _ask || v is! Map || v['nodes'] is! Map) return;
+      setState(() {
+        _bridge = {
+          for (final e in (v['nodes'] as Map).entries)
+            if (e.value is Map) '${e.key}': EnergyBucket.fromJson(Map<String, dynamic>.from(e.value as Map)),
+        };
+      });
+    } catch (_) {
+      if (mounted && n == _ask) setState(() => _bridge = null);
+    }
+  }
+
+  List<_FlowRow> _rows(AppState st, EnergyFlowConfig f, FlowSnapshot? s) {
+    final sty = FlowStyle(f.look, Theme.of(context).colorScheme);
+    final evs = s?.evs ?? const <FlowLoad>[];
+    final cons = s?.consumers ?? const <FlowLoad>[];
+    return [
+      if (!f.gridSum.isEmpty) ...[
+        _FlowRow('grid_in', tx(context, 'Ostettu verkosta', 'Imported from the grid'), sty.node(FlowNodeId.grid), w: s?.gridW == null ? null : s!.gridImport),
+        _FlowRow('grid_out', tx(context, 'Myyty verkkoon', 'Exported to the grid'), sty.node(FlowNodeId.grid), w: s?.gridW == null ? null : s!.gridExport, sold: true),
+      ],
+      if (!f.solarSum.isEmpty) _FlowRow('solar', tx(context, 'Aurinkosähkö', 'Solar'), sty.node(FlowNodeId.solar), w: s?.solarW, value: true),
+      if (!f.batterySum.isEmpty) ...[
+        _FlowRow('bat_in', tx(context, 'Ladattu akkuun', 'Charged into the battery'), sty.node(FlowNodeId.battery), w: s?.batteryW == null ? null : s!.batteryCharge, money: false),
+        _FlowRow('bat_out', tx(context, 'Purettu akusta', 'Discharged from the battery'), sty.node(FlowNodeId.battery), w: s?.batteryW == null ? null : s!.batteryDischarge, money: false),
+      ],
+      if (s == null || s.homeSource != HomeSource.none)
+        _FlowRow('home', tx(context, 'Kodin kulutus', 'Home consumption'), sty.node(FlowNodeId.home), w: s?.homeW, estimated: s?.homeEstimated ?? false),
+      for (final (i, e) in f.evs.indexed)
+        _FlowRow('ev$i', flowNameOf(st, e.tile), sty.node('ev$i'), w: evs.elementAtOrNull(i)?.w, estimated: evs.elementAtOrNull(i)?.estimated ?? false),
+      for (final c in f.consumers)
+        if (flowTileOf(st, c) != null)
+          _FlowRow(
+            'c:$c',
+            flowNameOf(st, c),
+            sty.node('c:$c'),
+            w: cons.where((x) => x.tileId == c).firstOrNull?.w,
+            estimated: cons.where((x) => x.tileId == c).firstOrNull?.estimated ?? false,
+          ),
+    ];
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -801,34 +965,133 @@ class EnergyFlowDetailPage extends StatelessWidget {
     final cs = Theme.of(context).colorScheme;
     final text = Theme.of(context).textTheme;
     final lang = st.lang;
-    final t0 = now ?? DateTime.now();
-    final live = _tileOf(st, tile.id) ?? tile;
+    final t0 = widget.now ?? DateTime.now();
+    final live = flowTileOf(st, widget.tile.id) ?? widget.tile;
     final f = EnergyFlowConfig.fromRead(live.read);
-    final s = flowSnapshotOf(st, f);
-    final day = EnergyLog.dayKey(t0);
+    final s = flowSnapshotOf(st, f, now: widget.now);
+    final today = _period == 'today';
+    final (from, to) = flowPeriodRange(_period, t0);
+    final elapsed = math.max(1, to.difference(from).inSeconds);
+    final fromBridge = _bridge != null;
+    EnergyBucket b(String node) => _bridge?[node] ?? st.energyLog.sumRange(flowLogId(widget.tile.id, node), from, to);
     String kwh(double v) => '${v.toStringAsFixed(v < 10 ? 2 : 1)} kWh'.replaceAll('.', lang == 'en' ? '.' : ',');
-    final rows = <(String, String, Color, double?, bool)>[
-      if (s.gridW != null) ...[
-        ('grid_in', tx(context, 'Ostettu verkosta', 'Imported from the grid'), flowGridColor, s.gridImport, false),
-        ('grid_out', tx(context, 'Myyty verkkoon', 'Exported to the grid'), flowGridColor, s.gridExport, false),
-      ],
-      if (s.solarW != null) ('solar', tx(context, 'Aurinkosähkö', 'Solar'), flowSolarColor, s.solarW, false),
-      if (s.batteryW != null) ...[
-        ('bat_in', tx(context, 'Ladattu akkuun', 'Charged into the battery'), flowBatteryColor, s.batteryCharge, false),
-        ('bat_out', tx(context, 'Purettu akusta', 'Discharged from the battery'), flowBatteryColor, s.batteryDischarge, false),
-      ],
-      if (s.homeSource != HomeSource.none)
-        ('home', tx(context, 'Kodin kulutus', 'Home consumption'), flowHomeColor, s.homeW, s.homeEstimated),
-      for (final (i, e) in s.evs.indexed) ('ev$i', flowNameOf(st, e.tileId), flowEvColor, e.w, e.estimated),
-      for (final c in s.consumers) ('c:${c.tileId}', flowNameOf(st, c.tileId), flowConsumerColor, c.w, c.estimated),
-    ];
+    String eur(double v, {bool plus = false}) =>
+        '${plus && v > 0 ? '+' : ''}${v.toStringAsFixed(2)} €'.replaceAll('.', lang == 'en' ? '.' : ',');
+    final c = st.contract;
+    final sellKnown = c.sellType != 'none';
+    final sty = FlowStyle(f.look, cs);
+    final rows = _rows(st, f, s);
     final homeHow = switch (s.homeSource) {
       HomeSource.measured => tx(context, 'mitattu', 'measured'),
       HomeSource.balance => tx(context, 'laskettu verkosta, aurinkosähköstä ja akusta', 'worked out from grid, solar and battery'),
       HomeSource.sum => tx(context, 'valittujen laitteiden summa', 'sum of the chosen devices'),
       HomeSource.none => tx(context, 'ei tietoa', 'no data'),
     };
-    final d = st.config.dashboards.where((x) => x.tiles.any((y) => y.id == tile.id)).firstOrNull;
+    // t335u: the summed tiles of a node, shown under its row (now).
+    List<PartReading> partsOf(String row) => switch (row) {
+      'grid_out' => s.gridPhases ? const [] : (s.parts[FlowNodeId.grid] ?? const []),
+      'solar' => s.parts[FlowNodeId.solar] ?? const [],
+      'bat_out' => s.parts[FlowNodeId.battery] ?? const [],
+      'home' => s.parts[FlowNodeId.home] ?? const [],
+      _ when row.startsWith('ev') => s.evs.elementAtOrNull(int.tryParse(row.substring(2)) ?? -1)?.parts ?? const [],
+      _ when row.startsWith('c:') => s.consumers.where((x) => x.id == row).firstOrNull?.parts ?? const [],
+      _ => const [],
+    };
+    bool partialRow(String row) => switch (row) {
+      'grid_in' || 'grid_out' => s.partial.contains(FlowNodeId.grid),
+      'bat_in' || 'bat_out' => s.partial.contains(FlowNodeId.battery),
+      'solar' || 'home' => s.partial.contains(row),
+      _ => [...s.evs, ...s.consumers].any((l) => l.id == row && l.partial),
+    };
+    String partName(PartReading p) =>
+        p.label ?? (p.tileId == null ? tx(context, 'valitsematon', 'not picked') : flowNameOf(st, p.tileId!));
+    String? partialNow(String row) {
+      if (!today || !partialRow(row)) return null;
+      final all = row == 'grid_in' || row == 'grid_out'
+          ? s.parts[FlowNodeId.grid] ?? const <PartReading>[]
+          : (row == 'bat_in' || row == 'bat_out' ? s.parts[FlowNodeId.battery] ?? const <PartReading>[] : partsOf(row));
+      final names = [
+        for (final p in all)
+          if (p.missing || p.stale) partName(p),
+      ].join(', ');
+      if (names.isEmpty) return tx(context, 'Osittainen summa', 'Partial total');
+      return tx(context, 'Osittainen summa: $names ilman tuoretta lukemaa', 'Partial total: $names without a fresh reading');
+    }
+
+    /// R682: what the period's data covers – gaps, partial readings, estimates, missing prices.
+    List<String> notes(EnergyBucket x, _FlowRow r) {
+      final cov = x.cov / elapsed;
+      return [
+        if (x.cov <= 0 && x.kwh <= 0)
+          tx(context, 'ei tietoja tältä ajalta', 'no data for this period')
+        else if (cov < 0.95)
+          tx(context, 'tiedot ${(cov * 100).clamp(0, 99).round()} %:lta ajasta', 'data for ${(cov * 100).clamp(0, 99).round()} % of the time'),
+        if (x.part > 0) tx(context, 'osin osittainen', 'partly partial'),
+        if (x.estimated) tx(context, '≈ sisältää arvion', '≈ includes an estimate'),
+        if (r.money && x.unpriced > 0.0005) tx(context, 'hinta puuttuu osalta', 'price missing for part'),
+        if (r.sold && !sellKnown) tx(context, 'ei myyntihintaa', 'no sell price'),
+      ];
+    }
+
+    Widget partRow(PartReading p, {String? kwhText}) => Padding(
+      key: ValueKey('flow-part-${p.label ?? p.tileId}'),
+      padding: const EdgeInsets.only(left: 28, bottom: 4),
+      child: Row(
+        children: [
+          Expanded(
+            child: Text(
+              p.label != null && p.tileId != null ? '${p.label} · ${flowNameOf(st, p.tileId!)}' : partName(p),
+              style: text.bodySmall,
+              overflow: TextOverflow.ellipsis,
+            ),
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              if (today)
+                Text(
+                  p.missing
+                      ? (p.tileId == null ? tx(context, 'valitsematon', 'not picked') : tx(context, 'ei lukemaa', 'no reading'))
+                      : '${formatPower(p.w, lang: lang, estimated: p.estimated)}${p.stale ? ' · ${tx(context, 'vanha lukema', 'old reading')}' : ''}',
+                  style: text.bodySmall?.copyWith(color: p.missing || p.stale ? cs.error : null),
+                ),
+              if (kwhText != null) Text(kwhText, style: text.bodySmall?.copyWith(color: cs.onSurfaceVariant)),
+            ],
+          ),
+        ],
+      ),
+    );
+    final phases = s.phases;
+    final imb = phaseImbalance(phases);
+    final d = st.config.dashboards.where((x) => x.tiles.any((y) => y.id == widget.tile.id)).firstOrNull;
+    final periodNames = {
+      'today': tx(context, 'Tänään', 'Today'),
+      'yesterday': tx(context, 'Eilen', 'Yesterday'),
+      'week': tx(context, 'Tällä viikolla', 'This week'),
+      'month': tx(context, 'Tässä kuussa', 'This month'),
+      'year': tx(context, 'Tänä vuonna', 'This year'),
+    };
+    // R686: what the € include – the same price as the electricity price tile / contract.
+    final parts = [
+      switch (c.energyType) {
+        'fixed' => tx(context, 'kiinteä energiahinta', 'fixed energy price'),
+        'daynight' => tx(context, 'yö/päivä-energiahinta', 'night/day energy price'),
+        _ => tx(context, 'pörssihinta (15 min / tunti) + marginaali', 'spot price (15 min / hourly) + margin'),
+      },
+      tx(context, 'siirto', 'transfer'),
+      tx(context, 'sähkövero', 'electricity tax'),
+      '${tx(context, 'ALV', 'VAT')} ${c.vat.toString().replaceAll('.', lang == 'en' ? '.' : ',')} %',
+    ];
+    final priceNote = [
+      tx(context, 'Hinnat: ${parts.join(' + ')}. Kuukausimaksut eivät sisälly.', 'Prices: ${parts.join(' + ')}. Monthly fees are not included.'),
+      if (st.config.energy.contract == null)
+        tx(context, 'Oletussopimus – aseta oma sähkösopimus Energia-asetuksissa.', 'Default contract – set your own electricity contract in the energy settings.'),
+      sellKnown
+          ? (c.sellType == 'spot'
+                ? tx(context, 'Myyty sähkö tulona: pörssihinta − ostajan marginaali (ilman ALV).', 'Sold electricity as income: spot price − buyer\'s margin (no VAT).')
+                : tx(context, 'Myyty sähkö tulona: kiinteä myyntihinta (ilman ALV).', 'Sold electricity as income: fixed sell price (no VAT).'))
+          : tx(context, 'Myydylle sähkölle ei ole myyntihintaa – aseta se sähkösopimukseen, niin tulo näkyy.', 'There is no sell price for sold electricity – set it in the electricity contract to see the income.'),
+    ].join(' ');
     return Scaffold(
       appBar: AppBar(
         title: Text(live.title),
@@ -856,55 +1119,152 @@ class EnergyFlowDetailPage extends StatelessWidget {
               animate: flowAnimates(context, f),
               nameOf: (id) => flowNameOf(st, id),
               price: f.price && s.gridW != null ? flowPriceNow(st, t0) : null,
+              look: f.look,
+              glyphOf: flowGlyphOf(st, f),
             ),
           ),
           const SizedBox(height: 12),
-          Row(
-            children: [
-              Expanded(child: Text(tx(context, 'Nyt / tänään', 'Now / today'), style: text.titleSmall)),
-            ],
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: [
+                for (final p in flowPeriods)
+                  Padding(
+                    padding: const EdgeInsets.only(right: 6),
+                    child: ChoiceChip(
+                      key: ValueKey('flow-period-$p'),
+                      label: Text(periodNames[p]!),
+                      selected: _period == p,
+                      onSelected: (_) {
+                        setState(() {
+                          _period = p;
+                          _bridge = null;
+                        });
+                        _fetch();
+                      },
+                    ),
+                  ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 6),
+          Text(
+            today
+                ? tx(context, 'Teho nyt · energia ja hinta tänään', 'Power now · energy and price today')
+                : tx(context, 'Energia ja hinta: ${periodNames[_period]!.toLowerCase()}', 'Energy and price: ${periodNames[_period]!.toLowerCase()}'),
+            style: text.titleSmall,
           ),
           const Divider(),
-          for (final r in rows)
+          for (final r in rows) ...[
             () {
-              final b = st.energyLog.sum(flowLogId(tile.id, r.$1), day);
+              final x = b(r.id);
+              final ns = notes(x, r);
+              final pn = partialNow(r.id);
+              final money = !r.money
+                  ? null
+                  : r.sold
+                  ? (sellKnown ? eur(x.inc, plus: true) : null)
+                  : (x.kwh > 0 || x.inc != 0 ? (r.value ? '${tx(context, 'arvo', 'worth')} ${eur(x.inc)}' : eur(x.inc)) : null);
               return ListTile(
-                key: ValueKey('flow-row-${r.$1}'),
+                key: ValueKey('flow-row-${r.id}'),
                 dense: true,
                 contentPadding: EdgeInsets.zero,
-                leading: CircleAvatar(radius: 6, backgroundColor: r.$3),
+                leading: CircleAvatar(radius: 6, backgroundColor: r.color),
                 minLeadingWidth: 14,
-                title: Text(r.$2),
-                subtitle: r.$1 == 'home' ? Text(homeHow) : null,
+                title: Text(r.label),
+                subtitle: r.id == 'home' || pn != null || ns.isNotEmpty
+                    ? Text(
+                        [if (r.id == 'home') homeHow, ?pn, ...ns].join(' · '),
+                        style: pn != null ? TextStyle(color: cs.error) : null,
+                      )
+                    : null,
                 trailing: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    Text(formatPower(r.$4, lang: lang, estimated: r.$5), style: text.bodyMedium),
+                    if (today) Text(formatPower(r.w, lang: lang, estimated: r.estimated), style: text.bodyMedium),
                     Text(
-                      '${b.estimated || r.$5 ? '≈ ' : ''}${kwh(b.kwh)}',
-                      style: text.bodySmall?.copyWith(color: cs.onSurfaceVariant),
+                      '${x.estimated || (today && r.estimated) ? '≈ ' : ''}${kwh(x.kwh)}${money == null ? '' : ' · $money'}',
+                      key: ValueKey('flow-kwh-${r.id}'),
+                      style: (today ? text.bodySmall : text.bodyMedium)?.copyWith(
+                        color: today ? cs.onSurfaceVariant : null,
+                      ),
                     ),
                   ],
                 ),
               );
             }(),
-          if (s.other != null && (s.evs.isNotEmpty || s.consumers.isNotEmpty))
+            if (today)
+              for (final p in partsOf(r.id)) partRow(p),
+          ],
+          // R663 (t335u): the grid phases – W now, the period's kWh, how even the load is.
+          if (f.gridSum.phases) ...[
+            const SizedBox(height: 8),
+            Text(tx(context, 'Vaiheet', 'Phases'), key: const ValueKey('flow-phases'), style: text.titleSmall),
+            const SizedBox(height: 4),
+            for (final (i, p) in phases.indexed)
+              () {
+                final kin = b('ph${i + 1}_in');
+                final kout = b('ph${i + 1}_out');
+                final cost = kin.inc;
+                return partRow(
+                  p,
+                  kwhText: [
+                    kout.kwh > 0.0005 ? '↓ ${kwh(kin.kwh)} · ↑ ${kwh(kout.kwh)}' : kwh(kin.kwh),
+                    if (cost != 0) eur(cost),
+                  ].join(' · '),
+                );
+              }(),
+            if (imb != null && today)
+              Padding(
+                padding: const EdgeInsets.only(left: 28, top: 2),
+                child: Text(
+                  imb.$1 >= phaseImbalanceW
+                      ? tx(
+                          context,
+                          'Vaiheiden kuorma on epätasainen: ${phaseLabels[imb.$2]} eniten, ero ${formatPower(imb.$1, lang: lang)}.',
+                          'The phases are loaded unevenly: ${phaseLabels[imb.$2]} the most, ${formatPower(imb.$1, lang: lang)} apart.',
+                        )
+                      : tx(
+                          context,
+                          'Vaiheet ovat tasapainossa (ero ${formatPower(imb.$1, lang: lang)}).',
+                          'The phases are balanced (${formatPower(imb.$1, lang: lang)} apart).',
+                        ),
+                  key: const ValueKey('flow-imbalance'),
+                  style: text.bodySmall?.copyWith(color: imb.$1 >= phaseImbalanceW ? cs.tertiary : cs.onSurfaceVariant),
+                ),
+              ),
+          ],
+          if (today && s.other != null && (s.evs.isNotEmpty || s.consumers.isNotEmpty))
             ListTile(
               key: const ValueKey('flow-row-other'),
               dense: true,
               contentPadding: EdgeInsets.zero,
-              leading: CircleAvatar(radius: 6, backgroundColor: cs.outline),
+              leading: CircleAvatar(radius: 6, backgroundColor: sty.cs.outline),
               minLeadingWidth: 14,
               title: Text(tx(context, 'Muu kulutus', 'Other use')),
               trailing: Text(formatPower(s.other, lang: lang), style: text.bodyMedium),
             ),
           const SizedBox(height: 12),
+          Text(priceNote, key: const ValueKey('flow-price-note'), style: text.bodySmall?.copyWith(color: cs.onSurfaceVariant)),
+          const SizedBox(height: 6),
+          Text(
+            fromBridge
+                ? tx(context, 'Tiedot: kotisilta, joka tallentaa jatkuvasti.', 'Data: the home bridge, which records all the time.')
+                : tx(
+                    context,
+                    'Tiedot: tämä laite. Kertyy aina, kun Molaplan on käynnissä (myös taustalla ja ilmaisinalueella); kotisilta tallentaa jatkuvasti.',
+                    'Data: this device. Adds up whenever Molaplan runs (also in the background and the tray); a home bridge records all the time.',
+                  ),
+            key: const ValueKey('flow-source-note'),
+            style: text.bodySmall?.copyWith(color: cs.onSurfaceVariant),
+          ),
+          const SizedBox(height: 6),
           Text(
             tx(
               context,
-              'Päivän kWh kertyy, kun Molaplan on käynnissä ja ruutu näkyy. ≈ = arvio laitteen nimellistehosta, ei mittaus.',
-              'Today\'s kWh adds up while Molaplan runs and the tile is shown. ≈ = estimate from a device\'s nominal power, not a measurement.',
+              '≈ = arvio laitteen nimellistehosta, ei mittaus. * = osittainen summa: jokin mittaus puuttuu tai ei ole päivittynyt. Mittarin omaa energialaskuria käytetään, kun se on saatavilla.',
+              '≈ = estimate from a device\'s nominal power, not a measurement. * = partial total: a reading is missing or has not updated. A meter\'s own energy counter is used when available.',
             ),
             style: text.bodySmall?.copyWith(color: cs.onSurfaceVariant),
           ),
@@ -972,7 +1332,14 @@ class _EnergyFlowEditorState extends State<EnergyFlowEditor> {
 
   List<TileConfig> _consumers(AppState st) {
     // Not the tiles already used for the grid, solar, battery, home or a charger.
-    final used = {?f.grid, ?f.solar, ?f.battery, ?f.home, for (final e in f.evs) e.tile};
+    final used = {
+      ...f.gridSum.ids,
+      ...f.solarSum.ids,
+      ...f.batterySum.ids,
+      ...f.homeSum.ids,
+      for (final e in f.evs) ...e.sum.ids,
+      for (final c in f.consumers) ...f.consumerSum(c).ids.skip(1),
+    };
     return [
       for (final x in _power)
         if (!used.contains(x.id) || f.consumers.contains(x.id)) x,
@@ -1034,6 +1401,183 @@ class _EnergyFlowEditorState extends State<EnergyFlowEditor> {
     onChanged: (v) => setState(() => onChanged(v)),
   );
 
+  /// R660 (t335u): the pickers of a summed node – its first reading ([withFirst]), more readings
+  /// ("+ Lisää mittaus"), each extra one with its own sign inversion in Advanced.
+  List<Widget> _sumRows(
+    String key,
+    String label,
+    PowerSum sum,
+    List<TileConfig> opts, {
+    String? none,
+    bool adv = false,
+    bool withFirst = true,
+  }) {
+    final free = opts.where((o) => !sum.ids.contains(o.id)).toList();
+    return [
+      if (withFirst)
+        KeyedSubtree(
+          key: ObjectKey(sum.parts.firstOrNull),
+          child: _pick(key, label, sum.parts.firstOrNull?.tile, opts, (v) => sum.first = v, none: none),
+        ),
+      for (var i = 1; i < sum.parts.length; i++)
+        KeyedSubtree(
+          key: ObjectKey(sum.parts[i]),
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: _pick(
+                      '$key-$i',
+                      tx(context, '+ Lisämittaus', '+ Extra reading'),
+                      sum.parts[i].tile,
+                      opts,
+                      (v) {
+                        if (v == null) {
+                          sum.parts.removeAt(i);
+                        } else {
+                          sum.parts[i].tile = v;
+                        }
+                      },
+                    ),
+                  ),
+                  IconButton(
+                    key: ValueKey('$key-remove-$i'),
+                    tooltip: tx(context, 'Poista', 'Remove'),
+                    icon: const Icon(Icons.close),
+                    onPressed: () => setState(() => sum.parts.removeAt(i)),
+                  ),
+                ],
+              ),
+              if (adv)
+                Padding(
+                  padding: const EdgeInsets.only(left: 12),
+                  child: _invert(
+                    '$key-inv-$i',
+                    tx(context, 'Käännä tämän mittauksen etumerkki', 'Invert the sign of this reading'),
+                    sum.parts[i].invert,
+                    (v) => sum.parts[i].invert = v,
+                    tx(context, 'Ennen kuin se lisätään summaan.', 'Before it is added to the total.'),
+                  ),
+                ),
+            ],
+          ),
+        ),
+      if (sum.parts.isNotEmpty && free.isNotEmpty)
+        Align(
+          alignment: Alignment.centerLeft,
+          child: TextButton.icon(
+            key: ValueKey('$key-add'),
+            onPressed: () => setState(() => sum.parts.add(PowerPart(free.first.id))),
+            icon: const Icon(Icons.add, size: 18),
+            label: Text(tx(context, 'Lisää mittaus', 'Add a reading')),
+          ),
+        ),
+      if (sum.parts.length > 1)
+        Text(
+          tx(context, 'Teho on mittausten summa.', 'The power is the sum of the readings.'),
+          style: Theme.of(context).textTheme.bodySmall,
+        ),
+    ];
+  }
+
+  /// R599/R661 (t335u): the grid as one (or more summed) readings or as L1 + L2 + L3, with a
+  /// one-tap fill when a device offers three phase channels.
+  List<Widget> _gridRows(AppState st, List<TileConfig> power, bool adv) {
+    final g = f.gridSum;
+    final cands = phaseCandidates(power);
+    String candName(PhaseCandidate c) {
+      final conn = st.connection(c.connectionId)?.name.trim() ?? '';
+      if (conn.isNotEmpty) return conn;
+      return c.ids.map((id) => flowNameOf(st, id)).join(' / ');
+    }
+
+    return [
+      Padding(
+        padding: const EdgeInsets.only(top: 4),
+        child: SegmentedButton<bool>(
+          key: const ValueKey('flow-grid-mode'),
+          showSelectedIcon: false,
+          segments: [
+            ButtonSegment(value: false, label: Text(tx(context, 'Yksi mittaus', 'One reading'))),
+            ButtonSegment(value: true, label: Text(tx(context, '3 vaihetta', '3 phases'))),
+          ],
+          selected: {g.phases},
+          onSelectionChanged: (v) => setState(() => g.setPhases(v.first)),
+        ),
+      ),
+      for (final (i, c) in cands.indexed)
+        if (!(g.phases && g.parts.map((p) => p.tile).toList().join(',') == c.ids.join(',')))
+          Card(
+            key: ValueKey('flow-grid-suggest-$i'),
+            margin: const EdgeInsets.only(top: 8),
+            child: ListTile(
+              dense: true,
+              leading: const Icon(Icons.auto_awesome_outlined),
+              title: Text(tx(context, 'Kolme vaihetta löytyi', 'Three phases found')),
+              subtitle: Text(candName(c), maxLines: 2, overflow: TextOverflow.ellipsis),
+              trailing: FilledButton.tonal(
+                key: ValueKey('flow-grid-fill-$i'),
+                onPressed: () => setState(() => f.gridSum = PowerSum.threePhase(c.ids)),
+                child: Text(tx(context, 'Täytä L1–L3', 'Fill L1–L3')),
+              ),
+            ),
+          ),
+      if (g.phases) ...[
+        for (var i = 0; i < 3; i++) ...[
+          KeyedSubtree(
+            key: ObjectKey(g.parts[i]),
+            child: _pick(
+              'flow-grid-L${i + 1}',
+              tx(context, '${phaseLabels[i]} – vaiheen teho', '${phaseLabels[i]} – phase power'),
+              g.parts[i].tile,
+              power,
+              (v) => g.parts[i].tile = v,
+            ),
+          ),
+          if (adv)
+            _invert(
+              'flow-grid-inv-L${i + 1}',
+              tx(context, 'Käännä ${phaseLabels[i]}:n etumerkki', 'Invert the sign of ${phaseLabels[i]}'),
+              g.parts[i].invert,
+              (v) => g.parts[i].invert = v,
+              tx(context, 'Jos tämä vaihe näyttää myynnin positiivisena.', 'If this phase shows export as positive.'),
+            ),
+        ],
+        Padding(
+          padding: const EdgeInsets.only(top: 6),
+          child: Text(
+            tx(
+              context,
+              'Verkon teho on vaiheiden summa. Jos jokin vaihe puuttuu tai ei päivity, summa näytetään osittaisena (*).',
+              'The grid power is the sum of the phases. If a phase is missing or does not update, the total is shown as partial (*).',
+            ),
+            style: Theme.of(context).textTheme.bodySmall,
+          ),
+        ),
+      ] else
+        ..._sumRows('flow-grid', tx(context, 'Verkon teho', 'Grid power'), g, power, adv: adv),
+    ];
+  }
+
+  /// R671 (t336u): the icon button of a charger / device: the current icon; tap to pick another.
+  Widget _iconButton(AppState st, String tileId, {bool ev = false}) {
+    final t = flowTileOf(st, tileId);
+    final suggested = suggestFlowIcon(t, ev: ev, connType: st.connection(t?.connectionId)?.type);
+    final own = f.look.icons[tileId];
+    return IconButton(
+      key: ValueKey('flow-icon-$tileId'),
+      tooltip: tx(context, 'Kuvake', 'Icon'),
+      icon: FlowGlyph(own ?? suggested, color: Theme.of(context).colorScheme.primary),
+      onPressed: () async {
+        final k = await showFlowIconPicker(context, current: own, suggested: suggested);
+        if (k == null || !mounted) return;
+        setState(() => k == 'auto' ? f.look.icons.remove(tileId) : f.look.icons[tileId] = k);
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final st = AppScope.of(context);
@@ -1075,7 +1619,13 @@ class _EnergyFlowEditorState extends State<EnergyFlowEditor> {
                                 tx(context, 'Valitse näytettävät mittaukset ruudun asetuksista.', 'Pick the readings to show in the tile settings.'),
                               ),
                             )
-                          : EnergyFlowView(snapshot: s, animate: false, nameOf: (id) => flowNameOf(st, id)),
+                          : EnergyFlowView(
+                              snapshot: s,
+                              animate: false,
+                              nameOf: (id) => flowNameOf(st, id),
+                              look: f.look,
+                              glyphOf: flowGlyphOf(st, f),
+                            ),
                     ),
                   ),
                 ),
@@ -1096,14 +1646,16 @@ class _EnergyFlowEditorState extends State<EnergyFlowEditor> {
                     'Main meter or the inverter\'s grid reading: + = import, − = export.',
                   ),
                 ),
-                _pick('flow-grid', tx(context, 'Verkon teho', 'Grid power'), f.grid, power, (v) => f.grid = v),
+                ..._gridRows(st, power, adv),
                 if (adv)
                   _invert(
                     'flow-grid-invert',
                     tx(context, 'Käännä etumerkki', 'Invert the sign'),
                     f.gridInvert,
                     (v) => f.gridInvert = v,
-                    tx(context, 'Jos mittari näyttää myynnin positiivisena.', 'If the meter shows export as positive.'),
+                    f.gridSum.phases || f.gridSum.parts.length > 1
+                        ? tx(context, 'Kääntää koko summan, jos mittaus näyttää myynnin positiivisena.', 'Inverts the whole total if the reading shows export as positive.')
+                        : tx(context, 'Jos mittari näyttää myynnin positiivisena.', 'If the meter shows export as positive.'),
                   ),
                 SwitchListTile(
                   key: const ValueKey('flow-price'),
@@ -1117,9 +1669,9 @@ class _EnergyFlowEditorState extends State<EnergyFlowEditor> {
                   onChanged: (v) => setState(() => f.price = v),
                 ),
                 _section(tx(context, 'Aurinkosähkö', 'Solar'), null),
-                _pick('flow-solar', tx(context, 'Tuotto nyt', 'Production now'), f.solar, power, (v) => f.solar = v),
+                ..._sumRows('flow-solar', tx(context, 'Tuotto nyt', 'Production now'), f.solarSum, power, adv: adv),
                 _section(tx(context, 'Akku', 'Battery'), tx(context, '+ = lataus, − = purku.', '+ = charging, − = discharging.')),
-                _pick('flow-battery', tx(context, 'Akun teho', 'Battery power'), f.battery, power, (v) => f.battery = v),
+                ..._sumRows('flow-battery', tx(context, 'Akun teho', 'Battery power'), f.batterySum, power, adv: adv),
                 _pick('flow-battery-soc', tx(context, 'Akun varaus (%)', 'Battery charge (%)'), f.batterySoc, pct, (v) => f.batterySoc = v),
                 if (adv)
                   _invert(
@@ -1137,12 +1689,12 @@ class _EnergyFlowEditorState extends State<EnergyFlowEditor> {
                     'Worked out automatically: import + solar + battery discharge − export − battery charge. Pick a reading only if the use is measured separately.',
                   ),
                 ),
-                _pick(
+                ..._sumRows(
                   'flow-home',
                   tx(context, 'Mitattu kulutus', 'Measured use'),
-                  f.home,
+                  f.homeSum,
                   power,
-                  (v) => f.home = v,
+                  adv: adv,
                   none: tx(context, 'Laske automaattisesti', 'Work out automatically'),
                 ),
                 _section(
@@ -1157,6 +1709,7 @@ class _EnergyFlowEditorState extends State<EnergyFlowEditor> {
                           if (v != null) e.tile = v;
                         }),
                       ),
+                      if (e.tile.isNotEmpty) _iconButton(st, e.tile, ev: true),
                       IconButton(
                         key: ValueKey('flow-ev-remove-$i'),
                         tooltip: tx(context, 'Poista', 'Remove'),
@@ -1165,6 +1718,7 @@ class _EnergyFlowEditorState extends State<EnergyFlowEditor> {
                       ),
                     ],
                   ),
+                  ..._sumRows('flow-ev-$i', '', e.sum, power, adv: adv, withFirst: false),
                   _pick(
                     'flow-ev-soc-$i',
                     tx(context, 'Auton akun varaus (%), jos saatavilla', 'Car battery charge (%), if available'),
@@ -1204,11 +1758,12 @@ class _EnergyFlowEditorState extends State<EnergyFlowEditor> {
                     tx(context, 'Ei vielä laitteita, jotka kertovat tehon.', 'No devices that report power yet.'),
                     style: Theme.of(context).textTheme.bodySmall,
                   ),
-                for (final x in consumers)
+                for (final x in consumers) ...[
                   CheckboxListTile(
                     key: ValueKey('flow-consumer-${x.id}'),
                     contentPadding: EdgeInsets.zero,
                     value: f.consumers.contains(x.id),
+                    secondary: f.consumers.contains(x.id) ? _iconButton(st, x.id) : null,
                     title: Text(x.title),
                     subtitle: Text(
                       x.type == TileType.toggle
@@ -1220,9 +1775,23 @@ class _EnergyFlowEditorState extends State<EnergyFlowEditor> {
                         if (!f.consumers.contains(x.id)) f.consumers.add(x.id);
                       } else {
                         f.consumers.remove(x.id);
+                        f.consumerSums.remove(x.id);
                       }
                     }),
                   ),
+                  if (f.consumers.contains(x.id) && x.type == TileType.value)
+                    ..._sumRows(
+                      'flow-consumer-${x.id}',
+                      '',
+                      f.consumerSums.putIfAbsent(x.id, () => PowerSum.single(x.id)),
+                      power,
+                      adv: adv,
+                      withFirst: false,
+                    ),
+                ],
+                // R673–R676 (t336u): appearance – the simple choices up front, the rest folded.
+                _section(tx(context, 'Ulkoasu', 'Appearance'), null),
+                FlowLookEditor(look: f.look, onChanged: () => setState(() {})),
                 _section(tx(context, 'Liike', 'Motion'), null),
                 SwitchListTile(
                   key: const ValueKey('flow-motion'),

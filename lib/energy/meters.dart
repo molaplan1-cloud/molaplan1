@@ -32,8 +32,14 @@ double toK(double v, String unit) => unit.trim().toLowerCase().startsWith('k') ?
 
 /// Consumption of one meter in one hour, with its cost.
 class EnergyBucket {
-  EnergyBucket({this.kwh = 0, this.ex = 0, this.inc = 0, this.unpriced = 0, this.est = 0});
+  EnergyBucket({this.kwh = 0, this.ex = 0, this.inc = 0, this.unpriced = 0, this.est = 0, this.cov = 0, this.part = 0});
   double kwh;
+
+  /// R682 (t337u): seconds of this bucket covered by readings (gaps longer than [EnergyLog.maxGap]
+  /// between power samples are not), and of those, seconds when the reading was partial (a phase
+  /// or a summed tile missing / stale).
+  double cov;
+  double part;
 
   /// R593 (t328u): the part of [kwh] that is an estimate (a constant-power device's nominal power
   /// while on), not a measurement.
@@ -47,13 +53,23 @@ class EnergyBucket {
   /// kWh that had no price (spot price missing at that time).
   double unpriced;
 
-  Map<String, dynamic> toJson() => {'k': kwh, 'e': ex, 'i': inc, if (unpriced > 0) 'u': unpriced, if (est > 0) 'x': est};
+  Map<String, dynamic> toJson() => {
+    'k': kwh,
+    'e': ex,
+    'i': inc,
+    if (unpriced > 0) 'u': unpriced,
+    if (est > 0) 'x': est,
+    if (cov > 0) 's': cov.round(),
+    if (part > 0) 'q': part.round(),
+  };
   factory EnergyBucket.fromJson(Map<String, dynamic> j) => EnergyBucket(
     kwh: (j['k'] as num?)?.toDouble() ?? 0,
     ex: (j['e'] as num?)?.toDouble() ?? 0,
     inc: (j['i'] as num?)?.toDouble() ?? 0,
     unpriced: (j['u'] as num?)?.toDouble() ?? 0,
     est: (j['x'] as num?)?.toDouble() ?? 0,
+    cov: (j['s'] as num?)?.toDouble() ?? 0,
+    part: (j['q'] as num?)?.toDouble() ?? 0,
   );
   void add(EnergyBucket o) {
     kwh += o.kwh;
@@ -61,6 +77,8 @@ class EnergyBucket {
     ex += o.ex;
     inc += o.inc;
     unpriced += o.unpriced;
+    cov += o.cov;
+    part += o.part;
   }
 }
 
@@ -79,6 +97,31 @@ class EnergyLog {
       '${t.year}${t.month.toString().padLeft(2, '0')}${t.day.toString().padLeft(2, '0')}${t.hour.toString().padLeft(2, '0')}';
   static String dayKey(DateTime t) => hourKey(t).substring(0, 8);
 
+  /// R682 (t337u): a quarter-hour key "yyyymmddhhq" (q = 0…3) – energy flow nodes are kept per
+  /// 15 minutes for [keepQuarterDays], then per hour, per day, and after [keepDailyDays] per month.
+  static String quarterKey(DateTime t) => '${hourKey(t)}${t.minute ~/ 15}';
+  static const keepQuarterDays = 3;
+  static const keepDailyDays = 400;
+
+  /// Ids kept per quarter hour (energy flow nodes).
+  static bool quarterly(String id) => id.startsWith('flow:');
+
+  /// The start of bucket key [k] (month / day / hour / quarter).
+  static DateTime? keyStart(String k) {
+    int p(int a, int b) => int.parse(k.substring(a, b));
+    try {
+      return switch (k.length) {
+        6 => DateTime(p(0, 4), p(4, 6)),
+        8 => DateTime(p(0, 4), p(4, 6), p(6, 8)),
+        10 => DateTime(p(0, 4), p(4, 6), p(6, 8), p(8, 10)),
+        11 => DateTime(p(0, 4), p(4, 6), p(6, 8), p(8, 10), p(10, 11) * 15),
+        _ => null,
+      };
+    } on FormatException {
+      return null;
+    }
+  }
+
   /// Longest gap between two power samples that is still integrated (else the gap is skipped).
   static const maxGap = Duration(minutes: 15);
 
@@ -88,7 +131,15 @@ class EnergyLog {
   /// Records a reading of meter [id]: [kind] 'power' (kW) or 'energy' (kWh counter).
   /// [price] gives c/kWh at a time (null = unknown).
   /// [estimated]: the value is an estimate (nominal power), counted into [EnergyBucket.est] too.
-  void record(String id, String kind, double value, DateTime t, Vat2? Function(DateTime) price, {bool estimated = false}) {
+  void record(
+    String id,
+    String kind,
+    double value,
+    DateTime t,
+    Vat2? Function(DateTime) price, {
+    bool estimated = false,
+    bool partial = false,
+  }) {
     final last = _last[id];
     _last[id] = (t, value);
     if (last == null || !t.isAfter(last.$1)) return;
@@ -97,25 +148,40 @@ class EnergyLog {
       // R593: 'step' = an estimated on/off power: the previous state held until this sample
       // (a pushed state only changes when the device does), up to [maxStepGap].
       if (dt > (kind == 'step' ? maxStepGap : maxGap)) return;
-      // Split across hour boundaries so each hour gets its own share (and price).
+      // Split at quarter-hour boundaries so each 15 min gets its own share (and spot price).
       var from = last.$1;
       final kw = kind == 'step' ? last.$2 : (last.$2 + value) / 2;
       while (from.isBefore(t)) {
-        final hourEnd = DateTime(from.year, from.month, from.day, from.hour + 1);
-        final to = hourEnd.isBefore(t) ? hourEnd : t;
-        _add(id, from, kw * to.difference(from).inMilliseconds / 3600000, price, estimated);
+        final qEnd = DateTime(from.year, from.month, from.day, from.hour, (from.minute ~/ 15 + 1) * 15);
+        final to = qEnd.isBefore(t) ? qEnd : t;
+        final ms = to.difference(from).inMilliseconds;
+        _add(id, from, kw * ms / 3600000, price, estimated, ms / 1000, partial);
         from = to;
       }
     } else {
       final d = value - last.$2;
       if (d < 0 || d > 1000) return; // counter reset or nonsense
-      _add(id, t, d, price, estimated);
+      // R681: a counter covers the whole time since its previous reading, gaps included.
+      _add(id, t, d, price, estimated, dt.inMilliseconds / 1000, partial);
     }
   }
 
-  void _add(String id, DateTime t, double kwh, Vat2? Function(DateTime) price, [bool estimated = false]) {
-    if (kwh <= 0) return;
-    final b = (data[id] ??= {}).putIfAbsent(hourKey(t), EnergyBucket.new);
+  void _add(
+    String id,
+    DateTime t,
+    double kwh,
+    Vat2? Function(DateTime) price, [
+    bool estimated = false,
+    double seconds = 0,
+    bool partial = false,
+  ]) {
+    // Coverage is kept for energy flow nodes only (their details show gaps).
+    if (!quarterly(id)) seconds = 0;
+    if (kwh < 0 || (kwh == 0 && seconds <= 0)) return;
+    final b = (data[id] ??= {}).putIfAbsent(quarterly(id) ? quarterKey(t) : hourKey(t), EnergyBucket.new);
+    b.cov += seconds;
+    if (partial) b.part += seconds;
+    if (kwh == 0) return;
     final p = price(t);
     b.kwh += kwh;
     if (estimated) b.est += kwh;
@@ -127,14 +193,33 @@ class EnergyLog {
     }
   }
 
-  /// Merges hours older than [keepHourlyDays] into day buckets.
+  /// Rolls buckets up: quarters older than [keepQuarterDays] into hours, hours older than
+  /// [keepHourlyDays] into days, days older than [keepDailyDays] into months.
   void compact(DateTime now) {
+    final qLimit = dayKey(now.subtract(const Duration(days: keepQuarterDays)));
     final limit = dayKey(now.subtract(Duration(days: keepHourlyDays)));
-    for (final m in data.values) {
-      for (final k in m.keys.where((k) => k.length == 10 && k.substring(0, 8).compareTo(limit) < 0).toList()) {
-        m.putIfAbsent(k.substring(0, 8), EnergyBucket.new).add(m.remove(k)!);
+    final dLimit = dayKey(now.subtract(const Duration(days: keepDailyDays)));
+    void roll(Map<String, EnergyBucket> m, int len, int to, String lim) {
+      for (final k in m.keys.where((k) => k.length == len && k.substring(0, 8).compareTo(lim) < 0).toList()) {
+        m.putIfAbsent(k.substring(0, to), EnergyBucket.new).add(m.remove(k)!);
       }
     }
+
+    for (final m in data.values) {
+      roll(m, 11, 10, qLimit);
+      roll(m, 10, 8, limit);
+      roll(m, 8, 6, dLimit);
+    }
+  }
+
+  /// R680: the sum for [id] of the buckets starting in [from, to).
+  EnergyBucket sumRange(String id, DateTime from, DateTime to) {
+    final out = EnergyBucket();
+    for (final e in (data[id] ?? const <String, EnergyBucket>{}).entries) {
+      final s = keyStart(e.key);
+      if (s != null && !s.isBefore(from) && s.isBefore(to)) out.add(e.value);
+    }
+    return out;
   }
 
   /// Sum for meter [id] over keys starting with [prefix] ("yyyymmdd" day, "yyyymm" month).
@@ -148,12 +233,27 @@ class EnergyLog {
 
   Map<String, dynamic> toJson() => {
     for (final e in data.entries) e.key: {for (final b in e.value.entries) b.key: b.value.toJson()},
+    // R683 (t337u): the last sample of energy flow nodes, so a background run or a restart goes
+    // on from it (a counter covers the gap; power over a long gap is left out).
+    '_last': {
+      for (final e in _last.entries)
+        if (quarterly(e.key)) e.key: [e.value.$1.millisecondsSinceEpoch, e.value.$2],
+    },
   };
 
   void loadJson(Map<String, dynamic> j) {
     data.clear();
+    final last = j['_last'];
+    if (last is Map) {
+      for (final e in last.entries) {
+        final v = e.value;
+        if (v is List && v.length == 2 && v[0] is int && v[1] is num) {
+          _last['${e.key}'] = (DateTime.fromMillisecondsSinceEpoch(v[0] as int), (v[1] as num).toDouble());
+        }
+      }
+    }
     for (final e in j.entries) {
-      if (e.value is! Map) continue;
+      if (e.key == '_last' || e.value is! Map) continue;
       data[e.key] = {
         for (final b in (e.value as Map).entries)
           '${b.key}': EnergyBucket.fromJson(Map<String, dynamic>.from(b.value as Map)),
