@@ -744,8 +744,9 @@ class AppState extends ChangeNotifier implements SyncHost {
         }
         heatingStatus = {...heatingStatus!, 'loads': merged};
       }
-      if (heatingPushIssues.isNotEmpty)
+      if (heatingPushIssues.isNotEmpty) {
         unawaited(pushRules().catchError((Object _) => false));
+      }
     }
     notifyListeners();
   }
@@ -1185,8 +1186,9 @@ class AppState extends ChangeNotifier implements SyncHost {
   Future<void> _stampHeatingHomes() async {
     final sh = smartHeating;
     final mine = remote.myHome;
-    if (sh == null || mine == null || !sh.loads.any((l) => l.home == null))
+    if (sh == null || mine == null || !sh.loads.any((l) => l.home == null)) {
       return;
+    }
     if (ownBridges.length < 2) return;
     for (final l in sh.loads) {
       l.home ??= mine;
@@ -1256,8 +1258,9 @@ class AppState extends ChangeNotifier implements SyncHost {
       final body = jsonEncode({'heating': job?.toJson()});
       if (!force &&
           _heatSent[home] == body &&
-          !heatingPushIssues.containsKey(home))
+          !heatingPushIssues.containsKey(home)) {
         continue;
+      }
       try {
         if (b == null) throw RemoteUnavailable('bridge_unknown');
         await remote.callHome(
