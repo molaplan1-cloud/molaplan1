@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="fi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0E1116">
+  <meta name="description" content="Molaplan on mukautettava älykodin ohjauspaneeli. Se kokoaa kodin laitteiden tilan ja ohjauksen yhteen näkymään Androidilla, Windowsilla ja selaimessa.">
+  <link rel="canonical" href="https://molaplan.com/esittely/">
+  <link rel="icon" href="/favicon.png" type="image/png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Molaplan">
+  <meta property="og:locale" content="fi_FI">
+  <meta property="og:url" content="https://molaplan.com/esittely/">
+  <meta property="og:title" content="Molaplan – älykodin ohjauspaneeli ja kodin laitteiden etäohjaus">
+  <meta property="og:description" content="Rakenna oma ohjausnäkymä valoille, lämmitykselle, ilmanvaihdolle, kameroille ja muille laitteille.">
+  <meta property="og:image" content="https://molaplan.com/icons/Icon-512.png">
+  <meta name="twitter:card" content="summary">
+  <title>Molaplan – älykodin ohjauspaneeli ja kodin laitteiden etäohjaus</title>
+  <style>
+    :root { color-scheme: dark; --bg:#0E1116; --panel:#1B222C; --line:#2A3440; --ink:#E8EEF0; --muted:#A9B6C0; --teal:#2EC4B6; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--bg); color:var(--ink); font:16px/1.65 system-ui,-apple-system,"Segoe UI",sans-serif; }
+    a { color:var(--teal); }
+    .wrap { width:min(100% - 36px, 920px); margin:auto; }
+    header { border-bottom:1px solid var(--line); }
+    header .wrap, footer .wrap { min-height:64px; display:flex; align-items:center; justify-content:space-between; gap:20px; }
+    .brand { color:var(--ink); font-size:20px; font-weight:700; text-decoration:none; }
+    nav { display:flex; flex-wrap:wrap; gap:18px; }
+    nav a { text-decoration:none; }
+    main { padding:56px 0 72px; }
+    .hero { padding:0 0 28px; }
+    .eyebrow { color:var(--teal); font-weight:700; letter-spacing:.08em; text-transform:uppercase; font-size:13px; }
+    h1 { max-width:780px; margin:8px 0 18px; font-size:clamp(34px,6vw,58px); line-height:1.12; letter-spacing:-.035em; }
+    h2 { margin:0 0 12px; font-size:clamp(23px,4vw,30px); line-height:1.2; }
+    p, li { color:var(--muted); }
+    .lead { max-width:760px; font-size:20px; }
+    .actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:26px; }
+    .button { display:inline-flex; align-items:center; min-height:46px; padding:10px 18px; border:1px solid var(--teal); border-radius:10px; background:var(--teal); color:#09201E; font-weight:700; text-decoration:none; }
+    .button.secondary { color:var(--ink); background:transparent; border-color:var(--line); }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:14px; margin:36px 0 48px; }
+    .card { padding:20px; border:1px solid var(--line); border-radius:14px; background:var(--panel); }
+    .card h2 { font-size:20px; }
+    section { margin-top:42px; }
+    section > p, section > ul { max-width:760px; }
+    .faq { padding:18px 0; border-top:1px solid var(--line); }
+    .faq h3 { margin:0 0 6px; font-size:18px; }
+    .faq p { margin:0; }
+    footer { border-top:1px solid var(--line); }
+    footer p { margin:0; font-size:14px; }
+    @media (max-width:600px) { header .wrap { align-items:flex-start; flex-direction:column; padding:14px 0; } main { padding-top:38px; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <a class="brand" href="/">Molaplan</a>
+      <nav aria-label="Päävalikko"><a href="/">Avaa sovellus</a><a href="/tilaa/">Tilaa</a></nav>
+    </div>
+  </header>
+  <main class="wrap">
+    <article>
+      <div class="hero">
+        <div class="eyebrow">Älykodin ohjaus</div>
+        <h1>Kodin laitteet ja etäohjaus yhdessä näkymässä</h1>
+        <p class="lead">Molaplan on mukautettava ohjauspaneeli kotiin ja mökille. Kokoa valojen, pistorasioiden, lämmityksen, ilmanvaihdon, kameroiden ja muiden laitteiden tila sekä tärkeimmät ohjaimet omiksi näkymiksi.</p>
+        <div class="actions">
+          <a class="button" href="/">Avaa Molaplan</a>
+          <a class="button secondary" href="/tilaa/">Katso tilausvaihtoehdot</a>
+        </div>
+      </div>
+
+      <div class="grid" aria-label="Molaplanin ominaisuudet">
+        <section class="card">
+          <h2>Rakenna oma ohjauspaneeli</h2>
+          <p>Valitse laitteet ja kokoa niistä selkeät näkymät. Lisää arvoja, kytkimiä, painikkeita, säätimiä ja kameroita omien tarpeidesi mukaan.</p>
+        </section>
+        <section class="card">
+          <h2>Yhdistä eri laitteita</h2>
+          <p>Molaplan tukee muun muassa Home Assistantia, Shellyä, MQTT:tä, HTTP:tä ja Modbus TCP:tä. Voit käyttää valmiita laitepohjia tai määrittää yhteyden itse.</p>
+        </section>
+        <section class="card">
+          <h2>Käytä laitteita myös etänä</h2>
+          <p>Kotisilta välittää yhteyden kodin laitteisiin, kun olet muualla. Etäkäyttö ei vaadi reitittimen porttiohjauksia. Selainversion laiteyhteydet riippuvat valitusta etäyhteystavasta.</p>
+        </section>
+      </div>
+
+      <section>
+        <h2>Älykodin hallinta Androidilla, Windowsilla ja selaimessa</h2>
+        <p>Molaplan-sovelluksen voi asentaa Android-laitteelle tai Windows-PC:lle. Selainversio toimii myös PWA-sovelluksena. Käytettävissä olevat ominaisuudet riippuvat laitteesta ja yhteystavasta; lähiverkkoon rajatut yhteydet tarvitsevat kotisillan, pilvipalvelun tai muun etäyhteyden.</p>
+      </section>
+
+      <section>
+        <h2>Usein kysyttyä Molaplanista</h2>
+        <div class="faq">
+          <h3>Mitä Molaplanilla voi ohjata?</h3>
+          <p>Voit lisätä yhteensopivia valoja, pistorasioita, lämpöpumppuja, ilmanvaihtolaitteita, kameroita ja muita HTTP-, MQTT-, Modbus TCP- tai Home Assistant -yhteyden kautta tavoitettavia laitteita.</p>
+        </div>
+        <div class="faq">
+          <h3>Toimiiko Molaplan kodin ulkopuolella?</h3>
+          <p>Kyllä, kun käytössä on etäyhteyden tarjoava kotisilta, laitteen oma pilvipalvelu tai muu tuettu etäyhteystapa. Kotisilta muodostaa yhteyden ulospäin, joten reitittimeen ei tarvitse avata portteja.</p>
+        </div>
+        <div class="faq">
+          <h3>Tarvitaanko Molaplan-tili?</h3>
+          <p>Tili on vapaaehtoinen. Voit käyttää sovellusta ilman tiliä; tilillä kodin asetukset voi synkronoida laitteiden välillä.</p>
+        </div>
+      </section>
+
+      <section>
+        <h2>Aloita Molaplanin käyttö</h2>
+        <p>Tutustu sovellukseen tai katso tilausvaihtoehdot. Tilaussivun pyynnöt eivät ole sitovia, ja tuotteista annetaan tarjous.</p>
+        <div class="actions">
+          <a class="button" href="/">Avaa sovellus</a>
+          <a class="button secondary" href="/tilaa/">Siirry tilaussivulle</a>
+        </div>
+      </section>
+    </article>
+  </main>
+  <footer><div class="wrap"><p>Molaplan – mukautettava älykodin ohjauspaneeli.</p><nav aria-label="Alavalikko"><a href="/tilaa/tietosuoja/">Tietosuoja</a><a href="/tilaa/">Tilaa</a></nav></div></footer>
+</body>
+</html>

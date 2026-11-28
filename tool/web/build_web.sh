@@ -19,5 +19,8 @@ if [ -d "$tilaa" ]; then
   # The shop Worker's short English link (molaplan.com/en/order) – Pages has no Worker here.
   printf '/en/order /tilaa/?lang=en 302\n/en/order/* /tilaa/?lang=en 302\n' > "$out/_redirects"
 fi
+if [ -d web-site/esittely ]; then
+  rm -rf "$out/esittely" && cp -r web-site/esittely "$out/esittely"
+fi
 python3 tool/web/make_sw.py "$out"
 echo "web build ready: $out ($(du -sh "$out" | cut -f1))"

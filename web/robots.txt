@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /tilaa/hallinta/
+Disallow: /tilaa/lataa/
+
+Sitemap: https://molaplan.com/sitemap.xml
