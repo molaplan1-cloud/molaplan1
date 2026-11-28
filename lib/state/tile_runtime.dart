@@ -56,8 +56,9 @@ class TileRuntime extends ChangeNotifier {
         for (final e in live.entries.toList()) {
           if (ids != null && !ids.contains(e.key)) continue;
           for (final rt in e.value.toList()) {
-            if (!rt._disposed && rt.readsState && !rt.busy)
+            if (!rt._disposed && rt.readsState && !rt.busy) {
               unawaited(rt.refresh());
+            }
           }
         }
       });
@@ -85,8 +86,9 @@ class TileRuntime extends ChangeNotifier {
     } else {
       refresh();
       final secs = tile.pollSeconds <= 0 ? 0 : tile.pollSeconds.clamp(1, 86400);
-      if (secs > 0)
+      if (secs > 0) {
         _timer = Timer.periodic(Duration(seconds: secs), (_) => refresh());
+      }
     }
   }
 
@@ -166,8 +168,9 @@ class TileRuntime extends ChangeNotifier {
       _fails++;
       final fresh =
           _lastOk != null && DateTime.now().difference(_lastOk!) < staleAfter;
-      if (value != null && error == null && _fails < failLimit && fresh)
+      if (value != null && error == null && _fails < failLimit && fresh) {
         return; // keep the good state
+      }
     } else {
       _fails = 0;
       _lastOk = DateTime.now();

@@ -63,11 +63,12 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
           if (!mounted) return;
         }
         // Signed in to an account that already has a setup: no device guide needed.
-        if (!st.hasTiles)
+        if (!st.hasTiles) {
           await Navigator.push(
             context,
             MaterialPageRoute(builder: (_) => const OnboardingPage()),
           );
+        }
       }
       if (mounted && st.loaded) {
         unawaited(startupUpdateCheck(context));
@@ -506,8 +507,9 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
   @override
   Widget build(BuildContext context) {
     final st = AppScope.of(context);
-    if (!st.loaded)
+    if (!st.loaded) {
       return const Scaffold(body: Center(child: CircularProgressIndicator()));
+    }
     // After setup: the clean control view (tiles only). Editing is one tap away in its gear menu.
     if (!_editing && st.hasTiles) {
       // t245u: the main menu is always there in normal use – a side menu on wide screens, the
@@ -876,8 +878,9 @@ class _DashboardGridState extends State<_DashboardGrid> {
       onResize: (dx, dy) {
         // t144u: snap to HALF grid units: 0,5–4 wide (as the grid allows) and tall.
         final (nc, nr) = snapResize(g, t, dx, dy);
-        if (_resize?.$2 != nc || _resize?.$3 != nr)
+        if (_resize?.$2 != nc || _resize?.$3 != nr) {
           setState(() => _resize = (t.id, nc, nr));
+        }
       },
       onResizeEnd: _commitResize,
       child: tile,

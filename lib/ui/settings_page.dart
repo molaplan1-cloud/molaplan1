@@ -49,11 +49,12 @@ class _SettingsPageState extends State<SettingsPage> {
         mimeType: 'application/json',
         dialogTitle: tx(context, 'Vie asetukset', 'Export configuration'),
       );
-      if (uri != null && mounted)
+      if (uri != null && mounted) {
         showSnack(
           context,
           tx(context, 'Asetukset viety', 'Configuration exported'),
         );
+      }
     } catch (e) {
       if (mounted) showSnack(context, e.toString(), error: true);
     }
@@ -85,18 +86,20 @@ class _SettingsPageState extends State<SettingsPage> {
       );
       if (!ok) return;
       await st.importJson(text);
-      if (mounted)
+      if (mounted) {
         showSnack(
           context,
           tx(context, 'Asetukset tuotu', 'Configuration imported'),
         );
+      }
     } catch (e) {
-      if (mounted)
+      if (mounted) {
         showSnack(
           context,
           '${tx(context, 'Tuonti epäonnistui', 'Import failed')}: $e',
           error: true,
         );
+      }
     }
   }
 

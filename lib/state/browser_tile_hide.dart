@@ -198,12 +198,15 @@ bool isBrowserOfflineError(String? err) {
   final s = err.toLowerCase();
   if (s.contains('kirjautuminen') ||
       s.contains('sign-in') ||
-      s.contains('auth'))
+      s.contains('auth')) {
     return false;
-  if (s.contains('asetus puuttuu') || s.contains('setting missing'))
+  }
+  if (s.contains('asetus puuttuu') || s.contains('setting missing')) {
     return false;
-  if (s.contains('ntfy: viestiraja') || s.contains('ntfy: message limit'))
+  }
+  if (s.contains('ntfy: viestiraja') || s.contains('ntfy: message limit')) {
     return false;
+  }
   return s.contains('laite ei vastaa') ||
       s.contains('device not responding') ||
       s.contains('ei vastausta laitteelta') ||
@@ -249,8 +252,9 @@ BrowserTileAvail classifyBrowserTile({
     return BrowserTileAvail.available;
   }
   if (isBrowserPlatformError(error)) return BrowserTileAvail.platform;
-  if (hasValue && (error == null || error.isEmpty))
+  if (hasValue && (error == null || error.isEmpty)) {
     return BrowserTileAvail.available;
+  }
 
   final conns = [
     for (final id in tileConnectionIds(tile))

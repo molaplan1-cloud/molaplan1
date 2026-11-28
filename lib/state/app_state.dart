@@ -350,8 +350,10 @@ class AppState extends ChangeNotifier implements SyncHost {
 
   /// Fetches the device's own history for [t]'s trend window into the measure history.
   Future<void> backfillTrend(TileConfig t) async {
-    if (!isMeasureTile(t) || measureHistory.covers(measureKey(t), t.trendHours))
+    if (!isMeasureTile(t) ||
+        measureHistory.covers(measureKey(t), t.trendHours)) {
       return;
+    }
     if (!_backfilled.add(_bfKey(t))) return;
     final d = driverFor(t.connectionId);
     if (d == null) return;
@@ -447,8 +449,9 @@ class AppState extends ChangeNotifier implements SyncHost {
           : double.tryParse('${v ?? ''}'.replaceAll(',', '.'));
       if (d != null) {
         measureHistory.add(measureKey(t), d, at ?? DateTime.now());
-        if (historyStore is! MemoryConfigStore)
+        if (historyStore is! MemoryConfigStore) {
           _historySaveTimer ??= Timer(const Duration(seconds: 60), saveHistory);
+        }
       }
     }
     // R593 (t328u): a constant-power device with a nominal power: its estimated consumption
@@ -469,8 +472,9 @@ class AppState extends ChangeNotifier implements SyncHost {
         unitPriceAt,
         estimated: true,
       );
-      if (energyStore is! MemoryConfigStore)
+      if (energyStore is! MemoryConfigStore) {
         _energySaveTimer ??= Timer(const Duration(seconds: 60), saveEnergy);
+      }
       return;
     }
     final m = config.energy.meters[t.id];
@@ -480,8 +484,9 @@ class AppState extends ChangeNotifier implements SyncHost {
         ? v.toDouble()
         : double.tryParse('${v ?? ''}'.replaceAll(',', '.'));
     if (kind == null || d == null) return;
-    if (kind == 'power')
+    if (kind == 'power') {
       livePower[t.id] = (at ?? DateTime.now(), toK(d, t.unit));
+    }
     energyLog.record(
       t.id,
       kind,
@@ -500,8 +505,9 @@ class AppState extends ChangeNotifier implements SyncHost {
     bool estimated = false,
   }) {
     energyLog.record(id, 'power', kw, at, unitPriceAt, estimated: estimated);
-    if (energyStore is! MemoryConfigStore)
+    if (energyStore is! MemoryConfigStore) {
       _energySaveTimer ??= Timer(const Duration(seconds: 60), saveEnergy);
+    }
   }
 
   Future<void> saveHistory() async {
@@ -545,8 +551,9 @@ class AppState extends ChangeNotifier implements SyncHost {
       if (s != null &&
           h == null &&
           smartHeating != null &&
-          rulesRunWhere == 'bridge')
+          rulesRunWhere == 'bridge') {
         heatingBridgeOld = true;
+      }
       if (h != null) heatingBridgeOld = false;
       heatingStatusAt = DateTime.now();
     } catch (_) {
@@ -650,8 +657,9 @@ class AppState extends ChangeNotifier implements SyncHost {
       list[i] = c;
       for (final db in config.dashboards) {
         for (final t in db.tiles) {
-          if (t.type == TileType.thermostat && t.read['thermostat'] == c.id)
+          if (t.type == TileType.thermostat && t.read['thermostat'] == c.id) {
             t.title = c.name;
+          }
         }
       }
     } else {
@@ -736,8 +744,9 @@ class AppState extends ChangeNotifier implements SyncHost {
         final g = repairIncompatibleTiles(config).isNotEmpty;
         // R467/R468 (t308u): alarm panel status + "Valvonta päälle/pois" buttons.
         final h = migrateSecurityPanelTiles(config, lang);
-        if (a || b || c || e || f || g || h)
+        if (a || b || c || e || f || g || h) {
           unawaited(configStore.save(jsonEncode(config.toJson())));
+        }
       } catch (_) {
         config = AppConfig();
       }
@@ -754,17 +763,19 @@ class AppState extends ChangeNotifier implements SyncHost {
     }
     await _loadDevicePins();
     // t237u: the same Home Assistant saved more than once becomes one connection.
-    if (await _dedupeHa())
+    if (await _dedupeHa()) {
       unawaited(configStore.save(jsonEncode(config.toJson())));
+    }
     if (config.dashboards.isEmpty) {
       config.dashboards.add(Dashboard(name: tr(lang, 'Koti', 'Home')));
     }
     try {
       final ir = await secretStore.read(_irStatesKey);
-      if (ir != null)
+      if (ir != null) {
         IrDriver.restoreStates(
           Map<String, dynamic>.from(jsonDecode(ir) as Map),
         );
+      }
     } catch (_) {}
     remote.relay = config.relayUrl ?? remote.relay;
     NetHealth.instance.relayHost = switch (Uri.tryParse(remote.relay)?.host) {
@@ -790,15 +801,17 @@ class AppState extends ChangeNotifier implements SyncHost {
     };
     try {
       final e = await energyStore.load();
-      if (e != null)
+      if (e != null) {
         energyLog.loadJson(Map<String, dynamic>.from(jsonDecode(e) as Map));
+      }
     } catch (_) {}
     try {
       final h = await historyStore.load();
-      if (h != null)
+      if (h != null) {
         measureHistory.loadJson(
           Map<String, dynamic>.from(jsonDecode(h) as Map),
         );
+      }
     } catch (_) {}
     _lastHome = remote.paired?.home;
     await account.load();
@@ -835,8 +848,9 @@ class AppState extends ChangeNotifier implements SyncHost {
   }
 
   Future<void> setBridgeMode(bool on) async {
-    if (on && Plat.isWeb)
+    if (on && Plat.isWeb) {
       return; // R250: a browser tab is never the home bridge
+    }
     on
         ? await remote.enableBridge(name: tr(lang, 'Koti', 'Home'))
         : await remote.disableBridge();
@@ -864,8 +878,9 @@ class AppState extends ChangeNotifier implements SyncHost {
     _autoUpdate = null;
     if (!config.bridgeMode ||
         !config.bridgeAutoUpdate ||
-        !bridgeService.supported)
+        !bridgeService.supported) {
       return;
+    }
     _autoUpdate = Timer.periodic(const Duration(hours: 6), (_) async {
       if (!config.bridgeMode || !config.bridgeAutoUpdate) return;
       try {
@@ -935,8 +950,9 @@ class AppState extends ChangeNotifier implements SyncHost {
       );
       return Map<String, dynamic>.from(v as Map);
     } on RemoteDeviceError catch (e) {
-      if (e.message.contains('Unknown op'))
+      if (e.message.contains('Unknown op')) {
         throw ShareError(ShareProblem.bridgeOld, e.message);
+      }
       rethrow;
     } on RemoteUnavailable catch (e) {
       throw ShareError(ShareProblem.noBridge, e.reason);
@@ -1073,8 +1089,9 @@ class AppState extends ChangeNotifier implements SyncHost {
   /// tile command) while none is entered on this device? Then the tiles ask for it first.
   bool needsPin(String? connId) {
     final c = connection(connId);
-    if (c == null || !descriptorFor(c.type).secretKeys.contains('pin'))
+    if (c == null || !descriptorFor(c.type).secretKeys.contains('pin')) {
       return false;
+    }
     if ((c.secrets['pin'] ?? '').isNotEmpty) return false;
     return connectionUsesPin(c);
   }
@@ -1092,8 +1109,9 @@ class AppState extends ChangeNotifier implements SyncHost {
         for (final s in [t.onCommand, t.offCommand, ...t.commands]) {
           if (s != null &&
               s.connectionId == c.id &&
-              '${s.spec['command'] ?? ''}'.contains('{pin}'))
+              '${s.spec['command'] ?? ''}'.contains('{pin}')) {
             return true;
+          }
         }
       }
     }
@@ -1186,12 +1204,14 @@ class AppState extends ChangeNotifier implements SyncHost {
     config.dashboards = other.dashboards;
     config.rules = other.rules;
     config.energy = other.energy;
-    if (themeChoices.contains(cfg['defaultTheme']))
+    if (themeChoices.contains(cfg['defaultTheme'])) {
       config.defaultTheme = other.defaultTheme;
+    }
     // Older apps do not sync automations: keep ours instead of a fresh empty set.
     if (cfg['automation'] is Map) config.automation = other.automation;
-    if (config.dashboards.isEmpty)
+    if (config.dashboards.isEmpty) {
       config.dashboards.add(Dashboard(name: tr(lang, 'Koti', 'Home')));
+    }
     if (hasLocalSetup) config.onboardingDone = true;
     await _loadDevicePins();
     final dupes = dedupeHaConnections(config);
@@ -1301,8 +1321,9 @@ class AppState extends ChangeNotifier implements SyncHost {
 
   Future<void> _persistSecrets(ConnectionConfig c) async {
     for (final k in descriptorFor(c.type).secretKeys) {
-      if (k == 'pin' && _devicePin.contains(c.id))
+      if (k == 'pin' && _devicePin.contains(c.id)) {
         continue; // t241u: kept under devicePinKey
+      }
       final v = c.secrets[k];
       if (v == null || v.isEmpty) {
         try {
@@ -1411,8 +1432,9 @@ class AppState extends ChangeNotifier implements SyncHost {
   Future<Object?> runSequence(List<CommandStep> steps, {Object? value}) async {
     Object? last;
     for (final s in steps) {
-      if (s.delayMs > 0)
+      if (s.delayMs > 0) {
         await Future<void>.delayed(Duration(milliseconds: s.delayMs));
+      }
       last = await runStep(s, value: value) ?? last;
     }
     return last;
@@ -1437,8 +1459,9 @@ class AppState extends ChangeNotifier implements SyncHost {
 
   Future<void> deleteDashboard(Dashboard d) async {
     config.dashboards.remove(d);
-    if (config.dashboards.isEmpty)
+    if (config.dashboards.isEmpty) {
       config.dashboards.add(Dashboard(name: tr(lang, 'Koti', 'Home')));
+    }
     await save();
     notifyListeners();
   }
@@ -1458,10 +1481,11 @@ class AppState extends ChangeNotifier implements SyncHost {
     final gone = d.tiles
         .where((e) => e.id == tileId && e.type == TileType.thermostat)
         .firstOrNull;
-    if (gone != null)
+    if (gone != null) {
       config.energy.thermostats.removeWhere(
         (x) => x.id == gone.read['thermostat'],
       );
+    }
     config.energy.meters.remove(tileId);
     d.tiles.removeWhere((e) => e.id == tileId);
     await save();
@@ -1515,8 +1539,9 @@ class AppState extends ChangeNotifier implements SyncHost {
     double? dim,
     double? blur,
   }) async {
-    if (mode != null)
+    if (mode != null) {
       d.photoMode = mode == 'background' ? 'background' : 'header';
+    }
     if (dim != null) d.bgDim = dim.clamp(0, 0.9);
     if (blur != null) d.bgBlur = blur.clamp(0, 20);
     await save();
@@ -1528,8 +1553,9 @@ class AppState extends ChangeNotifier implements SyncHost {
   Future<bool> setTileImage(TileConfig t, Uint8List raw) async {
     final p = await processTileImageAsync(raw);
     final used = usedImages..remove(t.bgImage);
-    if (!used.contains(p.name) && used.length >= tileImageMaxCount)
+    if (!used.contains(p.name) && used.length >= tileImageMaxCount) {
       return false;
+    }
     await images.write(p.name, p.bytes);
     t.bgImage = p.name;
     t.bgScrim = p.scrim;
@@ -1543,8 +1569,9 @@ class AppState extends ChangeNotifier implements SyncHost {
   Future<bool> setHeaderImage(Dashboard d, Uint8List raw) async {
     final p = await processTileImageAsync(raw);
     final used = usedImages..remove(d.headerImage);
-    if (!used.contains(p.name) && used.length >= tileImageMaxCount)
+    if (!used.contains(p.name) && used.length >= tileImageMaxCount) {
       return false;
+    }
     await images.write(p.name, p.bytes);
     d.headerImage = p.name;
     d.headerScrim = p.scrim;
@@ -1605,8 +1632,9 @@ class AppState extends ChangeNotifier implements SyncHost {
       await api.deleteImages(s, stale);
       done.removeAll(stale);
     }
-    if (done.length != before.length || !done.containsAll(before))
+    if (done.length != before.length || !done.containsAll(before)) {
       await images.setUploaded(s.userId, done);
+    }
     if (changed) notifyListeners();
   }
 
@@ -1630,8 +1658,9 @@ class AppState extends ChangeNotifier implements SyncHost {
   Future<void> renameTile(TileConfig t, String title) async {
     t.title = title.trim();
     for (final th in config.energy.thermostats) {
-      if (t.type == TileType.thermostat && t.read['thermostat'] == th.id)
+      if (t.type == TileType.thermostat && t.read['thermostat'] == th.id) {
         th.name = t.title;
+      }
     }
     await save();
     notifyListeners();
@@ -1821,8 +1850,9 @@ class AppState extends ChangeNotifier implements SyncHost {
     }
     _drivers.clear();
     config = imported;
-    if (config.dashboards.isEmpty)
+    if (config.dashboards.isEmpty) {
       config.dashboards.add(Dashboard(name: tr(lang, 'Koti', 'Home')));
+    }
     dedupeHaConnections(config);
     for (final c in config.connections) {
       await _persistSecrets(c);
@@ -1875,8 +1905,9 @@ class AppState extends ChangeNotifier implements SyncHost {
   /// device (by address) + what it reads and sends. Two tiles with the same key are duplicates.
   String tileKey(TileConfig t, {List<ConnectionConfig> extra = const []}) {
     final k = t.read['kind'];
-    if (k == 'script' || k == 'scene' || k == 'automation')
+    if (k == 'script' || k == 'scene' || k == 'automation') {
       return '$k:${t.read['${k}Id']}';
+    }
     if (k == 'tile') return 'tile:${t.read['tileId']}:${t.read['op']}';
     if (k == 'group') {
       final m = [for (final m in (t.read['members'] as List? ?? const [])) '$m']
@@ -2000,8 +2031,9 @@ class AppState extends ChangeNotifier implements SyncHost {
     if (emptyDefault) config.dashboards.clear();
     config.connections.addAll(add);
     config.dashboards.addAll(other.dashboards);
-    if (config.dashboards.isEmpty)
+    if (config.dashboards.isEmpty) {
       config.dashboards.add(Dashboard(name: tr(lang, 'Koti', 'Home')));
+    }
     for (final c in add) {
       await _persistSecrets(c);
     }

@@ -204,8 +204,9 @@ class _CameraViewState extends State<CameraView> {
               }
             });
             if (_tech.length < 30) {
-              if (e is RtspStillException)
+              if (e is RtspStillException) {
                 _tech.addAll(e.tech.where((l) => !_tech.contains(l)));
+              }
               _tech.add('still from RTSP: ${_clean(text)}');
             }
           },
@@ -377,8 +378,9 @@ class _CameraViewState extends State<CameraView> {
                   _error = _rtspReason(f, host);
                 }
               });
-              if (f.kind == RtspFailKind.unreachable)
+              if (f.kind == RtspFailKind.unreachable) {
                 _unreachable[host] = DateTime.now();
+              }
               if (hasSnap) {
                 // Fall back to the still picture / MJPEG (e.g. RTSP switched off on the camera).
                 if (d != null) _startStill(d);
