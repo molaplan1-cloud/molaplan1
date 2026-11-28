@@ -351,21 +351,29 @@ class RoutedCameraDriver extends CameraDriver {
 
   Map<String, dynamic> get _c => _wire(config);
 
+  /// The camera lives on the home bridge's network (found or typed there): never probe it
+  /// from this device, even if the app's "away" state is still unknown.
+  bool get _forceRemote => router.client != null && config.settings['viaBridge'] == true;
+
   @override
   Future<Uint8List> snapshot(String path) async {
-    final v = await router.run<Object?>(
-      () => super.snapshot(path),
-      (c) => c.call('snapshot', conn: _c, spec: {'mode': 'snapshot', 'path': path}),
-    );
+    final v = _forceRemote
+        ? await router.viaRemote<Object?>((c) => c.call('snapshot', conn: _c, spec: {'mode': 'snapshot', 'path': path}))
+        : await router.run<Object?>(
+            () => super.snapshot(path),
+            (c) => c.call('snapshot', conn: _c, spec: {'mode': 'snapshot', 'path': path}),
+          );
     return v as Uint8List;
   }
 
   @override
-  Future<Object?> send(Map<String, dynamic> spec, {Object? value}) =>
-      router.run(() => super.send(spec, value: value), (c) => c.call('send', conn: _c, spec: spec, value: value));
+  Future<Object?> send(Map<String, dynamic> spec, {Object? value}) => _forceRemote
+      ? router.viaRemote((c) => c.call('send', conn: _c, spec: spec, value: value))
+      : router.run(() => super.send(spec, value: value), (c) => c.call('send', conn: _c, spec: spec, value: value));
 
   @override
-  Future<String> test() async => '${await router.run<Object?>(super.test, (c) => c.call('test', conn: _c))}';
+  Future<String> test() async =>
+      '${await (_forceRemote ? router.viaRemote<Object?>((c) => c.call('test', conn: _c)) : router.run<Object?>(super.test, (c) => c.call('test', conn: _c)))}';
 
   Stream<Uint8List> _remoteFrames(String path, {String mode = 'mjpeg', int stream = 0}) {
     late StreamController<Uint8List> out;
@@ -403,7 +411,9 @@ class RoutedCameraDriver extends CameraDriver {
           ? _remoteFrames('', mode: 'rtsp', stream: stream)
           : Stream<Uint8List>.error(AppOnlyError('camera'));
     }
-    if (router.enabled && router.preferRemote) return _remoteFrames('', mode: 'rtsp', stream: stream);
+    if (router.enabled && (_forceRemote || router.preferRemote)) {
+      return _remoteFrames('', mode: 'rtsp', stream: stream);
+    }
     return super.rtspStills(stream: stream, every: every);
   }
 
@@ -413,7 +423,7 @@ class RoutedCameraDriver extends CameraDriver {
       return router.enabled ? _remoteFrames(path) : Stream<Uint8List>.error(AppOnlyError('camera'));
     }
     if (!router.enabled) return super.mjpeg(path);
-    if (router.preferRemote) return _remoteFrames(path);
+    if (router.preferRemote || _forceRemote) return _remoteFrames(path);
     late StreamController<Uint8List> out;
     StreamSubscription? sub;
     out = StreamController<Uint8List>(

@@ -39,6 +39,9 @@ enum AddProblem {
   cloudRateLimit,
   bridgeOld,
   bridgeOffline,
+
+  /// The host answered (connection refused or another port is open) but no ONVIF on the ports tried.
+  portClosed,
   unknown,
 }
 
@@ -345,6 +348,14 @@ bool sameSubnet(String ip, List<String> locals) {
   if (!isIPv4(ip)) return true; // host names: can't tell
   String net(String a) => a.substring(0, a.lastIndexOf('.'));
   return locals.any((l) => net(l) == net(ip));
+}
+
+/// True when [address] is a private IPv4 that is not on this device's own /24.
+/// Used so a camera on the home bridge's network is reached through the bridge
+/// (a typed address is not marked [Candidate.viaBridge] by itself).
+bool addressOnOtherNetwork(String address, List<String> locals) {
+  final h = hostOf(address);
+  return isIPv4(h) && locals.isNotEmpty && !sameSubnet(h, locals);
 }
 
 /// Probes every address of the local /24 networks in parallel.

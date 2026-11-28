@@ -121,7 +121,7 @@ Future<List<OnvifFound>> onvifDiscover({Duration timeout = const Duration(second
 Future<OnvifFound?> probeOnvifAt(
   HttpClient client,
   String ip, {
-  List<int> ports = const [80, 2020, 8080, 8000, 8899],
+  List<int> ports = onvifCommonPorts,
   Duration connectTimeout = const Duration(milliseconds: 700),
 }) async {
   Future<bool> open(int port) async {
@@ -243,6 +243,156 @@ class OnvifNotFound implements Exception {
   final String detail;
   @override
   String toString() => 'not ONVIF: $detail';
+}
+
+/// Usual ONVIF HTTP ports. Tapo listens on 2020 (not 80); many NVRs use 8000 or 8080.
+const onvifCommonPorts = <int>[80, 2020, 8000, 8080, 8899, 5000, 10080];
+
+/// Device-service path for [port] (`:2020/onvif/device_service`; port 80 has no prefix).
+String onvifPathForPort(int port) => port == 80 ? '/onvif/device_service' : ':$port/onvif/device_service';
+
+int? onvifPortOfPath(String path) {
+  if (path.startsWith(':')) {
+    final i = path.indexOf('/');
+    return int.tryParse(i < 0 ? path.substring(1) : path.substring(1, i));
+  }
+  return 80;
+}
+
+/// The destination host:port of an HTTP/ONVIF error, from the URI when present.
+///
+/// Dart's `SocketException.port` is the *local* ephemeral port of this device's
+/// socket (e.g. 41042, 41086), not the camera's port. It changes on every request.
+/// The URI (`uri=http://192.168.1.35/onvif/device_service`) is the reliable source
+/// (no port in the URI means 80, or 443 for https).
+(String host, int port)? onvifErrorDest(Object e) {
+  final s = e.toString();
+  final um = RegExp(r'uri=(\S+)').firstMatch(s);
+  final u = Uri.tryParse(um?.group(1) ?? '');
+  if (u != null && u.host.isNotEmpty) {
+    final port = u.hasPort ? u.port : (u.scheme == 'https' ? 443 : 80);
+    return (u.host, port);
+  }
+  final am = RegExp(r'address = ([0-9A-Fa-f.:]+), port = (\d+)').firstMatch(s);
+  if (am != null) {
+    final port = int.parse(am.group(2)!);
+    // Omit a port that is clearly this device's ephemeral source port.
+    if (onvifCommonPorts.contains(port) || port == 554 || port == 443 || port < 1024) {
+      return (am.group(1)!, port);
+    }
+    return (am.group(1)!, -1);
+  }
+  return null;
+}
+
+bool isConnectionRefused(Object e) {
+  final s = e.toString().toLowerCase();
+  return s.contains('connection refused') ||
+      s.contains('errno = 111') ||
+      s.contains('errno=111') ||
+      s.contains('error 10061') ||
+      s.contains('os error: 111') ||
+      s.contains('econnrefused');
+}
+
+bool isNetTimeout(Object e) {
+  final s = e.toString().toLowerCase();
+  return s.contains('timed out') || s.contains('timeout') || s.contains('timeoutexception');
+}
+
+/// A short, secret-free line for an ONVIF/HTTP network error (no local ephemeral port).
+String formatOnvifNetError(Object e) {
+  final dest = onvifErrorDest(e);
+  final where = dest == null
+      ? ''
+      : dest.$2 < 0
+      ? ' at ${dest.$1}'
+      : ' at ${dest.$1}:${dest.$2}';
+  if (isConnectionRefused(e)) return 'connection refused$where';
+  if (isNetTimeout(e)) return 'timeout$where';
+  final s = e.toString();
+  if (s.contains('Connection reset') || s.contains('errno = 104')) return 'connection reset$where';
+  if (s.contains('Network is unreachable') || s.contains('errno = 101')) return 'network unreachable$where';
+  if (s.contains('No route') || s.contains('errno = 113')) return 'no route$where';
+  // Fall back: drop a high "port = NNNNN" that is the local ephemeral port.
+  return s.replaceAll(RegExp(r', port = (?:[1-9]\d{4,})'), '');
+}
+
+/// The host answered (RST / connection refused) but no ONVIF SOAP on the ports that were tried.
+class OnvifPortClosed implements Exception {
+  OnvifPortClosed(this.ports, {this.detail = ''});
+  final List<int> ports;
+  final String detail;
+  @override
+  String toString() => 'ONVIF ports closed (${ports.join(', ')})${detail.isEmpty ? '' : ': $detail'}';
+}
+
+/// Tries [ports] (in parallel, short timeout expected of [probe]) and returns the first path
+/// that answers ONVIF SOAP, preferring the order of [ports]. Throws [OnvifPortClosed] when the
+/// host is there but every port is refused or not ONVIF; returns null when nothing answers.
+
+class OnvifPathResult {
+  const OnvifPathResult({this.path, this.refused = const [], this.silent = const [], this.tried = const []});
+
+  /// Path that answered ONVIF, or null.
+  final String? path;
+  final List<int> refused, silent, tried;
+  bool get hostUp => refused.isNotEmpty;
+  bool get allSilent => path == null && refused.isEmpty && silent.length == tried.length && tried.isNotEmpty;
+}
+
+/// Tries [ports] (in parallel, short timeout expected of [probe]) and returns the first path
+/// that answers ONVIF SOAP, preferring the order of [ports]. [OnvifPathResult.hostUp] is true
+/// when at least one port sent "connection refused" (the host is there).
+Future<OnvifPathResult> findOnvifDevicePath(
+  Future<String> Function(String path) probe, {
+  List<int> ports = onvifCommonPorts,
+  List<String>? log,
+}) async {
+  if (ports.isEmpty) return const OnvifPathResult();
+  final rows = await Future.wait([
+    for (final port in ports)
+      () async {
+        final path = onvifPathForPort(port);
+        try {
+          final r = await probe(path);
+          return (port: port, path: path, body: r, error: null);
+        } catch (e) {
+          return (port: port, path: path, body: null, error: e);
+        }
+      }(),
+  ]);
+  String? found;
+  final refused = <int>[];
+  final silent = <int>[];
+  for (final r in rows) {
+    if (r.error != null) {
+      log?.add('GetSystemDateAndTime ${r.path}: ${formatOnvifNetError(r.error!)}');
+      final err = r.error!.toString();
+      // HTTP 401/400: the ONVIF service is there and wants a login (probe is unauthenticated).
+      if (err.contains('HTTP 401') || err.contains('HTTP 400')) {
+        found ??= r.path;
+      } else if (isConnectionRefused(r.error!)) {
+        refused.add(r.port);
+      } else if (isNetTimeout(r.error!) || !err.contains('HTTP ')) {
+        silent.add(r.port);
+      }
+      continue;
+    }
+    final body = r.body ?? '';
+    final onvif =
+        body.contains('Envelope') ||
+        body.contains('onvif.org') ||
+        body.contains('GetSystemDateAndTime') ||
+        body.contains('NotAuthorized') ||
+        body.contains('HTTP 401') ||
+        body.contains('HTTP 400');
+    log?.add(
+      'GetSystemDateAndTime ${r.path}: ${onvif ? 'ONVIF answers on port ${r.port}' : 'not ONVIF (${body.length} bytes)'}',
+    );
+    if (onvif && found == null) found = r.path;
+  }
+  return OnvifPathResult(path: found, refused: refused, silent: silent, tried: ports.toList());
 }
 
 /// Nothing answered at all (timeouts, refused connections, no route, a browser that may not
@@ -438,7 +588,7 @@ Future<OnvifMedia> onvifMedia(
     rethrow;
   } catch (e) {
     tried.add('time: $e');
-    note('GetSystemDateAndTime $devicePath: $e');
+    note('GetSystemDateAndTime $devicePath: ${formatOnvifNetError(e)}');
   }
 
   var model = '', maker = '', modelName = '', firmware = '';
@@ -460,7 +610,7 @@ Future<OnvifMedia> onvifMedia(
     rethrow;
   } catch (e) {
     tried.add('info: $e');
-    note('GetDeviceInformation: $e');
+    note('GetDeviceInformation: ${formatOnvifNetError(e)}');
   }
   if (!soapSeen) {
     if (!httpAnswered) throw OnvifUnreachable(tried.join('; '));

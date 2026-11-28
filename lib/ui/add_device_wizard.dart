@@ -45,7 +45,13 @@ Color providerColor(DeviceProvider p) => switch (p.id) {
 };
 
 /// Plain-language title + what to do, for every problem.
-(String, String) problemText(BuildContext context, AddProblem p, {String brand = 'laite', String address = ''}) {
+(String, String) problemText(
+  BuildContext context,
+  AddProblem p, {
+  String brand = 'laite',
+  String address = '',
+  String ports = '',
+}) {
   String t(String fi, String en) => tx(context, fi, en);
   return switch (p) {
     AddProblem.noNetwork when Plat.isWeb => (
@@ -142,6 +148,18 @@ Color providerColor(DeviceProvider p) => switch (p.id) {
         'Update Molaplan on the bridge (Settings → Check for updates).',
       ),
     ),
+    AddProblem.portClosed => (
+      ports.isEmpty
+          ? t('Laite vastaa, mutta ONVIF-portti on kiinni', 'The device answers, but the ONVIF port is closed')
+          : t(
+              'Laite vastaa, mutta ONVIF-portti on kiinni (yritettiin portteja $ports)',
+              'The device answers, but the ONVIF port is closed (tried ports $ports)',
+            ),
+      t(
+        'Tarkista kameran ONVIF-portti ja kirjoita se tarvittaessa (Tapo: 2020). Tapo-sovellus → kamera → Lisäasetukset → Kameran tili: tee sinne käyttäjä ja salasana (ei Tapo-pilvitunnus).',
+        'Check the camera\'s ONVIF port and type it if needed (Tapo: 2020). Tapo app → camera → Advanced settings → Camera account: create a user and password there (not your Tapo cloud login).',
+      ),
+    ),
     AddProblem.bridgeOffline => (
       t('Kotisilta ei ole päällä', 'The home bridge is off'),
       t(
@@ -157,6 +175,12 @@ Color providerColor(DeviceProvider p) => switch (p.id) {
       ),
     ),
   };
+}
+
+/// Ports listed in the technical details of a port-closed / probe error ('tried ports: 80, 2020').
+String _triedPorts(String detail) {
+  final m = RegExp(r'tried ports:\s*([0-9, ]+)|no answer on ports\s*([0-9, ]+)').firstMatch(detail);
+  return ((m?.group(1) ?? m?.group(2) ?? '').replaceAll(' ', ''));
 }
 
 /// Step-by-step: (remote setup) -> find -> connect/pair -> choose tiles -> done.
@@ -376,7 +400,19 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
       );
       if (go != true) return;
     }
-    await _pick(Candidate(provider: p.id, address: addrCtl.text.trim()));
+    final addr = addrCtl.text.trim();
+    final via = st.remote.isPaired && addressOnOtherNetwork(addr, locals);
+    if (via && mounted) {
+      showSnack(
+        context,
+        tx(
+          context,
+          'Osoite on eri verkossa kuin tämä laite – yhteys kameran kanssa tehdään kotisillan kautta.',
+          'The address is on a different network than this device – the camera is reached through the home bridge.',
+        ),
+      );
+    }
+    await _pick(Candidate(provider: p.id, address: addr, viaBridge: via, bridge: via));
   }
 
   Future<void> _connect() async {
@@ -1028,7 +1064,13 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
       return out;
     }
     if (e == null) return out;
-    var (title, body) = problemText(context, e.problem, brand: brand, address: cloud ? '' : c.address);
+    var (title, body) = problemText(
+      context,
+      e.problem,
+      brand: brand,
+      address: cloud ? '' : c.address,
+      ports: _triedPorts(e.detail),
+    );
     final st = AppScope.read(context);
     final login = e.problem == AddProblem.needsPassword || e.problem == AddProblem.wrongPassword;
     // Cameras: when the address answers but no video address is known (or the maker is not the

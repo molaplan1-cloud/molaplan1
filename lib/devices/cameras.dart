@@ -130,7 +130,16 @@ const cameraPresets = <CameraPreset>[
   CameraPreset(
     id: 'bosch_ip',
     name: 'Bosch IP-kamerat (Flexidome, Dinion, Autodome)',
-    keywords: ['bosch kamera', 'bosch camera', 'bosch ip', 'flexidome', 'dinion', 'autodome', 'keenfinity', 'bosch video'],
+    keywords: [
+      'bosch kamera',
+      'bosch camera',
+      'bosch ip',
+      'flexidome',
+      'dinion',
+      'autodome',
+      'keenfinity',
+      'bosch video',
+    ],
     useOnvif: true,
     defaultUser: 'service',
     snapshot: '/snap.jpg',
@@ -146,8 +155,8 @@ const cameraPresets = <CameraPreset>[
     name: 'ONVIF',
     keywords: ['onvif', 'ip-kamera', 'ip camera', 'axis', 'uniview', 'foscam', 'annke', 'vstarcam', 'amcrest', 'vigi'],
     useOnvif: true,
-    loginHelpFi: 'Kameran käyttäjä ja salasana (usein admin). ONVIF pitää ehkä laittaa päälle kameran asetuksista.',
-    loginHelpEn: 'The camera user and password (often admin). ONVIF may need to be enabled in the camera settings.',
+    loginHelpFi: 'Kameran käyttäjä ja salasana (usein admin). ONVIF pitää ehkä laittaa päälle kameran asetuksista. Tapo käyttää porttia 2020 ja tarvitsee Kameran tilin (Tapo-sovellus → kamera → Lisäasetukset → Kameran tili), ei Tapo-pilvitunnusta.',
+    loginHelpEn: 'The camera user and password (often admin). ONVIF may need to be enabled in the camera settings. Tapo uses port 2020 and needs a Camera Account (Tapo app → camera → Advanced settings → Camera account), not your Tapo cloud login.',
   ),
 ];
 
@@ -246,6 +255,16 @@ class CameraProvider extends DeviceProvider {
       hint: preset.defaultUser.isEmpty ? '' : preset.defaultUser,
       optional: preset.defaultUser.isNotEmpty,
     ),
+    if (preset.useOnvif || preset.id == 'tapo')
+      CredField(
+        'onvifPort',
+        'ONVIF-portti',
+        'ONVIF port',
+        hint: preset.id == 'tapo' ? '2020' : '80',
+        optional: true,
+        helpFi: 'Tyhjänä kokeillaan tavallisia portteja (80, 2020, 8000, 8080…). Tapo: 2020.',
+        helpEn: 'Leave empty to try the usual ports (80, 2020, 8000, 8080…). Tapo: 2020.',
+      ),
   ];
 
   /// WS-Discovery (multicast) AND a look at the usual ONVIF ports of the local /24 – multicast
@@ -288,6 +307,7 @@ class CameraProvider extends DeviceProvider {
       'brand': preset.id,
       'rtsp': ?preset.rtsp,
       'rtspSub': ?preset.rtspSub,
+      if (c.viaBridge) 'viaBridge': true,
     };
     ConnectionConfig conn(Map<String, dynamic> s) => ConnectionConfig(
       name: c.name?.isNotEmpty == true ? c.name! : '${preset.name} ${tr(ctx.lang, 'kamera', 'camera')}',
@@ -304,7 +324,14 @@ class CameraProvider extends DeviceProvider {
     var notOnvif = false;
     var viaOnvif = false;
     OnvifMedia? onvif;
-    String det(String more) => [...log, if (more.isNotEmpty) more].join('\n');
+    String det(String more) {
+      final out = <String>[];
+      for (final l in [...log, if (more.isNotEmpty) more]) {
+        if (l.isEmpty || out.contains(l)) continue;
+        out.add(l);
+      }
+      return out.join('\n');
+    }
 
     /// Address typed by hand (offered when nothing else worked): used as is.
     final manual = (creds['rtsp'] ?? '').trim();
@@ -317,9 +344,47 @@ class CameraProvider extends DeviceProvider {
     } else if (preset.useOnvif) {
       final d = ctx.driver(conn({...settings, 'auth': 'digest'}));
       try {
+        final userPort = int.tryParse((creds['onvifPort'] ?? '').trim());
+        final preferred = <int>[
+          if (userPort != null && userPort > 0) userPort,
+          if (c.id.isNotEmpty) ?onvifPortOfPath(c.id),
+          ?onvifPortOfPath(preset.onvifPath),
+        ];
+        final seen = <int>{};
+        final first = [
+          for (final p in preferred)
+            if (seen.add(p)) p,
+        ];
+        final rest = [
+          for (final p in onvifCommonPorts)
+            if (seen.add(p)) p,
+        ];
+        Future<String> probe(String path) async =>
+            '${await d.send({'path': path, 'body': onvifEnvelope('<tds:GetSystemDateAndTime/>'), 'timeoutMs': 2000})}';
+        var devicePath = c.id.isNotEmpty ? c.id : preset.onvifPath;
+        if (userPort != null && userPort > 0) devicePath = onvifPathForPort(userPort);
+        var probeResult = first.isEmpty
+            ? const OnvifPathResult()
+            : await findOnvifDevicePath(probe, ports: first, log: log);
+        if (probeResult.path == null && rest.isNotEmpty) {
+          final more = await findOnvifDevicePath(probe, ports: rest, log: log);
+          probeResult = OnvifPathResult(
+            path: more.path,
+            refused: [...probeResult.refused, ...more.refused],
+            silent: [...probeResult.silent, ...more.silent],
+            tried: [...probeResult.tried, ...more.tried],
+          );
+        }
+        if (probeResult.path != null) {
+          devicePath = probeResult.path!;
+        } else if (probeResult.hostUp) {
+          throw OnvifPortClosed(probeResult.tried);
+        } else if (probeResult.allSilent) {
+          throw OnvifUnreachable('no answer on ports ${probeResult.tried.join(', ')}');
+        }
         final m = await onvifMedia(
           (path, body) async => '${await d.send({'path': path, 'body': body})}',
-          devicePath: c.id.isNotEmpty ? c.id : preset.onvifPath,
+          devicePath: devicePath,
           user: user,
           password: pw,
           host: host,
@@ -363,6 +428,8 @@ class CameraProvider extends DeviceProvider {
         throw AddDeviceError(AddProblem.wrongPassword, det('ONVIF: login refused (WS-Security and HTTP Digest)'));
       } on OnvifNeedsLogin {
         throw AddDeviceError(AddProblem.needsPassword, det('ONVIF: login required'));
+      } on OnvifPortClosed catch (e) {
+        throw AddDeviceError(AddProblem.portClosed, det('tried ports: ${e.ports.join(', ')}'));
       } on OnvifUnreachable catch (e) {
         throw AddDeviceError(AddProblem.unreachable, det('$e'));
       } on OnvifNoProfiles catch (e) {

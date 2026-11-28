@@ -219,7 +219,26 @@ void main() {
   });
 
   group('R551 "Osoitteessa on jokin muu laite" only when something really else answered', () {
-    test('nothing answers at all (timeouts / refused / browser fetch failure) → unreachable, with details', () async {
+    test('connection refused (host is there, ONVIF port closed) → portClosed, not "ei tavoitettu"', () async {
+      final p = CameraProvider(
+        cameraPresetById('sonoff_cam')!,
+        rtspCheck: (_) async => throw const SocketException('Connection refused'),
+      );
+      await expectLater(
+        p.connect(
+          AddContext(driver: (c) => FakeCamDriverThrowing(c, const SocketException('Connection refused'))),
+          Candidate(provider: p.id, address: '192.168.50.109'),
+          {'username': 'sonoff', 'password': 'pw'},
+        ),
+        throwsA(
+          isA<AddDeviceError>()
+              .having((x) => x.problem, 'problem', AddProblem.portClosed)
+              .having((x) => x.detail, 'detail', contains('tried ports:')),
+        ),
+      );
+    });
+
+    test('nothing answers at all (timeouts / browser fetch failure) → unreachable, with details', () async {
       Future<Connected> run(Object error) {
         final p = CameraProvider(cameraPresetById('sonoff_cam')!, rtspCheck: (_) async => throw error);
         return p.connect(
@@ -230,7 +249,7 @@ void main() {
       }
 
       for (final e in [
-        const SocketException('Connection refused'),
+        const SocketException('Connection timed out'),
         Exception('ClientException: Failed to fetch, uri=http://192.168.50.109/onvif/device_service'),
       ]) {
         await expectLater(

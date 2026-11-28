@@ -318,12 +318,14 @@ class CameraDriver extends Driver {
   Future<Object?> send(Map<String, dynamic> spec, {Object? value}) async {
     final p = spec.str('path').replaceAll('{{value}}', '${value ?? ''}');
     final body = spec.strOrNull('body');
+    final ms = (spec['timeoutMs'] as num?)?.toInt();
     final r = await _send(
       client,
       spec.str('method', body == null ? 'GET' : 'POST'),
       url(p),
       body: body,
       contentType: spec.strOrNull('contentType'),
+      timeout: Duration(milliseconds: (ms == null || ms < 300) ? 10000 : ms),
     );
     if (body != null) {
       final text = await r.stream.bytesToString().timeout(const Duration(seconds: 10));

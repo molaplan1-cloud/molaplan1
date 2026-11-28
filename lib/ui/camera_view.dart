@@ -76,12 +76,18 @@ class _CameraViewState extends State<CameraView> {
     final mode = spec.str('mode', 'mjpeg');
     final router = AppScope.read(context).remote.router;
     final away = router.preferRemote;
+    // t333u: a camera on the home bridge's network must not be opened from this device.
+    final viaBridge = d.s['viaBridge'] == true;
     final url = d.rtspUrl(sub: !widget.live, stream: spec.integer('stream', 0));
     // t331ua0: whether this device is "at home" is not decided from the home bridge's state: when
     // this device can reach the camera's RTSP port, the video plays here. The RtspView checks the
     // address first; only when the camera does not answer from here, the still pictures come
     // through the home bridge.
-    if (url != null && (mode == 'rtsp' || widget.live) && rtspSupported && !(away && _skipLocalRtsp(url))) {
+    if (url != null &&
+        (mode == 'rtsp' || widget.live) &&
+        rtspSupported &&
+        !viaBridge &&
+        !(away && _skipLocalRtsp(url))) {
       setState(() => _rtsp = url);
       return;
     }
