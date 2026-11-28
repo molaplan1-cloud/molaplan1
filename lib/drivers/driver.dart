@@ -22,6 +22,10 @@ class NtfyNoReply extends DriverException {
 String driverLang = 'fi';
 String dtx(String fi, String en) => tr(driverLang, fi, en);
 
+/// R548 (t322u): a driver got new secrets from its service (e.g. a rotated OAuth refresh token);
+/// AppState saves them to the connection (secure storage). Null = nobody listens (bridge, tests).
+void Function(String connectionId, Map<String, String> secrets)? onDriverSecretsChanged;
+
 /// Common interface every connection type implements.
 ///
 /// * [read] returns the current value for a read spec (polling).

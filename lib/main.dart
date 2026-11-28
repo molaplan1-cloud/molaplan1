@@ -1,4 +1,7 @@
 import 'drivers/airthings_ble.dart';
+import 'devices/bosch_shc.dart' show shcNewIdentity;
+import 'core/rsa_cert.dart' show selfSignedCert, generateRsaKey;
+import 'package:flutter/foundation.dart' show compute;
 import 'core/plat.dart';
 import 'sharing/share_api.dart';
 import 'state/net_health.dart';
@@ -40,11 +43,15 @@ import 'ui/theme.dart';
 import 'ui/web_info.dart';
 import 'l10n/gen/app_localizations.dart';
 
+(String, String) _shcIdentity(void _) => selfSignedCert(generateRsaKey(), cn: 'oss_molaplan');
+
 Future<void> main() async {
   final priceStore = PrefsConfigStore('molaplan.prices.v1');
   PriceService.loadStore = priceStore.load;
   PriceService.saveStore = priceStore.save;
   WidgetsFlutterBinding.ensureInitialized();
+  // R541: the Bosch Smart Home client key (RSA 2048) is made in a background isolate.
+  shcNewIdentity = () => compute(_shcIdentity, null);
   // R510/R511 (t315u): molaplan.com/?price=… / ?view=ID / ?run=ID / ?tile=ID.
   final launch = Plat.isWeb ? WebLaunch.parse(Uri.base) : null;
   if (launch is PriceViewLaunch) {

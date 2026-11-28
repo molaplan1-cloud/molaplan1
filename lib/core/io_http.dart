@@ -10,19 +10,17 @@ import 'package:flutter/foundation.dart' show kIsWeb;
 import 'http_client.dart';
 
 /// Returns null in a browser. Safe to call from shared code.
-HttpClient? ioHttpClient({Duration? timeout, bool allowSelfSigned = false}) {
+/// [context]: own TLS settings, e.g. a client certificate (Bosch Smart Home).
+HttpClient? ioHttpClient({Duration? timeout, bool allowSelfSigned = false, SecurityContext? context}) {
   if (kIsWeb) return null;
-  final c = HttpClient();
+  final c = HttpClient(context: context);
   if (timeout != null) c.connectionTimeout = timeout;
   if (allowSelfSigned) c.badCertificateCallback = (_, _, _) => true;
   return c;
 }
 
 /// Like [ioHttpClient], but throws a clear [UnsupportedError] in a browser.
-HttpClient requireIoHttpClient({
-  Duration? timeout,
-  bool allowSelfSigned = false,
-}) {
-  return ioHttpClient(timeout: timeout, allowSelfSigned: allowSelfSigned) ??
+HttpClient requireIoHttpClient({Duration? timeout, bool allowSelfSigned = false, SecurityContext? context}) {
+  return ioHttpClient(timeout: timeout, allowSelfSigned: allowSelfSigned, context: context) ??
       (throw UnsupportedError(webAppOrBridgeFi));
 }

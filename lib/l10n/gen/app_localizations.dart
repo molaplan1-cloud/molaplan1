@@ -13367,11 +13367,17 @@ abstract class AppLocalizations {
   /// **' (optional)'**
   String get s9b9b0d01a2;
 
-  /// fi: Paina painiketta nyt
+  /// fi: Kirjaudu ja hyväksy
   ///
   /// In en, this message translates to:
-  /// **'Press the button now'**
-  String get s0a7134d0e3;
+  /// **'Sign in and approve'**
+  String get s7acc8096d2;
+
+  /// fi: Avaa kirjautumissivu
+  ///
+  /// In en, this message translates to:
+  /// **'Open the sign-in page'**
+  String get sa2ffc9d3a6;
 
   /// fi: Aikaa jäljellä {p0} s
   ///
@@ -13379,11 +13385,23 @@ abstract class AppLocalizations {
   /// **'{p0} s left'**
   String s43118959d5(String p0);
 
+  /// fi: Paina painiketta nyt
+  ///
+  /// In en, this message translates to:
+  /// **'Press the button now'**
+  String get s0a7134d0e3;
+
   /// fi: Kirjaudu kameraan
   ///
   /// In en, this message translates to:
   /// **'Sign in to the camera'**
   String get s46c87a553f;
+
+  /// fi: Järjestelmän salasana
+  ///
+  /// In en, this message translates to:
+  /// **'System password'**
+  String get sf11edd7621;
 
   /// fi: Laitteen salasana
   ///
@@ -19133,6 +19151,36 @@ abstract class AppLocalizations {
   /// **'The pump\'\'s IP address (display or router).'**
   String get scab35073e8;
 
+  /// fi: Bosch / Buderus lämmitys (KM200-yhdyskäytävä, paikallinen)
+  ///
+  /// In en, this message translates to:
+  /// **'Bosch / Buderus heating (KM200 gateway, local)'**
+  String get s6ad1f33b9a;
+
+  /// fi: Kaasu-/öljykattilat ja lämpöpumput, joissa on Logamatic web KM50/KM100/KM200/KM300 -yhdyskäytävä (Bosch, Buderus, Junker
+  ///
+  /// In en, this message translates to:
+  /// **'Boilers and heat pumps with a Logamatic web KM50/KM100/KM200/KM300 gateway (Bosch, Buderus, Junkers, IVT). Local, no cloud, no fees.'**
+  String get sd3415a288c;
+
+  /// fi: KM-yhdyskäytävän IP-osoite reitittimen laitelistasta (nimi usein "KM200" tai sarjanumero).
+  ///
+  /// In en, this message translates to:
+  /// **'The KM gateway\'\'s IP from your router\'\'s device list (often named \"KM200\" or its serial).'**
+  String get s87ab70204b;
+
+  /// fi: Yhdyskäytävän tarrassa tai lämmityslaitteen valikossa: Info → Internet → Kirjautumistiedot.
+  ///
+  /// In en, this message translates to:
+  /// **'On the gateway sticker or in the boiler menu: Info → Internet → Login data.'**
+  String get s85e666e6d0;
+
+  /// fi: Salasana, jonka asetit valmistajan sovelluksessa (MyDevice, EasyControl tai Buderus-sovellus).
+  ///
+  /// In en, this message translates to:
+  /// **'The password you set in the maker\'\'s app (MyDevice, EasyControl or the Buderus app).'**
+  String get s7af1e0507c;
+
   /// fi: Daikin, Mitsubishi, Toshiba, Samsung, Hitachi, NIBE, Thermia – tai mikä tahansa IR-kaukosäätimellä.
   ///
   /// In en, this message translates to:
@@ -19198,6 +19246,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'NIBE / Thermia (Modbus TCP, local)'**
   String get se9b4e55058;
+
+  /// fi: Bosch / Buderus (KM200-yhdyskäytävä, paikallinen)
+  ///
+  /// In en, this message translates to:
+  /// **'Bosch / Buderus (KM200 gateway, local)'**
+  String get s16f7124e42;
 
   /// fi: Lämpöpumppu (oma integraatio)
   ///
@@ -19300,6 +19354,42 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Client Secret of your own app at dev.myuplink.com.'**
   String get s332f9bc1a1;
+
+  /// fi: Yhdyskäytävän salasana (KM200)
+  ///
+  /// In en, this message translates to:
+  /// **'Gateway password (KM200)'**
+  String get s911c662d27;
+
+  /// fi: Bosch/Buderus KM-yhdyskäytävän tarrassa tai lämmityslaitteen valikossa (Info → Internet → Kirjautumistiedot).
+  ///
+  /// In en, this message translates to:
+  /// **'On the Bosch/Buderus KM gateway sticker or in the boiler menu (Info → Internet → Login data).'**
+  String get s52d4fcbe67;
+
+  /// fi: Oma salasana (KM200)
+  ///
+  /// In en, this message translates to:
+  /// **'Private password (KM200)'**
+  String get se7829f1ac5;
+
+  /// fi: Salasana, jonka asetit valmistajan sovelluksessa (MyDevice / EasyControl / Buderus).
+  ///
+  /// In en, this message translates to:
+  /// **'The password you set in the maker\'\'s app (MyDevice / EasyControl / Buderus).'**
+  String get sc6b9b9dafe;
+
+  /// fi: Salaus-suola (KM200, vain jos valmistaja käyttää omaa)
+  ///
+  /// In en, this message translates to:
+  /// **'Salt (KM200, only if the maker uses its own)'**
+  String get s26eefc92ad;
+
+  /// fi: Jätä tyhjäksi: käytetään Boschin/Buderuksen julkaistua oletusta.
+  ///
+  /// In en, this message translates to:
+  /// **'Leave empty to use Bosch/Buderus\'\' published default.'**
+  String get s333668bcad;
 
   /// fi: Rekisterikartta (Modbus)
   ///
@@ -19492,6 +19582,66 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Compressor'**
   String get s3ca74f3ef8;
+
+  /// fi: Polttimen teho
+  ///
+  /// In en, this message translates to:
+  /// **'Burner modulation'**
+  String get s79f91561d9;
+
+  /// fi: Anna yhdyskäytävän salasana ja oma salasana
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the gateway password and your own password'**
+  String get sc272460629;
+
+  /// fi: Lämmityslaite vastasi, mutta tietoja ei saatu auki – tarkista molemmat salasanat.
+  ///
+  /// In en, this message translates to:
+  /// **'The heating gateway answered but the data could not be decrypted – check both passwords.'**
+  String get s684b127b9d;
+
+  /// fi: Lämmityslaite ei salli tämän arvon muuttamista
+  ///
+  /// In en, this message translates to:
+  /// **'The heating gateway does not allow changing this value'**
+  String get sbe369d8548;
+
+  /// fi: Lämmityspiiri
+  ///
+  /// In en, this message translates to:
+  /// **'Heating circuit'**
+  String get s1222da1433;
+
+  /// fi: supply
+  ///
+  /// In en, this message translates to:
+  /// **'/system/sensors/temperatures/supply_t1'**
+  String get s131d0eb266;
+
+  /// fi: return
+  ///
+  /// In en, this message translates to:
+  /// **'/system/sensors/temperatures/return'**
+  String get sac20961d10;
+
+  /// fi: hot_water
+  ///
+  /// In en, this message translates to:
+  /// **'/dhwCircuits/dhw1/actualTemp'**
+  String get s2a35dc0822;
+
+  /// fi: modulation
+  ///
+  /// In en, this message translates to:
+  /// **'/heatSources/actualModulation'**
+  String get s85a3e678f3;
+
+  /// fi: lämmityspiiriä
+  ///
+  /// In en, this message translates to:
+  /// **'heating circuit(s)'**
+  String get s4159d585e2;
 
   /// fi: Ilmastointilaitteen käyttäjätaulukko on täynnä. Poista vanha puhelin Smart M-Air -sovelluksesta ja yritä uudelleen.
   ///
@@ -19967,6 +20117,336 @@ abstract class AppLocalizations {
   /// **'Alarm'**
   String get s50c459fbff;
 
+  /// fi: Bosch Smart Home -ohjain
+  ///
+  /// In en, this message translates to:
+  /// **'Bosch Smart Home Controller'**
+  String get s29c5b59ddb;
+
+  /// fi: Ohjaimen IP-osoite
+  ///
+  /// In en, this message translates to:
+  /// **'Controller IP address'**
+  String get sfb05679ced;
+
+  /// fi: Bosch Smart Home -ohjaimen osoite (sovellus: Lisää → Järjestelmä → Ohjain, tai reitittimen laitelista).
+  ///
+  /// In en, this message translates to:
+  /// **'The controller\'\'s address (app: More → System → Controller, or your router\'\'s device list).'**
+  String get sd65da878fe;
+
+  /// fi: Asiakasvarmenne (PEM)
+  ///
+  /// In en, this message translates to:
+  /// **'Client certificate (PEM)'**
+  String get s6f7b5bb729;
+
+  /// fi: Molaplan luo tämän parituksessa. Älä muuta.
+  ///
+  /// In en, this message translates to:
+  /// **'Created by Molaplan when pairing. Do not change.'**
+  String get sd21135f561;
+
+  /// fi: Asiakasavain (PEM)
+  ///
+  /// In en, this message translates to:
+  /// **'Client key (PEM)'**
+  String get s2bc685129f;
+
+  /// fi: Ohjaimen varmenteen sormenjälki
+  ///
+  /// In en, this message translates to:
+  /// **'Controller certificate fingerprint'**
+  String get sd5bfa709a3;
+
+  /// fi: Tallennettu parituksessa: Molaplan puhuu vain tälle ohjaimelle. Tyhjä = hyväksy ensimmäinen.
+  ///
+  /// In en, this message translates to:
+  /// **'Saved when pairing: Molaplan only talks to this controller. Empty = accept the first one.'**
+  String get s8b133a2da5;
+
+  /// fi: Bosch-laitteen tunnus (id).
+  ///
+  /// In en, this message translates to:
+  /// **'The Bosch device id.'**
+  String get s46f9aaf504;
+
+  /// fi: Esim. TemperatureLevel, ShutterContact, PowerSwitch.
+  ///
+  /// In en, this message translates to:
+  /// **'E.g. TemperatureLevel, ShutterContact, PowerSwitch.'**
+  String get s84d11d45ce;
+
+  /// fi: Kenttä
+  ///
+  /// In en, this message translates to:
+  /// **'Field'**
+  String get s4dabf0e462;
+
+  /// fi: Kenttä palvelun tilasta, esim. temperature, value, switchState.
+  ///
+  /// In en, this message translates to:
+  /// **'A field of the service state, e.g. temperature, value, switchState.'**
+  String get s9a1eb4b849;
+
+  /// fi: Polku (muut)
+  ///
+  /// In en, this message translates to:
+  /// **'Path (other)'**
+  String get se83f02e6bd;
+
+  /// fi: Muu luettava polku, esim. /intrusion/states/system.
+  ///
+  /// In en, this message translates to:
+  /// **'Another path to read, e.g. /intrusion/states/system.'**
+  String get s3a985d4cc3;
+
+  /// fi: PUT tilan muuttamiseen, POST toimintoihin.
+  ///
+  /// In en, this message translates to:
+  /// **'PUT to change a state, POST for actions.'**
+  String get s0d34dfcd38;
+
+  /// fi: Polku /smarthome-osoitteen jälkeen.
+  ///
+  /// In en, this message translates to:
+  /// **'Path after /smarthome.'**
+  String get sf8c4f6beb9;
+
+  /// fi: JSON, esim. {"@type":"powerSwitchState","switchState":"ON"}.
+  ///
+  /// In en, this message translates to:
+  /// **'\'JSON, e.g. {\"@type\":\"powerSwitchState\",\"switchState\":\"ON\"}.\''**
+  String get s5632684130;
+
+  /// fi: Bosch-ohjain ei hyväksynyt yhteyttä (paritus puuttuu tai ohjain vaihtui) – lisää ohjain uudelleen. ({p0})
+  ///
+  /// In en, this message translates to:
+  /// **'The Bosch controller refused the connection (not paired or a different controller) – add it again. ({p0})'**
+  String s3addc3df37(String p0);
+
+  /// fi: ✓ Bosch Smart Home -ohjain vastasi: {p0} laitetta. Komentoja ei lähetetty.
+  ///
+  /// In en, this message translates to:
+  /// **'✓ The Bosch Smart Home Controller answered: {p0} devices. No commands were sent.'**
+  String sc76c98702f(String p0);
+
+  /// fi: Muut
+  ///
+  /// In en, this message translates to:
+  /// **'Other'**
+  String get sd9b6de0a6a;
+
+  /// fi: ei tavoitettavissa
+  ///
+  /// In en, this message translates to:
+  /// **'unreachable'**
+  String get s4dbb677293;
+
+  /// fi: tavoitelämpö
+  ///
+  /// In en, this message translates to:
+  /// **'target'**
+  String get sd0368ed590;
+
+  /// fi: venttiili
+  ///
+  /// In en, this message translates to:
+  /// **'valve'**
+  String get sec17dd81e8;
+
+  /// fi: auki
+  ///
+  /// In en, this message translates to:
+  /// **'open'**
+  String get s0b2f7d7c80;
+
+  /// fi: kiinni
+  ///
+  /// In en, this message translates to:
+  /// **'closed'**
+  String get s7009587b85;
+
+  /// fi: palovaroitin
+  ///
+  /// In en, this message translates to:
+  /// **'smoke detector'**
+  String get saf40fb40b3;
+
+  /// fi: testi
+  ///
+  /// In en, this message translates to:
+  /// **'test'**
+  String get s4d85116fcb;
+
+  /// fi: testaa hälytin
+  ///
+  /// In en, this message translates to:
+  /// **'test alarm'**
+  String get s54345410a1;
+
+  /// fi: ilmanlaatu
+  ///
+  /// In en, this message translates to:
+  /// **'air quality'**
+  String get s67c7f22d99;
+
+  /// fi: liiketunnistin
+  ///
+  /// In en, this message translates to:
+  /// **'motion detector'**
+  String get s4c3bb5ea0a;
+
+  /// fi: vesivuoto
+  ///
+  /// In en, this message translates to:
+  /// **'water leak'**
+  String get sa6a56fa019;
+
+  /// fi: kamera päällä
+  ///
+  /// In en, this message translates to:
+  /// **'camera on'**
+  String get s7c51d00219;
+
+  /// fi: yksityisyystila
+  ///
+  /// In en, this message translates to:
+  /// **'privacy mode'**
+  String get s51cd662d6c;
+
+  /// fi: ilmoitukset
+  ///
+  /// In en, this message translates to:
+  /// **'notifications'**
+  String get scdc860be9e;
+
+  /// fi: valo
+  ///
+  /// In en, this message translates to:
+  /// **'light'**
+  String get s45c8904016;
+
+  /// fi: Murtohälytin
+  ///
+  /// In en, this message translates to:
+  /// **'Intrusion alarm'**
+  String get s416ac1459c;
+
+  /// fi: Turvallisuus
+  ///
+  /// In en, this message translates to:
+  /// **'Security'**
+  String get s607339c984;
+
+  /// fi: tila + valvonta päälle/pois + kuittaus
+  ///
+  /// In en, this message translates to:
+  /// **'state + arm/disarm + mute'**
+  String get sd1d17eca81;
+
+  /// fi: Vesivuotohälytys
+  ///
+  /// In en, this message translates to:
+  /// **'Water alarm'**
+  String get s499d3aa6f1;
+
+  /// fi: koko järjestelmä + kuittaus
+  ///
+  /// In en, this message translates to:
+  /// **'whole system + mute'**
+  String get se57c2c4920;
+
+  /// fi: Skenaariot
+  ///
+  /// In en, this message translates to:
+  /// **'Scenarios'**
+  String get s2eb00b7c28;
+
+  /// fi: Kuittaa hälytys
+  ///
+  /// In en, this message translates to:
+  /// **'Mute alarm'**
+  String get s38df0b3b2b;
+
+  /// fi: kuittaa
+  ///
+  /// In en, this message translates to:
+  /// **'mute'**
+  String get s1ff3dea39b;
+
+  /// fi: GOOD=Hyvä;MEDIUM=Kohtalainen;BAD=Huono
+  ///
+  /// In en, this message translates to:
+  /// **'GOOD=Good;MEDIUM=Medium;BAD=Bad'**
+  String get s373ab1c97c;
+
+  /// fi: ilman puhtaus
+  ///
+  /// In en, this message translates to:
+  /// **'purity'**
+  String get s129317999a;
+
+  /// fi: asento (100 = auki)
+  ///
+  /// In en, this message translates to:
+  /// **'position (100 = open)'**
+  String get sd0807cf61e;
+
+  /// fi: avaa
+  ///
+  /// In en, this message translates to:
+  /// **'open'**
+  String get sdb34e99ef6;
+
+  /// fi: sulje
+  ///
+  /// In en, this message translates to:
+  /// **'close'**
+  String get s7fc017b0f0;
+
+  /// fi: pysäytä
+  ///
+  /// In en, this message translates to:
+  /// **'stop'**
+  String get sb02c7ee226;
+
+  /// fi: Läsnäolosimulaatio
+  ///
+  /// In en, this message translates to:
+  /// **'Presence simulation'**
+  String get sefdd3f7ade;
+
+  /// fi: Bosch Smart Home
+  ///
+  /// In en, this message translates to:
+  /// **'Bosch Smart Home'**
+  String get s16bc9ff328;
+
+  /// fi: Bosch Smart Home -ohjain (I tai II): termostaatit, patteriventtiilit, ikkuna-/ovianturit, palovaroittimet, pistorasiat,
+  ///
+  /// In en, this message translates to:
+  /// **'Bosch Smart Home Controller (I or II): thermostats, radiator valves, window/door contacts, smoke detectors, plugs, lights, shutters, motion detectors, cameras and the intrusion alarm. Local, no cloud.'**
+  String get sde61b8a8a4;
+
+  /// fi: Bosch Smart Home -sovelluksessa: Lisää → Järjestelmä → Smart Home -ohjain → Verkkotiedot. Tai reitittimen laitelistasta
+  ///
+  /// In en, this message translates to:
+  /// **'In the Bosch Smart Home app: More → System → Smart Home Controller → Network. Or your router\'\'s device list (\"shc…\").'**
+  String get s3b276dcad6;
+
+  /// fi: Kirjoita Bosch Smart Home -järjestelmän salasana (sama, jonka loit ohjainta asentaessa). Sitä ei tallenneta. Kun painat
+  ///
+  /// In en, this message translates to:
+  /// **'Type the Bosch Smart Home system password (the one you created when setting up the controller). It is not saved. After tapping \"Connect\", press the button on the front of the controller.'**
+  String get sc7c8ed347e;
+
+  /// fi: Paina nyt ohjaimen etupainiketta: Smart Home Controller II – lyhyt painallus; vanha ohjain (I) – pidä pohjassa, kunnes v
+  ///
+  /// In en, this message translates to:
+  /// **'Press the button on the front of the controller now: Controller II – a short press; the old controller (I) – hold until the lights flash. Wait here.'**
+  String get s608bdcb257;
+
   /// fi: gk-200
   ///
   /// In en, this message translates to:
@@ -20164,12 +20644,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Press the big round button on top of the Hue Bridge now. Wait here – it connects by itself.'**
   String get s80ee7a25a9;
-
-  /// fi: ei tavoitettavissa
-  ///
-  /// In en, this message translates to:
-  /// **'unreachable'**
-  String get s4dbb677293;
 
   /// fi: himmennettävä
   ///
@@ -20387,29 +20861,11 @@ abstract class AppLocalizations {
   /// **'Flood'**
   String get s29045a726e;
 
-  /// fi: auki
-  ///
-  /// In en, this message translates to:
-  /// **'open'**
-  String get s0b2f7d7c80;
-
-  /// fi: kiinni
-  ///
-  /// In en, this message translates to:
-  /// **'closed'**
-  String get s7009587b85;
-
   /// fi: liikettä
   ///
   /// In en, this message translates to:
   /// **'motion'**
   String get s3b35de231e;
-
-  /// fi: Muut
-  ///
-  /// In en, this message translates to:
-  /// **'Other'**
-  String get sd9b6de0a6a;
 
   /// fi: nukkuu – viimeksi {p0}
   ///
@@ -20603,6 +21059,258 @@ abstract class AppLocalizations {
   /// **'No Modbus TCP hub found in the YAML (modbus: … type: tcp, host: …).'**
   String get sceebf690e3;
 
+  /// fi: Inactive=Ei käytössä;Ready=Valmiina;DelayedStart=Ajastettu;Run=Käynnissä;Pause=Tauko;ActionRequired=Toimenpide tarvitaan
+  ///
+  /// In en, this message translates to:
+  /// **'Inactive=Inactive;Ready=Ready;DelayedStart=Delayed start;Run=Running;Pause=Paused;ActionRequired=Action required;Finished=Finished;Error=Error;Aborting=Aborting;Offline=Offline'**
+  String get s623040a63a;
+
+  /// fi: Home Connect (Bosch, Siemens, Neff, Gaggenau)
+  ///
+  /// In en, this message translates to:
+  /// **'Home Connect (Bosch, Siemens, Neff, Gaggenau)'**
+  String get s417e8a2ba4;
+
+  /// fi: Oman Home Connect -sovelluksesi Client ID (developer.home-connect.com → Applications).
+  ///
+  /// In en, this message translates to:
+  /// **'Client ID of your own Home Connect application (developer.home-connect.com → Applications).'**
+  String get sb98e3e97cd;
+
+  /// fi: Client Secret (jos sovelluksella on)
+  ///
+  /// In en, this message translates to:
+  /// **'Client Secret (if your app has one)'**
+  String get s6e05e7371c;
+
+  /// fi: Samalta sivulta. Device Flow -sovellus toimii yleensä ilmankin.
+  ///
+  /// In en, this message translates to:
+  /// **'From the same page. A Device Flow app usually works without it.'**
+  String get s8189ed86b7;
+
+  /// fi: Kirjautumisavain
+  ///
+  /// In en, this message translates to:
+  /// **'Sign-in token'**
+  String get sda4f3457c2;
+
+  /// fi: Saadaan kirjautumalla lisäysvelhossa. Älä muuta.
+  ///
+  /// In en, this message translates to:
+  /// **'Comes from signing in in the add wizard. Do not change.'**
+  String get sa134f8dd4c;
+
+  /// fi: Simulaattori on kehittäjille (virtuaaliset laitteet).
+  ///
+  /// In en, this message translates to:
+  /// **'The simulator is for developers (virtual appliances).'**
+  String get s560a9b1bab;
+
+  /// fi: Oikeat laitteet
+  ///
+  /// In en, this message translates to:
+  /// **'Real appliances'**
+  String get s5f614bf8c1;
+
+  /// fi: Home Connect -simulaattori
+  ///
+  /// In en, this message translates to:
+  /// **'Home Connect simulator'**
+  String get s3a5c09be5b;
+
+  /// fi: Vain testaukseen: korvaa Home Connectin osoitteen.
+  ///
+  /// In en, this message translates to:
+  /// **'Testing only: replaces Home Connect\'\'s address.'**
+  String get s6dcd74c435;
+
+  /// fi: Laitteen tunnus (haId)
+  ///
+  /// In en, this message translates to:
+  /// **'Appliance id (haId)'**
+  String get s9de7817d1f;
+
+  /// fi: Home Connect -laitteen haId.
+  ///
+  /// In en, this message translates to:
+  /// **'The Home Connect haId.'**
+  String get s1839d16bcc;
+
+  /// fi: Avain
+  ///
+  /// In en, this message translates to:
+  /// **'Key'**
+  String get s6efa690ee3;
+
+  /// fi: Tila- tai asetusavain, esim. BSH.Common.Status.DoorState.
+  ///
+  /// In en, this message translates to:
+  /// **'Status or setting key, e.g. BSH.Common.Status.DoorState.'**
+  String get sf69f72bbac;
+
+  /// fi: Mitä laitteelle tehdään.
+  ///
+  /// In en, this message translates to:
+  /// **'What to do on the appliance.'**
+  String get s9d3115f45d;
+
+  /// fi: Käynnistä valittu ohjelma
+  ///
+  /// In en, this message translates to:
+  /// **'Start the selected program'**
+  String get s07c53aa821;
+
+  /// fi: Pysäytä ohjelma
+  ///
+  /// In en, this message translates to:
+  /// **'Stop the program'**
+  String get sf918a12f32;
+
+  /// fi: Asetus
+  ///
+  /// In en, this message translates to:
+  /// **'Setting'**
+  String get s9384bc6f7e;
+
+  /// fi: Asetuksen avain
+  ///
+  /// In en, this message translates to:
+  /// **'Setting key'**
+  String get s6a395924ea;
+
+  /// fi: Vain "Asetus": avain.
+  ///
+  /// In en, this message translates to:
+  /// **'Only \"Setting\": the key.'**
+  String get sc58b6af7f5;
+
+  /// fi: Virta: On / Off / Standby. Asetus: arvo.
+  ///
+  /// In en, this message translates to:
+  /// **'Power: On / Off / Standby. Setting: the value.'**
+  String get s378202fe0b;
+
+  /// fi: kirjaudu Home Connectiin uudelleen
+  ///
+  /// In en, this message translates to:
+  /// **'sign in to Home Connect again'**
+  String get sb1baaa4494;
+
+  /// fi: kirjaudu uudelleen (Yhteydet → Home Connect)
+  ///
+  /// In en, this message translates to:
+  /// **'sign in again (Connections → Home Connect)'**
+  String get saa6e9765a0;
+
+  /// fi: Home Connectin pyyntöraja täynnä, odota
+  ///
+  /// In en, this message translates to:
+  /// **'Home Connect rate limit reached, wait'**
+  String get s7af74cd31e;
+
+  /// fi: Home Connectin pyyntöraja täynnä
+  ///
+  /// In en, this message translates to:
+  /// **'Home Connect rate limit reached'**
+  String get s3cdfd26282;
+
+  /// fi: Valitse ensin ohjelma laitteesta
+  ///
+  /// In en, this message translates to:
+  /// **'Select a program on the appliance first'**
+  String get sf8050ebbd9;
+
+  /// fi: Etäkäynnistys ei ole sallittu: kytke laitteesta "Etäkäynnistys" (Remote Start) päälle ja sulje luukku.
+  ///
+  /// In en, this message translates to:
+  /// **'Remote start is not allowed: turn on \"Remote Start\" on the appliance and close the door.'**
+  String get s4673002a7e;
+
+  /// fi: ✓ Home Connect vastasi: {p0} laitetta. Komentoja ei lähetetty.
+  ///
+  /// In en, this message translates to:
+  /// **'✓ Home Connect answered: {p0} appliances. No commands were sent.'**
+  String scf29ca4038(String p0);
+
+  /// fi: ei yhteyttä
+  ///
+  /// In en, this message translates to:
+  /// **'offline'**
+  String get see67742c70;
+
+  /// fi: ohjelma
+  ///
+  /// In en, this message translates to:
+  /// **'program'**
+  String get s77140ea0df;
+
+  /// fi: aikaa jäljellä
+  ///
+  /// In en, this message translates to:
+  /// **'time left'**
+  String get s09166e1ea6;
+
+  /// fi: edistyminen
+  ///
+  /// In en, this message translates to:
+  /// **'progress'**
+  String get sfb70dcb933;
+
+  /// fi: luukku
+  ///
+  /// In en, this message translates to:
+  /// **'door'**
+  String get sabadf329bd;
+
+  /// fi: uunin lämpötila
+  ///
+  /// In en, this message translates to:
+  /// **'oven temperature'**
+  String get s7152ef5dbd;
+
+  /// fi: jääkaapin lämpötila
+  ///
+  /// In en, this message translates to:
+  /// **'fridge temperature'**
+  String get s68d00964af;
+
+  /// fi: pakastimen lämpötila
+  ///
+  /// In en, this message translates to:
+  /// **'freezer temperature'**
+  String get s824d365527;
+
+  /// fi: ovihälytys
+  ///
+  /// In en, this message translates to:
+  /// **'door alarm'**
+  String get sfc4a054c1a;
+
+  /// fi: käynnistä valittu ohjelma
+  ///
+  /// In en, this message translates to:
+  /// **'start selected program'**
+  String get s8253ea43e9;
+
+  /// fi: Kodinkoneet Home Connect -tilin kautta: pesu- ja kuivauskoneet, astianpesukoneet, uunit, jääkaapit, kahvikoneet… Tila, j
+  ///
+  /// In en, this message translates to:
+  /// **'Home appliances through your Home Connect account: washers, dryers, dishwashers, ovens, fridges, coffee machines… State, time left, door, start and stop. Free.'**
+  String get s1462af9000;
+
+  /// fi: Ilmainen, kerran: kirjaudu developer.home-connect.com (samalla sähköpostilla kuin Home Connect -sovellus) → Applications
+  ///
+  /// In en, this message translates to:
+  /// **'Free, once: sign in at developer.home-connect.com (same e-mail as the Home Connect app) → Applications → Register application → OAuth Flow: \"Device Flow\", Home Connect User Account for Testing: your e-mail. Copy the Client ID here. A new application can take 15–30 min to start working.'**
+  String get sdc0ed8435b;
+
+  /// fi: Vain jos sovelluksesi sivulla on Client Secret.
+  ///
+  /// In en, this message translates to:
+  /// **'Only if your application page shows a Client Secret.'**
+  String get s625166a5a9;
+
   /// fi: Kameran käyttäjä (yleensä admin) ja salasana, jonka asetit kameran aktivoinnissa.
   ///
   /// In en, this message translates to:
@@ -20662,6 +21370,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'eWeLink app → camera → Settings: turn on RTSP/ONVIF and set a user and password for it (if the option exists).'**
   String get s1a3c354399;
+
+  /// fi: Kameran käyttäjä (service, user tai live) ja salasana, jonka asetit Configuration Managerissa tai kameran web-sivulla.
+  ///
+  /// In en, this message translates to:
+  /// **'The camera user (service, user or live) and the password you set in Configuration Manager or on the camera web page.'**
+  String get s0ae408f9a0;
+
+  /// fi: Bosch Smart Home -kamerat (Eyes, 360) eivät lähetä videota kotiverkkoon – lisää ne kohdasta "Bosch Smart Home" (yksityis
+  ///
+  /// In en, this message translates to:
+  /// **'Bosch Smart Home cameras (Eyes, 360) do not stream video on the home network – add them with \"Bosch Smart Home\" (privacy mode, notifications, light).'**
+  String get s61c9b76fa1;
 
   /// fi: Kameran käyttäjä ja salasana (usein admin). ONVIF pitää ehkä laittaa päälle kameran asetuksista.
   ///
@@ -20938,18 +21658,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'position (100 = closed)'**
   String get s06444f278d;
-
-  /// fi: avaa
-  ///
-  /// In en, this message translates to:
-  /// **'open'**
-  String get sdb34e99ef6;
-
-  /// fi: sulje
-  ///
-  /// In en, this message translates to:
-  /// **'close'**
-  String get s7fc017b0f0;
 }
 
 class _AppLocalizationsDelegate

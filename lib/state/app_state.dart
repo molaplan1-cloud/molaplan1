@@ -622,6 +622,13 @@ class AppState extends ChangeNotifier implements SyncHost {
     if (config.bridgeMode) unawaited(bridgeService.setEnabled(true));
     _scheduleBridgeUpdates();
     driverLang = lang;
+    // R548: rotated refresh tokens (Home Connect) are saved like any connection secret.
+    onDriverSecretsChanged = (id, secrets) {
+      final c = connection(id);
+      if (c == null) return;
+      c.secrets.addAll(secrets);
+      unawaited(_persistSecrets(c));
+    };
     try {
       final e = await energyStore.load();
       if (e != null) energyLog.loadJson(Map<String, dynamic>.from(jsonDecode(e) as Map));

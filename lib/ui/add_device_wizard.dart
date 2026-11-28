@@ -5,6 +5,7 @@ import 'dart:async';
 
 import 'package:flutter/services.dart';
 import 'package:material_ui/material_ui.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../devices/find.dart';
 import '../devices/registry.dart';
@@ -192,6 +193,9 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
   Candidate? picked;
   bool busy = false;
   int? countdown;
+
+  /// R547: a message shown while pairing (Home Connect: sign-in address + code), (fi, en).
+  (String, String)? pairMessage;
   AddDeviceError? error;
   Connected? connected;
   final names = <String, TextEditingController>{};
@@ -370,20 +374,30 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
         throw AddDeviceError(AddProblem.noNetwork);
       }
       final ctx = _ctx();
-      if (p.pairMode == PairMode.button && (creds['token'] ?? '').isEmpty) {
-        setState(() => countdown = p.pairWindow.inSeconds);
-        creds = {
-          ...creds,
-          ...await p.pair(
-            ctx,
-            c,
-            tick: (s) {
-              if (mounted && !_cancel) setState(() => countdown = s);
-            },
-          ),
-        };
+      if (p.pairMode == PairMode.button && !p.isPaired(creds)) {
+        // R541: Bosch Smart Home needs the system password before the button is pressed.
+        if (p.pairNeedsPassword && pwCtl.text.isEmpty) throw AddDeviceError(AddProblem.needsPassword);
+        setState(() {
+          countdown = p.pairWindow.inSeconds;
+          pairMessage = null;
+        });
+        final paired = await p.pairWith(
+          ctx,
+          c,
+          {...creds, if (pwCtl.text.isNotEmpty) 'password': pwCtl.text},
+          tick: (s) {
+            if (mounted && !_cancel) setState(() => countdown = s);
+          },
+          message: (fi, en) {
+            if (mounted && !_cancel) setState(() => pairMessage = (fi, en));
+          },
+        );
+        creds = {...creds, ...paired}..remove('password');
         if (!mounted || _cancel) return;
-        setState(() => countdown = null);
+        setState(() {
+          countdown = null;
+          pairMessage = null;
+        });
       }
       if (p.pairMode == PairMode.password && pwCtl.text.isNotEmpty) creds['password'] = pwCtl.text;
       // Local devices: extra details typed with the password (camera user, Sonoff device id).
@@ -897,6 +911,35 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
     final c = picked!;
     final e = error;
     final out = <Widget>[];
+    if (countdown != null && pairMessage != null) {
+      // R547: Home Connect device flow – show the sign-in address and code while waiting.
+      final m = pairMessage!;
+      final text = tx(context, m.$1, m.$2);
+      final url = RegExp(r'https://\S+').firstMatch(text)?.group(0);
+      out.addAll([
+        _title(context, tx(context, 'Kirjaudu ja hyväksy', 'Sign in and approve'), text),
+        Icon(Icons.open_in_browser, size: 72, color: providerColor(p)),
+        if (url != null)
+          Center(
+            child: FilledButton.icon(
+              key: const ValueKey('wiz-pair-open'),
+              onPressed: () => launchUrl(Uri.parse(url), mode: LaunchMode.externalApplication),
+              icon: const Icon(Icons.open_in_new),
+              label: Text(tx(context, 'Avaa kirjautumissivu', 'Open the sign-in page')),
+            ),
+          ),
+        const SizedBox(height: 16),
+        LinearProgressIndicator(value: countdown! / p.pairWindow.inSeconds, minHeight: 10),
+        const SizedBox(height: 8),
+        Center(
+          child: Text(
+            tx(context, 'Aikaa jäljellä $countdown s', '$countdown s left'),
+            style: Theme.of(context).textTheme.titleMedium,
+          ),
+        ),
+      ]);
+      return out;
+    }
     if (countdown != null) {
       out.addAll([
         _title(
@@ -939,6 +982,12 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
     if (p.category == 'camera' && e.problem == AddProblem.needsPassword) {
       title = tx(context, 'Kirjaudu kameraan', 'Sign in to the camera');
       body = tx(context, p.pairHelpFi, p.pairHelpEn);
+    } else if (login && p.passwordHelpFi.isNotEmpty) {
+      // R541: e.g. Bosch Smart Home – the system password, then the button.
+      if (e.problem == AddProblem.needsPassword) title = tx(context, 'Järjestelmän salasana', 'System password');
+      body = e.problem == AddProblem.wrongPassword
+          ? '$body\n\n${tx(context, p.passwordHelpFi, p.passwordHelpEn)}'
+          : tx(context, p.passwordHelpFi, p.passwordHelpEn);
     } else if (details && p.pairHelpFi.isNotEmpty) {
       body = '$body\n\n${tx(context, p.pairHelpFi, p.pairHelpEn)}';
     }
@@ -984,7 +1033,7 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
             onPressed: () {
               if (e.problem == AddProblem.needsPassword && pwCtl.text.isEmpty) return;
               if (e.problem == AddProblem.needsDetails && cred.values.every((c) => c.text.trim().isEmpty)) return;
-              if (p.pairMode == PairMode.button && e.problem == AddProblem.needsPassword) creds.remove('token');
+              if (p.pairMode == PairMode.button && e.problem == AddProblem.needsPassword) p.forgetPairing(creds);
               _connect();
             },
             icon: Icon(details ? Icons.login : Icons.refresh),

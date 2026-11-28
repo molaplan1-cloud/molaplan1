@@ -195,7 +195,7 @@ class RemoteRouter {
   }
 
   /// Internet services that work the same everywhere: never through the home bridge.
-  static const internetOnlyTypes = {'ntfy', 'ntfy_device', 'price', 'airthings'};
+  static const internetOnlyTypes = {'ntfy', 'ntfy_device', 'price', 'airthings', 'homeconnect'};
 
   /// R250: types the web app could talk to itself (none for now: Home Assistant REST needs CORS
   /// set up in HA, so it goes through the bridge like everything else).

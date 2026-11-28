@@ -7368,7 +7368,10 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s9b9b0d01a2 => ' (opcional)';
 
   @override
-  String get s0a7134d0e3 => 'Pulsa el botón ahora';
+  String get s7acc8096d2 => 'Iniciar sesión y aprobar';
+
+  @override
+  String get sa2ffc9d3a6 => 'Abra la página de inicio de sesión';
 
   @override
   String s43118959d5(String p0) {
@@ -7376,7 +7379,13 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
+  String get s0a7134d0e3 => 'Pulsa el botón ahora';
+
+  @override
   String get s46c87a553f => 'Inicia sesión en la cámara';
+
+  @override
+  String get sf11edd7621 => 'Contraseña de sistema';
 
   @override
   String get se4095d7d95 => 'Contraseña del dispositivo';
@@ -10705,6 +10714,26 @@ class AppLocalizationsEs extends AppLocalizations {
   String get scab35073e8 => 'Dirección IP de la bomba (display o router).';
 
   @override
+  String get s6ad1f33b9a =>
+      'CalefacciÃ3n Bosch / Buderus (puerta KM200, local)';
+
+  @override
+  String get sd3415a288c =>
+      'Boilers and heat pumps with a Logamatic web KM50/KM100/KM200/KM300 gateway (Bosch, Buderus, Junkers, IVT). Local, sin nube, sin cargos.';
+
+  @override
+  String get s87ab70204b =>
+      'La IP de la puerta de entrada KM de la lista de dispositivos de su router (a menudo llamada \"KM200\" o su serie).';
+
+  @override
+  String get s85e666e6d0 =>
+      'En la pegatina de la puerta o en el menú de la caldera: Info → Internet → Datos de inicio de sesión.';
+
+  @override
+  String get s7af1e0507c =>
+      'La contraseña que se establece en la aplicación del fabricante (MyDevice, EasyControl o la aplicación Buderus).';
+
+  @override
   String get s5ddd513689 =>
       'Daikin, Mitsubishi, Toshiba, Samsung, Hitachi, NIBE, Thermia – o cualquier otro con un mando de IR.';
 
@@ -10741,6 +10770,9 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get se9b4e55058 => 'NIBE / Thermia (Modbus TCP, local)';
+
+  @override
+  String get s16f7124e42 => 'Bosch / Buderus (puerta KM200, local)';
 
   @override
   String get sddd6b1d42e => 'Bomba de calor (integración incorporada)';
@@ -10800,6 +10832,28 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get s332f9bc1a1 =>
       'Cliente Secret de su propia aplicación en dev.myuplink.com.';
+
+  @override
+  String get s911c662d27 => 'contraseña de puerta (KM200)';
+
+  @override
+  String get s52d4fcbe67 =>
+      'En la pegatina de puerta Bosch/Buderus KM o en el menú de calderas (Info → Internet → Datos de inicio de sesión).';
+
+  @override
+  String get se7829f1ac5 => 'Contraseña privada (KM200)';
+
+  @override
+  String get sc6b9b9dafe =>
+      'La contraseña que se establece en la aplicación del fabricante (MyDevice / EasyControl / Buderus).';
+
+  @override
+  String get s26eefc92ad =>
+      'Sal (KM200, sólo si el fabricante utiliza su propio)';
+
+  @override
+  String get s333668bcad =>
+      'Deja vacío para usar Bosch/Buderus\' publicado predeterminado.';
 
   @override
   String get sd1d4b22fc6 => 'Mapa del registro (Modbus)';
@@ -10905,6 +10959,39 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get s3ca74f3ef8 => 'Compresor';
+
+  @override
+  String get s79f91561d9 => 'Modulación de quemador';
+
+  @override
+  String get sc272460629 =>
+      'Introduzca la contraseña de entrada y su propia contraseña';
+
+  @override
+  String get s684b127b9d =>
+      'La pasarela de calefacción respondió pero los datos no podían ser descifrados – comprobar ambas contraseñas.';
+
+  @override
+  String get sbe369d8548 =>
+      'La pasarela de calefacción no permite cambiar este valor';
+
+  @override
+  String get s1222da1433 => 'Circuito de calefacción';
+
+  @override
+  String get s131d0eb266 => '/system/sensors/temperatures/supply_t1';
+
+  @override
+  String get sac20961d10 => '/system/sensors/temperatures/return';
+
+  @override
+  String get s2a35dc0822 => '/dhwCircuits/dhw1/actualTemp';
+
+  @override
+  String get s85a3e678f3 => '/heatSources/actualModulation';
+
+  @override
+  String get s4159d585e2 => 'circuitos de calefacción';
 
   @override
   String get s31ec8d716e =>
@@ -11157,6 +11244,185 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s50c459fbff => 'Alarma';
 
   @override
+  String get s29c5b59ddb => 'Controlador de casa inteligente Bosch';
+
+  @override
+  String get sfb05679ced => 'Dirección IP de control';
+
+  @override
+  String get sd65da878fe =>
+      'Dirección del controlador (app: More → Sistema → Controlador, o lista de dispositivos del router).';
+
+  @override
+  String get s6f7b5bb729 => 'Certificado de cliente (PEM)';
+
+  @override
+  String get sd21135f561 => 'Creado por Molaplan al emparejar. No cambies.';
+
+  @override
+  String get s2bc685129f => 'Clave de cliente (PEM)';
+
+  @override
+  String get sd5bfa709a3 => 'Marca del certificado de control';
+
+  @override
+  String get s8b133a2da5 =>
+      'Guardado al emparejar: Molaplan sólo habla con este controlador. Vacío = aceptar el primero.';
+
+  @override
+  String get s46f9aaf504 => 'El dispositivo Bosch id.';
+
+  @override
+  String get s84d11d45ce =>
+      'Por ejemplo, TemperaturaNivel, ShutterContacto, PowerSwitch.';
+
+  @override
+  String get s4dabf0e462 => 'Campo';
+
+  @override
+  String get s9a1eb4b849 =>
+      'Un campo del estado de servicio, por ejemplo temperatura, valor, cambio de estado.';
+
+  @override
+  String get se83f02e6bd => 'Camino (otro)';
+
+  @override
+  String get s3a985d4cc3 =>
+      'Otro camino para leer, por ejemplo /intrusión/estados/sistema.';
+
+  @override
+  String get s0d34dfcd38 => 'PUT para cambiar un estado, POST para acciones.';
+
+  @override
+  String get sf8c4f6beb9 => 'Camino tras / casa.';
+
+  @override
+  String get s5632684130 =>
+      'JSON, e.g. {\"@type\":\"powerSwitchState\",\"switchState\":\"ON\"}.';
+
+  @override
+  String s3addc3df37(String p0) {
+    return 'El controlador Bosch rechazó la conexión (no emparejado o un controlador diferente) – añadirlo de nuevo. ($p0)';
+  }
+
+  @override
+  String sc76c98702f(String p0) {
+    return '✓ El controlador Bosch Smart Home respondió: $p0 dispositivos. No se enviaron comandos.';
+  }
+
+  @override
+  String get sd9b6de0a6a => 'Otros';
+
+  @override
+  String get s4dbb677293 => 'inalcanzable';
+
+  @override
+  String get sd0368ed590 => 'objetivo';
+
+  @override
+  String get sec17dd81e8 => 'válvula';
+
+  @override
+  String get s0b2f7d7c80 => 'abierto';
+
+  @override
+  String get s7009587b85 => 'cerrado';
+
+  @override
+  String get saf40fb40b3 => 'detector de humos';
+
+  @override
+  String get s4d85116fcb => 'prueba';
+
+  @override
+  String get s54345410a1 => 'alarma de prueba';
+
+  @override
+  String get s67c7f22d99 => 'calidad del aire';
+
+  @override
+  String get s4c3bb5ea0a => 'detector de movimiento';
+
+  @override
+  String get sa6a56fa019 => 'filtración de agua';
+
+  @override
+  String get s7c51d00219 => 'cámara en';
+
+  @override
+  String get s51cd662d6c => 'modo de privacidad';
+
+  @override
+  String get scdc860be9e => 'notificaciones';
+
+  @override
+  String get s45c8904016 => 'luz';
+
+  @override
+  String get s416ac1459c => 'Alarma de intrusión';
+
+  @override
+  String get s607339c984 => 'Seguridad';
+
+  @override
+  String get sd1d17eca81 => 'estado + brazo/desarma + mute';
+
+  @override
+  String get s499d3aa6f1 => 'Alarma de agua';
+
+  @override
+  String get se57c2c4920 => 'sistema completo + mute';
+
+  @override
+  String get s2eb00b7c28 => 'Escenarios';
+
+  @override
+  String get s38df0b3b2b => 'Mute alarm';
+
+  @override
+  String get s1ff3dea39b => 'mute';
+
+  @override
+  String get s373ab1c97c => 'GOOD=Good;MEDIUM=Medium;BAD=Bad';
+
+  @override
+  String get s129317999a => 'pureza';
+
+  @override
+  String get sd0807cf61e => 'posición (100 = abierta)';
+
+  @override
+  String get sdb34e99ef6 => 'abierto';
+
+  @override
+  String get s7fc017b0f0 => 'cerca';
+
+  @override
+  String get sb02c7ee226 => 'Para';
+
+  @override
+  String get sefdd3f7ade => 'simulación de presencia';
+
+  @override
+  String get s16bc9ff328 => 'Bosch Smart Home';
+
+  @override
+  String get sde61b8a8a4 =>
+      'Controlador de casa inteligente Bosch (I o II): termostatos, válvulas de radiador, contactos de ventana / puerta, detectores de humo, enchufes, luces, persianas, detectores de movimiento, cámaras y la alarma de intrusión. Local, ninguna nube.';
+
+  @override
+  String get s3b276dcad6 =>
+      'En la aplicación Bosch Smart Home: Más → Sistema → Smart Home Controller → Red. O lista de dispositivos del router (\"shc...\").';
+
+  @override
+  String get sc7c8ed347e =>
+      'Escriba la contraseña del sistema Bosch Smart Home (el que creó al configurar el controlador). No se guarda. Después de tocar \"Connect\", presione el botón en la parte frontal del controlador.';
+
+  @override
+  String get s608bdcb257 =>
+      'Presione el botón en la parte frontal del controlador ahora: Controlador II – una prensa corta; el viejo controlador (I) – espere hasta que las luces parpadeen. Espere aquí.';
+
+  @override
   String get s1a73b397a1 => 'hijo de puta';
 
   @override
@@ -11273,9 +11539,6 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get s80ee7a25a9 =>
       'Presione el gran botón redondo en la parte superior del puente de Hue. Espere aquí – se conecta por sí mismo.';
-
-  @override
-  String get s4dbb677293 => 'inalcanzable';
 
   @override
   String get sf50732e8e8 => 'dimmable';
@@ -11397,16 +11660,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s29045a726e => 'Fuga de agua';
 
   @override
-  String get s0b2f7d7c80 => 'abierto';
-
-  @override
-  String get s7009587b85 => 'cerrado';
-
-  @override
   String get s3b35de231e => 'moción';
-
-  @override
-  String get sd9b6de0a6a => 'Otros';
 
   @override
   String se7520a3990(String p0) {
@@ -11524,6 +11778,147 @@ class AppLocalizationsEs extends AppLocalizations {
       'No Modbus TCP hub encontrado en el YAML (modbus: ... tipo: tcp, host: ...).';
 
   @override
+  String get s623040a63a =>
+      'Inactive=Inactive;Ready=Ready;DelayedStart=Delayed start;Run=Running;Pause=Paused;ActionRequired=Action required;Finished=Finished;Error=Error;Aborting=Aborting;Offline=Offline';
+
+  @override
+  String get s417e8a2ba4 => 'Home Connect (Bosch, Siemens, Neff, Gaggenau)';
+
+  @override
+  String get sb98e3e97cd =>
+      'ID de cliente de su propia aplicación Home Connect (developer.home-connect.com → Aplicaciones).';
+
+  @override
+  String get s6e05e7371c => 'Secreto del Cliente (si su aplicación tiene uno)';
+
+  @override
+  String get s8189ed86b7 =>
+      'Desde la misma página. Una aplicación de flujo de dispositivo generalmente funciona sin ella.';
+
+  @override
+  String get sda4f3457c2 => 'Sign-in token';
+
+  @override
+  String get sa134f8dd4c =>
+      'Viene de firmar en el asistente adicional. No cambies.';
+
+  @override
+  String get s560a9b1bab =>
+      'El simulador es para desarrolladores (electrodomésticos virtuales).';
+
+  @override
+  String get s5f614bf8c1 => 'Electrodomésticos reales';
+
+  @override
+  String get s3a5c09be5b => 'Home Connect simulator';
+
+  @override
+  String get s6dcd74c435 =>
+      'Probando solamente: reemplaza la dirección de Home Connect.';
+
+  @override
+  String get s9de7817d1f => 'Aplicar id (haId)';
+
+  @override
+  String get s1839d16bcc => 'El casco de Home Connect.';
+
+  @override
+  String get s6efa690ee3 => 'Clave';
+
+  @override
+  String get sf69f72bbac =>
+      'Estado o clave de configuración, por ejemplo BSH.Common.Status.DoorState.';
+
+  @override
+  String get s9d3115f45d => 'Qué hacer con el aparato.';
+
+  @override
+  String get s07c53aa821 => 'Iniciar el programa seleccionado';
+
+  @override
+  String get sf918a12f32 => 'Para el programa';
+
+  @override
+  String get s9384bc6f7e => 'Configuración';
+
+  @override
+  String get s6a395924ea => 'Configuración de la clave';
+
+  @override
+  String get sc58b6af7f5 => 'Only \"Setting\": the key.';
+
+  @override
+  String get s378202fe0b => 'Potencia: En / Off / Standby. Ajuste: el valor.';
+
+  @override
+  String get sb1baaa4494 => 'iniciar sesión en Inicio Conectar de nuevo';
+
+  @override
+  String get saa6e9765a0 =>
+      'iniciar sesión de nuevo (Connecciones → Inicio Conectar)';
+
+  @override
+  String get s7af74cd31e =>
+      'Inicio límite de velocidad de conexión alcanzado, espera';
+
+  @override
+  String get s3cdfd26282 => 'Inicio límite de velocidad de conexión alcanzado';
+
+  @override
+  String get sf8050ebbd9 => 'Seleccione un programa en el dispositivo primero';
+
+  @override
+  String get s4673002a7e =>
+      'No se permite el arranque remoto: encienda \"Remote Start\" en el dispositivo y cierre la puerta.';
+
+  @override
+  String scf29ca4038(String p0) {
+    return '✓ Home Connect respondió: $p0 electrodomésticos. No se enviaron órdenes.';
+  }
+
+  @override
+  String get see67742c70 => 'sin conexión';
+
+  @override
+  String get s77140ea0df => 'programa';
+
+  @override
+  String get s09166e1ea6 => 'tiempo restante';
+
+  @override
+  String get sfb70dcb933 => 'Avances';
+
+  @override
+  String get sabadf329bd => 'puerta';
+
+  @override
+  String get s7152ef5dbd => 'temperatura del horno';
+
+  @override
+  String get s68d00964af => 'temperatura de frigorífico';
+
+  @override
+  String get s824d365527 => 'Temperatura del congelador';
+
+  @override
+  String get sfc4a054c1a => 'alarma de puerta';
+
+  @override
+  String get s8253ea43e9 => 'inicio programa seleccionado';
+
+  @override
+  String get s1462af9000 =>
+      'Electrodomésticos a través de su cuenta Home Connect: lavadoras, secadoras, lavavajillas, hornos, neveras, cafeteras... Estado, hora izquierda, puerta, inicio y parada. Gratis.';
+
+  @override
+  String get sdc0ed8435b =>
+      'Gratis, una vez: inicia sesión en developer.home-connect.com (same e-mail as the Home Connect app) → Aplicaciones → Regístrate aplicación → OAuth Flow: \"Device Flow\", Inicio Conectar Cuenta de Usuario para Pruebas: tu e-mail. Copiar el ID de cliente aquí. Una nueva aplicación puede tomar 15–30 min para empezar a trabajar.';
+
+  @override
+  String get s625166a5a9 =>
+      'Sólo si su página de aplicación muestra un Secreto del Cliente.';
+
+  @override
   String get s0185672be7 =>
       'El usuario de la cámara (generalmente admin) y la contraseña que se establece al activarla.';
 
@@ -11562,6 +11957,14 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get s1a3c354399 =>
       'eWeLink app → cámara → Ajustes: encienda RTSP/ONVIF y establezca un usuario y contraseña para él (si la opción existe).';
+
+  @override
+  String get s0ae408f9a0 =>
+      'El usuario de la cámara (servicio, usuario o en vivo) y la contraseña que se establece en Configuration Manager o en la página web de la cámara.';
+
+  @override
+  String get s61c9b76fa1 =>
+      'Las cámaras Bosch Smart Home (Eyes, 360) no transmiten vídeo en la red de inicio – agreguelas con \"Bosch Smart Home\" (modo privado, notificaciones, luz).';
 
   @override
   String get s1c2786e15f =>
@@ -11724,10 +12127,4 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get s06444f278d => 'posición (100 = cerrada)';
-
-  @override
-  String get sdb34e99ef6 => 'abierto';
-
-  @override
-  String get s7fc017b0f0 => 'cerca';
 }

@@ -52,6 +52,12 @@ void main() {
     await tester.tap(find.byKey(const ValueKey('advanced-on')));
     await tester.pumpAndSettle();
     expect(st.config.advanced, isTrue);
+    // The brand grid grows with every release: scroll the gallery to the templates.
+    await tester.scrollUntilVisible(
+      find.text('Muu laite (oma asetus)'),
+      200,
+      scrollable: find.descendant(of: find.byType(CustomScrollView), matching: find.byType(Scrollable)).first,
+    );
     expect(find.text('Muu wifi-laite (HTTP)'), findsOneWidget);
     expect(find.text('Muu laite (oma asetus)'), findsOneWidget);
   });

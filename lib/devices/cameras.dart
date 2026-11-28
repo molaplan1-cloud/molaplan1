@@ -122,6 +122,23 @@ const cameraPresets = <CameraPreset>[
     setupFi: 'eWeLink-sovellus → kamera → Asetukset: laita RTSP/ONVIF päälle ja aseta sille käyttäjä ja salasana (jos valinta on).',
     setupEn: 'eWeLink app → camera → Settings: turn on RTSP/ONVIF and set a user and password for it (if the option exists).',
   ),
+  // R549 (t322u): Bosch professional IP cameras (Flexidome, Dinion, Autodome – now Bosch Video
+  // Systems / Keenfinity): ONVIF + RTSP. Bosch Smart Home Eyes / 360 have no local video – those
+  // are added with "Bosch Smart Home" (privacy mode, notifications, light).
+  CameraPreset(
+    id: 'bosch_ip',
+    name: 'Bosch IP-kamerat (Flexidome, Dinion, Autodome)',
+    keywords: ['bosch kamera', 'bosch camera', 'bosch ip', 'flexidome', 'dinion', 'autodome', 'keenfinity', 'bosch video'],
+    useOnvif: true,
+    defaultUser: 'service',
+    snapshot: '/snap.jpg',
+    rtsp: 'rtsp://{{host}}:554/rtsp_tunnel?inst=1&h26x=4',
+    rtspSub: 'rtsp://{{host}}:554/rtsp_tunnel?inst=2&h26x=4',
+    loginHelpFi: 'Kameran käyttäjä (service, user tai live) ja salasana, jonka asetit Configuration Managerissa tai kameran web-sivulla.',
+    loginHelpEn: 'The camera user (service, user or live) and the password you set in Configuration Manager or on the camera web page.',
+    setupFi: 'Bosch Smart Home -kamerat (Eyes, 360) eivät lähetä videota kotiverkkoon – lisää ne kohdasta "Bosch Smart Home" (yksityisyystila, ilmoitukset, valo).',
+    setupEn: 'Bosch Smart Home cameras (Eyes, 360) do not stream video on the home network – add them with "Bosch Smart Home" (privacy mode, notifications, light).',
+  ),
   CameraPreset(
     id: 'onvif',
     name: 'ONVIF',

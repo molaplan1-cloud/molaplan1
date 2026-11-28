@@ -17,6 +17,7 @@ import '../models/models.dart';
 import 'aircloud.dart';
 import 'daikin.dart';
 import 'gshp_modbus.dart';
+import 'km200.dart';
 import 'hp_model.dart';
 import 'melcloud.dart';
 import 'mhi_wfrac.dart';
@@ -34,6 +35,7 @@ const hpBrands = <String, (String, String)>{
   'aircloud': ('Hitachi (airCloud Go)', 'Hitachi (airCloud Go)'),
   'myuplink': ('NIBE (myUplink-pilvi)', 'NIBE (myUplink cloud)'),
   'gshp_modbus': ('NIBE / Thermia (Modbus TCP, paikallinen)', 'NIBE / Thermia (Modbus TCP, local)'),
+  'km200': ('Bosch / Buderus (KM200-yhdyskäytävä, paikallinen)', 'Bosch / Buderus (KM200 gateway, local)'),
 };
 
 /// Test hook: backends get this client instead of a real one.
@@ -53,6 +55,7 @@ HpBackend createHpBackend(Map<String, dynamic> s) {
     'aircloud' => AirCloudBackend(s, client),
     'myuplink' => MyUplinkBackend(s, client),
     'gshp_modbus' => GshpModbusBackend(s, client),
+    'km200' => Km200Backend(s, client),
     _ => throw DriverException('Heat pump: unknown brand "$brand"'),
   };
 }
@@ -79,7 +82,7 @@ class HeatPumpDriver extends Driver {
         'Merkki',
         'Brand',
         kind: FieldKind.choice,
-        options: ['daikin', 'mhi', 'melcloud', 'toshiba', 'smartthings', 'aircloud', 'myuplink', 'gshp_modbus'],
+        options: ['daikin', 'mhi', 'melcloud', 'toshiba', 'smartthings', 'aircloud', 'myuplink', 'gshp_modbus', 'km200'],
         optionLabels: hpBrands,
         defaultValue: 'daikin',
         helpFi: 'Valmistaja ja yhteystapa. Paikalliset toimivat ilman pilveä.',
@@ -152,6 +155,32 @@ class HeatPumpDriver extends Driver {
         advanced: true,
         helpFi: 'Oman sovelluksen Client Secret osoitteesta dev.myuplink.com.',
         helpEn: 'Client Secret of your own app at dev.myuplink.com.',
+      ),
+      FieldSpec(
+        'gatewayPassword',
+        'Yhdyskäytävän salasana (KM200)',
+        'Gateway password (KM200)',
+        kind: FieldKind.secret,
+        advanced: true,
+        helpFi: 'Bosch/Buderus KM-yhdyskäytävän tarrassa tai lämmityslaitteen valikossa (Info → Internet → Kirjautumistiedot).',
+        helpEn: 'On the Bosch/Buderus KM gateway sticker or in the boiler menu (Info → Internet → Login data).',
+      ),
+      FieldSpec(
+        'privatePassword',
+        'Oma salasana (KM200)',
+        'Private password (KM200)',
+        kind: FieldKind.secret,
+        advanced: true,
+        helpFi: 'Salasana, jonka asetit valmistajan sovelluksessa (MyDevice / EasyControl / Buderus).',
+        helpEn: "The password you set in the maker's app (MyDevice / EasyControl / Buderus).",
+      ),
+      FieldSpec(
+        'salt',
+        'Salaus-suola (KM200, vain jos valmistaja käyttää omaa)',
+        'Salt (KM200, only if the maker uses its own)',
+        advanced: true,
+        helpFi: 'Jätä tyhjäksi: käytetään Boschin/Buderuksen julkaistua oletusta.',
+        helpEn: "Leave empty to use Bosch/Buderus' published default.",
       ),
       FieldSpec(
         'profile',
@@ -437,6 +466,7 @@ List<TileConfig> heatPumpTiles(
     'degree_minutes': ('Astetminuutit', 'Degree minutes'),
     'compressor_hz': ('Kompressori', 'Compressor'),
     'energy_kwh': ('Energia', 'Energy'),
+    'modulation': ('Polttimen teho', 'Burner modulation'),
   };
   final keys = [
     if (st.outdoor != null) 'outdoor',
@@ -453,9 +483,10 @@ List<TileConfig> heatPumpTiles(
           'compressor_hz' => 'Hz',
           'energy_kwh' => 'kWh',
           'degree_minutes' => '',
+          'modulation' => '%',
           _ => '°C',
         },
-        decimals: k == 'degree_minutes' || k == 'compressor_hz' ? 0 : 1,
+        decimals: k == 'degree_minutes' || k == 'compressor_hz' || k == 'modulation' ? 0 : 1,
         connectionId: connId,
         pollSeconds: 60,
         read: {'hp': 'value', 'key': k, ...unitSpec},

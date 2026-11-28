@@ -21,9 +21,15 @@ mock API built to the documentation (`test/heatpumps_*_test.dart`). Please repor
 | NIBE F-series + MODBUS 40 | Modbus via RS485→TCP gateway; register numbers marked *verify* | Local | ModbusManager numbering (not an official doc) | Simulator (map not verified) |
 | Any NIBE | Import the pump's own register export (CSV) on the connection page | Local | The pump's export | CSV parser tests |
 | Thermia Genesis (Atlas, Calibra, Diplomat Inverter, Mega) | Modbus TCP, Thermia doc 17.1; comfort wheel + on/off (op mode) | Local | Thermia document | Modbus simulator |
+| Bosch / Buderus / Junkers / IVT with a KM50/KM100/KM200/KM300 gateway (EMS bus boilers and heat pumps) | HTTP on port 80, AES-256-ECB body (key = MD5(gateway password + salt) ‖ MD5(salt + own password)); heating circuits, room/outdoor/supply/return/hot water, modulation, operation mode auto/manual, room setpoint | Local | Community-documented (KM200 web-km200 / km200 notes) | Mock gateway, AES-256 FIPS-197 vectors, published key example |
 | Any brand without Wi-Fi | IR blaster (Tasmota IRhvac / ESPHome, e.g. Athom IR & RF): full state each time; **Opeta uusi komento** learns extra remote buttons (IR and RF433) | Local | Existing (R054, R192) | Existing IR tests |
 
 ## Not built yet (and why)
+- **Bosch EasyControl CT200, HomeCom Easy, K30/K40 RF (Bosch heating cloud, SingleKey ID)** (t322u):
+  Bosch publishes no public API for these. The only route is imitating Bosch's own app login
+  (SingleKey ID / Pointt cloud), which is against the terms of use and breaks when Bosch changes
+  the app. Use Home Assistant (optional HA bridge) – or the KM200 integration if the boiler has a
+  KM50/100/200/300 gateway (MyDevice / EasyControl app "Gateway" with a printed login password).
 - **Thermia Online** (cloud): unofficial API behind a changing Azure B2C login; the GPL library
   can't be reused. Use Modbus TCP (Genesis) instead.
 - **Daikin Onecta / new BRP069C firmware**: the cloud needs a Daikin developer agreement and the

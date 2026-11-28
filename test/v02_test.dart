@@ -290,7 +290,16 @@ void main() {
       expect(find.byKey(const ValueKey('brand-hue')), findsOneWidget);
       // Simple mode: technical templates (HTTP, MQTT…) are hidden; brands and devices only.
       expect(find.text('Muu wifi-laite (HTTP)'), findsNothing);
-      await tester.scrollUntilVisible(find.text('Tasmota-laite'), 200, scrollable: find.byType(Scrollable).last);
+      // The gallery's own scroll view (not the search field's): the brand grid grows with every release.
+      await tester.scrollUntilVisible(
+        find.text('Tasmota-laite'),
+        200,
+        scrollable: find.descendant(of: find.byType(CustomScrollView), matching: find.byType(Scrollable)).first,
+      );
+      await tester.pumpAndSettle();
+      // Centre the card so the tap does not land under a bar at the screen edge.
+      await Scrollable.ensureVisible(tester.element(find.text('Tasmota-laite')), alignment: 0.5);
+      await tester.pumpAndSettle();
       await tester.tap(find.text('Tasmota-laite'));
       await tester.pumpAndSettle();
       // only a few simple fields
@@ -334,7 +343,11 @@ void main() {
       await tester.tap(find.text('Asetukset'));
       await tester.pumpAndSettle();
       // t162u: Ulkoasu made the page longer.
-      await tester.scrollUntilVisible(find.byKey(const ValueKey('settings-onboarding')), 200, scrollable: find.byType(Scrollable).first);
+      await tester.scrollUntilVisible(
+        find.byKey(const ValueKey('settings-onboarding')),
+        200,
+        scrollable: find.byType(Scrollable).first,
+      );
       await tester.tap(find.byKey(const ValueKey('settings-onboarding')));
       await tester.pumpAndSettle();
       expect(find.text('Tervetuloa Molaplaniin'), findsOneWidget);

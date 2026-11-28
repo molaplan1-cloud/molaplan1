@@ -180,6 +180,30 @@ abstract class DeviceProvider {
   Future<Map<String, String>> pair(AddContext ctx, Candidate c, {void Function(int secondsLeft)? tick}) async =>
       const {};
 
+  /// R541 (t322u): button pairing that also needs a password typed first (Bosch Smart Home
+  /// system password) or shows a code to the user while waiting (Home Connect device flow,
+  /// [message]). [creds] has what the user typed ('password' + cloud fields). Default: [pair].
+  Future<Map<String, String>> pairWith(
+    AddContext ctx,
+    Candidate c,
+    Map<String, String> creds, {
+    void Function(int secondsLeft)? tick,
+    void Function(String fi, String en)? message,
+  }) => pair(ctx, c, tick: tick);
+
+  /// The password must be typed before the button is pressed ([pairWith] gets it).
+  bool get pairNeedsPassword => false;
+
+  /// Replaces the generic "the device asks for a password" text (empty = generic).
+  String get passwordHelpFi => '';
+  String get passwordHelpEn => '';
+
+  /// True when [creds] already hold the result of pairing (no button press needed).
+  bool isPaired(Map<String, String> creds) => (creds['token'] ?? '').isNotEmpty;
+
+  /// Drops the pairing result so the next connect pairs again.
+  void forgetPairing(Map<String, String> creds) => creds.remove('token');
+
   /// Connects (with [creds]) and lists what can be added.
   Future<Connected> connect(AddContext ctx, Candidate c, Map<String, String> creds);
 

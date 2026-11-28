@@ -1,6 +1,8 @@
 import 'cameras.dart';
 import '../heatpumps/hp_providers.dart';
+import 'bosch_shc.dart';
 import 'dirigera.dart';
+import 'home_connect.dart';
 import 'ewelink_lan.dart';
 import 'hue.dart';
 import 'light_hubs.dart';
@@ -24,7 +26,9 @@ final deviceProviders = <DeviceProvider>[
   CameraChooser(),
   HueProvider(),
   DirigeraProvider(),
+  BoschShcProvider(),
   ShellyCloudProvider(),
+  HomeConnectProvider(),
   HeatPumpChooser(),
   TuyaKeyProvider(),
   SolarChooser(),

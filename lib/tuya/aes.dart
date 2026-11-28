@@ -42,49 +42,63 @@ int _mul(int a, int b) {
   return r;
 }
 
-/// One AES-128 key schedule.
+/// One AES key schedule. Named for its first user (Tuya, AES-128); also takes 24- and 32-byte
+/// keys (AES-192 / AES-256, FIPS-197 §5.2) – used by the Buderus/Bosch KM200 gateways.
 class Aes128 {
   Aes128(List<int> key) {
-    if (key.length != 16) throw ArgumentError('AES-128 key must be 16 bytes (got ${key.length})');
+    if (key.length != 16 && key.length != 24 && key.length != 32) {
+      throw ArgumentError('AES key must be 16, 24 or 32 bytes (got ${key.length})');
+    }
     _init();
-    _rk.setRange(0, 16, key);
+    final nk = key.length ~/ 4;
+    _nr = nk + 6;
+    _rk = Uint8List(16 * (_nr + 1));
+    _rk.setRange(0, key.length, key);
     var rcon = 1;
-    for (var i = 16; i < 176; i += 4) {
+    for (var w = nk; w < 4 * (_nr + 1); w++) {
+      final i = w * 4;
       var t0 = _rk[i - 4], t1 = _rk[i - 3], t2 = _rk[i - 2], t3 = _rk[i - 1];
-      if (i % 16 == 0) {
+      if (w % nk == 0) {
         final tmp = t0;
         t0 = _sbox[t1] ^ rcon;
         t1 = _sbox[t2];
         t2 = _sbox[t3];
         t3 = _sbox[tmp];
         rcon = _xt(rcon);
+      } else if (nk > 6 && w % nk == 4) {
+        t0 = _sbox[t0];
+        t1 = _sbox[t1];
+        t2 = _sbox[t2];
+        t3 = _sbox[t3];
       }
-      _rk[i] = _rk[i - 16] ^ t0;
-      _rk[i + 1] = _rk[i - 15] ^ t1;
-      _rk[i + 2] = _rk[i - 14] ^ t2;
-      _rk[i + 3] = _rk[i - 13] ^ t3;
+      final b = (w - nk) * 4;
+      _rk[i] = _rk[b] ^ t0;
+      _rk[i + 1] = _rk[b + 1] ^ t1;
+      _rk[i + 2] = _rk[b + 2] ^ t2;
+      _rk[i + 3] = _rk[b + 3] ^ t3;
     }
   }
 
-  final _rk = Uint8List(176);
+  late final int _nr;
+  late final Uint8List _rk;
 
   Uint8List encryptBlock(List<int> input, [int off = 0]) {
     final s = Uint8List.fromList(input.sublist(off, off + 16));
     _addKey(s, 0);
-    for (var r = 1; r < 10; r++) {
+    for (var r = 1; r < _nr; r++) {
       _subShift(s);
       _mix(s);
       _addKey(s, r);
     }
     _subShift(s);
-    _addKey(s, 10);
+    _addKey(s, _nr);
     return s;
   }
 
   Uint8List decryptBlock(List<int> input, [int off = 0]) {
     final s = Uint8List.fromList(input.sublist(off, off + 16));
-    _addKey(s, 10);
-    for (var r = 9; r > 0; r--) {
+    _addKey(s, _nr);
+    for (var r = _nr - 1; r > 0; r--) {
       _invSubShift(s);
       _addKey(s, r);
       _invMix(s);

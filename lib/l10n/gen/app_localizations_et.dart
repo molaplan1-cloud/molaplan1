@@ -7302,7 +7302,10 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s9b9b0d01a2 => ' (valikuline)';
 
   @override
-  String get s0a7134d0e3 => 'Vajuta nüüd nuppu';
+  String get s7acc8096d2 => 'Kirjutage alla ja kinnitage';
+
+  @override
+  String get sa2ffc9d3a6 => 'Ava sisselogimislehekülg';
 
   @override
   String s43118959d5(String p0) {
@@ -7310,7 +7313,13 @@ class AppLocalizationsEt extends AppLocalizations {
   }
 
   @override
+  String get s0a7134d0e3 => 'Vajuta nüüd nuppu';
+
+  @override
   String get s46c87a553f => 'Registreeru kaamerasse';
+
+  @override
+  String get sf11edd7621 => 'Süsteemi parool';
 
   @override
   String get se4095d7d95 => 'Seadme parool';
@@ -10595,6 +10604,25 @@ class AppLocalizationsEt extends AppLocalizations {
   String get scab35073e8 => 'Pumba IP-aadress (kuva või ruuter).';
 
   @override
+  String get s6ad1f33b9a => 'Bosch / Buderus Küte (KM200 värav, kohalik)';
+
+  @override
+  String get sd3415a288c =>
+      'Logamaatilise veebiga KM50/KM100/KM200/KM300 värav (Bosch, Buderus, Junkers, IVT) katlad ja soojuspumbad.';
+
+  @override
+  String get s87ab70204b =>
+      'KM gateway IP ruuteri seadmete loendist (sageli nimega \"KM200\" või selle seeria).';
+
+  @override
+  String get s85e666e6d0 =>
+      'Väravakleebis või katlamenüüs: Info → Internet → Sisselogimisandmed.';
+
+  @override
+  String get s7af1e0507c =>
+      'Parool, mille määrasite tegija rakenduses (MyDevice, EasyControl või Buderuse rakendus).';
+
+  @override
   String get s5ddd513689 =>
       'Daikin, Mitsubishi, Toshiba, Samsung, Hitachi, NIBE, Thermia – või mõni muu IR-puldiga.';
 
@@ -10631,6 +10659,9 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get se9b4e55058 => 'NIBE / Thermia (Modbus TCP, kohalik)';
+
+  @override
+  String get s16f7124e42 => 'Bosch / Buderus (KM200 värav, kohalik)';
 
   @override
   String get sddd6b1d42e => 'Soojuspump (sisseehitatud integreerimine)';
@@ -10690,6 +10721,28 @@ class AppLocalizationsEt extends AppLocalizations {
   @override
   String get s332f9bc1a1 =>
       'Oma rakenduse kliendisaladus aadressil dev.myuplink.com.';
+
+  @override
+  String get s911c662d27 => 'Värava parool (KM200)';
+
+  @override
+  String get s52d4fcbe67 =>
+      'Bosch/Buderus KM gateway kleebisel või katlamenüüs (Info → Internet → Sisselogimisandmed).';
+
+  @override
+  String get se7829f1ac5 => 'Privaatne parool (KM200)';
+
+  @override
+  String get sc6b9b9dafe =>
+      'Parool, mille määrasite tegija rakenduses (MyDevice / EasyControl / Buderus).';
+
+  @override
+  String get s26eefc92ad =>
+      'Sool (KM200, ainult siis, kui valmistaja kasutab enda oma)';
+
+  @override
+  String get s333668bcad =>
+      'Jätta tühjaks, et kasutada Bosch/Buderus avaldatud vaikeväärtusi.';
 
   @override
   String get sd1d4b22fc6 => 'Registrikaart (Modbus)';
@@ -10792,6 +10845,37 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get s3ca74f3ef8 => 'Kompressor';
+
+  @override
+  String get s79f91561d9 => 'Põleti modulatsioon';
+
+  @override
+  String get sc272460629 => 'Sisestage värava parool ja oma parool';
+
+  @override
+  String get s684b127b9d =>
+      'Küttevärav vastas, kuid andmeid ei saanud lahti krüptida - kontrollige mõlemat parooli.';
+
+  @override
+  String get sbe369d8548 => 'Küttevärav ei võimalda seda väärtust muuta';
+
+  @override
+  String get s1222da1433 => 'Kütteahel';
+
+  @override
+  String get s131d0eb266 => '/system/sensors/temperatures/supply_t1';
+
+  @override
+  String get sac20961d10 => '/system/sensors/temperatures/return';
+
+  @override
+  String get s2a35dc0822 => '/dhwCircuits/dhw1/actualTemp';
+
+  @override
+  String get s85a3e678f3 => '/heatSources/actualModulation';
+
+  @override
+  String get s4159d585e2 => 'kütteahel(id)';
 
   @override
   String get s31ec8d716e =>
@@ -11044,6 +11128,185 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s50c459fbff => 'Häire';
 
   @override
+  String get s29c5b59ddb => 'Boschi nutikas kodukontroller';
+
+  @override
+  String get sfb05679ced => 'Kontrolleri IP- aadress';
+
+  @override
+  String get sd65da878fe =>
+      'Kontrolleri aadress (rakendus: More → System → Controller või ruuteri seadmete loend).';
+
+  @override
+  String get s6f7b5bb729 => 'Kliendisertifikaat (PEM)';
+
+  @override
+  String get sd21135f561 =>
+      'Loodud Molaplani poolt paaritamise ajal. Ei muudeta.';
+
+  @override
+  String get s2bc685129f => 'Kliendivõti (PEM)';
+
+  @override
+  String get sd5bfa709a3 => 'Kontrollija sõrmejäljetunnistus';
+
+  @override
+  String get s8b133a2da5 =>
+      'Salvestatakse paaristamisel: Molaplan räägib ainult selle kontrolleriga. Tühi = aktsepteerib esimest.';
+
+  @override
+  String get s46f9aaf504 => 'Boschi seadme ID.';
+
+  @override
+  String get s84d11d45ce => 'Nt TemperatureLevel, ShutterContact, PowerSwitch.';
+
+  @override
+  String get s4dabf0e462 => 'Field';
+
+  @override
+  String get s9a1eb4b849 =>
+      'Kasutusoleku väli, nt temperatuur, väärtus, switchState.';
+
+  @override
+  String get se83f02e6bd => 'Tee (muu)';
+
+  @override
+  String get s3a985d4cc3 =>
+      'Teine lugemise tee, nt /sissetung/seisundid/süsteem.';
+
+  @override
+  String get s0d34dfcd38 => 'PUT muuta riiki, POST tegudeks.';
+
+  @override
+  String get sf8c4f6beb9 => 'Tee pärast /smarthome\'i.';
+
+  @override
+  String get s5632684130 =>
+      'JSON, e.g. {\"@type\":\"powerSwitchState\",\"switchState\":\"ON\"}.';
+
+  @override
+  String s3addc3df37(String p0) {
+    return 'Boschi kontroller keeldus ühendusest (mitte paaris või muu kontroller) – lisage see uuesti. ($p0)';
+  }
+
+  @override
+  String sc76c98702f(String p0) {
+    return '✓ Boschi nutika kodu kontroller vastas: $p0 seadmed. Käske ei saadetud.';
+  }
+
+  @override
+  String get sd9b6de0a6a => 'Teised';
+
+  @override
+  String get s4dbb677293 => 'kättesaamatu';
+
+  @override
+  String get sd0368ed590 => 'sihtmärk';
+
+  @override
+  String get sec17dd81e8 => 'ventiili';
+
+  @override
+  String get s0b2f7d7c80 => 'avatud';
+
+  @override
+  String get s7009587b85 => 'suletud';
+
+  @override
+  String get saf40fb40b3 => 'suitsuandur';
+
+  @override
+  String get s4d85116fcb => 'testi';
+
+  @override
+  String get s54345410a1 => 'katsealarm';
+
+  @override
+  String get s67c7f22d99 => 'õhukvaliteet';
+
+  @override
+  String get s4c3bb5ea0a => 'liikumisandur';
+
+  @override
+  String get sa6a56fa019 => 'veeleke';
+
+  @override
+  String get s7c51d00219 => 'kaamera';
+
+  @override
+  String get s51cd662d6c => 'privaatsusrežiim';
+
+  @override
+  String get scdc860be9e => 'teateid';
+
+  @override
+  String get s45c8904016 => 'valgus';
+
+  @override
+  String get s416ac1459c => 'Sissetungihäire';
+
+  @override
+  String get s607339c984 => 'Turvalisus';
+
+  @override
+  String get sd1d17eca81 => 'olek + käsivars/relvastus + tumm';
+
+  @override
+  String get s499d3aa6f1 => 'Veealarm';
+
+  @override
+  String get se57c2c4920 => 'kogu süsteem + tumm';
+
+  @override
+  String get s2eb00b7c28 => 'Stsenaariumid';
+
+  @override
+  String get s38df0b3b2b => 'Tumm alarm';
+
+  @override
+  String get s1ff3dea39b => 'tumm';
+
+  @override
+  String get s373ab1c97c => 'GOOD=Good;MEDIUM=Medium;BAD=Bad';
+
+  @override
+  String get s129317999a => 'puhtuse';
+
+  @override
+  String get sd0807cf61e => 'asukoht (100 = avatud)';
+
+  @override
+  String get sdb34e99ef6 => 'avatud';
+
+  @override
+  String get s7fc017b0f0 => 'lähedalt';
+
+  @override
+  String get sb02c7ee226 => 'peatu';
+
+  @override
+  String get sefdd3f7ade => 'Kohaloleku simulatsioon';
+
+  @override
+  String get s16bc9ff328 => 'Bosch Smart Home';
+
+  @override
+  String get sde61b8a8a4 =>
+      'Boschi nutikas kodukontroller (I või II): termostaadid, radiaatori ventiilid, akna-uksekontaktid, suitsuandurid, pistikud, tuled, aknaluugid, liikumisandurid, kaamerad ja sissetungimisalarm.';
+
+  @override
+  String get s3b276dcad6 =>
+      'Bosch Smart Home rakenduses: More → System → Smart Home Controller → Network. või ruuteri seadmete loendis (\"shc...\").';
+
+  @override
+  String get sc7c8ed347e =>
+      'Kirjuta Bosch Smart Home süsteemi parool (see, mille lõid kontrolleri seadistamisel). Seda ei salvestata. Pärast \"Ühenda\" klõpsamist vajuta kontrolleri esiküljel asuvale nupule.';
+
+  @override
+  String get s608bdcb257 =>
+      'Klõpsa nüüd kontrolleri esiküljel asuvale nupule: kontroller II – lühike vajutamine; vana kontroller (I) – hoia, kuni tuled vilguvad. Oota siin.';
+
+  @override
   String get s1a73b397a1 => 'sonoff';
 
   @override
@@ -11158,9 +11421,6 @@ class AppLocalizationsEt extends AppLocalizations {
   @override
   String get s80ee7a25a9 =>
       'Klõpsa kohe Hue silla peal asuvale suurele ümmargusele nupule. Oota siin – see ühendub iseenesest.';
-
-  @override
-  String get s4dbb677293 => 'kättesaamatu';
 
   @override
   String get sf50732e8e8 => 'hämardada';
@@ -11282,16 +11542,7 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s29045a726e => 'Veeleke';
 
   @override
-  String get s0b2f7d7c80 => 'avatud';
-
-  @override
-  String get s7009587b85 => 'suletud';
-
-  @override
   String get s3b35de231e => 'liikumise';
-
-  @override
-  String get sd9b6de0a6a => 'Teised';
 
   @override
   String se7520a3990(String p0) {
@@ -11409,6 +11660,145 @@ class AppLocalizationsEt extends AppLocalizations {
       'YAML-is ei leitud Modbus TCP-jaoturit (modbus: ... tüüp: tcp, host: ...).';
 
   @override
+  String get s623040a63a =>
+      'Inactive=Inactive;Ready=Ready;DelayedStart=Delayed start;Run=Running;Pause=Paused;ActionRequired=Action required;Finished=Finished;Error=Error;Aborting=Aborting;Offline=Offline';
+
+  @override
+  String get s417e8a2ba4 => 'Home Connect (Bosch, Siemens, Neff, Gaggenau)';
+
+  @override
+  String get sb98e3e97cd =>
+      'Teie koduühenduse rakenduse klienditunnus (developer.home-connect.com → Rakendused).';
+
+  @override
+  String get s6e05e7371c => 'Kliendisaladus (kui teie rakendusel on üks)';
+
+  @override
+  String get s8189ed86b7 =>
+      'Samalt leheküljelt. Seadmevoo rakendus töötab tavaliselt ilma selleta.';
+
+  @override
+  String get sda4f3457c2 => 'Sisselogimise märk';
+
+  @override
+  String get sa134f8dd4c =>
+      'See tuleb sisselogimisest lisamisnõustajas. Seda ei muudeta.';
+
+  @override
+  String get s560a9b1bab =>
+      'Simulaator on mõeldud arendajatele (virtuaalsed seadmed).';
+
+  @override
+  String get s5f614bf8c1 => 'Reaalsed seadmed';
+
+  @override
+  String get s3a5c09be5b => 'Home Connect simulaatorName';
+
+  @override
+  String get s6dcd74c435 => 'Ainult testimine: asendab Home Connecti aadressi.';
+
+  @override
+  String get s9de7817d1f => 'Seadme ID (haId)';
+
+  @override
+  String get s1839d16bcc => 'Home Connect hald.';
+
+  @override
+  String get s6efa690ee3 => 'Võti';
+
+  @override
+  String get sf69f72bbac =>
+      'Olek või seadistusklahv, nt BSH.Common.Status.DoorState.';
+
+  @override
+  String get s9d3115f45d => 'Mida teha seadmega.';
+
+  @override
+  String get s07c53aa821 => 'Valitud programmi käivitamine';
+
+  @override
+  String get sf918a12f32 => 'Peata programm';
+
+  @override
+  String get s9384bc6f7e => 'Seadistamine';
+
+  @override
+  String get s6a395924ea => 'Võtme seadistamine';
+
+  @override
+  String get sc58b6af7f5 => 'Only \"Setting\": the key.';
+
+  @override
+  String get s378202fe0b =>
+      'Võimsus: sees / väljas / ooteaeg. Seadistamine: väärtus.';
+
+  @override
+  String get sb1baaa4494 => 'Home Connect uuesti sisse logida';
+
+  @override
+  String get saa6e9765a0 => 'Logi uuesti sisse (Ühendused → Home Connect)';
+
+  @override
+  String get s7af74cd31e => 'Home Connecti kiiruspiirang on saavutatud, oota';
+
+  @override
+  String get s3cdfd26282 => 'Home Connecti kiirus saavutati';
+
+  @override
+  String get sf8050ebbd9 => 'Esmalt vali seadmes programm';
+
+  @override
+  String get s4673002a7e =>
+      'Kaugkäivitus ei ole lubatud: lülitage seadmel sisse \"Kaugkäivitus\" ja sulgege uks.';
+
+  @override
+  String scf29ca4038(String p0) {
+    return '✓ Home Connect vastas: $p0 seadmed. Käske ei saadetud.';
+  }
+
+  @override
+  String get see67742c70 => 'võrguühenduseta';
+
+  @override
+  String get s77140ea0df => 'programm';
+
+  @override
+  String get s09166e1ea6 => 'jäänud';
+
+  @override
+  String get sfb70dcb933 => 'progressi';
+
+  @override
+  String get sabadf329bd => 'ukse';
+
+  @override
+  String get s7152ef5dbd => 'ahju temperatuur';
+
+  @override
+  String get s68d00964af => 'külmiku temperatuur';
+
+  @override
+  String get s824d365527 => 'sügavkülmiku temperatuur';
+
+  @override
+  String get sfc4a054c1a => 'uksehäire';
+
+  @override
+  String get s8253ea43e9 => 'käivita valitud programm';
+
+  @override
+  String get s1462af9000 =>
+      'Kodumasinad Home Connecti konto kaudu: seibid, kuivatid, nõudepesumasinad, ahjud, külmikud, kohvimasinad... riik, aeg jäänud, uks, start ja peatus.';
+
+  @override
+  String get sdc0ed8435b =>
+      'Tasuta, üks kord: logi sisse aadressil developer.home-connect.com (sama e-post nagu rakenduses Home Connect) → Applications → Register application → OAuth Flow: \"Seadmevoog\", Home Connecti kasutajakonto testimiseks: sinu e-post. Kopeeri kliendi ID siia. Uus rakendus võib tööle asumiseks võtta 15–30 minutit.';
+
+  @override
+  String get s625166a5a9 =>
+      'Ainult siis, kui teie taotlusleht näitab kliendisaladust.';
+
+  @override
   String get s0185672be7 =>
       'Kaamera kasutaja (tavaliselt admin) ja selle aktiveerimisel määratud parool.';
 
@@ -11447,6 +11837,14 @@ class AppLocalizationsEt extends AppLocalizations {
   @override
   String get s1a3c354399 =>
       'eWeLink app → camera → Seaded: lülitage RTSP/ONVIF sisse ja määrake sellele kasutaja ja parool (kui see on olemas).';
+
+  @override
+  String get s0ae408f9a0 =>
+      'Kaamera kasutaja (teenus, kasutaja või reaalajas) ja parool, mille olete määranud Konfiguratsioonihalduris või kaamera veebilehel.';
+
+  @override
+  String get s61c9b76fa1 =>
+      'Bosch Smart Home kaamerad (Eyes, 360) ei voogesita videot koduvõrgus - lisage need \"Bosch Smart Home\" (privaatsusrežiim, teavitused, valgus).';
 
   @override
   String get s1c2786e15f =>
@@ -11607,10 +12005,4 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get s06444f278d => 'asukoht (100 = suletud)';
-
-  @override
-  String get sdb34e99ef6 => 'avatud';
-
-  @override
-  String get s7fc017b0f0 => 'lähedalt';
 }

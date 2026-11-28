@@ -4,6 +4,8 @@ import '../energy/solar_driver.dart';
 import '../ev/ev_driver.dart';
 import '../media/media_driver.dart';
 import '../devices/ewelink_lan.dart';
+import '../devices/bosch_shc.dart';
+import '../devices/home_connect.dart';
 import '../models/models.dart';
 import '../tuya/tuya_driver.dart';
 import 'airthings.dart';
@@ -44,6 +46,8 @@ const driverDescriptors = <DriverDescriptor>[
   EwelinkLanDriver.descriptor,
   TuyaDriver.descriptor,
   ZwaveJsDriver.descriptor,
+  BoschShcDriver.descriptor,
+  HomeConnectDriver.descriptor,
 ];
 
 DriverDescriptor descriptorFor(String type) =>

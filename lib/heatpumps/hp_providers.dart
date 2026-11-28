@@ -61,7 +61,7 @@ class HeatPumpProvider extends DeviceProvider {
   @override
   PairMode get pairMode => kind == ProviderKind.cloud ? PairMode.cloudKey : PairMode.none;
 
-  static const _secretKeys = {'password', 'token', 'key', 'clientSecret'};
+  static const _secretKeys = {'password', 'token', 'key', 'clientSecret', 'gatewayPassword', 'privatePassword'};
 
   @override
   Candidate? fromMdns(String address, String label, String service) =>
@@ -387,6 +387,40 @@ final heatPumpProviders = <HeatPumpProvider>[
     addressHelpFi: 'Pumpun IP-osoite (näytöltä tai reitittimestä).',
     addressHelpEn: 'The pump\'s IP address (display or router).',
   ),
+  // R545 (t322u): Bosch / Buderus / Junkers / IVT heating with a KM50/KM100/KM200/KM300 gateway.
+  HeatPumpProvider(
+    id: 'hp_bosch_km200',
+    brand: 'km200',
+    documented: false,
+    fi: 'Bosch / Buderus lämmitys (KM200-yhdyskäytävä, paikallinen)',
+    en: 'Bosch / Buderus heating (KM200 gateway, local)',
+    descFi:
+        'Kaasu-/öljykattilat ja lämpöpumput, joissa on Logamatic web KM50/KM100/KM200/KM300 -yhdyskäytävä (Bosch, Buderus, Junkers, IVT). Paikallinen, ei pilveä eikä maksuja.',
+    descEn:
+        'Boilers and heat pumps with a Logamatic web KM50/KM100/KM200/KM300 gateway (Bosch, Buderus, Junkers, IVT). Local, no cloud, no fees.',
+    keywords: const ['bosch', 'buderus', 'junkers', 'ivt', 'km200', 'km100', 'km50', 'km300', 'logamatic', 'easycontrol', 'mydevice', 'kattila', 'boiler', 'lämmitys'],
+    addressHelpFi: 'KM-yhdyskäytävän IP-osoite reitittimen laitelistasta (nimi usein "KM200" tai sarjanumero).',
+    addressHelpEn: "The KM gateway's IP from your router's device list (often named \"KM200\" or its serial).",
+    credFields: const [
+      CredField(
+        'gatewayPassword',
+        'Yhdyskäytävän salasana',
+        'Gateway password',
+        secret: true,
+        hint: 'xxxx-xxxx-xxxx-xxxx',
+        helpFi: 'Yhdyskäytävän tarrassa tai lämmityslaitteen valikossa: Info → Internet → Kirjautumistiedot.',
+        helpEn: 'On the gateway sticker or in the boiler menu: Info → Internet → Login data.',
+      ),
+      CredField(
+        'privatePassword',
+        'Oma salasana',
+        'Private password',
+        secret: true,
+        helpFi: 'Salasana, jonka asetit valmistajan sovelluksessa (MyDevice, EasyControl tai Buderus-sovellus).',
+        helpEn: "The password you set in the maker's app (MyDevice, EasyControl or the Buderus app).",
+      ),
+    ],
+  ),
 ];
 
 /// One gallery card for all heat pumps; picking it opens the brand list.
@@ -440,6 +474,12 @@ class HpNotYet {
 }
 
 const heatPumpNotYet = <HpNotYet>[
+  HpNotYet(
+    'Bosch EasyControl CT200, HomeCom Easy, K30/K40 RF (Compress-lämpöpumput, Condens-kattilat)',
+    'Ei virallista julkista rajapintaa: Boschin pilveen pääsee vain matkimalla Boschin omaa sovellusta (SingleKey ID), mikä voi rikkoa käyttöehtoja ja lakata toimimasta. Nyt: Home Assistantin Bosch-integraation kautta, tai KM200-yhdyskäytävällä paikallisesti jos laitteessa on sellainen.',
+    'No official public API: the Bosch cloud is only reachable by imitating Bosch\'s own app (SingleKey ID), which may break the terms and stop working. Today: via Home Assistant\'s Bosch integration, or locally with a KM200 gateway if the unit has one.',
+    template: 'homeassistant',
+  ),
   HpNotYet(
     'Panasonic (Comfort Cloud), LG (ThinQ), Gree, Midea, Fujitsu…',
     'Ei omaa integraatiota vielä. Toimii nyt IR-ohjaimella (Tasmota/ESPHome) tai Home Assistantin kautta.',

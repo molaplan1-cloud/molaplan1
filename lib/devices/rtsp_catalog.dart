@@ -79,6 +79,7 @@ const rtspPatterns = <RtspPattern>[
     second: '/unicast/c2/s0/live',
     secondSub: '/unicast/c2/s1/live',
   ),
+  RtspPattern('bosch', 'Bosch (Flexidome, Dinion, Autodome)', '/rtsp_tunnel?inst=1&h26x=4', sub: '/rtsp_tunnel?inst=2&h26x=4'),
   RtspPattern('foscam', 'Foscam', ':88/videoMain', sub: ':88/videoSub'),
   RtspPattern('foscam', 'Foscam (554)', '/videoMain', sub: '/videoSub'),
   RtspPattern('generic', 'Yleinen /live/ch00_0', '/live/ch00_0', sub: '/live/ch00_1', second: '/live/ch01_0'),
@@ -114,6 +115,10 @@ String rtspBrandHint(String text) {
     ('uniview', 'uniview'),
     ('unv', 'uniview'),
     ('foscam', 'foscam'),
+    ('bosch', 'bosch'),
+    ('flexidome', 'bosch'),
+    ('dinion', 'bosch'),
+    ('autodome', 'bosch'),
   ]) {
     if (t.contains(k)) return b;
   }

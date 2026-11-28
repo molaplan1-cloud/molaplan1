@@ -7312,7 +7312,10 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s9b9b0d01a2 => ' (valfritt)';
 
   @override
-  String get s0a7134d0e3 => 'Tryck på knappen nu';
+  String get s7acc8096d2 => 'Logga in och godkänna';
+
+  @override
+  String get sa2ffc9d3a6 => 'Öppna inloggningssidan';
 
   @override
   String s43118959d5(String p0) {
@@ -7320,7 +7323,13 @@ class AppLocalizationsSv extends AppLocalizations {
   }
 
   @override
+  String get s0a7134d0e3 => 'Tryck på knappen nu';
+
+  @override
   String get s46c87a553f => 'Logga in på kameran';
+
+  @override
+  String get sf11edd7621 => 'Systemlösenord';
 
   @override
   String get se4095d7d95 => 'Enhetens lösenord';
@@ -10615,6 +10624,26 @@ class AppLocalizationsSv extends AppLocalizations {
   String get scab35073e8 => 'Pumpens IP-adress (display eller router).';
 
   @override
+  String get s6ad1f33b9a =>
+      'Bosch / Buderus uppvärmning (KM200 gateway, lokal)';
+
+  @override
+  String get sd3415a288c =>
+      'Pannor och värmepumpar med en logamatisk webb KM50/KM100/KM200/KM300 gateway (Bosch, Buderus, Junkers, IVT). Lokalt, inget moln, inga avgifter.';
+
+  @override
+  String get s87ab70204b =>
+      'KM-gatewayens IP från routerns enhetslista (kallas ofta \"KM200\" eller dess seriell).';
+
+  @override
+  String get s85e666e6d0 =>
+      'På gateway klistermärke eller i pannmenyn: Info → Internet → Inloggningsdata.';
+
+  @override
+  String get s7af1e0507c =>
+      'Lösenordet du ställer in i tillverkarens app (MyDevice, EasyControl eller Buderus-appen).';
+
+  @override
   String get s5ddd513689 =>
       'Daikin, Mitsubishi, Toshiba, Samsung, Hitachi, NIBE, Thermia - eller någon med en IR-fjärrkontroll.';
 
@@ -10650,6 +10679,9 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get se9b4e55058 => 'NIBE / Thermia (Modbus TCP, lokal)';
+
+  @override
+  String get s16f7124e42 => 'Bosch / Buderus (KM200 gateway, lokal)';
 
   @override
   String get sddd6b1d42e => 'Värmepump (inbyggd integration)';
@@ -10707,6 +10739,28 @@ class AppLocalizationsSv extends AppLocalizations {
   @override
   String get s332f9bc1a1 =>
       'Kundhemlighet för din egen app på dev.myuplink.com.';
+
+  @override
+  String get s911c662d27 => 'Gateway lösenord (KM200)';
+
+  @override
+  String get s52d4fcbe67 =>
+      'På Bosch/Buderus KM gateway klistermärke eller i pannmenyn (Info → Internet → Login data).';
+
+  @override
+  String get se7829f1ac5 => 'Privat lösenord (KM200)';
+
+  @override
+  String get sc6b9b9dafe =>
+      'Lösenordet du ställer in i tillverkarens app (MyDevice / EasyControl / Buderus).';
+
+  @override
+  String get s26eefc92ad =>
+      'Salt (KM200, endast om tillverkaren använder sin egen)';
+
+  @override
+  String get s333668bcad =>
+      'Lämna tom för att använda Bosch/Buderus publicerade standard.';
 
   @override
   String get sd1d4b22fc6 => 'Registrera karta (Modbus)';
@@ -10809,6 +10863,38 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get s3ca74f3ef8 => 'Kompressor';
+
+  @override
+  String get s79f91561d9 => 'Burner modulering';
+
+  @override
+  String get sc272460629 => 'Ange gateway-lösenordet och ditt eget lösenord';
+
+  @override
+  String get s684b127b9d =>
+      'Värmegateway svarade men data kunde inte dekrypteras - kontrollera båda lösenorden.';
+
+  @override
+  String get sbe369d8548 =>
+      'Värmegatewayen tillåter inte att ändra detta värde';
+
+  @override
+  String get s1222da1433 => 'Värmekrets';
+
+  @override
+  String get s131d0eb266 => '/system/sensors/temperatures/supply_t1';
+
+  @override
+  String get sac20961d10 => '/system/sensors/temperatures/return';
+
+  @override
+  String get s2a35dc0822 => '/dhwCircuits/dhw1/actualTemp';
+
+  @override
+  String get s85a3e678f3 => '/heatSources/actualModulation';
+
+  @override
+  String get s4159d585e2 => 'Värmekrets(s)';
 
   @override
   String get s31ec8d716e =>
@@ -11062,6 +11148,185 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s50c459fbff => 'Larm';
 
   @override
+  String get s29c5b59ddb => 'Bosch Smart Home Controller';
+
+  @override
+  String get sfb05679ced => 'Controller IP-adress';
+
+  @override
+  String get sd65da878fe =>
+      'Kontrollörens adress (app: Mer → System → Kontrollör, eller routerns enhetslista).';
+
+  @override
+  String get s6f7b5bb729 => 'Kundcertifikat (PEM)';
+
+  @override
+  String get sd21135f561 => 'Skapad av Molaplan när du parar. Ändra inte.';
+
+  @override
+  String get s2bc685129f => 'Kundnyckel (PEM)';
+
+  @override
+  String get sd5bfa709a3 => 'Controller certifikat fingeravtryck';
+
+  @override
+  String get s8b133a2da5 =>
+      'Säljs när du parar: Molaplan pratar bara med denna kontroller. Empty = acceptera den första.';
+
+  @override
+  String get s46f9aaf504 => 'Bosch enhet id.';
+
+  @override
+  String get s84d11d45ce =>
+      'E.g. TemperatureLevel, ShutterContact, PowerSwitch.';
+
+  @override
+  String get s4dabf0e462 => 'Fält';
+
+  @override
+  String get s9a1eb4b849 =>
+      'Ett fält av servicetillståndet, t.ex. temperatur, värde, switchState.';
+
+  @override
+  String get se83f02e6bd => 'Vägen (andra)';
+
+  @override
+  String get s3a985d4cc3 =>
+      'En annan väg att läsa, t.ex. /intrusion/states/system.';
+
+  @override
+  String get s0d34dfcd38 => 'För att ändra ett tillstånd, POST för handlingar.';
+
+  @override
+  String get sf8c4f6beb9 => 'Vägen efter /smarthome.';
+
+  @override
+  String get s5632684130 =>
+      'JSON, e.g. {\"@type\":\"powerSwitchState\",\"switchState\":\"ON\"}.';
+
+  @override
+  String s3addc3df37(String p0) {
+    return 'Bosch-kontrollanten vägrade anslutningen (inte parad eller annan styrenhet) - lägg till den igen. ($p0)';
+  }
+
+  @override
+  String sc76c98702f(String p0) {
+    return 'Bosch Smart Home Controller svarade: $p0 enheter. Inga kommandon skickades.';
+  }
+
+  @override
+  String get sd9b6de0a6a => 'Andra andra';
+
+  @override
+  String get s4dbb677293 => 'nås inte';
+
+  @override
+  String get sd0368ed590 => 'måltavla';
+
+  @override
+  String get sec17dd81e8 => 'Valve';
+
+  @override
+  String get s0b2f7d7c80 => 'öppet öppet öppna';
+
+  @override
+  String get s7009587b85 => 'Slutna';
+
+  @override
+  String get saf40fb40b3 => 'Rökdetektor';
+
+  @override
+  String get s4d85116fcb => 'test test test';
+
+  @override
+  String get s54345410a1 => 'Testlarm';
+
+  @override
+  String get s67c7f22d99 => 'Luftkvalitet';
+
+  @override
+  String get s4c3bb5ea0a => 'rörelsedetektor';
+
+  @override
+  String get sa6a56fa019 => 'Vattenläckage';
+
+  @override
+  String get s7c51d00219 => 'Kamera på';
+
+  @override
+  String get s51cd662d6c => 'Integritetsläge';
+
+  @override
+  String get scdc860be9e => 'anmälningar';
+
+  @override
+  String get s45c8904016 => 'ljust ljust ljus';
+
+  @override
+  String get s416ac1459c => 'Intrångslarm';
+
+  @override
+  String get s607339c984 => 'Säkerhetssäkerhet';
+
+  @override
+  String get sd1d17eca81 => 'State + arm/disarm + mute';
+
+  @override
+  String get s499d3aa6f1 => 'Vattenlarm';
+
+  @override
+  String get se57c2c4920 => 'Hela systemet + mute';
+
+  @override
+  String get s2eb00b7c28 => 'Scenarios';
+
+  @override
+  String get s38df0b3b2b => 'Mute larm';
+
+  @override
+  String get s1ff3dea39b => 'Mössa';
+
+  @override
+  String get s373ab1c97c => 'GOOD=Good;MEDIUM=Medium;BAD=Bad';
+
+  @override
+  String get s129317999a => 'renhet';
+
+  @override
+  String get sd0807cf61e => 'position (100 = öppen)';
+
+  @override
+  String get sdb34e99ef6 => 'Öppet öppet';
+
+  @override
+  String get s7fc017b0f0 => 'nära';
+
+  @override
+  String get sb02c7ee226 => 'Stopp stopp';
+
+  @override
+  String get sefdd3f7ade => 'Närvaro simulering';
+
+  @override
+  String get s16bc9ff328 => 'Bosch Smart Home';
+
+  @override
+  String get sde61b8a8a4 =>
+      'Bosch Smart Home Controller (I eller II): termostater, radiatorventiler, fönster/dörrkontakter, rökdetektorer, pluggar, ljus, slutare, rörelsedetektorer, kameror och intrångslarm. Lokalt, inget moln.';
+
+  @override
+  String get s3b276dcad6 =>
+      'I Bosch Smart Home-appen: Mer → System → Smart Home Controller → Nätverk. Eller routerns enhetslista ( \"shc...\").';
+
+  @override
+  String get sc7c8ed347e =>
+      'Skriv Bosch Smart Home-lösenordet (den du skapade när du ställer in kontrollenheten). Det sparas inte. Efter att du har tryckt på \"Konnect\", tryck på knappen på framsidan av kontrollen.';
+
+  @override
+  String get s608bdcb257 =>
+      'Tryck på knappen på framsidan av kontrollern nu: Controller II - en kort press; den gamla kontrollern (I) - håll tills lamporna blinkar. Vänta här.';
+
+  @override
   String get s1a73b397a1 => 'sonoff';
 
   @override
@@ -11176,9 +11441,6 @@ class AppLocalizationsSv extends AppLocalizations {
   @override
   String get s80ee7a25a9 =>
       'Tryck på den stora runda knappen ovanpå Hue Bridge nu. Vänta här - det ansluter själv.';
-
-  @override
-  String get s4dbb677293 => 'nås inte';
 
   @override
   String get sf50732e8e8 => 'dimmable';
@@ -11300,17 +11562,8 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s29045a726e => 'Vattenläcka';
 
   @override
-  String get s0b2f7d7c80 => 'öppet öppet öppna';
-
-  @override
-  String get s7009587b85 => 'Slutna';
-
-  @override
   String get s3b35de231e =>
       '<blank> motslidledde sin grade-före-företa-motred-motstödsföre-före-före-före-före-före-före-före-före-före-före-föregående';
-
-  @override
-  String get sd9b6de0a6a => 'Andra andra';
 
   @override
   String se7520a3990(String p0) {
@@ -11428,6 +11681,144 @@ class AppLocalizationsSv extends AppLocalizations {
       'Inget Modbus TCP-nav som finns i YAML (modbus: ... typ: tcp, värd: ...).';
 
   @override
+  String get s623040a63a =>
+      'Inactive=Inactive;Ready=Ready;DelayedStart=Delayed start;Run=Running;Pause=Paused;ActionRequired=Action required;Finished=Finished;Error=Error;Aborting=Aborting;Offline=Offline';
+
+  @override
+  String get s417e8a2ba4 => 'Home Connect (Bosch, Siemens, Neff, Gaggenau)';
+
+  @override
+  String get sb98e3e97cd =>
+      'Klient-ID för din egen Home Connect-applikation (developer.home-connect.com → Applikationer).';
+
+  @override
+  String get s6e05e7371c => 'Kundhemlighet (om din app har en)';
+
+  @override
+  String get s8189ed86b7 =>
+      'Från samma sida. En enhetsflödesapp fungerar vanligtvis utan den.';
+
+  @override
+  String get sda4f3457c2 => 'Sign-in Token';
+
+  @override
+  String get sa134f8dd4c =>
+      'Kommer från att logga in i tilläggsguiden. Ändra inte.';
+
+  @override
+  String get s560a9b1bab =>
+      'Simulatorn är för utvecklare (virtuella apparater).';
+
+  @override
+  String get s5f614bf8c1 => 'Verkliga apparater';
+
+  @override
+  String get s3a5c09be5b => 'Home Connect simulator';
+
+  @override
+  String get s6dcd74c435 => 'Testning endast: ersätter Home Connects adress.';
+
+  @override
+  String get s9de7817d1f => 'Appliance id (haId)';
+
+  @override
+  String get s1839d16bcc => 'Home Connect HaId.';
+
+  @override
+  String get s6efa690ee3 => 'Nyckeln';
+
+  @override
+  String get sf69f72bbac =>
+      'Status eller inställning nyckel, t.ex. BSH.Common.Status.DoorState.';
+
+  @override
+  String get s9d3115f45d => 'Vad man ska göra på apparaten.';
+
+  @override
+  String get s07c53aa821 => 'Starta det valda programmet';
+
+  @override
+  String get sf918a12f32 => 'Stoppa programmet';
+
+  @override
+  String get s9384bc6f7e => 'Inställning';
+
+  @override
+  String get s6a395924ea => 'Inställning av nyckel';
+
+  @override
+  String get sc58b6af7f5 => 'Only \"Setting\": the key.';
+
+  @override
+  String get s378202fe0b => 'Power: On / Off / Standby. Setting: värdet.';
+
+  @override
+  String get sb1baaa4494 => 'Logga in på Home Connect igen';
+
+  @override
+  String get saa6e9765a0 => 'Logga in igen (Connections → Home Connect)';
+
+  @override
+  String get s7af74cd31e => 'Home Connect-ränta nått, vänta';
+
+  @override
+  String get s3cdfd26282 => 'Home Connect räntegräns nådde';
+
+  @override
+  String get sf8050ebbd9 => 'Välj ett program på apparaten först';
+
+  @override
+  String get s4673002a7e =>
+      'Fjärrstart är inte tillåtet: slå på \"Fjärrstart\" på apparaten och stäng dörren.';
+
+  @override
+  String scf29ca4038(String p0) {
+    return 'Home Connect svarade: $p0 apparater. Inga kommandon skickades.';
+  }
+
+  @override
+  String get see67742c70 => 'offline';
+
+  @override
+  String get s77140ea0df => 'Programprogram';
+
+  @override
+  String get s09166e1ea6 => 'Tiden kvar';
+
+  @override
+  String get sfb70dcb933 => 'Framsteg';
+
+  @override
+  String get sabadf329bd => 'Dörrdörr';
+
+  @override
+  String get s7152ef5dbd => 'ugnstemperatur';
+
+  @override
+  String get s68d00964af => 'Fridge temperature';
+
+  @override
+  String get s824d365527 => 'Frystemperatur';
+
+  @override
+  String get sfc4a054c1a => 'Dörrlarm';
+
+  @override
+  String get s8253ea43e9 => 'Starta valt program';
+
+  @override
+  String get s1462af9000 =>
+      'Home apparater genom ditt Home Connect-konto: tvättmaskiner, torktumlare, diskmaskiner, ugnar, kylskåp, kaffemaskiner... State, tid kvar, dörr, start och stopp.';
+
+  @override
+  String get sdc0ed8435b =>
+      'Gratis, en gång: logga in på utvecklare.home-connect.com (samma e-post som Home Connect-appen) → Ansökningar → Registrera ansökan → OAuth Flow: \"Device Flow\", Home Connect-användarkonto för testning: din e-post. Kopiera klient-ID här. En ny ansökan kan ta 15-30 min för att börja arbeta.';
+
+  @override
+  String get s625166a5a9 =>
+      'Endast om din ansökningssida visar en kundhemlighet.';
+
+  @override
   String get s0185672be7 =>
       'Kameraanvändaren (vanligtvis admin) och lösenordet du ställer in när du aktiverar det.';
 
@@ -11466,6 +11857,14 @@ class AppLocalizationsSv extends AppLocalizations {
   @override
   String get s1a3c354399 =>
       'eWeLink app → kamera → Inställningar: slå på RTSP/ONVIF och ange en användare och lösenord för det (om alternativet finns).';
+
+  @override
+  String get s0ae408f9a0 =>
+      'Kameraanvändaren (tjänst, användare eller live) och lösenordet du ställer in i Konfigurationshanteraren eller på kamerans webbsida.';
+
+  @override
+  String get s61c9b76fa1 =>
+      'Bosch Smart Home-kameror (Eyes, 360) strömmar inte video på hemmanätverket - lägg till dem med \"Bosch Smart Home\" (privacy mode, meddelanden, ljus).';
 
   @override
   String get s1c2786e15f =>
@@ -11625,10 +12024,4 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get s06444f278d => 'position (100 = stängd)';
-
-  @override
-  String get sdb34e99ef6 => 'Öppet öppet';
-
-  @override
-  String get s7fc017b0f0 => 'nära';
 }

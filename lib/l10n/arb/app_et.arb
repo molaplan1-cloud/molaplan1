@@ -6519,11 +6519,11 @@
   "x-mt": true
  },
  "s9b9b0d01a2": " (valikuline)",
- "s0a7134d0e3": "Vajuta nüüd nuppu",
  "s43118959d5": "{p0}",
  "@s43118959d5": {
   "x-mt": true
  },
+ "s0a7134d0e3": "Vajuta nüüd nuppu",
  "s46c87a553f": "Registreeru kaamerasse",
  "@s46c87a553f": {
   "x-mt": true
@@ -10108,6 +10108,10 @@
  "@s3ca74f3ef8": {
   "x-mt": true
  },
+ "s131d0eb266": "/system/sensors/temperatures/supply_t1",
+ "sac20961d10": "/system/sensors/temperatures/return",
+ "s2a35dc0822": "/dhwCircuits/dhw1/actualTemp",
+ "s85a3e678f3": "/heatSources/actualModulation",
  "s31ec8d716e": "Seadme kontotabel on täis. Eemalda vana telefon rakenduses Smart M- Air ja proovi uuesti.",
  "@s31ec8d716e": {
   "x-mt": true
@@ -10358,6 +10362,30 @@
   "x-mt": true
  },
  "s50c459fbff": "Häire",
+ "s5632684130": "'JSON, e.g. {\"@type\":\"powerSwitchState\",\"switchState\":\"ON\"}.'",
+ "sd9b6de0a6a": "Teised",
+ "@sd9b6de0a6a": {
+  "x-mt": true
+ },
+ "s4dbb677293": "kättesaamatu",
+ "s0b2f7d7c80": "avatud",
+ "@s0b2f7d7c80": {
+  "x-mt": true
+ },
+ "s7009587b85": "suletud",
+ "@s7009587b85": {
+  "x-mt": true
+ },
+ "s373ab1c97c": "GOOD=Good;MEDIUM=Medium;BAD=Bad",
+ "sdb34e99ef6": "avatud",
+ "@sdb34e99ef6": {
+  "x-mt": true
+ },
+ "s7fc017b0f0": "lähedalt",
+ "@s7fc017b0f0": {
+  "x-mt": true
+ },
+ "s16bc9ff328": "Bosch Smart Home",
  "s1a73b397a1": "sonoff",
  "@s1a73b397a1": {
   "x-mt": true
@@ -10472,7 +10500,6 @@
  "@s80ee7a25a9": {
   "x-mt": true
  },
- "s4dbb677293": "kättesaamatu",
  "sf50732e8e8": "hämardada",
  "@sf50732e8e8": {
   "x-mt": true
@@ -10557,20 +10584,8 @@
  "s32c88e5aa6": "Valgustase",
  "s57b4effa42": "Uks / aken",
  "s29045a726e": "Veeleke",
- "s0b2f7d7c80": "avatud",
- "@s0b2f7d7c80": {
-  "x-mt": true
- },
- "s7009587b85": "suletud",
- "@s7009587b85": {
-  "x-mt": true
- },
  "s3b35de231e": "liikumise",
  "@s3b35de231e": {
-  "x-mt": true
- },
- "sd9b6de0a6a": "Teised",
- "@sd9b6de0a6a": {
   "x-mt": true
  },
  "se7520a3990": "uinumine – viimati {p0}",
@@ -10674,6 +10689,10 @@
  "@sceebf690e3": {
   "x-mt": true
  },
+ "s623040a63a": "Inactive=Inactive;Ready=Ready;DelayedStart=Delayed start;Run=Running;Pause=Paused;ActionRequired=Action required;Finished=Finished;Error=Error;Aborting=Aborting;Offline=Offline",
+ "s417e8a2ba4": "Home Connect (Bosch, Siemens, Neff, Gaggenau)",
+ "sc58b6af7f5": "Only \"Setting\": the key.",
+ "see67742c70": "võrguühenduseta",
  "s0185672be7": "Kaamera kasutaja (tavaliselt admin) ja selle aktiveerimisel määratud parool.",
  "@s0185672be7": {
   "x-mt": true
@@ -10892,12 +10911,432 @@
  "@s06444f278d": {
   "x-mt": true
  },
- "sdb34e99ef6": "avatud",
- "@sdb34e99ef6": {
+ "s7acc8096d2": "Kirjutage alla ja kinnitage",
+ "@s7acc8096d2": {
   "x-mt": true
  },
- "s7fc017b0f0": "lähedalt",
- "@s7fc017b0f0": {
+ "sa2ffc9d3a6": "Ava sisselogimislehekülg",
+ "@sa2ffc9d3a6": {
+  "x-mt": true
+ },
+ "sf11edd7621": "Süsteemi parool",
+ "@sf11edd7621": {
+  "x-mt": true
+ },
+ "s6ad1f33b9a": "Bosch / Buderus Küte (KM200 värav, kohalik)",
+ "@s6ad1f33b9a": {
+  "x-mt": true
+ },
+ "sd3415a288c": "Logamaatilise veebiga KM50/KM100/KM200/KM300 värav (Bosch, Buderus, Junkers, IVT) katlad ja soojuspumbad.",
+ "@sd3415a288c": {
+  "x-mt": true
+ },
+ "s87ab70204b": "KM gateway IP ruuteri seadmete loendist (sageli nimega \"KM200\" või selle seeria).",
+ "@s87ab70204b": {
+  "x-mt": true
+ },
+ "s85e666e6d0": "Väravakleebis või katlamenüüs: Info → Internet → Sisselogimisandmed.",
+ "@s85e666e6d0": {
+  "x-mt": true
+ },
+ "s7af1e0507c": "Parool, mille määrasite tegija rakenduses (MyDevice, EasyControl või Buderuse rakendus).",
+ "@s7af1e0507c": {
+  "x-mt": true
+ },
+ "s16f7124e42": "Bosch / Buderus (KM200 värav, kohalik)",
+ "@s16f7124e42": {
+  "x-mt": true
+ },
+ "s911c662d27": "Värava parool (KM200)",
+ "@s911c662d27": {
+  "x-mt": true
+ },
+ "s52d4fcbe67": "Bosch/Buderus KM gateway kleebisel või katlamenüüs (Info → Internet → Sisselogimisandmed).",
+ "@s52d4fcbe67": {
+  "x-mt": true
+ },
+ "se7829f1ac5": "Privaatne parool (KM200)",
+ "@se7829f1ac5": {
+  "x-mt": true
+ },
+ "sc6b9b9dafe": "Parool, mille määrasite tegija rakenduses (MyDevice / EasyControl / Buderus).",
+ "@sc6b9b9dafe": {
+  "x-mt": true
+ },
+ "s26eefc92ad": "Sool (KM200, ainult siis, kui valmistaja kasutab enda oma)",
+ "@s26eefc92ad": {
+  "x-mt": true
+ },
+ "s333668bcad": "Jätta tühjaks, et kasutada Bosch/Buderus avaldatud vaikeväärtusi.",
+ "@s333668bcad": {
+  "x-mt": true
+ },
+ "s79f91561d9": "Põleti modulatsioon",
+ "@s79f91561d9": {
+  "x-mt": true
+ },
+ "sc272460629": "Sisestage värava parool ja oma parool",
+ "@sc272460629": {
+  "x-mt": true
+ },
+ "s684b127b9d": "Küttevärav vastas, kuid andmeid ei saanud lahti krüptida - kontrollige mõlemat parooli.",
+ "@s684b127b9d": {
+  "x-mt": true
+ },
+ "sbe369d8548": "Küttevärav ei võimalda seda väärtust muuta",
+ "@sbe369d8548": {
+  "x-mt": true
+ },
+ "s1222da1433": "Kütteahel",
+ "@s1222da1433": {
+  "x-mt": true
+ },
+ "s4159d585e2": "kütteahel(id)",
+ "@s4159d585e2": {
+  "x-mt": true
+ },
+ "s29c5b59ddb": "Boschi nutikas kodukontroller",
+ "@s29c5b59ddb": {
+  "x-mt": true
+ },
+ "sfb05679ced": "Kontrolleri IP- aadress",
+ "@sfb05679ced": {
+  "x-mt": true
+ },
+ "sd65da878fe": "Kontrolleri aadress (rakendus: More → System → Controller või ruuteri seadmete loend).",
+ "@sd65da878fe": {
+  "x-mt": true
+ },
+ "s6f7b5bb729": "Kliendisertifikaat (PEM)",
+ "@s6f7b5bb729": {
+  "x-mt": true
+ },
+ "sd21135f561": "Loodud Molaplani poolt paaritamise ajal. Ei muudeta.",
+ "@sd21135f561": {
+  "x-mt": true
+ },
+ "s2bc685129f": "Kliendivõti (PEM)",
+ "@s2bc685129f": {
+  "x-mt": true
+ },
+ "sd5bfa709a3": "Kontrollija sõrmejäljetunnistus",
+ "@sd5bfa709a3": {
+  "x-mt": true
+ },
+ "s8b133a2da5": "Salvestatakse paaristamisel: Molaplan räägib ainult selle kontrolleriga. Tühi = aktsepteerib esimest.",
+ "@s8b133a2da5": {
+  "x-mt": true
+ },
+ "s46f9aaf504": "Boschi seadme ID.",
+ "@s46f9aaf504": {
+  "x-mt": true
+ },
+ "s84d11d45ce": "Nt TemperatureLevel, ShutterContact, PowerSwitch.",
+ "@s84d11d45ce": {
+  "x-mt": true
+ },
+ "s4dabf0e462": "Field",
+ "@s4dabf0e462": {
+  "x-mt": true
+ },
+ "s9a1eb4b849": "Kasutusoleku väli, nt temperatuur, väärtus, switchState.",
+ "@s9a1eb4b849": {
+  "x-mt": true
+ },
+ "se83f02e6bd": "Tee (muu)",
+ "@se83f02e6bd": {
+  "x-mt": true
+ },
+ "s3a985d4cc3": "Teine lugemise tee, nt /sissetung/seisundid/süsteem.",
+ "@s3a985d4cc3": {
+  "x-mt": true
+ },
+ "s0d34dfcd38": "PUT muuta riiki, POST tegudeks.",
+ "@s0d34dfcd38": {
+  "x-mt": true
+ },
+ "sf8c4f6beb9": "Tee pärast /smarthome''i.",
+ "@sf8c4f6beb9": {
+  "x-mt": true
+ },
+ "s3addc3df37": "Boschi kontroller keeldus ühendusest (mitte paaris või muu kontroller) – lisage see uuesti. ({p0})",
+ "@s3addc3df37": {
+  "x-mt": true
+ },
+ "sc76c98702f": "✓ Boschi nutika kodu kontroller vastas: {p0} seadmed. Käske ei saadetud.",
+ "@sc76c98702f": {
+  "x-mt": true
+ },
+ "sd0368ed590": "sihtmärk",
+ "@sd0368ed590": {
+  "x-mt": true
+ },
+ "sec17dd81e8": "ventiili",
+ "@sec17dd81e8": {
+  "x-mt": true
+ },
+ "saf40fb40b3": "suitsuandur",
+ "@saf40fb40b3": {
+  "x-mt": true
+ },
+ "s4d85116fcb": "testi",
+ "@s4d85116fcb": {
+  "x-mt": true
+ },
+ "s54345410a1": "katsealarm",
+ "@s54345410a1": {
+  "x-mt": true
+ },
+ "s67c7f22d99": "õhukvaliteet",
+ "@s67c7f22d99": {
+  "x-mt": true
+ },
+ "s4c3bb5ea0a": "liikumisandur",
+ "@s4c3bb5ea0a": {
+  "x-mt": true
+ },
+ "sa6a56fa019": "veeleke",
+ "@sa6a56fa019": {
+  "x-mt": true
+ },
+ "s7c51d00219": "kaamera",
+ "@s7c51d00219": {
+  "x-mt": true
+ },
+ "s51cd662d6c": "privaatsusrežiim",
+ "@s51cd662d6c": {
+  "x-mt": true
+ },
+ "scdc860be9e": "teateid",
+ "@scdc860be9e": {
+  "x-mt": true
+ },
+ "s45c8904016": "valgus",
+ "@s45c8904016": {
+  "x-mt": true
+ },
+ "s416ac1459c": "Sissetungihäire",
+ "@s416ac1459c": {
+  "x-mt": true
+ },
+ "s607339c984": "Turvalisus",
+ "@s607339c984": {
+  "x-mt": true
+ },
+ "sd1d17eca81": "olek + käsivars/relvastus + tumm",
+ "@sd1d17eca81": {
+  "x-mt": true
+ },
+ "s499d3aa6f1": "Veealarm",
+ "@s499d3aa6f1": {
+  "x-mt": true
+ },
+ "se57c2c4920": "kogu süsteem + tumm",
+ "@se57c2c4920": {
+  "x-mt": true
+ },
+ "s2eb00b7c28": "Stsenaariumid",
+ "@s2eb00b7c28": {
+  "x-mt": true
+ },
+ "s38df0b3b2b": "Tumm alarm",
+ "@s38df0b3b2b": {
+  "x-mt": true
+ },
+ "s1ff3dea39b": "tumm",
+ "@s1ff3dea39b": {
+  "x-mt": true
+ },
+ "s129317999a": "puhtuse",
+ "@s129317999a": {
+  "x-mt": true
+ },
+ "sd0807cf61e": "asukoht (100 = avatud)",
+ "@sd0807cf61e": {
+  "x-mt": true
+ },
+ "sb02c7ee226": "peatu",
+ "@sb02c7ee226": {
+  "x-mt": true
+ },
+ "sefdd3f7ade": "Kohaloleku simulatsioon",
+ "@sefdd3f7ade": {
+  "x-mt": true
+ },
+ "sde61b8a8a4": "Boschi nutikas kodukontroller (I või II): termostaadid, radiaatori ventiilid, akna-uksekontaktid, suitsuandurid, pistikud, tuled, aknaluugid, liikumisandurid, kaamerad ja sissetungimisalarm.",
+ "@sde61b8a8a4": {
+  "x-mt": true
+ },
+ "s3b276dcad6": "Bosch Smart Home rakenduses: More → System → Smart Home Controller → Network. või ruuteri seadmete loendis (\"shc...\").",
+ "@s3b276dcad6": {
+  "x-mt": true
+ },
+ "sc7c8ed347e": "Kirjuta Bosch Smart Home süsteemi parool (see, mille lõid kontrolleri seadistamisel). Seda ei salvestata. Pärast \"Ühenda\" klõpsamist vajuta kontrolleri esiküljel asuvale nupule.",
+ "@sc7c8ed347e": {
+  "x-mt": true
+ },
+ "s608bdcb257": "Klõpsa nüüd kontrolleri esiküljel asuvale nupule: kontroller II – lühike vajutamine; vana kontroller (I) – hoia, kuni tuled vilguvad. Oota siin.",
+ "@s608bdcb257": {
+  "x-mt": true
+ },
+ "sb98e3e97cd": "Teie koduühenduse rakenduse klienditunnus (developer.home-connect.com → Rakendused).",
+ "@sb98e3e97cd": {
+  "x-mt": true
+ },
+ "s6e05e7371c": "Kliendisaladus (kui teie rakendusel on üks)",
+ "@s6e05e7371c": {
+  "x-mt": true
+ },
+ "s8189ed86b7": "Samalt leheküljelt. Seadmevoo rakendus töötab tavaliselt ilma selleta.",
+ "@s8189ed86b7": {
+  "x-mt": true
+ },
+ "sda4f3457c2": "Sisselogimise märk",
+ "@sda4f3457c2": {
+  "x-mt": true
+ },
+ "sa134f8dd4c": "See tuleb sisselogimisest lisamisnõustajas. Seda ei muudeta.",
+ "@sa134f8dd4c": {
+  "x-mt": true
+ },
+ "s560a9b1bab": "Simulaator on mõeldud arendajatele (virtuaalsed seadmed).",
+ "@s560a9b1bab": {
+  "x-mt": true
+ },
+ "s5f614bf8c1": "Reaalsed seadmed",
+ "@s5f614bf8c1": {
+  "x-mt": true
+ },
+ "s3a5c09be5b": "Home Connect simulaatorName",
+ "@s3a5c09be5b": {
+  "x-mt": true
+ },
+ "s6dcd74c435": "Ainult testimine: asendab Home Connecti aadressi.",
+ "@s6dcd74c435": {
+  "x-mt": true
+ },
+ "s9de7817d1f": "Seadme ID (haId)",
+ "@s9de7817d1f": {
+  "x-mt": true
+ },
+ "s1839d16bcc": "Home Connect hald.",
+ "@s1839d16bcc": {
+  "x-mt": true
+ },
+ "s6efa690ee3": "Võti",
+ "@s6efa690ee3": {
+  "x-mt": true
+ },
+ "sf69f72bbac": "Olek või seadistusklahv, nt BSH.Common.Status.DoorState.",
+ "@sf69f72bbac": {
+  "x-mt": true
+ },
+ "s9d3115f45d": "Mida teha seadmega.",
+ "@s9d3115f45d": {
+  "x-mt": true
+ },
+ "s07c53aa821": "Valitud programmi käivitamine",
+ "@s07c53aa821": {
+  "x-mt": true
+ },
+ "sf918a12f32": "Peata programm",
+ "@sf918a12f32": {
+  "x-mt": true
+ },
+ "s9384bc6f7e": "Seadistamine",
+ "@s9384bc6f7e": {
+  "x-mt": true
+ },
+ "s6a395924ea": "Võtme seadistamine",
+ "@s6a395924ea": {
+  "x-mt": true
+ },
+ "s378202fe0b": "Võimsus: sees / väljas / ooteaeg. Seadistamine: väärtus.",
+ "@s378202fe0b": {
+  "x-mt": true
+ },
+ "sb1baaa4494": "Home Connect uuesti sisse logida",
+ "@sb1baaa4494": {
+  "x-mt": true
+ },
+ "saa6e9765a0": "Logi uuesti sisse (Ühendused → Home Connect)",
+ "@saa6e9765a0": {
+  "x-mt": true
+ },
+ "s7af74cd31e": "Home Connecti kiiruspiirang on saavutatud, oota",
+ "@s7af74cd31e": {
+  "x-mt": true
+ },
+ "s3cdfd26282": "Home Connecti kiirus saavutati",
+ "@s3cdfd26282": {
+  "x-mt": true
+ },
+ "sf8050ebbd9": "Esmalt vali seadmes programm",
+ "@sf8050ebbd9": {
+  "x-mt": true
+ },
+ "s4673002a7e": "Kaugkäivitus ei ole lubatud: lülitage seadmel sisse \"Kaugkäivitus\" ja sulgege uks.",
+ "@s4673002a7e": {
+  "x-mt": true
+ },
+ "scf29ca4038": "✓ Home Connect vastas: {p0} seadmed. Käske ei saadetud.",
+ "@scf29ca4038": {
+  "x-mt": true
+ },
+ "s77140ea0df": "programm",
+ "@s77140ea0df": {
+  "x-mt": true
+ },
+ "s09166e1ea6": "jäänud",
+ "@s09166e1ea6": {
+  "x-mt": true
+ },
+ "sfb70dcb933": "progressi",
+ "@sfb70dcb933": {
+  "x-mt": true
+ },
+ "sabadf329bd": "ukse",
+ "@sabadf329bd": {
+  "x-mt": true
+ },
+ "s7152ef5dbd": "ahju temperatuur",
+ "@s7152ef5dbd": {
+  "x-mt": true
+ },
+ "s68d00964af": "külmiku temperatuur",
+ "@s68d00964af": {
+  "x-mt": true
+ },
+ "s824d365527": "sügavkülmiku temperatuur",
+ "@s824d365527": {
+  "x-mt": true
+ },
+ "sfc4a054c1a": "uksehäire",
+ "@sfc4a054c1a": {
+  "x-mt": true
+ },
+ "s8253ea43e9": "käivita valitud programm",
+ "@s8253ea43e9": {
+  "x-mt": true
+ },
+ "s1462af9000": "Kodumasinad Home Connecti konto kaudu: seibid, kuivatid, nõudepesumasinad, ahjud, külmikud, kohvimasinad... riik, aeg jäänud, uks, start ja peatus.",
+ "@s1462af9000": {
+  "x-mt": true
+ },
+ "sdc0ed8435b": "Tasuta, üks kord: logi sisse aadressil developer.home-connect.com (sama e-post nagu rakenduses Home Connect) → Applications → Register application → OAuth Flow: \"Seadmevoog\", Home Connecti kasutajakonto testimiseks: sinu e-post. Kopeeri kliendi ID siia. Uus rakendus võib tööle asumiseks võtta 15–30 minutit.",
+ "@sdc0ed8435b": {
+  "x-mt": true
+ },
+ "s625166a5a9": "Ainult siis, kui teie taotlusleht näitab kliendisaladust.",
+ "@s625166a5a9": {
+  "x-mt": true
+ },
+ "s0ae408f9a0": "Kaamera kasutaja (teenus, kasutaja või reaalajas) ja parool, mille olete määranud Konfiguratsioonihalduris või kaamera veebilehel.",
+ "@s0ae408f9a0": {
+  "x-mt": true
+ },
+ "s61c9b76fa1": "Bosch Smart Home kaamerad (Eyes, 360) ei voogesita videot koduvõrgus - lisage need \"Bosch Smart Home\" (privaatsusrežiim, teavitused, valgus).",
+ "@s61c9b76fa1": {
   "x-mt": true
  }
 }

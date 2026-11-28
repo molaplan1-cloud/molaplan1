@@ -7303,7 +7303,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s9b9b0d01a2 => ' (optional)';
 
   @override
-  String get s0a7134d0e3 => 'Press the button now';
+  String get s7acc8096d2 => 'Sign in and approve';
+
+  @override
+  String get sa2ffc9d3a6 => 'Open the sign-in page';
 
   @override
   String s43118959d5(String p0) {
@@ -7311,7 +7314,13 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
+  String get s0a7134d0e3 => 'Press the button now';
+
+  @override
   String get s46c87a553f => 'Sign in to the camera';
+
+  @override
+  String get sf11edd7621 => 'System password';
 
   @override
   String get se4095d7d95 => 'Device password';
@@ -10610,6 +10619,25 @@ class AppLocalizationsEn extends AppLocalizations {
   String get scab35073e8 => 'The pump\'s IP address (display or router).';
 
   @override
+  String get s6ad1f33b9a => 'Bosch / Buderus heating (KM200 gateway, local)';
+
+  @override
+  String get sd3415a288c =>
+      'Boilers and heat pumps with a Logamatic web KM50/KM100/KM200/KM300 gateway (Bosch, Buderus, Junkers, IVT). Local, no cloud, no fees.';
+
+  @override
+  String get s87ab70204b =>
+      'The KM gateway\'s IP from your router\'s device list (often named \"KM200\" or its serial).';
+
+  @override
+  String get s85e666e6d0 =>
+      'On the gateway sticker or in the boiler menu: Info → Internet → Login data.';
+
+  @override
+  String get s7af1e0507c =>
+      'The password you set in the maker\'s app (MyDevice, EasyControl or the Buderus app).';
+
+  @override
   String get s5ddd513689 =>
       'Daikin, Mitsubishi, Toshiba, Samsung, Hitachi, NIBE, Thermia – or any with an IR remote.';
 
@@ -10644,6 +10672,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get se9b4e55058 => 'NIBE / Thermia (Modbus TCP, local)';
+
+  @override
+  String get s16f7124e42 => 'Bosch / Buderus (KM200 gateway, local)';
 
   @override
   String get sddd6b1d42e => 'Heat pump (built-in integration)';
@@ -10702,6 +10733,27 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get s332f9bc1a1 =>
       'Client Secret of your own app at dev.myuplink.com.';
+
+  @override
+  String get s911c662d27 => 'Gateway password (KM200)';
+
+  @override
+  String get s52d4fcbe67 =>
+      'On the Bosch/Buderus KM gateway sticker or in the boiler menu (Info → Internet → Login data).';
+
+  @override
+  String get se7829f1ac5 => 'Private password (KM200)';
+
+  @override
+  String get sc6b9b9dafe =>
+      'The password you set in the maker\'s app (MyDevice / EasyControl / Buderus).';
+
+  @override
+  String get s26eefc92ad => 'Salt (KM200, only if the maker uses its own)';
+
+  @override
+  String get s333668bcad =>
+      'Leave empty to use Bosch/Buderus\' published default.';
 
   @override
   String get sd1d4b22fc6 => 'Register map (Modbus)';
@@ -10803,6 +10855,38 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get s3ca74f3ef8 => 'Compressor';
+
+  @override
+  String get s79f91561d9 => 'Burner modulation';
+
+  @override
+  String get sc272460629 => 'Enter the gateway password and your own password';
+
+  @override
+  String get s684b127b9d =>
+      'The heating gateway answered but the data could not be decrypted – check both passwords.';
+
+  @override
+  String get sbe369d8548 =>
+      'The heating gateway does not allow changing this value';
+
+  @override
+  String get s1222da1433 => 'Heating circuit';
+
+  @override
+  String get s131d0eb266 => '/system/sensors/temperatures/supply_t1';
+
+  @override
+  String get sac20961d10 => '/system/sensors/temperatures/return';
+
+  @override
+  String get s2a35dc0822 => '/dhwCircuits/dhw1/actualTemp';
+
+  @override
+  String get s85a3e678f3 => '/heatSources/actualModulation';
+
+  @override
+  String get s4159d585e2 => 'heating circuit(s)';
 
   @override
   String get s31ec8d716e =>
@@ -11054,6 +11138,185 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s50c459fbff => 'Alarm';
 
   @override
+  String get s29c5b59ddb => 'Bosch Smart Home Controller';
+
+  @override
+  String get sfb05679ced => 'Controller IP address';
+
+  @override
+  String get sd65da878fe =>
+      'The controller\'s address (app: More → System → Controller, or your router\'s device list).';
+
+  @override
+  String get s6f7b5bb729 => 'Client certificate (PEM)';
+
+  @override
+  String get sd21135f561 => 'Created by Molaplan when pairing. Do not change.';
+
+  @override
+  String get s2bc685129f => 'Client key (PEM)';
+
+  @override
+  String get sd5bfa709a3 => 'Controller certificate fingerprint';
+
+  @override
+  String get s8b133a2da5 =>
+      'Saved when pairing: Molaplan only talks to this controller. Empty = accept the first one.';
+
+  @override
+  String get s46f9aaf504 => 'The Bosch device id.';
+
+  @override
+  String get s84d11d45ce =>
+      'E.g. TemperatureLevel, ShutterContact, PowerSwitch.';
+
+  @override
+  String get s4dabf0e462 => 'Field';
+
+  @override
+  String get s9a1eb4b849 =>
+      'A field of the service state, e.g. temperature, value, switchState.';
+
+  @override
+  String get se83f02e6bd => 'Path (other)';
+
+  @override
+  String get s3a985d4cc3 =>
+      'Another path to read, e.g. /intrusion/states/system.';
+
+  @override
+  String get s0d34dfcd38 => 'PUT to change a state, POST for actions.';
+
+  @override
+  String get sf8c4f6beb9 => 'Path after /smarthome.';
+
+  @override
+  String get s5632684130 =>
+      'JSON, e.g. {\"@type\":\"powerSwitchState\",\"switchState\":\"ON\"}.';
+
+  @override
+  String s3addc3df37(String p0) {
+    return 'The Bosch controller refused the connection (not paired or a different controller) – add it again. ($p0)';
+  }
+
+  @override
+  String sc76c98702f(String p0) {
+    return '✓ The Bosch Smart Home Controller answered: $p0 devices. No commands were sent.';
+  }
+
+  @override
+  String get sd9b6de0a6a => 'Other';
+
+  @override
+  String get s4dbb677293 => 'unreachable';
+
+  @override
+  String get sd0368ed590 => 'target';
+
+  @override
+  String get sec17dd81e8 => 'valve';
+
+  @override
+  String get s0b2f7d7c80 => 'open';
+
+  @override
+  String get s7009587b85 => 'closed';
+
+  @override
+  String get saf40fb40b3 => 'smoke detector';
+
+  @override
+  String get s4d85116fcb => 'test';
+
+  @override
+  String get s54345410a1 => 'test alarm';
+
+  @override
+  String get s67c7f22d99 => 'air quality';
+
+  @override
+  String get s4c3bb5ea0a => 'motion detector';
+
+  @override
+  String get sa6a56fa019 => 'water leak';
+
+  @override
+  String get s7c51d00219 => 'camera on';
+
+  @override
+  String get s51cd662d6c => 'privacy mode';
+
+  @override
+  String get scdc860be9e => 'notifications';
+
+  @override
+  String get s45c8904016 => 'light';
+
+  @override
+  String get s416ac1459c => 'Intrusion alarm';
+
+  @override
+  String get s607339c984 => 'Security';
+
+  @override
+  String get sd1d17eca81 => 'state + arm/disarm + mute';
+
+  @override
+  String get s499d3aa6f1 => 'Water alarm';
+
+  @override
+  String get se57c2c4920 => 'whole system + mute';
+
+  @override
+  String get s2eb00b7c28 => 'Scenarios';
+
+  @override
+  String get s38df0b3b2b => 'Mute alarm';
+
+  @override
+  String get s1ff3dea39b => 'mute';
+
+  @override
+  String get s373ab1c97c => 'GOOD=Good;MEDIUM=Medium;BAD=Bad';
+
+  @override
+  String get s129317999a => 'purity';
+
+  @override
+  String get sd0807cf61e => 'position (100 = open)';
+
+  @override
+  String get sdb34e99ef6 => 'open';
+
+  @override
+  String get s7fc017b0f0 => 'close';
+
+  @override
+  String get sb02c7ee226 => 'stop';
+
+  @override
+  String get sefdd3f7ade => 'Presence simulation';
+
+  @override
+  String get s16bc9ff328 => 'Bosch Smart Home';
+
+  @override
+  String get sde61b8a8a4 =>
+      'Bosch Smart Home Controller (I or II): thermostats, radiator valves, window/door contacts, smoke detectors, plugs, lights, shutters, motion detectors, cameras and the intrusion alarm. Local, no cloud.';
+
+  @override
+  String get s3b276dcad6 =>
+      'In the Bosch Smart Home app: More → System → Smart Home Controller → Network. Or your router\'s device list (\"shc…\").';
+
+  @override
+  String get sc7c8ed347e =>
+      'Type the Bosch Smart Home system password (the one you created when setting up the controller). It is not saved. After tapping \"Connect\", press the button on the front of the controller.';
+
+  @override
+  String get s608bdcb257 =>
+      'Press the button on the front of the controller now: Controller II – a short press; the old controller (I) – hold until the lights flash. Wait here.';
+
+  @override
   String get s1a73b397a1 => 'sonoff';
 
   @override
@@ -11168,9 +11431,6 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get s80ee7a25a9 =>
       'Press the big round button on top of the Hue Bridge now. Wait here – it connects by itself.';
-
-  @override
-  String get s4dbb677293 => 'unreachable';
 
   @override
   String get sf50732e8e8 => 'dimmable';
@@ -11292,16 +11552,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s29045a726e => 'Flood';
 
   @override
-  String get s0b2f7d7c80 => 'open';
-
-  @override
-  String get s7009587b85 => 'closed';
-
-  @override
   String get s3b35de231e => 'motion';
-
-  @override
-  String get sd9b6de0a6a => 'Other';
 
   @override
   String se7520a3990(String p0) {
@@ -11419,6 +11670,144 @@ class AppLocalizationsEn extends AppLocalizations {
       'No Modbus TCP hub found in the YAML (modbus: … type: tcp, host: …).';
 
   @override
+  String get s623040a63a =>
+      'Inactive=Inactive;Ready=Ready;DelayedStart=Delayed start;Run=Running;Pause=Paused;ActionRequired=Action required;Finished=Finished;Error=Error;Aborting=Aborting;Offline=Offline';
+
+  @override
+  String get s417e8a2ba4 => 'Home Connect (Bosch, Siemens, Neff, Gaggenau)';
+
+  @override
+  String get sb98e3e97cd =>
+      'Client ID of your own Home Connect application (developer.home-connect.com → Applications).';
+
+  @override
+  String get s6e05e7371c => 'Client Secret (if your app has one)';
+
+  @override
+  String get s8189ed86b7 =>
+      'From the same page. A Device Flow app usually works without it.';
+
+  @override
+  String get sda4f3457c2 => 'Sign-in token';
+
+  @override
+  String get sa134f8dd4c =>
+      'Comes from signing in in the add wizard. Do not change.';
+
+  @override
+  String get s560a9b1bab =>
+      'The simulator is for developers (virtual appliances).';
+
+  @override
+  String get s5f614bf8c1 => 'Real appliances';
+
+  @override
+  String get s3a5c09be5b => 'Home Connect simulator';
+
+  @override
+  String get s6dcd74c435 => 'Testing only: replaces Home Connect\'s address.';
+
+  @override
+  String get s9de7817d1f => 'Appliance id (haId)';
+
+  @override
+  String get s1839d16bcc => 'The Home Connect haId.';
+
+  @override
+  String get s6efa690ee3 => 'Key';
+
+  @override
+  String get sf69f72bbac =>
+      'Status or setting key, e.g. BSH.Common.Status.DoorState.';
+
+  @override
+  String get s9d3115f45d => 'What to do on the appliance.';
+
+  @override
+  String get s07c53aa821 => 'Start the selected program';
+
+  @override
+  String get sf918a12f32 => 'Stop the program';
+
+  @override
+  String get s9384bc6f7e => 'Setting';
+
+  @override
+  String get s6a395924ea => 'Setting key';
+
+  @override
+  String get sc58b6af7f5 => 'Only \"Setting\": the key.';
+
+  @override
+  String get s378202fe0b => 'Power: On / Off / Standby. Setting: the value.';
+
+  @override
+  String get sb1baaa4494 => 'sign in to Home Connect again';
+
+  @override
+  String get saa6e9765a0 => 'sign in again (Connections → Home Connect)';
+
+  @override
+  String get s7af74cd31e => 'Home Connect rate limit reached, wait';
+
+  @override
+  String get s3cdfd26282 => 'Home Connect rate limit reached';
+
+  @override
+  String get sf8050ebbd9 => 'Select a program on the appliance first';
+
+  @override
+  String get s4673002a7e =>
+      'Remote start is not allowed: turn on \"Remote Start\" on the appliance and close the door.';
+
+  @override
+  String scf29ca4038(String p0) {
+    return '✓ Home Connect answered: $p0 appliances. No commands were sent.';
+  }
+
+  @override
+  String get see67742c70 => 'offline';
+
+  @override
+  String get s77140ea0df => 'program';
+
+  @override
+  String get s09166e1ea6 => 'time left';
+
+  @override
+  String get sfb70dcb933 => 'progress';
+
+  @override
+  String get sabadf329bd => 'door';
+
+  @override
+  String get s7152ef5dbd => 'oven temperature';
+
+  @override
+  String get s68d00964af => 'fridge temperature';
+
+  @override
+  String get s824d365527 => 'freezer temperature';
+
+  @override
+  String get sfc4a054c1a => 'door alarm';
+
+  @override
+  String get s8253ea43e9 => 'start selected program';
+
+  @override
+  String get s1462af9000 =>
+      'Home appliances through your Home Connect account: washers, dryers, dishwashers, ovens, fridges, coffee machines… State, time left, door, start and stop. Free.';
+
+  @override
+  String get sdc0ed8435b =>
+      'Free, once: sign in at developer.home-connect.com (same e-mail as the Home Connect app) → Applications → Register application → OAuth Flow: \"Device Flow\", Home Connect User Account for Testing: your e-mail. Copy the Client ID here. A new application can take 15–30 min to start working.';
+
+  @override
+  String get s625166a5a9 =>
+      'Only if your application page shows a Client Secret.';
+
+  @override
   String get s0185672be7 =>
       'The camera user (usually admin) and the password you set when activating it.';
 
@@ -11457,6 +11846,14 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get s1a3c354399 =>
       'eWeLink app → camera → Settings: turn on RTSP/ONVIF and set a user and password for it (if the option exists).';
+
+  @override
+  String get s0ae408f9a0 =>
+      'The camera user (service, user or live) and the password you set in Configuration Manager or on the camera web page.';
+
+  @override
+  String get s61c9b76fa1 =>
+      'Bosch Smart Home cameras (Eyes, 360) do not stream video on the home network – add them with \"Bosch Smart Home\" (privacy mode, notifications, light).';
 
   @override
   String get s1c2786e15f =>
@@ -11616,10 +12013,4 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get s06444f278d => 'position (100 = closed)';
-
-  @override
-  String get sdb34e99ef6 => 'open';
-
-  @override
-  String get s7fc017b0f0 => 'close';
 }
