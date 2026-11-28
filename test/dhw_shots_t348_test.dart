@@ -75,7 +75,11 @@ Widget _page(AppState st, Widget home) => AppScope(
 );
 
 void main() {
-  final dir = Platform.environment['MOLAPLAN_SHOTS'] ?? '/workspace/t348-shots';
+  final dir = Platform.environment['MOLAPLAN_SHOTS'];
+  if (dir == null) {
+    test('shots skipped without MOLAPLAN_SHOTS', () {});
+    return;
+  }
   testWidgets('t348 shots', (tester) async {
     await _font('Roboto', 'Roboto-Regular.ttf');
     await _font('MaterialIcons', 'MaterialIcons-Regular.otf');
