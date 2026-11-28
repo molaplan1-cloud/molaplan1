@@ -21,6 +21,8 @@ void main() {
     test('LAN, Tailscale CGNAT / ts.net, Nabu Casa and custom', () {
       expect(classifyHaUrl('http://192.168.1.20:8123'), HaRouteKind.local);
       expect(classifyHaUrl('http://homeassistant.local:8123'), HaRouteKind.local);
+      expect(classifyHaUrl('http://127.0.0.1:8123'), HaRouteKind.local);
+      expect(classifyHaUrl('http://localhost:8123'), HaRouteKind.local);
       expect(classifyHaUrl('homeassistant'), HaRouteKind.local);
       expect(classifyHaUrl('http://100.64.1.10:8123'), HaRouteKind.tailscale);
       expect(classifyHaUrl('http://100.127.0.5:8123'), HaRouteKind.tailscale);

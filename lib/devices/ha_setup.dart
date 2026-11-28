@@ -62,8 +62,18 @@ class HaSetupError extends PlainError {
 }
 
 /// LAN host: private IPv4, *.local or a bare name ("homeassistant").
+bool isLoopbackHaHost(String host) {
+  final h = host.trim().toLowerCase();
+  if (h == 'localhost' || h == '::1' || h == '[::1]') return true;
+  final p = h.split('.').map(int.tryParse).toList();
+  return p.length == 4 && p.every((x) => x != null) && p[0] == 127;
+}
+
 bool isLanHaHost(String host) =>
-    isPrivateIPv4(host) || host.endsWith('.local') || (host.isNotEmpty && !host.contains('.') && !host.contains(':'));
+    isPrivateIPv4(host) ||
+    isLoopbackHaHost(host) ||
+    host.endsWith('.local') ||
+    (host.isNotEmpty && !host.contains('.') && !host.contains(':'));
 
 /// Tailscale: CGNAT 100.64.0.0/10, *.ts.net, or Tailscale IPv6 prefix.
 bool isTailscaleHaHost(String host) {
