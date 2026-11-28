@@ -2219,6 +2219,14 @@
  "@se38a9bb2ed": {
   "x-mt": true
  },
+ "s8e3624e844": "Acérquese",
+ "@s8e3624e844": {
+  "x-mt": true
+ },
+ "s0071c4430f": "¡Afuera!",
+ "@s0071c4430f": {
+  "x-mt": true
+ },
  "sf1ed8904bb": "Elija la lista de registro (CSV)",
  "@sf1ed8904bb": {
   "x-mt": true
@@ -2613,20 +2621,13 @@
  "@s4529c1010a": {
   "x-mt": true
  },
- "s98bf81bba3": "El vídeo en vivo no funciona en este dispositivo",
- "@s98bf81bba3": {
-  "x-mt": true
- },
- "seb2bb5cbce": "El vídeo en vivo sólo muestra en la red de la casa. Esta cámara no tiene todavía imagen para uso remoto.",
- "@seb2bb5cbce": {
-  "x-mt": true
- },
  "sc95fb5440b": "Corriente terminada",
  "@sc95fb5440b": {
   "x-mt": true
  },
- "sd55dd196f6": "No hay video en vivo. Compruebe que usted está en la red de la casa y RTSP está en la cámara.",
- "@sd55dd196f6": {
+ "s200542b930": "Reintentar",
+ "s359970020b": "El comando PTZ falló ({p0}). Compruebe que usted está en la red de la casa.",
+ "@s359970020b": {
   "x-mt": true
  },
  "s1cf33c1fbc": "Valor",
@@ -5144,7 +5145,6 @@
  "@s25a6f00343": {
   "x-mt": true
  },
- "s200542b930": "Reintentar",
  "s29e92898c6": "Confirme la instalación en la ventana Android o notificación.",
  "@s29e92898c6": {
   "x-mt": true
@@ -5544,11 +5544,11 @@
  "@s772c158a57": {
   "x-mt": true
  },
+ "s2d65587b87": "8",
  "sea00017814": "baja latencia",
  "@sea00017814": {
   "x-mt": true
  },
- "s2d65587b87": "8",
  "s53a9fe5e42": "No hay ninguna cuenta de Molaplan con ese correo.",
  "sb4bd4baa5c": "No hay usuario Molaplan con esa dirección. Necesitan iniciar sesión en Molaplan 0.9 una vez – o enviarles un código de invitación.",
  "@sb4bd4baa5c": {
@@ -6238,6 +6238,14 @@
  "@sb1f0e72163": {
   "x-mt": true
  },
+ "sd24649df81": "El navegador no puede llegar a dispositivos en su red de inicio",
+ "@sd24649df81": {
+  "x-mt": true
+ },
+ "s634ae3a263": "Una página web no puede buscar ni abrir conexiones a dispositivos en su red de inicio (por ejemplo {p0}).Usa la aplicación Molaplan Windows o Android en la red de inicio, o establece el puente de inicio – luego la búsqueda y el control pasan a través de un dispositivo en casa.",
+ "@s634ae3a263": {
+  "x-mt": true
+ },
  "s55d52c5ae1": "Este dispositivo no está en Wi-Fi",
  "@s55d52c5ae1": {
   "x-mt": true
@@ -6260,6 +6268,10 @@
  },
  "sd4d7ad1bab": "Un dispositivo diferente respondió",
  "@sd4d7ad1bab": {
+  "x-mt": true
+ },
+ "s49a0fab5c2": "El dispositivo en esa dirección no es {p0}. Compruebe la dirección. Los detalles técnicos muestran lo que respondió.",
+ "@s49a0fab5c2": {
   "x-mt": true
  },
  "sdac5622fa8": "El dispositivo pide una contraseña",
@@ -6444,6 +6456,30 @@
  "@s6f326a48f9": {
   "x-mt": true
  },
+ "sd621d69823": "Un navegador no puede buscar su propia red, por lo que la búsqueda pasa por el puente casero (trabaja lejos de casa también).",
+ "@sd621d69823": {
+  "x-mt": true
+ },
+ "s6989f8d0c7": "Un navegador no puede buscar la red de inicio. Utilice la aplicación Windows o Android, configurar el puente de inicio, o escriba la dirección del dispositivo.",
+ "@s6989f8d0c7": {
+  "x-mt": true
+ },
+ "s0ae25246a7": "Buscando ambos en el Wi-Fi de este dispositivo y a través del puente de inicio (trabaja lejos de casa también). Pulsa el tuyo.",
+ "@s0ae25246a7": {
+  "x-mt": true
+ },
+ "saa8c9298e3": "Mirando el Wi-Fi de este dispositivo, toca el tuyo.",
+ "@saa8c9298e3": {
+  "x-mt": true
+ },
+ "sf7eb5738cc": "En esta red",
+ "@sf7eb5738cc": {
+  "x-mt": true
+ },
+ "sf35976eff1": "A través del puente casero",
+ "@sf35976eff1": {
+  "x-mt": true
+ },
  "sda2b4c9721": "Configuración abierta de Wi-Fi",
  "@sda2b4c9721": {
   "x-mt": true
@@ -6454,6 +6490,14 @@
  },
  "s13f0596b74": "Buscando... (unos 5 segundos)",
  "@s13f0596b74": {
+  "x-mt": true
+ },
+ "sa8cf19feed": "en esta red y a través del puente casero",
+ "@sa8cf19feed": {
+  "x-mt": true
+ },
+ "s4019a442d9": "en esta red",
+ "@s4019a442d9": {
   "x-mt": true
  },
  "sa616ab181e": "Introduzca la dirección",
@@ -6491,6 +6535,10 @@
   "x-mt": true
  },
  "se4095d7d95": "Contraseña del dispositivo",
+ "s117fa4a840": "Añadir de todos modos como cámara ONVIF/RTSP",
+ "@s117fa4a840": {
+  "x-mt": true
+ },
  "s8f610a3bb2": "Estoy lejos de casa",
  "@s8f610a3bb2": {
   "x-mt": true
@@ -11290,6 +11338,14 @@
  "@s1866ef6dc8": {
   "x-mt": true
  },
+ "sceda303e37": "El nombre de usuario y la contraseña que se muestra en la página ONVIF/RTSP de la cámara en la aplicación eWeLink (Configuración → Más ajustes → ONVIF/RTSP). No son tu login de cuenta de eWeLink. En un modelo de doble lente ambos lentes vienen del mismo dispositivo.",
+ "@sceda303e37": {
+  "x-mt": true
+ },
+ "s9134959509": "eWeLink app → cámara → Ajustes → Más ajustes → ONVIF/RTSP: encienda y observe la dirección IP de la cámara, nombre de usuario y contraseña.",
+ "@s9134959509": {
+  "x-mt": true
+ },
  "s0ae408f9a0": "El usuario de la cámara (servicio, usuario o en vivo) y la contraseña que se establece en Configuration Manager o en la página web de la cámara.",
  "@s0ae408f9a0": {
   "x-mt": true
@@ -11318,6 +11374,14 @@
  "@s1577068729": {
   "x-mt": true
  },
+ "sbfd6f856ef": "La cámara dice que es \"{p0}\", no {p1}. Se agregó de todos modos como una cámara ONVIF.",
+ "@sbfd6f856ef": {
+  "x-mt": true
+ },
+ "s56ef345ef2": "La dirección de vídeo no podía ser verificada (la cámara respondió RTSP {p0}). Se agregó de todos modos – si ninguna imagen muestra, compruebe el nombre de usuario y contraseña.",
+ "@s56ef345ef2": {
+  "x-mt": true
+ },
  "s83d937ae6b": "Corriente {p0}/{p1} ( lente o canal propio)",
  "@s83d937ae6b": {
   "x-mt": true
@@ -11328,6 +11392,10 @@
  },
  "s2101774157": "Video en vivo en casa (sin imagen)",
  "@s2101774157": {
+  "x-mt": true
+ },
+ "s208a59a323": "Control PTZ",
+ "@s208a59a323": {
   "x-mt": true
  },
  "sdd483f7f78": "Falta la clave del dispositivo",
@@ -11476,84 +11544,32 @@
  "@s06444f278d": {
   "x-mt": true
  },
- "s8e3624e844": "Acérquese",
- "@s8e3624e844": {
+ "s0ab7f9db7c": "No se almacena ninguna dirección de vídeo para esta cámara. Retire y agréguela de nuevo, o escriba la dirección RTSP a mano.",
+ "@s0ab7f9db7c": {
   "x-mt": true
  },
- "s0071c4430f": "¡Afuera!",
- "@s0071c4430f": {
+ "sda6d2b0dbe": "Una imagen todavía no se puede hacer desde la secuencia de vídeo. La computadora del puente casero necesita ffmpeg, o utilizar la aplicación Molaplan como el puente casero.",
+ "@sda6d2b0dbe": {
   "x-mt": true
  },
- "s359970020b": "El comando PTZ falló ({p0}). Compruebe que usted está en la red de la casa.",
- "@s359970020b": {
+ "sb8cbbd3d99": "La cámara ({p0}) no responde de este dispositivo. Compruebe que este dispositivo está en la misma red que la cámara y que RTSP está en la cámara.",
+ "@sb8cbbd3d99": {
   "x-mt": true
  },
- "sd24649df81": "El navegador no puede llegar a dispositivos en su red de inicio",
- "@sd24649df81": {
+ "s4a6a89a47e": "La cámara rechazó el nombre de usuario o contraseña (RTSP 401). Compruébalos en la configuración ONVIF/RTSP de la cámara.",
+ "@s4a6a89a47e": {
   "x-mt": true
  },
- "s634ae3a263": "Una página web no puede buscar ni abrir conexiones a dispositivos en su red de inicio (por ejemplo {p0}).Usa la aplicación Molaplan Windows o Android en la red de inicio, o establece el puente de inicio – luego la búsqueda y el control pasan a través de un dispositivo en casa.",
- "@s634ae3a263": {
+ "s5f36d79393": "La cámara no conoce esta dirección de vídeo (RTSP 404). Agregue la cámara de nuevo o escriba la dirección RTSP a mano.",
+ "@s5f36d79393": {
   "x-mt": true
  },
- "s49a0fab5c2": "El dispositivo en esa dirección no es {p0}. Compruebe la dirección. Los detalles técnicos muestran lo que respondió.",
- "@s49a0fab5c2": {
+ "s4c88b1dfe4": "La cámara respondió, pero el video no se podía reproducir {p0}. Intente de nuevo; si sigue fallando, vea los detalles técnicos.",
+ "@s4c88b1dfe4": {
   "x-mt": true
  },
- "sd621d69823": "Un navegador no puede buscar su propia red, por lo que la búsqueda pasa por el puente casero (trabaja lejos de casa también).",
- "@sd621d69823": {
-  "x-mt": true
- },
- "s6989f8d0c7": "Un navegador no puede buscar la red de inicio. Utilice la aplicación Windows o Android, configurar el puente de inicio, o escriba la dirección del dispositivo.",
- "@s6989f8d0c7": {
-  "x-mt": true
- },
- "s0ae25246a7": "Buscando ambos en el Wi-Fi de este dispositivo y a través del puente de inicio (trabaja lejos de casa también). Pulsa el tuyo.",
- "@s0ae25246a7": {
-  "x-mt": true
- },
- "saa8c9298e3": "Mirando el Wi-Fi de este dispositivo, toca el tuyo.",
- "@saa8c9298e3": {
-  "x-mt": true
- },
- "sf7eb5738cc": "En esta red",
- "@sf7eb5738cc": {
-  "x-mt": true
- },
- "sf35976eff1": "A través del puente casero",
- "@sf35976eff1": {
-  "x-mt": true
- },
- "sa8cf19feed": "en esta red y a través del puente casero",
- "@sa8cf19feed": {
-  "x-mt": true
- },
- "s4019a442d9": "en esta red",
- "@s4019a442d9": {
-  "x-mt": true
- },
- "s117fa4a840": "Añadir de todos modos como cámara ONVIF/RTSP",
- "@s117fa4a840": {
-  "x-mt": true
- },
- "sceda303e37": "El nombre de usuario y la contraseña que se muestra en la página ONVIF/RTSP de la cámara en la aplicación eWeLink (Configuración → Más ajustes → ONVIF/RTSP). No son tu login de cuenta de eWeLink. En un modelo de doble lente ambos lentes vienen del mismo dispositivo.",
- "@sceda303e37": {
-  "x-mt": true
- },
- "s9134959509": "eWeLink app → cámara → Ajustes → Más ajustes → ONVIF/RTSP: encienda y observe la dirección IP de la cámara, nombre de usuario y contraseña.",
- "@s9134959509": {
-  "x-mt": true
- },
- "sbfd6f856ef": "La cámara dice que es \"{p0}\", no {p1}. Se agregó de todos modos como una cámara ONVIF.",
- "@sbfd6f856ef": {
-  "x-mt": true
- },
- "s56ef345ef2": "La dirección de vídeo no podía ser verificada (la cámara respondió RTSP {p0}). Se agregó de todos modos – si ninguna imagen muestra, compruebe el nombre de usuario y contraseña.",
- "@s56ef345ef2": {
-  "x-mt": true
- },
- "s208a59a323": "Control PTZ",
- "@s208a59a323": {
+ "sedafd495a6": "La cámara respondió RTSP {p0} y no llegó la imagen. Compruebe el nombre de usuario y la contraseña y que RTSP está encendido.",
+ "@sedafd495a6": {
   "x-mt": true
  }
 }

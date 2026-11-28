@@ -367,7 +367,7 @@ class RoutedCameraDriver extends CameraDriver {
   @override
   Future<String> test() async => '${await router.run<Object?>(super.test, (c) => c.call('test', conn: _c))}';
 
-  Stream<Uint8List> _remoteFrames(String path) {
+  Stream<Uint8List> _remoteFrames(String path, {String mode = 'mjpeg', int stream = 0}) {
     late StreamController<Uint8List> out;
     Timer? t;
     var busy = false;
@@ -376,7 +376,7 @@ class RoutedCameraDriver extends CameraDriver {
       busy = true;
       try {
         final f = await router.viaRemote<Object?>(
-          (c) => c.call('snapshot', conn: _c, spec: {'mode': 'mjpeg', 'path': path}),
+          (c) => c.call('snapshot', conn: _c, spec: {'mode': mode, 'path': path, if (mode == 'rtsp') 'stream': stream}),
         );
         if (!out.isClosed) out.add(f as Uint8List);
       } catch (e) {
@@ -394,6 +394,17 @@ class RoutedCameraDriver extends CameraDriver {
       onCancel: () => t?.cancel(),
     );
     return out.stream;
+  }
+
+  @override
+  Stream<Uint8List> rtspStills({int stream = 0, Duration every = const Duration(seconds: 3)}) {
+    if (router.remoteOnly) {
+      return router.enabled
+          ? _remoteFrames('', mode: 'rtsp', stream: stream)
+          : Stream<Uint8List>.error(AppOnlyError('camera'));
+    }
+    if (router.enabled && router.preferRemote) return _remoteFrames('', mode: 'rtsp', stream: stream);
+    return super.rtspStills(stream: stream, every: every);
   }
 
   @override

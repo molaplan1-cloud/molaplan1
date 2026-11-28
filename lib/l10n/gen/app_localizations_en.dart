@@ -3267,18 +3267,41 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s4529c1010a => 'Choose a camera connection';
 
   @override
-  String get s98bf81bba3 => 'Live video does not work on this device';
+  String get s0ab7f9db7c =>
+      'No video address is stored for this camera. Remove it and add it again, or type the RTSP address by hand.';
 
   @override
-  String get seb2bb5cbce =>
-      'Live video shows only on the home network. This camera has no still picture for remote use.';
+  String get sda6d2b0dbe =>
+      'A still picture could not be made from the video stream. The home bridge computer needs ffmpeg, or use the Molaplan app as the home bridge.';
+
+  @override
+  String sb8cbbd3d99(String p0) {
+    return 'The camera ($p0) does not answer from this device. Check that this device is on the same network as the camera and that RTSP is on in the camera.';
+  }
+
+  @override
+  String get s4a6a89a47e =>
+      'The camera refused the username or password (RTSP 401). Check them in the camera\'s ONVIF/RTSP settings.';
+
+  @override
+  String get s5f36d79393 =>
+      'The camera does not know this video address (RTSP 404). Add the camera again or type the RTSP address by hand.';
+
+  @override
+  String s4c88b1dfe4(String p0) {
+    return 'The camera answered, but the video could not be played$p0. Try again; if it keeps failing, see the technical details.';
+  }
+
+  @override
+  String sedafd495a6(String p0) {
+    return 'The camera answered RTSP $p0 and no picture came. Check the username and password and that RTSP is on.';
+  }
 
   @override
   String get sc95fb5440b => 'Stream ended';
 
   @override
-  String get sd55dd196f6 =>
-      'No live video. Check that you are on the home network and RTSP is on in the camera.';
+  String get s200542b930 => 'Try again';
 
   @override
   String s359970020b(String p0) {
@@ -5829,9 +5852,6 @@ class AppLocalizationsEn extends AppLocalizations {
       'If you cancelled it yourself, all is well. If Android\'s Install window did not appear, tap Try again.';
 
   @override
-  String get s200542b930 => 'Try again';
-
-  @override
   String get s29e92898c6 =>
       'Confirm the install in the Android window or notification.';
 
@@ -6316,10 +6336,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s772c158a57 => 'tcp';
 
   @override
-  String get sea00017814 => 'low-latency';
+  String get s2d65587b87 => '8';
 
   @override
-  String get s2d65587b87 => '8';
+  String get sea00017814 => 'low-latency';
 
   @override
   String get s53a9fe5e42 => 'There is no Molaplan account with that e-mail.';

@@ -5,6 +5,7 @@ import 'package:http/http.dart' as http;
 
 import '../core/fields.dart';
 import '../devices/onvif.dart' show onvifEnvelope, onvifPtzMoveBody, onvifPtzStopBody;
+import '../devices/rtsp_still.dart';
 import 'digest_auth.dart';
 import 'driver.dart';
 import 'http_driver.dart';
@@ -243,6 +244,37 @@ class CameraDriver extends Driver {
     final bytes = await r.stream.toBytes().timeout(const Duration(seconds: 15));
     if (r.statusCode >= 400) throw DriverException('Camera: HTTP ${r.statusCode}');
     return bytes;
+  }
+
+  /// t331ua0: still pictures made from the RTSP stream (a camera with no snapshot address), one
+  /// every [every], grabbed on this device. Cancel the subscription to stop.
+  Stream<Uint8List> rtspStills({int stream = 0, Duration every = const Duration(seconds: 3)}) {
+    late StreamController<Uint8List> out;
+    Timer? t;
+    var busy = false;
+    Future<void> grab() async {
+      if (busy || out.isClosed) return;
+      busy = true;
+      try {
+        final u = rtspUrl(sub: true, stream: stream);
+        if (u == null) throw DriverException('No RTSP address');
+        final f = await RtspStill.grab(u);
+        if (!out.isClosed) out.add(f);
+      } catch (e) {
+        if (!out.isClosed) out.addError(e);
+      } finally {
+        busy = false;
+      }
+    }
+
+    out = StreamController<Uint8List>(
+      onListen: () {
+        grab();
+        t = Timer.periodic(every, (_) => grab());
+      },
+      onCancel: () => t?.cancel(),
+    );
+    return out.stream;
   }
 
   /// Stream of JPEG frames. Cancel the subscription to stop.

@@ -6002,17 +6002,47 @@ abstract class AppLocalizations {
   /// **'Choose a camera connection'**
   String get s4529c1010a;
 
-  /// fi: Live-video ei toimi tällä laitteella
+  /// fi: Kameralle ei ole tallennettu videon osoitetta. Poista kamera ja lisää se uudelleen, tai kirjoita RTSP-osoite käsin.
   ///
   /// In en, this message translates to:
-  /// **'Live video does not work on this device'**
-  String get s98bf81bba3;
+  /// **'No video address is stored for this camera. Remove it and add it again, or type the RTSP address by hand.'**
+  String get s0ab7f9db7c;
 
-  /// fi: Live-video näkyy vain kotiverkossa. Tällä kameralla ei ole still-kuvaa etäkäyttöön.
+  /// fi: Still-kuvaa ei saatu tehtyä videovirrasta. Kotisillan tietokoneella tarvitaan ffmpeg tai Molaplan-sovellus kotisiltana.
   ///
   /// In en, this message translates to:
-  /// **'Live video shows only on the home network. This camera has no still picture for remote use.'**
-  String get seb2bb5cbce;
+  /// **'A still picture could not be made from the video stream. The home bridge computer needs ffmpeg, or use the Molaplan app as the home bridge.'**
+  String get sda6d2b0dbe;
+
+  /// fi: Kamera ({p0}) ei vastaa tältä laitteelta. Tarkista, että laite on samassa verkossa kuin kamera ja että kameran RTSP on p
+  ///
+  /// In en, this message translates to:
+  /// **'The camera ({p0}) does not answer from this device. Check that this device is on the same network as the camera and that RTSP is on in the camera.'**
+  String sb8cbbd3d99(String p0);
+
+  /// fi: Kamera hylkäsi tunnuksen tai salasanan (RTSP 401). Tarkista ne kameran ONVIF/RTSP-asetuksista.
+  ///
+  /// In en, this message translates to:
+  /// **'The camera refused the username or password (RTSP 401). Check them in the camera\'\'s ONVIF/RTSP settings.'**
+  String get s4a6a89a47e;
+
+  /// fi: Kamera ei tunne videon osoitetta (RTSP 404). Lisää kamera uudelleen tai kirjoita RTSP-osoite käsin.
+  ///
+  /// In en, this message translates to:
+  /// **'The camera does not know this video address (RTSP 404). Add the camera again or type the RTSP address by hand.'**
+  String get s5f36d79393;
+
+  /// fi: Kamera vastasi, mutta kuvaa ei saatu toistettua{p0}. Yritä uudelleen; jos vika jatkuu, katso tekniset tiedot.
+  ///
+  /// In en, this message translates to:
+  /// **'The camera answered, but the video could not be played{p0}. Try again; if it keeps failing, see the technical details.'**
+  String s4c88b1dfe4(String p0);
+
+  /// fi: Kamera vastasi RTSP {p0}, eikä kuvaa saatu. Tarkista tunnus ja salasana ja että RTSP on päällä.
+  ///
+  /// In en, this message translates to:
+  /// **'The camera answered RTSP {p0} and no picture came. Check the username and password and that RTSP is on.'**
+  String sedafd495a6(String p0);
 
   /// fi: Virta päättyi
   ///
@@ -6020,11 +6050,11 @@ abstract class AppLocalizations {
   /// **'Stream ended'**
   String get sc95fb5440b;
 
-  /// fi: Live-videota ei saatu. Tarkista, että olet kotiverkossa ja kameran RTSP on päällä.
+  /// fi: Yritä uudelleen
   ///
   /// In en, this message translates to:
-  /// **'No live video. Check that you are on the home network and RTSP is on in the camera.'**
-  String get sd55dd196f6;
+  /// **'Try again'**
+  String get s200542b930;
 
   /// fi: PTZ-ohjaus ei onnistunut ({p0}). Tarkista, että olet kotiverkossa.
   ///
@@ -10654,12 +10684,6 @@ abstract class AppLocalizations {
   /// **'If you cancelled it yourself, all is well. If Android\'\'s Install window did not appear, tap Try again.'**
   String get s25a6f00343;
 
-  /// fi: Yritä uudelleen
-  ///
-  /// In en, this message translates to:
-  /// **'Try again'**
-  String get s200542b930;
-
   /// fi: Vahvista asennus Androidin ikkunasta tai ilmoituksesta.
   ///
   /// In en, this message translates to:
@@ -11565,17 +11589,17 @@ abstract class AppLocalizations {
   /// **'tcp'**
   String get s772c158a57;
 
-  /// fi: profile
-  ///
-  /// In en, this message translates to:
-  /// **'low-latency'**
-  String get sea00017814;
-
   /// fi: network-timeout
   ///
   /// In en, this message translates to:
   /// **'8'**
   String get s2d65587b87;
+
+  /// fi: profile
+  ///
+  /// In en, this message translates to:
+  /// **'low-latency'**
+  String get sea00017814;
 
   /// fi: Sähköpostilla ei ole Molaplan-tiliä.
   ///

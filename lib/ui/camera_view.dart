@@ -4,6 +4,7 @@ import 'dart:typed_data';
 import 'package:material_ui/material_ui.dart';
 
 import '../core/fields.dart';
+import '../devices/rtsp_still.dart';
 import '../drivers/camera_driver.dart';
 import '../models/models.dart';
 import 'app_scope.dart';
@@ -73,26 +74,163 @@ class _CameraViewState extends State<CameraView> {
     }
     final spec = widget.tile.read;
     final mode = spec.str('mode', 'mjpeg');
-    final away = AppScope.read(context).remote.router.preferRemote;
+    final router = AppScope.read(context).remote.router;
+    final away = router.preferRemote;
     final url = d.rtspUrl(sub: !widget.live, stream: spec.integer('stream', 0));
-    if (url != null && (mode == 'rtsp' || widget.live) && rtspSupported && !away) {
+    // t331ua0: whether this device is "at home" is not decided from the home bridge's state: when
+    // this device can reach the camera's RTSP port, the video plays here. The RtspView checks the
+    // address first; only when the camera does not answer from here, the still pictures come
+    // through the home bridge.
+    if (url != null && (mode == 'rtsp' || widget.live) && rtspSupported && !(away && _skipLocalRtsp(url))) {
       setState(() => _rtsp = url);
       return;
     }
     if (mode == 'rtsp') {
-      _plainNote = true;
-      setState(
-        () => _error = !rtspSupported
-            ? tx(context, 'Live-video ei toimi tällä laitteella', 'Live video does not work on this device')
-            : tx(
-                context,
-                'Live-video näkyy vain kotiverkossa. Tällä kameralla ei ole still-kuvaa etäkäyttöön.',
-                'Live video shows only on the home network. This camera has no still picture for remote use.',
-              ),
-      );
+      if (url == null) {
+        _plainNote = true;
+        setState(
+          () => _error = tx(
+            context,
+            'Kameralle ei ole tallennettu videon osoitetta. Poista kamera ja lisää se uudelleen, tai kirjoita RTSP-osoite käsin.',
+            'No video address is stored for this camera. Remove it and add it again, or type the RTSP address by hand.',
+          ),
+        );
+        return;
+      }
+      if (!rtspSupported) {
+        _tech.add('live video: not available on this platform (browser) – stills through the home bridge');
+      }
+      _startRtspStills(d);
       return;
     }
     _startStill(d);
+  }
+
+  /// Cameras that did not answer from this device lately (while the app thinks it is away): their
+  /// RTSP port is not tried again for a minute.
+  static final _unreachable = <String, DateTime>{};
+  bool _skipLocalRtsp(String url) {
+    final t = _unreachable[Uri.tryParse(url)?.host ?? ''];
+    return t != null && DateTime.now().difference(t) < const Duration(minutes: 1);
+  }
+
+  final _tech = <String>[];
+
+  /// Still pictures made from the RTSP stream (this device, or the home bridge when remote).
+  void _startRtspStills(CameraDriver d) {
+    _sub?.cancel();
+    _sub = d
+        .rtspStills(stream: widget.tile.read.integer('stream', 0))
+        .listen(
+          (f) {
+            if (mounted) {
+              setState(() {
+                _frame = f;
+                _error = null;
+                _plainNote = false;
+              });
+            }
+          },
+          onError: (Object e) {
+            if (!mounted) return;
+            final host = Uri.tryParse(d.rtspUrl(sub: true) ?? '')?.host ?? '';
+            final text = e.toString();
+            setState(() {
+              if (e is RtspStillException && e.status != 0) {
+                _plainNote = true;
+                _error = _rtspReason(
+                  RtspFailure(
+                    e.status == -1
+                        ? RtspFailKind.unreachable
+                        : e.status == 401
+                        ? RtspFailKind.login
+                        : RtspFailKind.notFound,
+                    e.status,
+                    '',
+                    const [],
+                  ),
+                  host,
+                );
+              } else if (text.contains('RTSP still:')) {
+                _plainNote = true;
+                _error = tx(
+                  context,
+                  'Still-kuvaa ei saatu tehtyä videovirrasta. Kotisillan tietokoneella tarvitaan ffmpeg tai Molaplan-sovellus kotisiltana.',
+                  'A still picture could not be made from the video stream. The home bridge computer needs ffmpeg, or use the Molaplan app as the home bridge.',
+                );
+              } else {
+                _error = text;
+              }
+            });
+            if (_tech.length < 30) {
+              if (e is RtspStillException) _tech.addAll(e.tech.where((l) => !_tech.contains(l)));
+              _tech.add('still from RTSP: ${_clean(text)}');
+            }
+          },
+        );
+  }
+
+  static String _clean(String e) => e.replaceAll(RegExp(r'rtsp://[^@\s/]*@'), 'rtsp://');
+
+  /// The real reason live video did not start, in plain words.
+  String _rtspReason(RtspFailure f, String host) {
+    switch (f.kind) {
+      case RtspFailKind.unreachable:
+        return tx(
+          context,
+          'Kamera ($host) ei vastaa tältä laitteelta. Tarkista, että laite on samassa verkossa kuin kamera ja että kameran RTSP on päällä.',
+          'The camera ($host) does not answer from this device. Check that this device is on the same network as the camera and that RTSP is on in the camera.',
+        );
+      case RtspFailKind.login:
+        return tx(
+          context,
+          'Kamera hylkäsi tunnuksen tai salasanan (RTSP 401). Tarkista ne kameran ONVIF/RTSP-asetuksista.',
+          'The camera refused the username or password (RTSP 401). Check them in the camera\'s ONVIF/RTSP settings.',
+        );
+      case RtspFailKind.notFound:
+        return tx(
+          context,
+          'Kamera ei tunne videon osoitetta (RTSP 404). Lisää kamera uudelleen tai kirjoita RTSP-osoite käsin.',
+          'The camera does not know this video address (RTSP 404). Add the camera again or type the RTSP address by hand.',
+        );
+      case RtspFailKind.noVideo:
+        return f.status == 200
+            ? tx(
+                context,
+                'Kamera vastasi, mutta kuvaa ei saatu toistettua${f.error.isEmpty ? '' : ' (${f.error})'}. Yritä uudelleen; jos vika jatkuu, katso tekniset tiedot.',
+                'The camera answered, but the video could not be played${f.error.isEmpty ? '' : ' (${f.error})'}. Try again; if it keeps failing, see the technical details.',
+              )
+            : tx(
+                context,
+                'Kamera vastasi RTSP ${f.status}, eikä kuvaa saatu. Tarkista tunnus ja salasana ja että RTSP on päällä.',
+                'The camera answered RTSP ${f.status} and no picture came. Check the username and password and that RTSP is on.',
+              );
+    }
+  }
+
+  void _retryNow() {
+    _sub?.cancel();
+    _sub = null;
+    _timer?.cancel();
+    _timer = null;
+    _retry?.cancel();
+    _frame = null;
+    _error = null;
+    _rtsp = null;
+    _tech.clear();
+    _start();
+  }
+
+  void _showTech() {
+    final text = _tech.isEmpty ? '–' : _tech.join('\n');
+    showDialog<void>(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: Text(tx(ctx, 'Tekniset tiedot', 'Technical details')),
+        content: SingleChildScrollView(child: SelectableText(text, style: const TextStyle(fontSize: 12))),
+        actions: [TextButton(onPressed: () => Navigator.pop(ctx), child: Text(tx(ctx, 'Sulje', 'Close')))],
+      ),
+    );
   }
 
   void _startStill(CameraDriver d) {
@@ -163,24 +301,40 @@ class _CameraViewState extends State<CameraView> {
             key: ValueKey(_rtsp),
             url: _rtsp!,
             fit: widget.fit,
-            onError: (e) {
+            onError: (f) {
               if (!mounted) return;
-              final hasSnap = widget.tile.read.str('mode', 'mjpeg') != 'rtsp';
+              final spec = widget.tile.read;
+              final hasSnap = spec.str('mode', 'mjpeg') != 'rtsp';
+              final d = _driver;
+              final host = Uri.tryParse(_rtsp ?? '')?.host ?? '';
+              _tech
+                ..clear()
+                ..addAll(f.tech);
+              final router = AppScope.read(context).remote.router;
+              final away = router.preferRemote || router.awayFromBridge;
+              _tech.add(
+                'network: bridge ${router.enabled ? 'configured' : 'none'}, ${away ? 'this device is away from the bridge' : 'on the bridge network or unknown'}',
+              );
               setState(() {
                 _rtsp = null;
-                if (!hasSnap) {
+                if (!hasSnap && f.kind != RtspFailKind.unreachable) {
                   _plainNote = true;
-                  _error = tx(
-                    context,
-                    'Live-videota ei saatu. Tarkista, että olet kotiverkossa ja kameran RTSP on päällä.',
-                    'No live video. Check that you are on the home network and RTSP is on in the camera.',
-                  );
+                  _error = _rtspReason(f, host);
                 }
               });
-              // Fall back to the still picture / MJPEG (e.g. RTSP switched off on the camera).
+              if (f.kind == RtspFailKind.unreachable) _unreachable[host] = DateTime.now();
               if (hasSnap) {
-                final d = _driver;
+                // Fall back to the still picture / MJPEG (e.g. RTSP switched off on the camera).
                 if (d != null) _startStill(d);
+              } else if (f.kind == RtspFailKind.unreachable && d != null && router.enabled) {
+                // Not reachable from here: stills through the home bridge.
+                _startRtspStills(d);
+                if (_error == null) setState(() => _plainNote = false);
+              } else if (f.kind == RtspFailKind.unreachable) {
+                setState(() {
+                  _plainNote = true;
+                  _error = _rtspReason(f, host);
+                });
               }
             },
           ),
@@ -199,11 +353,37 @@ class _CameraViewState extends State<CameraView> {
                 color: cs.errorContainer.withValues(alpha: 0.85),
                 borderRadius: BorderRadius.circular(8),
               ),
-              child: Text(
-                _plainNote ? _error! : friendlyText(context, _error!),
-                maxLines: _plainNote ? 4 : 2,
-                overflow: TextOverflow.ellipsis,
-                style: const TextStyle(fontSize: 11),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    _plainNote ? _error! : friendlyText(context, _error!),
+                    maxLines: _plainNote ? 4 : 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(fontSize: 11),
+                  ),
+                  if (_tech.isNotEmpty || widget.tile.read.str('mode', 'mjpeg') == 'rtsp')
+                    Wrap(
+                      spacing: 4,
+                      children: [
+                        if (_driver != null)
+                          TextButton(
+                            key: const ValueKey('cam-retry'),
+                            style: _smallButton,
+                            onPressed: _retryNow,
+                            child: Text(tx(context, 'Yritä uudelleen', 'Try again')),
+                          ),
+                        if (_tech.isNotEmpty)
+                          TextButton(
+                            key: const ValueKey('cam-tech'),
+                            style: _smallButton,
+                            onPressed: _showTech,
+                            child: Text(tx(context, 'Tekniset tiedot', 'Technical details')),
+                          ),
+                      ],
+                    ),
+                ],
               ),
             ),
           ),
@@ -211,6 +391,14 @@ class _CameraViewState extends State<CameraView> {
     );
   }
 }
+
+const _smallButton = ButtonStyle(
+  visualDensity: VisualDensity.compact,
+  padding: WidgetStatePropertyAll(EdgeInsets.symmetric(horizontal: 6)),
+  minimumSize: WidgetStatePropertyAll(Size(0, 24)),
+  tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+  textStyle: WidgetStatePropertyAll(TextStyle(fontSize: 11)),
+);
 
 class CameraFullscreen extends StatelessWidget {
   const CameraFullscreen({super.key, required this.tile});

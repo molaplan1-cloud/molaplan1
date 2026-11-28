@@ -3302,18 +3302,41 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s4529c1010a => 'Elija una conexión de cámara';
 
   @override
-  String get s98bf81bba3 => 'El vídeo en vivo no funciona en este dispositivo';
+  String get s0ab7f9db7c =>
+      'No se almacena ninguna dirección de vídeo para esta cámara. Retire y agréguela de nuevo, o escriba la dirección RTSP a mano.';
 
   @override
-  String get seb2bb5cbce =>
-      'El vídeo en vivo sólo muestra en la red de la casa. Esta cámara no tiene todavía imagen para uso remoto.';
+  String get sda6d2b0dbe =>
+      'Una imagen todavía no se puede hacer desde la secuencia de vídeo. La computadora del puente casero necesita ffmpeg, o utilizar la aplicación Molaplan como el puente casero.';
+
+  @override
+  String sb8cbbd3d99(String p0) {
+    return 'La cámara ($p0) no responde de este dispositivo. Compruebe que este dispositivo está en la misma red que la cámara y que RTSP está en la cámara.';
+  }
+
+  @override
+  String get s4a6a89a47e =>
+      'La cámara rechazó el nombre de usuario o contraseña (RTSP 401). Compruébalos en la configuración ONVIF/RTSP de la cámara.';
+
+  @override
+  String get s5f36d79393 =>
+      'La cámara no conoce esta dirección de vídeo (RTSP 404). Agregue la cámara de nuevo o escriba la dirección RTSP a mano.';
+
+  @override
+  String s4c88b1dfe4(String p0) {
+    return 'La cámara respondió, pero el video no se podía reproducir $p0. Intente de nuevo; si sigue fallando, vea los detalles técnicos.';
+  }
+
+  @override
+  String sedafd495a6(String p0) {
+    return 'La cámara respondió RTSP $p0 y no llegó la imagen. Compruebe el nombre de usuario y la contraseña y que RTSP está encendido.';
+  }
 
   @override
   String get sc95fb5440b => 'Corriente terminada';
 
   @override
-  String get sd55dd196f6 =>
-      'No hay video en vivo. Compruebe que usted está en la red de la casa y RTSP está en la cámara.';
+  String get s200542b930 => 'Reintentar';
 
   @override
   String s359970020b(String p0) {
@@ -5886,9 +5909,6 @@ class AppLocalizationsEs extends AppLocalizations {
       'Si usted lo canceló usted mismo, todo está bien. Si la ventana de Install de Android no apareció, grifo Prueba de nuevo.';
 
   @override
-  String get s200542b930 => 'Reintentar';
-
-  @override
   String get s29e92898c6 =>
       'Confirme la instalación en la ventana Android o notificación.';
 
@@ -6378,10 +6398,10 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s772c158a57 => 'tcp';
 
   @override
-  String get sea00017814 => 'baja latencia';
+  String get s2d65587b87 => '8';
 
   @override
-  String get s2d65587b87 => '8';
+  String get sea00017814 => 'baja latencia';
 
   @override
   String get s53a9fe5e42 => 'No hay ninguna cuenta de Molaplan con ese correo.';

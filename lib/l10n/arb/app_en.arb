@@ -5197,37 +5197,77 @@
  "sa0bd9ad5b1": "Example camera – add your own with Add device",
  "@sa0bd9ad5b1": {
   "description": "fi: Esimerkkikamera – lisää oma kamerasi Lisää laite -painikkeella",
-  "x-where": "ui/camera_view.dart:61"
+  "x-where": "ui/camera_view.dart:62"
  },
  "s4529c1010a": "Choose a camera connection",
  "@s4529c1010a": {
   "description": "fi: Valitse kamerayhteys",
-  "x-where": "ui/camera_view.dart:71"
+  "x-where": "ui/camera_view.dart:72"
  },
- "s98bf81bba3": "Live video does not work on this device",
- "@s98bf81bba3": {
-  "description": "fi: Live-video ei toimi tällä laitteella",
-  "x-where": "ui/camera_view.dart:86"
+ "s0ab7f9db7c": "No video address is stored for this camera. Remove it and add it again, or type the RTSP address by hand.",
+ "@s0ab7f9db7c": {
+  "description": "fi: Kameralle ei ole tallennettu videon osoitetta. Poista kamera ja lisää se uudelleen, tai kirjoita RTSP-osoite käsin.",
+  "x-where": "ui/camera_view.dart:92"
  },
- "seb2bb5cbce": "Live video shows only on the home network. This camera has no still picture for remote use.",
- "@seb2bb5cbce": {
-  "description": "fi: Live-video näkyy vain kotiverkossa. Tällä kameralla ei ole still-kuvaa etäkäyttöön.",
-  "x-where": "ui/camera_view.dart:87"
+ "sda6d2b0dbe": "A still picture could not be made from the video stream. The home bridge computer needs ffmpeg, or use the Molaplan app as the home bridge.",
+ "@sda6d2b0dbe": {
+  "description": "fi: Still-kuvaa ei saatu tehtyä videovirrasta. Kotisillan tietokoneella tarvitaan ffmpeg tai Molaplan-sovellus kotisiltana.",
+  "x-where": "ui/camera_view.dart:156"
+ },
+ "sb8cbbd3d99": "The camera ({p0}) does not answer from this device. Check that this device is on the same network as the camera and that RTSP is on in the camera.",
+ "@sb8cbbd3d99": {
+  "description": "fi: Kamera ({p0}) ei vastaa tältä laitteelta. Tarkista, että laite on samassa verkossa kuin kamera ja että kameran RTSP on p",
+  "x-where": "ui/camera_view.dart:179",
+  "placeholders": {
+   "p0": {
+    "type": "String"
+   }
+  }
+ },
+ "s4a6a89a47e": "The camera refused the username or password (RTSP 401). Check them in the camera''s ONVIF/RTSP settings.",
+ "@s4a6a89a47e": {
+  "description": "fi: Kamera hylkäsi tunnuksen tai salasanan (RTSP 401). Tarkista ne kameran ONVIF/RTSP-asetuksista.",
+  "x-where": "ui/camera_view.dart:185"
+ },
+ "s5f36d79393": "The camera does not know this video address (RTSP 404). Add the camera again or type the RTSP address by hand.",
+ "@s5f36d79393": {
+  "description": "fi: Kamera ei tunne videon osoitetta (RTSP 404). Lisää kamera uudelleen tai kirjoita RTSP-osoite käsin.",
+  "x-where": "ui/camera_view.dart:191"
+ },
+ "s4c88b1dfe4": "The camera answered, but the video could not be played{p0}. Try again; if it keeps failing, see the technical details.",
+ "@s4c88b1dfe4": {
+  "description": "fi: Kamera vastasi, mutta kuvaa ei saatu toistettua{p0}. Yritä uudelleen; jos vika jatkuu, katso tekniset tiedot.",
+  "x-where": "ui/camera_view.dart:198",
+  "placeholders": {
+   "p0": {
+    "type": "String"
+   }
+  }
+ },
+ "sedafd495a6": "The camera answered RTSP {p0} and no picture came. Check the username and password and that RTSP is on.",
+ "@sedafd495a6": {
+  "description": "fi: Kamera vastasi RTSP {p0}, eikä kuvaa saatu. Tarkista tunnus ja salasana ja että RTSP on päällä.",
+  "x-where": "ui/camera_view.dart:203",
+  "placeholders": {
+   "p0": {
+    "type": "String"
+   }
+  }
  },
  "sc95fb5440b": "Stream ended",
  "@sc95fb5440b": {
   "description": "fi: Virta päättyi",
-  "x-where": "ui/camera_view.dart:116"
+  "x-where": "ui/camera_view.dart:254"
  },
- "sd55dd196f6": "No live video. Check that you are on the home network and RTSP is on in the camera.",
- "@sd55dd196f6": {
-  "description": "fi: Live-videota ei saatu. Tarkista, että olet kotiverkossa ja kameran RTSP on päällä.",
-  "x-where": "ui/camera_view.dart:173"
+ "s200542b930": "Try again",
+ "@s200542b930": {
+  "description": "fi: Yritä uudelleen",
+  "x-where": "ui/camera_view.dart:375"
  },
  "s359970020b": "PTZ command failed ({p0}). Check that you are on the home network.",
  "@s359970020b": {
   "description": "fi: PTZ-ohjaus ei onnistunut ({p0}). Tarkista, että olet kotiverkossa.",
-  "x-where": "ui/camera_view.dart:237",
+  "x-where": "ui/camera_view.dart:425",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -9455,11 +9495,6 @@
   "description": "fi: Jos perut asennuksen itse, kaikki on kunnossa. Jos Androidin Asenna-ikkunaa ei näkynyt, paina Yritä uudelleen.",
   "x-where": "ui/update_ui.dart:265"
  },
- "s200542b930": "Try again",
- "@s200542b930": {
-  "description": "fi: Yritä uudelleen",
-  "x-where": "ui/update_ui.dart:276"
- },
  "s29e92898c6": "Confirm the install in the Android window or notification.",
  "@s29e92898c6": {
   "description": "fi: Vahvista asennus Androidin ikkunasta tai ilmoituksesta.",
@@ -10246,17 +10281,17 @@
  "s772c158a57": "tcp",
  "@s772c158a57": {
   "description": "fi: rtsp-transport",
-  "x-where": "ui/rtsp_view.dart:56"
- },
- "sea00017814": "low-latency",
- "@sea00017814": {
-  "description": "fi: profile",
-  "x-where": "ui/rtsp_view.dart:57"
+  "x-where": "ui/rtsp_view.dart:37"
  },
  "s2d65587b87": "8",
  "@s2d65587b87": {
   "description": "fi: network-timeout",
-  "x-where": "ui/rtsp_view.dart:59"
+  "x-where": "ui/rtsp_view.dart:37"
+ },
+ "sea00017814": "low-latency",
+ "@sea00017814": {
+  "description": "fi: profile",
+  "x-where": "ui/rtsp_view.dart:131"
  },
  "s53a9fe5e42": "There is no Molaplan account with that e-mail.",
  "@s53a9fe5e42": {
@@ -14168,47 +14203,47 @@
  "s58648dc3fc": "Camera (MJPEG / JPEG / RTSP)",
  "@s58648dc3fc": {
   "description": "fi: Kamera (MJPEG / JPEG / RTSP)",
-  "x-where": "drivers/camera_driver.dart:54"
+  "x-where": "drivers/camera_driver.dart:55"
  },
  "s1534821f4a": "Camera base URL",
  "@s1534821f4a": {
   "description": "fi: Kameran osoite",
-  "x-where": "drivers/camera_driver.dart:61"
+  "x-where": "drivers/camera_driver.dart:62"
  },
  "s95533426a3": "RTSP address (live video at home)",
  "@s95533426a3": {
   "description": "fi: RTSP-osoite (live-kuva kotiverkossa)",
-  "x-where": "drivers/camera_driver.dart:79"
+  "x-where": "drivers/camera_driver.dart:80"
  },
  "sa1115d4b0b": "RTSP address, light (tile)",
  "@sa1115d4b0b": {
   "description": "fi: RTSP-osoite, kevyt (ruutu)",
-  "x-where": "drivers/camera_driver.dart:85"
+  "x-where": "drivers/camera_driver.dart:86"
  },
  "se995a6862d": "Mode",
  "@se995a6862d": {
   "description": "fi: Tila",
-  "x-where": "drivers/camera_driver.dart:99"
+  "x-where": "drivers/camera_driver.dart:100"
  },
  "s7cf6da2822": "Live (MJPEG)",
  "@s7cf6da2822": {
   "description": "fi: Liikkuva kuva (MJPEG)",
-  "x-where": "drivers/camera_driver.dart:106"
+  "x-where": "drivers/camera_driver.dart:107"
  },
  "s4cb8ad767b": "Snapshots",
  "@s4cb8ad767b": {
   "description": "fi: Still-kuva välein",
-  "x-where": "drivers/camera_driver.dart:107"
+  "x-where": "drivers/camera_driver.dart:108"
  },
  "s15f9cd477c": "RTSP video",
  "@s15f9cd477c": {
   "description": "fi: RTSP-video",
-  "x-where": "drivers/camera_driver.dart:108"
+  "x-where": "drivers/camera_driver.dart:109"
  },
  "s4f356d158a": "Refresh (s, snapshot)",
  "@s4f356d158a": {
   "description": "fi: Kuvan päivitysväli (s, snapshot)",
-  "x-where": "drivers/camera_driver.dart:113"
+  "x-where": "drivers/camera_driver.dart:114"
  },
  "sefaea1b818": "ntfy (message channel / commands)",
  "@sefaea1b818": {
@@ -16731,17 +16766,17 @@
  "s5a9f34e4c2": "Data updated",
  "@s5a9f34e4c2": {
   "description": "fi: Tiedot päivitetty",
-  "x-where": "notify/data_fetch_host.dart:54"
+  "x-where": "notify/data_fetch_host.dart:58"
  },
  "s3acea7ff5a": "Data fetch failed",
  "@s3acea7ff5a": {
   "description": "fi: Tietohaku ei onnistunut",
-  "x-where": "notify/data_fetch_host.dart:55"
+  "x-where": "notify/data_fetch_host.dart:59"
  },
  "s0cfb3a816e": "{p0} – retrying",
  "@s0cfb3a816e": {
   "description": "fi: {p0} – yritetään uudelleen",
-  "x-where": "notify/data_fetch_host.dart:58",
+  "x-where": "notify/data_fetch_host.dart:62",
   "placeholders": {
    "p0": {
     "type": "String"

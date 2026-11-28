@@ -97,3 +97,48 @@ Future<RtspReply> rtspDescribeDetail(String url, {Duration timeout = const Durat
     sock.destroy();
   }
 }
+
+/// The result of checking an RTSP address before the video is opened (t331ua0).
+class RtspPreflight {
+  const RtspPreflight(this.status, {this.server = '', this.upFront = false, this.error = '', this.tech = const []});
+
+  /// RTSP status of the DESCRIBE; -1 = the camera did not answer (see [error]).
+  final int status;
+  final String server;
+
+  /// The camera answered 200 only when the login was sent up front (it sends no challenge).
+  final bool upFront;
+  final String error;
+  final List<String> tech;
+  bool get ok => status == 200;
+  bool get unreachable => status == -1;
+  bool get needsLoginUpFront => upFront && status == 200;
+}
+
+/// [rtspDescribeDetail] that never throws and writes secret-free technical lines.
+Future<RtspPreflight> rtspPreflight(
+  String url, {
+  Duration timeout = const Duration(seconds: 4),
+  Future<RtspReply> Function(String url, {Duration timeout})? describe,
+}) async {
+  final u = Uri.tryParse(url);
+  final shown = u == null ? '?' : '${u.host}:${u.hasPort ? u.port : 554}${u.path}';
+  try {
+    final r = await (describe ?? rtspDescribeDetail)(url, timeout: timeout);
+    return RtspPreflight(
+      r.status,
+      server: r.server,
+      upFront: r.basicRetried && r.status == 200,
+      tech: [
+        'RTSP DESCRIBE $shown: ${r.status}${r.server.isEmpty ? '' : ' (${r.server})'}${r.basicRetried ? ', login sent up front' : ''}',
+      ],
+    );
+  } on TimeoutException {
+    return RtspPreflight(-1, error: 'timeout', tech: ['RTSP DESCRIBE $shown: no answer within ${timeout.inSeconds} s']);
+  } on SocketException catch (e) {
+    final why = e.osError?.message.isNotEmpty == true ? e.osError!.message : e.message;
+    return RtspPreflight(-1, error: why, tech: ['RTSP DESCRIBE $shown: $why']);
+  } catch (e) {
+    return RtspPreflight(-1, error: '${e.runtimeType}', tech: ['RTSP DESCRIBE $shown: ${e.runtimeType}']);
+  }
+}

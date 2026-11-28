@@ -12,6 +12,7 @@ import 'package:image/image.dart' as img;
 import '../core/friendly_error.dart';
 import '../drivers/camera_driver.dart';
 import '../drivers/driver.dart';
+import '../devices/rtsp_still.dart';
 import '../drivers/registry.dart';
 import '../models/models.dart';
 import 'e2e.dart';
@@ -126,9 +127,18 @@ class RemoteExecutor {
       case 'snapshot':
         if (d is! CameraDriver) throw DriverException('Not a camera');
         final path = (spec['path'] ?? '').toString();
-        var bytes = (spec['mode'] ?? 'mjpeg') == 'snapshot'
-            ? await d.snapshot(path)
-            : await d.mjpeg(path).first.timeout(const Duration(seconds: 10));
+        final mode = (spec['mode'] ?? 'mjpeg').toString();
+        Uint8List bytes;
+        if (mode == 'rtsp') {
+          // t331ua0: a camera with no snapshot address: one frame of its RTSP stream.
+          final u = d.rtspUrl(sub: true, stream: (spec['stream'] as num?)?.toInt() ?? 0);
+          if (u == null) throw DriverException('No RTSP address');
+          bytes = await RtspStill.grab(u);
+        } else {
+          bytes = mode == 'snapshot'
+              ? await d.snapshot(path)
+              : await d.mjpeg(path).first.timeout(const Duration(seconds: 10));
+        }
         if (bytes.length > maxRemoteImageBytes) bytes = await shrinkForRemote(bytes) ?? bytes;
         if (bytes.length > maxRemoteImageBytes) {
           throw DriverException(

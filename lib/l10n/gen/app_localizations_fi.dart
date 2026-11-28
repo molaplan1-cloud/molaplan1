@@ -3283,18 +3283,41 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s4529c1010a => 'Valitse kamerayhteys';
 
   @override
-  String get s98bf81bba3 => 'Live-video ei toimi tällä laitteella';
+  String get s0ab7f9db7c =>
+      'Kameralle ei ole tallennettu videon osoitetta. Poista kamera ja lisää se uudelleen, tai kirjoita RTSP-osoite käsin.';
 
   @override
-  String get seb2bb5cbce =>
-      'Live-video näkyy vain kotiverkossa. Tällä kameralla ei ole still-kuvaa etäkäyttöön.';
+  String get sda6d2b0dbe =>
+      'Still-kuvaa ei saatu tehtyä videovirrasta. Kotisillan tietokoneella tarvitaan ffmpeg tai Molaplan-sovellus kotisiltana.';
+
+  @override
+  String sb8cbbd3d99(String p0) {
+    return 'Kamera ($p0) ei vastaa tältä laitteelta. Tarkista, että laite on samassa verkossa kuin kamera ja että kameran RTSP on päällä.';
+  }
+
+  @override
+  String get s4a6a89a47e =>
+      'Kamera hylkäsi tunnuksen tai salasanan (RTSP 401). Tarkista ne kameran ONVIF/RTSP-asetuksista.';
+
+  @override
+  String get s5f36d79393 =>
+      'Kamera ei tunne videon osoitetta (RTSP 404). Lisää kamera uudelleen tai kirjoita RTSP-osoite käsin.';
+
+  @override
+  String s4c88b1dfe4(String p0) {
+    return 'Kamera vastasi, mutta kuvaa ei saatu toistettua$p0. Yritä uudelleen; jos vika jatkuu, katso tekniset tiedot.';
+  }
+
+  @override
+  String sedafd495a6(String p0) {
+    return 'Kamera vastasi RTSP $p0, eikä kuvaa saatu. Tarkista tunnus ja salasana ja että RTSP on päällä.';
+  }
 
   @override
   String get sc95fb5440b => 'Virta päättyi';
 
   @override
-  String get sd55dd196f6 =>
-      'Live-videota ei saatu. Tarkista, että olet kotiverkossa ja kameran RTSP on päällä.';
+  String get s200542b930 => 'Yritä uudelleen';
 
   @override
   String s359970020b(String p0) {
@@ -5849,9 +5872,6 @@ class AppLocalizationsFi extends AppLocalizations {
       'Jos perut asennuksen itse, kaikki on kunnossa. Jos Androidin Asenna-ikkunaa ei näkynyt, paina Yritä uudelleen.';
 
   @override
-  String get s200542b930 => 'Yritä uudelleen';
-
-  @override
   String get s29e92898c6 =>
       'Vahvista asennus Androidin ikkunasta tai ilmoituksesta.';
 
@@ -6340,10 +6360,10 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s772c158a57 => 'rtsp-transport';
 
   @override
-  String get sea00017814 => 'profile';
+  String get s2d65587b87 => 'network-timeout';
 
   @override
-  String get s2d65587b87 => 'network-timeout';
+  String get sea00017814 => 'profile';
 
   @override
   String get s53a9fe5e42 => 'Sähköpostilla ei ole Molaplan-tiliä.';

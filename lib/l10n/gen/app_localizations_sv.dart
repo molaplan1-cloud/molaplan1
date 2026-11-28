@@ -3268,18 +3268,41 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s4529c1010a => 'Välj en kameraanslutning';
 
   @override
-  String get s98bf81bba3 => 'Live video fungerar inte på den här enheten';
+  String get s0ab7f9db7c =>
+      'Ingen videoadress lagras för den här kameran. Ta bort den och lägg till den igen, eller skriv RTSP-adressen för hand.';
 
   @override
-  String get seb2bb5cbce =>
-      'Live video visar bara på hemnätverket. Denna kamera har ingen stillbild för fjärranvändning.';
+  String get sda6d2b0dbe =>
+      'En stillbild kunde inte göras från videoströmmen. Hembrodatorn behöver ffmpeg, eller använd Molaplan-appen som hemmabron.';
+
+  @override
+  String sb8cbbd3d99(String p0) {
+    return 'Kameran ($p0) svarar inte från den här enheten. Kontrollera att den här enheten är på samma nätverk som kameran och att RTSP är på i kameran.';
+  }
+
+  @override
+  String get s4a6a89a47e =>
+      'Kameran vägrade användarnamnet eller lösenordet (RTSP 401). Kontrollera dem i kamerans ONVIF/RTSP-inställningar.';
+
+  @override
+  String get s5f36d79393 =>
+      'Kameran känner inte till den här videoadressen (RTSP 404). Lägg till kameran igen eller skriv RTSP-adressen för hand.';
+
+  @override
+  String s4c88b1dfe4(String p0) {
+    return 'Kameran svarade, men videon kunde inte spelas $p0. Försök igen; om den fortsätter att misslyckas, se tekniska detaljer.';
+  }
+
+  @override
+  String sedafd495a6(String p0) {
+    return 'Kameran svarade RTSP $p0 och ingen bild kom. Kontrollera användarnamnet och lösenordet och att RTSP är på.';
+  }
 
   @override
   String get sc95fb5440b => 'Stream slutade';
 
   @override
-  String get sd55dd196f6 =>
-      'Ingen live-video. Kontrollera att du är på hemmanätverket och RTSP är på i kameran.';
+  String get s200542b930 => 'Försök igen';
 
   @override
   String s359970020b(String p0) {
@@ -5833,9 +5856,6 @@ class AppLocalizationsSv extends AppLocalizations {
       'Om du annullerade det själv, allt är bra. Om Androids installationsfönster inte visas, tryck på Prova igen.';
 
   @override
-  String get s200542b930 => 'Försök igen';
-
-  @override
   String get s29e92898c6 =>
       'Bekräfta installationen i Android-fönstret eller meddelandet.';
 
@@ -6322,10 +6342,10 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s772c158a57 => 'TCP';
 
   @override
-  String get sea00017814 => 'låg latens';
+  String get s2d65587b87 => '8';
 
   @override
-  String get s2d65587b87 => '8';
+  String get sea00017814 => 'låg latens';
 
   @override
   String get s53a9fe5e42 =>

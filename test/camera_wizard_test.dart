@@ -144,12 +144,15 @@ void main() {
     expect(providerById('sonoff'), isNotNull);
   });
 
-  testWidgets('RTSP-only camera tile without a video player: a clear note, no spinner forever', (tester) async {
+  testWidgets('t331ua0: RTSP-only camera tile without a video player: stills, the real reason, retry + details', (
+    tester,
+  ) async {
     final st = await appState(tester);
     final c = ConnectionConfig(
       name: 'Tapo',
       type: 'camera',
-      settings: {'baseUrl': 'http://192.168.88.80', 'rtsp': 'rtsp://{{host}}/stream1'},
+      // Nothing listens on port 1 of this machine: the check fails at once, with a real reason.
+      settings: {'baseUrl': 'http://127.0.0.1', 'rtsp': 'rtsp://{{host}}:1/stream1'},
     );
     final t = TileConfig(type: TileType.camera, title: 'Eteinen', connectionId: c.id, read: {'mode': 'rtsp'});
     await tester.runAsync(() => st.applyTemplate(TemplateResult([c], [t])));
@@ -161,8 +164,33 @@ void main() {
         ),
       ),
     );
+    await tester.runAsync(() => Future<void>.delayed(const Duration(milliseconds: 500)));
     await tester.pump();
-    expect(find.textContaining('Live-video ei toimi tällä laitteella'), findsOneWidget);
-    expect(find.byType(CircularProgressIndicator), findsNothing);
+    // Not the misleading 'only on the home network' text; the real reason, a retry and the details.
+    expect(find.textContaining('vain kotiverkossa'), findsNothing);
+    expect(find.textContaining('ei vastaa tältä laitteelta'), findsOneWidget);
+    expect(find.byKey(const ValueKey('cam-retry')), findsOneWidget);
+    expect(find.byKey(const ValueKey('cam-tech')), findsOneWidget);
+    await tester.tap(find.byKey(const ValueKey('cam-tech')));
+    await tester.pumpAndSettle();
+    expect(find.textContaining('RTSP DESCRIBE 127.0.0.1:1/stream1'), findsOneWidget);
+    expect(find.textContaining('rtsp://'), findsNothing); // no login in the details
+  });
+
+  testWidgets('t331ua0: an RTSP tile with no stored video address says so', (tester) async {
+    final st = await appState(tester);
+    final c = ConnectionConfig(name: 'X', type: 'camera', settings: {'baseUrl': 'http://127.0.0.1'});
+    final t = TileConfig(type: TileType.camera, title: 'X', connectionId: c.id, read: {'mode': 'rtsp'});
+    await tester.runAsync(() => st.applyTemplate(TemplateResult([c], [t])));
+    await tester.pumpWidget(
+      host(
+        st,
+        Scaffold(
+          body: SizedBox(width: 400, height: 300, child: CameraView(tile: t)),
+        ),
+      ),
+    );
+    await tester.pump();
+    expect(find.textContaining('ei ole tallennettu videon osoitetta'), findsOneWidget);
   });
 }

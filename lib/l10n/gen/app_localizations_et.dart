@@ -3264,18 +3264,41 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s4529c1010a => 'Kaameraühenduse valimine';
 
   @override
-  String get s98bf81bba3 => 'Live video ei tööta selles seadmes';
+  String get s0ab7f9db7c =>
+      'Selle kaamera videoaadressi ei salvestata. Eemalda see ja lisa see uuesti või kirjuta RTSP aadress käsitsi.';
 
   @override
-  String get seb2bb5cbce =>
-      'Otseülekannet näidatakse ainult koduvõrgus. Kaameral ei ole kaugkasutamiseks ühtegi pilti.';
+  String get sda6d2b0dbe =>
+      'Videovoost ei olnud võimalik pilti teha. Kodusillaarvuti vajab ffmpeg\' i või kasutab kodusillana Molaplani rakendust.';
+
+  @override
+  String sb8cbbd3d99(String p0) {
+    return 'Kaamera ($p0) ei vasta sellele seadmele. Kontrolli, kas seade on kaameraga samas võrgus ja kas RTSP on kaameras sees.';
+  }
+
+  @override
+  String get s4a6a89a47e =>
+      'Kaamera keeldus kasutajanimest või paroolist (RTSP 401). Kontrolli neid kaamera ONVIF/ RTSP seadistustes.';
+
+  @override
+  String get s5f36d79393 =>
+      'Kaamera ei tea seda videoaadressi (RTSP 404). Lisa kaamera uuesti või kirjuta RTSP aadress käsitsi.';
+
+  @override
+  String s4c88b1dfe4(String p0) {
+    return 'Kaamera vastas, kuid videot ei saa esitada $p0. Proovi uuesti; kui see pidevalt ebaõnnestub, vaata tehnilisi üksikasju.';
+  }
+
+  @override
+  String sedafd495a6(String p0) {
+    return 'Kaamera vastas RTSP $p0 ja pilti ei tulnud. Kontrolli kasutajanime ja parooli ning seda, kas RTSP on sees.';
+  }
 
   @override
   String get sc95fb5440b => 'Stream lõppes';
 
   @override
-  String get sd55dd196f6 =>
-      'Otsevideo puudub. Kontrolli, kas oled koduvõrgus ja RTSP on kaameras sees.';
+  String get s200542b930 => 'Proovi uuesti';
 
   @override
   String s359970020b(String p0) {
@@ -5828,9 +5851,6 @@ class AppLocalizationsEt extends AppLocalizations {
       'Kui tühistasid selle ise, on kõik hästi. Kui Androidi paigaldamisakent ei ilmunud, klõpsa uuesti.';
 
   @override
-  String get s200542b930 => 'Proovi uuesti';
-
-  @override
   String get s29e92898c6 =>
       'Kinnitage installimine Android-aknas või teavituses.';
 
@@ -6315,10 +6335,10 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s772c158a57 => 'tcp';
 
   @override
-  String get sea00017814 => 'madala latentsusega';
+  String get s2d65587b87 => '8';
 
   @override
-  String get s2d65587b87 => '8';
+  String get sea00017814 => 'madala latentsusega';
 
   @override
   String get s53a9fe5e42 => 'Selle e-postiga Molaplani kontot pole.';

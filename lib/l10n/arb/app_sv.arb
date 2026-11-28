@@ -2225,6 +2225,14 @@
  "@se38a9bb2ed": {
   "x-mt": true
  },
+ "s8e3624e844": "Zooma in",
+ "@s8e3624e844": {
+  "x-mt": true
+ },
+ "s0071c4430f": "Zooma ut",
+ "@s0071c4430f": {
+  "x-mt": true
+ },
  "sf1ed8904bb": "Välj registreringslistan (CSV)",
  "@sf1ed8904bb": {
   "x-mt": true
@@ -2616,20 +2624,13 @@
  "@s4529c1010a": {
   "x-mt": true
  },
- "s98bf81bba3": "Live video fungerar inte på den här enheten",
- "@s98bf81bba3": {
-  "x-mt": true
- },
- "seb2bb5cbce": "Live video visar bara på hemnätverket. Denna kamera har ingen stillbild för fjärranvändning.",
- "@seb2bb5cbce": {
-  "x-mt": true
- },
  "sc95fb5440b": "Stream slutade",
  "@sc95fb5440b": {
   "x-mt": true
  },
- "sd55dd196f6": "Ingen live-video. Kontrollera att du är på hemmanätverket och RTSP är på i kameran.",
- "@sd55dd196f6": {
+ "s200542b930": "Försök igen",
+ "s359970020b": "PTZ kommandot misslyckades ({p0}). Kontrollera att du är på hemmanätverket.",
+ "@s359970020b": {
   "x-mt": true
  },
  "s1cf33c1fbc": "Värde",
@@ -5144,7 +5145,6 @@
  "@s25a6f00343": {
   "x-mt": true
  },
- "s200542b930": "Försök igen",
  "s29e92898c6": "Bekräfta installationen i Android-fönstret eller meddelandet.",
  "@s29e92898c6": {
   "x-mt": true
@@ -5550,11 +5550,11 @@
  "@s772c158a57": {
   "x-mt": true
  },
+ "s2d65587b87": "8",
  "sea00017814": "låg latens",
  "@sea00017814": {
   "x-mt": true
  },
- "s2d65587b87": "8",
  "s53a9fe5e42": "Det finns inget Molaplan-konto med den e-postadressen.",
  "sb4bd4baa5c": "Ingen Molaplan-användare med den adressen. De måste logga in på Molaplan 0.9 en gång - eller skicka dem en inbjudningskod.",
  "@sb4bd4baa5c": {
@@ -6244,6 +6244,14 @@
  "@sb1f0e72163": {
   "x-mt": true
  },
+ "sd24649df81": "webbläsaren kan inte nå enheter på ditt hemnätverk",
+ "@sd24649df81": {
+  "x-mt": true
+ },
+ "s634ae3a263": "En webbsida kan inte söka efter eller öppna anslutningar till enheter på ditt hemnätverk (t.ex. {p0}). Använd Molaplan Windows eller Android-appen på hemmanätverket, eller ställa in hembroen - sedan söka och kontrollera gå igenom en enhet hemma.",
+ "@s634ae3a263": {
+  "x-mt": true
+ },
  "s55d52c5ae1": "Denna enhet är inte på Wi-Fi",
  "@s55d52c5ae1": {
   "x-mt": true
@@ -6266,6 +6274,10 @@
  },
  "sd4d7ad1bab": "En annan enhet svarade",
  "@sd4d7ad1bab": {
+  "x-mt": true
+ },
+ "s49a0fab5c2": "Enheten på den adressen är inte {p0}. Kontrollera adressen. De tekniska detaljerna visar vad som svarade.",
+ "@s49a0fab5c2": {
   "x-mt": true
  },
  "sdac5622fa8": "Enheten begär ett lösenord",
@@ -6453,6 +6465,30 @@
  "@s6f326a48f9": {
   "x-mt": true
  },
+ "sd621d69823": "En webbläsare kan inte söka sitt eget nätverk, så sökningen går igenom hembron (arbetar också hemifrån).",
+ "@sd621d69823": {
+  "x-mt": true
+ },
+ "s6989f8d0c7": "En webbläsare kan inte söka hemnätverket. Använd Windows- eller Android-appen, konfigurera hembroen eller skriv enhetsadressen.",
+ "@s6989f8d0c7": {
+  "x-mt": true
+ },
+ "s0ae25246a7": "Söker både på den här enhetens Wi-Fi och genom hembron (arbetar också hemifrån).",
+ "@s0ae25246a7": {
+  "x-mt": true
+ },
+ "saa8c9298e3": "Titta på den här enhetens Wi-Fi. Tryck på din.",
+ "@saa8c9298e3": {
+  "x-mt": true
+ },
+ "sf7eb5738cc": "På detta nätverk",
+ "@sf7eb5738cc": {
+  "x-mt": true
+ },
+ "sf35976eff1": "genom hembron",
+ "@sf35976eff1": {
+  "x-mt": true
+ },
  "sda2b4c9721": "Öppna Wi-Fi inställningar",
  "@sda2b4c9721": {
   "x-mt": true
@@ -6463,6 +6499,14 @@
  },
  "s13f0596b74": "Söker... (ca 5 sekunder)",
  "@s13f0596b74": {
+  "x-mt": true
+ },
+ "sa8cf19feed": "på detta nätverk och via hembron",
+ "@sa8cf19feed": {
+  "x-mt": true
+ },
+ "s4019a442d9": "på detta nätverk",
+ "@s4019a442d9": {
   "x-mt": true
  },
  "sa616ab181e": "Skriv adressen",
@@ -6500,6 +6544,10 @@
   "x-mt": true
  },
  "se4095d7d95": "Enhetens lösenord",
+ "s117fa4a840": "Lägg ändå till som en ONVIF/RTSP-kamera",
+ "@s117fa4a840": {
+  "x-mt": true
+ },
  "s8f610a3bb2": "Jag är hemifrån",
  "@s8f610a3bb2": {
   "x-mt": true
@@ -11308,6 +11356,14 @@
  "@s1866ef6dc8": {
   "x-mt": true
  },
+ "sceda303e37": "Användarnamnet och lösenordet som visas på kamerans ONVIF / RTSP-sida i eWeLink-appen (inställningar → Fler inställningar → ONVIF / RTSP). De är inte din eWeLink-kontoinloggning. På en dubbellinsmodell kommer båda linserna från samma enhet.",
+ "@sceda303e37": {
+  "x-mt": true
+ },
+ "s9134959509": "eWeLink app → kamera → Inställningar → Fler inställningar → ONVIF/RTSP: slå på den och notera kamera IP-adressen, användarnamn och lösenord.",
+ "@s9134959509": {
+  "x-mt": true
+ },
  "s0ae408f9a0": "Kameraanvändaren (tjänst, användare eller live) och lösenordet du ställer in i Konfigurationshanteraren eller på kamerans webbsida.",
  "@s0ae408f9a0": {
   "x-mt": true
@@ -11336,6 +11392,14 @@
  "@s1577068729": {
   "x-mt": true
  },
+ "sbfd6f856ef": "Kameran säger att det är \"{p0}\", inte {p1}. Det lades ändå som en ONVIF-kamera.",
+ "@sbfd6f856ef": {
+  "x-mt": true
+ },
+ "s56ef345ef2": "Videoadressen kunde inte verifieras (kameran svarade RTSP {p0}). Det lades ändå - om ingen bild visar, kontrollera användarnamnet och lösenordet.",
+ "@s56ef345ef2": {
+  "x-mt": true
+ },
  "s83d937ae6b": "Stream {p0}/{p1} (egen lins eller kanal)",
  "@s83d937ae6b": {
   "x-mt": true
@@ -11346,6 +11410,10 @@
  },
  "s2101774157": "Live video hemma (ingen bild bort)",
  "@s2101774157": {
+  "x-mt": true
+ },
+ "s208a59a323": "PTZ kontroll",
+ "@s208a59a323": {
   "x-mt": true
  },
  "sdd483f7f78": "Enhetsnyckel saknas",
@@ -11494,84 +11562,32 @@
  "@s06444f278d": {
   "x-mt": true
  },
- "s8e3624e844": "Zooma in",
- "@s8e3624e844": {
+ "s0ab7f9db7c": "Ingen videoadress lagras för den här kameran. Ta bort den och lägg till den igen, eller skriv RTSP-adressen för hand.",
+ "@s0ab7f9db7c": {
   "x-mt": true
  },
- "s0071c4430f": "Zooma ut",
- "@s0071c4430f": {
+ "sda6d2b0dbe": "En stillbild kunde inte göras från videoströmmen. Hembrodatorn behöver ffmpeg, eller använd Molaplan-appen som hemmabron.",
+ "@sda6d2b0dbe": {
   "x-mt": true
  },
- "s359970020b": "PTZ kommandot misslyckades ({p0}). Kontrollera att du är på hemmanätverket.",
- "@s359970020b": {
+ "sb8cbbd3d99": "Kameran ({p0}) svarar inte från den här enheten. Kontrollera att den här enheten är på samma nätverk som kameran och att RTSP är på i kameran.",
+ "@sb8cbbd3d99": {
   "x-mt": true
  },
- "sd24649df81": "webbläsaren kan inte nå enheter på ditt hemnätverk",
- "@sd24649df81": {
+ "s4a6a89a47e": "Kameran vägrade användarnamnet eller lösenordet (RTSP 401). Kontrollera dem i kamerans ONVIF/RTSP-inställningar.",
+ "@s4a6a89a47e": {
   "x-mt": true
  },
- "s634ae3a263": "En webbsida kan inte söka efter eller öppna anslutningar till enheter på ditt hemnätverk (t.ex. {p0}). Använd Molaplan Windows eller Android-appen på hemmanätverket, eller ställa in hembroen - sedan söka och kontrollera gå igenom en enhet hemma.",
- "@s634ae3a263": {
+ "s5f36d79393": "Kameran känner inte till den här videoadressen (RTSP 404). Lägg till kameran igen eller skriv RTSP-adressen för hand.",
+ "@s5f36d79393": {
   "x-mt": true
  },
- "s49a0fab5c2": "Enheten på den adressen är inte {p0}. Kontrollera adressen. De tekniska detaljerna visar vad som svarade.",
- "@s49a0fab5c2": {
+ "s4c88b1dfe4": "Kameran svarade, men videon kunde inte spelas {p0}. Försök igen; om den fortsätter att misslyckas, se tekniska detaljer.",
+ "@s4c88b1dfe4": {
   "x-mt": true
  },
- "sd621d69823": "En webbläsare kan inte söka sitt eget nätverk, så sökningen går igenom hembron (arbetar också hemifrån).",
- "@sd621d69823": {
-  "x-mt": true
- },
- "s6989f8d0c7": "En webbläsare kan inte söka hemnätverket. Använd Windows- eller Android-appen, konfigurera hembroen eller skriv enhetsadressen.",
- "@s6989f8d0c7": {
-  "x-mt": true
- },
- "s0ae25246a7": "Söker både på den här enhetens Wi-Fi och genom hembron (arbetar också hemifrån).",
- "@s0ae25246a7": {
-  "x-mt": true
- },
- "saa8c9298e3": "Titta på den här enhetens Wi-Fi. Tryck på din.",
- "@saa8c9298e3": {
-  "x-mt": true
- },
- "sf7eb5738cc": "På detta nätverk",
- "@sf7eb5738cc": {
-  "x-mt": true
- },
- "sf35976eff1": "genom hembron",
- "@sf35976eff1": {
-  "x-mt": true
- },
- "sa8cf19feed": "på detta nätverk och via hembron",
- "@sa8cf19feed": {
-  "x-mt": true
- },
- "s4019a442d9": "på detta nätverk",
- "@s4019a442d9": {
-  "x-mt": true
- },
- "s117fa4a840": "Lägg ändå till som en ONVIF/RTSP-kamera",
- "@s117fa4a840": {
-  "x-mt": true
- },
- "sceda303e37": "Användarnamnet och lösenordet som visas på kamerans ONVIF / RTSP-sida i eWeLink-appen (inställningar → Fler inställningar → ONVIF / RTSP). De är inte din eWeLink-kontoinloggning. På en dubbellinsmodell kommer båda linserna från samma enhet.",
- "@sceda303e37": {
-  "x-mt": true
- },
- "s9134959509": "eWeLink app → kamera → Inställningar → Fler inställningar → ONVIF/RTSP: slå på den och notera kamera IP-adressen, användarnamn och lösenord.",
- "@s9134959509": {
-  "x-mt": true
- },
- "sbfd6f856ef": "Kameran säger att det är \"{p0}\", inte {p1}. Det lades ändå som en ONVIF-kamera.",
- "@sbfd6f856ef": {
-  "x-mt": true
- },
- "s56ef345ef2": "Videoadressen kunde inte verifieras (kameran svarade RTSP {p0}). Det lades ändå - om ingen bild visar, kontrollera användarnamnet och lösenordet.",
- "@s56ef345ef2": {
-  "x-mt": true
- },
- "s208a59a323": "PTZ kontroll",
- "@s208a59a323": {
+ "sedafd495a6": "Kameran svarade RTSP {p0} och ingen bild kom. Kontrollera användarnamnet och lösenordet och att RTSP är på.",
+ "@sedafd495a6": {
   "x-mt": true
  }
 }
