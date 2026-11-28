@@ -1488,6 +1488,9 @@ class AppLocalizationsEs extends AppLocalizations {
   String get se50792831f => 'Control de temperatura';
 
   @override
+  String get s52ef5e0b45 => 'Límite de precio';
+
+  @override
   String get sd408a5dbe9 => 'Horas más baratas';
 
   @override
@@ -2869,6 +2872,148 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
+  String get s9d6a4787c0 => 'Temperatura';
+
+  @override
+  String get s765dda7e1f =>
+      'Mientras el precio de la hora está a o bajo el límite que estableces.';
+
+  @override
+  String get s63c7563ffe =>
+      'Como un termostato: mientras la habitación es más fría que el objetivo. Necesita un sensor de temperatura.';
+
+  @override
+  String get s066b775d18 =>
+      'Asientos en las horas más baratas del día. Usted elige el número de horas.';
+
+  @override
+  String s7d9757a025(String p0) {
+    return 'hasta $p0 c/kWh';
+  }
+
+  @override
+  String s865988de99(String p0) {
+    return 'saltos $p0 horas más caras';
+  }
+
+  @override
+  String sd235c9cafb(String p0) {
+    return '$p0 h a day';
+  }
+
+  @override
+  String get s1cc4e52472 =>
+      'Mientras el precio de la hora está a o bajo el límite.';
+
+  @override
+  String s5fab7a2144(String p0, String p1, String p2) {
+    return 'En tanto el precio de la hora está a o debajo del límite. Hoy $p0–$p1 c/kWh, $p2 h bajo el límite.';
+  }
+
+  @override
+  String get sd5f46903a1 => 'Temperatura objetivo';
+
+  @override
+  String get sd2758727f5 => 'Sensor de temperatura';
+
+  @override
+  String get s58adf1e5fb => 'Elija un sensor – el control lo necesita';
+
+  @override
+  String get sbd3dbfd7e9 => 'Horas más caras saltadas';
+
+  @override
+  String get s86c45674db => 'Horas de calefacción al día';
+
+  @override
+  String get s94f86b3b6a => 'Puente de inicio que ejecuta el programa';
+
+  @override
+  String get s10a23b4691 => 'no emparejado';
+
+  @override
+  String get s407cb3a732 =>
+      'El programa se ejecuta en el puente elegido por sí mismo, incluso con la aplicación cerrada. El puente debe llegar al dispositivo. Un dispositivo solo es controlado por un puente.';
+
+  @override
+  String get s7de515a7c1 => 'Programa';
+
+  @override
+  String get s7fcdd166f3 =>
+      'Este dispositivo ya tiene un programa en otro puente, por lo que este no se ejecuta. Retire el otro programa o elija el mismo puente.';
+
+  @override
+  String get s093677b5f1 => 'Modo de control';
+
+  @override
+  String get sf0446baa5c =>
+      'Sin un sensor, la calefacción sigue el calendario de precios. Pulse para elegir un sensor.';
+
+  @override
+  String get s0cb0877799 => 'No corres';
+
+  @override
+  String sad8b69fca2(String p0) {
+    return ' está fuera de línea - el programa sigue funcionando allí por sí mismo';
+  }
+
+  @override
+  String s7211f94f91(String p0) {
+    return 'Sigue: ';
+  }
+
+  @override
+  String get s7b25bc0874 =>
+      'El dispositivo ya tiene un programa en otro puente.';
+
+  @override
+  String get sccf63d5729 =>
+      'Los cambios están esperando el puente – se envían cuando responde.';
+
+  @override
+  String get sdb217dcf7f => 'Añadir una tarjeta a la pantalla de inicio';
+
+  @override
+  String get s6398607bb8 => 'La tarjeta ya está en la pantalla de inicio';
+
+  @override
+  String get s52d3e04a46 => 'Tarjeta agregada a la pantalla de inicio';
+
+  @override
+  String get s354eb362d8 => 'Elija el dispositivo';
+
+  @override
+  String get s1571e8b853 => 'Elija el modo de control';
+
+  @override
+  String get s190914de3c => 'Establecer el límite';
+
+  @override
+  String get s4eaf5975db => 'Agregar un programa';
+
+  @override
+  String scb39988da3(String p0) {
+    return 'Ya tiene un programa: $p0';
+  }
+
+  @override
+  String get s8ea88baef9 => 'Relé o enchufe';
+
+  @override
+  String get s70d49e7f6a =>
+      'No hay dispositivos. Agregue primero un relé, un enchufe o un termostato.';
+
+  @override
+  String get sec41a5c19b => 'Tipo de calefacción';
+
+  @override
+  String get s0feac99b10 =>
+      'Otros ajustes (delays, histeresis, límites de temperatura, protección contra heladas, retroceso, impulso, tiempos mínimos) están bajo Avanzadas en la página del programa.';
+
+  @override
+  String get s54a7a968e9 => 'Crear programa';
+
+  @override
   String get s429f9e257a => 'Los datos están solo en este navegador. ';
 
   @override
@@ -4087,16 +4232,14 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sd172900c2d => 'Vacaciones: edición';
 
   @override
-  String get sdb217dcf7f => 'Añadir una tarjeta a la pantalla de inicio';
+  String get s5275c2c21e => 'Programas';
 
   @override
-  String get s52d3e04a46 => 'Tarjeta agregada a la pantalla de inicio';
+  String get s99a5e80b5c =>
+      'Cada dispositivo de calefacción tiene su propio programa. Un programa se ejecuta en un puente casero por sí mismo.';
 
   @override
-  String get sdca3ad13dd => 'Calefacción dispositivos';
-
-  @override
-  String get sc8c5e37f5d => 'No hay dispositivos, agréguelos en la encuesta.';
+  String get s0fd18deddd => 'Aún no hay programas.';
 
   @override
   String get sc6976fa352 => 'Notificaciones de calefacción';
@@ -4213,40 +4356,10 @@ class AppLocalizationsEs extends AppLocalizations {
   String get se68cc54085 => 'No sensor';
 
   @override
-  String get s093677b5f1 => 'Modo de control';
-
-  @override
-  String get sa6195c2696 => 'Por precio';
-
-  @override
-  String get s9d6a4787c0 => 'Temperatura';
-
-  @override
-  String get s84cf10acfd =>
-      'La calefacción sigue la temperatura medida como un termostato. Las reglas del precio sólo mueven el punto: arriba en horas baratas, abajo en costosos (si se establece).';
-
-  @override
-  String get sdf9dc612a6 =>
-      'La calefacción sigue el precio de la electricidad y el clima. Un sensor de temperatura es opcional y da los límites de seguridad.';
-
-  @override
-  String get s01c555401a => 'Elija un sensor de temperatura';
-
-  @override
-  String get s249140bfd0 =>
-      'El control de temperatura necesita un sensor. Sin uno, la calefacción sigue el calendario de precios.';
-
-  @override
   String get sf9cbe76823 => 'Reglas de precios';
 
   @override
   String get s8e6c8ffabb => ' (recomendado)';
-
-  @override
-  String get s86c45674db => 'Horas de calefacción al día';
-
-  @override
-  String get sbd3dbfd7e9 => 'Horas más caras saltadas';
 
   @override
   String s1f32a43166(String p0) {
@@ -4537,9 +4650,6 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get s3cc31bcfdc => 'Elija el cargador (de encendido / apagado)';
-
-  @override
-  String get s354eb362d8 => 'Elija el dispositivo';
 
   @override
   String get s73a65d7dff => 'Elija los dispositivos';
@@ -5152,9 +5262,6 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s55e5c3a177 => 'Cuántas horas encendido';
 
   @override
-  String get s52ef5e0b45 => 'Límite de precio';
-
-  @override
   String get s993193d056 => 'Próximas horas de encendido';
 
   @override
@@ -5484,9 +5591,6 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get s1790a71e85 => 'p. ej. Salón';
-
-  @override
-  String get sd5f46903a1 => 'Temperatura objetivo';
 
   @override
   String get s6de95e582f => 'Si se pierde la temperatura';
@@ -10981,6 +11085,14 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s0528a2ef9e => 'El dispositivo no tiene ningún comando on/off';
 
   @override
+  String get s7a71f285ef => 'El puente de casa está fuera de línea';
+
+  @override
+  String sa3ca79fa2c(String p0) {
+    return 'El puente de casa $p0 está fuera de línea';
+  }
+
+  @override
   String get sd0e9fc6760 => 'El control no funcionó';
 
   @override
@@ -10990,6 +11102,10 @@ class AppLocalizationsEs extends AppLocalizations {
   String s151c5be078(String p0, String p1) {
     return 'El puente casero no puede llegar a la dirección de $p0: es muy probable en otra red que $p0. Este dispositivo puede llegar a ella, por lo que las otras tarjetas funcionan.';
   }
+
+  @override
+  String get saca21d4cb4 =>
+      'Este programa se ejecuta en un puente de inicio que la aplicación no puede alcanzar ahora mismo. Se mantiene funcionando allí en sus últimos ajustes, pero su estado no puede ser refrescado y no se pueden enviar cambios de configuración.';
 
   @override
   String s99ea566004(String p0) {
@@ -11021,6 +11137,18 @@ class AppLocalizationsEs extends AppLocalizations {
       'Calentamiento inteligente cada minuto. Hasta entonces el relé permanece en su último estado y la calefacción no está controlada.';
 
   @override
+  String get s3eb269a14c =>
+      'Comprueba que el dispositivo que actúa como puente de inicio está encendido, Molaplan está corriendo en él, y está en línea.';
+
+  @override
+  String get se3dee57a24 =>
+      'El programa no se detiene: el puente sigue los últimos ajustes que recibió hasta que la conexión está de vuelta.';
+
+  @override
+  String get s0ddffa32c3 =>
+      'Cuando la conexión está de vuelta, este dispositivo envía los cambios de espera automáticamente. Si usted movió el programa a otro puente, el viejo lo detiene tan pronto como esté en línea de nuevo.';
+
+  @override
   String get s5a3b74d726 =>
       'Abra la conexión del dispositivo y compruebe el nombre de usuario y contraseña.';
 
@@ -11041,6 +11169,10 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get sc056006180 =>
       'Compruebe que el dispositivo está encendido y en la misma red que el puente casero. calefacción inteligente se alimenta cada minuto; hasta que funciona el dispositivo se queda en su estado actual.';
+
+  @override
+  String get seca484252c =>
+      'El programa sigue corriendo en el puente por sí mismo. Compruebe que el puente está encendido y en línea.';
 
   @override
   String get s7a1cda0d24 =>
@@ -11149,6 +11281,11 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String sf3a33e9bc5(String p0, String p1, String p2, String p3) {
     return '$p0 horas más baratas al día: ahora $p1 c/kWh $p2 limit $p3 c';
+  }
+
+  @override
+  String s5ee0d291a9(String p0, String p1, String p2, String p3) {
+    return 'Ahora $p0 c/kWh $p1 limit $p2 c · $p3 h bajo el límite hoy';
   }
 
   @override

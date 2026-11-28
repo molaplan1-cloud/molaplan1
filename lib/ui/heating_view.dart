@@ -106,7 +106,10 @@ HeatExplanation heatExplain(AppState st, HeatLoad l) {
   final status = st.heatingStatus;
   final ls = status?['loads'] is Map ? (status!['loads'] as Map)[l.id] : null;
   if (ls is Map && ls['explain'] is Map) {
-    return HeatExplanation.fromJson(Map<String, dynamic>.from(ls['explain'] as Map));
+    final ex = Map<String, dynamic>.from(ls['explain'] as Map);
+    // R636: the bridge that runs it does not answer – the last known state, with that as the problem.
+    if (ls['offline'] == true) ex['error'] = '${ls['error']}';
+    return HeatExplanation.fromJson(ex);
   }
   final c = st.smartHeating!;
   final x = heatInputsNow(st);
@@ -150,6 +153,8 @@ String heatDeviceName(AppState st, HeatLoad l) {
 /// on another network than the bridge, or has just reached the relay's connection itself.
 bool heatBridgeElsewhere(AppState st, HeatLoad l) {
   if (st.rulesRunWhere != 'bridge') return false;
+  // A program on another bridge: this device's own network says nothing about that bridge.
+  if (l.home != null && l.home != st.remote.myHome) return false;
   final r = st.remote.router;
   String? conn;
   for (final d in st.config.dashboards) {
@@ -258,6 +263,7 @@ String heatModeLabel(HeatText x, HeatExplanation e) {
       return x.t('Lomatila', 'Holiday mode');
   }
   if (e.tempControl) return x.t('Lämpötilaohjaus', 'Temperature control');
+  if (e.limitKind == 'price') return x.t('Hintaraja', 'Price limit');
   return switch (e.template) {
     'cheapest' => x.t('Halvimmat tunnit', 'Cheapest hours'),
     'skip_expensive' => x.t('Kalleimpien ohitus', 'Skip expensive'),

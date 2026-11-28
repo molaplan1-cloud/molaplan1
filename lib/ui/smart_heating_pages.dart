@@ -11,6 +11,7 @@ import '../energy/smart_heating.dart';
 import '../models/models.dart';
 import 'app_scope.dart';
 import 'connections_page.dart';
+import 'heat_program_pages.dart';
 import 'heating_view.dart';
 
 String heatingTypeLabel(BuildContext context, String id) {
@@ -288,6 +289,7 @@ class _SmartHeatingPageState extends State<SmartHeatingPage> {
                 key: ValueKey('sh-snap-${l.id}'),
                 load: l,
                 title: c.loads.length > 1 ? loadNameIn(st.config, l) : null,
+                bridge: st.ownBridges.length >= 2 ? heatBridgeName(st, l) : null,
               ),
             if (!st.config.dashboards.any((d) => d.tiles.any((t) => isHeatingTile(t) && heatingTileLoad(t) == 'all')))
               Align(
@@ -309,15 +311,33 @@ class _SmartHeatingPageState extends State<SmartHeatingPage> {
                 ),
               ),
             const SizedBox(height: 4),
-            Text(tx(context, 'Lämmityslaitteet', 'Heating devices'), style: text.titleMedium),
-            for (final l in c.loads) _LoadCard(load: l),
+            Text(tx(context, 'Ohjelmat', 'Programs'), style: text.titleMedium, key: const ValueKey('sh-programs')),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 4),
+              child: Text(
+                tx(
+                  context,
+                  'Jokaisella lämmityslaitteella on oma ohjelmansa. Ohjelma ajetaan kotisillalla itsenäisesti.',
+                  'Each heating device has its own program. A program runs on a home bridge by itself.',
+                ),
+                style: text.bodySmall,
+              ),
+            ),
+            for (final l in c.loads) HeatProgramCard(load: l),
             if (c.loads.isEmpty)
               Padding(
                 padding: const EdgeInsets.all(8),
-                child: Text(
-                  tx(context, 'Ei laitteita. Lisää ne kartoituksessa.', 'No devices. Add them in the survey.'),
-                ),
+                child: Text(tx(context, 'Ei ohjelmia vielä.', 'No programs yet.')),
               ),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: FilledButton.tonalIcon(
+                key: const ValueKey('program-add'),
+                icon: const Icon(Icons.add),
+                label: Text(tx(context, 'Lisää ohjelma', 'Add a program')),
+                onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const HeatProgramWizard())),
+              ),
+            ),
             if (notices.isNotEmpty) ...[
               const SizedBox(height: 12),
               Text(tx(context, 'Lämmityksen ilmoitukset', 'Heating notifications'), style: text.titleMedium),
@@ -387,9 +407,12 @@ Future<void> heatingManualClear(BuildContext context, HeatLoad l) async {
 
 /// 'Tilannekuva' of one device with a way to its rules and settings.
 class _SnapshotFor extends StatelessWidget {
-  const _SnapshotFor({super.key, required this.load, this.title});
+  const _SnapshotFor({super.key, required this.load, this.title, this.bridge});
   final HeatLoad load;
   final String? title;
+
+  /// R635: the bridge that runs it, shown when the account has several.
+  final String? bridge;
 
   @override
   Widget build(BuildContext context) {
@@ -401,7 +424,10 @@ class _SnapshotFor extends StatelessWidget {
         if (title != null && title!.isNotEmpty)
           Padding(
             padding: const EdgeInsets.fromLTRB(4, 8, 4, 0),
-            child: Text(title!, style: Theme.of(context).textTheme.titleSmall),
+            child: Text(
+              bridge == null || bridge!.isEmpty ? title! : '${title!} · $bridge',
+              style: Theme.of(context).textTheme.titleSmall,
+            ),
           ),
         HeatSnapshot(
           load: load,
@@ -419,41 +445,6 @@ class _SnapshotFor extends StatelessWidget {
           ),
         ),
       ],
-    );
-  }
-}
-
-class _LoadCard extends StatelessWidget {
-  const _LoadCard({required this.load});
-  final HeatLoad load;
-
-  @override
-  Widget build(BuildContext context) {
-    final st = AppScope.of(context);
-    final c = st.smartHeating!;
-    final rec = recommend(load.type, c.site, control: load.control);
-    final template = load.template ?? rec.template;
-    final e = heatExplain(st, load);
-    final x = HeatText(st.lang);
-    final name = loadName(_St(st.config), load);
-    return Card(
-      child: ListTile(
-        key: ValueKey('sh-load-${load.id}'),
-        leading: Icon(
-          load.info.space ? Icons.heat_pump_outlined : Icons.water_drop_outlined,
-          color: e.shownOn == true ? Colors.deepOrange : null,
-        ),
-        title: Text(name.isEmpty ? heatingTypeLabel(context, load.type) : name),
-        subtitle: Text(
-          [
-            '${heatingTypeLabel(context, load.type)} · ${e.tempControl ? tx(context, 'Lämpötilaohjaus', 'Temperature control') : templateLabel(context, template)}',
-            '${e.stateWord(x)}${e.nextText(x) == null ? '' : ' · ${e.nextText(x)}'}',
-          ].join('\n'),
-        ),
-        isThreeLine: true,
-        trailing: const Icon(Icons.chevron_right),
-        onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => HeatLoadPage(loadId: load.id))),
-      ),
     );
   }
 }
@@ -496,7 +487,7 @@ class _Advanced extends StatelessWidget {
           ),
           const Divider(),
           Text(tx(context, 'Turvarajat', 'Safety limits'), style: Theme.of(context).textTheme.titleSmall),
-          _NumRow(
+          HeatNumRow(
             key: const ValueKey('sh-min-temp'),
             label: tx(context, 'Vähimmäislämpötila', 'Minimum temperature'),
             value: c.safety.minTemp,
@@ -525,7 +516,7 @@ class _Advanced extends StatelessWidget {
               save();
             },
           ),
-          _NumRow(
+          HeatNumRow(
             label: tx(context, 'Pisin sallittu tauko (kaikki)', 'Longest allowed break (all)'),
             value: c.safety.maxOffHours ?? 0,
             min: 0,
@@ -549,7 +540,7 @@ class _Advanced extends StatelessWidget {
           if (c.site.fireplace) ...[
             const Divider(),
             Text(tx(context, 'Takka', 'Fireplace'), style: Theme.of(context).textTheme.titleSmall),
-            _NumRow(
+            HeatNumRow(
               label: tx(context, 'Takka-tilan kesto', 'Fireplace mode length'),
               value: c.fireplaceHours.toDouble(),
               min: 12,
@@ -561,7 +552,7 @@ class _Advanced extends StatelessWidget {
                 save();
               },
             ),
-            _NumRow(
+            HeatNumRow(
               label: tx(context, 'Termostaattien lasku takka-tilassa', 'Thermostats lowered in fireplace mode'),
               value: c.fireplaceDrop,
               min: 0.5,
@@ -637,8 +628,8 @@ class _Advanced extends StatelessWidget {
   }
 }
 
-class _NumRow extends StatelessWidget {
-  const _NumRow({
+class HeatNumRow extends StatelessWidget {
+  const HeatNumRow({
     super.key,
     required this.label,
     required this.value,
@@ -815,7 +806,7 @@ class _HolidayPageState extends State<HolidayPage> {
             trailing: Text(_date(h.to!)),
             onTap: () => _pick(false),
           ),
-          _NumRow(
+          HeatNumRow(
             label: tx(context, 'Lämpötila poissa ollessa', 'Temperature while away'),
             value: h.temp,
             min: 5,
@@ -841,6 +832,77 @@ class _HolidayPageState extends State<HolidayPage> {
 }
 
 // ------------------------------------------------------------------ one load
+
+/// R615: picks the temperature source – any temperature tile (Shelly add-on, Zigbee / Home
+/// Assistant, Airthings, Bosch, Tuya …); null clears it.
+Future<void> pickHeatSensor(BuildContext context, HeatLoad l) async {
+  final st = AppScope.read(context);
+  final temps = tempTiles(st.config);
+  final x = HeatText(st.lang);
+  final picked = await showDialog<String>(
+    context: context,
+    builder: (d) => SimpleDialog(
+      title: Text(x.t('Valitse lämpötila-anturi', 'Choose the temperature sensor')),
+      children: [
+        Padding(
+          padding: const EdgeInsets.fromLTRB(24, 0, 24, 8),
+          child: Text(
+            x.t(
+              'Voit käyttää mitä tahansa lämpötilaa näyttävää ruutua: Shellyn lisäanturi, Zigbee tai Home Assistant, Airthings, Bosch, Tuya…',
+              'You can use any tile that shows a temperature: a Shelly add-on sensor, Zigbee or Home Assistant, Airthings, Bosch, Tuya…',
+            ),
+          ),
+        ),
+        for (final t in temps)
+          SimpleDialogOption(
+            key: ValueKey('sensor-${t.id}'),
+            onPressed: () => Navigator.pop(d, t.id),
+            child: Row(
+              children: [
+                Icon(t.id == l.sensorTileId ? Icons.radio_button_checked : Icons.radio_button_unchecked, size: 20),
+                const SizedBox(width: 8),
+                Expanded(child: Text(t.title.isEmpty ? t.id : t.title)),
+              ],
+            ),
+          ),
+        if (temps.isEmpty)
+          Padding(
+            padding: const EdgeInsets.all(24),
+            child: Text(
+              x.t(
+                'Lämpötilaruutua ei ole vielä. Lisää ensin laite, jolla on lämpötila-anturi.',
+                'There is no temperature tile yet. Add a device with a temperature sensor first.',
+              ),
+            ),
+          ),
+        SimpleDialogOption(
+          key: const ValueKey('sensor-add'),
+          onPressed: () => Navigator.pop(d, '+add'),
+          child: Row(
+            children: [
+              const Icon(Icons.add, size: 20),
+              const SizedBox(width: 8),
+              Expanded(child: Text(x.t('Lisää uusi laite', 'Add a new device'))),
+            ],
+          ),
+        ),
+        if (l.sensorTileId != null)
+          SimpleDialogOption(
+            key: const ValueKey('sensor-none'),
+            onPressed: () => Navigator.pop(d, '+none'),
+            child: Text(x.t('Ei anturia', 'No sensor')),
+          ),
+      ],
+    ),
+  );
+  if (picked == null || !context.mounted) return;
+  if (picked == '+add') {
+    await ConnectionsPage.addNew(context);
+    return;
+  }
+  l.sensorTileId = picked == '+none' ? null : picked;
+  await st.saveSmartHeating(st.smartHeating);
+}
 
 class HeatLoadPage extends StatefulWidget {
   const HeatLoadPage({super.key, required this.loadId});
@@ -871,84 +933,7 @@ class _HeatLoadPageState extends State<HeatLoadPage> {
     super.dispose();
   }
 
-  /// R615: picks the temperature source – any temperature tile (Shelly add-on, Zigbee / Home
-  /// Assistant, Airthings, Bosch, Tuya …); null clears it.
-  Future<void> _pickSensor(HeatLoad l) async {
-    final st = AppScope.read(context);
-    final temps = tempTiles(st.config);
-    final x = HeatText(st.lang);
-    final picked = await showDialog<String>(
-      context: context,
-      builder: (d) => SimpleDialog(
-        title: Text(x.t('Valitse lämpötila-anturi', 'Choose the temperature sensor')),
-        children: [
-          Padding(
-            padding: const EdgeInsets.fromLTRB(24, 0, 24, 8),
-            child: Text(
-              x.t(
-                'Voit käyttää mitä tahansa lämpötilaa näyttävää ruutua: Shellyn lisäanturi, Zigbee tai Home Assistant, Airthings, Bosch, Tuya…',
-                'You can use any tile that shows a temperature: a Shelly add-on sensor, Zigbee or Home Assistant, Airthings, Bosch, Tuya…',
-              ),
-            ),
-          ),
-          for (final t in temps)
-            SimpleDialogOption(
-              key: ValueKey('sensor-${t.id}'),
-              onPressed: () => Navigator.pop(d, t.id),
-              child: Row(
-                children: [
-                  Icon(t.id == l.sensorTileId ? Icons.radio_button_checked : Icons.radio_button_unchecked, size: 20),
-                  const SizedBox(width: 8),
-                  Expanded(child: Text(t.title.isEmpty ? t.id : t.title)),
-                ],
-              ),
-            ),
-          if (temps.isEmpty)
-            Padding(
-              padding: const EdgeInsets.all(24),
-              child: Text(
-                x.t(
-                  'Lämpötilaruutua ei ole vielä. Lisää ensin laite, jolla on lämpötila-anturi.',
-                  'There is no temperature tile yet. Add a device with a temperature sensor first.',
-                ),
-              ),
-            ),
-          SimpleDialogOption(
-            key: const ValueKey('sensor-add'),
-            onPressed: () => Navigator.pop(d, '+add'),
-            child: Row(
-              children: [
-                const Icon(Icons.add, size: 20),
-                const SizedBox(width: 8),
-                Expanded(child: Text(x.t('Lisää uusi laite', 'Add a new device'))),
-              ],
-            ),
-          ),
-          if (l.sensorTileId != null)
-            SimpleDialogOption(
-              key: const ValueKey('sensor-none'),
-              onPressed: () => Navigator.pop(d, '+none'),
-              child: Text(x.t('Ei anturia', 'No sensor')),
-            ),
-        ],
-      ),
-    );
-    if (picked == null || !mounted) return;
-    if (picked == '+add') {
-      await ConnectionsPage.addNew(context);
-      return;
-    }
-    l.sensorTileId = picked == '+none' ? null : picked;
-    await st.saveSmartHeating(st.smartHeating);
-  }
-
-  Future<void> _setMode(HeatLoad l, bool temperature) async {
-    final st = AppScope.read(context);
-    l.tempControl = temperature;
-    await st.saveSmartHeating(st.smartHeating);
-    // R615: temperature control needs a sensor – ask for it right away.
-    if (temperature && l.sensorTileId == null && mounted) await _pickSensor(l);
-  }
+  Future<void> _pickSensor(HeatLoad l) => pickHeatSensor(context, l);
 
   @override
   Widget build(BuildContext context) {
@@ -964,7 +949,6 @@ class _HeatLoadPageState extends State<HeatLoadPage> {
     final x = HeatText(st.lang);
     final e = heatExplain(st, l);
     final text = Theme.of(context).textTheme;
-    final cs = Theme.of(context).colorScheme;
     final canTemp = l.control == 'switch' && l.info.space;
     final sensorTitle = temps.where((t) => t.id == l.sensorTileId).firstOrNull?.title;
     Widget section(String title, List<Widget> kids, {Key? key}) => Card(
@@ -994,259 +978,204 @@ class _HeatLoadPageState extends State<HeatLoadPage> {
           if (e.tempControl) HeatSetpointDial(load: l, explanation: e),
           HeatTimeline(load: l),
           HeatRules(explanation: e),
-          if (canTemp)
-            section(tx(context, 'Ohjaustapa', 'Control mode'), [
-              const SizedBox(height: 8),
-              SegmentedButton<bool>(
-                key: const ValueKey('load-mode'),
-                segments: [
-                  ButtonSegment(
-                    value: false,
-                    label: Text(tx(context, 'Hinnan mukaan', 'By price')),
-                    icon: const Icon(Icons.bolt),
-                  ),
-                  ButtonSegment(
-                    value: true,
-                    label: Text(tx(context, 'Lämpötilan mukaan', 'By temperature')),
-                    icon: const Icon(Icons.thermostat),
-                  ),
-                ],
-                selected: {l.tempControl},
-                onSelectionChanged: (v) => _setMode(l, v.first),
-              ),
-              const SizedBox(height: 6),
-              Text(
-                l.tempControl
-                    ? tx(
-                        context,
-                        'Lämmitys seuraa mitattua lämpötilaa kuin termostaatti. Hintasäännöt vain siirtävät tavoitetta: halvoilla tunneilla ylös, kalliilla alas (jos asetettu).',
-                        'Heating follows the measured temperature like a thermostat. The price rules only move the setpoint: up in cheap hours, down in expensive ones (if set).',
-                      )
-                    : tx(
-                        context,
-                        'Lämmitys noudattaa sähkön hintaa ja säätä. Lämpötila-anturi on valinnainen ja antaa turvarajat.',
-                        'Heating follows the electricity price and the weather. A temperature sensor is optional and gives the safety limits.',
-                      ),
-                style: text.bodySmall,
-              ),
-              if (l.tempControl && l.sensorTileId == null)
-                Padding(
-                  padding: const EdgeInsets.only(top: 8),
-                  child: Material(
-                    color: cs.errorContainer,
-                    borderRadius: BorderRadius.circular(8),
-                    child: ListTile(
-                      key: const ValueKey('sensor-needed'),
-                      leading: Icon(Icons.sensors_off, color: cs.onErrorContainer),
-                      title: Text(
-                        tx(context, 'Valitse lämpötila-anturi', 'Choose a temperature sensor'),
-                        style: TextStyle(color: cs.onErrorContainer),
-                      ),
-                      subtitle: Text(
-                        tx(
-                          context,
-                          'Lämpötilaohjaus tarvitsee anturin. Ilman sitä lämmitys noudattaa hintaohjausta.',
-                          'Temperature control needs a sensor. Without one, heating follows the price schedule.',
-                        ),
-                        style: TextStyle(color: cs.onErrorContainer),
-                      ),
-                      trailing: Icon(Icons.chevron_right, color: cs.onErrorContainer),
-                      onTap: () => _pickSensor(l),
-                    ),
-                  ),
-                ),
-            ]),
-          section(tx(context, 'Hintasäännöt', 'Price rules'), [
-            for (final t in heatingTemplates)
-              ListTile(
-                key: ValueKey('tpl-$t'),
-                contentPadding: EdgeInsets.zero,
-                leading: Icon(t == template ? Icons.radio_button_checked : Icons.radio_button_unchecked),
-                title: Text(
-                  '${templateLabel(context, t)}${t == rec.template ? tx(context, ' (suositus)', ' (recommended)') : ''}',
-                ),
-                subtitle: Text(templateDesc(context, t)),
-                onTap: () {
-                  l.template = t == rec.template ? null : t;
-                  save();
-                },
-              ),
-            Text(tx(context, l.info.whyFi, l.info.whyEn), style: text.bodySmall),
-            if (l.control == 'switch' && template != 'skip_expensive')
-              _NumRow(
-                key: const ValueKey('load-hours'),
-                label: tx(context, 'Lämmitystunteja päivässä', 'Heating hours a day'),
-                value: (l.hours ?? rec.hours).toDouble(),
-                min: 1,
-                max: 24,
-                step: 1,
-                unit: 'h',
-                onChanged: (v) {
-                  l.hours = v.round() == rec.hours ? null : v.round();
-                  save();
-                },
-              ),
-            if (template == 'skip_expensive')
-              _NumRow(
-                key: const ValueKey('load-skip'),
-                label: tx(context, 'Ohitettavia kalleimpia tunteja', 'Most expensive hours skipped'),
-                value: (l.skipHours ?? rec.skipHours).toDouble(),
-                min: 1,
-                max: 12,
-                step: 1,
-                unit: 'h',
-                onChanged: (v) {
-                  l.skipHours = v.round() == rec.skipHours ? null : v.round();
-                  save();
-                },
-              ),
-            if (e.limit != null)
-              Padding(
-                padding: const EdgeInsets.only(top: 4),
-                child: Text(
-                  e.limitKind == 'skip'
-                      ? tx(
-                          context,
-                          'Tämän päivän hintaraja: ohitetaan, kun hinta on vähintään ${x.n(e.limit!)} c/kWh.',
-                          'Today\'s price limit: skipped when the price is ${x.n(e.limit!)} c/kWh or more.',
-                        )
-                      : tx(
-                          context,
-                          'Tämän päivän hintaraja: päällä, kun hinta on enintään ${x.n(e.limit!)} c/kWh.',
-                          'Today\'s price limit: on when the price is ${x.n(e.limit!)} c/kWh or less.',
-                        ),
-                  style: text.bodySmall,
-                ),
-              ),
-            if (l.tempControl) ...[
-              const Divider(),
-              _NumRow(
-                key: const ValueKey('load-drop'),
-                label: tx(context, 'Tavoite alas kalliilla tunneilla', 'Setpoint down in expensive hours'),
-                value: l.expensiveDrop,
-                min: 0,
-                max: 5,
-                step: 0.5,
-                unit: '°C',
-                zeroLabel: tx(context, 'ei käytössä', 'not used'),
-                onChanged: (v) {
-                  l.expensiveDrop = v;
-                  save();
-                },
-              ),
-              _NumRow(
-                key: const ValueKey('load-boost'),
-                label: tx(context, 'Tavoite ylös halvoilla tunneilla', 'Setpoint up in cheap hours'),
-                value: l.cheapBoost,
-                min: 0,
-                max: 5,
-                step: 0.5,
-                unit: '°C',
-                zeroLabel: tx(context, 'ei käytössä', 'not used'),
-                onChanged: (v) {
-                  l.cheapBoost = v;
-                  save();
-                },
-              ),
-            ],
-          ], key: const ValueKey('load-prices')),
-          if (l.info.space)
-            section(tx(context, 'Lämpötilarajat', 'Temperature limits'), [
-              if (l.control == 'switch')
-                _NumRow(
-                  key: const ValueKey('load-comfort'),
-                  label: l.tempControl
-                      ? tx(context, 'Tavoitelämpötila', 'Setpoint')
-                      : tx(context, 'Mukavuuslämpötila', 'Comfort temperature'),
-                  value: l.comfort,
-                  min: 10,
-                  max: 28,
-                  step: 0.5,
-                  unit: '°C',
-                  onChanged: (v) {
-                    l.comfort = v;
-                    save();
-                  },
-                ),
-              _NumRow(
-                label: tx(context, 'Vähimmäislämpötila (turvaraja)', 'Minimum temperature (safety limit)'),
-                value: c.safety.minTemp,
-                min: 5,
-                max: 22,
-                step: 0.5,
-                unit: '°C',
-                onChanged: (v) {
-                  c.safety.minTemp = v;
-                  save();
-                },
-              ),
-              SwitchListTile(
-                contentPadding: EdgeInsets.zero,
-                title: Text(tx(context, 'Jäätymissuoja', 'Frost protection')),
-                subtitle: Text(
-                  tx(
-                    context,
-                    'Lämmitys aina päälle alle ${c.safety.frostTemp.toStringAsFixed(0)} °C:ssa.',
-                    'Heating always on below ${c.safety.frostTemp.toStringAsFixed(0)} °C.',
-                  ),
-                ),
-                value: c.safety.frost,
-                onChanged: (v) {
-                  c.safety.frost = v;
-                  save();
-                },
-              ),
-              if (l.control == 'switch')
-                ListTile(
-                  key: const ValueKey('load-sensor'),
-                  contentPadding: EdgeInsets.zero,
-                  leading: Icon(e.sensorOffline ? Icons.sensors_off : Icons.sensors),
-                  title: Text(tx(context, 'Huoneen lämpöanturi', 'Room temperature sensor')),
-                  subtitle: Text(
-                    l.sensorTileId == null
-                        ? tx(
-                            context,
-                            'Ei anturia – turvarajat eivät ole käytössä',
-                            'No sensor – the safety limits are not active',
-                          )
-                        : '${sensorTitle ?? l.sensorTileId}${e.sensorOffline ? ' · ${tx(context, 'ei vastaa', 'not answering')}' : ''}',
-                  ),
-                  trailing: const Icon(Icons.chevron_right),
-                  onTap: () => _pickSensor(l),
-                ),
-            ], key: const ValueKey('load-temps')),
-          section(tx(context, 'Viiveet', 'Delays'), [
-            if (l.control == 'switch')
-              _NumRow(
-                key: const ValueKey('load-maxoff'),
-                label: tx(context, 'Pisin tauko kerrallaan', 'Longest break at a time'),
-                value: l.maxOffHours ?? rec.maxOff,
-                min: 0.5,
-                max: 24,
-                step: 0.5,
-                unit: 'h',
-                onChanged: (v) {
-                  l.maxOffHours = v == rec.maxOff ? null : v;
-                  save();
-                },
-              ),
-            Text(
-              l.minOnMinutes == 0 && l.minOffMinutes == 0
-                  ? tx(context, 'Vähimmäisajat: ei rajoitusta (Edistyneet).', 'Minimum times: no limit (Advanced).')
-                  : tx(
-                      context,
-                      'Vähimmäisaika päällä ${l.minOnMinutes} min, pois ${l.minOffMinutes} min.',
-                      'Minimum on time ${l.minOnMinutes} min, off ${l.minOffMinutes} min.',
-                    ),
-              style: text.bodySmall,
-            ),
-          ], key: const ValueKey('load-delays')),
+          HeatProgramBasics(key: const ValueKey('load-basics'), loadId: l.id),
           Card(
             child: ExpansionTile(
               key: const ValueKey('load-advanced'),
               title: Text(tx(context, 'Edistyneet', 'Advanced')),
               childrenPadding: const EdgeInsets.fromLTRB(16, 0, 16, 12),
               children: [
+                ...[
+                  section(tx(context, 'Hintasäännöt', 'Price rules'), [
+                    for (final t in heatingTemplates)
+                      ListTile(
+                        key: ValueKey('tpl-$t'),
+                        contentPadding: EdgeInsets.zero,
+                        leading: Icon(t == template ? Icons.radio_button_checked : Icons.radio_button_unchecked),
+                        title: Text(
+                          '${templateLabel(context, t)}${t == rec.template ? tx(context, ' (suositus)', ' (recommended)') : ''}',
+                        ),
+                        subtitle: Text(templateDesc(context, t)),
+                        onTap: () {
+                          l.template = t == rec.template ? null : t;
+                          save();
+                        },
+                      ),
+                    Text(tx(context, l.info.whyFi, l.info.whyEn), style: text.bodySmall),
+                    if (l.control == 'switch' && template != 'skip_expensive')
+                      HeatNumRow(
+                        key: const ValueKey('load-hours'),
+                        label: tx(context, 'Lämmitystunteja päivässä', 'Heating hours a day'),
+                        value: (l.hours ?? rec.hours).toDouble(),
+                        min: 1,
+                        max: 24,
+                        step: 1,
+                        unit: 'h',
+                        onChanged: (v) {
+                          l.hours = v.round() == rec.hours ? null : v.round();
+                          save();
+                        },
+                      ),
+                    if (template == 'skip_expensive')
+                      HeatNumRow(
+                        key: const ValueKey('load-skip'),
+                        label: tx(context, 'Ohitettavia kalleimpia tunteja', 'Most expensive hours skipped'),
+                        value: (l.skipHours ?? rec.skipHours).toDouble(),
+                        min: 1,
+                        max: 12,
+                        step: 1,
+                        unit: 'h',
+                        onChanged: (v) {
+                          l.skipHours = v.round() == rec.skipHours ? null : v.round();
+                          save();
+                        },
+                      ),
+                    if (e.limit != null)
+                      Padding(
+                        padding: const EdgeInsets.only(top: 4),
+                        child: Text(
+                          e.limitKind == 'skip'
+                              ? tx(
+                                  context,
+                                  'Tämän päivän hintaraja: ohitetaan, kun hinta on vähintään ${x.n(e.limit!)} c/kWh.',
+                                  'Today\'s price limit: skipped when the price is ${x.n(e.limit!)} c/kWh or more.',
+                                )
+                              : tx(
+                                  context,
+                                  'Tämän päivän hintaraja: päällä, kun hinta on enintään ${x.n(e.limit!)} c/kWh.',
+                                  'Today\'s price limit: on when the price is ${x.n(e.limit!)} c/kWh or less.',
+                                ),
+                          style: text.bodySmall,
+                        ),
+                      ),
+                    if (l.tempControl) ...[
+                      const Divider(),
+                      HeatNumRow(
+                        key: const ValueKey('load-drop'),
+                        label: tx(context, 'Tavoite alas kalliilla tunneilla', 'Setpoint down in expensive hours'),
+                        value: l.expensiveDrop,
+                        min: 0,
+                        max: 5,
+                        step: 0.5,
+                        unit: '°C',
+                        zeroLabel: tx(context, 'ei käytössä', 'not used'),
+                        onChanged: (v) {
+                          l.expensiveDrop = v;
+                          save();
+                        },
+                      ),
+                      HeatNumRow(
+                        key: const ValueKey('load-boost'),
+                        label: tx(context, 'Tavoite ylös halvoilla tunneilla', 'Setpoint up in cheap hours'),
+                        value: l.cheapBoost,
+                        min: 0,
+                        max: 5,
+                        step: 0.5,
+                        unit: '°C',
+                        zeroLabel: tx(context, 'ei käytössä', 'not used'),
+                        onChanged: (v) {
+                          l.cheapBoost = v;
+                          save();
+                        },
+                      ),
+                    ],
+                  ], key: const ValueKey('load-prices')),
+                  if (l.info.space)
+                    section(tx(context, 'Lämpötilarajat', 'Temperature limits'), [
+                      if (l.control == 'switch')
+                        HeatNumRow(
+                          key: const ValueKey('load-comfort'),
+                          label: l.tempControl
+                              ? tx(context, 'Tavoitelämpötila', 'Setpoint')
+                              : tx(context, 'Mukavuuslämpötila', 'Comfort temperature'),
+                          value: l.comfort,
+                          min: 10,
+                          max: 28,
+                          step: 0.5,
+                          unit: '°C',
+                          onChanged: (v) {
+                            l.comfort = v;
+                            save();
+                          },
+                        ),
+                      HeatNumRow(
+                        label: tx(context, 'Vähimmäislämpötila (turvaraja)', 'Minimum temperature (safety limit)'),
+                        value: c.safety.minTemp,
+                        min: 5,
+                        max: 22,
+                        step: 0.5,
+                        unit: '°C',
+                        onChanged: (v) {
+                          c.safety.minTemp = v;
+                          save();
+                        },
+                      ),
+                      SwitchListTile(
+                        contentPadding: EdgeInsets.zero,
+                        title: Text(tx(context, 'Jäätymissuoja', 'Frost protection')),
+                        subtitle: Text(
+                          tx(
+                            context,
+                            'Lämmitys aina päälle alle ${c.safety.frostTemp.toStringAsFixed(0)} °C:ssa.',
+                            'Heating always on below ${c.safety.frostTemp.toStringAsFixed(0)} °C.',
+                          ),
+                        ),
+                        value: c.safety.frost,
+                        onChanged: (v) {
+                          c.safety.frost = v;
+                          save();
+                        },
+                      ),
+                      if (l.control == 'switch')
+                        ListTile(
+                          key: const ValueKey('load-sensor'),
+                          contentPadding: EdgeInsets.zero,
+                          leading: Icon(e.sensorOffline ? Icons.sensors_off : Icons.sensors),
+                          title: Text(tx(context, 'Huoneen lämpöanturi', 'Room temperature sensor')),
+                          subtitle: Text(
+                            l.sensorTileId == null
+                                ? tx(
+                                    context,
+                                    'Ei anturia – turvarajat eivät ole käytössä',
+                                    'No sensor – the safety limits are not active',
+                                  )
+                                : '${sensorTitle ?? l.sensorTileId}${e.sensorOffline ? ' · ${tx(context, 'ei vastaa', 'not answering')}' : ''}',
+                          ),
+                          trailing: const Icon(Icons.chevron_right),
+                          onTap: () => _pickSensor(l),
+                        ),
+                    ], key: const ValueKey('load-temps')),
+                  section(tx(context, 'Viiveet', 'Delays'), [
+                    if (l.control == 'switch')
+                      HeatNumRow(
+                        key: const ValueKey('load-maxoff'),
+                        label: tx(context, 'Pisin tauko kerrallaan', 'Longest break at a time'),
+                        value: l.maxOffHours ?? rec.maxOff,
+                        min: 0.5,
+                        max: 24,
+                        step: 0.5,
+                        unit: 'h',
+                        onChanged: (v) {
+                          l.maxOffHours = v == rec.maxOff ? null : v;
+                          save();
+                        },
+                      ),
+                    Text(
+                      l.minOnMinutes == 0 && l.minOffMinutes == 0
+                          ? tx(
+                              context,
+                              'Vähimmäisajat: ei rajoitusta (Edistyneet).',
+                              'Minimum times: no limit (Advanced).',
+                            )
+                          : tx(
+                              context,
+                              'Vähimmäisaika päällä ${l.minOnMinutes} min, pois ${l.minOffMinutes} min.',
+                              'Minimum on time ${l.minOnMinutes} min, off ${l.minOffMinutes} min.',
+                            ),
+                      style: text.bodySmall,
+                    ),
+                  ], key: const ValueKey('load-delays')),
+                ],
                 SwitchListTile(
                   contentPadding: EdgeInsets.zero,
                   title: Text(tx(context, 'Ohjaus käytössä', 'Control on')),
@@ -1257,7 +1186,7 @@ class _HeatLoadPageState extends State<HeatLoadPage> {
                   },
                 ),
                 if (canTemp) ...[
-                  _NumRow(
+                  HeatNumRow(
                     key: const ValueKey('load-hyst'),
                     label: tx(context, 'Hystereesi (kuollut alue)', 'Hysteresis (deadband)'),
                     value: l.hysteresis,
@@ -1302,7 +1231,7 @@ class _HeatLoadPageState extends State<HeatLoadPage> {
                   ),
                 ],
                 if (l.control == 'switch') ...[
-                  _NumRow(
+                  HeatNumRow(
                     key: const ValueKey('load-minon'),
                     label: tx(context, 'Vähimmäisaika päällä', 'Minimum on time'),
                     value: l.minOnMinutes.toDouble(),
@@ -1316,7 +1245,7 @@ class _HeatLoadPageState extends State<HeatLoadPage> {
                       save();
                     },
                   ),
-                  _NumRow(
+                  HeatNumRow(
                     key: const ValueKey('load-minoff'),
                     label: tx(context, 'Vähimmäisaika pois', 'Minimum off time'),
                     value: l.minOffMinutes.toDouble(),
@@ -1471,7 +1400,7 @@ class _HeatingSurveyPageState extends State<HeatingSurveyPage> {
         onChanged: (_) => setState(() {}),
       ),
       const SizedBox(height: 12),
-      _NumRow(
+      HeatNumRow(
         key: const ValueKey('swing'),
         label: tx(context, 'Sallittu lämpötilan vaihtelu', 'Allowed temperature swing'),
         value: site.swing,

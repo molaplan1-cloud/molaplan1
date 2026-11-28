@@ -240,6 +240,8 @@ class HeatLoad {
     this.fallback = 'price',
     this.minOnMinutes = 0,
     this.minOffMinutes = 0,
+    this.priceLimit,
+    this.home,
   }) : id = id ?? newId();
   String id;
   String name;
@@ -284,6 +286,23 @@ class HeatLoad {
   int minOnMinutes;
   int minOffMinutes;
 
+  /// R634: 'Hintaraja' mode: on while the total price of the hour is at or under this limit (c/kWh).
+  /// null = not used. Exclusive with [tempControl] (the wizard and the mode picker clear the other).
+  double? priceLimit;
+
+  /// R635: the home bridge (home id) that runs this program. null = the bridge this device is
+  /// paired to (or is), as before; the app stamps it when the account has two or more bridges.
+  String? home;
+
+  /// The control mode shown first: 'temp' (temperature control), 'price' (price limit) or
+  /// 'hours' (the cheapest hours, also the price templates).
+  String get mode => tempControl ? 'temp' : (priceLimit != null ? 'price' : 'hours');
+
+  /// What the device is, for telling two programs on the same device apart.
+  String? get deviceKey => control == 'thermostat'
+      ? (thermostatId == null ? null : 'th:$thermostatId')
+      : (tileId == null ? null : 'tile:$tileId');
+
   HeatingTypeInfo get info => heatingType(type);
   bool get followsFireplace => fireplace ?? info.space;
 
@@ -309,6 +328,8 @@ class HeatLoad {
     if (fallback != 'price') 'fallback': fallback,
     if (minOnMinutes != 0) 'minOnMinutes': minOnMinutes,
     if (minOffMinutes != 0) 'minOffMinutes': minOffMinutes,
+    'priceLimit': ?priceLimit,
+    'home': ?home,
   };
 
   factory HeatLoad.fromJson(Map<String, dynamic> j) => HeatLoad(
@@ -333,6 +354,8 @@ class HeatLoad {
     fallback: const ['price', 'on', 'off'].contains(j['fallback']) ? '${j['fallback']}' : 'price',
     minOnMinutes: ((j['minOnMinutes'] as num?)?.toInt() ?? 0).clamp(0, 240),
     minOffMinutes: ((j['minOffMinutes'] as num?)?.toInt() ?? 0).clamp(0, 240),
+    priceLimit: (j['priceLimit'] as num?)?.toDouble(),
+    home: (j['home'] is String && (j['home'] as String).isNotEmpty) ? j['home'] as String : null,
   );
 
   HeatLoad copy() => HeatLoad.fromJson(toJson());
@@ -436,8 +459,45 @@ class SmartHeatingConfig {
   /// R613: the home-screen tile was offered once (added when none existed).
   bool homeTileDone;
 
+  /// R635: homes (bridges) that were sent programs before. A home that no longer has any program
+  /// is still told once (an empty set), so a program moved to another bridge stops running on the
+  /// old one as soon as that bridge answers.
+  Set<String> pushedHomes = {};
+
+  /// Program ids whose device already has an earlier program on another bridge: they are not sent
+  /// to any bridge, so two bridges never switch the same device. (Two programs on one bridge are
+  /// left as they were.)
+  Set<String> get conflictIds {
+    final first = <String, String?>{};
+    final out = <String>{};
+    for (final l in loads) {
+      final k = l.deviceKey;
+      if (k == null) continue;
+      if (!first.containsKey(k)) {
+        first[k] = l.home;
+      } else if (first[k] != l.home) {
+        out.add(l.id);
+      }
+    }
+    return out;
+  }
+
+  /// The programs a bridge runs: bound to [home], or unbound (null) and [home] is the default
+  /// bridge [defaultHome] of this device. Programs without a free device are left out.
+  List<HeatLoad> loadsFor(String home, {String? defaultHome}) {
+    final bad = conflictIds;
+    return [
+      for (final l in loads)
+        if (!bad.contains(l.id) && (l.home == home || (l.home == null && home == defaultHome))) l,
+    ];
+  }
+
+  /// Every home that has a program (null stands for the default bridge).
+  Set<String?> get homes => {for (final l in loads) l.home};
+
   Map<String, dynamic> toJson() => {
     'enabled': enabled,
+    if (pushedHomes.isNotEmpty) 'pushedHomes': pushedHomes.toList()..sort(),
     'site': site.toJson(),
     'loads': [for (final l in loads) l.toJson()],
     'safety': safety.toJson(),
@@ -467,7 +527,7 @@ class SmartHeatingConfig {
       fireplaceSensorTileId: j['fireplaceSensorTileId'] as String?,
       notify: j['notify'] != false,
       homeTileDone: j['homeTileDone'] == true,
-    );
+    )..pushedHomes = {for (final h in (j['pushedHomes'] as List? ?? const [])) '$h'};
   }
 }
 
@@ -757,6 +817,12 @@ HeatDecision _decideSwitch(SmartHeatingConfig c, HeatLoad l, HeatInputs x) {
   final day = dayCosts(x.now, x.cost);
   if (day == null) return HeatDecision(on: true, reason: 'noprice');
   final h = hourOf(x.now);
+  // R634: price limit – on while the hour costs no more than the limit.
+  if (l.priceLimit != null) {
+    final price = x.cost(h);
+    final on = price == null || price <= l.priceLimit!;
+    return HeatDecision(on: on, reason: on ? 'cheap' : 'not_cheap');
+  }
   if (template == 'skip_expensive') {
     final k = l.skipHours ?? rec.skipHours;
     final skip = expensiveHours(day, x.holiday ? k * 2 : k, maxRun: maxOff);
@@ -797,7 +863,16 @@ HeatDecision decideThermostat(
   var reason = 'normal';
   final day = dayCosts(x.now, x.cost);
   final h = hourOf(x.now);
-  if (template == 'weather') {
+  if (l.priceLimit != null) {
+    // R634: price limit – a little warmer under the limit, a little cooler over it.
+    if (day == null) {
+      reason = 'noprice';
+    } else {
+      final under = (x.cost(h) ?? 0) <= l.priceLimit!;
+      target = under ? comfort + s.swing / 2 : comfort - s.swing / 2;
+      reason = under ? 'cheap' : 'not_cheap';
+    }
+  } else if (template == 'weather') {
     final p = plan
         .where((p) => !x.now.isBefore(p.start) && x.now.isBefore(p.start.add(const Duration(hours: 1))))
         .firstOrNull;
@@ -907,7 +982,7 @@ class SmartHeatingJob {
   final String lang;
 
   Map<String, dynamic> toJson() => {
-    'config': config.toJson(),
+    'config': config.toJson()..remove('pushedHomes'),
     'on': {for (final e in on.entries) e.key: e.value.toJson()},
     'off': {for (final e in off.entries) e.key: e.value.toJson()},
     'sensors': {for (final e in sensors.entries) e.key: e.value.toJson()},
@@ -941,9 +1016,20 @@ class SmartHeatingJob {
   }
 
   /// From the app configuration (null when smart heating is not set up).
-  static SmartHeatingJob? fromConfig(AppConfig c) {
-    final sh = c.energy.smartHeating;
+  ///
+  /// R635: with [home] only the programs bound to that bridge (and the unbound ones when [home] is
+  /// [defaultHome]) are included; without it, all of them (a single bridge, as before) except those
+  /// whose device is already used by an earlier program on another bridge.
+  static SmartHeatingJob? fromConfig(AppConfig c, {String? home, String? defaultHome}) {
+    var sh = c.energy.smartHeating;
     if (sh == null) return null;
+    final bad = sh.conflictIds;
+    if (home != null || bad.isNotEmpty) {
+      sh = SmartHeatingConfig.fromJson(sh.toJson());
+      sh.loads = home != null
+          ? c.energy.smartHeating!.loadsFor(home, defaultHome: defaultHome).map((l) => l.copy()).toList()
+          : sh.loads.where((l) => !bad.contains(l.id)).toList();
+    }
     final tiles = {
       for (final d in c.dashboards)
         for (final t in d.tiles) t.id: t,

@@ -308,6 +308,8 @@ class BridgeCore {
 
   /// R194: replaces the smart heating job (null = off) and stores it.
   Future<void> setSmartHeating(SmartHeatingJob? job) async {
+    // R635: a program bound to another bridge is never run here (two bridges never switch one device).
+    job?.config.loads.removeWhere((l) => l.home != null && l.home != home);
     if (job == null) {
       await store.delete('$storageKey.heating');
     } else {

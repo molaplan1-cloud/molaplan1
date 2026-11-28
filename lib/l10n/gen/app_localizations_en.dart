@@ -1477,6 +1477,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get se50792831f => 'Temperature control';
 
   @override
+  String get s52ef5e0b45 => 'Price limit';
+
+  @override
   String get sd408a5dbe9 => 'Cheapest hours';
 
   @override
@@ -2841,6 +2844,148 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
+  String get s9d6a4787c0 => 'By temperature';
+
+  @override
+  String get s765dda7e1f =>
+      'On while the hour\'s price is at or under the limit you set.';
+
+  @override
+  String get s63c7563ffe =>
+      'Like a thermostat: on while the room is colder than the target. Needs a temperature sensor.';
+
+  @override
+  String get s066b775d18 =>
+      'Heats in the cheapest hours of the day. You choose the number of hours.';
+
+  @override
+  String s7d9757a025(String p0) {
+    return 'up to $p0 c/kWh';
+  }
+
+  @override
+  String s865988de99(String p0) {
+    return 'skips $p0 most expensive hours';
+  }
+
+  @override
+  String sd235c9cafb(String p0) {
+    return '$p0 h a day';
+  }
+
+  @override
+  String get s1cc4e52472 =>
+      'On while the hour\'s price is at or under the limit.';
+
+  @override
+  String s5fab7a2144(String p0, String p1, String p2) {
+    return 'On while the hour\'s price is at or under the limit. Today $p0–$p1 c/kWh, $p2 h under the limit.';
+  }
+
+  @override
+  String get sd5f46903a1 => 'Target temperature';
+
+  @override
+  String get sd2758727f5 => 'Temperature sensor';
+
+  @override
+  String get s58adf1e5fb => 'Choose a sensor – the control needs it';
+
+  @override
+  String get sbd3dbfd7e9 => 'Most expensive hours skipped';
+
+  @override
+  String get s86c45674db => 'Heating hours a day';
+
+  @override
+  String get s94f86b3b6a => 'Home bridge that runs the program';
+
+  @override
+  String get s10a23b4691 => 'not paired';
+
+  @override
+  String get s407cb3a732 =>
+      'The program runs on the chosen bridge by itself, even with the app closed. The bridge must reach the device. One device is only ever controlled by one bridge.';
+
+  @override
+  String get s7de515a7c1 => 'Program';
+
+  @override
+  String get s7fcdd166f3 =>
+      'This device already has a program on another bridge, so this one is not run. Remove the other program or pick the same bridge.';
+
+  @override
+  String get s093677b5f1 => 'Control mode';
+
+  @override
+  String get sf0446baa5c =>
+      'Without a sensor, heating follows the price schedule. Tap to choose a sensor.';
+
+  @override
+  String get s0cb0877799 => 'Not running';
+
+  @override
+  String sad8b69fca2(String p0) {
+    return ' is offline – the program keeps running there by itself';
+  }
+
+  @override
+  String s7211f94f91(String p0) {
+    return 'Runs on: ';
+  }
+
+  @override
+  String get s7b25bc0874 =>
+      'The device already has a program on another bridge.';
+
+  @override
+  String get sccf63d5729 =>
+      'Changes are waiting for the bridge – they are sent when it answers.';
+
+  @override
+  String get sdb217dcf7f => 'Add a tile to the home screen';
+
+  @override
+  String get s6398607bb8 => 'The tile is already on the home screen';
+
+  @override
+  String get s52d3e04a46 => 'Tile added to the home screen';
+
+  @override
+  String get s354eb362d8 => 'Choose the device';
+
+  @override
+  String get s1571e8b853 => 'Choose the control mode';
+
+  @override
+  String get s190914de3c => 'Set the limit';
+
+  @override
+  String get s4eaf5975db => 'Add a program';
+
+  @override
+  String scb39988da3(String p0) {
+    return 'Already has a program: $p0';
+  }
+
+  @override
+  String get s8ea88baef9 => 'Relay or plug';
+
+  @override
+  String get s70d49e7f6a =>
+      'No devices. Add a relay, a plug or a thermostat first.';
+
+  @override
+  String get sec41a5c19b => 'Heating type';
+
+  @override
+  String get s0feac99b10 =>
+      'Other settings (delays, hysteresis, temperature limits, frost protection, fallback, boost, minimum times) are under Advanced on the program page. The defaults suit most homes.';
+
+  @override
+  String get s54a7a968e9 => 'Create program';
+
+  @override
   String get s429f9e257a => 'Data is only in this browser. ';
 
   @override
@@ -4043,16 +4188,14 @@ class AppLocalizationsEn extends AppLocalizations {
   String get sd172900c2d => 'Holiday: edit';
 
   @override
-  String get sdb217dcf7f => 'Add a tile to the home screen';
+  String get s5275c2c21e => 'Programs';
 
   @override
-  String get s52d3e04a46 => 'Tile added to the home screen';
+  String get s99a5e80b5c =>
+      'Each heating device has its own program. A program runs on a home bridge by itself.';
 
   @override
-  String get sdca3ad13dd => 'Heating devices';
-
-  @override
-  String get sc8c5e37f5d => 'No devices. Add them in the survey.';
+  String get s0fd18deddd => 'No programs yet.';
 
   @override
   String get sc6976fa352 => 'Heating notifications';
@@ -4169,40 +4312,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get se68cc54085 => 'No sensor';
 
   @override
-  String get s093677b5f1 => 'Control mode';
-
-  @override
-  String get sa6195c2696 => 'By price';
-
-  @override
-  String get s9d6a4787c0 => 'By temperature';
-
-  @override
-  String get s84cf10acfd =>
-      'Heating follows the measured temperature like a thermostat. The price rules only move the setpoint: up in cheap hours, down in expensive ones (if set).';
-
-  @override
-  String get sdf9dc612a6 =>
-      'Heating follows the electricity price and the weather. A temperature sensor is optional and gives the safety limits.';
-
-  @override
-  String get s01c555401a => 'Choose a temperature sensor';
-
-  @override
-  String get s249140bfd0 =>
-      'Temperature control needs a sensor. Without one, heating follows the price schedule.';
-
-  @override
   String get sf9cbe76823 => 'Price rules';
 
   @override
   String get s8e6c8ffabb => ' (recommended)';
-
-  @override
-  String get s86c45674db => 'Heating hours a day';
-
-  @override
-  String get sbd3dbfd7e9 => 'Most expensive hours skipped';
 
   @override
   String s1f32a43166(String p0) {
@@ -4490,9 +4603,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get s3cc31bcfdc => 'Choose the charger (charging on/off)';
-
-  @override
-  String get s354eb362d8 => 'Choose the device';
 
   @override
   String get s73a65d7dff => 'Choose the devices';
@@ -5103,9 +5213,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s55e5c3a177 => 'How many hours on';
 
   @override
-  String get s52ef5e0b45 => 'Price limit';
-
-  @override
   String get s993193d056 => 'Upcoming on-times';
 
   @override
@@ -5429,9 +5536,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get s1790a71e85 => 'e.g. Living room';
-
-  @override
-  String get sd5f46903a1 => 'Target temperature';
 
   @override
   String get s6de95e582f => 'If the temperature is lost';
@@ -10876,6 +10980,14 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s0528a2ef9e => 'The device has no on/off command';
 
   @override
+  String get s7a71f285ef => 'The home bridge is offline';
+
+  @override
+  String sa3ca79fa2c(String p0) {
+    return 'The home bridge $p0 is offline';
+  }
+
+  @override
   String get sd0e9fc6760 => 'The control did not work';
 
   @override
@@ -10885,6 +10997,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String s151c5be078(String p0, String p1) {
     return 'The home bridge cannot reach the address of $p0: it is most likely on another network than $p0. This device can reach it, which is why the other tiles work.';
   }
+
+  @override
+  String get saca21d4cb4 =>
+      'This program runs on a home bridge the app cannot reach right now. It keeps running there on its last settings, but its state cannot be refreshed and setting changes cannot be sent.';
 
   @override
   String s99ea566004(String p0) {
@@ -10916,6 +11032,18 @@ class AppLocalizationsEn extends AppLocalizations {
       'Smart heating retries every minute. Until then the relay stays in its last state and the heating is not controlled.';
 
   @override
+  String get s3eb269a14c =>
+      'Check that the device acting as the home bridge is on, Molaplan is running on it, and it is online.';
+
+  @override
+  String get se3dee57a24 =>
+      'The program does not stop: the bridge follows the last settings it received until the connection is back.';
+
+  @override
+  String get s0ddffa32c3 =>
+      'When the connection is back, this device sends any waiting changes automatically. If you moved the program to another bridge, the old one stops it as soon as it is online again.';
+
+  @override
   String get s5a3b74d726 =>
       'Open the device connection and check the username and password.';
 
@@ -10936,6 +11064,10 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get sc056006180 =>
       'Check that the device is on and on the same network as the home bridge. Smart heating retries every minute; until it works the device stays in its current state.';
+
+  @override
+  String get seca484252c =>
+      'The program keeps running on the bridge by itself. Check that the bridge is on and online.';
 
   @override
   String get s7a1cda0d24 =>
@@ -11043,6 +11175,11 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String sf3a33e9bc5(String p0, String p1, String p2, String p3) {
     return '$p0 cheapest hours a day: now $p1 c/kWh $p2 limit $p3 c';
+  }
+
+  @override
+  String s5ee0d291a9(String p0, String p1, String p2, String p3) {
+    return 'Now $p0 c/kWh $p1 limit $p2 c · $p3 h under the limit today';
   }
 
   @override

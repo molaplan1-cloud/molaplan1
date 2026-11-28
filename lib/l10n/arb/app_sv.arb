@@ -1122,7 +1122,15 @@
   "x-mt": true
  },
  "s09f5da65e0": "Byt till Shelly Cloud",
+ "s6f985060ba": "Vad du kan göra",
+ "@s6f985060ba": {
+  "x-mt": true
+ },
  "sf77125583f": "Tekniska detaljer",
+ "s97c9304643": "Tid",
+ "@s97c9304643": {
+  "x-mt": true
+ },
  "s1e593aeca2": "Stäng",
  "sf5768a876d": "Inaktiverad",
  "@sf5768a876d": {
@@ -1148,6 +1156,7 @@
  "@se50792831f": {
   "x-mt": true
  },
+ "s52ef5e0b45": "Prisgräns",
  "sd408a5dbe9": "Billigaste timmar",
  "@sd408a5dbe9": {
   "x-mt": true
@@ -1201,6 +1210,14 @@
  "@s9c543b2106": {
   "x-mt": true
  },
+ "s4678cef2a1": "Totalt pris: spot + moms + marginal + överföring + skatt",
+ "@s4678cef2a1": {
+  "x-mt": true
+ },
+ "s80a6e15c66": "Plats",
+ "@s80a6e15c66": {
+  "x-mt": true
+ },
  "see998ca830": "hålls på",
  "@see998ca830": {
   "x-mt": true
@@ -1219,6 +1236,10 @@
  },
  "s8653f173b6": "Temperatur",
  "@s8653f173b6": {
+  "x-mt": true
+ },
+ "s3c6fedc117": "Pris nu (totalt)",
+ "@s3c6fedc117": {
   "x-mt": true
  },
  "s7dfe0e7977": "Nästa förändring",
@@ -1260,6 +1281,10 @@
  },
  "s63c3e9c766": "Inga prisdata",
  "@s63c3e9c766": {
+  "x-mt": true
+ },
+ "s50b49fb20d": " (Spot med moms {p0} c)",
+ "@s50b49fb20d": {
   "x-mt": true
  },
  "s8c60756474": "{p0} (skippad vid ≥ {p1} c)",
@@ -2450,6 +2475,155 @@
  "@s80d7fd2d3c": {
   "x-mt": true
  },
+ "s9d6a4787c0": "Vid temperatur",
+ "@s9d6a4787c0": {
+  "x-mt": true
+ },
+ "s765dda7e1f": "På medan timmens pris är på eller under gränsen du anger.",
+ "@s765dda7e1f": {
+  "x-mt": true
+ },
+ "s63c7563ffe": "Som en termostat: på medan rummet är kallare än målet. Behöver en temperatursensor.",
+ "@s63c7563ffe": {
+  "x-mt": true
+ },
+ "s066b775d18": "Värme i de billigaste timmarna på dagen. Du väljer antalet timmar.",
+ "@s066b775d18": {
+  "x-mt": true
+ },
+ "s7d9757a025": "upp till {p0} c/kWh",
+ "@s7d9757a025": {
+  "x-mt": true
+ },
+ "s865988de99": "hoppar över {p0} dyraste timmar",
+ "@s865988de99": {
+  "x-mt": true
+ },
+ "sd235c9cafb": "{p0} en dag",
+ "@sd235c9cafb": {
+  "x-mt": true
+ },
+ "s1cc4e52472": "På medan timmens pris är på eller under gränsen.",
+ "@s1cc4e52472": {
+  "x-mt": true
+ },
+ "s5fab7a2144": "På medan timmens pris är på eller under gränsen. Idag {p0}-{p1} c/kWh, {p2} h under gränsen.",
+ "@s5fab7a2144": {
+  "x-mt": true
+ },
+ "sd5f46903a1": "Måltemperatur",
+ "sd2758727f5": "Temperaturgivare",
+ "@sd2758727f5": {
+  "x-mt": true
+ },
+ "s58adf1e5fb": "Välj en sensor – kontrollen behöver den",
+ "@s58adf1e5fb": {
+  "x-mt": true
+ },
+ "sbd3dbfd7e9": "De flesta dyra timmar hoppade över",
+ "@sbd3dbfd7e9": {
+  "x-mt": true
+ },
+ "s86c45674db": "Värme timmar om dagen",
+ "@s86c45674db": {
+  "x-mt": true
+ },
+ "s94f86b3b6a": "Home bridge som driver programmet",
+ "@s94f86b3b6a": {
+  "x-mt": true
+ },
+ "s10a23b4691": "Inte parad",
+ "@s10a23b4691": {
+  "x-mt": true
+ },
+ "s407cb3a732": "Programmet körs på den valda bron i sig, även med appen stängd. Bron måste nå enheten. En enhet styrs bara av en bro.",
+ "@s407cb3a732": {
+  "x-mt": true
+ },
+ "s7de515a7c1": "Programprogram",
+ "@s7de515a7c1": {
+  "x-mt": true
+ },
+ "s7fcdd166f3": "Den här enheten har redan ett program på en annan bro, så den här körs inte. Ta bort det andra programmet eller välj samma bro.",
+ "@s7fcdd166f3": {
+  "x-mt": true
+ },
+ "s093677b5f1": "Kontroll läge",
+ "@s093677b5f1": {
+  "x-mt": true
+ },
+ "s0cb0877799": "Inte springa",
+ "@s0cb0877799": {
+  "x-mt": true
+ },
+ "sad8b69fca2": " är offline - programmet fortsätter att springa där själv",
+ "@sad8b69fca2": {
+  "x-mt": true
+ },
+ "s7211f94f91": "Runs on: ",
+ "@s7211f94f91": {
+  "x-mt": true
+ },
+ "s7b25bc0874": "Enheten har redan ett program på en annan bro.",
+ "@s7b25bc0874": {
+  "x-mt": true
+ },
+ "sccf63d5729": "Förändringar väntar på bron – de skickas när de svarar.",
+ "@sccf63d5729": {
+  "x-mt": true
+ },
+ "sdb217dcf7f": "Lägg till ett kort till hemskärmen",
+ "@sdb217dcf7f": {
+  "x-mt": true
+ },
+ "s6398607bb8": "Kortet är redan på hemskärmen",
+ "@s6398607bb8": {
+  "x-mt": true
+ },
+ "s52d3e04a46": "Kort som läggs till på hemskärmen",
+ "@s52d3e04a46": {
+  "x-mt": true
+ },
+ "s354eb362d8": "Välj enheten",
+ "@s354eb362d8": {
+  "x-mt": true
+ },
+ "s1571e8b853": "Välj kontrollläget",
+ "@s1571e8b853": {
+  "x-mt": true
+ },
+ "s190914de3c": "Ställ gränsen",
+ "@s190914de3c": {
+  "x-mt": true
+ },
+ "s4eaf5975db": "Lägg till ett program",
+ "@s4eaf5975db": {
+  "x-mt": true
+ },
+ "scb39988da3": "Har redan ett program: {p0}",
+ "@scb39988da3": {
+  "x-mt": true
+ },
+ "s8ea88baef9": "Relä eller plug",
+ "@s8ea88baef9": {
+  "x-mt": true
+ },
+ "s70d49e7f6a": "Inga enheter. Lägg till ett relä, en plug eller en termostat först.",
+ "@s70d49e7f6a": {
+  "x-mt": true
+ },
+ "sec41a5c19b": "Värmetyp",
+ "@sec41a5c19b": {
+  "x-mt": true
+ },
+ "s0feac99b10": "Andra inställningar (förseningar, hysteres, temperaturgränser, frostskydd, nedgång, ökning, minsta tider) är under Avancerade på programsidan. Standarderna passar de flesta hem.",
+ "@s0feac99b10": {
+  "x-mt": true
+ },
+ "s54a7a968e9": "Skapa program",
+ "@s54a7a968e9": {
+  "x-mt": true
+ },
  "s429f9e257a": "Uppgifterna finns bara i den här webbläsaren. ",
  "sda9203de80": "lokaler och inställningar ",
  "@sda9203de80": {
@@ -3337,20 +3511,16 @@
  "@sd172900c2d": {
   "x-mt": true
  },
- "sdb217dcf7f": "Lägg till ett kort till hemskärmen",
- "@sdb217dcf7f": {
+ "s5275c2c21e": "Program",
+ "@s5275c2c21e": {
   "x-mt": true
  },
- "s52d3e04a46": "Kort som läggs till på hemskärmen",
- "@s52d3e04a46": {
+ "s99a5e80b5c": "Varje värmeenhet har sitt eget program. Ett program körs på en hemmabro i sig.",
+ "@s99a5e80b5c": {
   "x-mt": true
  },
- "sdca3ad13dd": "Värmeanordningar",
- "@sdca3ad13dd": {
-  "x-mt": true
- },
- "sc8c5e37f5d": "Inga enheter. Lägg till dem i undersökningen.",
- "@sc8c5e37f5d": {
+ "s0fd18deddd": "Inga program ännu.",
+ "@s0fd18deddd": {
   "x-mt": true
  },
  "sc6976fa352": "Uppvärmningsmeddelanden",
@@ -3493,48 +3663,12 @@
  "@se68cc54085": {
   "x-mt": true
  },
- "s093677b5f1": "Kontroll läge",
- "@s093677b5f1": {
-  "x-mt": true
- },
- "sa6195c2696": "Priset",
- "@sa6195c2696": {
-  "x-mt": true
- },
- "s9d6a4787c0": "Vid temperatur",
- "@s9d6a4787c0": {
-  "x-mt": true
- },
- "s84cf10acfd": "Uppvärmning följer den uppmätta temperaturen som en termostat. Prisreglerna flyttar bara inställningspunkten: upp i billiga timmar, ner i dyra (om de är inställda).",
- "@s84cf10acfd": {
-  "x-mt": true
- },
- "sdf9dc612a6": "Värme följer elpriset och vädret. En temperatursensor är valfri och ger säkerhetsgränserna.",
- "@sdf9dc612a6": {
-  "x-mt": true
- },
- "s01c555401a": "Välj en temperatursensor",
- "@s01c555401a": {
-  "x-mt": true
- },
- "s249140bfd0": "Temperaturkontroll behöver en sensor. Utan en följer uppvärmning prisschemat.",
- "@s249140bfd0": {
-  "x-mt": true
- },
  "sf9cbe76823": "Prisregler",
  "@sf9cbe76823": {
   "x-mt": true
  },
  "s8e6c8ffabb": " (rekommenderas)",
  "@s8e6c8ffabb": {
-  "x-mt": true
- },
- "s86c45674db": "Värme timmar om dagen",
- "@s86c45674db": {
-  "x-mt": true
- },
- "sbd3dbfd7e9": "De flesta dyra timmar hoppade över",
- "@sbd3dbfd7e9": {
   "x-mt": true
  },
  "s1f32a43166": "Dagens prisgräns: hoppade över när priset är {p0} c/kWh eller mer.",
@@ -3846,10 +3980,6 @@
  },
  "s3cc31bcfdc": "Välj laddaren (laddning på/av)",
  "@s3cc31bcfdc": {
-  "x-mt": true
- },
- "s354eb362d8": "Välj enheten",
- "@s354eb362d8": {
   "x-mt": true
  },
  "s73a65d7dff": "Välj enheterna",
@@ -4546,7 +4676,6 @@
  "s6b609c3376": "När ska den vara på?",
  "s93e5435cf4": "Ingen prisstyrning",
  "s55e5c3a177": "Hur många timmar på",
- "s52ef5e0b45": "Prisgräns",
  "s993193d056": "Kommande på-tider",
  "s2f7c00a89e": "Priser som inte är tillgängliga just nu.",
  "@s2f7c00a89e": {
@@ -4821,7 +4950,6 @@
  "s0da3005956": "Medelvärde",
  "s0c6a008ffd": "Namn och läge",
  "s1790a71e85": "t.ex. Vardagsrum",
- "sd5f46903a1": "Måltemperatur",
  "s6de95e582f": "Om temperaturen försvinner",
  "s8ff25225b4": "Stäng av värme/kyla (säkrast)",
  "s17cb86f49e": "Behåll som det är",
@@ -6597,6 +6725,10 @@
  },
  "s162c54ed4c": "{p0}: gjort",
  "@s162c54ed4c": {
+  "x-mt": true
+ },
+ "s1e9eca6676": "Spotpriset nu med moms. Överföring, skatt och marginal ingår inte – Smart uppvärmning jämför det totala priset.",
+ "@s1e9eca6676": {
   "x-mt": true
  },
  "se26e839c2f": "Måndag Måndag Måndag",
@@ -10055,8 +10187,84 @@
  "@s0528a2ef9e": {
   "x-mt": true
  },
+ "s7a71f285ef": "Hembron är offline",
+ "@s7a71f285ef": {
+  "x-mt": true
+ },
+ "sa3ca79fa2c": "Hembron {p0} är offline",
+ "@sa3ca79fa2c": {
+  "x-mt": true
+ },
  "sd0e9fc6760": "Kontrollen fungerade inte",
  "@sd0e9fc6760": {
+  "x-mt": true
+ },
+ "s340968669a": "Enheten",
+ "@s340968669a": {
+  "x-mt": true
+ },
+ "s151c5be078": "Hembron kan inte nå adressen till {p0}: det är troligtvis på ett annat nätverk än {p0}. Den här enheten kan nå den, vilket är anledningen till att de andra korten fungerar.",
+ "@s151c5be078": {
+  "x-mt": true
+ },
+ "saca21d4cb4": "Detta program körs på en hembro appen kan inte nå just nu. Det fortsätter att springa där på sina sista inställningar, men dess tillstånd kan inte uppdateras och inställningsändringar kan inte skickas.",
+ "@saca21d4cb4": {
+  "x-mt": true
+ },
+ "s99ea566004": "Hembron kunde inte ansluta till {p0}. Det är avstängt, utanför nätverket, eller bron är på ett annat nätverk.",
+ "@s99ea566004": {
+  "x-mt": true
+ },
+ "sb32685da2f": "Sätt hembron på samma nätverk som enheten: öppna Molaplan på en alltid-på-enhet i enhetens nätverk (t.ex. en dator eller surfplatta hemma) och välj Inställningar → Fjärråtkomst → Använd den här enheten som hemmabron. Sedan para din telefon och PC med den igen.",
+ "@sb32685da2f": {
+  "x-mt": true
+ },
+ "s22dde7740f": "Eller styra enheten genom en anslutning kan bron nå från var som helst (till exempel tillverkarens moln, som Shelly Cloud).",
+ "@s22dde7740f": {
+  "x-mt": true
+ },
+ "sd4f0e6f8e1": "Kontrollera att enheten är påslagen och dess kraft och Wi-Fi-ljus är på.",
+ "@sd4f0e6f8e1": {
+  "x-mt": true
+ },
+ "s8277eb958e": "Kontrollera att enheten och hembron är på samma nätverk (de tre första siffrorna av deras adresser är desamma).",
+ "@s8277eb958e": {
+  "x-mt": true
+ },
+ "sab9dae06af": "Om enhetens adress har ändrats, uppdatera den i anslutningsinställningarna.",
+ "@sab9dae06af": {
+  "x-mt": true
+ },
+ "sdafab85176": "Smart värme retries varje minut. Fram till dess stannar reläet i sitt sista tillstånd och värmen kontrolleras inte.",
+ "@sdafab85176": {
+  "x-mt": true
+ },
+ "s3eb269a14c": "Kontrollera att enheten som fungerar som hemmabron är på, Molaplan körs på den, och det är online.",
+ "@s3eb269a14c": {
+  "x-mt": true
+ },
+ "se3dee57a24": "Programmet slutar inte: bron följer de sista inställningarna som den mottog förrän anslutningen är tillbaka.",
+ "@se3dee57a24": {
+  "x-mt": true
+ },
+ "s0ddffa32c3": "När anslutningen är tillbaka skickar den här enheten några vänteförändringar automatiskt. Om du flyttade programmet till en annan bro, stoppar den gamla det så snart det är online igen.",
+ "@s0ddffa32c3": {
+  "x-mt": true
+ },
+ "s5a3b74d726": "Öppna enhetsanslutningen och kontrollera användarnamnet och lösenordet.",
+ "@s5a3b74d726": {
+  "x-mt": true
+ },
+ "s7157b2a937": "Öppna reläkortet och kontrollera dess adress och på / av kommandon.",
+ "@s7157b2a937": {
+  "x-mt": true
+ },
+ "s419117d6ca": "Starta om enheten (styr av och på).",
+ "@s419117d6ca": {
+  "x-mt": true
+ },
+ "sc28a06ee09": "Om felet fortsätter, kontrollera enhetens inställningar och firmware.",
+ "@sc28a06ee09": {
   "x-mt": true
  },
  "s8e9e56f68f": "Se den exakta orsaken under tekniska detaljer.",
@@ -10065,6 +10273,10 @@
  },
  "sc056006180": "Kontrollera att enheten är på och på samma nätverk som hemmabron. Smart värme retries varje minut; tills det fungerar enheten stannar i sitt nuvarande tillstånd.",
  "@sc056006180": {
+  "x-mt": true
+ },
+ "seca484252c": "Programmet fortsätter att springa på bron i sig. Kontrollera att bron är på och online.",
+ "@seca484252c": {
   "x-mt": true
  },
  "s7a1cda0d24": "Kontrollera enhetens lösenord i anslutningsinställningarna.",
@@ -10252,8 +10464,40 @@
  "@s8847ee78e0": {
   "x-mt": true
  },
+ "s5811eb3006": "State okänd",
+ "@s5811eb3006": {
+  "x-mt": true
+ },
  "s6ab8f97950": "ON",
  "s509c668d7e": "OFF",
+ "sfd2975e5c4": "Just nu",
+ "@sfd2975e5c4": {
+  "x-mt": true
+ },
+ "s1cb1af7851": "{p0} sedan",
+ "@s1cb1af7851": {
+  "x-mt": true
+ },
+ "s04780b98b7": "Enheten har inte svarat, dess tillstånd är inte känt",
+ "@s04780b98b7": {
+  "x-mt": true
+ },
+ "s69b9359f3f": "Beslut: {p0} – enheten har inte bekräftat det",
+ "@s69b9359f3f": {
+  "x-mt": true
+ },
+ "s5989e2e782": " (vid {p0}, {p1})",
+ "@s5989e2e782": {
+  "x-mt": true
+ },
+ "s9cb6ebafaa": "Sista uppsättningen: {p0}{p1} – beslutet {p2} gick inte igenom",
+ "@s9cb6ebafaa": {
+  "x-mt": true
+ },
+ "s9151a2843d": "Sista set: {p0}{p1}",
+ "@s9151a2843d": {
+  "x-mt": true
+ },
  "s70d43f1209": "Kontrollen är avstängd",
  "@s70d43f1209": {
   "x-mt": true
@@ -12575,116 +12819,12 @@
  "@s06444f278d": {
   "x-mt": true
  },
- "s6f985060ba": "Vad du kan göra",
- "@s6f985060ba": {
+ "sf0446baa5c": "Utan en sensor följer uppvärmning prisschemat. Tryck för att välja en sensor.",
+ "@sf0446baa5c": {
   "x-mt": true
  },
- "s97c9304643": "Tid",
- "@s97c9304643": {
-  "x-mt": true
- },
- "s4678cef2a1": "Totalt pris: spot + moms + marginal + överföring + skatt",
- "@s4678cef2a1": {
-  "x-mt": true
- },
- "s80a6e15c66": "Plats",
- "@s80a6e15c66": {
-  "x-mt": true
- },
- "s3c6fedc117": "Pris nu (totalt)",
- "@s3c6fedc117": {
-  "x-mt": true
- },
- "s50b49fb20d": " (Spot med moms {p0} c)",
- "@s50b49fb20d": {
-  "x-mt": true
- },
- "s1e9eca6676": "Spotpriset nu med moms. Överföring, skatt och marginal ingår inte – Smart uppvärmning jämför det totala priset.",
- "@s1e9eca6676": {
-  "x-mt": true
- },
- "s340968669a": "Enheten",
- "@s340968669a": {
-  "x-mt": true
- },
- "s151c5be078": "Hembron kan inte nå adressen till {p0}: det är troligtvis på ett annat nätverk än {p0}. Den här enheten kan nå den, vilket är anledningen till att de andra korten fungerar.",
- "@s151c5be078": {
-  "x-mt": true
- },
- "s99ea566004": "Hembron kunde inte ansluta till {p0}. Det är avstängt, utanför nätverket, eller bron är på ett annat nätverk.",
- "@s99ea566004": {
-  "x-mt": true
- },
- "sb32685da2f": "Sätt hembron på samma nätverk som enheten: öppna Molaplan på en alltid-på-enhet i enhetens nätverk (t.ex. en dator eller surfplatta hemma) och välj Inställningar → Fjärråtkomst → Använd den här enheten som hemmabron. Sedan para din telefon och PC med den igen.",
- "@sb32685da2f": {
-  "x-mt": true
- },
- "s22dde7740f": "Eller styra enheten genom en anslutning kan bron nå från var som helst (till exempel tillverkarens moln, som Shelly Cloud).",
- "@s22dde7740f": {
-  "x-mt": true
- },
- "sd4f0e6f8e1": "Kontrollera att enheten är påslagen och dess kraft och Wi-Fi-ljus är på.",
- "@sd4f0e6f8e1": {
-  "x-mt": true
- },
- "s8277eb958e": "Kontrollera att enheten och hembron är på samma nätverk (de tre första siffrorna av deras adresser är desamma).",
- "@s8277eb958e": {
-  "x-mt": true
- },
- "sab9dae06af": "Om enhetens adress har ändrats, uppdatera den i anslutningsinställningarna.",
- "@sab9dae06af": {
-  "x-mt": true
- },
- "sdafab85176": "Smart värme retries varje minut. Fram till dess stannar reläet i sitt sista tillstånd och värmen kontrolleras inte.",
- "@sdafab85176": {
-  "x-mt": true
- },
- "s5a3b74d726": "Öppna enhetsanslutningen och kontrollera användarnamnet och lösenordet.",
- "@s5a3b74d726": {
-  "x-mt": true
- },
- "s7157b2a937": "Öppna reläkortet och kontrollera dess adress och på / av kommandon.",
- "@s7157b2a937": {
-  "x-mt": true
- },
- "s419117d6ca": "Starta om enheten (styr av och på).",
- "@s419117d6ca": {
-  "x-mt": true
- },
- "sc28a06ee09": "Om felet fortsätter, kontrollera enhetens inställningar och firmware.",
- "@sc28a06ee09": {
-  "x-mt": true
- },
- "s5811eb3006": "State okänd",
- "@s5811eb3006": {
-  "x-mt": true
- },
- "sfd2975e5c4": "Just nu",
- "@sfd2975e5c4": {
-  "x-mt": true
- },
- "s1cb1af7851": "{p0} sedan",
- "@s1cb1af7851": {
-  "x-mt": true
- },
- "s04780b98b7": "Enheten har inte svarat, dess tillstånd är inte känt",
- "@s04780b98b7": {
-  "x-mt": true
- },
- "s69b9359f3f": "Beslut: {p0} – enheten har inte bekräftat det",
- "@s69b9359f3f": {
-  "x-mt": true
- },
- "s5989e2e782": " (vid {p0}, {p1})",
- "@s5989e2e782": {
-  "x-mt": true
- },
- "s9cb6ebafaa": "Sista uppsättningen: {p0}{p1} – beslutet {p2} gick inte igenom",
- "@s9cb6ebafaa": {
-  "x-mt": true
- },
- "s9151a2843d": "Sista set: {p0}{p1}",
- "@s9151a2843d": {
+ "s5ee0d291a9": "Nu {p0} c/kWh {p1} gräns {p2} c · {p3} h under gränsen idag",
+ "@s5ee0d291a9": {
   "x-mt": true
  }
 }

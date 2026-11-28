@@ -1475,6 +1475,9 @@ class AppLocalizationsSv extends AppLocalizations {
   String get se50792831f => 'Temperaturkontroll';
 
   @override
+  String get s52ef5e0b45 => 'Prisgräns';
+
+  @override
   String get sd408a5dbe9 => 'Billigaste timmar';
 
   @override
@@ -2839,6 +2842,146 @@ class AppLocalizationsSv extends AppLocalizations {
   }
 
   @override
+  String get s9d6a4787c0 => 'Vid temperatur';
+
+  @override
+  String get s765dda7e1f =>
+      'På medan timmens pris är på eller under gränsen du anger.';
+
+  @override
+  String get s63c7563ffe =>
+      'Som en termostat: på medan rummet är kallare än målet. Behöver en temperatursensor.';
+
+  @override
+  String get s066b775d18 =>
+      'Värme i de billigaste timmarna på dagen. Du väljer antalet timmar.';
+
+  @override
+  String s7d9757a025(String p0) {
+    return 'upp till $p0 c/kWh';
+  }
+
+  @override
+  String s865988de99(String p0) {
+    return 'hoppar över $p0 dyraste timmar';
+  }
+
+  @override
+  String sd235c9cafb(String p0) {
+    return '$p0 en dag';
+  }
+
+  @override
+  String get s1cc4e52472 => 'På medan timmens pris är på eller under gränsen.';
+
+  @override
+  String s5fab7a2144(String p0, String p1, String p2) {
+    return 'På medan timmens pris är på eller under gränsen. Idag $p0-$p1 c/kWh, $p2 h under gränsen.';
+  }
+
+  @override
+  String get sd5f46903a1 => 'Måltemperatur';
+
+  @override
+  String get sd2758727f5 => 'Temperaturgivare';
+
+  @override
+  String get s58adf1e5fb => 'Välj en sensor – kontrollen behöver den';
+
+  @override
+  String get sbd3dbfd7e9 => 'De flesta dyra timmar hoppade över';
+
+  @override
+  String get s86c45674db => 'Värme timmar om dagen';
+
+  @override
+  String get s94f86b3b6a => 'Home bridge som driver programmet';
+
+  @override
+  String get s10a23b4691 => 'Inte parad';
+
+  @override
+  String get s407cb3a732 =>
+      'Programmet körs på den valda bron i sig, även med appen stängd. Bron måste nå enheten. En enhet styrs bara av en bro.';
+
+  @override
+  String get s7de515a7c1 => 'Programprogram';
+
+  @override
+  String get s7fcdd166f3 =>
+      'Den här enheten har redan ett program på en annan bro, så den här körs inte. Ta bort det andra programmet eller välj samma bro.';
+
+  @override
+  String get s093677b5f1 => 'Kontroll läge';
+
+  @override
+  String get sf0446baa5c =>
+      'Utan en sensor följer uppvärmning prisschemat. Tryck för att välja en sensor.';
+
+  @override
+  String get s0cb0877799 => 'Inte springa';
+
+  @override
+  String sad8b69fca2(String p0) {
+    return ' är offline - programmet fortsätter att springa där själv';
+  }
+
+  @override
+  String s7211f94f91(String p0) {
+    return 'Runs on: ';
+  }
+
+  @override
+  String get s7b25bc0874 => 'Enheten har redan ett program på en annan bro.';
+
+  @override
+  String get sccf63d5729 =>
+      'Förändringar väntar på bron – de skickas när de svarar.';
+
+  @override
+  String get sdb217dcf7f => 'Lägg till ett kort till hemskärmen';
+
+  @override
+  String get s6398607bb8 => 'Kortet är redan på hemskärmen';
+
+  @override
+  String get s52d3e04a46 => 'Kort som läggs till på hemskärmen';
+
+  @override
+  String get s354eb362d8 => 'Välj enheten';
+
+  @override
+  String get s1571e8b853 => 'Välj kontrollläget';
+
+  @override
+  String get s190914de3c => 'Ställ gränsen';
+
+  @override
+  String get s4eaf5975db => 'Lägg till ett program';
+
+  @override
+  String scb39988da3(String p0) {
+    return 'Har redan ett program: $p0';
+  }
+
+  @override
+  String get s8ea88baef9 => 'Relä eller plug';
+
+  @override
+  String get s70d49e7f6a =>
+      'Inga enheter. Lägg till ett relä, en plug eller en termostat först.';
+
+  @override
+  String get sec41a5c19b => 'Värmetyp';
+
+  @override
+  String get s0feac99b10 =>
+      'Andra inställningar (förseningar, hysteres, temperaturgränser, frostskydd, nedgång, ökning, minsta tider) är under Avancerade på programsidan. Standarderna passar de flesta hem.';
+
+  @override
+  String get s54a7a968e9 => 'Skapa program';
+
+  @override
   String get s429f9e257a => 'Uppgifterna finns bara i den här webbläsaren. ';
 
   @override
@@ -4046,16 +4189,14 @@ class AppLocalizationsSv extends AppLocalizations {
   String get sd172900c2d => 'Semester: edit';
 
   @override
-  String get sdb217dcf7f => 'Lägg till ett kort till hemskärmen';
+  String get s5275c2c21e => 'Program';
 
   @override
-  String get s52d3e04a46 => 'Kort som läggs till på hemskärmen';
+  String get s99a5e80b5c =>
+      'Varje värmeenhet har sitt eget program. Ett program körs på en hemmabro i sig.';
 
   @override
-  String get sdca3ad13dd => 'Värmeanordningar';
-
-  @override
-  String get sc8c5e37f5d => 'Inga enheter. Lägg till dem i undersökningen.';
+  String get s0fd18deddd => 'Inga program ännu.';
 
   @override
   String get sc6976fa352 => 'Uppvärmningsmeddelanden';
@@ -4172,40 +4313,10 @@ class AppLocalizationsSv extends AppLocalizations {
   String get se68cc54085 => 'Ingen sensor';
 
   @override
-  String get s093677b5f1 => 'Kontroll läge';
-
-  @override
-  String get sa6195c2696 => 'Priset';
-
-  @override
-  String get s9d6a4787c0 => 'Vid temperatur';
-
-  @override
-  String get s84cf10acfd =>
-      'Uppvärmning följer den uppmätta temperaturen som en termostat. Prisreglerna flyttar bara inställningspunkten: upp i billiga timmar, ner i dyra (om de är inställda).';
-
-  @override
-  String get sdf9dc612a6 =>
-      'Värme följer elpriset och vädret. En temperatursensor är valfri och ger säkerhetsgränserna.';
-
-  @override
-  String get s01c555401a => 'Välj en temperatursensor';
-
-  @override
-  String get s249140bfd0 =>
-      'Temperaturkontroll behöver en sensor. Utan en följer uppvärmning prisschemat.';
-
-  @override
   String get sf9cbe76823 => 'Prisregler';
 
   @override
   String get s8e6c8ffabb => ' (rekommenderas)';
-
-  @override
-  String get s86c45674db => 'Värme timmar om dagen';
-
-  @override
-  String get sbd3dbfd7e9 => 'De flesta dyra timmar hoppade över';
 
   @override
   String s1f32a43166(String p0) {
@@ -4493,9 +4604,6 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get s3cc31bcfdc => 'Välj laddaren (laddning på/av)';
-
-  @override
-  String get s354eb362d8 => 'Välj enheten';
 
   @override
   String get s73a65d7dff => 'Välj enheterna';
@@ -5108,9 +5216,6 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s55e5c3a177 => 'Hur många timmar på';
 
   @override
-  String get s52ef5e0b45 => 'Prisgräns';
-
-  @override
   String get s993193d056 => 'Kommande på-tider';
 
   @override
@@ -5434,9 +5539,6 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get s1790a71e85 => 't.ex. Vardagsrum';
-
-  @override
-  String get sd5f46903a1 => 'Måltemperatur';
 
   @override
   String get s6de95e582f => 'Om temperaturen försvinner';
@@ -10883,6 +10985,14 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s0528a2ef9e => 'Enheten har ingen kommando på/off';
 
   @override
+  String get s7a71f285ef => 'Hembron är offline';
+
+  @override
+  String sa3ca79fa2c(String p0) {
+    return 'Hembron $p0 är offline';
+  }
+
+  @override
   String get sd0e9fc6760 => 'Kontrollen fungerade inte';
 
   @override
@@ -10892,6 +11002,10 @@ class AppLocalizationsSv extends AppLocalizations {
   String s151c5be078(String p0, String p1) {
     return 'Hembron kan inte nå adressen till $p0: det är troligtvis på ett annat nätverk än $p0. Den här enheten kan nå den, vilket är anledningen till att de andra korten fungerar.';
   }
+
+  @override
+  String get saca21d4cb4 =>
+      'Detta program körs på en hembro appen kan inte nå just nu. Det fortsätter att springa där på sina sista inställningar, men dess tillstånd kan inte uppdateras och inställningsändringar kan inte skickas.';
 
   @override
   String s99ea566004(String p0) {
@@ -10923,6 +11037,18 @@ class AppLocalizationsSv extends AppLocalizations {
       'Smart värme retries varje minut. Fram till dess stannar reläet i sitt sista tillstånd och värmen kontrolleras inte.';
 
   @override
+  String get s3eb269a14c =>
+      'Kontrollera att enheten som fungerar som hemmabron är på, Molaplan körs på den, och det är online.';
+
+  @override
+  String get se3dee57a24 =>
+      'Programmet slutar inte: bron följer de sista inställningarna som den mottog förrän anslutningen är tillbaka.';
+
+  @override
+  String get s0ddffa32c3 =>
+      'När anslutningen är tillbaka skickar den här enheten några vänteförändringar automatiskt. Om du flyttade programmet till en annan bro, stoppar den gamla det så snart det är online igen.';
+
+  @override
   String get s5a3b74d726 =>
       'Öppna enhetsanslutningen och kontrollera användarnamnet och lösenordet.';
 
@@ -10943,6 +11069,10 @@ class AppLocalizationsSv extends AppLocalizations {
   @override
   String get sc056006180 =>
       'Kontrollera att enheten är på och på samma nätverk som hemmabron. Smart värme retries varje minut; tills det fungerar enheten stannar i sitt nuvarande tillstånd.';
+
+  @override
+  String get seca484252c =>
+      'Programmet fortsätter att springa på bron i sig. Kontrollera att bron är på och online.';
 
   @override
   String get s7a1cda0d24 =>
@@ -11050,6 +11180,11 @@ class AppLocalizationsSv extends AppLocalizations {
   @override
   String sf3a33e9bc5(String p0, String p1, String p2, String p3) {
     return '$p0 billigaste timmar om dagen: nu $p1 c/kWh $p2 gräns $p3 c';
+  }
+
+  @override
+  String s5ee0d291a9(String p0, String p1, String p2, String p3) {
+    return 'Nu $p0 c/kWh $p1 gräns $p2 c · $p3 h under gränsen idag';
   }
 
   @override

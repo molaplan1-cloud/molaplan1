@@ -352,6 +352,13 @@ class RemoteState extends ChangeNotifier {
     }
   }
 
+  /// R635: runs [f] against one of the account's bridges (this device's paired one, or a temporary
+  /// client for another home).
+  Future<T> callHome<T>(OwnBridge b, Future<T> Function(RemoteClient c) f) => _viaHome(b, f);
+
+  /// The home (bridge) this device is, or is paired to.
+  String? get myHome => bridge?.home ?? paired?.home;
+
   /// Version, platform and online state of one of the account's bridges (always via the relay).
   Future<Map<String, dynamic>> probeBridge(OwnBridge b) async {
     if (b.self) {

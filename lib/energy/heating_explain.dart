@@ -42,7 +42,7 @@ class HeatText {
 
 // ------------------------------------------------------------------ errors (R614)
 
-enum HeatErrorKind { timeout, refused, unreachable, dns, auth, notFound, deviceError, noCommand, other }
+enum HeatErrorKind { timeout, refused, unreachable, dns, auth, notFound, deviceError, noCommand, bridgeOffline, other }
 
 /// A failure of a heating device or sensor in plain words; [raw] is kept for 'Tekniset tiedot'.
 class HeatError {
@@ -86,9 +86,17 @@ class HeatError {
         '$what answered with an error (HTTP ${status ?? 500})',
       ),
       HeatErrorKind.noCommand => x.t('Laitteelle ei ole päälle/pois-komentoa', 'The device has no on/off command'),
+      HeatErrorKind.bridgeOffline =>
+        bridgeName.isEmpty
+            ? x.t('Kotisilta ei ole yhteydessä', 'The home bridge is offline')
+            : x.t('Kotisilta $bridgeName ei ole yhteydessä', 'The home bridge $bridgeName is offline'),
       HeatErrorKind.other => x.t('Ohjaus ei onnistunut', 'The control did not work'),
     };
   }
+
+  /// R636: the bridge that does not answer ('bridge_offline:' and the name).
+  String get bridgeName =>
+      kind == HeatErrorKind.bridgeOffline && raw.contains(':') ? raw.substring(raw.indexOf(':') + 1) : '';
 
   /// t335u: why it fails, in one sentence. [elsewhere]: the home bridge is on another network than this
   /// device (this device can reach the device, the bridge cannot).
@@ -106,6 +114,10 @@ class HeatError {
       );
     }
     return switch (kind) {
+      HeatErrorKind.bridgeOffline => x.t(
+        'Tämä ohjelma ajetaan kotisillalla, johon sovellus ei nyt saa yhteyttä. Ohjelma jatkaa siellä itsenäisesti viimeisten asetusten mukaan, mutta tilaa ei voi nyt päivittää eikä asetusten muutoksia viedä sinne.',
+        'This program runs on a home bridge the app cannot reach right now. It keeps running there on its last settings, but its state cannot be refreshed and setting changes cannot be sent.',
+      ),
       HeatErrorKind.timeout || HeatErrorKind.unreachable || HeatErrorKind.refused || HeatErrorKind.dns => x.t(
         'Kotisilta ei saanut yhteyttä laitteeseen $what. Se on pois päältä, poissa verkosta tai kotisilta on eri verkossa.',
         'The home bridge could not connect to $what. It is switched off, off the network, or the bridge is on another network.',
@@ -150,6 +162,21 @@ class HeatError {
             'Smart heating retries every minute. Until then the relay stays in its last state and the heating is not controlled.',
           ),
         ];
+      case HeatErrorKind.bridgeOffline:
+        return [
+          x.t(
+            'Tarkista, että kotisiltana toimiva laite on päällä, siinä on Molaplan käynnissä ja se on verkossa.',
+            'Check that the device acting as the home bridge is on, Molaplan is running on it, and it is online.',
+          ),
+          x.t(
+            'Ohjelma ei lopeta: kotisilta noudattaa viimeksi saamiaan asetuksia, kunnes yhteys palaa.',
+            'The program does not stop: the bridge follows the last settings it received until the connection is back.',
+          ),
+          x.t(
+            'Kun yhteys palaa, tämä laite lähettää odottavat muutokset automaattisesti. Jos siirsit ohjelman toiselle kotisillalle, vanha lopettaa sen heti kun se on taas yhteydessä.',
+            'When the connection is back, this device sends any waiting changes automatically. If you moved the program to another bridge, the old one stops it as soon as it is online again.',
+          ),
+        ];
       case HeatErrorKind.auth:
         return [
           x.t(
@@ -184,6 +211,10 @@ class HeatError {
       'Tarkista, että laite on päällä ja samassa verkossa kotisillan kanssa. Älykäs lämmitys yrittää uudelleen minuutin välein; kunnes se onnistuu, laite jää nykyiseen tilaansa.',
       'Check that the device is on and on the same network as the home bridge. Smart heating retries every minute; until it works the device stays in its current state.',
     ),
+    HeatErrorKind.bridgeOffline => x.t(
+      'Ohjelma jatkaa kotisillalla itsenäisesti. Tarkista, että kotisilta on päällä ja verkossa.',
+      'The program keeps running on the bridge by itself. Check that the bridge is on and online.',
+    ),
     HeatErrorKind.auth => x.t(
       'Tarkista laitteen salasana yhteyden asetuksista.',
       'Check the device password in the connection settings.',
@@ -212,6 +243,7 @@ HeatError classifyHeatError(String raw) {
     return HeatError(HeatErrorKind.timeout, raw, seconds: secs == 0 ? null : secs);
   }
   if (s == 'no command') return HeatError(HeatErrorKind.noCommand, raw);
+  if (s.startsWith('bridge_offline')) return HeatError(HeatErrorKind.bridgeOffline, raw);
   final http = RegExp(r'(?:http|status)[ :=]*([45]\d\d)\b|\b([45]\d\d) (?:unauthorized|forbidden|not found|internal)')
       .firstMatch(s);
   if (http != null) {
@@ -272,6 +304,7 @@ class HeatCheck {
     'shift' => x.t('Hinta siirtää tavoitetta', 'Price shifts the setpoint'),
     'warm' => x.t('Huone riittävän lämmin', 'Room warm enough'),
     'cheapest' => x.t('Halvimmat tunnit', 'Cheapest hours'),
+    'pricelimit' => x.t('Hintaraja', 'Price limit'),
     'skip' => x.t('Kalleimpien tuntien ohitus', 'Skipping expensive hours'),
     'weather' => x.t('Sääennuste', 'Weather forecast'),
     'max_off' => x.t('Pisin tauko', 'Longest break'),
@@ -352,6 +385,15 @@ class HeatCheck {
         return x.t(
           '${p['n']} halvinta tuntia päivässä: nyt ${n('price')} c/kWh $sym raja ${n('limit')} c',
           '${p['n']} cheapest hours a day: now ${n('price')} c/kWh $sym limit ${n('limit')} c',
+        );
+      case 'pricelimit':
+        if (st == 'unknown') return x.t('Ei hintoja', 'No prices');
+        final hit = p['hit'] == true;
+        final fits = _d('price') != null && _d('limit') != null && ((_d('price')! <= _d('limit')!) == hit);
+        final sym = fits ? (hit ? '≤' : '>') : ',';
+        return x.t(
+          'Nyt ${n('price')} c/kWh $sym raja ${n('limit')} c · ${p['n']} h alle rajan tänään',
+          'Now ${n('price')} c/kWh $sym limit ${n('limit')} c · ${p['n']} h under the limit today',
         );
       case 'skip':
         if (st == 'unknown') return x.t('Ei hintoja', 'No prices');
@@ -893,7 +935,7 @@ HeatExplanation explainLoad(
   String? limitKind;
   int? limitHours;
   if (day != null) {
-    final skip = template == 'skip_expensive' && !l.tempControl;
+    final skip = template == 'skip_expensive' && !l.tempControl && l.priceLimit == null;
     final maxOff = l.maxOffHours ?? c.safety.maxOffHours ?? rec.maxOff;
     if (skip) {
       final k = ((l.skipHours ?? rec.skipHours) * (x.holiday ? 2 : 1)).clamp(1, day.length);
@@ -906,6 +948,11 @@ HeatExplanation explainLoad(
       limit = costs.isEmpty ? null : costs.reduce(math.min);
       limitKind = 'skip';
       limitHours = k;
+    } else if (l.priceLimit != null) {
+      // R634: the price limit itself; the hours of the day at or under it.
+      limit = l.priceLimit;
+      limitKind = 'price';
+      limitHours = day.where((e) => e.$2 <= l.priceLimit!).length;
     } else {
       var n = thermo ? loadHours(l, c.site, 'cheapest', x) : loadHours(l, c.site, template, x);
       if (x.holiday && space) n = (n / 2).ceil();
@@ -1011,7 +1058,7 @@ HeatExplanation explainLoad(
   }
   if (!(l.tempControl && space && sensorState == 'ok' && !thermo)) {
     final hasDay = day != null;
-    if (template == 'skip_expensive') {
+    if (template == 'skip_expensive' && l.priceLimit == null) {
       checks.add(
         HeatCheck('skip', !hasDay ? 'unknown' : ((reason == 'expensive' || reason == 'normal') ? 'active' : 'pass'), {
           'price': price,
@@ -1019,6 +1066,14 @@ HeatExplanation explainLoad(
           'n': limitHours,
           'hit': reason == 'expensive',
         }),
+      );
+    } else if (l.priceLimit != null) {
+      checks.add(
+        HeatCheck(
+          'pricelimit',
+          !hasDay ? 'unknown' : ((reason == 'cheap' || reason == 'not_cheap') ? 'active' : 'pass'),
+          {'price': price, 'limit': limit, 'n': limitHours, 'hit': reason == 'cheap'},
+        ),
       );
     } else {
       checks.add(
@@ -1029,7 +1084,7 @@ HeatExplanation explainLoad(
         ),
       );
     }
-    if (template == 'weather' && space) {
+    if (template == 'weather' && space && l.priceLimit == null) {
       final temps = [for (var h = 0; h < 24; h++) x.outdoor(DateTime(now.year, now.month, now.day, h))]
           .whereType<double>()
           .toList();

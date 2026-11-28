@@ -543,21 +543,142 @@ class AppState extends ChangeNotifier implements SyncHost {
   /// The paired bridge is older than 0.10.0 (does not run smart heating).
   bool heatingBridgeOld = false;
 
+  /// R636: homes (bridges) that did not answer the last status request, and what the other bridges
+  /// last reported per program (shown with the age while a bridge is offline).
+  final Set<String> heatingOfflineHomes = {};
+  final Map<String, Map<String, dynamic>> _heatOtherLast = {};
+
+  /// R635: bridges that did not take their programs at the last push (home -> reason); retried.
+  final Map<String, String> heatingPushIssues = {};
+
+  /// The bridge that runs [l]: its own home, or this device's bridge for an unbound program.
+  OwnBridge? heatingBridgeOf(HeatLoad l) {
+    final h = l.home ?? remote.myHome;
+    if (h == null) return null;
+    return ownBridges.where((b) => b.home == h).firstOrNull;
+  }
+
+  String? heatingHomeOf(HeatLoad l) => l.home ?? remote.myHome;
+
   Future<void> refreshHeatingStatus() async {
+    final c = smartHeating;
+    final mine = remote.myHome;
+    String nameOf(String home) => ownBridges.where((b) => b.home == home).firstOrNull?.name ?? '';
+    Map<String, dynamic>? prev = heatingStatus;
     try {
       final s = await rulesStatus();
       final h = s?['heating'];
       heatingStatus = h is Map ? Map<String, dynamic>.from(h) : null;
-      if (s != null &&
-          h == null &&
-          smartHeating != null &&
-          rulesRunWhere == 'bridge') {
+      if (s != null && h == null && smartHeating != null && rulesRunWhere == 'bridge') {
         heatingBridgeOld = true;
       }
       if (h != null) heatingBridgeOld = false;
       heatingStatusAt = DateTime.now();
+      if (mine != null) heatingOfflineHomes.remove(mine);
+      if (heatingStatus != null && mine != null && s?['bridge'] != null) {
+        final loads = heatingStatus!['loads'];
+        if (loads is Map) {
+          for (final v in loads.values) {
+            if (v is Map) {
+              v['bridge'] = '${s!['bridge']}';
+              v['home'] = mine;
+            }
+          }
+        }
+      }
     } catch (_) {
-      heatingStatus = null;
+      // R636: the bridge does not answer – keep what it last reported, marked as offline.
+      final loads = prev?['loads'];
+      if (mine != null && loads is Map && loads.isNotEmpty) {
+        heatingOfflineHomes.add(mine);
+        heatingStatus = {
+          ...prev!,
+          'loads': {
+            for (final e in loads.entries)
+              e.key: e.value is Map
+                  ? {
+                      ...Map<String, dynamic>.from(e.value as Map),
+                      'error': 'bridge_offline:${nameOf(mine)}',
+                      'offline': true,
+                    }
+                  : e.value,
+          },
+        };
+      } else {
+        heatingStatus = null;
+      }
+    }
+    // R635: the programs that run on the account's other bridges.
+    if (c != null) {
+      final others = {
+        for (final l in c.loads)
+          if (l.home != null && l.home != mine) l.home!,
+      };
+      for (final home in others) {
+        final b = ownBridges.where((x) => x.home == home).firstOrNull;
+        Map<String, dynamic>? got;
+        if (b != null) {
+          try {
+            final v = await remote.callHome(b, (cl) => cl.call('rules', spec: {'status': true}));
+            final hs = v is Map ? v['heating'] : null;
+            if (hs is Map) got = Map<String, dynamic>.from(hs);
+          } catch (_) {}
+        }
+        final loads = <String, dynamic>{};
+        if (got != null) {
+          heatingOfflineHomes.remove(home);
+          final raw = got['loads'];
+          if (raw is Map) {
+            for (final e in raw.entries) {
+              if (e.value is Map) {
+                loads['${e.key}'] = {
+                  ...Map<String, dynamic>.from(e.value as Map),
+                  'bridge': nameOf(home),
+                  'home': home,
+                };
+              }
+            }
+          }
+          _heatOtherLast[home] = {'loads': loads, 'at': DateTime.now().toIso8601String()};
+        } else {
+          heatingOfflineHomes.add(home);
+          final last = _heatOtherLast[home]?['loads'];
+          if (last is Map) {
+            for (final e in last.entries) {
+              loads['${e.key}'] = {
+                ...Map<String, dynamic>.from(e.value as Map),
+                'error': 'bridge_offline:${nameOf(home)}',
+                'offline': true,
+              };
+            }
+          }
+        }
+        heatingStatus ??= {
+          'enabled': c.enabled,
+          'mode': c.enabled ? 'normal' : 'off',
+          'loads': <String, dynamic>{},
+          'v': 2,
+        };
+        final merged = <String, dynamic>{
+          if (heatingStatus!['loads'] is Map)
+            for (final e in (heatingStatus!['loads'] as Map).entries) '${e.key}': e.value,
+        };
+        for (final e in loads.entries) {
+          merged.putIfAbsent(e.key, () => e.value);
+        }
+        for (final l in c.loads.where((x) => x.home == home)) {
+          if (!merged.containsKey(l.id) && got == null) {
+            merged[l.id] = {
+              'error': 'bridge_offline:${nameOf(home)}',
+              'offline': true,
+              'bridge': nameOf(home),
+              'home': home,
+            };
+          }
+        }
+        heatingStatus = {...heatingStatus!, 'loads': merged};
+      }
+      if (heatingPushIssues.isNotEmpty) unawaited(pushRules().catchError((Object _) => false));
     }
     notifyListeners();
   }
@@ -985,33 +1106,92 @@ class AppState extends ChangeNotifier implements SyncHost {
     );
   }
 
+  final Map<String, String> _heatSent = {};
+
+  /// R635: with two or more bridges in the account, an unbound program is bound to the bridge it
+  /// runs on now, so that no other device sends it to a second bridge.
+  Future<void> _stampHeatingHomes() async {
+    final sh = smartHeating;
+    final mine = remote.myHome;
+    if (sh == null || mine == null || !sh.loads.any((l) => l.home == null)) return;
+    if (ownBridges.length < 2) return;
+    for (final l in sh.loads) {
+      l.home ??= mine;
+    }
+    await save();
+  }
+
   /// Sends the rule set to the bridge. Returns false when nothing changed.
   Future<bool> pushRules({bool force = false}) async {
+    await _stampHeatingHomes();
+    final mine = remote.myHome;
     final jobs = RuleJob.fromConfig(config);
     final thermo = ThermostatJob.fromConfig(config);
-    final heating = SmartHeatingJob.fromConfig(config);
+    final heating = SmartHeatingJob.fromConfig(config, home: mine, defaultHome: mine);
     final spec = {
       'jobs': [for (final x in jobs) x.toJson()],
       'thermostats': [for (final x in thermo) x.toJson()],
       'heating': heating?.toJson(),
     };
     final j = jsonEncode(spec);
-    if (!force && j == _rulesSent) return false;
-    final b = remote.bridge;
-    if (b != null) {
-      await b.setRules(jobs);
-      await b.setThermostats(thermo);
-      await b.setSmartHeating(heating);
-    } else {
-      final c = remote.router.client;
-      if (c == null) throw StateError('no_bridge');
-      final v = await c.call('rules', spec: spec);
-      // R194: a bridge older than 0.10.0 ignores 'heating' and does not report it.
-      heatingBridgeOld =
-          heating != null && !(v is Map && v.containsKey('heating'));
+    var changed = false;
+    if (force || j != _rulesSent) {
+      final b = remote.bridge;
+      if (b != null) {
+        await b.setRules(jobs);
+        await b.setThermostats(thermo);
+        await b.setSmartHeating(heating);
+      } else {
+        final c = remote.router.client;
+        if (c == null) throw StateError('no_bridge');
+        final v = await c.call('rules', spec: spec);
+        // R194: a bridge older than 0.10.0 ignores 'heating' and does not report it.
+        heatingBridgeOld = heating != null && !(v is Map && v.containsKey('heating'));
+      }
+      _rulesSent = j;
+      changed = true;
     }
-    _rulesSent = j;
-    return true;
+    if (await _pushOtherHomes(force: force)) changed = true;
+    return changed;
+  }
+
+  /// R635: every other bridge gets the programs bound to it (an empty set when it had some before:
+  /// a program moved away stops there). One that does not answer is retried and reported.
+  Future<bool> _pushOtherHomes({bool force = false}) async {
+    final sh = smartHeating;
+    final mine = remote.myHome;
+    if (sh == null) return false;
+    final targets = {
+      for (final l in sh.loads)
+        if (l.home != null && l.home != mine) l.home!,
+      ...sh.pushedHomes.where((h) => h != mine),
+    };
+    var changed = false;
+    var pushed = false;
+    for (final home in targets) {
+      final b = ownBridges.where((x) => x.home == home).firstOrNull;
+      final job = SmartHeatingJob.fromConfig(config, home: home, defaultHome: mine);
+      final body = jsonEncode({'heating': job?.toJson()});
+      if (!force && _heatSent[home] == body && !heatingPushIssues.containsKey(home)) continue;
+      try {
+        if (b == null) throw RemoteUnavailable('bridge_unknown');
+        await remote.callHome(b, (cl) => cl.call('rules', spec: {'heating': job?.toJson()}));
+        _heatSent[home] = body;
+        heatingPushIssues.remove(home);
+        changed = true;
+        if (job != null && job.config.loads.isNotEmpty) {
+          pushed = sh.pushedHomes.add(home) || pushed;
+        } else {
+          pushed = sh.pushedHomes.remove(home) || pushed;
+        }
+      } catch (e) {
+        heatingPushIssues[home] = '$e';
+        debugPrint('heating push to $home failed: $e');
+      }
+    }
+    if (pushed) await save();
+    if (changed || heatingPushIssues.isNotEmpty) notifyListeners();
+    return changed;
   }
 
   /// Rule status from wherever the rules run: {bridge, count, status:{ruleId: RuleStatus json}}.

@@ -1119,7 +1119,15 @@
   "x-mt": true
  },
  "s09f5da65e0": "Cambiar a Shelly Cloud",
+ "s6f985060ba": "¿Qué puedes hacer?",
+ "@s6f985060ba": {
+  "x-mt": true
+ },
  "sf77125583f": "Detalles técnicos",
+ "s97c9304643": "Hora",
+ "@s97c9304643": {
+  "x-mt": true
+ },
  "s1e593aeca2": "Cerrar",
  "sf5768a876d": "Discapacitados",
  "@sf5768a876d": {
@@ -1145,6 +1153,7 @@
  "@se50792831f": {
   "x-mt": true
  },
+ "s52ef5e0b45": "Límite de precio",
  "sd408a5dbe9": "Horas más baratas",
  "@sd408a5dbe9": {
   "x-mt": true
@@ -1198,6 +1207,14 @@
  "@s9c543b2106": {
   "x-mt": true
  },
+ "s4678cef2a1": "Precio total: lugar + IVA + margen + transferencia + impuesto",
+ "@s4678cef2a1": {
+  "x-mt": true
+ },
+ "s80a6e15c66": "spot",
+ "@s80a6e15c66": {
+  "x-mt": true
+ },
  "see998ca830": "mantenidos",
  "@see998ca830": {
   "x-mt": true
@@ -1216,6 +1233,10 @@
  },
  "s8653f173b6": "Temperatura",
  "@s8653f173b6": {
+  "x-mt": true
+ },
+ "s3c6fedc117": "Precio ahora (total)",
+ "@s3c6fedc117": {
   "x-mt": true
  },
  "s7dfe0e7977": "Siguiente cambio",
@@ -1257,6 +1278,10 @@
  },
  "s63c3e9c766": "no datos de precios",
  "@s63c3e9c766": {
+  "x-mt": true
+ },
+ "s50b49fb20d": " (spot con IVA {p0} c)",
+ "@s50b49fb20d": {
   "x-mt": true
  },
  "s8c60756474": "{p0} (se desprendió a ≥ {p1} c)",
@@ -2444,6 +2469,155 @@
  "@s80d7fd2d3c": {
   "x-mt": true
  },
+ "s9d6a4787c0": "Temperatura",
+ "@s9d6a4787c0": {
+  "x-mt": true
+ },
+ "s765dda7e1f": "Mientras el precio de la hora está a o bajo el límite que estableces.",
+ "@s765dda7e1f": {
+  "x-mt": true
+ },
+ "s63c7563ffe": "Como un termostato: mientras la habitación es más fría que el objetivo. Necesita un sensor de temperatura.",
+ "@s63c7563ffe": {
+  "x-mt": true
+ },
+ "s066b775d18": "Asientos en las horas más baratas del día. Usted elige el número de horas.",
+ "@s066b775d18": {
+  "x-mt": true
+ },
+ "s7d9757a025": "hasta {p0} c/kWh",
+ "@s7d9757a025": {
+  "x-mt": true
+ },
+ "s865988de99": "saltos {p0} horas más caras",
+ "@s865988de99": {
+  "x-mt": true
+ },
+ "sd235c9cafb": "{p0} h a day",
+ "@sd235c9cafb": {
+  "x-mt": true
+ },
+ "s1cc4e52472": "Mientras el precio de la hora está a o bajo el límite.",
+ "@s1cc4e52472": {
+  "x-mt": true
+ },
+ "s5fab7a2144": "En tanto el precio de la hora está a o debajo del límite. Hoy {p0}–{p1} c/kWh, {p2} h bajo el límite.",
+ "@s5fab7a2144": {
+  "x-mt": true
+ },
+ "sd5f46903a1": "Temperatura objetivo",
+ "sd2758727f5": "Sensor de temperatura",
+ "@sd2758727f5": {
+  "x-mt": true
+ },
+ "s58adf1e5fb": "Elija un sensor – el control lo necesita",
+ "@s58adf1e5fb": {
+  "x-mt": true
+ },
+ "sbd3dbfd7e9": "Horas más caras saltadas",
+ "@sbd3dbfd7e9": {
+  "x-mt": true
+ },
+ "s86c45674db": "Horas de calefacción al día",
+ "@s86c45674db": {
+  "x-mt": true
+ },
+ "s94f86b3b6a": "Puente de inicio que ejecuta el programa",
+ "@s94f86b3b6a": {
+  "x-mt": true
+ },
+ "s10a23b4691": "no emparejado",
+ "@s10a23b4691": {
+  "x-mt": true
+ },
+ "s407cb3a732": "El programa se ejecuta en el puente elegido por sí mismo, incluso con la aplicación cerrada. El puente debe llegar al dispositivo. Un dispositivo solo es controlado por un puente.",
+ "@s407cb3a732": {
+  "x-mt": true
+ },
+ "s7de515a7c1": "Programa",
+ "@s7de515a7c1": {
+  "x-mt": true
+ },
+ "s7fcdd166f3": "Este dispositivo ya tiene un programa en otro puente, por lo que este no se ejecuta. Retire el otro programa o elija el mismo puente.",
+ "@s7fcdd166f3": {
+  "x-mt": true
+ },
+ "s093677b5f1": "Modo de control",
+ "@s093677b5f1": {
+  "x-mt": true
+ },
+ "s0cb0877799": "No corres",
+ "@s0cb0877799": {
+  "x-mt": true
+ },
+ "sad8b69fca2": " está fuera de línea - el programa sigue funcionando allí por sí mismo",
+ "@sad8b69fca2": {
+  "x-mt": true
+ },
+ "s7211f94f91": "Sigue: ",
+ "@s7211f94f91": {
+  "x-mt": true
+ },
+ "s7b25bc0874": "El dispositivo ya tiene un programa en otro puente.",
+ "@s7b25bc0874": {
+  "x-mt": true
+ },
+ "sccf63d5729": "Los cambios están esperando el puente – se envían cuando responde.",
+ "@sccf63d5729": {
+  "x-mt": true
+ },
+ "sdb217dcf7f": "Añadir una tarjeta a la pantalla de inicio",
+ "@sdb217dcf7f": {
+  "x-mt": true
+ },
+ "s6398607bb8": "La tarjeta ya está en la pantalla de inicio",
+ "@s6398607bb8": {
+  "x-mt": true
+ },
+ "s52d3e04a46": "Tarjeta agregada a la pantalla de inicio",
+ "@s52d3e04a46": {
+  "x-mt": true
+ },
+ "s354eb362d8": "Elija el dispositivo",
+ "@s354eb362d8": {
+  "x-mt": true
+ },
+ "s1571e8b853": "Elija el modo de control",
+ "@s1571e8b853": {
+  "x-mt": true
+ },
+ "s190914de3c": "Establecer el límite",
+ "@s190914de3c": {
+  "x-mt": true
+ },
+ "s4eaf5975db": "Agregar un programa",
+ "@s4eaf5975db": {
+  "x-mt": true
+ },
+ "scb39988da3": "Ya tiene un programa: {p0}",
+ "@scb39988da3": {
+  "x-mt": true
+ },
+ "s8ea88baef9": "Relé o enchufe",
+ "@s8ea88baef9": {
+  "x-mt": true
+ },
+ "s70d49e7f6a": "No hay dispositivos. Agregue primero un relé, un enchufe o un termostato.",
+ "@s70d49e7f6a": {
+  "x-mt": true
+ },
+ "sec41a5c19b": "Tipo de calefacción",
+ "@sec41a5c19b": {
+  "x-mt": true
+ },
+ "s0feac99b10": "Otros ajustes (delays, histeresis, límites de temperatura, protección contra heladas, retroceso, impulso, tiempos mínimos) están bajo Avanzadas en la página del programa.",
+ "@s0feac99b10": {
+  "x-mt": true
+ },
+ "s54a7a968e9": "Crear programa",
+ "@s54a7a968e9": {
+  "x-mt": true
+ },
  "s429f9e257a": "Los datos están solo en este navegador. ",
  "sda9203de80": "No cuenta – sólo en este dispositivo. ",
  "@sda9203de80": {
@@ -3340,20 +3514,16 @@
  "@sd172900c2d": {
   "x-mt": true
  },
- "sdb217dcf7f": "Añadir una tarjeta a la pantalla de inicio",
- "@sdb217dcf7f": {
+ "s5275c2c21e": "Programas",
+ "@s5275c2c21e": {
   "x-mt": true
  },
- "s52d3e04a46": "Tarjeta agregada a la pantalla de inicio",
- "@s52d3e04a46": {
+ "s99a5e80b5c": "Cada dispositivo de calefacción tiene su propio programa. Un programa se ejecuta en un puente casero por sí mismo.",
+ "@s99a5e80b5c": {
   "x-mt": true
  },
- "sdca3ad13dd": "Calefacción dispositivos",
- "@sdca3ad13dd": {
-  "x-mt": true
- },
- "sc8c5e37f5d": "No hay dispositivos, agréguelos en la encuesta.",
- "@sc8c5e37f5d": {
+ "s0fd18deddd": "Aún no hay programas.",
+ "@s0fd18deddd": {
   "x-mt": true
  },
  "sc6976fa352": "Notificaciones de calefacción",
@@ -3496,48 +3666,12 @@
  "@se68cc54085": {
   "x-mt": true
  },
- "s093677b5f1": "Modo de control",
- "@s093677b5f1": {
-  "x-mt": true
- },
- "sa6195c2696": "Por precio",
- "@sa6195c2696": {
-  "x-mt": true
- },
- "s9d6a4787c0": "Temperatura",
- "@s9d6a4787c0": {
-  "x-mt": true
- },
- "s84cf10acfd": "La calefacción sigue la temperatura medida como un termostato. Las reglas del precio sólo mueven el punto: arriba en horas baratas, abajo en costosos (si se establece).",
- "@s84cf10acfd": {
-  "x-mt": true
- },
- "sdf9dc612a6": "La calefacción sigue el precio de la electricidad y el clima. Un sensor de temperatura es opcional y da los límites de seguridad.",
- "@sdf9dc612a6": {
-  "x-mt": true
- },
- "s01c555401a": "Elija un sensor de temperatura",
- "@s01c555401a": {
-  "x-mt": true
- },
- "s249140bfd0": "El control de temperatura necesita un sensor. Sin uno, la calefacción sigue el calendario de precios.",
- "@s249140bfd0": {
-  "x-mt": true
- },
  "sf9cbe76823": "Reglas de precios",
  "@sf9cbe76823": {
   "x-mt": true
  },
  "s8e6c8ffabb": " (recomendado)",
  "@s8e6c8ffabb": {
-  "x-mt": true
- },
- "s86c45674db": "Horas de calefacción al día",
- "@s86c45674db": {
-  "x-mt": true
- },
- "sbd3dbfd7e9": "Horas más caras saltadas",
- "@sbd3dbfd7e9": {
   "x-mt": true
  },
  "s1f32a43166": "El límite de precio de hoy: saltado cuando el precio es {p0} c/kWh o más.",
@@ -3849,10 +3983,6 @@
  },
  "s3cc31bcfdc": "Elija el cargador (de encendido / apagado)",
  "@s3cc31bcfdc": {
-  "x-mt": true
- },
- "s354eb362d8": "Elija el dispositivo",
- "@s354eb362d8": {
   "x-mt": true
  },
  "s73a65d7dff": "Elija los dispositivos",
@@ -4543,7 +4673,6 @@
  "s6b609c3376": "¿Cuándo debe estar encendido?",
  "s93e5435cf4": "Sin control por precio",
  "s55e5c3a177": "Cuántas horas encendido",
- "s52ef5e0b45": "Límite de precio",
  "s993193d056": "Próximas horas de encendido",
  "s2f7c00a89e": "Los precios no están disponibles ahora mismo.",
  "@s2f7c00a89e": {
@@ -4815,7 +4944,6 @@
  "s0da3005956": "Promedio",
  "s0c6a008ffd": "Nombre y modo",
  "s1790a71e85": "p. ej. Salón",
- "sd5f46903a1": "Temperatura objetivo",
  "s6de95e582f": "Si se pierde la temperatura",
  "s8ff25225b4": "Apagar calefacción/refrigeración (lo más seguro)",
  "s17cb86f49e": "Mantener como está",
@@ -6591,6 +6719,10 @@
  },
  "s162c54ed4c": "{p0}: hecho",
  "@s162c54ed4c": {
+  "x-mt": true
+ },
+ "s1e9eca6676": "Precio del sitio ahora con IVA. Transferencia, impuestos y margen no están incluidos – La calefacción inteligente compara el precio total.",
+ "@s1e9eca6676": {
   "x-mt": true
  },
  "se26e839c2f": "Lunes",
@@ -10037,8 +10169,84 @@
  "@s0528a2ef9e": {
   "x-mt": true
  },
+ "s7a71f285ef": "El puente de casa está fuera de línea",
+ "@s7a71f285ef": {
+  "x-mt": true
+ },
+ "sa3ca79fa2c": "El puente de casa {p0} está fuera de línea",
+ "@sa3ca79fa2c": {
+  "x-mt": true
+ },
  "sd0e9fc6760": "El control no funcionó",
  "@sd0e9fc6760": {
+  "x-mt": true
+ },
+ "s340968669a": "el dispositivo",
+ "@s340968669a": {
+  "x-mt": true
+ },
+ "s151c5be078": "El puente casero no puede llegar a la dirección de {p0}: es muy probable en otra red que {p0}. Este dispositivo puede llegar a ella, por lo que las otras tarjetas funcionan.",
+ "@s151c5be078": {
+  "x-mt": true
+ },
+ "saca21d4cb4": "Este programa se ejecuta en un puente de inicio que la aplicación no puede alcanzar ahora mismo. Se mantiene funcionando allí en sus últimos ajustes, pero su estado no puede ser refrescado y no se pueden enviar cambios de configuración.",
+ "@saca21d4cb4": {
+  "x-mt": true
+ },
+ "s99ea566004": "El puente casero no podía conectarse a {p0}. Se apaga, fuera de la red, o el puente está en otra red.",
+ "@s99ea566004": {
+  "x-mt": true
+ },
+ "sb32685da2f": "Ponga el puente de inicio en la misma red que el dispositivo: abra Molaplan en un dispositivo siempre conectado en la red del dispositivo (por ejemplo, un PC o una tableta en casa) y seleccione Ajustes → Acceso remoto → Utilice este dispositivo como el puente de inicio. A continuación, emparejar su teléfono y PC con él de nuevo.",
+ "@sb32685da2f": {
+  "x-mt": true
+ },
+ "s22dde7740f": "O controlar el dispositivo a través de una conexión el puente puede llegar desde cualquier lugar (por ejemplo, la nube del fabricante, como Shelly Cloud).",
+ "@s22dde7740f": {
+  "x-mt": true
+ },
+ "sd4f0e6f8e1": "Compruebe que el dispositivo está encendido y su luz de potencia y Wi-Fi está encendido.",
+ "@sd4f0e6f8e1": {
+  "x-mt": true
+ },
+ "s8277eb958e": "Compruebe que el dispositivo y el puente de inicio están en la misma red (los tres primeros números de sus direcciones son los mismos).",
+ "@s8277eb958e": {
+  "x-mt": true
+ },
+ "sab9dae06af": "Si la dirección del dispositivo ha cambiado, actualícela en la configuración de conexión.",
+ "@sab9dae06af": {
+  "x-mt": true
+ },
+ "sdafab85176": "Calentamiento inteligente cada minuto. Hasta entonces el relé permanece en su último estado y la calefacción no está controlada.",
+ "@sdafab85176": {
+  "x-mt": true
+ },
+ "s3eb269a14c": "Comprueba que el dispositivo que actúa como puente de inicio está encendido, Molaplan está corriendo en él, y está en línea.",
+ "@s3eb269a14c": {
+  "x-mt": true
+ },
+ "se3dee57a24": "El programa no se detiene: el puente sigue los últimos ajustes que recibió hasta que la conexión está de vuelta.",
+ "@se3dee57a24": {
+  "x-mt": true
+ },
+ "s0ddffa32c3": "Cuando la conexión está de vuelta, este dispositivo envía los cambios de espera automáticamente. Si usted movió el programa a otro puente, el viejo lo detiene tan pronto como esté en línea de nuevo.",
+ "@s0ddffa32c3": {
+  "x-mt": true
+ },
+ "s5a3b74d726": "Abra la conexión del dispositivo y compruebe el nombre de usuario y contraseña.",
+ "@s5a3b74d726": {
+  "x-mt": true
+ },
+ "s7157b2a937": "Abra la tarjeta de relé y compruebe su dirección y comandos on/off.",
+ "@s7157b2a937": {
+  "x-mt": true
+ },
+ "s419117d6ca": "Reinicie el dispositivo (enciende y encienda).",
+ "@s419117d6ca": {
+  "x-mt": true
+ },
+ "sc28a06ee09": "Si el error continúa, compruebe la configuración del dispositivo y el firmware.",
+ "@sc28a06ee09": {
   "x-mt": true
  },
  "s8e9e56f68f": "Vea la razón exacta bajo detalles técnicos.",
@@ -10047,6 +10255,10 @@
  },
  "sc056006180": "Compruebe que el dispositivo está encendido y en la misma red que el puente casero. calefacción inteligente se alimenta cada minuto; hasta que funciona el dispositivo se queda en su estado actual.",
  "@sc056006180": {
+  "x-mt": true
+ },
+ "seca484252c": "El programa sigue corriendo en el puente por sí mismo. Compruebe que el puente está encendido y en línea.",
+ "@seca484252c": {
   "x-mt": true
  },
  "s7a1cda0d24": "Compruebe la contraseña del dispositivo en la configuración de conexión.",
@@ -10234,8 +10446,40 @@
  "@s8847ee78e0": {
   "x-mt": true
  },
+ "s5811eb3006": "Estado desconocido",
+ "@s5811eb3006": {
+  "x-mt": true
+ },
  "s6ab8f97950": "ON",
  "s509c668d7e": "OFF",
+ "sfd2975e5c4": "ahora",
+ "@sfd2975e5c4": {
+  "x-mt": true
+ },
+ "s1cb1af7851": "{p0} ago",
+ "@s1cb1af7851": {
+  "x-mt": true
+ },
+ "s04780b98b7": "El dispositivo no ha respondido, su estado no es conocido",
+ "@s04780b98b7": {
+  "x-mt": true
+ },
+ "s69b9359f3f": "Decisión: {p0} – el dispositivo no lo ha confirmado",
+ "@s69b9359f3f": {
+  "x-mt": true
+ },
+ "s5989e2e782": " (a {p0}, {p1})",
+ "@s5989e2e782": {
+  "x-mt": true
+ },
+ "s9cb6ebafaa": "Último set: {p0}{p1} – la decisión {p2} no se logró",
+ "@s9cb6ebafaa": {
+  "x-mt": true
+ },
+ "s9151a2843d": "Último set: {p0}{p1}",
+ "@s9151a2843d": {
+  "x-mt": true
+ },
  "s70d43f1209": "El control se apaga",
  "@s70d43f1209": {
   "x-mt": true
@@ -12557,116 +12801,12 @@
  "@s06444f278d": {
   "x-mt": true
  },
- "s6f985060ba": "¿Qué puedes hacer?",
- "@s6f985060ba": {
+ "sf0446baa5c": "Sin un sensor, la calefacción sigue el calendario de precios. Pulse para elegir un sensor.",
+ "@sf0446baa5c": {
   "x-mt": true
  },
- "s97c9304643": "Hora",
- "@s97c9304643": {
-  "x-mt": true
- },
- "s4678cef2a1": "Precio total: lugar + IVA + margen + transferencia + impuesto",
- "@s4678cef2a1": {
-  "x-mt": true
- },
- "s80a6e15c66": "spot",
- "@s80a6e15c66": {
-  "x-mt": true
- },
- "s3c6fedc117": "Precio ahora (total)",
- "@s3c6fedc117": {
-  "x-mt": true
- },
- "s50b49fb20d": " (spot con IVA {p0} c)",
- "@s50b49fb20d": {
-  "x-mt": true
- },
- "s1e9eca6676": "Precio del sitio ahora con IVA. Transferencia, impuestos y margen no están incluidos – La calefacción inteligente compara el precio total.",
- "@s1e9eca6676": {
-  "x-mt": true
- },
- "s340968669a": "el dispositivo",
- "@s340968669a": {
-  "x-mt": true
- },
- "s151c5be078": "El puente casero no puede llegar a la dirección de {p0}: es muy probable en otra red que {p0}. Este dispositivo puede llegar a ella, por lo que las otras tarjetas funcionan.",
- "@s151c5be078": {
-  "x-mt": true
- },
- "s99ea566004": "El puente casero no podía conectarse a {p0}. Se apaga, fuera de la red, o el puente está en otra red.",
- "@s99ea566004": {
-  "x-mt": true
- },
- "sb32685da2f": "Ponga el puente de inicio en la misma red que el dispositivo: abra Molaplan en un dispositivo siempre conectado en la red del dispositivo (por ejemplo, un PC o una tableta en casa) y seleccione Ajustes → Acceso remoto → Utilice este dispositivo como el puente de inicio. A continuación, emparejar su teléfono y PC con él de nuevo.",
- "@sb32685da2f": {
-  "x-mt": true
- },
- "s22dde7740f": "O controlar el dispositivo a través de una conexión el puente puede llegar desde cualquier lugar (por ejemplo, la nube del fabricante, como Shelly Cloud).",
- "@s22dde7740f": {
-  "x-mt": true
- },
- "sd4f0e6f8e1": "Compruebe que el dispositivo está encendido y su luz de potencia y Wi-Fi está encendido.",
- "@sd4f0e6f8e1": {
-  "x-mt": true
- },
- "s8277eb958e": "Compruebe que el dispositivo y el puente de inicio están en la misma red (los tres primeros números de sus direcciones son los mismos).",
- "@s8277eb958e": {
-  "x-mt": true
- },
- "sab9dae06af": "Si la dirección del dispositivo ha cambiado, actualícela en la configuración de conexión.",
- "@sab9dae06af": {
-  "x-mt": true
- },
- "sdafab85176": "Calentamiento inteligente cada minuto. Hasta entonces el relé permanece en su último estado y la calefacción no está controlada.",
- "@sdafab85176": {
-  "x-mt": true
- },
- "s5a3b74d726": "Abra la conexión del dispositivo y compruebe el nombre de usuario y contraseña.",
- "@s5a3b74d726": {
-  "x-mt": true
- },
- "s7157b2a937": "Abra la tarjeta de relé y compruebe su dirección y comandos on/off.",
- "@s7157b2a937": {
-  "x-mt": true
- },
- "s419117d6ca": "Reinicie el dispositivo (enciende y encienda).",
- "@s419117d6ca": {
-  "x-mt": true
- },
- "sc28a06ee09": "Si el error continúa, compruebe la configuración del dispositivo y el firmware.",
- "@sc28a06ee09": {
-  "x-mt": true
- },
- "s5811eb3006": "Estado desconocido",
- "@s5811eb3006": {
-  "x-mt": true
- },
- "sfd2975e5c4": "ahora",
- "@sfd2975e5c4": {
-  "x-mt": true
- },
- "s1cb1af7851": "{p0} ago",
- "@s1cb1af7851": {
-  "x-mt": true
- },
- "s04780b98b7": "El dispositivo no ha respondido, su estado no es conocido",
- "@s04780b98b7": {
-  "x-mt": true
- },
- "s69b9359f3f": "Decisión: {p0} – el dispositivo no lo ha confirmado",
- "@s69b9359f3f": {
-  "x-mt": true
- },
- "s5989e2e782": " (a {p0}, {p1})",
- "@s5989e2e782": {
-  "x-mt": true
- },
- "s9cb6ebafaa": "Último set: {p0}{p1} – la decisión {p2} no se logró",
- "@s9cb6ebafaa": {
-  "x-mt": true
- },
- "s9151a2843d": "Último set: {p0}{p1}",
- "@s9151a2843d": {
+ "s5ee0d291a9": "Ahora {p0} c/kWh {p1} limit {p2} c · {p3} h bajo el límite hoy",
+ "@s5ee0d291a9": {
   "x-mt": true
  }
 }

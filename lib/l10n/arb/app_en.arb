@@ -2254,37 +2254,37 @@
  "s6f985060ba": "What you can do",
  "@s6f985060ba": {
   "description": "fi: Mitä voit tehdä",
-  "x-where": "ui/heating_view.dart:202"
+  "x-where": "ui/heating_view.dart:207"
  },
  "sf77125583f": "Technical details",
  "@sf77125583f": {
   "description": "fi: Tekniset tiedot",
-  "x-where": "ui/heating_view.dart:212"
+  "x-where": "ui/heating_view.dart:217"
  },
  "s97c9304643": "Time",
  "@s97c9304643": {
   "description": "fi: Aika",
-  "x-where": "ui/heating_view.dart:218"
+  "x-where": "ui/heating_view.dart:223"
  },
  "s1e593aeca2": "Close",
  "@s1e593aeca2": {
   "description": "fi: Sulje",
-  "x-where": "ui/heating_view.dart:230"
+  "x-where": "ui/heating_view.dart:235"
  },
  "sf5768a876d": "Disabled",
  "@sf5768a876d": {
   "description": "fi: Pois käytöstä",
-  "x-where": "ui/heating_view.dart:249"
+  "x-where": "ui/heating_view.dart:254"
  },
  "s8724f302ef": "Manual",
  "@s8724f302ef": {
   "description": "fi: Käsiohjaus",
-  "x-where": "ui/heating_view.dart:253"
+  "x-where": "ui/heating_view.dart:258"
  },
  "s76bce4b6c2": "Manual {p0}",
  "@s76bce4b6c2": {
   "description": "fi: Käsiohjaus {p0}",
-  "x-where": "ui/heating_view.dart:254",
+  "x-where": "ui/heating_view.dart:259",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -2294,57 +2294,62 @@
  "s221a4ab646": "Fireplace mode",
  "@s221a4ab646": {
   "description": "fi: Takka-tila",
-  "x-where": "ui/heating_view.dart:256"
+  "x-where": "ui/heating_view.dart:261"
  },
  "s5da1e65941": "Holiday mode",
  "@s5da1e65941": {
   "description": "fi: Lomatila",
-  "x-where": "ui/heating_view.dart:258"
+  "x-where": "ui/heating_view.dart:263"
  },
  "se50792831f": "Temperature control",
  "@se50792831f": {
   "description": "fi: Lämpötilaohjaus",
-  "x-where": "ui/heating_view.dart:260"
+  "x-where": "ui/heating_view.dart:265"
+ },
+ "s52ef5e0b45": "Price limit",
+ "@s52ef5e0b45": {
+  "description": "fi: Hintaraja",
+  "x-where": "ui/heating_view.dart:266"
  },
  "sd408a5dbe9": "Cheapest hours",
  "@sd408a5dbe9": {
   "description": "fi: Halvimmat tunnit",
-  "x-where": "ui/heating_view.dart:262"
+  "x-where": "ui/heating_view.dart:268"
  },
  "s5c33c7b488": "Skip expensive",
  "@s5c33c7b488": {
   "description": "fi: Kalleimpien ohitus",
-  "x-where": "ui/heating_view.dart:263"
+  "x-where": "ui/heating_view.dart:269"
  },
  "seaa748138e": "By the weather",
  "@seaa748138e": {
   "description": "fi: Sään mukaan",
-  "x-where": "ui/heating_view.dart:264"
+  "x-where": "ui/heating_view.dart:270"
  },
  "saf3ce7f717": "Smart heating: set it up",
  "@saf3ce7f717": {
   "description": "fi: Älykäs lämmitys: ota käyttöön",
-  "x-where": "ui/heating_view.dart:335"
+  "x-where": "ui/heating_view.dart:341"
  },
  "scde8147260": "Smart heating: add a device",
  "@scde8147260": {
   "description": "fi: Älykäs lämmitys: lisää laite",
-  "x-where": "ui/heating_view.dart:336"
+  "x-where": "ui/heating_view.dart:342"
  },
  "sea2ac9b443": "Heating device removed",
  "@sea2ac9b443": {
   "description": "fi: Lämmityslaite poistettu",
-  "x-where": "ui/heating_view.dart:349"
+  "x-where": "ui/heating_view.dart:355"
  },
  "s27e0af845d": "No home bridge: heating is not controlled yet. Set up remote access on a device at home.",
  "@s27e0af845d": {
   "description": "fi: Ei kotisiltaa: lämmitys ei ohjaudu vielä. Ota etäyhteys käyttöön kotona olevalla laitteella.",
-  "x-where": "ui/heating_view.dart:440"
+  "x-where": "ui/heating_view.dart:446"
  },
  "s04fcb24bc5": "Now {p0} · setpoint {p1}",
  "@s04fcb24bc5": {
   "description": "fi: Nyt {p0} · tavoite {p1}",
-  "x-where": "ui/heating_view.dart:483",
+  "x-where": "ui/heating_view.dart:489",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -2357,7 +2362,7 @@
  "s3c3d6b5485": "Temperature {p0}",
  "@s3c3d6b5485": {
   "description": "fi: Lämpötila {p0}",
-  "x-where": "ui/heating_view.dart:487",
+  "x-where": "ui/heating_view.dart:493",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -2367,7 +2372,7 @@
  "s670a6ed937": "{p0} c/kWh",
  "@s670a6ed937": {
   "description": "fi: {p0} c/kWh",
-  "x-where": "ui/heating_view.dart:494",
+  "x-where": "ui/heating_view.dart:500",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -2377,7 +2382,7 @@
  "s8272e84b1c": "{p0} c/kWh · limit {p1} c",
  "@s8272e84b1c": {
   "description": "fi: {p0} c/kWh · raja {p1} c",
-  "x-where": "ui/heating_view.dart:495",
+  "x-where": "ui/heating_view.dart:501",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -2390,7 +2395,7 @@
  "s8235ae91c4": "Sensor not answering – {p0}",
  "@s8235ae91c4": {
   "description": "fi: Anturi ei vastaa – {p0}",
-  "x-where": "ui/heating_view.dart:553",
+  "x-where": "ui/heating_view.dart:559",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -2400,87 +2405,87 @@
  "s0be7b030a0": "Estimate from prices – no home bridge",
  "@s0be7b030a0": {
   "description": "fi: Arvio hinnoista – ei kotisiltaa",
-  "x-where": "ui/heating_view.dart:593"
+  "x-where": "ui/heating_view.dart:599"
  },
  "s9c543b2106": "Estimate – the home bridge has not answered yet",
  "@s9c543b2106": {
   "description": "fi: Arvio – kotisilta ei vastaa vielä",
-  "x-where": "ui/heating_view.dart:594"
+  "x-where": "ui/heating_view.dart:600"
  },
  "s4678cef2a1": "Total price: spot + VAT + margin + transfer + tax",
  "@s4678cef2a1": {
   "description": "fi: Kokonaishinta: pörssi + alv + marginaali + siirto + vero",
-  "x-where": "ui/heating_view.dart:605"
+  "x-where": "ui/heating_view.dart:611"
  },
  "s80a6e15c66": "spot",
  "@s80a6e15c66": {
   "description": "fi: pörssi",
-  "x-where": "ui/heating_view.dart:609"
+  "x-where": "ui/heating_view.dart:615"
  },
  "see998ca830": "kept on",
  "@see998ca830": {
   "description": "fi: pidetään päällä",
-  "x-where": "ui/heating_view.dart:714"
+  "x-where": "ui/heating_view.dart:720"
  },
  "s9eb36d05e1": "kept off",
  "@s9eb36d05e1": {
   "description": "fi: pidetään pois",
-  "x-where": "ui/heating_view.dart:715"
+  "x-where": "ui/heating_view.dart:721"
  },
  "s871e341710": "price schedule",
  "@s871e341710": {
   "description": "fi: hintaohjaus",
-  "x-where": "ui/heating_view.dart:716"
+  "x-where": "ui/heating_view.dart:722"
  },
  "s579f396ae5": "Situation",
  "@s579f396ae5": {
   "description": "fi: Tilannekuva",
-  "x-where": "ui/heating_view.dart:750"
+  "x-where": "ui/heating_view.dart:756"
  },
  "s8653f173b6": "Temperature",
  "@s8653f173b6": {
   "description": "fi: Lämpötila",
-  "x-where": "ui/heating_view.dart:777"
+  "x-where": "ui/heating_view.dart:783"
  },
  "s3c6fedc117": "Price now (total)",
  "@s3c6fedc117": {
   "description": "fi: Hinta nyt (kokonaishinta)",
-  "x-where": "ui/heating_view.dart:781"
+  "x-where": "ui/heating_view.dart:787"
  },
  "s7dfe0e7977": "Next change",
  "@s7dfe0e7977": {
   "description": "fi: Seuraava muutos",
-  "x-where": "ui/heating_view.dart:784"
+  "x-where": "ui/heating_view.dart:790"
  },
  "s5555a716bb": "This is an estimate from prices and settings: the home bridge has not answered yet, so the real state of the device is unknown.",
  "@s5555a716bb": {
   "description": "fi: Tämä on arvio hinnoista ja asetuksista: kotisilta ei ole vielä vastannut, joten laitteen todellista tilaa ei tiedetä.",
-  "x-where": "ui/heating_view.dart:808"
+  "x-where": "ui/heating_view.dart:814"
  },
  "sbe50b10e9e": "End manual override",
  "@sbe50b10e9e": {
   "description": "fi: Lopeta käsiohjaus",
-  "x-where": "ui/heating_view.dart:822"
+  "x-where": "ui/heating_view.dart:828"
  },
  "s728ddd7778": "Manual override…",
  "@s728ddd7778": {
   "description": "fi: Käsiohjaus…",
-  "x-where": "ui/heating_view.dart:829"
+  "x-where": "ui/heating_view.dart:835"
  },
  "sd661031615": "no sensor",
  "@sd661031615": {
   "description": "fi: ei anturia",
-  "x-where": "ui/heating_view.dart:843"
+  "x-where": "ui/heating_view.dart:849"
  },
  "scfb407cd2d": "sensor not answering",
  "@scfb407cd2d": {
   "description": "fi: anturi ei vastaa",
-  "x-where": "ui/heating_view.dart:844"
+  "x-where": "ui/heating_view.dart:850"
  },
  "s1284293e15": "setpoint {p0} ± {p1}",
  "@s1284293e15": {
   "description": "fi: tavoite {p0} ± {p1}",
-  "x-where": "ui/heating_view.dart:847",
+  "x-where": "ui/heating_view.dart:853",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -2493,7 +2498,7 @@
  "s07a15cf1d3": "upper limit {p0}",
  "@s07a15cf1d3": {
   "description": "fi: yläraja {p0}",
-  "x-where": "ui/heating_view.dart:852",
+  "x-where": "ui/heating_view.dart:858",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -2503,7 +2508,7 @@
  "s4e43228e07": "min {p0}",
  "@s4e43228e07": {
   "description": "fi: min {p0}",
-  "x-where": "ui/heating_view.dart:853",
+  "x-where": "ui/heating_view.dart:859",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -2513,7 +2518,7 @@
  "sd4db0fbbb5": "frost {p0}",
  "@sd4db0fbbb5": {
   "description": "fi: jäätymissuoja {p0}",
-  "x-where": "ui/heating_view.dart:854",
+  "x-where": "ui/heating_view.dart:860",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -2523,12 +2528,12 @@
  "s63c3e9c766": "no price data",
  "@s63c3e9c766": {
   "description": "fi: ei hintatietoa",
-  "x-where": "ui/heating_view.dart:860"
+  "x-where": "ui/heating_view.dart:866"
  },
  "s50b49fb20d": " (spot with VAT {p0} c)",
  "@s50b49fb20d": {
   "description": "fi:  (pörssi alv:llä {p0} c)",
-  "x-where": "ui/heating_view.dart:862",
+  "x-where": "ui/heating_view.dart:868",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -2538,7 +2543,7 @@
  "s8c60756474": "{p0} (skipped at ≥ {p1} c)",
  "@s8c60756474": {
   "description": "fi: {p0} (ohitetaan, kun ≥ {p1} c)",
-  "x-where": "ui/heating_view.dart:865",
+  "x-where": "ui/heating_view.dart:871",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -2551,7 +2556,7 @@
  "sff29b84ddc": "{p0} (on at ≤ {p1} c)",
  "@sff29b84ddc": {
   "description": "fi: {p0} (päällä, kun ≤ {p1} c)",
-  "x-where": "ui/heating_view.dart:866",
+  "x-where": "ui/heating_view.dart:872",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -2564,27 +2569,27 @@
  "s750dcb984f": "Why? The rules and their state",
  "@s750dcb984f": {
   "description": "fi: Miksi näin? Säännöt ja niiden tila",
-  "x-where": "ui/heating_view.dart:966"
+  "x-where": "ui/heating_view.dart:972"
  },
  "s39d300e3ea": "decides now",
  "@s39d300e3ea": {
   "description": "fi: ratkaisee nyt",
-  "x-where": "ui/heating_view.dart:994"
+  "x-where": "ui/heating_view.dart:1000"
  },
  "s55153c17b8": "Next 24 h: price and planned heating hours",
  "@s55153c17b8": {
   "description": "fi: Seuraavat 24 h: hinta ja suunnitellut lämmitystunnit",
-  "x-where": "ui/heating_view.dart:1043"
+  "x-where": "ui/heating_view.dart:1049"
  },
  "sfb5a3f7da0": "No price data yet.",
  "@sfb5a3f7da0": {
   "description": "fi: Hintatietoa ei ole vielä.",
-  "x-where": "ui/heating_view.dart:1083"
+  "x-where": "ui/heating_view.dart:1089"
  },
  "sba9d60d97c": "Orange = heating planned on. A taller bar = a more expensive hour ({p0}–{p1} c/kWh).",
  "@sba9d60d97c": {
   "description": "fi: Oranssi = lämmitys suunnitellusti päällä. Korkeampi pylväs = kalliimpi tunti ({p0}–{p1} c/kWh).",
-  "x-where": "ui/heating_view.dart:1085",
+  "x-where": "ui/heating_view.dart:1091",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -2597,7 +2602,7 @@
  "s3030d2947a": "A taller bar = a more expensive hour ({p0}–{p1} c/kWh). The plan shows when the home bridge has answered.",
  "@s3030d2947a": {
   "description": "fi: Korkeampi pylväs = kalliimpi tunti ({p0}–{p1} c/kWh). Suunnitelma näkyy, kun kotisilta on vastannut.",
-  "x-where": "ui/heating_view.dart:1089",
+  "x-where": "ui/heating_view.dart:1095",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -2610,62 +2615,62 @@
  "s3d99bc591b": "Manual override",
  "@s3d99bc591b": {
   "description": "fi: Käsiohjaus",
-  "x-where": "ui/heating_view.dart:1125"
+  "x-where": "ui/heating_view.dart:1131"
  },
  "sb65a9ab4a9": "The target temperature is raised or lowered for the chosen time, then automatic control continues.",
  "@sb65a9ab4a9": {
   "description": "fi: Tavoitelämpötilaa nostetaan tai lasketaan valituksi ajaksi, sitten automaattinen ohjaus jatkuu.",
-  "x-where": "ui/heating_view.dart:1132"
+  "x-where": "ui/heating_view.dart:1138"
  },
  "sb1c3627dc7": "Heating is forced on or off for the chosen time, then automatic control continues.",
  "@sb1c3627dc7": {
   "description": "fi: Lämmitys pakotetaan päälle tai pois valituksi ajaksi, sitten automaattinen ohjaus jatkuu.",
-  "x-where": "ui/heating_view.dart:1136"
+  "x-where": "ui/heating_view.dart:1142"
  },
  "seeaa40c11e": "Boost",
  "@seeaa40c11e": {
   "description": "fi: Tehostus",
-  "x-where": "ui/heating_view.dart:1147"
+  "x-where": "ui/heating_view.dart:1153"
  },
  "s4cd3d92d4c": "On",
  "@s4cd3d92d4c": {
   "description": "fi: Päälle",
-  "x-where": "ui/heating_view.dart:1147"
+  "x-where": "ui/heating_view.dart:1153"
  },
  "sdb7d34e8e1": "Saving",
  "@sdb7d34e8e1": {
   "description": "fi: Säästö",
-  "x-where": "ui/heating_view.dart:1151"
+  "x-where": "ui/heating_view.dart:1157"
  },
  "s33831dd49f": "Off",
  "@s33831dd49f": {
   "description": "fi: Pois",
-  "x-where": "ui/heating_view.dart:1151"
+  "x-where": "ui/heating_view.dart:1157"
  },
  "s3ef843cf90": "The safety limits (frost protection and minimum temperature) still apply.",
  "@s3ef843cf90": {
   "description": "fi: Turvarajat (jäätymissuoja ja vähimmäislämpötila) ovat silti voimassa.",
-  "x-where": "ui/heating_view.dart:1168"
+  "x-where": "ui/heating_view.dart:1174"
  },
  "s3077b295d1": "Apply",
  "@s3077b295d1": {
   "description": "fi: Ota käyttöön",
-  "x-where": "ui/heating_view.dart:1181"
+  "x-where": "ui/heating_view.dart:1187"
  },
  "s7926a59e29": "No reading",
  "@s7926a59e29": {
   "description": "fi: Ei lämpötilaa",
-  "x-where": "ui/heating_view.dart:1230"
+  "x-where": "ui/heating_view.dart:1236"
  },
  "s29fd8d5b5e": "Now",
  "@s29fd8d5b5e": {
   "description": "fi: Nyt",
-  "x-where": "ui/heating_view.dart:1231"
+  "x-where": "ui/heating_view.dart:1237"
  },
  "s961397a99b": "Setpoint {p0} °C",
  "@s961397a99b": {
   "description": "fi: Tavoite {p0} °C",
-  "x-where": "ui/heating_view.dart:1245",
+  "x-where": "ui/heating_view.dart:1251",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -2675,7 +2680,7 @@
  "sc47170dbe0": "Setpoint {p0} °C (price: {p1} °C this hour)",
  "@sc47170dbe0": {
   "description": "fi: Tavoite {p0} °C (hinta: {p1} °C tällä tunnilla)",
-  "x-where": "ui/heating_view.dart:1246",
+  "x-where": "ui/heating_view.dart:1252",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -4558,6 +4563,242 @@
    }
   }
  },
+ "s9d6a4787c0": "By temperature",
+ "@s9d6a4787c0": {
+  "description": "fi: Lämpötilan mukaan",
+  "x-where": "ui/heat_program_pages.dart:20"
+ },
+ "s765dda7e1f": "On while the hour''s price is at or under the limit you set.",
+ "@s765dda7e1f": {
+  "description": "fi: Päällä, kun tunnin hinta on enintään asettamasi raja.",
+  "x-where": "ui/heat_program_pages.dart:25"
+ },
+ "s63c7563ffe": "Like a thermostat: on while the room is colder than the target. Needs a temperature sensor.",
+ "@s63c7563ffe": {
+  "description": "fi: Kuin termostaatti: päällä, kun huone on tavoitelämpötilaa kylmempi. Tarvitsee lämpötila-anturin.",
+  "x-where": "ui/heat_program_pages.dart:30"
+ },
+ "s066b775d18": "Heats in the cheapest hours of the day. You choose the number of hours.",
+ "@s066b775d18": {
+  "description": "fi: Lämmittää päivän halvimpina tunteina. Valitset tuntimäärän.",
+  "x-where": "ui/heat_program_pages.dart:35"
+ },
+ "s7d9757a025": "up to {p0} c/kWh",
+ "@s7d9757a025": {
+  "description": "fi: enintään {p0} c/kWh",
+  "x-where": "ui/heat_program_pages.dart:73",
+  "placeholders": {
+   "p0": {
+    "type": "String"
+   }
+  }
+ },
+ "s865988de99": "skips {p0} most expensive hours",
+ "@s865988de99": {
+  "description": "fi: ohittaa {p0} kalleinta tuntia",
+  "x-where": "ui/heat_program_pages.dart:78",
+  "placeholders": {
+   "p0": {
+    "type": "String"
+   }
+  }
+ },
+ "sd235c9cafb": "{p0} h a day",
+ "@sd235c9cafb": {
+  "description": "fi: {p0} h päivässä",
+  "x-where": "ui/heat_program_pages.dart:83",
+  "placeholders": {
+   "p0": {
+    "type": "String"
+   }
+  }
+ },
+ "s1cc4e52472": "On while the hour''s price is at or under the limit.",
+ "@s1cc4e52472": {
+  "description": "fi: Päällä, kun tunnin hinta on enintään raja.",
+  "x-where": "ui/heat_program_pages.dart:132"
+ },
+ "s5fab7a2144": "On while the hour''s price is at or under the limit. Today {p0}–{p1} c/kWh, {p2} h under the limit.",
+ "@s5fab7a2144": {
+  "description": "fi: Päällä, kun tunnin hinta on enintään raja. Tänään {p0}–{p1} c/kWh, {p2} h alle rajan.",
+  "x-where": "ui/heat_program_pages.dart:137",
+  "placeholders": {
+   "p0": {
+    "type": "String"
+   },
+   "p1": {
+    "type": "String"
+   },
+   "p2": {
+    "type": "String"
+   }
+  }
+ },
+ "sd5f46903a1": "Target temperature",
+ "@sd5f46903a1": {
+  "description": "fi: Tavoitelämpötila",
+  "x-where": "ui/heat_program_pages.dart:154"
+ },
+ "sd2758727f5": "Temperature sensor",
+ "@sd2758727f5": {
+  "description": "fi: Lämpötila-anturi",
+  "x-where": "ui/heat_program_pages.dart:169"
+ },
+ "s58adf1e5fb": "Choose a sensor – the control needs it",
+ "@s58adf1e5fb": {
+  "description": "fi: Valitse anturi – ohjaus tarvitsee sen",
+  "x-where": "ui/heat_program_pages.dart:172"
+ },
+ "sbd3dbfd7e9": "Most expensive hours skipped",
+ "@sbd3dbfd7e9": {
+  "description": "fi: Ohitettavia kalleimpia tunteja",
+  "x-where": "ui/heat_program_pages.dart:187"
+ },
+ "s86c45674db": "Heating hours a day",
+ "@s86c45674db": {
+  "description": "fi: Lämmitystunteja päivässä",
+  "x-where": "ui/heat_program_pages.dart:201"
+ },
+ "s94f86b3b6a": "Home bridge that runs the program",
+ "@s94f86b3b6a": {
+  "description": "fi: Kotisilta, joka ajaa ohjelman",
+  "x-where": "ui/heat_program_pages.dart:271"
+ },
+ "s10a23b4691": "not paired",
+ "@s10a23b4691": {
+  "description": "fi: ei pariutettu",
+  "x-where": "ui/heat_program_pages.dart:280"
+ },
+ "s407cb3a732": "The program runs on the chosen bridge by itself, even with the app closed. The bridge must reach the device. One device is only ever controlled by one bridge.",
+ "@s407cb3a732": {
+  "description": "fi: Ohjelma ajetaan valitulla kotisillalla itsenäisesti, vaikka sovellus olisi suljettu. Sen pitää tavoittaa laite. Yhtä lai",
+  "x-where": "ui/heat_program_pages.dart:291"
+ },
+ "s7de515a7c1": "Program",
+ "@s7de515a7c1": {
+  "description": "fi: Ohjelma",
+  "x-where": "ui/heat_program_pages.dart:327"
+ },
+ "s7fcdd166f3": "This device already has a program on another bridge, so this one is not run. Remove the other program or pick the same bridge.",
+ "@s7fcdd166f3": {
+  "description": "fi: Tämän laitteen ohjelma on jo toisella kotisillalla, joten tätä ohjelmaa ei ajeta. Poista toinen ohjelma tai valitse täll",
+  "x-where": "ui/heat_program_pages.dart:347"
+ },
+ "s093677b5f1": "Control mode",
+ "@s093677b5f1": {
+  "description": "fi: Ohjaustapa",
+  "x-where": "ui/heat_program_pages.dart:365"
+ },
+ "sf0446baa5c": "Without a sensor, heating follows the price schedule. Tap to choose a sensor.",
+ "@sf0446baa5c": {
+  "description": "fi: Ilman anturia lämmitys noudattaa hintaohjausta. Valitse anturi napauttamalla.",
+  "x-where": "ui/heat_program_pages.dart:389"
+ },
+ "s0cb0877799": "Not running",
+ "@s0cb0877799": {
+  "description": "fi: Ei käytössä",
+  "x-where": "ui/heat_program_pages.dart:454"
+ },
+ "sad8b69fca2": " is offline – the program keeps running there by itself",
+ "@sad8b69fca2": {
+  "description": "fi: {p0} ei ole yhteydessä – ohjelma jatkaa siellä itsenäisesti",
+  "x-where": "ui/heat_program_pages.dart:469",
+  "placeholders": {
+   "p0": {
+    "type": "String"
+   }
+  }
+ },
+ "s7211f94f91": "Runs on: ",
+ "@s7211f94f91": {
+  "description": "fi: Ajaa: {p0}",
+  "x-where": "ui/heat_program_pages.dart:474",
+  "placeholders": {
+   "p0": {
+    "type": "String"
+   }
+  }
+ },
+ "s7b25bc0874": "The device already has a program on another bridge.",
+ "@s7b25bc0874": {
+  "description": "fi: Laitteella on jo ohjelma toisella kotisillalla.",
+  "x-where": "ui/heat_program_pages.dart:488"
+ },
+ "sccf63d5729": "Changes are waiting for the bridge – they are sent when it answers.",
+ "@sccf63d5729": {
+  "description": "fi: Muutokset odottavat kotisiltaa – ne lähetetään, kun se vastaa.",
+  "x-where": "ui/heat_program_pages.dart:498"
+ },
+ "sdb217dcf7f": "Add a tile to the home screen",
+ "@sdb217dcf7f": {
+  "description": "fi: Lisää ruutu kotinäytölle",
+  "x-where": "ui/heat_program_pages.dart:511"
+ },
+ "s6398607bb8": "The tile is already on the home screen",
+ "@s6398607bb8": {
+  "description": "fi: Ruutu on jo kotinäytöllä",
+  "x-where": "ui/heat_program_pages.dart:520"
+ },
+ "s52d3e04a46": "Tile added to the home screen",
+ "@s52d3e04a46": {
+  "description": "fi: Ruutu lisätty kotinäytölle",
+  "x-where": "ui/heat_program_pages.dart:521"
+ },
+ "s354eb362d8": "Choose the device",
+ "@s354eb362d8": {
+  "description": "fi: Valitse laite",
+  "x-where": "ui/heat_program_pages.dart:618"
+ },
+ "s1571e8b853": "Choose the control mode",
+ "@s1571e8b853": {
+  "description": "fi: Valitse ohjaustapa",
+  "x-where": "ui/heat_program_pages.dart:619"
+ },
+ "s190914de3c": "Set the limit",
+ "@s190914de3c": {
+  "description": "fi: Aseta rajat",
+  "x-where": "ui/heat_program_pages.dart:620"
+ },
+ "s4eaf5975db": "Add a program",
+ "@s4eaf5975db": {
+  "description": "fi: Lisää ohjelma",
+  "x-where": "ui/heat_program_pages.dart:623"
+ },
+ "scb39988da3": "Already has a program: {p0}",
+ "@scb39988da3": {
+  "description": "fi: Ohjelma on jo: {p0}",
+  "x-where": "ui/heat_program_pages.dart:643",
+  "placeholders": {
+   "p0": {
+    "type": "String"
+   }
+  }
+ },
+ "s8ea88baef9": "Relay or plug",
+ "@s8ea88baef9": {
+  "description": "fi: Rele tai pistorasia",
+  "x-where": "ui/heat_program_pages.dart:646"
+ },
+ "s70d49e7f6a": "No devices. Add a relay, a plug or a thermostat first.",
+ "@s70d49e7f6a": {
+  "description": "fi: Ei laitteita. Lisää ensin rele, pistorasia tai termostaatti.",
+  "x-where": "ui/heat_program_pages.dart:665"
+ },
+ "sec41a5c19b": "Heating type",
+ "@sec41a5c19b": {
+  "description": "fi: Lämmitystapa",
+  "x-where": "ui/heat_program_pages.dart:677"
+ },
+ "s0feac99b10": "Other settings (delays, hysteresis, temperature limits, frost protection, fallback, boost, minimum times) are under Advanced on the program page. The defaults suit most homes.",
+ "@s0feac99b10": {
+  "description": "fi: Muut asetukset (viiveet, hystereesi, lämpörajat, jäätymissuoja, varalämpötila, boost, vähimmäisajat) löytyvät ohjelman E",
+  "x-where": "ui/heat_program_pages.dart:710"
+ },
+ "s54a7a968e9": "Create program",
+ "@s54a7a968e9": {
+  "description": "fi: Luo ohjelma",
+  "x-where": "ui/heat_program_pages.dart:749"
+ },
  "s429f9e257a": "Data is only in this browser. ",
  "@s429f9e257a": {
   "description": "fi: Tiedot vain tässä selaimessa. ",
@@ -6351,117 +6592,117 @@
  "sa26ae27039": "Skip the most expensive hours",
  "@sa26ae27039": {
   "description": "fi: Ohita kalleimmat tunnit",
-  "x-where": "ui/smart_heating_pages.dart:23"
+  "x-where": "ui/smart_heating_pages.dart:24"
  },
  "scfd1a72ed5": "Weather-based pre-heating",
  "@scfd1a72ed5": {
   "description": "fi: Sään mukaan ennakoiva",
-  "x-where": "ui/smart_heating_pages.dart:24"
+  "x-where": "ui/smart_heating_pages.dart:25"
  },
  "s2bd403874c": "Heats in the cheapest hours of the day. For storage heating and water heaters.",
  "@s2bd403874c": {
   "description": "fi: Lämmittää päivän halvimpina tunteina. Sopii varaavaan lämmitykseen ja lämminvesivaraajaan.",
-  "x-where": "ui/smart_heating_pages.dart:28"
+  "x-where": "ui/smart_heating_pages.dart:29"
  },
  "se759c14061": "Heats normally but skips the most expensive hours in short breaks.",
  "@se759c14061": {
   "description": "fi: Lämmittää normaalisti, mutta ohittaa päivän kalleimmat tunnit lyhyinä katkoina.",
-  "x-where": "ui/smart_heating_pages.dart:33"
+  "x-where": "ui/smart_heating_pages.dart:34"
  },
  "s5cab118d44": "Pre-heats before expensive or cold spells and saves in expensive hours. The hours follow the forecast.",
  "@s5cab118d44": {
   "description": "fi: Esilämmittää ennen kallista tai kylmää jaksoa ja säästää kalliina tunteina. Tuntimäärä seuraa sääennustetta.",
-  "x-where": "ui/smart_heating_pages.dart:38"
+  "x-where": "ui/smart_heating_pages.dart:39"
  },
  "sa7480a9930": "cheap hour",
  "@sa7480a9930": {
   "description": "fi: halpa tunti",
-  "x-where": "ui/smart_heating_pages.dart:46"
+  "x-where": "ui/smart_heating_pages.dart:47"
  },
  "s50812672e5": "waiting for a cheap hour",
  "@s50812672e5": {
   "description": "fi: odottaa halpaa tuntia",
-  "x-where": "ui/smart_heating_pages.dart:47"
+  "x-where": "ui/smart_heating_pages.dart:48"
  },
  "seb1c64d9f8": "skipping an expensive hour",
  "@seb1c64d9f8": {
   "description": "fi: kallis tunti ohitetaan",
-  "x-where": "ui/smart_heating_pages.dart:48"
+  "x-where": "ui/smart_heating_pages.dart:49"
  },
  "s2e52a3d40e": "normal",
  "@s2e52a3d40e": {
   "description": "fi: normaali",
-  "x-where": "ui/smart_heating_pages.dart:49"
+  "x-where": "ui/smart_heating_pages.dart:50"
  },
  "sf6d34efdd6": "no prices – normal heating",
  "@sf6d34efdd6": {
   "description": "fi: ei hintoja – normaali lämmitys",
-  "x-where": "ui/smart_heating_pages.dart:50"
+  "x-where": "ui/smart_heating_pages.dart:51"
  },
  "s8c42ad8541": "holiday mode",
  "@s8c42ad8541": {
   "description": "fi: lomatila",
-  "x-where": "ui/smart_heating_pages.dart:51"
+  "x-where": "ui/smart_heating_pages.dart:52"
  },
  "sc3d8828060": "heating for your return",
  "@sc3d8828060": {
   "description": "fi: lämmitetään paluuta varten",
-  "x-where": "ui/smart_heating_pages.dart:52"
+  "x-where": "ui/smart_heating_pages.dart:53"
  },
  "s577b8c3cf1": "the fireplace heats",
  "@s577b8c3cf1": {
   "description": "fi: takka lämmittää",
-  "x-where": "ui/smart_heating_pages.dart:53"
+  "x-where": "ui/smart_heating_pages.dart:54"
  },
  "sbcd02dce0a": "warm enough",
  "@sbcd02dce0a": {
   "description": "fi: tarpeeksi lämmin",
-  "x-where": "ui/smart_heating_pages.dart:54"
+  "x-where": "ui/smart_heating_pages.dart:55"
  },
  "s22678639dc": "safety limit: too cold",
  "@s22678639dc": {
   "description": "fi: turvaraja: liian kylmä",
-  "x-where": "ui/smart_heating_pages.dart:55"
+  "x-where": "ui/smart_heating_pages.dart:56"
  },
  "s1e3f154a0a": "frost protection",
  "@s1e3f154a0a": {
   "description": "fi: jäätymissuoja",
-  "x-where": "ui/smart_heating_pages.dart:56"
+  "x-where": "ui/smart_heating_pages.dart:57"
  },
  "s1f2938edec": "safety limit: off too long",
  "@s1f2938edec": {
   "description": "fi: turvaraja: liian pitkä tauko",
-  "x-where": "ui/smart_heating_pages.dart:57"
+  "x-where": "ui/smart_heating_pages.dart:58"
  },
  "s54fce2a7e8": "pre-heating",
  "@s54fce2a7e8": {
   "description": "fi: esilämmitys",
-  "x-where": "ui/smart_heating_pages.dart:58"
+  "x-where": "ui/smart_heating_pages.dart:59"
  },
  "s6b35f75e80": "saving while expensive",
  "@s6b35f75e80": {
   "description": "fi: säästö kalliina aikana",
-  "x-where": "ui/smart_heating_pages.dart:59"
+  "x-where": "ui/smart_heating_pages.dart:60"
  },
  "sdde7adcb29": "Smart heating controls heating by electricity price and weather, in a way that suits your heating type. Answer a few questions to get recommended settings.",
  "@sdde7adcb29": {
   "description": "fi: Älykäs lämmitys ohjaa lämmitystä sähkön hinnan ja sään mukaan talosi lämmitystavalle sopivalla tavalla. Vastaa muutamaan",
-  "x-where": "ui/smart_heating_pages.dart:174"
+  "x-where": "ui/smart_heating_pages.dart:175"
  },
  "s3d29895a40": "Start the survey",
  "@s3d29895a40": {
   "description": "fi: Aloita kartoitus",
-  "x-where": "ui/smart_heating_pages.dart:185"
+  "x-where": "ui/smart_heating_pages.dart:186"
  },
  "sb0d738492d": "Fireplace mode on",
  "@sb0d738492d": {
   "description": "fi: Takka-tila päällä",
-  "x-where": "ui/smart_heating_pages.dart:222"
+  "x-where": "ui/smart_heating_pages.dart:223"
  },
  "sd1af5ba10d": "Fireplace mode on until {p0}",
  "@sd1af5ba10d": {
   "description": "fi: Takka-tila päällä klo {p0} asti",
-  "x-where": "ui/smart_heating_pages.dart:223",
+  "x-where": "ui/smart_heating_pages.dart:224",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -6471,117 +6712,112 @@
  "s48a7ba4933": "Holiday mode on",
  "@s48a7ba4933": {
   "description": "fi: Lomatila päällä",
-  "x-where": "ui/smart_heating_pages.dart:228"
+  "x-where": "ui/smart_heating_pages.dart:229"
  },
  "s10a95132ce": "Smart heating is off",
  "@s10a95132ce": {
   "description": "fi: Älykäs lämmitys on pois päältä",
-  "x-where": "ui/smart_heating_pages.dart:229"
+  "x-where": "ui/smart_heating_pages.dart:230"
  },
  "s035459d8bb": "Heating follows price and weather",
  "@s035459d8bb": {
   "description": "fi: Lämmitys toimii hinnan ja sään mukaan",
-  "x-where": "ui/smart_heating_pages.dart:230"
+  "x-where": "ui/smart_heating_pages.dart:231"
  },
  "sbde5e80158": "Needs a home bridge: set up remote access on a device at home (Settings → Remote access).",
  "@sbde5e80158": {
   "description": "fi: Tarvitsee kotisillan: ota etäyhteys käyttöön kotona olevalla laitteella (Asetukset → Etäkäyttö).",
-  "x-where": "ui/smart_heating_pages.dart:234"
+  "x-where": "ui/smart_heating_pages.dart:235"
  },
  "s830cace8fe": "Update the home bridge (needs Molaplan 0.10.0).",
  "@s830cace8fe": {
   "description": "fi: Päivitä kotisilta (vaatii Molaplan 0.10.0).",
-  "x-where": "ui/smart_heating_pages.dart:240"
+  "x-where": "ui/smart_heating_pages.dart:241"
  },
  "s495c887d23": "Runs on the home bridge, also with the app closed.",
  "@s495c887d23": {
   "description": "fi: Toimii kotisillalla myös sovellus suljettuna.",
-  "x-where": "ui/smart_heating_pages.dart:245"
+  "x-where": "ui/smart_heating_pages.dart:246"
  },
  "s7954d5fca9": "Stop fireplace mode",
  "@s7954d5fca9": {
   "description": "fi: Lopeta takka-tila",
-  "x-where": "ui/smart_heating_pages.dart:263"
+  "x-where": "ui/smart_heating_pages.dart:264"
  },
  "sf44db20422": "Fireplace lit",
  "@sf44db20422": {
   "description": "fi: Takka lämmitetty",
-  "x-where": "ui/smart_heating_pages.dart:264"
+  "x-where": "ui/smart_heating_pages.dart:265"
  },
  "sd172900c2d": "Holiday: edit",
  "@sd172900c2d": {
   "description": "fi: Lomatila: muokkaa",
-  "x-where": "ui/smart_heating_pages.dart:276"
+  "x-where": "ui/smart_heating_pages.dart:277"
  },
- "sdb217dcf7f": "Add a tile to the home screen",
- "@sdb217dcf7f": {
-  "description": "fi: Lisää ruutu kotinäytölle",
-  "x-where": "ui/smart_heating_pages.dart:298"
+ "s5275c2c21e": "Programs",
+ "@s5275c2c21e": {
+  "description": "fi: Ohjelmat",
+  "x-where": "ui/smart_heating_pages.dart:314"
  },
- "s52d3e04a46": "Tile added to the home screen",
- "@s52d3e04a46": {
-  "description": "fi: Ruutu lisätty kotinäytölle",
-  "x-where": "ui/smart_heating_pages.dart:304"
- },
- "sdca3ad13dd": "Heating devices",
- "@sdca3ad13dd": {
-  "description": "fi: Lämmityslaitteet",
-  "x-where": "ui/smart_heating_pages.dart:312"
- },
- "sc8c5e37f5d": "No devices. Add them in the survey.",
- "@sc8c5e37f5d": {
-  "description": "fi: Ei laitteita. Lisää ne kartoituksessa.",
+ "s99a5e80b5c": "Each heating device has its own program. A program runs on a home bridge by itself.",
+ "@s99a5e80b5c": {
+  "description": "fi: Jokaisella lämmityslaitteella on oma ohjelmansa. Ohjelma ajetaan kotisillalla itsenäisesti.",
   "x-where": "ui/smart_heating_pages.dart:318"
+ },
+ "s0fd18deddd": "No programs yet.",
+ "@s0fd18deddd": {
+  "description": "fi: Ei ohjelmia vielä.",
+  "x-where": "ui/smart_heating_pages.dart:330"
  },
  "sc6976fa352": "Heating notifications",
  "@sc6976fa352": {
   "description": "fi: Lämmityksen ilmoitukset",
-  "x-where": "ui/smart_heating_pages.dart:323"
+  "x-where": "ui/smart_heating_pages.dart:343"
  },
  "s1abda8b8f3": "The home bridge is too old: update it (Molaplan 0.10.0).",
  "@s1abda8b8f3": {
   "description": "fi: Kotisilta on liian vanha: päivitä se (Molaplan 0.10.0).",
-  "x-where": "ui/smart_heating_pages.dart:351"
+  "x-where": "ui/smart_heating_pages.dart:371"
  },
  "s8c3353e896": "No home bridge is paired.",
  "@s8c3353e896": {
   "description": "fi: Kotisiltaa ei ole yhdistetty.",
-  "x-where": "ui/smart_heating_pages.dart:358"
+  "x-where": "ui/smart_heating_pages.dart:378"
  },
  "s13a8a207ec": "Rules and settings",
  "@s13a8a207ec": {
   "description": "fi: Säännöt ja asetukset",
-  "x-where": "ui/smart_heating_pages.dart:417"
+  "x-where": "ui/smart_heating_pages.dart:443"
  },
  "s697b47220e": "Smart heating on",
  "@s697b47220e": {
   "description": "fi: Älykäs lämmitys käytössä",
-  "x-where": "ui/smart_heating_pages.dart:481"
+  "x-where": "ui/smart_heating_pages.dart:472"
  },
  "s45cf6423f8": "Edit the survey",
  "@s45cf6423f8": {
   "description": "fi: Muokkaa kartoitusta",
-  "x-where": "ui/smart_heating_pages.dart:491"
+  "x-where": "ui/smart_heating_pages.dart:482"
  },
  "sf5dbb363af": "Safety limits",
  "@sf5dbb363af": {
   "description": "fi: Turvarajat",
-  "x-where": "ui/smart_heating_pages.dart:498"
+  "x-where": "ui/smart_heating_pages.dart:489"
  },
  "sf9cd32fb4f": "Minimum temperature",
  "@sf9cd32fb4f": {
   "description": "fi: Vähimmäislämpötila",
-  "x-where": "ui/smart_heating_pages.dart:501"
+  "x-where": "ui/smart_heating_pages.dart:492"
  },
  "sfb0553315b": "Frost protection",
  "@sfb0553315b": {
   "description": "fi: Jäätymissuoja",
-  "x-where": "ui/smart_heating_pages.dart:514"
+  "x-where": "ui/smart_heating_pages.dart:505"
  },
  "s9097fb518a": "Heating always on below {p0} °C.",
  "@s9097fb518a": {
   "description": "fi: Lämmitys aina päälle alle {p0} °C:ssa.",
-  "x-where": "ui/smart_heating_pages.dart:516",
+  "x-where": "ui/smart_heating_pages.dart:507",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -6591,187 +6827,142 @@
  "s5d37a7088b": "Longest allowed break (all)",
  "@s5d37a7088b": {
   "description": "fi: Pisin sallittu tauko (kaikki)",
-  "x-where": "ui/smart_heating_pages.dart:529"
+  "x-where": "ui/smart_heating_pages.dart:520"
  },
  "sb0bb55d6e5": "per device",
  "@sb0bb55d6e5": {
   "description": "fi: laitteen mukaan",
-  "x-where": "ui/smart_heating_pages.dart:535"
+  "x-where": "ui/smart_heating_pages.dart:526"
  },
  "s17bf76025c": "Safety limits override price, holiday and fireplace mode. The minimum temperature and frost protection need a temperature sensor.",
  "@s17bf76025c": {
   "description": "fi: Turvarajat ohittavat hinnan, lomatilan ja takka-tilan. Vähimmäislämpötila ja jäätymissuoja tarvitsevat lämpöanturin.",
-  "x-where": "ui/smart_heating_pages.dart:542"
+  "x-where": "ui/smart_heating_pages.dart:533"
  },
  "s109c7fb7a2": "Fireplace",
  "@s109c7fb7a2": {
   "description": "fi: Takka",
-  "x-where": "ui/smart_heating_pages.dart:551"
+  "x-where": "ui/smart_heating_pages.dart:542"
  },
  "s1c15091948": "Fireplace mode length",
  "@s1c15091948": {
   "description": "fi: Takka-tilan kesto",
-  "x-where": "ui/smart_heating_pages.dart:553"
+  "x-where": "ui/smart_heating_pages.dart:544"
  },
  "se150ae5acd": "Thermostats lowered in fireplace mode",
  "@se150ae5acd": {
   "description": "fi: Termostaattien lasku takka-tilassa",
-  "x-where": "ui/smart_heating_pages.dart:565"
+  "x-where": "ui/smart_heating_pages.dart:556"
  },
  "s161f61412e": "Temperature sensor near the fireplace",
  "@s161f61412e": {
   "description": "fi: Takan lähellä oleva lämpöanturi",
-  "x-where": "ui/smart_heating_pages.dart:579"
+  "x-where": "ui/smart_heating_pages.dart:570"
  },
  "s81b30d570b": "The device sensor",
  "@s81b30d570b": {
   "description": "fi: Laitteen anturi",
-  "x-where": "ui/smart_heating_pages.dart:582"
+  "x-where": "ui/smart_heating_pages.dart:573"
  },
  "s71e80a04a2": "Heating notifications (ntfy)",
  "@s71e80a04a2": {
   "description": "fi: Lämmityksen ilmoitukset (ntfy)",
-  "x-where": "ui/smart_heating_pages.dart:595"
+  "x-where": "ui/smart_heating_pages.dart:586"
  },
  "s5ab83c2574": "The same notification channel and quiet hours as automations.",
  "@s5ab83c2574": {
   "description": "fi: Sama ilmoituskanava ja hiljaiset ajat kuin automaatioissa.",
-  "x-where": "ui/smart_heating_pages.dart:597"
+  "x-where": "ui/smart_heating_pages.dart:588"
  },
  "s32d9d66ffd": "Remove smart heating",
  "@s32d9d66ffd": {
   "description": "fi: Poista älykäs lämmitys",
-  "x-where": "ui/smart_heating_pages.dart:612"
+  "x-where": "ui/smart_heating_pages.dart:603"
  },
  "s0f995f3d5d": "Remove smart heating?",
  "@s0f995f3d5d": {
   "description": "fi: Poistetaanko älykäs lämmitys?",
-  "x-where": "ui/smart_heating_pages.dart:617"
+  "x-where": "ui/smart_heating_pages.dart:608"
  },
  "scc27c1739f": "The devices stay in their current state.",
  "@scc27c1739f": {
   "description": "fi: Laitteet jäävät siihen tilaan, jossa ne ovat nyt.",
-  "x-where": "ui/smart_heating_pages.dart:619"
+  "x-where": "ui/smart_heating_pages.dart:610"
  },
  "s3bf2d3643c": "Electric heating is reduced while the fireplace heats. Safety limits still apply.",
  "@s3bf2d3643c": {
   "description": "fi: Sähkölämmitystä vähennetään, koska takka lämmittää. Turvarajat ovat silti voimassa.",
-  "x-where": "ui/smart_heating_pages.dart:704"
+  "x-where": "ui/smart_heating_pages.dart:695"
  },
  "s58b2cdb4e2": "End earlier when the room starts to cool",
  "@s58b2cdb4e2": {
   "description": "fi: Lopeta aiemmin, kun huone alkaa jäähtyä",
-  "x-where": "ui/smart_heating_pages.dart:724"
+  "x-where": "ui/smart_heating_pages.dart:715"
  },
  "s66ce56ca38": "Start",
  "@s66ce56ca38": {
   "description": "fi: Käynnistä",
-  "x-where": "ui/smart_heating_pages.dart:736"
+  "x-where": "ui/smart_heating_pages.dart:727"
  },
  "s632723d95f": "While you are away rooms are kept cooler, and the water heater is heated only the night before you return. Safety limits and frost protection apply.",
  "@s632723d95f": {
   "description": "fi: Poissa ollessa huoneet pidetään viileämpinä, ja lämminvesivaraaja lämmitetään vasta paluuta edeltävänä yönä. Turvarajat ",
-  "x-where": "ui/smart_heating_pages.dart:791"
+  "x-where": "ui/smart_heating_pages.dart:782"
  },
  "s2ebf172fad": "Starts",
  "@s2ebf172fad": {
   "description": "fi: Alkaa",
-  "x-where": "ui/smart_heating_pages.dart:807"
+  "x-where": "ui/smart_heating_pages.dart:798"
  },
  "s0ba54fbd61": "Return day",
  "@s0ba54fbd61": {
   "description": "fi: Paluupäivä",
-  "x-where": "ui/smart_heating_pages.dart:814"
+  "x-where": "ui/smart_heating_pages.dart:805"
  },
  "s025d1c3db1": "Temperature while away",
  "@s025d1c3db1": {
   "description": "fi: Lämpötila poissa ollessa",
-  "x-where": "ui/smart_heating_pages.dart:819"
+  "x-where": "ui/smart_heating_pages.dart:810"
  },
  "se34a337d6d": "Choose the temperature sensor",
  "@se34a337d6d": {
   "description": "fi: Valitse lämpötila-anturi",
-  "x-where": "ui/smart_heating_pages.dart:883"
+  "x-where": "ui/smart_heating_pages.dart:845"
  },
  "scfa5e7964d": "You can use any tile that shows a temperature: a Shelly add-on sensor, Zigbee or Home Assistant, Airthings, Bosch, Tuya…",
  "@scfa5e7964d": {
   "description": "fi: Voit käyttää mitä tahansa lämpötilaa näyttävää ruutua: Shellyn lisäanturi, Zigbee tai Home Assistant, Airthings, Bosch, ",
-  "x-where": "ui/smart_heating_pages.dart:888"
+  "x-where": "ui/smart_heating_pages.dart:850"
  },
  "s20ec3fcfd8": "There is no temperature tile yet. Add a device with a temperature sensor first.",
  "@s20ec3fcfd8": {
   "description": "fi: Lämpötilaruutua ei ole vielä. Lisää ensin laite, jolla on lämpötila-anturi.",
-  "x-where": "ui/smart_heating_pages.dart:910"
+  "x-where": "ui/smart_heating_pages.dart:872"
  },
  "sf37075044e": "Add a new device",
  "@sf37075044e": {
   "description": "fi: Lisää uusi laite",
-  "x-where": "ui/smart_heating_pages.dart:923"
+  "x-where": "ui/smart_heating_pages.dart:885"
  },
  "se68cc54085": "No sensor",
  "@se68cc54085": {
   "description": "fi: Ei anturia",
-  "x-where": "ui/smart_heating_pages.dart:931"
- },
- "s093677b5f1": "Control mode",
- "@s093677b5f1": {
-  "description": "fi: Ohjaustapa",
-  "x-where": "ui/smart_heating_pages.dart:998"
- },
- "sa6195c2696": "By price",
- "@sa6195c2696": {
-  "description": "fi: Hinnan mukaan",
-  "x-where": "ui/smart_heating_pages.dart:1005"
- },
- "s9d6a4787c0": "By temperature",
- "@s9d6a4787c0": {
-  "description": "fi: Lämpötilan mukaan",
-  "x-where": "ui/smart_heating_pages.dart:1010"
- },
- "s84cf10acfd": "Heating follows the measured temperature like a thermostat. The price rules only move the setpoint: up in cheap hours, down in expensive ones (if set).",
- "@s84cf10acfd": {
-  "description": "fi: Lämmitys seuraa mitattua lämpötilaa kuin termostaatti. Hintasäännöt vain siirtävät tavoitetta: halvoilla tunneilla ylös,",
-  "x-where": "ui/smart_heating_pages.dart:1020"
- },
- "sdf9dc612a6": "Heating follows the electricity price and the weather. A temperature sensor is optional and gives the safety limits.",
- "@sdf9dc612a6": {
-  "description": "fi: Lämmitys noudattaa sähkön hintaa ja säätä. Lämpötila-anturi on valinnainen ja antaa turvarajat.",
-  "x-where": "ui/smart_heating_pages.dart:1025"
- },
- "s01c555401a": "Choose a temperature sensor",
- "@s01c555401a": {
-  "description": "fi: Valitse lämpötila-anturi",
-  "x-where": "ui/smart_heating_pages.dart:1042"
- },
- "s249140bfd0": "Temperature control needs a sensor. Without one, heating follows the price schedule.",
- "@s249140bfd0": {
-  "description": "fi: Lämpötilaohjaus tarvitsee anturin. Ilman sitä lämmitys noudattaa hintaohjausta.",
-  "x-where": "ui/smart_heating_pages.dart:1046"
+  "x-where": "ui/smart_heating_pages.dart:893"
  },
  "sf9cbe76823": "Price rules",
  "@sf9cbe76823": {
   "description": "fi: Hintasäännöt",
-  "x-where": "ui/smart_heating_pages.dart:1059"
+  "x-where": "ui/smart_heating_pages.dart:989"
  },
  "s8e6c8ffabb": " (recommended)",
  "@s8e6c8ffabb": {
   "description": "fi:  (suositus)",
-  "x-where": "ui/smart_heating_pages.dart:1066"
- },
- "s86c45674db": "Heating hours a day",
- "@s86c45674db": {
-  "description": "fi: Lämmitystunteja päivässä",
-  "x-where": "ui/smart_heating_pages.dart:1078"
- },
- "sbd3dbfd7e9": "Most expensive hours skipped",
- "@sbd3dbfd7e9": {
-  "description": "fi: Ohitettavia kalleimpia tunteja",
-  "x-where": "ui/smart_heating_pages.dart:1092"
+  "x-where": "ui/smart_heating_pages.dart:996"
  },
  "s1f32a43166": "Today''s price limit: skipped when the price is {p0} c/kWh or more.",
  "@s1f32a43166": {
   "description": "fi: Tämän päivän hintaraja: ohitetaan, kun hinta on vähintään {p0} c/kWh.",
-  "x-where": "ui/smart_heating_pages.dart:1108",
+  "x-where": "ui/smart_heating_pages.dart:1038",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -6781,7 +6972,7 @@
  "s3c010a59e8": "Today''s price limit: on when the price is {p0} c/kWh or less.",
  "@s3c010a59e8": {
   "description": "fi: Tämän päivän hintaraja: päällä, kun hinta on enintään {p0} c/kWh.",
-  "x-where": "ui/smart_heating_pages.dart:1113",
+  "x-where": "ui/smart_heating_pages.dart:1043",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -6791,67 +6982,67 @@
  "s68b3688217": "Setpoint down in expensive hours",
  "@s68b3688217": {
   "description": "fi: Tavoite alas kalliilla tunneilla",
-  "x-where": "ui/smart_heating_pages.dart:1125"
+  "x-where": "ui/smart_heating_pages.dart:1055"
  },
  "s108a800ffc": "not used",
  "@s108a800ffc": {
   "description": "fi: ei käytössä",
-  "x-where": "ui/smart_heating_pages.dart:1131"
+  "x-where": "ui/smart_heating_pages.dart:1061"
  },
  "sb35d5f8afd": "Setpoint up in cheap hours",
  "@sb35d5f8afd": {
   "description": "fi: Tavoite ylös halvoilla tunneilla",
-  "x-where": "ui/smart_heating_pages.dart:1139"
+  "x-where": "ui/smart_heating_pages.dart:1069"
  },
  "sd82fb84485": "Temperature limits",
  "@sd82fb84485": {
   "description": "fi: Lämpötilarajat",
-  "x-where": "ui/smart_heating_pages.dart:1154"
+  "x-where": "ui/smart_heating_pages.dart:1084"
  },
  "s510de048b8": "Setpoint",
  "@s510de048b8": {
   "description": "fi: Tavoitelämpötila",
-  "x-where": "ui/smart_heating_pages.dart:1159"
+  "x-where": "ui/smart_heating_pages.dart:1089"
  },
  "s017c87df20": "Comfort temperature",
  "@s017c87df20": {
   "description": "fi: Mukavuuslämpötila",
-  "x-where": "ui/smart_heating_pages.dart:1160"
+  "x-where": "ui/smart_heating_pages.dart:1090"
  },
  "sdb145487c3": "Minimum temperature (safety limit)",
  "@sdb145487c3": {
   "description": "fi: Vähimmäislämpötila (turvaraja)",
-  "x-where": "ui/smart_heating_pages.dart:1172"
+  "x-where": "ui/smart_heating_pages.dart:1102"
  },
  "s0c40392b6a": "No sensor – the safety limits are not active",
  "@s0c40392b6a": {
   "description": "fi: Ei anturia – turvarajat eivät ole käytössä",
-  "x-where": "ui/smart_heating_pages.dart:1207"
+  "x-where": "ui/smart_heating_pages.dart:1137"
  },
  "scf2e61da2c": "not answering",
  "@scf2e61da2c": {
   "description": "fi: ei vastaa",
-  "x-where": "ui/smart_heating_pages.dart:1212"
+  "x-where": "ui/smart_heating_pages.dart:1142"
  },
  "s6a37cdb806": "Delays",
  "@s6a37cdb806": {
   "description": "fi: Viiveet",
-  "x-where": "ui/smart_heating_pages.dart:1218"
+  "x-where": "ui/smart_heating_pages.dart:1148"
  },
  "s1f3d8e19f4": "Longest break at a time",
  "@s1f3d8e19f4": {
   "description": "fi: Pisin tauko kerrallaan",
-  "x-where": "ui/smart_heating_pages.dart:1222"
+  "x-where": "ui/smart_heating_pages.dart:1152"
  },
  "s061c02e7ea": "Minimum times: no limit (Advanced).",
  "@s061c02e7ea": {
   "description": "fi: Vähimmäisajat: ei rajoitusta (Edistyneet).",
-  "x-where": "ui/smart_heating_pages.dart:1235"
+  "x-where": "ui/smart_heating_pages.dart:1165"
  },
  "se7bc20343e": "Minimum on time {p0} min, off {p1} min.",
  "@se7bc20343e": {
   "description": "fi: Vähimmäisaika päällä {p0} min, pois {p1} min.",
-  "x-where": "ui/smart_heating_pages.dart:1236",
+  "x-where": "ui/smart_heating_pages.dart:1170",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -6864,17 +7055,17 @@
  "sa35e3e99f4": "Control on",
  "@sa35e3e99f4": {
   "description": "fi: Ohjaus käytössä",
-  "x-where": "ui/smart_heating_pages.dart:1252"
+  "x-where": "ui/smart_heating_pages.dart:1181"
  },
  "sd8084282ca": "Hysteresis (deadband)",
  "@sd8084282ca": {
   "description": "fi: Hystereesi (kuollut alue)",
-  "x-where": "ui/smart_heating_pages.dart:1262"
+  "x-where": "ui/smart_heating_pages.dart:1191"
  },
  "s3bded44765": "On below {p0} °C, off above {p1} °C (before any price shift).",
  "@s3bded44765": {
   "description": "fi: Päälle alle {p0} °C, pois yli {p1} °C (hinnan siirtämättä).",
-  "x-where": "ui/smart_heating_pages.dart:1276",
+  "x-where": "ui/smart_heating_pages.dart:1205",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -6887,52 +7078,52 @@
  "s3df29f3fca": "When the sensor is not answering",
  "@s3df29f3fca": {
   "description": "fi: Kun anturi ei vastaa",
-  "x-where": "ui/smart_heating_pages.dart:1288"
+  "x-where": "ui/smart_heating_pages.dart:1217"
  },
  "s5f9a56b766": "Follow the price schedule",
  "@s5f9a56b766": {
   "description": "fi: Noudata hintaohjausta",
-  "x-where": "ui/smart_heating_pages.dart:1293"
+  "x-where": "ui/smart_heating_pages.dart:1222"
  },
  "scc764046c2": "Keep on",
  "@scc764046c2": {
   "description": "fi: Pidä päällä",
-  "x-where": "ui/smart_heating_pages.dart:1295"
+  "x-where": "ui/smart_heating_pages.dart:1224"
  },
  "sd50c0e6c4d": "Keep off",
  "@sd50c0e6c4d": {
   "description": "fi: Pidä pois",
-  "x-where": "ui/smart_heating_pages.dart:1296"
+  "x-where": "ui/smart_heating_pages.dart:1225"
  },
  "s64540136ff": "Minimum on time",
  "@s64540136ff": {
   "description": "fi: Vähimmäisaika päällä",
-  "x-where": "ui/smart_heating_pages.dart:1307"
+  "x-where": "ui/smart_heating_pages.dart:1236"
  },
  "s5e55e17318": "no limit",
  "@s5e55e17318": {
   "description": "fi: ei rajaa",
-  "x-where": "ui/smart_heating_pages.dart:1313"
+  "x-where": "ui/smart_heating_pages.dart:1242"
  },
  "s21713a2177": "Minimum off time",
  "@s21713a2177": {
   "description": "fi: Vähimmäisaika pois",
-  "x-where": "ui/smart_heating_pages.dart:1321"
+  "x-where": "ui/smart_heating_pages.dart:1250"
  },
  "s347ce4c3d2": "Reduce in fireplace mode",
  "@s347ce4c3d2": {
   "description": "fi: Vähennä takka-tilassa",
-  "x-where": "ui/smart_heating_pages.dart:1337"
+  "x-where": "ui/smart_heating_pages.dart:1266"
  },
  "s6f88da6bab": "The thermostat target is set by this; the thermostat''s own temperature is the comfort temperature.",
  "@s6f88da6bab": {
   "description": "fi: Termostaatin tavoitelämpö asetetaan tämän mukaan; termostaatin oma lämpötila on mukavuuslämpötila.",
-  "x-where": "ui/smart_heating_pages.dart:1346"
+  "x-where": "ui/smart_heating_pages.dart:1275"
  },
  "s87cdb30352": "Estimate: about {p0} kWh a day at 0 °C (whole house).",
  "@s87cdb30352": {
   "description": "fi: Arvio: noin {p0} kWh vuorokaudessa 0 °C:n pakkasella (koko talo).",
-  "x-where": "ui/smart_heating_pages.dart:1357",
+  "x-where": "ui/smart_heating_pages.dart:1286",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -6942,72 +7133,72 @@
  "sc161d1f9d9": "How is the house heated? Choose all.",
  "@sc161d1f9d9": {
   "description": "fi: Millä talo lämpiää? Valitse kaikki.",
-  "x-where": "ui/smart_heating_pages.dart:1432"
+  "x-where": "ui/smart_heating_pages.dart:1361"
  },
  "saac00e587b": "Insulation",
  "@saac00e587b": {
   "description": "fi: Eristys",
-  "x-where": "ui/smart_heating_pages.dart:1453"
+  "x-where": "ui/smart_heating_pages.dart:1382"
  },
  "s9f103f81c0": "Poor",
  "@s9f103f81c0": {
   "description": "fi: Heikko",
-  "x-where": "ui/smart_heating_pages.dart:1458"
+  "x-where": "ui/smart_heating_pages.dart:1387"
  },
  "sd51256a0f5": "Average",
  "@sd51256a0f5": {
   "description": "fi: Tavallinen",
-  "x-where": "ui/smart_heating_pages.dart:1459"
+  "x-where": "ui/smart_heating_pages.dart:1388"
  },
  "sd5ebaf8a4c": "Good",
  "@sd5ebaf8a4c": {
   "description": "fi: Hyvä",
-  "x-where": "ui/smart_heating_pages.dart:1460"
+  "x-where": "ui/smart_heating_pages.dart:1389"
  },
  "sf584870588": "Heated area",
  "@sf584870588": {
   "description": "fi: Lämmitetty pinta-ala",
-  "x-where": "ui/smart_heating_pages.dart:1470"
+  "x-where": "ui/smart_heating_pages.dart:1399"
  },
  "s97235bfadb": "Allowed temperature swing",
  "@s97235bfadb": {
   "description": "fi: Sallittu lämpötilan vaihtelu",
-  "x-where": "ui/smart_heating_pages.dart:1476"
+  "x-where": "ui/smart_heating_pages.dart:1405"
  },
  "s6df5f06d38": "The more the temperature may vary, the more heating can move to cheap hours.",
  "@s6df5f06d38": {
   "description": "fi: Mitä enemmän lämpö saa vaihdella, sitä enemmän lämmitystä voidaan siirtää halvoille tunneille.",
-  "x-where": "ui/smart_heating_pages.dart:1485"
+  "x-where": "ui/smart_heating_pages.dart:1414"
  },
  "s07077e2778": "The house has a fireplace or storing stove",
  "@s07077e2778": {
   "description": "fi: Talossa on takka tai varaava uuni",
-  "x-where": "ui/smart_heating_pages.dart:1495"
+  "x-where": "ui/smart_heating_pages.dart:1424"
  },
  "sab28f61fad": "Choose what controls each heating: a relay or plug (on/off) or a Molaplan thermostat (target temperature).",
  "@sab28f61fad": {
   "description": "fi: Valitse, mikä laite ohjaa kutakin lämmitystä: rele tai pistorasia (päälle/pois) tai Molaplanin termostaatti (tavoitelämp",
-  "x-where": "ui/smart_heating_pages.dart:1511"
+  "x-where": "ui/smart_heating_pages.dart:1440"
  },
  "s90ae2f4451": "No controllable devices yet. Add a relay or a thermostat first; you can come back to the survey later.",
  "@s90ae2f4451": {
   "description": "fi: Ei vielä ohjattavia laitteita. Lisää ensin rele tai termostaatti; voit palata kartoitukseen myöhemmin.",
-  "x-where": "ui/smart_heating_pages.dart:1521"
+  "x-where": "ui/smart_heating_pages.dart:1450"
  },
  "sf7b3494ee1": "Controlling device",
  "@sf7b3494ee1": {
   "description": "fi: Ohjaava laite",
-  "x-where": "ui/smart_heating_pages.dart:1539"
+  "x-where": "ui/smart_heating_pages.dart:1468"
  },
  "se7ffc07763": "Not controlled",
  "@se7ffc07763": {
   "description": "fi: Ei ohjata",
-  "x-where": "ui/smart_heating_pages.dart:1541"
+  "x-where": "ui/smart_heating_pages.dart:1470"
  },
  "s5835dc3308": "Thermostat: {p0}",
  "@s5835dc3308": {
   "description": "fi: Termostaatti: {p0}",
-  "x-where": "ui/smart_heating_pages.dart:1546",
+  "x-where": "ui/smart_heating_pages.dart:1475",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -7017,17 +7208,17 @@
  "s075ddc6f0d": "Room temperature sensor (recommended)",
  "@s075ddc6f0d": {
   "description": "fi: Huoneen lämpöanturi (suositus)",
-  "x-where": "ui/smart_heating_pages.dart:1574"
+  "x-where": "ui/smart_heating_pages.dart:1503"
  },
  "s016c02be08": "Recommended settings",
  "@s016c02be08": {
   "description": "fi: Suositellut asetukset",
-  "x-where": "ui/smart_heating_pages.dart:1593"
+  "x-where": "ui/smart_heating_pages.dart:1522"
  },
  "s013bbafbec": "Skips the {p0} most expensive hours a day, at most {p1} h at a time.",
  "@s013bbafbec": {
   "description": "fi: Ohitetaan {p0} kalleinta tuntia päivässä, enintään {p1} h kerrallaan.",
-  "x-where": "ui/smart_heating_pages.dart:1609",
+  "x-where": "ui/smart_heating_pages.dart:1538",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -7040,7 +7231,7 @@
  "se67c73d855": "About {p0} heating hours a day at 0 °C.",
  "@se67c73d855": {
   "description": "fi: Noin {p0} lämmitystuntia päivässä 0 °C:ssa.",
-  "x-where": "ui/smart_heating_pages.dart:1615",
+  "x-where": "ui/smart_heating_pages.dart:1544",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -7050,42 +7241,42 @@
  "sb7524487f9": "No controlling device – not controlled.",
  "@sb7524487f9": {
   "description": "fi: Ei ohjaavaa laitetta – ei ohjata.",
-  "x-where": "ui/smart_heating_pages.dart:1621"
+  "x-where": "ui/smart_heating_pages.dart:1550"
  },
  "sad1fbf7d03": "Tap \"Fireplace lit\" after lighting it: electric heating is reduced for 12–24 h or until the sensor shows cooling.",
  "@sad1fbf7d03": {
   "description": "fi: Paina \"Takka lämmitetty\", kun takka on lämmitetty: sähkölämmitystä vähennetään 12–24 tunniksi tai kunnes anturi näyttää ",
-  "x-where": "ui/smart_heating_pages.dart:1634"
+  "x-where": "ui/smart_heating_pages.dart:1563"
  },
  "sfb41f90571": "You can change the method and numbers later on the device page under Advanced.",
  "@sfb41f90571": {
   "description": "fi: Voit muuttaa ohjaustapaa ja lukuja myöhemmin laitteen sivulla kohdassa Edistyneet.",
-  "x-where": "ui/smart_heating_pages.dart:1643"
+  "x-where": "ui/smart_heating_pages.dart:1572"
  },
  "sa3a093e55e": "Heating",
  "@sa3a093e55e": {
   "description": "fi: Lämmitys",
-  "x-where": "ui/smart_heating_pages.dart:1658"
+  "x-where": "ui/smart_heating_pages.dart:1587"
  },
  "s1706667040": "House",
  "@s1706667040": {
   "description": "fi: Talo",
-  "x-where": "ui/smart_heating_pages.dart:1659"
+  "x-where": "ui/smart_heating_pages.dart:1588"
  },
  "s84005ad77c": "Devices",
  "@s84005ad77c": {
   "description": "fi: Laitteet",
-  "x-where": "ui/smart_heating_pages.dart:1660"
+  "x-where": "ui/smart_heating_pages.dart:1589"
  },
  "s023d14fd87": "Recommendation",
  "@s023d14fd87": {
   "description": "fi: Suositus",
-  "x-where": "ui/smart_heating_pages.dart:1661"
+  "x-where": "ui/smart_heating_pages.dart:1590"
  },
  "sfde6663859": "Survey {p0}/4: {p1}",
  "@sfde6663859": {
   "description": "fi: Kartoitus {p0}/4: {p1}",
-  "x-where": "ui/smart_heating_pages.dart:1666",
+  "x-where": "ui/smart_heating_pages.dart:1595",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -7098,7 +7289,7 @@
  "sda588a203b": "Use these",
  "@sda588a203b": {
   "description": "fi: Ota käyttöön",
-  "x-where": "ui/smart_heating_pages.dart:1684"
+  "x-where": "ui/smart_heating_pages.dart:1613"
  },
  "sba1684ff6c": "not yet",
  "@sba1684ff6c": {
@@ -7270,11 +7461,6 @@
  "@s3cc31bcfdc": {
   "description": "fi: Valitse laturi (lataus päälle/pois)",
   "x-where": "ui/automation_pages.dart:410"
- },
- "s354eb362d8": "Choose the device",
- "@s354eb362d8": {
-  "description": "fi: Valitse laite",
-  "x-where": "ui/automation_pages.dart:430"
  },
  "s73a65d7dff": "Choose the devices",
  "@s73a65d7dff": {
@@ -8290,11 +8476,6 @@
   "description": "fi: Montako tuntia päällä",
   "x-where": "ui/price_rules_page.dart:278"
  },
- "s52ef5e0b45": "Price limit",
- "@s52ef5e0b45": {
-  "description": "fi: Hintaraja",
-  "x-where": "ui/price_rules_page.dart:306"
- },
  "s993193d056": "Upcoming on-times",
  "@s993193d056": {
   "description": "fi: Tulevat päälläoloajat",
@@ -8802,11 +8983,6 @@
  "@s1790a71e85": {
   "description": "fi: esim. Olohuone",
   "x-where": "ui/thermostat_pages.dart:649"
- },
- "sd5f46903a1": "Target temperature",
- "@sd5f46903a1": {
-  "description": "fi: Tavoitelämpötila",
-  "x-where": "ui/thermostat_pages.dart:675"
  },
  "s6de95e582f": "If the temperature is lost",
  "@s6de95e582f": {
@@ -17221,17 +17397,17 @@
  "sa2dc343545": "Fireplace mode ended: the room is cooling. Heating is back to normal.",
  "@sa2dc343545": {
   "description": "fi: Takka-tila päättyi: huone on alkanut jäähtyä. Lämmitys palaa normaaliksi.",
-  "x-where": "energy/smart_heating.dart:1337"
+  "x-where": "energy/smart_heating.dart:1423"
  },
  "s78afbd052c": "Fireplace mode ended (time is up). Heating is back to normal.",
  "@s78afbd052c": {
   "description": "fi: Takka-tila päättyi (aika täynnä). Lämmitys palaa normaaliksi.",
-  "x-where": "energy/smart_heating.dart:1341"
+  "x-where": "energy/smart_heating.dart:1427"
  },
  "s1f08341033": "Fireplace mode stopped. Heating is back to normal.",
  "@s1f08341033": {
   "description": "fi: Takka-tila lopetettiin. Lämmitys palaa normaaliksi.",
-  "x-where": "energy/smart_heating.dart:1345"
+  "x-where": "energy/smart_heating.dart:1431"
  },
  "sdd5e97b1e2": "Clear",
  "@sdd5e97b1e2": {
@@ -17630,20 +17806,35 @@
   "description": "fi: Laitteelle ei ole päälle/pois-komentoa",
   "x-where": "energy/heating_explain.dart:88"
  },
+ "s7a71f285ef": "The home bridge is offline",
+ "@s7a71f285ef": {
+  "description": "fi: Kotisilta ei ole yhteydessä",
+  "x-where": "energy/heating_explain.dart:91"
+ },
+ "sa3ca79fa2c": "The home bridge {p0} is offline",
+ "@sa3ca79fa2c": {
+  "description": "fi: Kotisilta {p0} ei ole yhteydessä",
+  "x-where": "energy/heating_explain.dart:92",
+  "placeholders": {
+   "p0": {
+    "type": "String"
+   }
+  }
+ },
  "sd0e9fc6760": "The control did not work",
  "@sd0e9fc6760": {
   "description": "fi: Ohjaus ei onnistunut",
-  "x-where": "energy/heating_explain.dart:89"
+  "x-where": "energy/heating_explain.dart:93"
  },
  "s340968669a": "the device",
  "@s340968669a": {
   "description": "fi: laite",
-  "x-where": "energy/heating_explain.dart:96"
+  "x-where": "energy/heating_explain.dart:104"
  },
  "s151c5be078": "The home bridge cannot reach the address of {p0}: it is most likely on another network than {p0}. This device can reach it, which is why the other tiles work.",
  "@s151c5be078": {
   "description": "fi: Kotisilta ei pääse osoitteeseen, jossa {p0} on: se on todennäköisesti toisessa verkossa kuin {p1}. Tämä laite pääsee sii",
-  "x-where": "energy/heating_explain.dart:103",
+  "x-where": "energy/heating_explain.dart:111",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -17653,10 +17844,15 @@
    }
   }
  },
+ "saca21d4cb4": "This program runs on a home bridge the app cannot reach right now. It keeps running there on its last settings, but its state cannot be refreshed and setting changes cannot be sent.",
+ "@saca21d4cb4": {
+  "description": "fi: Tämä ohjelma ajetaan kotisillalla, johon sovellus ei nyt saa yhteyttä. Ohjelma jatkaa siellä itsenäisesti viimeisten ase",
+  "x-where": "energy/heating_explain.dart:117"
+ },
  "s99ea566004": "The home bridge could not connect to {p0}. It is switched off, off the network, or the bridge is on another network.",
  "@s99ea566004": {
   "description": "fi: Kotisilta ei saanut yhteyttä laitteeseen {p0}. Se on pois päältä, poissa verkosta tai kotisilta on eri verkossa.",
-  "x-where": "energy/heating_explain.dart:109",
+  "x-where": "energy/heating_explain.dart:121",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -17666,127 +17862,147 @@
  "sb32685da2f": "Put the home bridge on the same network as the device: open Molaplan on an always-on device in the device''s network (e.g. a PC or tablet at home) and choose Settings → Remote access → Use this device as the home bridge. Then pair your phone and PC with it again.",
  "@sb32685da2f": {
   "description": "fi: Aseta kotisilta samaan verkkoon laitteen kanssa: avaa Molaplan aina päällä olevalla laitteella, joka on laitteen verkoss",
-  "x-where": "energy/heating_explain.dart:126"
+  "x-where": "energy/heating_explain.dart:138"
  },
  "s22dde7740f": "Or control the device through a connection the bridge can reach from anywhere (for example the maker''s cloud, like Shelly Cloud).",
  "@s22dde7740f": {
   "description": "fi: Tai ohjaa laitetta sellaisella yhteydellä, jonka kotisilta tavoittaa mistä tahansa (esim. valmistajan pilvi, kuten Shell",
-  "x-where": "energy/heating_explain.dart:130"
+  "x-where": "energy/heating_explain.dart:142"
  },
  "sd4f0e6f8e1": "Check that the device is switched on and its power and Wi-Fi light is on.",
  "@sd4f0e6f8e1": {
   "description": "fi: Tarkista, että laite on päällä ja sen virta- ja Wi-Fi-valo palaa.",
-  "x-where": "energy/heating_explain.dart:135"
+  "x-where": "energy/heating_explain.dart:147"
  },
  "s8277eb958e": "Check that the device and the home bridge are on the same network (the first three numbers of their addresses are the same).",
  "@s8277eb958e": {
   "description": "fi: Tarkista, että laite ja kotisilta ovat samassa verkossa (osoitteiden kolme ensimmäistä numeroa ovat samat).",
-  "x-where": "energy/heating_explain.dart:139"
+  "x-where": "energy/heating_explain.dart:151"
  },
  "sab9dae06af": "If the device''s address has changed, update it in the connection settings.",
  "@sab9dae06af": {
   "description": "fi: Jos laitteen osoite on vaihtunut, päivitä se yhteyden asetuksista.",
-  "x-where": "energy/heating_explain.dart:143"
+  "x-where": "energy/heating_explain.dart:155"
  },
  "sdafab85176": "Smart heating retries every minute. Until then the relay stays in its last state and the heating is not controlled.",
  "@sdafab85176": {
   "description": "fi: Älykäs lämmitys yrittää uudelleen minuutin välein. Siihen asti rele pysyy viimeisessä tilassaan eikä lämmitys ohjaudu.",
-  "x-where": "energy/heating_explain.dart:148"
+  "x-where": "energy/heating_explain.dart:160"
+ },
+ "s3eb269a14c": "Check that the device acting as the home bridge is on, Molaplan is running on it, and it is online.",
+ "@s3eb269a14c": {
+  "description": "fi: Tarkista, että kotisiltana toimiva laite on päällä, siinä on Molaplan käynnissä ja se on verkossa.",
+  "x-where": "energy/heating_explain.dart:167"
+ },
+ "se3dee57a24": "The program does not stop: the bridge follows the last settings it received until the connection is back.",
+ "@se3dee57a24": {
+  "description": "fi: Ohjelma ei lopeta: kotisilta noudattaa viimeksi saamiaan asetuksia, kunnes yhteys palaa.",
+  "x-where": "energy/heating_explain.dart:171"
+ },
+ "s0ddffa32c3": "When the connection is back, this device sends any waiting changes automatically. If you moved the program to another bridge, the old one stops it as soon as it is online again.",
+ "@s0ddffa32c3": {
+  "description": "fi: Kun yhteys palaa, tämä laite lähettää odottavat muutokset automaattisesti. Jos siirsit ohjelman toiselle kotisillalle, v",
+  "x-where": "energy/heating_explain.dart:175"
  },
  "s5a3b74d726": "Open the device connection and check the username and password.",
  "@s5a3b74d726": {
   "description": "fi: Avaa laitteen yhteys ja tarkista käyttäjätunnus ja salasana.",
-  "x-where": "energy/heating_explain.dart:155"
+  "x-where": "energy/heating_explain.dart:182"
  },
  "s7157b2a937": "Open the relay tile and check its address and on/off commands.",
  "@s7157b2a937": {
   "description": "fi: Avaa releen ruutu ja tarkista osoite sekä päälle/pois-komennot.",
-  "x-where": "energy/heating_explain.dart:163"
+  "x-where": "energy/heating_explain.dart:190"
  },
  "s419117d6ca": "Restart the device (power off and on).",
  "@s419117d6ca": {
   "description": "fi: Käynnistä laite uudelleen (virta pois ja päälle).",
-  "x-where": "energy/heating_explain.dart:170"
+  "x-where": "energy/heating_explain.dart:197"
  },
  "sc28a06ee09": "If the error continues, check the device settings and firmware.",
  "@sc28a06ee09": {
   "description": "fi: Jos virhe jatkuu, tarkista laitteen asetukset ja ohjelmisto.",
-  "x-where": "energy/heating_explain.dart:171"
+  "x-where": "energy/heating_explain.dart:198"
  },
  "s8e9e56f68f": "See the exact reason under Technical details.",
  "@s8e9e56f68f": {
   "description": "fi: Katso tarkempi syy kohdasta Tekniset tiedot.",
-  "x-where": "energy/heating_explain.dart:177"
+  "x-where": "energy/heating_explain.dart:204"
  },
  "sc056006180": "Check that the device is on and on the same network as the home bridge. Smart heating retries every minute; until it works the device stays in its current state.",
  "@sc056006180": {
   "description": "fi: Tarkista, että laite on päällä ja samassa verkossa kotisillan kanssa. Älykäs lämmitys yrittää uudelleen minuutin välein;",
-  "x-where": "energy/heating_explain.dart:183"
+  "x-where": "energy/heating_explain.dart:210"
+ },
+ "seca484252c": "The program keeps running on the bridge by itself. Check that the bridge is on and online.",
+ "@seca484252c": {
+  "description": "fi: Ohjelma jatkaa kotisillalla itsenäisesti. Tarkista, että kotisilta on päällä ja verkossa.",
+  "x-where": "energy/heating_explain.dart:214"
  },
  "s7a1cda0d24": "Check the device password in the connection settings.",
  "@s7a1cda0d24": {
   "description": "fi: Tarkista laitteen salasana yhteyden asetuksista.",
-  "x-where": "energy/heating_explain.dart:187"
+  "x-where": "energy/heating_explain.dart:218"
  },
  "s4dc27a3272": "Check the device address and command in the tile settings.",
  "@s4dc27a3272": {
   "description": "fi: Tarkista laitteen osoite ja komento ruudun asetuksista.",
-  "x-where": "energy/heating_explain.dart:191"
+  "x-where": "energy/heating_explain.dart:222"
  },
  "s54dbdeb56b": "The device answered but did not accept the command. Try restarting the device.",
  "@s54dbdeb56b": {
   "description": "fi: Laite vastasi mutta ei hyväksynyt komentoa. Kokeile käynnistää laite uudelleen.",
-  "x-where": "energy/heating_explain.dart:195"
+  "x-where": "energy/heating_explain.dart:226"
  },
  "s7279e2bdb1": "Manual override",
  "@s7279e2bdb1": {
   "description": "fi: Manuaalinen ohitus",
-  "x-where": "energy/heating_explain.dart:268"
+  "x-where": "energy/heating_explain.dart:300"
  },
  "s8accab3bb7": "Price shifts the setpoint",
  "@s8accab3bb7": {
   "description": "fi: Hinta siirtää tavoitetta",
-  "x-where": "energy/heating_explain.dart:272"
+  "x-where": "energy/heating_explain.dart:304"
  },
  "s78188d956e": "Room warm enough",
  "@s78188d956e": {
   "description": "fi: Huone riittävän lämmin",
-  "x-where": "energy/heating_explain.dart:273"
+  "x-where": "energy/heating_explain.dart:305"
  },
  "saa76f06f20": "Skipping expensive hours",
  "@saa76f06f20": {
   "description": "fi: Kalleimpien tuntien ohitus",
-  "x-where": "energy/heating_explain.dart:275"
+  "x-where": "energy/heating_explain.dart:308"
  },
  "s846c49053e": "Longest break",
  "@s846c49053e": {
   "description": "fi: Pisin tauko",
-  "x-where": "energy/heating_explain.dart:277"
+  "x-where": "energy/heating_explain.dart:310"
  },
  "se79c5ead71": "Price data",
  "@se79c5ead71": {
   "description": "fi: Hintatiedot",
-  "x-where": "energy/heating_explain.dart:280"
+  "x-where": "energy/heating_explain.dart:313"
  },
  "sa30e1a2c14": "Temperature sensor",
  "@sa30e1a2c14": {
   "description": "fi: Lämpöanturi",
-  "x-where": "energy/heating_explain.dart:281"
+  "x-where": "energy/heating_explain.dart:314"
  },
  "s39147d043d": "Not in use",
  "@s39147d043d": {
   "description": "fi: Ei käytössä",
-  "x-where": "energy/heating_explain.dart:292"
+  "x-where": "energy/heating_explain.dart:325"
  },
  "s7d4144c0a0": "No temperature – cannot be checked",
  "@s7d4144c0a0": {
   "description": "fi: Ei lämpötilaa – ei voi tarkistaa",
-  "x-where": "energy/heating_explain.dart:293"
+  "x-where": "energy/heating_explain.dart:326"
  },
  "s70d66e5f81": "{p0} °C is below {p1} °C – heating on",
  "@s70d66e5f81": {
   "description": "fi: {p0} °C on alle {p1} °C – lämmitys päällä",
-  "x-where": "energy/heating_explain.dart:295",
+  "x-where": "energy/heating_explain.dart:328",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -17799,7 +18015,7 @@
  "sd93442ff7c": "{p0} °C, limit {p1} °C",
  "@sd93442ff7c": {
   "description": "fi: {p0} °C, raja {p1} °C",
-  "x-where": "energy/heating_explain.dart:299",
+  "x-where": "energy/heating_explain.dart:332",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -17812,7 +18028,7 @@
  "s9bf02da8ca": "On for {p0} (until {p1})",
  "@s9bf02da8ca": {
   "description": "fi: Päällä {p0} (asti {p1})",
-  "x-where": "energy/heating_explain.dart:312",
+  "x-where": "energy/heating_explain.dart:345",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -17825,7 +18041,7 @@
  "sb8c4753e09": "Off for {p0} (until {p1})",
  "@sb8c4753e09": {
   "description": "fi: Pois {p0} (asti {p1})",
-  "x-where": "energy/heating_explain.dart:313",
+  "x-where": "energy/heating_explain.dart:346",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -17838,12 +18054,12 @@
  "sc9f92f4156": "The fireplace heats: electric heating is reduced",
  "@sc9f92f4156": {
   "description": "fi: Takka lämmittää: sähkölämmitystä vähennetään",
-  "x-where": "energy/heating_explain.dart:316"
+  "x-where": "energy/heating_explain.dart:349"
  },
  "sf78c1a349f": "Away: keeping {p0} °C",
  "@sf78c1a349f": {
   "description": "fi: Poissa: pidetään {p0} °C",
-  "x-where": "energy/heating_explain.dart:320",
+  "x-where": "energy/heating_explain.dart:353",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -17853,12 +18069,12 @@
  "s5faeeab2c8": "Not in force now",
  "@s5faeeab2c8": {
   "description": "fi: Ei voimassa nyt",
-  "x-where": "energy/heating_explain.dart:322"
+  "x-where": "energy/heating_explain.dart:355"
  },
  "s2226c324ef": "The sensor is not answering – {p0}",
  "@s2226c324ef": {
   "description": "fi: Anturi ei vastaa – {p0}",
-  "x-where": "energy/heating_explain.dart:325",
+  "x-where": "energy/heating_explain.dart:358",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -17868,7 +18084,7 @@
  "se363372312": "{p0} °C, setpoint {p1} °C ± {p2} °C (on below {p3}, off above {p4} °C)",
  "@se363372312": {
   "description": "fi: {p0} °C, tavoite {p1} °C ± {p2} °C (päällä alle {p3}, pois yli {p4} °C)",
-  "x-where": "energy/heating_explain.dart:330",
+  "x-where": "energy/heating_explain.dart:363",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -17890,12 +18106,12 @@
  "s0f95c71a7a": "No change in this hour",
  "@s0f95c71a7a": {
   "description": "fi: Ei muutosta tällä tunnilla",
-  "x-where": "energy/heating_explain.dart:337"
+  "x-where": "energy/heating_explain.dart:370"
  },
  "sc634878941": "Cheap hour: setpoint +{p0} °C",
  "@sc634878941": {
   "description": "fi: Halpa tunti: tavoite +{p0} °C",
-  "x-where": "energy/heating_explain.dart:339",
+  "x-where": "energy/heating_explain.dart:372",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -17905,7 +18121,7 @@
  "sedcfc0a927": "Expensive hour: setpoint {p0} °C",
  "@sedcfc0a927": {
   "description": "fi: Kallis tunti: tavoite {p0} °C",
-  "x-where": "energy/heating_explain.dart:340",
+  "x-where": "energy/heating_explain.dart:373",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -17915,7 +18131,7 @@
  "s642427fe2b": "{p0} °C ≥ {p1} °C – not heating",
  "@s642427fe2b": {
   "description": "fi: {p0} °C ≥ {p1} °C – ei lämmitetä",
-  "x-where": "energy/heating_explain.dart:343",
+  "x-where": "energy/heating_explain.dart:376",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -17928,7 +18144,7 @@
  "sda0b91c359": "{p0} °C, upper limit {p1} °C",
  "@sda0b91c359": {
   "description": "fi: {p0} °C, yläraja {p1} °C",
-  "x-where": "energy/heating_explain.dart:346",
+  "x-where": "energy/heating_explain.dart:379",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -17941,7 +18157,26 @@
  "sf3a33e9bc5": "{p0} cheapest hours a day: now {p1} c/kWh {p2} limit {p3} c",
  "@sf3a33e9bc5": {
   "description": "fi: {p0} halvinta tuntia päivässä: nyt {p1} c/kWh {p2} raja {p3} c",
-  "x-where": "energy/heating_explain.dart:352",
+  "x-where": "energy/heating_explain.dart:385",
+  "placeholders": {
+   "p0": {
+    "type": "String"
+   },
+   "p1": {
+    "type": "String"
+   },
+   "p2": {
+    "type": "String"
+   },
+   "p3": {
+    "type": "String"
+   }
+  }
+ },
+ "s5ee0d291a9": "Now {p0} c/kWh {p1} limit {p2} c · {p3} h under the limit today",
+ "@s5ee0d291a9": {
+  "description": "fi: Nyt {p0} c/kWh {p1} raja {p2} c · {p3} h alle rajan tänään",
+  "x-where": "energy/heating_explain.dart:394",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -17960,7 +18195,7 @@
  "s428ce35d71": "{p0} most expensive hours skipped: now {p1} c/kWh {p2} limit {p3} c",
  "@s428ce35d71": {
   "description": "fi: {p0} kalleinta tuntia ohitetaan: nyt {p1} c/kWh {p2} raja {p3} c",
-  "x-where": "energy/heating_explain.dart:361",
+  "x-where": "energy/heating_explain.dart:403",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -17979,12 +18214,12 @@
  "s6200d2086c": "No forecast",
  "@s6200d2086c": {
   "description": "fi: Ei ennustetta",
-  "x-where": "energy/heating_explain.dart:366"
+  "x-where": "energy/heating_explain.dart:408"
  },
  "s29d9986638": "Forecast {p0} °C on average → {p1} heating hours a day",
  "@s29d9986638": {
   "description": "fi: Ennuste keskimäärin {p0} °C → {p1} lämmitystuntia päivässä",
-  "x-where": "energy/heating_explain.dart:367",
+  "x-where": "energy/heating_explain.dart:409",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -17997,12 +18232,12 @@
  "sdcf4412899": "Off for too long – heating for an hour",
  "@sdcf4412899": {
   "description": "fi: Pois ollut liian pitkään – lämmitetään tunti",
-  "x-where": "energy/heating_explain.dart:373"
+  "x-where": "energy/heating_explain.dart:415"
  },
  "s8a9723fbbb": "Off for at most {p0} h at a time",
  "@s8a9723fbbb": {
   "description": "fi: Enintään {p0} h kerrallaan pois",
-  "x-where": "energy/heating_explain.dart:374",
+  "x-where": "energy/heating_explain.dart:416",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -18012,12 +18247,12 @@
  "s9fe316f0b6": "No limit",
  "@s9fe316f0b6": {
   "description": "fi: Ei rajoitusta",
-  "x-where": "energy/heating_explain.dart:377"
+  "x-where": "energy/heating_explain.dart:419"
  },
  "s70094ce99b": "Waiting: at least {p0} min",
  "@s70094ce99b": {
   "description": "fi: Odottaa: vähintään {p0} min",
-  "x-where": "energy/heating_explain.dart:379",
+  "x-where": "energy/heating_explain.dart:421",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -18027,7 +18262,7 @@
  "s71d72597eb": "At least {p0} min",
  "@s71d72597eb": {
   "description": "fi: Vähintään {p0} min",
-  "x-where": "energy/heating_explain.dart:380",
+  "x-where": "energy/heating_explain.dart:422",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -18037,27 +18272,27 @@
  "s84cf358040": "No prices – heating runs normally",
  "@s84cf358040": {
   "description": "fi: Hintoja ei ole – lämmitys toimii tavallisesti",
-  "x-where": "energy/heating_explain.dart:383"
+  "x-where": "energy/heating_explain.dart:425"
  },
  "s0e19d6ac09": "Prices available",
  "@s0e19d6ac09": {
   "description": "fi: Hinnat saatu",
-  "x-where": "energy/heating_explain.dart:384"
+  "x-where": "energy/heating_explain.dart:426"
  },
  "s9583d61085": "No sensor chosen",
  "@s9583d61085": {
   "description": "fi: Ei anturia valittu",
-  "x-where": "energy/heating_explain.dart:387"
+  "x-where": "energy/heating_explain.dart:429"
  },
  "s756b49f274": "Not answering",
  "@s756b49f274": {
   "description": "fi: Ei vastaa",
-  "x-where": "energy/heating_explain.dart:388"
+  "x-where": "energy/heating_explain.dart:430"
  },
  "s3ddc69fd91": "Answering: {p0} °C",
  "@s3ddc69fd91": {
   "description": "fi: Vastaa: {p0} °C",
-  "x-where": "energy/heating_explain.dart:389",
+  "x-where": "energy/heating_explain.dart:431",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -18067,37 +18302,37 @@
  "sa0c950bdca": "Not responding",
  "@sa0c950bdca": {
   "description": "fi: Ei vastaa",
-  "x-where": "energy/heating_explain.dart:392"
+  "x-where": "energy/heating_explain.dart:434"
  },
  "sc3b0eaf426": "Responding",
  "@sc3b0eaf426": {
   "description": "fi: Vastaa",
-  "x-where": "energy/heating_explain.dart:392"
+  "x-where": "energy/heating_explain.dart:434"
  },
  "sa3f65879ff": "heating is kept on",
  "@sa3f65879ff": {
   "description": "fi: lämmitys pidetään päällä",
-  "x-where": "energy/heating_explain.dart:399"
+  "x-where": "energy/heating_explain.dart:441"
  },
  "s5906232c68": "heating is kept off",
  "@s5906232c68": {
   "description": "fi: lämmitys pidetään pois",
-  "x-where": "energy/heating_explain.dart:400"
+  "x-where": "energy/heating_explain.dart:442"
  },
  "sc084b8cbdf": "following the price schedule",
  "@sc084b8cbdf": {
   "description": "fi: noudatetaan hintaohjausta",
-  "x-where": "energy/heating_explain.dart:401"
+  "x-where": "energy/heating_explain.dart:443"
  },
  "s136e7941a4": "DISABLED",
  "@s136e7941a4": {
   "description": "fi: POIS KÄYTÖSTÄ",
-  "x-where": "energy/heating_explain.dart:624"
+  "x-where": "energy/heating_explain.dart:666"
  },
  "s8847ee78e0": "Target {p0} °C",
  "@s8847ee78e0": {
   "description": "fi: Tavoite {p0} °C",
-  "x-where": "energy/heating_explain.dart:626",
+  "x-where": "energy/heating_explain.dart:668",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -18107,27 +18342,27 @@
  "s5811eb3006": "State unknown",
  "@s5811eb3006": {
   "description": "fi: Tila tuntematon",
-  "x-where": "energy/heating_explain.dart:629"
+  "x-where": "energy/heating_explain.dart:671"
  },
  "s6ab8f97950": "ON",
  "@s6ab8f97950": {
   "description": "fi: PÄÄLLÄ",
-  "x-where": "energy/heating_explain.dart:630"
+  "x-where": "energy/heating_explain.dart:672"
  },
  "s509c668d7e": "OFF",
  "@s509c668d7e": {
   "description": "fi: POIS",
-  "x-where": "energy/heating_explain.dart:630"
+  "x-where": "energy/heating_explain.dart:672"
  },
  "sfd2975e5c4": "just now",
  "@sfd2975e5c4": {
   "description": "fi: juuri äsken",
-  "x-where": "energy/heating_explain.dart:641"
+  "x-where": "energy/heating_explain.dart:683"
  },
  "s1cb1af7851": "{p0} ago",
  "@s1cb1af7851": {
   "description": "fi: {p0} sitten",
-  "x-where": "energy/heating_explain.dart:642",
+  "x-where": "energy/heating_explain.dart:684",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -18137,12 +18372,12 @@
  "s04780b98b7": "The device has not answered, its state is not known",
  "@s04780b98b7": {
   "description": "fi: Laite ei ole vastannut, tilaa ei tiedetä",
-  "x-where": "energy/heating_explain.dart:648"
+  "x-where": "energy/heating_explain.dart:690"
  },
  "s69b9359f3f": "Decision: {p0} – the device has not confirmed it",
  "@s69b9359f3f": {
   "description": "fi: Päätös: {p0} – laite ei ole vahvistanut sitä",
-  "x-where": "energy/heating_explain.dart:649",
+  "x-where": "energy/heating_explain.dart:691",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -18152,7 +18387,7 @@
  "s5989e2e782": " (at {p0}, {p1})",
  "@s5989e2e782": {
   "description": "fi:  (klo {p0}, {p1})",
-  "x-where": "energy/heating_explain.dart:657",
+  "x-where": "energy/heating_explain.dart:699",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -18165,7 +18400,7 @@
  "s9cb6ebafaa": "Last set: {p0}{p1} – the decision {p2} did not get through",
  "@s9cb6ebafaa": {
   "description": "fi: Viimeksi ohjattu: {p0}{p1} – päätös {p2} ei mennyt perille",
-  "x-where": "energy/heating_explain.dart:659",
+  "x-where": "energy/heating_explain.dart:701",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -18181,7 +18416,7 @@
  "s9151a2843d": "Last set: {p0}{p1}",
  "@s9151a2843d": {
   "description": "fi: Viimeksi ohjattu: {p0}{p1}",
-  "x-where": "energy/heating_explain.dart:664",
+  "x-where": "energy/heating_explain.dart:706",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -18194,17 +18429,17 @@
  "s70d43f1209": "Control is switched off",
  "@s70d43f1209": {
   "description": "fi: Ohjaus on pois käytöstä",
-  "x-where": "energy/heating_explain.dart:670"
+  "x-where": "energy/heating_explain.dart:712"
  },
  "s4f7ef5d46a": "Sensor not answering – following the price schedule: ",
  "@s4f7ef5d46a": {
   "description": "fi: Anturi ei vastaa – noudatetaan hintaohjausta: ",
-  "x-where": "energy/heating_explain.dart:673"
+  "x-where": "energy/heating_explain.dart:715"
  },
  "s9e31ebc1e8": "Frost protection: {p0} °C is below {p1} °C",
  "@s9e31ebc1e8": {
   "description": "fi: Jäätymissuoja: {p0} °C on alle {p1} °C",
-  "x-where": "energy/heating_explain.dart:678",
+  "x-where": "energy/heating_explain.dart:720",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -18217,7 +18452,7 @@
  "s7cdb2a0cb6": "Temperature {p0} °C below the minimum {p1} °C",
  "@s7cdb2a0cb6": {
   "description": "fi: Lämpötila {p0} °C alle minimin {p1} °C",
-  "x-where": "energy/heating_explain.dart:683",
+  "x-where": "energy/heating_explain.dart:725",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -18230,7 +18465,7 @@
  "sf3b0d012da": "Manual override: on{p0}",
  "@sf3b0d012da": {
   "description": "fi: Manuaalinen ohitus: päällä{p0}",
-  "x-where": "energy/heating_explain.dart:692",
+  "x-where": "energy/heating_explain.dart:734",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -18240,7 +18475,7 @@
  "s14be0441f7": "Manual override: off{p0}",
  "@s14be0441f7": {
   "description": "fi: Manuaalinen ohitus: pois{p0}",
-  "x-where": "energy/heating_explain.dart:693",
+  "x-where": "energy/heating_explain.dart:735",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -18250,22 +18485,22 @@
  "sd735da4378": "Fireplace mode: electric heating is reduced",
  "@sd735da4378": {
   "description": "fi: Takka-tila: sähkölämmitystä vähennetään",
-  "x-where": "energy/heating_explain.dart:695"
+  "x-where": "energy/heating_explain.dart:737"
  },
  "s482b48b34c": "Holiday mode: the room is kept cooler",
  "@s482b48b34c": {
   "description": "fi: Lomatila: huone pidetään viileämpänä",
-  "x-where": "energy/heating_explain.dart:698"
+  "x-where": "energy/heating_explain.dart:740"
  },
  "s6a24d44a71": "Holiday mode: heating for your return",
  "@s6a24d44a71": {
   "description": "fi: Lomatila: lämmitetään paluuta varten",
-  "x-where": "energy/heating_explain.dart:701"
+  "x-where": "energy/heating_explain.dart:743"
  },
  "s247db88d99": "Warm enough ({p0} °C ≥ {p1} °C)",
  "@s247db88d99": {
   "description": "fi: Tarpeeksi lämmin ({p0} °C ≥ {p1} °C)",
-  "x-where": "energy/heating_explain.dart:703",
+  "x-where": "energy/heating_explain.dart:745",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -18278,7 +18513,7 @@
  "s0d09da9167": "Cheap hour ({p0} c/kWh ≤ limit {p1} c)",
  "@s0d09da9167": {
   "description": "fi: Halpa tunti ({p0} c/kWh ≤ raja {p1} c)",
-  "x-where": "energy/heating_explain.dart:709",
+  "x-where": "energy/heating_explain.dart:751",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -18291,7 +18526,7 @@
  "sbbcaad0790": "Heating so that the break does not get too long ({p0} c/kWh)",
  "@sbbcaad0790": {
   "description": "fi: Lämmitetään, ettei tauko veny liian pitkäksi ({p0} c/kWh)",
-  "x-where": "energy/heating_explain.dart:709",
+  "x-where": "energy/heating_explain.dart:751",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -18301,7 +18536,7 @@
  "sf56f514430": "{p0} c/kWh > limit {p1} c",
  "@sf56f514430": {
   "description": "fi: {p0} c/kWh > raja {p1} c",
-  "x-where": "energy/heating_explain.dart:713",
+  "x-where": "energy/heating_explain.dart:755",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -18314,7 +18549,7 @@
  "s9cdd4b289a": "Expensive hour – the storing floor is enough ({p0})",
  "@s9cdd4b289a": {
   "description": "fi: Kallis tunti – varaava lattia riittää ({p0})",
-  "x-where": "energy/heating_explain.dart:715",
+  "x-where": "energy/heating_explain.dart:757",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -18324,7 +18559,7 @@
  "sbf758df617": "Not a cheap hour – waiting ({p0})",
  "@sbf758df617": {
   "description": "fi: Ei halpa tunti – odottaa ({p0})",
-  "x-where": "energy/heating_explain.dart:715",
+  "x-where": "energy/heating_explain.dart:757",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -18334,7 +18569,7 @@
  "s03e2decc6e": "{p0} c/kWh ≥ limit {p1} c",
  "@s03e2decc6e": {
   "description": "fi: {p0} c/kWh ≥ raja {p1} c",
-  "x-where": "energy/heating_explain.dart:717",
+  "x-where": "energy/heating_explain.dart:759",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -18347,7 +18582,7 @@
  "s8285023fb8": "Expensive hour skipped ({p0})",
  "@s8285023fb8": {
   "description": "fi: Kallis tunti ohitetaan ({p0})",
-  "x-where": "energy/heating_explain.dart:718",
+  "x-where": "energy/heating_explain.dart:760",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -18357,17 +18592,17 @@
  "s8851083ec4": "Normal heating",
  "@s8851083ec4": {
   "description": "fi: Normaali lämmitys",
-  "x-where": "energy/heating_explain.dart:720"
+  "x-where": "energy/heating_explain.dart:762"
  },
  "s452449f24c": "No price data – heating runs normally",
  "@s452449f24c": {
   "description": "fi: Ei hintatietoa – lämmitys toimii tavallisesti",
-  "x-where": "energy/heating_explain.dart:722"
+  "x-where": "energy/heating_explain.dart:764"
  },
  "sadbee991d6": "Temperature {p0} °C is below the setpoint {p1} °C – heating",
  "@sadbee991d6": {
   "description": "fi: Lämpötila {p0} °C alle tavoitteen {p1} °C – lämmitetään",
-  "x-where": "energy/heating_explain.dart:724",
+  "x-where": "energy/heating_explain.dart:766",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -18380,7 +18615,7 @@
  "s0e20e8780d": "Setpoint {p0} °C reached ({p1} °C)",
  "@s0e20e8780d": {
   "description": "fi: Tavoite {p0} °C saavutettu ({p1} °C)",
-  "x-where": "energy/heating_explain.dart:729",
+  "x-where": "energy/heating_explain.dart:771",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -18393,7 +18628,7 @@
  "s3f74d751fe": "Heating until {p0} °C",
  "@s3f74d751fe": {
   "description": "fi: Lämmitetään, kunnes {p0} °C",
-  "x-where": "energy/heating_explain.dart:734",
+  "x-where": "energy/heating_explain.dart:776",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -18403,7 +18638,7 @@
  "s91276ece64": "Off until the temperature drops below {p0} °C",
  "@s91276ece64": {
   "description": "fi: Pois, kunnes lämpötila laskee alle {p0} °C",
-  "x-where": "energy/heating_explain.dart:739",
+  "x-where": "energy/heating_explain.dart:781",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -18413,52 +18648,52 @@
  "s4437d2666a": "Sensor not answering – heating is kept on",
  "@s4437d2666a": {
   "description": "fi: Anturi ei vastaa – lämmitys pidetään päällä",
-  "x-where": "energy/heating_explain.dart:744"
+  "x-where": "energy/heating_explain.dart:786"
  },
  "s127c973eb9": "Sensor not answering – heating is kept off",
  "@s127c973eb9": {
   "description": "fi: Anturi ei vastaa – lämmitys pidetään pois",
-  "x-where": "energy/heating_explain.dart:746"
+  "x-where": "energy/heating_explain.dart:788"
  },
  "s7e2afd388e": "Safety limit: off for too long – heating for an hour",
  "@s7e2afd388e": {
   "description": "fi: Turvaraja: pois liian pitkään – lämmitetään tunti",
-  "x-where": "energy/heating_explain.dart:748"
+  "x-where": "energy/heating_explain.dart:790"
  },
  "s630919f15c": "Kept on: the minimum on time is not over",
  "@s630919f15c": {
   "description": "fi: Pidetään päällä: vähimmäisaika ei ole täynnä",
-  "x-where": "energy/heating_explain.dart:753"
+  "x-where": "energy/heating_explain.dart:795"
  },
  "sf5f33530ca": "Kept off: the minimum off time is not over",
  "@sf5f33530ca": {
   "description": "fi: Pidetään pois: vähimmäisaika ei ole täynnä",
-  "x-where": "energy/heating_explain.dart:755"
+  "x-where": "energy/heating_explain.dart:797"
  },
  "sd36f9bf75a": "Pre-heating before an expensive or cold spell",
  "@sd36f9bf75a": {
   "description": "fi: Esilämmitys ennen kallista tai kylmää jaksoa",
-  "x-where": "energy/heating_explain.dart:757"
+  "x-where": "energy/heating_explain.dart:799"
  },
  "s8ea3994a9b": "Saving while expensive",
  "@s8ea3994a9b": {
   "description": "fi: Säästö kalliina aikana",
-  "x-where": "energy/heating_explain.dart:759"
+  "x-where": "energy/heating_explain.dart:801"
  },
  "s8ec3c3bdb9": "No information yet",
  "@s8ec3c3bdb9": {
   "description": "fi: Ei tietoa vielä",
-  "x-where": "energy/heating_explain.dart:761"
+  "x-where": "energy/heating_explain.dart:803"
  },
  "sd80668c71a": "The next change depends on the temperature",
  "@sd80668c71a": {
   "description": "fi: Seuraava muutos riippuu lämpötilasta",
-  "x-where": "energy/heating_explain.dart:767"
+  "x-where": "energy/heating_explain.dart:809"
  },
  "s723147d2b2": "Automatic control resumes at {p0}",
  "@s723147d2b2": {
   "description": "fi: Automaattinen ohjaus jatkuu klo {p0}",
-  "x-where": "energy/heating_explain.dart:771",
+  "x-where": "energy/heating_explain.dart:813",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -18468,7 +18703,7 @@
  "sc2c736c508": "Next on at {p0}",
  "@sc2c736c508": {
   "description": "fi: Seuraavaksi päälle klo {p0}",
-  "x-where": "energy/heating_explain.dart:773",
+  "x-where": "energy/heating_explain.dart:815",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -18478,7 +18713,7 @@
  "s2c7a2c7c84": "Next off at {p0}",
  "@s2c7a2c7c84": {
   "description": "fi: Seuraavaksi pois klo {p0}",
-  "x-where": "energy/heating_explain.dart:774",
+  "x-where": "energy/heating_explain.dart:816",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -18488,7 +18723,7 @@
  "s6ebbbbc4a0": "Temperature control and the safety limits (frost protection, minimum temperature) are off, and {p0}.",
  "@s6ebbbbc4a0": {
   "description": "fi: Lämpötilaohjaus ja turvarajat (jäätymissuoja, vähimmäislämpötila) eivät ole käytössä, ja {p0}.",
-  "x-where": "energy/heating_explain.dart:781",
+  "x-where": "energy/heating_explain.dart:823",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -18498,17 +18733,17 @@
  "sdba1212edb": "The safety limits (frost protection, minimum temperature) are off, and heating follows the price schedule.",
  "@sdba1212edb": {
   "description": "fi: Turvarajat (jäätymissuoja, vähimmäislämpötila) eivät ole käytössä, ja lämmitys noudattaa hintaohjausta.",
-  "x-where": "energy/heating_explain.dart:785"
+  "x-where": "energy/heating_explain.dart:827"
  },
  "sbf916076f9": "The temperature sensor is not answering.",
  "@sbf916076f9": {
   "description": "fi: Lämpöanturi ei vastaa.",
-  "x-where": "energy/heating_explain.dart:789"
+  "x-where": "energy/heating_explain.dart:831"
  },
  "s9fad63ec58": "Check the sensor battery and network, or choose another sensor.",
  "@s9fad63ec58": {
   "description": "fi: Tarkista anturin paristo ja verkkoyhteys tai valitse toinen anturi.",
-  "x-where": "energy/heating_explain.dart:790"
+  "x-where": "energy/heating_explain.dart:832"
  },
  "s0a81072a1f": "Find it in your router''s device list or the maker''s app (device info). Reserve a fixed IP for it.",
  "@s0a81072a1f": {
@@ -19934,7 +20169,7 @@
  "sb9964cfb3b": "Power {p0}",
  "@sb9964cfb3b": {
   "description": "fi: Teho {p0}",
-  "x-where": "state/app_state.dart:1652",
+  "x-where": "state/app_state.dart:1832",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -19944,7 +20179,7 @@
  "s08d04d58a9": "Channel {p0}",
  "@s08d04d58a9": {
   "description": "fi: Kanava {p0}",
-  "x-where": "state/app_state.dart:1653",
+  "x-where": "state/app_state.dart:1833",
   "placeholders": {
    "p0": {
     "type": "String"

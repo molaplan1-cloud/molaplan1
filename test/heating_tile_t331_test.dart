@@ -476,15 +476,24 @@ void main() {
       expect(find.byKey(ValueKey('tl-$i')), findsOneWidget);
     }
     final list = find.byType(Scrollable).first;
+    // R637: the program card (device, mode, one main setting) first; everything else is folded.
+    await tester.scrollUntilVisible(find.byKey(const ValueKey('load-program')), 400, scrollable: list);
+    expect(find.byKey(const ValueKey('load-mode')), findsOneWidget);
+    expect(find.byKey(const ValueKey('load-main')), findsOneWidget);
+    expect(find.byKey(const ValueKey('load-prices')), findsNothing, reason: 'advanced is folded');
+    expect(find.byKey(const ValueKey('load-hyst')), findsNothing);
+    expect(find.byKey(const ValueKey('load-minon')), findsNothing);
+    await tester.scrollUntilVisible(find.byKey(const ValueKey('load-advanced')), 400, scrollable: list);
+    await tester.ensureVisible(find.byKey(const ValueKey('load-advanced')));
+    await tester.pump();
+    await tester.tap(find.byKey(const ValueKey('load-advanced')));
+    await settle(tester);
     await tester.scrollUntilVisible(find.byKey(const ValueKey('load-prices')), 400, scrollable: list);
     await tester.scrollUntilVisible(find.byKey(const ValueKey('load-temps')), 400, scrollable: list);
     await tester.scrollUntilVisible(find.byKey(const ValueKey('load-delays')), 400, scrollable: list);
     expect(find.text('Hintasäännöt'), findsOneWidget);
     expect(find.text('Lämpötilarajat'), findsOneWidget);
     expect(find.text('Viiveet'), findsOneWidget);
-    await tester.scrollUntilVisible(find.byKey(const ValueKey('load-advanced')), 400, scrollable: list);
-    expect(find.byKey(const ValueKey('load-hyst')), findsNothing, reason: 'advanced is folded');
-    expect(find.byKey(const ValueKey('load-minon')), findsNothing);
     await end(tester);
   });
 
@@ -529,6 +538,8 @@ void main() {
     await settle(tester);
     final list = find.byType(Scrollable).first;
     await tester.scrollUntilVisible(find.byKey(const ValueKey('load-mode')), 400, scrollable: list);
+    await tester.ensureVisible(find.text('Lämpötilan mukaan'));
+    await tester.pump();
     await tester.tap(find.text('Lämpötilan mukaan'));
     await settle(tester);
     expect(st.smartHeating!.loads.first.tempControl, isTrue);
@@ -561,7 +572,9 @@ void main() {
     await settle(tester);
     final list = find.byType(Scrollable).first;
     await tester.scrollUntilVisible(find.byKey(const ValueKey('sensor-needed')), 400, scrollable: list);
-    expect(find.textContaining('Ilman sitä lämmitys noudattaa hintaohjausta'), findsOneWidget);
+    expect(find.textContaining('Ilman anturia lämmitys noudattaa hintaohjausta'), findsOneWidget);
+    await tester.ensureVisible(find.byKey(const ValueKey('sensor-needed')));
+    await tester.pump();
     await tester.tap(find.byKey(const ValueKey('sensor-needed')));
     await settle(tester);
     expect(find.byKey(const ValueKey('sensor-room')), findsOneWidget);

@@ -1483,6 +1483,9 @@ class AppLocalizationsFi extends AppLocalizations {
   String get se50792831f => 'Lämpötilaohjaus';
 
   @override
+  String get s52ef5e0b45 => 'Hintaraja';
+
+  @override
   String get sd408a5dbe9 => 'Halvimmat tunnit';
 
   @override
@@ -2854,6 +2857,146 @@ class AppLocalizationsFi extends AppLocalizations {
   }
 
   @override
+  String get s9d6a4787c0 => 'Lämpötilan mukaan';
+
+  @override
+  String get s765dda7e1f =>
+      'Päällä, kun tunnin hinta on enintään asettamasi raja.';
+
+  @override
+  String get s63c7563ffe =>
+      'Kuin termostaatti: päällä, kun huone on tavoitelämpötilaa kylmempi. Tarvitsee lämpötila-anturin.';
+
+  @override
+  String get s066b775d18 =>
+      'Lämmittää päivän halvimpina tunteina. Valitset tuntimäärän.';
+
+  @override
+  String s7d9757a025(String p0) {
+    return 'enintään $p0 c/kWh';
+  }
+
+  @override
+  String s865988de99(String p0) {
+    return 'ohittaa $p0 kalleinta tuntia';
+  }
+
+  @override
+  String sd235c9cafb(String p0) {
+    return '$p0 h päivässä';
+  }
+
+  @override
+  String get s1cc4e52472 => 'Päällä, kun tunnin hinta on enintään raja.';
+
+  @override
+  String s5fab7a2144(String p0, String p1, String p2) {
+    return 'Päällä, kun tunnin hinta on enintään raja. Tänään $p0–$p1 c/kWh, $p2 h alle rajan.';
+  }
+
+  @override
+  String get sd5f46903a1 => 'Tavoitelämpötila';
+
+  @override
+  String get sd2758727f5 => 'Lämpötila-anturi';
+
+  @override
+  String get s58adf1e5fb => 'Valitse anturi – ohjaus tarvitsee sen';
+
+  @override
+  String get sbd3dbfd7e9 => 'Ohitettavia kalleimpia tunteja';
+
+  @override
+  String get s86c45674db => 'Lämmitystunteja päivässä';
+
+  @override
+  String get s94f86b3b6a => 'Kotisilta, joka ajaa ohjelman';
+
+  @override
+  String get s10a23b4691 => 'ei pariutettu';
+
+  @override
+  String get s407cb3a732 =>
+      'Ohjelma ajetaan valitulla kotisillalla itsenäisesti, vaikka sovellus olisi suljettu. Sen pitää tavoittaa laite. Yhtä laitetta ohjaa aina vain yksi kotisilta.';
+
+  @override
+  String get s7de515a7c1 => 'Ohjelma';
+
+  @override
+  String get s7fcdd166f3 =>
+      'Tämän laitteen ohjelma on jo toisella kotisillalla, joten tätä ohjelmaa ei ajeta. Poista toinen ohjelma tai valitse tälle sama kotisilta.';
+
+  @override
+  String get s093677b5f1 => 'Ohjaustapa';
+
+  @override
+  String get sf0446baa5c =>
+      'Ilman anturia lämmitys noudattaa hintaohjausta. Valitse anturi napauttamalla.';
+
+  @override
+  String get s0cb0877799 => 'Ei käytössä';
+
+  @override
+  String sad8b69fca2(String p0) {
+    return '$p0 ei ole yhteydessä – ohjelma jatkaa siellä itsenäisesti';
+  }
+
+  @override
+  String s7211f94f91(String p0) {
+    return 'Ajaa: $p0';
+  }
+
+  @override
+  String get s7b25bc0874 => 'Laitteella on jo ohjelma toisella kotisillalla.';
+
+  @override
+  String get sccf63d5729 =>
+      'Muutokset odottavat kotisiltaa – ne lähetetään, kun se vastaa.';
+
+  @override
+  String get sdb217dcf7f => 'Lisää ruutu kotinäytölle';
+
+  @override
+  String get s6398607bb8 => 'Ruutu on jo kotinäytöllä';
+
+  @override
+  String get s52d3e04a46 => 'Ruutu lisätty kotinäytölle';
+
+  @override
+  String get s354eb362d8 => 'Valitse laite';
+
+  @override
+  String get s1571e8b853 => 'Valitse ohjaustapa';
+
+  @override
+  String get s190914de3c => 'Aseta rajat';
+
+  @override
+  String get s4eaf5975db => 'Lisää ohjelma';
+
+  @override
+  String scb39988da3(String p0) {
+    return 'Ohjelma on jo: $p0';
+  }
+
+  @override
+  String get s8ea88baef9 => 'Rele tai pistorasia';
+
+  @override
+  String get s70d49e7f6a =>
+      'Ei laitteita. Lisää ensin rele, pistorasia tai termostaatti.';
+
+  @override
+  String get sec41a5c19b => 'Lämmitystapa';
+
+  @override
+  String get s0feac99b10 =>
+      'Muut asetukset (viiveet, hystereesi, lämpörajat, jäätymissuoja, varalämpötila, boost, vähimmäisajat) löytyvät ohjelman Edistyneet-kohdasta. Oletukset sopivat useimmille.';
+
+  @override
+  String get s54a7a968e9 => 'Luo ohjelma';
+
+  @override
   String get s429f9e257a => 'Tiedot vain tässä selaimessa. ';
 
   @override
@@ -4062,16 +4205,14 @@ class AppLocalizationsFi extends AppLocalizations {
   String get sd172900c2d => 'Lomatila: muokkaa';
 
   @override
-  String get sdb217dcf7f => 'Lisää ruutu kotinäytölle';
+  String get s5275c2c21e => 'Ohjelmat';
 
   @override
-  String get s52d3e04a46 => 'Ruutu lisätty kotinäytölle';
+  String get s99a5e80b5c =>
+      'Jokaisella lämmityslaitteella on oma ohjelmansa. Ohjelma ajetaan kotisillalla itsenäisesti.';
 
   @override
-  String get sdca3ad13dd => 'Lämmityslaitteet';
-
-  @override
-  String get sc8c5e37f5d => 'Ei laitteita. Lisää ne kartoituksessa.';
+  String get s0fd18deddd => 'Ei ohjelmia vielä.';
 
   @override
   String get sc6976fa352 => 'Lämmityksen ilmoitukset';
@@ -4188,40 +4329,10 @@ class AppLocalizationsFi extends AppLocalizations {
   String get se68cc54085 => 'Ei anturia';
 
   @override
-  String get s093677b5f1 => 'Ohjaustapa';
-
-  @override
-  String get sa6195c2696 => 'Hinnan mukaan';
-
-  @override
-  String get s9d6a4787c0 => 'Lämpötilan mukaan';
-
-  @override
-  String get s84cf10acfd =>
-      'Lämmitys seuraa mitattua lämpötilaa kuin termostaatti. Hintasäännöt vain siirtävät tavoitetta: halvoilla tunneilla ylös, kalliilla alas (jos asetettu).';
-
-  @override
-  String get sdf9dc612a6 =>
-      'Lämmitys noudattaa sähkön hintaa ja säätä. Lämpötila-anturi on valinnainen ja antaa turvarajat.';
-
-  @override
-  String get s01c555401a => 'Valitse lämpötila-anturi';
-
-  @override
-  String get s249140bfd0 =>
-      'Lämpötilaohjaus tarvitsee anturin. Ilman sitä lämmitys noudattaa hintaohjausta.';
-
-  @override
   String get sf9cbe76823 => 'Hintasäännöt';
 
   @override
   String get s8e6c8ffabb => ' (suositus)';
-
-  @override
-  String get s86c45674db => 'Lämmitystunteja päivässä';
-
-  @override
-  String get sbd3dbfd7e9 => 'Ohitettavia kalleimpia tunteja';
 
   @override
   String s1f32a43166(String p0) {
@@ -4509,9 +4620,6 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get s3cc31bcfdc => 'Valitse laturi (lataus päälle/pois)';
-
-  @override
-  String get s354eb362d8 => 'Valitse laite';
 
   @override
   String get s73a65d7dff => 'Valitse laitteet';
@@ -5122,9 +5230,6 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s55e5c3a177 => 'Montako tuntia päällä';
 
   @override
-  String get s52ef5e0b45 => 'Hintaraja';
-
-  @override
   String get s993193d056 => 'Tulevat päälläoloajat';
 
   @override
@@ -5451,9 +5556,6 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get s1790a71e85 => 'esim. Olohuone';
-
-  @override
-  String get sd5f46903a1 => 'Tavoitelämpötila';
 
   @override
   String get s6de95e582f => 'Jos lämpötilaa ei saada';
@@ -10938,6 +11040,14 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s0528a2ef9e => 'Laitteelle ei ole päälle/pois-komentoa';
 
   @override
+  String get s7a71f285ef => 'Kotisilta ei ole yhteydessä';
+
+  @override
+  String sa3ca79fa2c(String p0) {
+    return 'Kotisilta $p0 ei ole yhteydessä';
+  }
+
+  @override
   String get sd0e9fc6760 => 'Ohjaus ei onnistunut';
 
   @override
@@ -10947,6 +11057,10 @@ class AppLocalizationsFi extends AppLocalizations {
   String s151c5be078(String p0, String p1) {
     return 'Kotisilta ei pääse osoitteeseen, jossa $p0 on: se on todennäköisesti toisessa verkossa kuin $p1. Tämä laite pääsee siihen, siksi muut ruudut toimivat.';
   }
+
+  @override
+  String get saca21d4cb4 =>
+      'Tämä ohjelma ajetaan kotisillalla, johon sovellus ei nyt saa yhteyttä. Ohjelma jatkaa siellä itsenäisesti viimeisten asetusten mukaan, mutta tilaa ei voi nyt päivittää eikä asetusten muutoksia viedä sinne.';
 
   @override
   String s99ea566004(String p0) {
@@ -10978,6 +11092,18 @@ class AppLocalizationsFi extends AppLocalizations {
       'Älykäs lämmitys yrittää uudelleen minuutin välein. Siihen asti rele pysyy viimeisessä tilassaan eikä lämmitys ohjaudu.';
 
   @override
+  String get s3eb269a14c =>
+      'Tarkista, että kotisiltana toimiva laite on päällä, siinä on Molaplan käynnissä ja se on verkossa.';
+
+  @override
+  String get se3dee57a24 =>
+      'Ohjelma ei lopeta: kotisilta noudattaa viimeksi saamiaan asetuksia, kunnes yhteys palaa.';
+
+  @override
+  String get s0ddffa32c3 =>
+      'Kun yhteys palaa, tämä laite lähettää odottavat muutokset automaattisesti. Jos siirsit ohjelman toiselle kotisillalle, vanha lopettaa sen heti kun se on taas yhteydessä.';
+
+  @override
   String get s5a3b74d726 =>
       'Avaa laitteen yhteys ja tarkista käyttäjätunnus ja salasana.';
 
@@ -10998,6 +11124,10 @@ class AppLocalizationsFi extends AppLocalizations {
   @override
   String get sc056006180 =>
       'Tarkista, että laite on päällä ja samassa verkossa kotisillan kanssa. Älykäs lämmitys yrittää uudelleen minuutin välein; kunnes se onnistuu, laite jää nykyiseen tilaansa.';
+
+  @override
+  String get seca484252c =>
+      'Ohjelma jatkaa kotisillalla itsenäisesti. Tarkista, että kotisilta on päällä ja verkossa.';
 
   @override
   String get s7a1cda0d24 => 'Tarkista laitteen salasana yhteyden asetuksista.';
@@ -11104,6 +11234,11 @@ class AppLocalizationsFi extends AppLocalizations {
   @override
   String sf3a33e9bc5(String p0, String p1, String p2, String p3) {
     return '$p0 halvinta tuntia päivässä: nyt $p1 c/kWh $p2 raja $p3 c';
+  }
+
+  @override
+  String s5ee0d291a9(String p0, String p1, String p2, String p3) {
+    return 'Nyt $p0 c/kWh $p1 raja $p2 c · $p3 h alle rajan tänään';
   }
 
   @override

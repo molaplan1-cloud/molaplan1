@@ -1475,6 +1475,9 @@ class AppLocalizationsEt extends AppLocalizations {
   String get se50792831f => 'Temperatuuri reguleerimine';
 
   @override
+  String get s52ef5e0b45 => 'Hinnapiir';
+
+  @override
   String get sd408a5dbe9 => 'Odavamad tunnid';
 
   @override
@@ -2839,6 +2842,147 @@ class AppLocalizationsEt extends AppLocalizations {
   }
 
   @override
+  String get s9d6a4787c0 => 'Temperatuuri järgi';
+
+  @override
+  String get s765dda7e1f =>
+      'Kui tunni hind on teie määratud piiriga võrdne või sellest madalam.';
+
+  @override
+  String get s63c7563ffe =>
+      'Nagu termostaat: sees, kui ruum on sihtmärgist külmem. Vajab temperatuuriandurit.';
+
+  @override
+  String get s066b775d18 =>
+      'Kuumeneb kõige odavamal kellaajal, sina valid tundide arvu.';
+
+  @override
+  String s7d9757a025(String p0) {
+    return 'kuni $p0 c/kWh';
+  }
+
+  @override
+  String s865988de99(String p0) {
+    return 'vahele $p0 kõige kallimad tunnid';
+  }
+
+  @override
+  String sd235c9cafb(String p0) {
+    return '$p0 h päevas';
+  }
+
+  @override
+  String get s1cc4e52472 =>
+      'Ajal, mil tunni hind on limiidi juures või sellest allpool.';
+
+  @override
+  String s5fab7a2144(String p0, String p1, String p2) {
+    return 'Samal ajal kui tunni hind on limiidi juures või sellest allpool. täna $p0–$p1 c/kWh, $p2 h limiidi all.';
+  }
+
+  @override
+  String get sd5f46903a1 => 'Sihttemperatuur';
+
+  @override
+  String get sd2758727f5 => 'Temperatuuriandur';
+
+  @override
+  String get s58adf1e5fb => 'Valige andur - juht vajab seda';
+
+  @override
+  String get sbd3dbfd7e9 => 'Kõige kallimad tunnid jäid vahele';
+
+  @override
+  String get s86c45674db => 'Küttetunnid päevas';
+
+  @override
+  String get s94f86b3b6a => 'Kodusild, mis käivitab programmi';
+
+  @override
+  String get s10a23b4691 => 'paaris';
+
+  @override
+  String get s407cb3a732 =>
+      'Programm töötab valitud sillal ise, isegi kui rakendus on suletud. Sild peab jõudma seadmeni. Ühte seadet juhib ainult üks sild.';
+
+  @override
+  String get s7de515a7c1 => 'Programmi';
+
+  @override
+  String get s7fcdd166f3 =>
+      'Sellel seadmel on juba programm teisel sillal, nii et seda ei käivitata. Eemalda teine programm või vali sama sild.';
+
+  @override
+  String get s093677b5f1 => 'Juhtimisrežiim';
+
+  @override
+  String get sf0446baa5c =>
+      'Ilma sensorita järgib küte hinnagraafikut. Koputage anduri valimiseks.';
+
+  @override
+  String get s0cb0877799 => 'Ei jookse';
+
+  @override
+  String sad8b69fca2(String p0) {
+    return ' on offline - programm töötab seal ise';
+  }
+
+  @override
+  String s7211f94f91(String p0) {
+    return 'Käib edasi: ';
+  }
+
+  @override
+  String get s7b25bc0874 => 'Seadmel on juba programm teisel sillal.';
+
+  @override
+  String get sccf63d5729 =>
+      'Muutused ootavad silda – need saadetakse siis, kui need vastavad.';
+
+  @override
+  String get sdb217dcf7f => 'Kaardi lisamine avaekraanile';
+
+  @override
+  String get s6398607bb8 => 'Kaart on juba avaekraanil';
+
+  @override
+  String get s52d3e04a46 => 'Avaekraanile lisatud kaart';
+
+  @override
+  String get s354eb362d8 => 'Seadme valimine';
+
+  @override
+  String get s1571e8b853 => 'Vali juhtimisrežiim';
+
+  @override
+  String get s190914de3c => 'Määra limiit';
+
+  @override
+  String get s4eaf5975db => 'Lisa programm';
+
+  @override
+  String scb39988da3(String p0) {
+    return 'Programm on juba olemas: $p0';
+  }
+
+  @override
+  String get s8ea88baef9 => 'Relee või pistik';
+
+  @override
+  String get s70d49e7f6a =>
+      'Ei mingeid seadmeid, enne lisa relee, pistik või termostaat.';
+
+  @override
+  String get sec41a5c19b => 'Kütte tüüp';
+
+  @override
+  String get s0feac99b10 =>
+      'Muud seadistused (viivitused, hüsterees, temperatuuripiirangud, külmakaitse, varuvariant, võimendus, minimaalne aeg) on programmi leheküljel Muud. Vaikeväärtused sobivad enamikule kodudele.';
+
+  @override
+  String get s54a7a968e9 => 'Loo programm';
+
+  @override
   String get s429f9e257a => 'Andmed on ainult selles brauseris. ';
 
   @override
@@ -4041,16 +4185,14 @@ class AppLocalizationsEt extends AppLocalizations {
   String get sd172900c2d => 'Puhkus: redigeerimine';
 
   @override
-  String get sdb217dcf7f => 'Kaardi lisamine avaekraanile';
+  String get s5275c2c21e => 'Programmid';
 
   @override
-  String get s52d3e04a46 => 'Avaekraanile lisatud kaart';
+  String get s99a5e80b5c =>
+      'Igal kütteseadmel on oma programm. Kodusillal töötab programm ise.';
 
   @override
-  String get sdca3ad13dd => 'Kütteseadmed';
-
-  @override
-  String get sc8c5e37f5d => 'Ei mingeid seadmeid, lisage need uuringusse.';
+  String get s0fd18deddd => 'Ei mingeid programme veel.';
 
   @override
   String get sc6976fa352 => 'Kütteteatised';
@@ -4167,40 +4309,10 @@ class AppLocalizationsEt extends AppLocalizations {
   String get se68cc54085 => 'Andurit pole';
 
   @override
-  String get s093677b5f1 => 'Juhtimisrežiim';
-
-  @override
-  String get sa6195c2696 => 'Hinna järgi';
-
-  @override
-  String get s9d6a4787c0 => 'Temperatuuri järgi';
-
-  @override
-  String get s84cf10acfd =>
-      'Kütmine järgib mõõdetud temperatuuri nagu termostaat. Hinnareeglid liigutavad ainult seadistuspunkti: üles odavatel tundidel, alla kallitel tundidel (kui see on määratud).';
-
-  @override
-  String get sdf9dc612a6 =>
-      'Kütte puhul lähtutakse elektrihinnast ja ilmast. Temperatuuriandur on valikuline ja annab ohutuspiirangud.';
-
-  @override
-  String get s01c555401a => 'Temperatuurianduri valimine';
-
-  @override
-  String get s249140bfd0 =>
-      'Temperatuuri reguleerimine vajab andurit. Ilma selleta järgib kütmine hinnagraafikut.';
-
-  @override
   String get sf9cbe76823 => 'Hinnareeglid';
 
   @override
   String get s8e6c8ffabb => ' (soovitatav)';
-
-  @override
-  String get s86c45674db => 'Küttetunnid päevas';
-
-  @override
-  String get sbd3dbfd7e9 => 'Kõige kallimad tunnid jäid vahele';
 
   @override
   String s1f32a43166(String p0) {
@@ -4490,9 +4602,6 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get s3cc31bcfdc => 'Laadija valimine (laadimine sisse/ välja)';
-
-  @override
-  String get s354eb362d8 => 'Seadme valimine';
 
   @override
   String get s73a65d7dff => 'Seadmete valimine';
@@ -5102,9 +5211,6 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s55e5c3a177 => 'Mitu tundi sees';
 
   @override
-  String get s52ef5e0b45 => 'Hinnapiir';
-
-  @override
   String get s993193d056 => 'Tulevased sees-ajad';
 
   @override
@@ -5429,9 +5535,6 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get s1790a71e85 => 'nt Elutuba';
-
-  @override
-  String get sd5f46903a1 => 'Sihttemperatuur';
 
   @override
   String get s6de95e582f => 'Kui temperatuur kaob';
@@ -10865,6 +10968,14 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s0528a2ef9e => 'Seadmel puudub sisse- ja väljalülitamiskäsk';
 
   @override
+  String get s7a71f285ef => 'Kodusild on offline';
+
+  @override
+  String sa3ca79fa2c(String p0) {
+    return 'Kodusild $p0 on offline';
+  }
+
+  @override
   String get sd0e9fc6760 => 'Kontroll ei toiminud';
 
   @override
@@ -10874,6 +10985,10 @@ class AppLocalizationsEt extends AppLocalizations {
   String s151c5be078(String p0, String p1) {
     return 'Kodusild ei jõua $p0 aadressini: see on tõenäoliselt mõnes muus võrgus kui $p0. See seade võib selleni jõuda, mistõttu toimivad ka teised kaardid.';
   }
+
+  @override
+  String get saca21d4cb4 =>
+      'See programm töötab kodusillal, kuhu rakendus praegu ei jõua. See töötab seal oma viimastel seadistustel, kuid selle olekut ei saa värskendada ja muudatusi ei saa saata.';
 
   @override
   String s99ea566004(String p0) {
@@ -10905,6 +11020,18 @@ class AppLocalizationsEt extends AppLocalizations {
       'Nutikas soojendus proovib iga minut. Kuni selle ajani jääb relee oma viimasesse olekusse ja kütet ei kontrollita.';
 
   @override
+  String get s3eb269a14c =>
+      'Kontrollige, kas kodusillana toimiv seade on sisse lülitatud, Molaplan töötab sellel ja see on võrgus.';
+
+  @override
+  String get se3dee57a24 =>
+      'Programm ei peatu: sild järgib viimaseid seadeid, mille ta sai, kuni ühendus on tagasi.';
+
+  @override
+  String get s0ddffa32c3 =>
+      'Kui ühendus on tagasi, saadab see seade automaatselt kõik ootemuudatused. Kui liigutad programmi teisele sillale, peatab vana selle kohe, kui see on uuesti võrgus.';
+
+  @override
   String get s5a3b74d726 =>
       'Avage seadme ühendus ja kontrollige kasutajanime ja parooli.';
 
@@ -10926,6 +11053,10 @@ class AppLocalizationsEt extends AppLocalizations {
   @override
   String get sc056006180 =>
       'Kontrolli, kas seade on kodusillaga samas võrgus sisse ja sisse. Nutikas kütmine proovib iga minut uuesti, kuni see töötab, jääb seade oma praegusesse olekusse.';
+
+  @override
+  String get seca484252c =>
+      'Programm töötab sillal ise edasi. Kontrolli, kas sild on sees ja võrgus.';
 
   @override
   String get s7a1cda0d24 => 'Kontrollige seadme parooli ühenduse seadistustes.';
@@ -11032,6 +11163,11 @@ class AppLocalizationsEt extends AppLocalizations {
   @override
   String sf3a33e9bc5(String p0, String p1, String p2, String p3) {
     return '$p0 odavaimat tundi päevas: nüüd $p1 c/kWh $p2 piirang $p3 c';
+  }
+
+  @override
+  String s5ee0d291a9(String p0, String p1, String p2, String p3) {
+    return 'Now $p0 c/kWh $p1 limit $p2 c · $p3 h under the limit today';
   }
 
   @override

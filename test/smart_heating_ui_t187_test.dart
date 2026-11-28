@@ -121,11 +121,20 @@ void main() {
 
     // A device: templates with the recommendation marked; choosing another one is stored.
     await tester.scrollUntilVisible(
-      find.byKey(ValueKey('sh-load-${c.loads.first.id}')),
+      find.byKey(ValueKey('program-${c.loads.first.id}')),
       -300,
       scrollable: find.byType(Scrollable).first,
     );
-    await tester.tap(find.byKey(ValueKey('sh-load-${c.loads.first.id}')));
+    await tester.tap(find.byKey(ValueKey('program-${c.loads.first.id}')), warnIfMissed: true);
+    await _settle(tester);
+    await tester.scrollUntilVisible(
+      find.byKey(const ValueKey('load-advanced')),
+      300,
+      scrollable: find.byType(Scrollable).first,
+    );
+    await tester.ensureVisible(find.byKey(const ValueKey('load-advanced')));
+    await tester.pump();
+    await tester.tap(find.byKey(const ValueKey('load-advanced')));
     await _settle(tester);
     await tester.scrollUntilVisible(
       find.byKey(const ValueKey('tpl-cheapest')),
@@ -133,9 +142,13 @@ void main() {
       scrollable: find.byType(Scrollable).first,
     );
     expect(find.text('Sään mukaan ennakoiva (suositus)'), findsOneWidget);
+    await tester.ensureVisible(find.byKey(const ValueKey('tpl-cheapest')));
+    await tester.pump();
     await tester.tap(find.byKey(const ValueKey('tpl-cheapest')));
     await _settle(tester);
     expect(st.smartHeating!.loads.first.template, 'cheapest');
+    await tester.ensureVisible(find.byKey(const ValueKey('tpl-weather')));
+    await tester.pump();
     await tester.tap(find.byKey(const ValueKey('tpl-weather')));
     await _settle(tester);
     expect(st.smartHeating!.loads.first.template, isNull, reason: 'back to the recommendation');

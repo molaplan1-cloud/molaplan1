@@ -2792,6 +2792,12 @@ abstract class AppLocalizations {
   /// **'Temperature control'**
   String get se50792831f;
 
+  /// fi: Hintaraja
+  ///
+  /// In en, this message translates to:
+  /// **'Price limit'**
+  String get s52ef5e0b45;
+
   /// fi: Halvimmat tunnit
   ///
   /// In en, this message translates to:
@@ -5192,6 +5198,240 @@ abstract class AppLocalizations {
   /// **'{p0} registers imported, {p1} recognised (outdoor, supply, hot water, curve offset…).'**
   String s80d7fd2d3c(String p0, String p1);
 
+  /// fi: Lämpötilan mukaan
+  ///
+  /// In en, this message translates to:
+  /// **'By temperature'**
+  String get s9d6a4787c0;
+
+  /// fi: Päällä, kun tunnin hinta on enintään asettamasi raja.
+  ///
+  /// In en, this message translates to:
+  /// **'On while the hour\'\'s price is at or under the limit you set.'**
+  String get s765dda7e1f;
+
+  /// fi: Kuin termostaatti: päällä, kun huone on tavoitelämpötilaa kylmempi. Tarvitsee lämpötila-anturin.
+  ///
+  /// In en, this message translates to:
+  /// **'Like a thermostat: on while the room is colder than the target. Needs a temperature sensor.'**
+  String get s63c7563ffe;
+
+  /// fi: Lämmittää päivän halvimpina tunteina. Valitset tuntimäärän.
+  ///
+  /// In en, this message translates to:
+  /// **'Heats in the cheapest hours of the day. You choose the number of hours.'**
+  String get s066b775d18;
+
+  /// fi: enintään {p0} c/kWh
+  ///
+  /// In en, this message translates to:
+  /// **'up to {p0} c/kWh'**
+  String s7d9757a025(String p0);
+
+  /// fi: ohittaa {p0} kalleinta tuntia
+  ///
+  /// In en, this message translates to:
+  /// **'skips {p0} most expensive hours'**
+  String s865988de99(String p0);
+
+  /// fi: {p0} h päivässä
+  ///
+  /// In en, this message translates to:
+  /// **'{p0} h a day'**
+  String sd235c9cafb(String p0);
+
+  /// fi: Päällä, kun tunnin hinta on enintään raja.
+  ///
+  /// In en, this message translates to:
+  /// **'On while the hour\'\'s price is at or under the limit.'**
+  String get s1cc4e52472;
+
+  /// fi: Päällä, kun tunnin hinta on enintään raja. Tänään {p0}–{p1} c/kWh, {p2} h alle rajan.
+  ///
+  /// In en, this message translates to:
+  /// **'On while the hour\'\'s price is at or under the limit. Today {p0}–{p1} c/kWh, {p2} h under the limit.'**
+  String s5fab7a2144(String p0, String p1, String p2);
+
+  /// fi: Tavoitelämpötila
+  ///
+  /// In en, this message translates to:
+  /// **'Target temperature'**
+  String get sd5f46903a1;
+
+  /// fi: Lämpötila-anturi
+  ///
+  /// In en, this message translates to:
+  /// **'Temperature sensor'**
+  String get sd2758727f5;
+
+  /// fi: Valitse anturi – ohjaus tarvitsee sen
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a sensor – the control needs it'**
+  String get s58adf1e5fb;
+
+  /// fi: Ohitettavia kalleimpia tunteja
+  ///
+  /// In en, this message translates to:
+  /// **'Most expensive hours skipped'**
+  String get sbd3dbfd7e9;
+
+  /// fi: Lämmitystunteja päivässä
+  ///
+  /// In en, this message translates to:
+  /// **'Heating hours a day'**
+  String get s86c45674db;
+
+  /// fi: Kotisilta, joka ajaa ohjelman
+  ///
+  /// In en, this message translates to:
+  /// **'Home bridge that runs the program'**
+  String get s94f86b3b6a;
+
+  /// fi: ei pariutettu
+  ///
+  /// In en, this message translates to:
+  /// **'not paired'**
+  String get s10a23b4691;
+
+  /// fi: Ohjelma ajetaan valitulla kotisillalla itsenäisesti, vaikka sovellus olisi suljettu. Sen pitää tavoittaa laite. Yhtä lai
+  ///
+  /// In en, this message translates to:
+  /// **'The program runs on the chosen bridge by itself, even with the app closed. The bridge must reach the device. One device is only ever controlled by one bridge.'**
+  String get s407cb3a732;
+
+  /// fi: Ohjelma
+  ///
+  /// In en, this message translates to:
+  /// **'Program'**
+  String get s7de515a7c1;
+
+  /// fi: Tämän laitteen ohjelma on jo toisella kotisillalla, joten tätä ohjelmaa ei ajeta. Poista toinen ohjelma tai valitse täll
+  ///
+  /// In en, this message translates to:
+  /// **'This device already has a program on another bridge, so this one is not run. Remove the other program or pick the same bridge.'**
+  String get s7fcdd166f3;
+
+  /// fi: Ohjaustapa
+  ///
+  /// In en, this message translates to:
+  /// **'Control mode'**
+  String get s093677b5f1;
+
+  /// fi: Ilman anturia lämmitys noudattaa hintaohjausta. Valitse anturi napauttamalla.
+  ///
+  /// In en, this message translates to:
+  /// **'Without a sensor, heating follows the price schedule. Tap to choose a sensor.'**
+  String get sf0446baa5c;
+
+  /// fi: Ei käytössä
+  ///
+  /// In en, this message translates to:
+  /// **'Not running'**
+  String get s0cb0877799;
+
+  /// fi: {p0} ei ole yhteydessä – ohjelma jatkaa siellä itsenäisesti
+  ///
+  /// In en, this message translates to:
+  /// **' is offline – the program keeps running there by itself'**
+  String sad8b69fca2(String p0);
+
+  /// fi: Ajaa: {p0}
+  ///
+  /// In en, this message translates to:
+  /// **'Runs on: '**
+  String s7211f94f91(String p0);
+
+  /// fi: Laitteella on jo ohjelma toisella kotisillalla.
+  ///
+  /// In en, this message translates to:
+  /// **'The device already has a program on another bridge.'**
+  String get s7b25bc0874;
+
+  /// fi: Muutokset odottavat kotisiltaa – ne lähetetään, kun se vastaa.
+  ///
+  /// In en, this message translates to:
+  /// **'Changes are waiting for the bridge – they are sent when it answers.'**
+  String get sccf63d5729;
+
+  /// fi: Lisää ruutu kotinäytölle
+  ///
+  /// In en, this message translates to:
+  /// **'Add a tile to the home screen'**
+  String get sdb217dcf7f;
+
+  /// fi: Ruutu on jo kotinäytöllä
+  ///
+  /// In en, this message translates to:
+  /// **'The tile is already on the home screen'**
+  String get s6398607bb8;
+
+  /// fi: Ruutu lisätty kotinäytölle
+  ///
+  /// In en, this message translates to:
+  /// **'Tile added to the home screen'**
+  String get s52d3e04a46;
+
+  /// fi: Valitse laite
+  ///
+  /// In en, this message translates to:
+  /// **'Choose the device'**
+  String get s354eb362d8;
+
+  /// fi: Valitse ohjaustapa
+  ///
+  /// In en, this message translates to:
+  /// **'Choose the control mode'**
+  String get s1571e8b853;
+
+  /// fi: Aseta rajat
+  ///
+  /// In en, this message translates to:
+  /// **'Set the limit'**
+  String get s190914de3c;
+
+  /// fi: Lisää ohjelma
+  ///
+  /// In en, this message translates to:
+  /// **'Add a program'**
+  String get s4eaf5975db;
+
+  /// fi: Ohjelma on jo: {p0}
+  ///
+  /// In en, this message translates to:
+  /// **'Already has a program: {p0}'**
+  String scb39988da3(String p0);
+
+  /// fi: Rele tai pistorasia
+  ///
+  /// In en, this message translates to:
+  /// **'Relay or plug'**
+  String get s8ea88baef9;
+
+  /// fi: Ei laitteita. Lisää ensin rele, pistorasia tai termostaatti.
+  ///
+  /// In en, this message translates to:
+  /// **'No devices. Add a relay, a plug or a thermostat first.'**
+  String get s70d49e7f6a;
+
+  /// fi: Lämmitystapa
+  ///
+  /// In en, this message translates to:
+  /// **'Heating type'**
+  String get sec41a5c19b;
+
+  /// fi: Muut asetukset (viiveet, hystereesi, lämpörajat, jäätymissuoja, varalämpötila, boost, vähimmäisajat) löytyvät ohjelman E
+  ///
+  /// In en, this message translates to:
+  /// **'Other settings (delays, hysteresis, temperature limits, frost protection, fallback, boost, minimum times) are under Advanced on the program page. The defaults suit most homes.'**
+  String get s0feac99b10;
+
+  /// fi: Luo ohjelma
+  ///
+  /// In en, this message translates to:
+  /// **'Create program'**
+  String get s54a7a968e9;
+
   /// fi: Tiedot vain tässä selaimessa.
   ///
   /// In en, this message translates to:
@@ -7400,29 +7640,23 @@ abstract class AppLocalizations {
   /// **'Holiday: edit'**
   String get sd172900c2d;
 
-  /// fi: Lisää ruutu kotinäytölle
+  /// fi: Ohjelmat
   ///
   /// In en, this message translates to:
-  /// **'Add a tile to the home screen'**
-  String get sdb217dcf7f;
+  /// **'Programs'**
+  String get s5275c2c21e;
 
-  /// fi: Ruutu lisätty kotinäytölle
+  /// fi: Jokaisella lämmityslaitteella on oma ohjelmansa. Ohjelma ajetaan kotisillalla itsenäisesti.
   ///
   /// In en, this message translates to:
-  /// **'Tile added to the home screen'**
-  String get s52d3e04a46;
+  /// **'Each heating device has its own program. A program runs on a home bridge by itself.'**
+  String get s99a5e80b5c;
 
-  /// fi: Lämmityslaitteet
+  /// fi: Ei ohjelmia vielä.
   ///
   /// In en, this message translates to:
-  /// **'Heating devices'**
-  String get sdca3ad13dd;
-
-  /// fi: Ei laitteita. Lisää ne kartoituksessa.
-  ///
-  /// In en, this message translates to:
-  /// **'No devices. Add them in the survey.'**
-  String get sc8c5e37f5d;
+  /// **'No programs yet.'**
+  String get s0fd18deddd;
 
   /// fi: Lämmityksen ilmoitukset
   ///
@@ -7634,48 +7868,6 @@ abstract class AppLocalizations {
   /// **'No sensor'**
   String get se68cc54085;
 
-  /// fi: Ohjaustapa
-  ///
-  /// In en, this message translates to:
-  /// **'Control mode'**
-  String get s093677b5f1;
-
-  /// fi: Hinnan mukaan
-  ///
-  /// In en, this message translates to:
-  /// **'By price'**
-  String get sa6195c2696;
-
-  /// fi: Lämpötilan mukaan
-  ///
-  /// In en, this message translates to:
-  /// **'By temperature'**
-  String get s9d6a4787c0;
-
-  /// fi: Lämmitys seuraa mitattua lämpötilaa kuin termostaatti. Hintasäännöt vain siirtävät tavoitetta: halvoilla tunneilla ylös,
-  ///
-  /// In en, this message translates to:
-  /// **'Heating follows the measured temperature like a thermostat. The price rules only move the setpoint: up in cheap hours, down in expensive ones (if set).'**
-  String get s84cf10acfd;
-
-  /// fi: Lämmitys noudattaa sähkön hintaa ja säätä. Lämpötila-anturi on valinnainen ja antaa turvarajat.
-  ///
-  /// In en, this message translates to:
-  /// **'Heating follows the electricity price and the weather. A temperature sensor is optional and gives the safety limits.'**
-  String get sdf9dc612a6;
-
-  /// fi: Valitse lämpötila-anturi
-  ///
-  /// In en, this message translates to:
-  /// **'Choose a temperature sensor'**
-  String get s01c555401a;
-
-  /// fi: Lämpötilaohjaus tarvitsee anturin. Ilman sitä lämmitys noudattaa hintaohjausta.
-  ///
-  /// In en, this message translates to:
-  /// **'Temperature control needs a sensor. Without one, heating follows the price schedule.'**
-  String get s249140bfd0;
-
   /// fi: Hintasäännöt
   ///
   /// In en, this message translates to:
@@ -7687,18 +7879,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **' (recommended)'**
   String get s8e6c8ffabb;
-
-  /// fi: Lämmitystunteja päivässä
-  ///
-  /// In en, this message translates to:
-  /// **'Heating hours a day'**
-  String get s86c45674db;
-
-  /// fi: Ohitettavia kalleimpia tunteja
-  ///
-  /// In en, this message translates to:
-  /// **'Most expensive hours skipped'**
-  String get sbd3dbfd7e9;
 
   /// fi: Tämän päivän hintaraja: ohitetaan, kun hinta on vähintään {p0} c/kWh.
   ///
@@ -8197,12 +8377,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Choose the charger (charging on/off)'**
   String get s3cc31bcfdc;
-
-  /// fi: Valitse laite
-  ///
-  /// In en, this message translates to:
-  /// **'Choose the device'**
-  String get s354eb362d8;
 
   /// fi: Valitse laitteet
   ///
@@ -9345,12 +9519,6 @@ abstract class AppLocalizations {
   /// **'How many hours on'**
   String get s55e5c3a177;
 
-  /// fi: Hintaraja
-  ///
-  /// In en, this message translates to:
-  /// **'Price limit'**
-  String get s52ef5e0b45;
-
   /// fi: Tulevat päälläoloajat
   ///
   /// In en, this message translates to:
@@ -9950,12 +10118,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'e.g. Living room'**
   String get s1790a71e85;
-
-  /// fi: Tavoitelämpötila
-  ///
-  /// In en, this message translates to:
-  /// **'Target temperature'**
-  String get sd5f46903a1;
 
   /// fi: Jos lämpötilaa ei saada
   ///
@@ -19595,6 +19757,18 @@ abstract class AppLocalizations {
   /// **'The device has no on/off command'**
   String get s0528a2ef9e;
 
+  /// fi: Kotisilta ei ole yhteydessä
+  ///
+  /// In en, this message translates to:
+  /// **'The home bridge is offline'**
+  String get s7a71f285ef;
+
+  /// fi: Kotisilta {p0} ei ole yhteydessä
+  ///
+  /// In en, this message translates to:
+  /// **'The home bridge {p0} is offline'**
+  String sa3ca79fa2c(String p0);
+
   /// fi: Ohjaus ei onnistunut
   ///
   /// In en, this message translates to:
@@ -19612,6 +19786,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'The home bridge cannot reach the address of {p0}: it is most likely on another network than {p0}. This device can reach it, which is why the other tiles work.'**
   String s151c5be078(String p0, String p1);
+
+  /// fi: Tämä ohjelma ajetaan kotisillalla, johon sovellus ei nyt saa yhteyttä. Ohjelma jatkaa siellä itsenäisesti viimeisten ase
+  ///
+  /// In en, this message translates to:
+  /// **'This program runs on a home bridge the app cannot reach right now. It keeps running there on its last settings, but its state cannot be refreshed and setting changes cannot be sent.'**
+  String get saca21d4cb4;
 
   /// fi: Kotisilta ei saanut yhteyttä laitteeseen {p0}. Se on pois päältä, poissa verkosta tai kotisilta on eri verkossa.
   ///
@@ -19655,6 +19835,24 @@ abstract class AppLocalizations {
   /// **'Smart heating retries every minute. Until then the relay stays in its last state and the heating is not controlled.'**
   String get sdafab85176;
 
+  /// fi: Tarkista, että kotisiltana toimiva laite on päällä, siinä on Molaplan käynnissä ja se on verkossa.
+  ///
+  /// In en, this message translates to:
+  /// **'Check that the device acting as the home bridge is on, Molaplan is running on it, and it is online.'**
+  String get s3eb269a14c;
+
+  /// fi: Ohjelma ei lopeta: kotisilta noudattaa viimeksi saamiaan asetuksia, kunnes yhteys palaa.
+  ///
+  /// In en, this message translates to:
+  /// **'The program does not stop: the bridge follows the last settings it received until the connection is back.'**
+  String get se3dee57a24;
+
+  /// fi: Kun yhteys palaa, tämä laite lähettää odottavat muutokset automaattisesti. Jos siirsit ohjelman toiselle kotisillalle, v
+  ///
+  /// In en, this message translates to:
+  /// **'When the connection is back, this device sends any waiting changes automatically. If you moved the program to another bridge, the old one stops it as soon as it is online again.'**
+  String get s0ddffa32c3;
+
   /// fi: Avaa laitteen yhteys ja tarkista käyttäjätunnus ja salasana.
   ///
   /// In en, this message translates to:
@@ -19690,6 +19888,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Check that the device is on and on the same network as the home bridge. Smart heating retries every minute; until it works the device stays in its current state.'**
   String get sc056006180;
+
+  /// fi: Ohjelma jatkaa kotisillalla itsenäisesti. Tarkista, että kotisilta on päällä ja verkossa.
+  ///
+  /// In en, this message translates to:
+  /// **'The program keeps running on the bridge by itself. Check that the bridge is on and online.'**
+  String get seca484252c;
 
   /// fi: Tarkista laitteen salasana yhteyden asetuksista.
   ///
@@ -19852,6 +20056,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'{p0} cheapest hours a day: now {p1} c/kWh {p2} limit {p3} c'**
   String sf3a33e9bc5(String p0, String p1, String p2, String p3);
+
+  /// fi: Nyt {p0} c/kWh {p1} raja {p2} c · {p3} h alle rajan tänään
+  ///
+  /// In en, this message translates to:
+  /// **'Now {p0} c/kWh {p1} limit {p2} c · {p3} h under the limit today'**
+  String s5ee0d291a9(String p0, String p1, String p2, String p3);
 
   /// fi: {p0} kalleinta tuntia ohitetaan: nyt {p1} c/kWh {p2} raja {p3} c
   ///
