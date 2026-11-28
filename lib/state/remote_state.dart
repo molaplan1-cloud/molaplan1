@@ -22,7 +22,13 @@ import 'stores.dart';
 /// t224u: one row of 'Omat kotisillat'. [grant] = a client credential for the relay (null when
 /// only the name is known); [known] = what the bridge last wrote to the account vault.
 class OwnBridge {
-  OwnBridge({required this.home, required this.name, this.grant, this.known, this.self = false});
+  OwnBridge({
+    required this.home,
+    required this.name,
+    this.grant,
+    this.known,
+    this.self = false,
+  });
   final String home;
   final String name;
   final Map<String, dynamic>? grant;
@@ -33,7 +39,8 @@ class OwnBridge {
 /// Remote access for the app: this phone's pairing (client side) and the
 /// optional in-app home bridge (server side).
 class RemoteState extends ChangeNotifier {
-  RemoteState({required this.store, this.configJson, String? relay}) : relay = relay ?? defaultRelayUrl {
+  RemoteState({required this.store, this.configJson, String? relay})
+    : relay = relay ?? defaultRelayUrl {
     router.onChange = _changed;
   }
 
@@ -72,7 +79,26 @@ class RemoteState extends ChangeNotifier {
   /// paired one (not reported offline).
   bool get bridgeOnline =>
       (bridge != null && bridge!.link == BridgeLink.online) ||
-      (paired != null && router.status != LinkStatus.offline && router.client?.link != RemoteLink.bridgeOffline);
+      (paired != null &&
+          router.status != LinkStatus.offline &&
+          router.client?.link != RemoteLink.bridgeOffline);
+
+  /// R629 (t339u): a relay the browser can actually use right now. A saved pairing
+  /// without a connected client, or a client that is still connecting / whose home
+  /// bridge is offline, is not a working path.
+  /// Tests override the live-relay check (a FakeRemote is not a real socket).
+  static bool? debugRelayPathLive;
+
+  bool get relayPathLive {
+    if (debugRelayPathLive != null) return debugRelayPathLive!;
+    if (bridge != null && bridge!.link == BridgeLink.online) return true;
+    final c = router.client;
+    if (paired == null || c == null) return false;
+    if (c.link != RemoteLink.connected) return false;
+    if (router.status == LinkStatus.offline) return false;
+    return true;
+  }
+
   LinkStatus? get status => router.status;
   RemoteLink? get clientLink => router.client?.link;
 
@@ -98,7 +124,9 @@ class RemoteState extends ChangeNotifier {
       final i = await bridgeInfoVia(c).timeout(bridgeCheckTimeout);
       final theirs = (i?['nets'] as List?)?.map((e) => '$e').toList();
       homeNetworkUnverified = theirs == null;
-      router.applySameNetwork(sameHomeNetwork(mine ?? await localNets(), theirs));
+      router.applySameNetwork(
+        sameHomeNetwork(mine ?? await localNets(), theirs),
+      );
       router.bridgeAnswered();
     } catch (_) {
       // Bridge not reachable: keep the previous answer ('Ei yhteyttä' if there was none).
@@ -126,7 +154,9 @@ class RemoteState extends ChangeNotifier {
   Future<void> load({bool startBridge = false}) async {
     try {
       final raw = await store.read(_copiedKey);
-      if (raw != null) copiedHomes.addAll((jsonDecode(raw) as List).map((e) => '$e'));
+      if (raw != null) {
+        copiedHomes.addAll((jsonDecode(raw) as List).map((e) => '$e'));
+      }
     } catch (_) {}
     paired = await PairedHome.load(store);
     if (paired != null) _setClient(RemoteClient(paired!));
@@ -145,7 +175,11 @@ class RemoteState extends ChangeNotifier {
   }
 
   /// Pairs this device with a home bridge (QR [invite] or typed [code]).
-  Future<PairedHome> pair({PairingInvite? invite, String? code, String? deviceName}) async {
+  Future<PairedHome> pair({
+    PairingInvite? invite,
+    String? code,
+    String? deviceName,
+  }) async {
     final p = await pairWithHome(
       relay: relay,
       invite: invite,
@@ -173,16 +207,24 @@ class RemoteState extends ChangeNotifier {
   /// the account's credential. If the bridge is offline or older than 0.4, the account
   /// credential is used as-is for now and enrolling is retried on the next start.
   /// Returns true when this device now has a home connection.
-  Future<bool> adoptAccountHome(Map<String, dynamic> grant, {String? deviceName}) async {
+  Future<bool> adoptAccountHome(
+    Map<String, dynamic> grant, {
+    String? deviceName,
+  }) async {
     final g = PairedHome.fromJson(grant);
-    if (paired != null && paired!.home == g.home && paired!.dev != g.dev) return true; // already enrolled
+    if (paired != null && paired!.home == g.home && paired!.dev != g.dev) {
+      return true; // already enrolled
+    }
     final name = deviceName ?? defaultDeviceName();
     final me = await Identity.generate();
     final dev = randomHex(8);
     final tmp = clientFactory(g);
     try {
       final v = await tmp
-          .call('enroll', spec: {'dev': dev, 'pub': b64(me.publicKey), 'name': name})
+          .call(
+            'enroll',
+            spec: {'dev': dev, 'pub': b64(me.publicKey), 'name': name},
+          )
           .timeout(const Duration(seconds: 15));
       final m = Map<String, dynamic>.from(v as Map);
       final own = PairedHome(
@@ -212,7 +254,8 @@ class RemoteState extends ChangeNotifier {
   }
 
   /// True while this device uses the shared account credential (enroll pending).
-  Future<bool> usesSharedCredential() async => paired != null && await store.read(sharedKey) == paired!.dev;
+  Future<bool> usesSharedCredential() async =>
+      paired != null && await store.read(sharedKey) == paired!.dev;
 
   /// The bridge makes a credential for the account (so the account's devices get this home).
   Future<Map<String, dynamic>?> createAccountGrant() async {
@@ -243,7 +286,8 @@ class RemoteState extends ChangeNotifier {
   /// R260: the in-app bridge's per-request share check against the account service (set in main;
   /// null in tests).
   Future<String> Function(String shareId)? shareCheck;
-  Future<Map<String, dynamic>> Function(Map<String, dynamic> spec)? bridgeUpdater;
+  Future<Map<String, dynamic>> Function(Map<String, dynamic> spec)?
+  bridgeUpdater;
 
   /// Phone side: the home bridge's version and update state.
   /// Always through the relay (also while 'Kotona': the LAN only reaches devices, not the bridge).
@@ -258,7 +302,10 @@ class RemoteState extends ChangeNotifier {
   /// not "the tile has no device".
   static Future<Map<String, dynamic>?> bridgeInfoVia(RemoteClient c) async {
     try {
-      final v = await c.call('bridge_info', timeout: const Duration(seconds: 15));
+      final v = await c.call(
+        'bridge_info',
+        timeout: const Duration(seconds: 15),
+      );
       return v is Map ? Map<String, dynamic>.from(v) : null;
     } on RemoteDeviceError catch (e) {
       if (isOldBridgeAnswer(e.message)) return {'app': null, 'old': true};
@@ -266,12 +313,16 @@ class RemoteState extends ChangeNotifier {
     }
   }
 
-  static bool isOldBridgeAnswer(String m) => m.contains('Connection missing') || m.contains('Unknown op');
+  static bool isOldBridgeAnswer(String m) =>
+      m.contains('Connection missing') || m.contains('Unknown op');
 
   /// Phone side: "Päivitä silta". An app bridge updates itself (R211); an ESP32 bridge gets the
   /// latest release's signed OTA manifest (it verifies the Ed25519 signature, the version and the
   /// image SHA-256 itself before flashing).
-  Future<Map<String, dynamic>?> updateBridge({Map<String, dynamic>? info, http.Client? client}) async {
+  Future<Map<String, dynamic>?> updateBridge({
+    Map<String, dynamic>? info,
+    http.Client? client,
+  }) async {
     final c = router.client;
     if (c == null) return null;
     return updateBridgeVia(c, info: info, client: client);
@@ -287,23 +338,44 @@ class RemoteState extends ChangeNotifier {
     if (i?['platform'] == 'esp32') {
       final r = await checkLatest(current: '0.0.0', client: client);
       final rel = r.release;
-      final asset = rel?.assets.where((a) => a.name == 'molaplan-bridge-esp32.manifest.json').firstOrNull;
-      if (rel == null || asset == null) return {'status': 'no_asset', 'current': i?['fw']};
+      final asset = rel?.assets
+          .where((a) => a.name == 'molaplan-bridge-esp32.manifest.json')
+          .firstOrNull;
+      if (rel == null || asset == null) {
+        return {'status': 'no_asset', 'current': i?['fw']};
+      }
       final h = client ?? http.Client();
       try {
-        final m = await h.get(Uri.parse(asset.url)).timeout(const Duration(seconds: 30));
-        if (m.statusCode != 200) return {'status': 'unavailable', 'current': i?['fw']};
+        final m = await h
+            .get(Uri.parse(asset.url))
+            .timeout(const Duration(seconds: 30));
+        if (m.statusCode != 200) {
+          return {'status': 'unavailable', 'current': i?['fw']};
+        }
         final manifest = jsonDecode(m.body);
         if (i?['fw'] == (manifest is Map ? manifest['version'] : null)) {
           return {'status': 'up_to_date', 'current': i?['fw']};
         }
-        await c.call('bridge', spec: {'action': 'update', 'manifest': manifest}, timeout: const Duration(seconds: 30));
-        return {'status': 'installing', 'silent': true, 'current': i?['fw'], 'latest': rel.version};
+        await c.call(
+          'bridge',
+          spec: {'action': 'update', 'manifest': manifest},
+          timeout: const Duration(seconds: 30),
+        );
+        return {
+          'status': 'installing',
+          'silent': true,
+          'current': i?['fw'],
+          'latest': rel.version,
+        };
       } finally {
         if (client == null) h.close();
       }
     }
-    final v = await c.call('bridge_update', spec: {'install': true}, timeout: const Duration(minutes: 3));
+    final v = await c.call(
+      'bridge_update',
+      spec: {'install': true},
+      timeout: const Duration(minutes: 3),
+    );
     return v is Map ? Map<String, dynamic>.from(v) : null;
   }
 
@@ -312,7 +384,10 @@ class RemoteState extends ChangeNotifier {
   /// Every home bridge of the account: the bridges in the account vault, the home this device is
   /// paired to, the account's home credential and this device's own bridge – one row per home,
   /// regardless of which home this device is paired to.
-  List<OwnBridge> ownBridges({List<Map<String, dynamic>> vault = const [], Map<String, dynamic>? accountHome}) {
+  List<OwnBridge> ownBridges({
+    List<Map<String, dynamic>> vault = const [],
+    Map<String, dynamic>? accountHome,
+  }) {
     final out = <String, OwnBridge>{};
     void add(Map<String, dynamic>? grant, {Map<String, dynamic>? known}) {
       final home = grant?['home'];
@@ -320,7 +395,8 @@ class RemoteState extends ChangeNotifier {
       final had = out[home];
       out[home] = OwnBridge(
         home: home,
-        name: '${known?['name'] ?? had?.known?['name'] ?? grant?['name'] ?? had?.name ?? 'Koti'}',
+        name:
+            '${known?['name'] ?? had?.known?['name'] ?? grant?['name'] ?? had?.name ?? 'Koti'}',
         grant: grant!['token'] == null ? had?.grant : grant,
         known: known ?? had?.known,
       );
@@ -328,20 +404,34 @@ class RemoteState extends ChangeNotifier {
 
     for (final b in vault) {
       final g = b['grant'];
-      add(g is Map ? Map<String, dynamic>.from(g) : {'home': b['home'], 'name': b['name']}, known: b);
+      add(
+        g is Map
+            ? Map<String, dynamic>.from(g)
+            : {'home': b['home'], 'name': b['name']},
+        known: b,
+      );
     }
     add(accountHome);
     add(paired?.toJson());
     final me = bridge;
     if (me != null) {
       final had = out[me.home];
-      out[me.home] = OwnBridge(home: me.home, name: me.homeName, grant: had?.grant, known: had?.known, self: true);
+      out[me.home] = OwnBridge(
+        home: me.home,
+        name: me.homeName,
+        grant: had?.grant,
+        known: had?.known,
+        self: true,
+      );
     }
     final list = out.values.toList()..sort((a, b) => a.name.compareTo(b.name));
     return list;
   }
 
-  Future<T> _viaHome<T>(OwnBridge b, Future<T> Function(RemoteClient c) f) async {
+  Future<T> _viaHome<T>(
+    OwnBridge b,
+    Future<T> Function(RemoteClient c) f,
+  ) async {
     final p = paired;
     final c = router.client;
     if (p != null && c != null && p.home == b.home) return f(c);
@@ -357,7 +447,8 @@ class RemoteState extends ChangeNotifier {
 
   /// R635: runs [f] against one of the account's bridges (this device's paired one, or a temporary
   /// client for another home).
-  Future<T> callHome<T>(OwnBridge b, Future<T> Function(RemoteClient c) f) => _viaHome(b, f);
+  Future<T> callHome<T>(OwnBridge b, Future<T> Function(RemoteClient c) f) =>
+      _viaHome(b, f);
 
   /// The home (bridge) this device is, or is paired to.
   String? get myHome => bridge?.home ?? paired?.home;
@@ -377,7 +468,11 @@ class RemoteState extends ChangeNotifier {
   }
 
   /// 'Päivitä' on one row of 'Omat kotisillat'.
-  Future<Map<String, dynamic>?> updateOwnBridge(OwnBridge b, {Map<String, dynamic>? info, http.Client? client}) async {
+  Future<Map<String, dynamic>?> updateOwnBridge(
+    OwnBridge b, {
+    Map<String, dynamic>? info,
+    http.Client? client,
+  }) async {
     if (b.self) {
       final u = bridgeUpdater;
       return u == null ? {'status': 'failed'} : u({'install': true});
@@ -388,7 +483,10 @@ class RemoteState extends ChangeNotifier {
   Future<bool> checkRemote() async {
     final c = router.client;
     if (c == null) return false;
-    final ok = await c.check().timeout(bridgeCheckTimeout, onTimeout: () => false);
+    final ok = await c.check().timeout(
+      bridgeCheckTimeout,
+      onTimeout: () => false,
+    );
     if (ok) {
       router.bridgeAnswered();
     } else {
@@ -405,7 +503,9 @@ class RemoteState extends ChangeNotifier {
     final b = BridgeCore(
       store: store,
       executor: RemoteExecutor(
-        configProvider: configJson == null ? null : () => jsonDecode(configJson!()) as Map<String, dynamic>,
+        configProvider: configJson == null
+            ? null
+            : () => jsonDecode(configJson!()) as Map<String, dynamic>,
         discover: bridgeDiscover,
         flowEnergy: flowEnergy,
       ),
@@ -446,7 +546,9 @@ class RemoteState extends ChangeNotifier {
 String defaultDeviceName() {
   try {
     final h = Plat.localHostname;
-    if (Plat.isAndroid) return h == 'localhost' || h.isEmpty ? 'Android-laite' : 'Android ($h)';
+    if (Plat.isAndroid) {
+      return h == 'localhost' || h.isEmpty ? 'Android-laite' : 'Android ($h)';
+    }
     if (Plat.isWindows) return 'Windows ($h)';
     return h;
   } catch (_) {

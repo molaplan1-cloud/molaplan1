@@ -12914,5 +12914,10 @@
  "s14a06fa0b3": "Una lectura",
  "@s14a06fa0b3": {
   "x-mt": true
- }
+ },
+ "s8a182c3f94": "1 recuadro oculto – no disponible en el navegador",
+ "sbc5e70ca74": "Mostrar ya añadidos ({p0})",
+ "sc931a2bb07": "Todo lo encontrado ya está añadido",
+ "s0a8a0d1b3c": "El puente de casa no está conectado ahora.",
+ "sbb24d77d02": "Comprueba que el dispositivo en casa (el puente de casa) esté encendido, así esto también funciona en el navegador."
 }

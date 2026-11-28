@@ -5,6 +5,7 @@ import '../drivers/ha_catalog.dart';
 import '../models/models.dart';
 import '../templates/device_templates.dart';
 import 'add_device_wizard.dart';
+import 'already_added.dart';
 import 'app_scope.dart';
 
 String haDomainLabel(BuildContext context, String d) => switch (d) {
@@ -34,7 +35,13 @@ String haDomainLabel(BuildContext context, String d) => switch (d) {
 /// Pick Home Assistant entities -> tiles. Searchable, filter by room and type, suggestions first.
 /// Never imports everything; can be reopened later (Settings → Home Assistant).
 class HaEntityPickerPage extends StatefulWidget {
-  const HaEntityPickerPage({super.key, required this.connection, this.dashboard, this.loader, this.initialQuery});
+  const HaEntityPickerPage({
+    super.key,
+    required this.connection,
+    this.dashboard,
+    this.loader,
+    this.initialQuery,
+  });
   final ConnectionConfig connection;
 
   /// Prefilled search (t155u: "Käytä Home Assistantin kautta" opens with e.g. "airfi").
@@ -53,10 +60,13 @@ class _HaEntityPickerPageState extends State<HaEntityPickerPage> {
   String? area; // null = all rooms, '' = no room
   String? domain;
   bool showAll = false;
+  bool showAlreadyAdded = false;
   bool byRoom = true;
   final selected = <String>{};
   bool adding = false;
-  late final _searchCtl = TextEditingController(text: widget.initialQuery ?? '');
+  late final _searchCtl = TextEditingController(
+    text: widget.initialQuery ?? '',
+  );
 
   @override
   void initState() {
@@ -98,18 +108,25 @@ class _HaEntityPickerPageState extends State<HaEntityPickerPage> {
     }
   }
 
-  int _hueLights(HaCatalog c) => c.entities.where((e) => e.platform == 'hue' && e.entityId.startsWith('light.')).length;
+  int _hueLights(HaCatalog c) => c.entities
+      .where((e) => e.platform == 'hue' && e.entityId.startsWith('light.'))
+      .length;
 
-  bool _hasHue() =>
-      AppScope.read(context).config.connections
-          .any((x) => x.type == 'http' && x.name == 'Hue' && (x.secrets['token'] ?? '').isNotEmpty);
+  bool _hasHue() => AppScope.read(context).config.connections.any(
+    (x) =>
+        x.type == 'http' &&
+        x.name == 'Hue' &&
+        (x.secrets['token'] ?? '').isNotEmpty,
+  );
 
   Set<String> _existing() {
     final st = AppScope.read(context);
     return {
       for (final d in st.config.dashboards)
         for (final t in d.tiles)
-          if (t.connectionId == widget.connection.id && t.read['entityId'] != null) '${t.read['entityId']}',
+          if (t.connectionId == widget.connection.id &&
+              t.read['entityId'] != null)
+            '${t.read['entityId']}',
     };
   }
 
@@ -118,12 +135,17 @@ class _HaEntityPickerPageState extends State<HaEntityPickerPage> {
     final c = cat!;
     final lang = st.lang;
     setState(() => adding = true);
-    final picked = c.entities.where((e) => selected.contains(e.entityId)).toList();
+    final picked = c.entities
+        .where((e) => selected.contains(e.entityId))
+        .toList();
     final cam = picked.any((e) => e.domain == 'camera')
         ? ConnectionConfig(
             name: 'Home Assistant – ${tx(context, 'kamerat', 'cameras')}',
             type: 'camera',
-            settings: {'baseUrl': widget.connection.settings['baseUrl'], 'auth': 'bearer'},
+            settings: {
+              'baseUrl': widget.connection.settings['baseUrl'],
+              'auth': 'bearer',
+            },
             secrets: {'token': widget.connection.secrets['token'] ?? ''},
           )
         : null;
@@ -136,16 +158,22 @@ class _HaEntityPickerPageState extends State<HaEntityPickerPage> {
     // integration-named view (t138u).
     final home =
         widget.dashboard ??
-        st.config.dashboards.where((x) => x.name == tx(context, 'Koti', 'Home')).firstOrNull ??
+        st.config.dashboards
+            .where((x) => x.name == tx(context, 'Koti', 'Home'))
+            .firstOrNull ??
         st.config.dashboards.first;
     final created = <Dashboard>[];
     for (final g in groups.entries) {
       Dashboard? d = home;
       if (g.key != null) {
-        d = st.config.dashboards.where((x) => x.name.toLowerCase() == g.key!.toLowerCase()).firstOrNull;
+        d = st.config.dashboards
+            .where((x) => x.name.toLowerCase() == g.key!.toLowerCase())
+            .firstOrNull;
         if (d == null) {
           final only =
-              st.config.dashboards.length == 1 && st.config.dashboards.first.tiles.isEmpty && !groups.containsKey(null);
+              st.config.dashboards.length == 1 &&
+              st.config.dashboards.first.tiles.isEmpty &&
+              !groups.containsKey(null);
           if (only) {
             // The empty default view becomes the first room.
             d = st.config.dashboards.first;
@@ -156,7 +184,13 @@ class _HaEntityPickerPageState extends State<HaEntityPickerPage> {
           }
         }
       }
-      final tiles = haTilesForPicked(g.value, widget.connection.id, lang, cameraConnId: cam?.id, all: c.entities);
+      final tiles = haTilesForPicked(
+        g.value,
+        widget.connection.id,
+        lang,
+        cameraConnId: cam?.id,
+        all: c.entities,
+      );
       count += tiles.length;
       await st.applyTemplate(TemplateResult([?cam], tiles), into: d);
     }
@@ -165,7 +199,10 @@ class _HaEntityPickerPageState extends State<HaEntityPickerPage> {
       await st.deleteDashboard(d);
     }
     if (!mounted) return;
-    showSnack(context, tx(context, '$count ruutua lisätty', '$count tiles added'));
+    showSnack(
+      context,
+      tx(context, '$count ruutua lisätty', '$count tiles added'),
+    );
     Navigator.pop(context, true);
   }
 
@@ -174,7 +211,15 @@ class _HaEntityPickerPageState extends State<HaEntityPickerPage> {
     final text = Theme.of(context).textTheme;
     final c = cat;
     return Scaffold(
-      appBar: AppBar(title: Text(tx(context, 'Valitse Home Assistantin laitteet', 'Pick Home Assistant devices'))),
+      appBar: AppBar(
+        title: Text(
+          tx(
+            context,
+            'Valitse Home Assistantin laitteet',
+            'Pick Home Assistant devices',
+          ),
+        ),
+      ),
       body: error != null
           ? Center(
               child: Padding(
@@ -184,7 +229,10 @@ class _HaEntityPickerPageState extends State<HaEntityPickerPage> {
                   children: [
                     Text(error!, textAlign: TextAlign.center),
                     const SizedBox(height: 12),
-                    FilledButton(onPressed: _load, child: Text(tx(context, 'Yritä uudelleen', 'Try again'))),
+                    FilledButton(
+                      onPressed: _load,
+                      child: Text(tx(context, 'Yritä uudelleen', 'Try again')),
+                    ),
                   ],
                 ),
               ),
@@ -217,7 +265,13 @@ class _HaEntityPickerPageState extends State<HaEntityPickerPage> {
                           dense: true,
                           value: byRoom,
                           onChanged: (v) => setState(() => byRoom = v == true),
-                          title: Text(tx(context, 'Huoneittain omiin näkymiin', 'One view per room')),
+                          title: Text(
+                            tx(
+                              context,
+                              'Huoneittain omiin näkymiin',
+                              'One view per room',
+                            ),
+                          ),
                         ),
                       )
                     else
@@ -227,7 +281,13 @@ class _HaEntityPickerPageState extends State<HaEntityPickerPage> {
                       key: const ValueKey('ha-add'),
                       onPressed: selected.isEmpty || adding ? null : _add,
                       icon: const Icon(Icons.add),
-                      label: Text(tx(context, 'Lisää ${selected.length}', 'Add ${selected.length}')),
+                      label: Text(
+                        tx(
+                          context,
+                          'Lisää ${selected.length}',
+                          'Add ${selected.length}',
+                        ),
+                      ),
                     ),
                   ],
                 ),
@@ -238,8 +298,22 @@ class _HaEntityPickerPageState extends State<HaEntityPickerPage> {
 
   Widget _list(BuildContext context, HaCatalog c, TextTheme text) {
     final existing = _existing();
-    final items = c.filter(query: query, area: area, domain: domain, showAll: showAll);
-    final hiddenCount = showAll ? 0 : c.entities.where((e) => e.technical).length;
+    final raw = c.filter(
+      query: query,
+      area: area,
+      domain: domain,
+      showAll: showAll,
+    );
+    final addedCount = raw.where((e) => existing.contains(e.entityId)).length;
+    final items = showAlreadyAdded
+        ? raw
+        : [
+            for (final e in raw)
+              if (!existing.contains(e.entityId)) e,
+          ];
+    final hiddenCount = showAll
+        ? 0
+        : c.entities.where((e) => e.technical).length;
     return Column(
       children: [
         Padding(
@@ -250,7 +324,11 @@ class _HaEntityPickerPageState extends State<HaEntityPickerPage> {
             onChanged: (v) => setState(() => query = v),
             decoration: InputDecoration(
               prefixIcon: const Icon(Icons.search),
-              hintText: tx(context, 'Hae nimellä tai tunnuksella', 'Search by name or id'),
+              hintText: tx(
+                context,
+                'Hae nimellä tai tunnuksella',
+                'Search by name or id',
+              ),
               isDense: true,
             ),
           ),
@@ -269,9 +347,16 @@ class _HaEntityPickerPageState extends State<HaEntityPickerPage> {
                     value: area,
                     hint: Text(tx(context, 'Kaikki huoneet', 'All rooms')),
                     items: [
-                      DropdownMenuItem(value: null, child: Text(tx(context, 'Kaikki huoneet', 'All rooms'))),
-                      for (final a in c.areas) DropdownMenuItem(value: a.id, child: Text(a.name)),
-                      DropdownMenuItem(value: '', child: Text(tx(context, 'Ei huonetta', 'No room'))),
+                      DropdownMenuItem(
+                        value: null,
+                        child: Text(tx(context, 'Kaikki huoneet', 'All rooms')),
+                      ),
+                      for (final a in c.areas)
+                        DropdownMenuItem(value: a.id, child: Text(a.name)),
+                      DropdownMenuItem(
+                        value: '',
+                        child: Text(tx(context, 'Ei huonetta', 'No room')),
+                      ),
                     ],
                     onChanged: (v) => setState(() => area = v),
                   ),
@@ -291,7 +376,8 @@ class _HaEntityPickerPageState extends State<HaEntityPickerPage> {
                     key: ValueKey('ha-domain-$d'),
                     label: Text(haDomainLabel(context, d)),
                     selected: domain == d,
-                    onSelected: (_) => setState(() => domain = domain == d ? null : d),
+                    onSelected: (_) =>
+                        setState(() => domain = domain == d ? null : d),
                   ),
                 ),
             ],
@@ -324,7 +410,10 @@ class _HaEntityPickerPageState extends State<HaEntityPickerPage> {
                   if (p == null) return;
                   Navigator.of(context).push(
                     MaterialPageRoute<void>(
-                      builder: (_) => AddDeviceWizard(provider: p, dashboard: widget.dashboard),
+                      builder: (_) => AddDeviceWizard(
+                        provider: p,
+                        dashboard: widget.dashboard,
+                      ),
                     ),
                   );
                 },
@@ -348,6 +437,12 @@ class _HaEntityPickerPageState extends State<HaEntityPickerPage> {
                   ),
                 ),
         ),
+        if (addedCount > 0)
+          ShowAlreadyAddedToggle(
+            count: addedCount,
+            value: showAlreadyAdded,
+            onChanged: (v) => setState(() => showAlreadyAdded = v),
+          ),
         if (!c.registryOk)
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -363,7 +458,11 @@ class _HaEntityPickerPageState extends State<HaEntityPickerPage> {
         const Divider(height: 1),
         Expanded(
           child: items.isEmpty
-              ? Center(child: Text(tx(context, 'Ei osumia', 'No matches')))
+              ? Center(
+                  child: (raw.isNotEmpty && addedCount == raw.length)
+                      ? const AllAlreadyAddedNotice()
+                      : Text(tx(context, 'Ei osumia', 'No matches')),
+                )
               : ListView.builder(
                   key: const ValueKey('ha-list'),
                   itemCount: items.length,
@@ -371,17 +470,26 @@ class _HaEntityPickerPageState extends State<HaEntityPickerPage> {
                   itemBuilder: (context, i) {
                     final e = items[i];
                     final added = existing.contains(e.entityId);
-                    final state = e.state.isEmpty ? '' : ' · ${e.state}${e.unit.isEmpty ? '' : ' ${e.unit}'}';
+                    final state = e.state.isEmpty
+                        ? ''
+                        : ' · ${e.state}${e.unit.isEmpty ? '' : ' ${e.unit}'}';
                     return CheckboxListTile(
                       key: ValueKey('ha-${e.entityId}'),
-                      value: added || selected.contains(e.entityId),
-                      onChanged: added
-                          ? null
-                          : (v) => setState(() => v == true ? selected.add(e.entityId) : selected.remove(e.entityId)),
-                      title: Text(e.name, maxLines: 1, overflow: TextOverflow.ellipsis),
+                      // Never pre-check already-added; a duplicate needs a deliberate tick (t340u).
+                      value: selected.contains(e.entityId),
+                      onChanged: (v) => setState(
+                        () => v == true
+                            ? selected.add(e.entityId)
+                            : selected.remove(e.entityId),
+                      ),
+                      title: Text(
+                        e.name,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
                       subtitle: Text(
                         added
-                            ? '${e.entityId} · ${tx(context, 'jo lisätty', 'already added')}'
+                            ? '${e.entityId} · ${alreadyAddedBadge(tr: (fi, en) => tx(context, fi, en))}'
                             : '${e.entityId}${e.areaName == null ? '' : ' · ${e.areaName}'}$state',
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,

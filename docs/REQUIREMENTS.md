@@ -604,7 +604,7 @@ Generic for every user (no device, address or default from any one network). All
 | R626 | Price, weather, energy-flow and log tiles (services and overviews) are not auto-hidden. While the dashboard is being edited, all tiles stay visible so their settings can be changed. The dashed Lisää tile is never hidden. | t334u | Done (tests) | 0.20.21 |
 | R627 | Auth, missing-setting and similar device problems stay visible; only platform-unavailability and a lasting "device not responding" / unreachable state are auto-hidden. | t334u | Done (tests) | 0.20.21 |
 | R628 | Tests: classification (ntfy/price available, LAN without a bridge = platform, LAN with a bridge and a timeout = offline, camera ffmpeg / RTSP still = platform, native = never hidden), 10-minute grace and immediate return, "Näytä aina" and the global switch, no gaps / order preserved, the compact row and its hint, settings and editor (test/browser_hide_t334_test.dart). | t334u | Done | 0.20.21 |
-| R629 | Reserved | t334u | – | – |
+| R629 | On the web, a direct-LAN (or Bluetooth / raw socket) device without a *working* home-bridge relay is platform-unavailable and hidden immediately. A saved pairing is not a path: the relay client must be connected and the home bridge not offline. Errors such as "Kotisilta ei vastaa", not_paired and AppOnlyError are platform, not temporarily offline. | t339u | Done (tests; testaamatta laitteella) | 0.20.25 |
 ## Smart heating: a device that does not answer, prices (t335ua0 – 28.11.2026)
 Generic for every user. All items: testaamatta laitteella.
 | ID | Requirement | Source | Status | Version |
@@ -652,3 +652,16 @@ Generic for every user. All items: testaamatta laitteella. R599 is above.
 | R685 | Sähkösopimus has "Myyty sähkö": none, fixed price, or spot price minus a margin (without VAT). Sold energy is shown as income only when a sell price is set; otherwise the details say there is no sell price. | t337u | Done (tests; testaamatta laitteella) | 0.20.24 |
 | R686 | The € use the same price as the electricity price tile per interval (energy price or spot + margin, transfer, electricity tax, VAT); the details list what is included and that monthly fees are not. | t337u | Done (tests; testaamatta laitteella) | 0.20.24 |
 | R687 | Tests: quarter buckets, coverage and gaps, counters, roll-ups, sell price, periods, counter pairing, recording without the tile, bridge op, details (test/energy_flow_periods_t337_test.dart). | t337u | Done (tests; testaamatta laitteella) | 0.20.24 |
+
+## Browser hide: working relay, persistent grace, grammar (t339u – 28.11.2026)
+| ID | Requirement | Source | Status | Version |
+|---|---|---|---|---|
+| R639 | If a live relay path exists but the device keeps failing, the tile is hidden only after the 10-minute grace, counted from the first failure persisted on this device (localStorage / SharedPreferences, not account-synced). A page reload or an in-progress poll (no error yet, no value) does not restart the clock. The tile returns as soon as it answers. | t339u | Done (tests; testaamatta laitteella) | 0.20.25 |
+| R640 | The compact row uses Finnish singular/plural: "1 laite piilotettu – ei käytettävissä selaimessa" / "N laitetta piilotettu – ei käytettävissä selaimessa" (and the same distinction in English and the other languages). | t339u | Done (tests) | 0.20.25 |
+| R641 | Tests: pairing without a live relay + "Laite ei vastaa" is platform and hidden immediately; a live relay + timeout is offline and waits for the persisted grace across a reload; grammar (test/browser_hide_t339_test.dart, test/browser_hide_t334_test.dart). | t339u | Done | 0.20.25 |
+
+## Hide already-added items in add / discovery lists (t340u – 28.11.2026)
+| ID | Requirement | Source | Status | Version |
+|---|---|---|---|---|
+| R642 | In every add or discovery multi-select list (the device wizard channel/entity checklist and the Home Assistant entity picker), items already on a dashboard are hidden by default. A toggle "Näytä jo lisätyt (N)" reveals them, labelled "Lisätty" and unchecked. Already-added items are never pre-checked; a duplicate needs a deliberate tick. If every found item is already added, the list shows "Kaikki löydetyt on jo lisätty" and the toggle. This applies on all platforms (web, Android, Windows). | t340u | Done (tests; testaamatta laitteella) | 0.20.25 |
+| R643 | Tests: already-added detection by device address and tile key; wizard hides and unchecks already-added Shelly channels, toggle shows "Lisätty"; all-found message; HA picker hides already-added and does not pre-check them (test/already_added_t340_test.dart, test/ha_picker_test.dart). | t340u | Done | 0.20.25 |

@@ -13832,4 +13832,22 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get sfad2bc2059 => 'Low / mid / high';
+
+  @override
+  String get s8a182c3f94 => '1 device hidden – not available in the browser';
+
+  @override
+  String sbc5e70ca74(String p0) {
+    return 'Show already added ($p0)';
+  }
+
+  @override
+  String get sc931a2bb07 => 'Everything found is already added';
+
+  @override
+  String get s0a8a0d1b3c => 'The home bridge is not connected right now.';
+
+  @override
+  String get sbb24d77d02 =>
+      'Check that the device at home (the home bridge) is on, so this also works in the browser.';
 }

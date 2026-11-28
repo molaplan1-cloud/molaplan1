@@ -182,8 +182,15 @@ class ControlView extends StatelessWidget {
     TileGridMetrics g,
   ) {
     final st = AppScope.of(context);
-    final hidden = [
+    // Same tile id once per view (a stale order list must not draw a tile twice).
+    // Distinct tiles with the same title on two dashboards are kept as they are.
+    final seen = <String>{};
+    final tiles = [
       for (final t in d.tiles)
+        if (seen.add(t.id)) t,
+    ];
+    final hidden = [
+      for (final t in tiles)
         if (st.hideTileInBrowser(t)) t,
     ];
     if (hidden.isNotEmpty) browserHide.ensureTimer();
@@ -195,7 +202,7 @@ class ControlView extends StatelessWidget {
           spacing: g.gap,
           runSpacing: g.gap,
           children: [
-            for (final t in d.tiles)
+            for (final t in tiles)
               if ((!st.config.hideAwayTiles ||
                       awayLanConnection(st, t) == null) &&
                   !st.hideTileInBrowser(t))
@@ -219,7 +226,11 @@ class ControlView extends StatelessWidget {
               ),
           ],
         ),
-        BrowserHiddenTilesRow(tiles: hidden, hasBridge: st.remote.isPaired),
+        BrowserHiddenTilesRow(
+          tiles: hidden,
+          hasBridge: st.remote.relayPathLive,
+          paired: st.remote.isPaired,
+        ),
         if (hidden.isNotEmpty)
           Offstage(
             child: ExcludeSemantics(

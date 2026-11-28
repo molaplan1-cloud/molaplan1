@@ -12977,5 +12977,10 @@
  "s14a06fa0b3": "Üks lugemine",
  "@s14a06fa0b3": {
   "x-mt": true
- }
+ },
+ "s8a182c3f94": "1 ruutu peidetud – pole brauseris saadaval",
+ "sbc5e70ca74": "Näita juba lisatud ({p0})",
+ "sc931a2bb07": "Kõik leitud on juba lisatud",
+ "s0a8a0d1b3c": "Kodusild ei ole praegu ühendatud.",
+ "sbb24d77d02": "Kontrolli, et kodune seade (kodusild) oleks sees, siis töötab see ka brauseris."
 }

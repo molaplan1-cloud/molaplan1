@@ -13821,4 +13821,22 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get sfad2bc2059 => 'Madal / keskmine / kõrge';
+
+  @override
+  String get s8a182c3f94 => '1 ruutu peidetud – pole brauseris saadaval';
+
+  @override
+  String sbc5e70ca74(String p0) {
+    return 'Näita juba lisatud ($p0)';
+  }
+
+  @override
+  String get sc931a2bb07 => 'Kõik leitud on juba lisatud';
+
+  @override
+  String get s0a8a0d1b3c => 'Kodusild ei ole praegu ühendatud.';
+
+  @override
+  String get sbb24d77d02 =>
+      'Kontrolli, et kodune seade (kodusild) oleks sees, siis töötab see ka brauseris.';
 }

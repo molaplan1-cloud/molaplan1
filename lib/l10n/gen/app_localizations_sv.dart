@@ -13844,4 +13844,22 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get sfad2bc2059 => 'Låg / medel / hög';
+
+  @override
+  String get s8a182c3f94 => '1 ruta dold – inte tillgänglig i webbläsaren';
+
+  @override
+  String sbc5e70ca74(String p0) {
+    return 'Visa redan tillagda ($p0)';
+  }
+
+  @override
+  String get sc931a2bb07 => 'Allt som hittades är redan tillagt';
+
+  @override
+  String get s0a8a0d1b3c => 'Hemmabron är inte ansluten just nu.';
+
+  @override
+  String get sbb24d77d02 =>
+      'Kontrollera att enheten hemma (hemmabron) är på, så fungerar detta också i webbläsaren.';
 }

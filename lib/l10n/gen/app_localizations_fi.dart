@@ -13895,4 +13895,22 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get sfad2bc2059 => 'Matala / keski / korkea';
+
+  @override
+  String get s8a182c3f94 => '1 laite piilotettu – ei käytettävissä selaimessa';
+
+  @override
+  String sbc5e70ca74(String p0) {
+    return 'Näytä jo lisätyt ($p0)';
+  }
+
+  @override
+  String get sc931a2bb07 => 'Kaikki löydetyt on jo lisätty';
+
+  @override
+  String get s0a8a0d1b3c => 'Kotisilta ei ole juuri nyt yhteydessä.';
+
+  @override
+  String get sbb24d77d02 =>
+      'Tarkista, että kotona oleva laite (kotisilta) on päällä, niin tämä toimii myös selaimessa.';
 }

@@ -4,15 +4,17 @@ import 'package:material_ui/material_ui.dart' hide Threshold;
 import 'package:molaplan/core/plat.dart';
 import 'package:molaplan/main.dart';
 import 'package:molaplan/models/models.dart';
+import 'package:molaplan/remote/remote_client.dart';
 import 'package:molaplan/remote/router.dart';
 import 'package:molaplan/state/app_state.dart';
+import 'package:molaplan/state/remote_state.dart';
 import 'package:molaplan/state/browser_tile_hide.dart';
 import 'package:molaplan/state/storage.dart';
 import 'package:molaplan/ui/app_scope.dart';
 import 'package:molaplan/ui/settings_page.dart';
 import 'package:molaplan/ui/tile_editor.dart';
 
-import 'v03_test.dart' show fakeHome;
+import 'v03_test.dart' show FakeRemote, fakeHome;
 
 ConnectionConfig lan({String id = 'shelly', String name = 'Shelly'}) =>
     ConnectionConfig(
@@ -75,8 +77,20 @@ void _web(WidgetTester tester) {
   });
 }
 
+void _withLiveRelay(AppState st) {
+  final c = FakeRemote((op, spec) async => throw Exception('Laite ei vastaa'));
+  c.link = RemoteLink.connected;
+  st.remote.paired ??= fakeHome();
+  st.remote.router.client = c;
+  st.remote.router.status = LinkStatus.remote;
+  RemoteState.debugRelayPathLive = true;
+}
+
 void main() {
-  setUp(BrowserHideClock.resetHooks);
+  setUp(() {
+    BrowserHideClock.resetHooks();
+    RemoteState.debugRelayPathLive = null;
+  });
 
   group('R621 classification', () {
     test('ntfy and price are available in the browser without a bridge', () {
@@ -476,31 +490,35 @@ void main() {
         var now = DateTime(2026, 11, 28, 12, 0);
         BrowserHideClock.now = () => now;
         final st = await _state(web: true, paired: true);
+        _withLiveRelay(st);
         st.config.connections.add(lan());
         final d = st.config.dashboards.first;
         await st.upsertTile(d, tile('s', 'Shelly SHSW-L', 'shelly'));
         BrowserHideClock.debugError['s'] = 'Laite ei vastaa';
+        expect(st.remote.relayPathLive, isTrue);
+        expect(
+          st.hideTileInBrowser(d.tiles.firstWhere((x) => x.id == 's')),
+          isFalse,
+        );
         await tester.pumpWidget(MolaplanApp(state: st, gate: false));
         await tester.pump(const Duration(milliseconds: 400));
         expect(
-          find.text('Shelly SHSW-L'),
-          findsOneWidget,
-          reason: 'still within the grace period',
+          st.hideTileInBrowser(d.tiles.firstWhere((x) => x.id == 's')),
+          isFalse,
+          reason: 'live relay + grace: not hidden yet',
         );
         expect(find.byKey(const ValueKey('browser-hidden-row')), findsNothing);
         now = now.add(const Duration(minutes: 10));
         browserHide.ping();
         await tester.pump();
-        expect(find.text('Shelly SHSW-L'), findsNothing);
         expect(
-          find.text('1 laitetta piilotettu – ei käytettävissä selaimessa'),
+          st.hideTileInBrowser(d.tiles.firstWhere((x) => x.id == 's')),
+          isTrue,
+        );
+        expect(
+          find.text('1 laite piilotettu – ei käytettävissä selaimessa'),
           findsOneWidget,
         );
-        BrowserHideClock.debugError.remove('s');
-        browserHide.ping();
-        await tester.pump();
-        expect(find.text('Shelly SHSW-L'), findsOneWidget);
-        expect(find.byKey(const ValueKey('browser-hidden-row')), findsNothing);
         await tester.pumpWidget(const SizedBox());
       },
     );

@@ -14,9 +14,13 @@ class BrowserHiddenTilesRow extends StatefulWidget {
     super.key,
     required this.tiles,
     required this.hasBridge,
+    this.paired = false,
   });
   final List<TileConfig> tiles;
+
+  /// A *live* relay path (not merely a saved pairing).
   final bool hasBridge;
+  final bool paired;
 
   @override
   State<BrowserHiddenTilesRow> createState() => _BrowserHiddenTilesRowState();
@@ -54,11 +58,10 @@ class _BrowserHiddenTilesRowState extends State<BrowserHiddenTilesRow> {
                   const SizedBox(width: 10),
                   Expanded(
                     child: Text(
-                      tx(
-                        context,
-                        '{p0} laitetta piilotettu – ei käytettävissä selaimessa',
-                        '{p0} devices hidden – not available in the browser',
-                      ).replaceFirst('{p0}', '$n'),
+                      browserHiddenCountLabel(
+                        n,
+                        tr: (fi, en) => tx(context, fi, en),
+                      ),
                       key: const ValueKey('browser-hidden-count'),
                       style: text.bodyMedium?.copyWith(
                         color: cs.onSurfaceVariant,
@@ -101,6 +104,7 @@ class _BrowserHiddenTilesRowState extends State<BrowserHiddenTilesRow> {
       avail,
       error: err,
       hasBridge: widget.hasBridge,
+      paired: widget.paired,
     );
     return Opacity(
       key: ValueKey('browser-hidden-tile-${t.id}'),

@@ -12932,5 +12932,10 @@
  "s14a06fa0b3": "En läsning",
  "@s14a06fa0b3": {
   "x-mt": true
- }
+ },
+ "s8a182c3f94": "1 ruta dold – inte tillgänglig i webbläsaren",
+ "sbc5e70ca74": "Visa redan tillagda ({p0})",
+ "sc931a2bb07": "Allt som hittades är redan tillagt",
+ "s0a8a0d1b3c": "Hemmabron är inte ansluten just nu.",
+ "sbb24d77d02": "Kontrollera att enheten hemma (hemmabron) är på, så fungerar detta också i webbläsaren."
 }

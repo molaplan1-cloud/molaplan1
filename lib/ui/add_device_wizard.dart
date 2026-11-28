@@ -13,6 +13,7 @@ import '../devices/rtsp_catalog.dart';
 import '../models/models.dart';
 import '../templates/device_templates.dart' show TemplateResult;
 import 'app_scope.dart';
+import 'already_added.dart';
 import 'duplicate_check.dart';
 import 'remote_pages.dart';
 
@@ -55,7 +56,10 @@ Color providerColor(DeviceProvider p) => switch (p.id) {
   String t(String fi, String en) => tx(context, fi, en);
   return switch (p) {
     AddProblem.noNetwork when Plat.isWeb => (
-      t('Selain ei pääse kotiverkon laitteisiin', 'The browser cannot reach devices on your home network'),
+      t(
+        'Selain ei pääse kotiverkon laitteisiin',
+        'The browser cannot reach devices on your home network',
+      ),
       t(
         'Verkkosivu ei voi etsiä eikä avata yhteyttä kotiverkon laitteisiin (esim. $brand). Käytä Molaplan Windows- tai Android-sovellusta kotiverkossa, tai ota käyttöön kotisilta – silloin haku ja ohjaus kulkevat kotona olevan laitteen kautta.',
         'A web page cannot search for or open connections to devices on your home network (e.g. $brand). Use the Molaplan Windows or Android app on the home network, or set up the home bridge – then search and control go through a device at home.',
@@ -71,7 +75,10 @@ Color providerColor(DeviceProvider p) => switch (p.id) {
     AddProblem.unreachable => (
       address.isEmpty
           ? t('Laitetta ei tavoitettu', 'Could not reach the device')
-          : t('Laitetta ei tavoitettu osoitteesta $address', 'Could not reach the device at $address'),
+          : t(
+              'Laitetta ei tavoitettu osoitteesta $address',
+              'Could not reach the device at $address',
+            ),
       t(
         '1. Tarkista että $brand on päällä (valo palaa).\n2. Tämän laitteen (tai kotisillan) pitää olla samassa wifissä kuin $brand.\n3. Tarkista osoite – se voi vaihtua. Paina "Takaisin" ja hae uudelleen.',
         '1. Check that $brand is powered.\n2. This device (or the home bridge) must be on the same Wi-Fi.\n3. Check the address – it can change. Tap "Back" and search again.',
@@ -120,14 +127,20 @@ Color providerColor(DeviceProvider p) => switch (p.id) {
       ),
     ),
     AddProblem.cameraNoStream => (
-      t('Kamera löytyi, mutta videon osoitetta ei löytynyt', 'Camera found, but not its video address'),
+      t(
+        'Kamera löytyi, mutta videon osoitetta ei löytynyt',
+        'Camera found, but not its video address',
+      ),
       t(
         'Kamera vastasi, mutta ei kertonut videokuvan osoitetta, eikä yksikään yleisistä RTSP-osoitteista toiminut tällä tunnuksella. Tarkista että RTSP/ONVIF on päällä kameran sovelluksessa, tai valitse merkki alta ja paina "Yhdistä".',
         'The camera answered but did not tell its video address, and none of the usual RTSP addresses worked with this login. Check that RTSP/ONVIF is on in the camera app, or pick the brand below and tap "Connect".',
       ),
     ),
     AddProblem.cloudBadKey => (
-      t('Pilviavain tai palvelin ei kelpaa', 'Cloud key or server not accepted'),
+      t(
+        'Pilviavain tai palvelin ei kelpaa',
+        'Cloud key or server not accepted',
+      ),
       t(
         'Kopioi avain ja palvelimen osoite uudelleen Shelly-sovelluksesta (Käyttäjäasetukset → Authorization cloud key).',
         'Copy the key and server again from the Shelly app (User settings → Authorization cloud key).',
@@ -135,11 +148,17 @@ Color providerColor(DeviceProvider p) => switch (p.id) {
     ),
     AddProblem.cloudOffline => (
       t('Pilveen ei saatu yhteyttä', 'Could not reach the cloud'),
-      t('Tarkista nettiyhteys ja yritä uudelleen.', 'Check the internet connection.'),
+      t(
+        'Tarkista nettiyhteys ja yritä uudelleen.',
+        'Check the internet connection.',
+      ),
     ),
     AddProblem.cloudRateLimit => (
       t('Liian monta pyyntöä', 'Too many requests'),
-      t('Pilvi rajoittaa pyyntöjä. Odota hetki ja yritä uudelleen.', 'The cloud limits requests. Wait a moment.'),
+      t(
+        'Pilvi rajoittaa pyyntöjä. Odota hetki ja yritä uudelleen.',
+        'The cloud limits requests. Wait a moment.',
+      ),
     ),
     AddProblem.bridgeOld => (
       t('Kotisilta on vanha versio', 'The home bridge is out of date'),
@@ -150,7 +169,10 @@ Color providerColor(DeviceProvider p) => switch (p.id) {
     ),
     AddProblem.portClosed => (
       ports.isEmpty
-          ? t('Laite vastaa, mutta ONVIF-portti on kiinni', 'The device answers, but the ONVIF port is closed')
+          ? t(
+              'Laite vastaa, mutta ONVIF-portti on kiinni',
+              'The device answers, but the ONVIF port is closed',
+            )
           : t(
               'Laite vastaa, mutta ONVIF-portti on kiinni (yritettiin portteja $ports)',
               'The device answers, but the ONVIF port is closed (tried ports $ports)',
@@ -179,7 +201,8 @@ Color providerColor(DeviceProvider p) => switch (p.id) {
 
 /// Ports listed in the technical details of a port-closed / probe error ('tried ports: 80, 2020').
 String _triedPorts(String detail) {
-  final m = RegExp(r'tried ports:\s*([0-9, ]+)|no answer on ports\s*([0-9, ]+)').firstMatch(detail);
+  final m = RegExp(r'tried ports:\s*([0-9, ]+)|no answer on ports\s*([0-9, ]+)')
+      .firstMatch(detail);
   return ((m?.group(1) ?? m?.group(2) ?? '').replaceAll(' ', ''));
 }
 
@@ -235,6 +258,10 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
   final names = <String, TextEditingController>{};
   final skip = <String>{};
   bool extras = true;
+
+  /// t340u: entity keys already on a dashboard; hidden unless [showAlreadyAdded].
+  final alreadyKeys = <String>{};
+  bool showAlreadyAdded = false;
 
   /// t165u: one row per entity (measurement or control), each becoming its own tile.
   List<WizEntity> entities = const [];
@@ -296,13 +323,16 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
           .then(localRes.addAll)
           .catchError((_) {}),
       if (viaBridge && widget.finder == null)
-        findViaBridge(st.remote.router, p).then(bridgeRes.addAll).catchError((Object e) {
+        findViaBridge(st.remote.router, p).then(bridgeRes.addAll).catchError((
+          Object e,
+        ) {
           err = explain(e);
         }),
     ]);
     if (!mounted) return;
     final merged = mergeCandidates([
-      for (final c in localRes) c.viaBridge || c.local ? c : c.copyWith(local: true),
+      for (final c in localRes)
+        c.viaBridge || c.local ? c : c.copyWith(local: true),
       ...bridgeRes,
     ]);
     setState(() {
@@ -335,7 +365,11 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
   Future<void> _manualNext() async {
     final a = addrCtl.text.trim();
     if (a.isEmpty) {
-      showSnack(context, tx(context, 'Kirjoita ensin osoite', 'Type the address first'), error: true);
+      showSnack(
+        context,
+        tx(context, 'Kirjoita ensin osoite', 'Type the address first'),
+        error: true,
+      );
       return;
     }
     final st = AppScope.read(context);
@@ -357,11 +391,19 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
                   '${hostOf(a)} ei ole kotiverkon osoite. Kotiverkon osoitteet alkavat yleensä 192.168. – katso osoite uudelleen $brand-sovelluksesta.',
                   '${hostOf(a)} is not a home network address. They usually start with 192.168. – check it again in the $brand app.',
                 ) +
-                (fix == null ? '' : '\n\n${tx(c, 'Tarkoititko $fix?', 'Did you mean $fix?')}'),
+                (fix == null
+                    ? ''
+                    : '\n\n${tx(c, 'Tarkoititko $fix?', 'Did you mean $fix?')}'),
           ),
           actions: [
-            TextButton(onPressed: () => Navigator.pop(c), child: Text(tx(c, 'Korjaan itse', 'I\'ll fix it'))),
-            TextButton(onPressed: () => Navigator.pop(c, 'as-is'), child: Text(tx(c, 'Kokeile silti', 'Try anyway'))),
+            TextButton(
+              onPressed: () => Navigator.pop(c),
+              child: Text(tx(c, 'Korjaan itse', 'I\'ll fix it')),
+            ),
+            TextButton(
+              onPressed: () => Navigator.pop(c, 'as-is'),
+              child: Text(tx(c, 'Kokeile silti', 'Try anyway')),
+            ),
             if (fix != null)
               FilledButton(
                 key: const ValueKey('wiz-use-fix'),
@@ -378,13 +420,22 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
       }
     }
     final h = hostOf(addrCtl.text.trim());
-    if (!st.remote.isPaired && locals.isNotEmpty && isIPv4(h) && !sameSubnet(h, locals)) {
+    if (!st.remote.isPaired &&
+        locals.isNotEmpty &&
+        isIPv4(h) &&
+        !sameSubnet(h, locals)) {
       final mine = locals.first.substring(0, locals.first.lastIndexOf('.'));
       final go = await showDialog<bool>(
         context: context,
         builder: (c) => AlertDialog(
           icon: const Icon(Icons.wifi_off, size: 36),
-          title: Text(tx(c, 'Osoite on eri verkossa', 'The address is on another network')),
+          title: Text(
+            tx(
+              c,
+              'Osoite on eri verkossa',
+              'The address is on another network',
+            ),
+          ),
           content: Text(
             tx(
               c,
@@ -393,8 +444,14 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
             ),
           ),
           actions: [
-            TextButton(onPressed: () => Navigator.pop(c, false), child: Text(tx(c, 'Takaisin', 'Back'))),
-            FilledButton(onPressed: () => Navigator.pop(c, true), child: Text(tx(c, 'Kokeile silti', 'Try anyway'))),
+            TextButton(
+              onPressed: () => Navigator.pop(c, false),
+              child: Text(tx(c, 'Takaisin', 'Back')),
+            ),
+            FilledButton(
+              onPressed: () => Navigator.pop(c, true),
+              child: Text(tx(c, 'Kokeile silti', 'Try anyway')),
+            ),
           ],
         ),
       );
@@ -412,7 +469,9 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
         ),
       );
     }
-    await _pick(Candidate(provider: p.id, address: addr, viaBridge: via, bridge: via));
+    await _pick(
+      Candidate(provider: p.id, address: addr, viaBridge: via, bridge: via),
+    );
   }
 
   Future<void> _connect() async {
@@ -424,13 +483,19 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
       countdown = null;
     });
     try {
-      if (!cloud && !st.remote.isPaired && !c.viaBridge && widget.locals == null && (await localIPv4s()).isEmpty) {
+      if (!cloud &&
+          !st.remote.isPaired &&
+          !c.viaBridge &&
+          widget.locals == null &&
+          (await localIPv4s()).isEmpty) {
         throw AddDeviceError(AddProblem.noNetwork);
       }
       final ctx = _ctx();
       if (p.pairMode == PairMode.button && !p.isPaired(creds)) {
         // R541: Bosch Smart Home needs the system password before the button is pressed.
-        if (p.pairNeedsPassword && pwCtl.text.isEmpty) throw AddDeviceError(AddProblem.needsPassword);
+        if (p.pairNeedsPassword && pwCtl.text.isEmpty) {
+          throw AddDeviceError(AddProblem.needsPassword);
+        }
         setState(() {
           countdown = p.pairWindow.inSeconds;
           pairMessage = null;
@@ -453,20 +518,37 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
           pairMessage = null;
         });
       }
-      if (p.pairMode == PairMode.password && pwCtl.text.isNotEmpty) creds['password'] = pwCtl.text;
+      if (p.pairMode == PairMode.password && pwCtl.text.isNotEmpty) {
+        creds['password'] = pwCtl.text;
+      }
       // Local devices: extra details typed with the password (camera user, Sonoff device id).
       if (!cloud) {
         for (final e in cred.entries) {
-          if (e.value.text.trim().isNotEmpty) creds[e.key] = e.value.text.trim();
+          if (e.value.text.trim().isNotEmpty) {
+            creds[e.key] = e.value.text.trim();
+          }
         }
       }
       final r = await p.connect(ctx, c, creds);
       if (!mounted || _cancel) return;
       connected = r;
       entities = wizEntities(p, r, AppScope.read(context).lang);
+      alreadyKeys
+        ..clear()
+        ..addAll({
+          for (final e in entities)
+            if (tileAlreadyOnDashboards(st, e.tile, extra: [r.connection]))
+              e.key,
+        });
+      showAlreadyAdded = false;
       skip
         ..clear()
-        ..addAll(entities.where((e) => !e.preselect).map((e) => e.key));
+        // Never pre-check items already on a dashboard (t340u).
+        ..addAll(
+          entities
+              .where((e) => !e.preselect || alreadyKeys.contains(e.key))
+              .map((e) => e.key),
+        );
       for (final e in entities) {
         (names[e.key] ??= TextEditingController()).text = e.name;
       }
@@ -487,7 +569,11 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
   Future<void> _cloudNext() async {
     for (final f in p.credFields.where((f) => !f.optional)) {
       if ((cred[f.key]?.text.trim() ?? '').isEmpty) {
-        showSnack(context, '${tx(context, 'Täytä ensin', 'Fill in first')}: ${tx(context, f.fi, f.en)}', error: true);
+        showSnack(
+          context,
+          '${tx(context, 'Täytä ensin', 'Fill in first')}: ${tx(context, f.fi, f.en)}',
+          error: true,
+        );
         return;
       }
     }
@@ -509,12 +595,22 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
       lang: st.lang,
     );
     if (tiles.isEmpty) {
-      showSnack(context, tx(context, 'Valitse vähintään yksi', 'Pick at least one'), error: true);
+      showSnack(
+        context,
+        tx(context, 'Valitse vähintään yksi', 'Pick at least one'),
+        error: true,
+      );
       return;
     }
     final d = widget.dashboard ?? st.config.dashboards.first;
-    if (!await confirmNoDuplicates(context, d, tiles, extra: [r.connection]) || !mounted) return;
-    await st.applyTemplate(TemplateResult([r.connection], tiles), into: widget.dashboard);
+    if (!await confirmNoDuplicates(context, d, tiles, extra: [r.connection]) ||
+        !mounted) {
+      return;
+    }
+    await st.applyTemplate(
+      TemplateResult([r.connection], tiles),
+      into: widget.dashboard,
+    );
     added = tiles.length;
     _go(WizStep.done);
   }
@@ -526,20 +622,28 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
     final lang = AppScope.of(context).lang;
     final idx = WizStep.values.indexOf(step);
     return Scaffold(
-      appBar: AppBar(title: Text(tx(context, 'Lisää: ${p.name(lang)}', 'Add: ${p.name(lang)}'))),
+      appBar: AppBar(
+        title: Text(
+          tx(context, 'Lisää: ${p.name(lang)}', 'Add: ${p.name(lang)}'),
+        ),
+      ),
       body: SafeArea(
         child: Center(
           child: ConstrainedBox(
             constraints: const BoxConstraints(maxWidth: 640),
             child: Column(
               children: [
-                LinearProgressIndicator(value: (idx + 1) / WizStep.values.length, minHeight: 4),
+                LinearProgressIndicator(
+                  value: (idx + 1) / WizStep.values.length,
+                  minHeight: 4,
+                ),
                 Expanded(
                   child: ListView(
                     padding: const EdgeInsets.all(20),
                     children: switch (step) {
                       WizStep.remote => _remote(context),
-                      WizStep.find => cloud ? _cloudForm(context) : _find(context),
+                      WizStep.find =>
+                        cloud ? _cloudForm(context) : _find(context),
                       WizStep.connect => _connecting(context),
                       WizStep.choose => _choose(context),
                       WizStep.done => _done(context),
@@ -563,7 +667,9 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
         break;
       case WizStep.find:
         final st = AppScope.read(context);
-        if (!cloud && !st.remote.isPaired && !st.remote.bridgeOn) back = () => _go(WizStep.remote);
+        if (!cloud && !st.remote.isPaired && !st.remote.bridgeOn) {
+          back = () => _go(WizStep.remote);
+        }
         next = cloud
             ? FilledButton.icon(
                 key: const ValueKey('wiz-next'),
@@ -626,7 +732,10 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(t, style: Theme.of(context).textTheme.headlineSmall),
-        if (sub != null) ...[const SizedBox(height: 8), Text(sub, style: Theme.of(context).textTheme.bodyLarge)],
+        if (sub != null) ...[
+          const SizedBox(height: 8),
+          Text(sub, style: Theme.of(context).textTheme.bodyLarge),
+        ],
       ],
     ),
   );
@@ -672,16 +781,27 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
     final text = Theme.of(context).textTheme;
     Widget section(String s) => Padding(
       padding: const EdgeInsets.only(top: 10, bottom: 8),
-      child: Text(s, style: text.titleSmall?.copyWith(color: Theme.of(context).colorScheme.primary)),
+      child: Text(
+        s,
+        style: text.titleSmall?.copyWith(
+          color: Theme.of(context).colorScheme.primary,
+        ),
+      ),
     );
     final cloud = p.id == 'shelly'
         ? [
-            section(tx(context, 'A) Ilman kotisiltaa', 'A) Without a home bridge')),
+            section(
+              tx(context, 'A) Ilman kotisiltaa', 'A) Without a home bridge'),
+            ),
             _bigChoice(
               context,
               key: const ValueKey('wiz-use-cloud'),
               icon: Icons.cloud_outlined,
-              title: tx(context, 'Käytä Shelly Cloudia (ei kotisiltaa)', 'Use Shelly Cloud (no bridge)'),
+              title: tx(
+                context,
+                'Käytä Shelly Cloudia (ei kotisiltaa)',
+                'Use Shelly Cloud (no bridge)',
+              ),
               body: tx(
                 context,
                 'Paras, jos mikään laite ei ole aina kotona – esim. kun tabletti kulkee mukanasi. Ohjaus kulkee Shellyn oman pilven kautta. Tarvitset avaimen Shelly-sovelluksesta (näytämme mistä).',
@@ -692,13 +812,19 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
                 step = WizStep.find;
               }),
             ),
-            section(tx(context, 'B) Kotisillan kautta', 'B) Through a home bridge')),
+            section(
+              tx(context, 'B) Kotisillan kautta', 'B) Through a home bridge'),
+            ),
           ]
         : <Widget>[];
     return [
       _title(
         context,
-        tx(context, 'Miten ohjaat kotia muualta?', 'How will you control your home when away?'),
+        tx(
+          context,
+          'Miten ohjaat kotia muualta?',
+          'How will you control your home when away?',
+        ),
         tx(
               context,
               'Kotisilta on laite, joka on AINA kotona, päällä ja samassa wifissä kuin $brand – esim. vanha puhelin, tabletti tai PC. Muut laitteesi ottavat siihen yhteyden netin yli (salattu, ei porttiohjauksia). Jos laite lähtee mukaasi, se ei sovi kotisillaksi.',
@@ -747,7 +873,10 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
           'Scan the bridge QR code. Devices are then found through the bridge, even when you are away.',
         ),
         onTap: () async {
-          await Navigator.push(context, MaterialPageRoute(builder: (_) => const PairPage()));
+          await Navigator.push(
+            context,
+            MaterialPageRoute(builder: (_) => const PairPage()),
+          );
           if (!mounted) return;
           _go(WizStep.find);
           unawaited(_search());
@@ -792,7 +921,12 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
           children: [
             Icon(icon, color: color),
             const SizedBox(width: 10),
-            Expanded(child: Text(text, style: const TextStyle(fontSize: 15, height: 1.35))),
+            Expanded(
+              child: Text(
+                text,
+                style: const TextStyle(fontSize: 15, height: 1.35),
+              ),
+            ),
           ],
         ),
         if (actions.isNotEmpty)
@@ -807,7 +941,8 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
   List<Widget> _find(BuildContext context) {
     final st = AppScope.read(context);
     // The browser cannot search the home network itself: that is not "no Wi-Fi".
-    final noWifi = !searching && locals.isEmpty && !st.remote.isPaired && !Plat.isWeb;
+    final noWifi =
+        !searching && locals.isEmpty && !st.remote.isPaired && !Plat.isWeb;
     final bridge = st.remote.isPaired && !st.remote.bridgeOn;
     return [
       _title(
@@ -857,14 +992,24 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
             if (Plat.isAndroid)
               FilledButton.tonalIcon(
                 key: const ValueKey('wiz-wifi-settings'),
-                onPressed: () => const MethodChannel('molaplan/multicast').invokeMethod('wifiSettings'),
+                onPressed: () =>
+                    const MethodChannel('molaplan/multicast')
+                        .invokeMethod('wifiSettings'),
                 icon: const Icon(Icons.wifi),
-                label: Text(tx(context, 'Avaa wifi-asetukset', 'Open Wi-Fi settings')),
+                label: Text(
+                  tx(context, 'Avaa wifi-asetukset', 'Open Wi-Fi settings'),
+                ),
               ),
             OutlinedButton.icon(
               onPressed: _search,
               icon: const Icon(Icons.refresh),
-              label: Text(tx(context, 'Yhdistin – etsi uudelleen', 'Connected – search again')),
+              label: Text(
+                tx(
+                  context,
+                  'Yhdistin – etsi uudelleen',
+                  'Connected – search again',
+                ),
+              ),
             ),
           ],
         ),
@@ -883,7 +1028,13 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
             children: [
               const CircularProgressIndicator(),
               const SizedBox(height: 12),
-              Text(tx(context, 'Etsitään… (noin 5 sekuntia)', 'Searching… (about 5 seconds)')),
+              Text(
+                tx(
+                  context,
+                  'Etsitään… (noin 5 sekuntia)',
+                  'Searching… (about 5 seconds)',
+                ),
+              ),
             ],
           ),
         )
@@ -895,13 +1046,20 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
               key: ValueKey('wiz-found-${c.address}'),
               minVerticalPadding: 14,
               leading: Icon(providerIcon(p), size: 32, color: providerColor(p)),
-              title: Text(c.title, style: Theme.of(context).textTheme.titleMedium),
+              title: Text(
+                c.title,
+                style: Theme.of(context).textTheme.titleMedium,
+              ),
               subtitle: Text(
                 [
                   if (c.model.isNotEmpty && c.model != c.title) c.model,
                   c.address,
                   if (c.local && c.bridge)
-                    tx(context, 'tässä verkossa ja kotisillan kautta', 'on this network and via the home bridge')
+                    tx(
+                      context,
+                      'tässä verkossa ja kotisillan kautta',
+                      'on this network and via the home bridge',
+                    )
                   else if (c.local)
                     tx(context, 'tässä verkossa', 'on this network')
                   else if (c.bridge)
@@ -942,7 +1100,9 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
                 key: const ValueKey('wiz-manual'),
                 onPressed: () => setState(() => manual = true),
                 icon: const Icon(Icons.keyboard),
-                label: Text(tx(context, 'Kirjoita osoite itse', 'Type the address')),
+                label: Text(
+                  tx(context, 'Kirjoita osoite itse', 'Type the address'),
+                ),
               ),
           ],
         ),
@@ -962,9 +1122,15 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
           decoration: InputDecoration(
             labelText: tx(context, 'IP-osoite', 'IP address'),
             hintText: subnetHint(locals, p.addressHint),
-            helperText: addressHint(addrCtl.text, locals, AppScope.read(context).lang),
+            helperText: addressHint(
+              addrCtl.text,
+              locals,
+              AppScope.read(context).lang,
+            ),
             helperMaxLines: 3,
-            helperStyle: TextStyle(color: Theme.of(context).colorScheme.tertiary),
+            helperStyle: TextStyle(
+              color: Theme.of(context).colorScheme.tertiary,
+            ),
           ),
           onChanged: (_) => setState(() {}),
           onSubmitted: (_) => _manualNext(),
@@ -979,20 +1145,31 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
   }
 
   List<Widget> _cloudForm(BuildContext context) => [
-    _title(context, p.name(AppScope.read(context).lang), tx(context, p.descFi, p.descEn)),
+    _title(
+      context,
+      p.name(AppScope.read(context).lang),
+      tx(context, p.descFi, p.descEn),
+    ),
     for (final f in p.credFields) ...[
       TextField(
         key: ValueKey('wiz-cred-${f.key}'),
         controller: cred[f.key] ??= TextEditingController(),
         obscureText: f.secret,
         decoration: InputDecoration(
-          labelText: tx(context, f.fi, f.en) + (f.optional ? tx(context, ' (vapaaehtoinen)', ' (optional)') : ''),
+          labelText:
+              tx(context, f.fi, f.en) +
+              (f.optional
+                  ? tx(context, ' (vapaaehtoinen)', ' (optional)')
+                  : ''),
           hintText: f.hint,
         ),
       ),
       Padding(
         padding: const EdgeInsets.fromLTRB(4, 6, 4, 16),
-        child: Text(tx(context, f.helpFi, f.helpEn), style: Theme.of(context).textTheme.bodySmall),
+        child: Text(
+          tx(context, f.helpFi, f.helpEn),
+          style: Theme.of(context).textTheme.bodySmall,
+        ),
       ),
     ],
   ];
@@ -1007,19 +1184,31 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
       final text = tx(context, m.$1, m.$2);
       final url = RegExp(r'https://\S+').firstMatch(text)?.group(0);
       out.addAll([
-        _title(context, tx(context, 'Kirjaudu ja hyväksy', 'Sign in and approve'), text),
+        _title(
+          context,
+          tx(context, 'Kirjaudu ja hyväksy', 'Sign in and approve'),
+          text,
+        ),
         Icon(Icons.open_in_browser, size: 72, color: providerColor(p)),
         if (url != null)
           Center(
             child: FilledButton.icon(
               key: const ValueKey('wiz-pair-open'),
-              onPressed: () => launchUrl(Uri.parse(url), mode: LaunchMode.externalApplication),
+              onPressed: () => launchUrl(
+                Uri.parse(url),
+                mode: LaunchMode.externalApplication,
+              ),
               icon: const Icon(Icons.open_in_new),
-              label: Text(tx(context, 'Avaa kirjautumissivu', 'Open the sign-in page')),
+              label: Text(
+                tx(context, 'Avaa kirjautumissivu', 'Open the sign-in page'),
+              ),
             ),
           ),
         const SizedBox(height: 16),
-        LinearProgressIndicator(value: countdown! / p.pairWindow.inSeconds, minHeight: 10),
+        LinearProgressIndicator(
+          value: countdown! / p.pairWindow.inSeconds,
+          minHeight: 10,
+        ),
         const SizedBox(height: 8),
         Center(
           child: Text(
@@ -1039,7 +1228,10 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
         ),
         Icon(Icons.touch_app, size: 96, color: providerColor(p)),
         const SizedBox(height: 16),
-        LinearProgressIndicator(value: countdown! / p.pairWindow.inSeconds, minHeight: 10),
+        LinearProgressIndicator(
+          value: countdown! / p.pairWindow.inSeconds,
+          minHeight: 10,
+        ),
         const SizedBox(height: 8),
         Center(
           child: Text(
@@ -1058,7 +1250,10 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
           '${c.title}${c.address != c.title && !cloud ? ' (${c.address})' : ''}',
         ),
         const Center(
-          child: Padding(padding: EdgeInsets.all(24), child: CircularProgressIndicator()),
+          child: Padding(
+            padding: EdgeInsets.all(24),
+            child: CircularProgressIndicator(),
+          ),
         ),
       ]);
       return out;
@@ -1072,23 +1267,34 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
       ports: _triedPorts(e.detail),
     );
     final st = AppScope.read(context);
-    final login = e.problem == AddProblem.needsPassword || e.problem == AddProblem.wrongPassword;
+    final login =
+        e.problem == AddProblem.needsPassword ||
+        e.problem == AddProblem.wrongPassword;
     // Cameras: when the address answers but no video address is known (or the maker is not the
     // expected one), the video address can be typed / chosen by hand, or the camera is added as a
     // plain ONVIF/RTSP camera.
     final noStream =
-        (e.problem == AddProblem.cameraNoStream || e.problem == AddProblem.notThisBrand) && p.category == 'camera';
+        (e.problem == AddProblem.cameraNoStream ||
+            e.problem == AddProblem.notThisBrand) &&
+        p.category == 'camera';
     final addAnyway =
         p.category == 'camera' &&
         p.id != 'camera_onvif' &&
-        const {AddProblem.cameraNoStream, AddProblem.notThisBrand, AddProblem.unknown}.contains(e.problem);
-    final details = !cloud && (login || noStream || e.problem == AddProblem.needsDetails);
+        const {
+          AddProblem.cameraNoStream,
+          AddProblem.notThisBrand,
+          AddProblem.unknown,
+        }.contains(e.problem);
+    final details =
+        !cloud && (login || noStream || e.problem == AddProblem.needsDetails);
     if (p.category == 'camera' && e.problem == AddProblem.needsPassword) {
       title = tx(context, 'Kirjaudu kameraan', 'Sign in to the camera');
       body = tx(context, p.pairHelpFi, p.pairHelpEn);
     } else if (login && p.passwordHelpFi.isNotEmpty) {
       // R541: e.g. Bosch Smart Home – the system password, then the button.
-      if (e.problem == AddProblem.needsPassword) title = tx(context, 'Järjestelmän salasana', 'System password');
+      if (e.problem == AddProblem.needsPassword) {
+        title = tx(context, 'Järjestelmän salasana', 'System password');
+      }
       body = e.problem == AddProblem.wrongPassword
           ? '$body\n\n${tx(context, p.passwordHelpFi, p.passwordHelpEn)}'
           : tx(context, p.passwordHelpFi, p.passwordHelpEn);
@@ -1097,10 +1303,16 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
     }
     out.addAll([
       _title(context, title),
-      _banner(context, icon: Icons.info_outline, color: Colors.orange, text: body),
+      _banner(
+        context,
+        icon: Icons.info_outline,
+        color: Colors.orange,
+        text: body,
+      ),
       if (details)
         for (final f in p.credFields)
-          if (e.problem == AddProblem.needsDetails || p.category == 'camera') ...[
+          if (e.problem == AddProblem.needsDetails ||
+              p.category == 'camera') ...[
             TextField(
               key: ValueKey('wiz-cred-${f.key}'),
               controller: cred[f.key] ??= TextEditingController(),
@@ -1109,7 +1321,9 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
               decoration: InputDecoration(
                 labelText: tx(context, f.fi, f.en),
                 hintText: f.hint,
-                helperText: f.helpFi.isEmpty ? null : tx(context, f.helpFi, f.helpEn),
+                helperText: f.helpFi.isEmpty
+                    ? null
+                    : tx(context, f.helpFi, f.helpEn),
                 helperMaxLines: 3,
               ),
             ),
@@ -1123,7 +1337,9 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
           obscureText: true,
           autofocus: true,
           style: const TextStyle(fontSize: 18),
-          decoration: InputDecoration(labelText: tx(context, 'Laitteen salasana', 'Device password')),
+          decoration: InputDecoration(
+            labelText: tx(context, 'Laitteen salasana', 'Device password'),
+          ),
           onSubmitted: (_) => _connect(),
         ),
         const SizedBox(height: 12),
@@ -1135,13 +1351,25 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
           FilledButton.icon(
             key: const ValueKey('wiz-retry'),
             onPressed: () {
-              if (e.problem == AddProblem.needsPassword && pwCtl.text.isEmpty) return;
-              if (e.problem == AddProblem.needsDetails && cred.values.every((c) => c.text.trim().isEmpty)) return;
-              if (p.pairMode == PairMode.button && e.problem == AddProblem.needsPassword) p.forgetPairing(creds);
+              if (e.problem == AddProblem.needsPassword && pwCtl.text.isEmpty) {
+                return;
+              }
+              if (e.problem == AddProblem.needsDetails &&
+                  cred.values.every((c) => c.text.trim().isEmpty)) {
+                return;
+              }
+              if (p.pairMode == PairMode.button &&
+                  e.problem == AddProblem.needsPassword) {
+                p.forgetPairing(creds);
+              }
               _connect();
             },
             icon: Icon(details ? Icons.login : Icons.refresh),
-            label: Text(details ? tx(context, 'Yhdistä', 'Connect') : tx(context, 'Yritä uudelleen', 'Try again')),
+            label: Text(
+              details
+                  ? tx(context, 'Yhdistä', 'Connect')
+                  : tx(context, 'Yritä uudelleen', 'Try again'),
+            ),
           ),
           if (addAnyway)
             OutlinedButton.icon(
@@ -1165,31 +1393,50 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
                 _connect();
               },
               icon: const Icon(Icons.videocam_outlined),
-              label: Text(tx(context, 'Lisää silti ONVIF/RTSP-kamerana', 'Add anyway as an ONVIF/RTSP camera')),
+              label: Text(
+                tx(
+                  context,
+                  'Lisää silti ONVIF/RTSP-kamerana',
+                  'Add anyway as an ONVIF/RTSP camera',
+                ),
+              ),
             ),
-          if ((e.problem == AddProblem.unreachable || e.problem == AddProblem.noNetwork) &&
+          if ((e.problem == AddProblem.unreachable ||
+                  e.problem == AddProblem.noNetwork) &&
               !st.remote.isPaired &&
               !st.remote.bridgeOn &&
               !Plat.isWeb)
             OutlinedButton.icon(
               onPressed: () => _go(WizStep.remote),
               icon: const Icon(Icons.router_outlined),
-              label: Text(tx(context, 'Olen kodin ulkopuolella', 'I am away from home')),
+              label: Text(
+                tx(context, 'Olen kodin ulkopuolella', 'I am away from home'),
+              ),
             ),
           if (e.problem == AddProblem.noNetwork && Plat.isAndroid)
             OutlinedButton.icon(
-              onPressed: () => const MethodChannel('molaplan/multicast').invokeMethod('wifiSettings'),
+              onPressed: () =>
+                  const MethodChannel('molaplan/multicast')
+                      .invokeMethod('wifiSettings'),
               icon: const Icon(Icons.wifi),
-              label: Text(tx(context, 'Avaa wifi-asetukset', 'Open Wi-Fi settings')),
+              label: Text(
+                tx(context, 'Avaa wifi-asetukset', 'Open Wi-Fi settings'),
+              ),
             ),
         ],
       ),
       const SizedBox(height: 12),
       ExpansionTile(
         tilePadding: EdgeInsets.zero,
-        title: Text(tx(context, 'Tekniset tiedot', 'Technical details'), style: Theme.of(context).textTheme.bodySmall),
+        title: Text(
+          tx(context, 'Tekniset tiedot', 'Technical details'),
+          style: Theme.of(context).textTheme.bodySmall,
+        ),
         children: [
-          SelectableText(e.detail.isEmpty ? e.problem.name : e.detail, style: Theme.of(context).textTheme.bodySmall),
+          SelectableText(
+            e.detail.isEmpty ? e.problem.name : e.detail,
+            style: Theme.of(context).textTheme.bodySmall,
+          ),
         ],
       ),
     ]);
@@ -1200,7 +1447,10 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
   List<Widget> _manualRtsp(BuildContext context) {
     final ctl = cred['rtsp'] ??= TextEditingController();
     return [
-      Text(tx(context, 'Kameran merkki', 'Camera brand'), style: Theme.of(context).textTheme.titleSmall),
+      Text(
+        tx(context, 'Kameran merkki', 'Camera brand'),
+        style: Theme.of(context).textTheme.titleSmall,
+      ),
       const SizedBox(height: 6),
       Wrap(
         spacing: 6,
@@ -1210,7 +1460,12 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
             ActionChip(
               key: ValueKey('rtsp-preset-${r.main}'),
               label: Text(r.name),
-              onPressed: () => setState(() => ctl.text = r.mainUrl.replaceFirst('{{host}}', hostOf(picked!.address))),
+              onPressed: () => setState(
+                () => ctl.text = r.mainUrl.replaceFirst(
+                  '{{host}}',
+                  hostOf(picked!.address),
+                ),
+              ),
             ),
         ],
       ),
@@ -1240,14 +1495,24 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
     final light = r.items.any((i) => i.kind == 'light');
     // t165u: devices with both get 'Mittaukset' and 'Ohjaukset' as separate groups.
     final split =
-        entities.any((e) => e.role == EntityRole.measurement) && entities.any((e) => e.role == EntityRole.control);
+        entities.any((e) => e.role == EntityRole.measurement) &&
+        entities.any((e) => e.role == EntityRole.control);
     final ordered = split
         ? [
-            for (final role in const [EntityRole.control, EntityRole.measurement, EntityRole.media])
+            for (final role in const [
+              EntityRole.control,
+              EntityRole.measurement,
+              EntityRole.media,
+            ])
               ...entities.where((e) => e.role == role),
           ]
         : entities;
-    String heading(WizEntity e) => split ? entityRoleLabel(e.role, lang) : e.group;
+    String heading(WizEntity e) =>
+        split ? entityRoleLabel(e.role, lang) : e.group;
+    final visible = [
+      for (final e in ordered)
+        if (showAlreadyAdded || !alreadyKeys.contains(e.key)) e,
+    ];
     return [
       _title(
         context,
@@ -1259,7 +1524,12 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
         ),
       ),
       for (final w in (r.data['warnings'] as List?) ?? const [])
-        _banner(context, icon: Icons.info_outline, color: Colors.orange, text: '$w'),
+        _banner(
+          context,
+          icon: Icons.info_outline,
+          color: Colors.orange,
+          text: '$w',
+        ),
       if (((r.data['tech'] as List?) ?? const []).isNotEmpty)
         ExpansionTile(
           key: const ValueKey('wiz-tech'),
@@ -1275,27 +1545,60 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
             ),
           ],
         ),
-      if (entities.length > 3)
+      if (alreadyKeys.isNotEmpty)
+        ShowAlreadyAddedToggle(
+          count: alreadyKeys.length,
+          value: showAlreadyAdded,
+          onChanged: (v) => setState(() => showAlreadyAdded = v),
+        ),
+      if (ordered.every((e) => alreadyKeys.contains(e.key)))
+        const AllAlreadyAddedNotice(),
+      if (visible.length > 3)
         Align(
           alignment: Alignment.centerRight,
           child: TextButton(
             key: const ValueKey('wiz-select-all'),
-            onPressed: () => setState(() => skip.isEmpty ? skip.addAll(entities.map((e) => e.key)) : skip.clear()),
+            onPressed: () => setState(() {
+              // Select-all applies to new items only – already-added stay unchecked.
+              final keys = visible
+                  .where((e) => !alreadyKeys.contains(e.key))
+                  .map((e) => e.key)
+                  .toSet();
+              if (keys.isEmpty) return;
+              final allOn = keys.every((k) => !skip.contains(k));
+              if (allOn) {
+                skip.addAll(keys);
+              } else {
+                skip.removeAll(keys);
+              }
+            }),
             child: Text(
-              skip.isEmpty
+              visible
+                      .where(
+                        (e) =>
+                            !alreadyKeys.contains(e.key) &&
+                            !skip.contains(e.key),
+                      )
+                      .isEmpty
                   ? tx(context, 'Poista valinnat', 'Select none')
-                  : tx(context, 'Valitse kaikki (${entities.length})', 'Select all (${entities.length})'),
+                  : tx(
+                      context,
+                      'Valitse kaikki (${visible.where((e) => !alreadyKeys.contains(e.key)).length})',
+                      'Select all (${visible.where((e) => !alreadyKeys.contains(e.key)).length})',
+                    ),
             ),
           ),
         ),
-      for (final (i, e) in ordered.indexed) ...[
-        if (heading(e).isNotEmpty && (i == 0 || heading(ordered[i - 1]) != heading(e)))
+      for (final (i, e) in visible.indexed) ...[
+        if (heading(e).isNotEmpty &&
+            (i == 0 || heading(visible[i - 1]) != heading(e)))
           Padding(
             key: ValueKey('wiz-group-${heading(e)}'),
             padding: const EdgeInsets.fromLTRB(4, 12, 4, 6),
             child: Text(
               heading(e),
-              style: Theme.of(context).textTheme.titleSmall?.copyWith(color: Theme.of(context).colorScheme.primary),
+              style: Theme.of(context).textTheme.titleSmall
+                  ?.copyWith(color: Theme.of(context).colorScheme.primary),
             ),
           ),
         Card(
@@ -1307,7 +1610,9 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
                 Checkbox(
                   key: ValueKey('wiz-item-${e.key}'),
                   value: !skip.contains(e.key),
-                  onChanged: (v) => setState(() => v == true ? skip.remove(e.key) : skip.add(e.key)),
+                  onChanged: (v) => setState(
+                    () => v == true ? skip.remove(e.key) : skip.add(e.key),
+                  ),
                 ),
                 Expanded(
                   child: Column(
@@ -1317,17 +1622,41 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
                         key: ValueKey('wiz-name-${e.key}'),
                         controller: names[e.key],
                         style: const TextStyle(fontSize: 17),
-                        decoration: InputDecoration(isDense: true, labelText: tx(context, 'Nimi', 'Name')),
+                        decoration: InputDecoration(
+                          isDense: true,
+                          labelText: tx(context, 'Nimi', 'Name'),
+                        ),
                       ),
                       if (e.subtitle.isNotEmpty)
                         Padding(
                           padding: const EdgeInsets.only(top: 4),
-                          child: Text(e.subtitle, style: Theme.of(context).textTheme.bodySmall),
+                          child: Text(
+                            e.subtitle,
+                            style: Theme.of(context).textTheme.bodySmall,
+                          ),
+                        ),
+                      if (alreadyKeys.contains(e.key))
+                        Padding(
+                          padding: const EdgeInsets.only(top: 4),
+                          child: Text(
+                            alreadyAddedBadge(
+                              tr: (fi, en) => tx(context, fi, en),
+                            ),
+                            key: ValueKey('wiz-added-${e.key}'),
+                            style: Theme.of(context).textTheme.bodySmall
+                                ?.copyWith(
+                                  color: Theme.of(context).colorScheme.primary,
+                                ),
+                          ),
                         ),
                     ],
                   ),
                 ),
-                Icon(e.icon, size: 20, color: Theme.of(context).colorScheme.onSurfaceVariant),
+                Icon(
+                  e.icon,
+                  size: 20,
+                  color: Theme.of(context).colorScheme.onSurfaceVariant,
+                ),
               ],
             ),
           ),
@@ -1341,12 +1670,17 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
           onChanged: (v) => setState(() {
             extras = v;
             for (final e in extrasList) {
+              if (alreadyKeys.contains(e.key)) continue;
               v ? skip.remove(e.key) : skip.add(e.key);
             }
           }),
           title: Text(
             light
-                ? tx(context, 'Lisää myös kirkkaus / teho', 'Also add brightness / power')
+                ? tx(
+                    context,
+                    'Lisää myös kirkkaus / teho',
+                    'Also add brightness / power',
+                  )
                 : tx(context, 'Näytä myös teho (W)', 'Also show power (W)'),
           ),
         ),
@@ -1361,7 +1695,11 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
       const SizedBox(height: 12),
       _title(
         context,
-        tx(context, 'Valmis! $added ruutua lisätty', 'Done! $added tiles added'),
+        tx(
+          context,
+          'Valmis! $added ruutua lisätty',
+          'Done! $added tiles added',
+        ),
         remoteOk
             ? (cloud
                   ? tx(
@@ -1383,9 +1721,14 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
       if (!remoteOk)
         OutlinedButton.icon(
           key: const ValueKey('wiz-setup-remote'),
-          onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const RemoteHubPage())),
+          onPressed: () => Navigator.push(
+            context,
+            MaterialPageRoute(builder: (_) => const RemoteHubPage()),
+          ),
           icon: const Icon(Icons.cloud_outlined),
-          label: Text(tx(context, 'Ota etäkäyttö käyttöön', 'Set up remote access')),
+          label: Text(
+            tx(context, 'Ota etäkäyttö käyttöön', 'Set up remote access'),
+          ),
         ),
     ];
   }
@@ -1423,7 +1766,13 @@ List<WizEntity> wizEntities(DeviceProvider p, Connected r, String lang) {
   final out = <WizEntity>[];
   final keys = r.items.map((i) => i.key).toSet();
   for (final it in r.items) {
-    final tiles = p.tiles(r, names: {it.key: it.name}, skip: keys.difference({it.key}), power: true, lang: lang);
+    final tiles = p.tiles(
+      r,
+      names: {it.key: it.name},
+      skip: keys.difference({it.key}),
+      power: true,
+      lang: lang,
+    );
     for (final (j, t) in tiles.indexed) {
       out.add(
         WizEntity(
@@ -1433,7 +1782,9 @@ List<WizEntity> wizEntities(DeviceProvider p, Connected r, String lang) {
           name: j == 0 ? it.name : t.title,
           preselect: it.preselect,
           group: it.group,
-          subtitle: j == 0 ? it.subtitle : [if (t.unit.isNotEmpty) t.unit].join(),
+          subtitle: j == 0
+              ? it.subtitle
+              : [if (t.unit.isNotEmpty) t.unit].join(),
         ),
       );
     }

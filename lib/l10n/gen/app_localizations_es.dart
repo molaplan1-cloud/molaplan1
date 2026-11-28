@@ -13978,4 +13978,22 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get sfad2bc2059 => 'Bajo / medio / alto';
+
+  @override
+  String get s8a182c3f94 => '1 recuadro oculto – no disponible en el navegador';
+
+  @override
+  String sbc5e70ca74(String p0) {
+    return 'Mostrar ya añadidos ($p0)';
+  }
+
+  @override
+  String get sc931a2bb07 => 'Todo lo encontrado ya está añadido';
+
+  @override
+  String get s0a8a0d1b3c => 'El puente de casa no está conectado ahora.';
+
+  @override
+  String get sbb24d77d02 =>
+      'Comprueba que el dispositivo en casa (el puente de casa) esté encendido, así esto también funciona en el navegador.';
 }

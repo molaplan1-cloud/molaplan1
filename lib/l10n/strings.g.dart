@@ -4097,6 +4097,11 @@ const l10nFi = <String>[
   'Kosteus %',
   'CO₂',
   'Matala / keski / korkea',
+  '1 laite piilotettu – ei käytettävissä selaimessa',
+  'Näytä jo lisätyt ({p0})',
+  'Kaikki löydetyt on jo lisätty',
+  'Kotisilta ei ole juuri nyt yhteydessä.',
+  'Tarkista, että kotona oleva laite (kotisilta) on päällä, niin tämä toimii myös selaimessa.',
 ];
 
 const l10nEn = <String>[
@@ -8195,6 +8200,11 @@ const l10nEn = <String>[
   'Humidity %',
   'CO₂',
   'Low / mid / high',
+  '1 device hidden – not available in the browser',
+  'Show already added ({p0})',
+  'Everything found is already added',
+  'The home bridge is not connected right now.',
+  'Check that the device at home (the home bridge) is on, so this also works in the browser.',
 ];
 
 const l10nSv = <String>[
@@ -12293,6 +12303,11 @@ const l10nSv = <String>[
   'Luftfuktighet %',
   'CO₂',
   'Låg / medel / hög',
+  '1 ruta dold – inte tillgänglig i webbläsaren',
+  'Visa redan tillagda ({p0})',
+  'Allt som hittades är redan tillagt',
+  'Hemmabron är inte ansluten just nu.',
+  'Kontrollera att enheten hemma (hemmabron) är på, så fungerar detta också i webbläsaren.',
 ];
 
 const l10nEt = <String>[
@@ -16391,6 +16406,11 @@ const l10nEt = <String>[
   'Niiskus %',
   'CO₂',
   'Madal / keskmine / kõrge',
+  '1 ruutu peidetud – pole brauseris saadaval',
+  'Näita juba lisatud ({p0})',
+  'Kõik leitud on juba lisatud',
+  'Kodusild ei ole praegu ühendatud.',
+  'Kontrolli, et kodune seade (kodusild) oleks sees, siis töötab see ka brauseris.',
 ];
 
 const l10nEs = <String>[
@@ -20489,6 +20509,11 @@ const l10nEs = <String>[
   'Humedad %',
   'CO₂',
   'Bajo / medio / alto',
+  '1 recuadro oculto – no disponible en el navegador',
+  'Mostrar ya añadidos ({p0})',
+  'Todo lo encontrado ya está añadido',
+  'El puente de casa no está conectado ahora.',
+  'Comprueba que el dispositivo en casa (el puente de casa) esté encendido, así esto también funciona en el navegador.',
 ];
 
 const l10nTables = <String, List<String>>{'sv': l10nSv, 'et': l10nEt, 'es': l10nEs};

@@ -532,13 +532,22 @@ class AppState extends ChangeNotifier implements SyncHost {
   /// spec['tile'] for nodes spec['nodes'] in [spec['from'], spec['to']) (ms since epoch).
   Map<String, dynamic> flowEnergyFor(Map<String, dynamic> spec) {
     final tile = '${spec['tile'] ?? ''}';
-    final from = DateTime.fromMillisecondsSinceEpoch((spec['from'] as num?)?.toInt() ?? 0);
-    final to = DateTime.fromMillisecondsSinceEpoch((spec['to'] as num?)?.toInt() ?? 0);
-    final nodes = [for (final n in (spec['nodes'] is List ? spec['nodes'] as List : const [])) '$n'];
+    final from = DateTime.fromMillisecondsSinceEpoch(
+      (spec['from'] as num?)?.toInt() ?? 0,
+    );
+    final to = DateTime.fromMillisecondsSinceEpoch(
+      (spec['to'] as num?)?.toInt() ?? 0,
+    );
+    final nodes = [
+      for (final n
+          in (spec['nodes'] is List ? spec['nodes'] as List : const []))
+        '$n',
+    ];
     return {
       'recording': flowRecorder.running,
       'nodes': {
-        for (final n in nodes.take(64)) n: energyLog.sumRange(flowLogId(tile, n), from, to).toJson(),
+        for (final n in nodes.take(64))
+          n: energyLog.sumRange(flowLogId(tile, n), from, to).toJson(),
       },
     };
   }
@@ -609,13 +618,17 @@ class AppState extends ChangeNotifier implements SyncHost {
   Future<void> refreshHeatingStatus() async {
     final c = smartHeating;
     final mine = remote.myHome;
-    String nameOf(String home) => ownBridges.where((b) => b.home == home).firstOrNull?.name ?? '';
+    String nameOf(String home) =>
+        ownBridges.where((b) => b.home == home).firstOrNull?.name ?? '';
     Map<String, dynamic>? prev = heatingStatus;
     try {
       final s = await rulesStatus();
       final h = s?['heating'];
       heatingStatus = h is Map ? Map<String, dynamic>.from(h) : null;
-      if (s != null && h == null && smartHeating != null && rulesRunWhere == 'bridge') {
+      if (s != null &&
+          h == null &&
+          smartHeating != null &&
+          rulesRunWhere == 'bridge') {
         heatingBridgeOld = true;
       }
       if (h != null) heatingBridgeOld = false;
@@ -665,7 +678,10 @@ class AppState extends ChangeNotifier implements SyncHost {
         Map<String, dynamic>? got;
         if (b != null) {
           try {
-            final v = await remote.callHome(b, (cl) => cl.call('rules', spec: {'status': true}));
+            final v = await remote.callHome(
+              b,
+              (cl) => cl.call('rules', spec: {'status': true}),
+            );
             final hs = v is Map ? v['heating'] : null;
             if (hs is Map) got = Map<String, dynamic>.from(hs);
           } catch (_) {}
@@ -685,7 +701,10 @@ class AppState extends ChangeNotifier implements SyncHost {
               }
             }
           }
-          _heatOtherLast[home] = {'loads': loads, 'at': DateTime.now().toIso8601String()};
+          _heatOtherLast[home] = {
+            'loads': loads,
+            'at': DateTime.now().toIso8601String(),
+          };
         } else {
           heatingOfflineHomes.add(home);
           final last = _heatOtherLast[home]?['loads'];
@@ -707,7 +726,8 @@ class AppState extends ChangeNotifier implements SyncHost {
         };
         final merged = <String, dynamic>{
           if (heatingStatus!['loads'] is Map)
-            for (final e in (heatingStatus!['loads'] as Map).entries) '${e.key}': e.value,
+            for (final e in (heatingStatus!['loads'] as Map).entries)
+              '${e.key}': e.value,
         };
         for (final e in loads.entries) {
           merged.putIfAbsent(e.key, () => e.value);
@@ -724,7 +744,8 @@ class AppState extends ChangeNotifier implements SyncHost {
         }
         heatingStatus = {...heatingStatus!, 'loads': merged};
       }
-      if (heatingPushIssues.isNotEmpty) unawaited(pushRules().catchError((Object _) => false));
+      if (heatingPushIssues.isNotEmpty)
+        unawaited(pushRules().catchError((Object _) => false));
     }
     notifyListeners();
   }
@@ -1002,6 +1023,11 @@ class AppState extends ChangeNotifier implements SyncHost {
         }
       }, onError: (_) {}),
     );
+    // R639 (t339u): first-failure times survive a browser reload (device-local).
+    if (browserHide.persist == null && !Plat.isFlutterTest) {
+      browserHide.persist = PrefsBrowserHidePersist();
+    }
+    await browserHide.restore();
     loaded = true;
     notifyListeners();
     attachDataFetch(notifySuccess: config.notifyFetchSuccess, lang: lang);
@@ -1159,7 +1185,8 @@ class AppState extends ChangeNotifier implements SyncHost {
   Future<void> _stampHeatingHomes() async {
     final sh = smartHeating;
     final mine = remote.myHome;
-    if (sh == null || mine == null || !sh.loads.any((l) => l.home == null)) return;
+    if (sh == null || mine == null || !sh.loads.any((l) => l.home == null))
+      return;
     if (ownBridges.length < 2) return;
     for (final l in sh.loads) {
       l.home ??= mine;
@@ -1173,7 +1200,11 @@ class AppState extends ChangeNotifier implements SyncHost {
     final mine = remote.myHome;
     final jobs = RuleJob.fromConfig(config);
     final thermo = ThermostatJob.fromConfig(config);
-    final heating = SmartHeatingJob.fromConfig(config, home: mine, defaultHome: mine);
+    final heating = SmartHeatingJob.fromConfig(
+      config,
+      home: mine,
+      defaultHome: mine,
+    );
     final spec = {
       'jobs': [for (final x in jobs) x.toJson()],
       'thermostats': [for (final x in thermo) x.toJson()],
@@ -1192,7 +1223,8 @@ class AppState extends ChangeNotifier implements SyncHost {
         if (c == null) throw StateError('no_bridge');
         final v = await c.call('rules', spec: spec);
         // R194: a bridge older than 0.10.0 ignores 'heating' and does not report it.
-        heatingBridgeOld = heating != null && !(v is Map && v.containsKey('heating'));
+        heatingBridgeOld =
+            heating != null && !(v is Map && v.containsKey('heating'));
       }
       _rulesSent = j;
       changed = true;
@@ -1216,12 +1248,22 @@ class AppState extends ChangeNotifier implements SyncHost {
     var pushed = false;
     for (final home in targets) {
       final b = ownBridges.where((x) => x.home == home).firstOrNull;
-      final job = SmartHeatingJob.fromConfig(config, home: home, defaultHome: mine);
+      final job = SmartHeatingJob.fromConfig(
+        config,
+        home: home,
+        defaultHome: mine,
+      );
       final body = jsonEncode({'heating': job?.toJson()});
-      if (!force && _heatSent[home] == body && !heatingPushIssues.containsKey(home)) continue;
+      if (!force &&
+          _heatSent[home] == body &&
+          !heatingPushIssues.containsKey(home))
+        continue;
       try {
         if (b == null) throw RemoteUnavailable('bridge_unknown');
-        await remote.callHome(b, (cl) => cl.call('rules', spec: {'heating': job?.toJson()}));
+        await remote.callHome(
+          b,
+          (cl) => cl.call('rules', spec: {'heating': job?.toJson()}),
+        );
         _heatSent[home] = body;
         heatingPushIssues.remove(home);
         changed = true;
@@ -1978,7 +2020,7 @@ class AppState extends ChangeNotifier implements SyncHost {
     return shouldHideBrowserTile(
       tile: t,
       connection: connection,
-      hasBridge: remote.isPaired,
+      hasBridge: remote.relayPathLive,
       autoHide: config.autoHideBrowserTiles,
       showMode: tileBrowserShow(t.id),
       error: browserTileError(t),

@@ -4094,5 +4094,35 @@
  "s9df0743fd6": "Ulkolämpö",
  "sf5bd3b7950": "Kosteus %",
  "s5538433078": "CO₂",
- "sfad2bc2059": "Matala / keski / korkea"
+ "sfad2bc2059": "Matala / keski / korkea",
+ "s8a182c3f94": "1 laite piilotettu – ei käytettävissä selaimessa",
+ "@s8a182c3f94": {
+  "description": "fi: 1 laite piilotettu – ei käytettävissä selaimessa",
+  "x-where": "state/browser_tile_hide.dart"
+ },
+ "sbc5e70ca74": "Näytä jo lisätyt ({p0})",
+ "@sbc5e70ca74": {
+  "description": "fi: Näytä jo lisätyt ({p0})",
+  "x-where": "ui/already_added.dart",
+  "placeholders": {
+   "p0": {
+    "type": "String"
+   }
+  }
+ },
+ "sc931a2bb07": "Kaikki löydetyt on jo lisätty",
+ "@sc931a2bb07": {
+  "description": "fi: Kaikki löydetyt on jo lisätty",
+  "x-where": "ui/already_added.dart"
+ },
+ "s0a8a0d1b3c": "Kotisilta ei ole juuri nyt yhteydessä.",
+ "@s0a8a0d1b3c": {
+  "description": "fi: Kotisilta ei ole juuri nyt yhteydessä.",
+  "x-where": "state/browser_tile_hide.dart"
+ },
+ "sbb24d77d02": "Tarkista, että kotona oleva laite (kotisilta) on päällä, niin tämä toimii myös selaimessa.",
+ "@sbb24d77d02": {
+  "description": "fi: Tarkista, että kotona oleva laite (kotisilta) on päällä, niin tämä toimii myös selaimessa.",
+  "x-where": "state/browser_tile_hide.dart"
+ }
 }

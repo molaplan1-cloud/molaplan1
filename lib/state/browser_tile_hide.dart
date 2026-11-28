@@ -1,18 +1,25 @@
-/// R620–R627 (t334u): in the browser / PWA only, hide tiles that cannot be used there.
+/// R620–R627 (t334u), R629 / R639 (t339u): in the browser / PWA only, hide tiles
+/// that cannot be used there.
 ///
 /// A tile is:
-/// - [BrowserTileAvail.available] when the browser can reach it (ntfy / price / a home-bridge relay);
+/// - [BrowserTileAvail.available] when the browser can reach it (ntfy / price / a *live*
+///   home-bridge relay);
 /// - [BrowserTileAvail.platform] when it needs a direct LAN, Bluetooth or raw socket and there is
-///   no relay path, or a camera still the home bridge cannot make (no ffmpeg / no app bridge);
-/// - [BrowserTileAvail.offline] when a path exists but the device does not answer.
+///   no *working* relay path (merely being paired is not enough), or a camera still the home
+///   bridge cannot make (no ffmpeg / no app bridge), or the home bridge itself is down;
+/// - [BrowserTileAvail.offline] when a live relay path exists but the device does not answer.
 ///
 /// Platform tiles are hidden as soon as they are classified; offline tiles only after
-/// [offlineGrace], and they return the moment they answer. Native apps are unchanged.
+/// [offlineGrace], counted from the first failure persisted on this device (localStorage /
+/// SharedPreferences), and they return the moment they answer. A poll in progress or a page
+/// reload must not reset that clock. Native apps are unchanged.
 library;
 
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../core/plat.dart';
 import '../models/models.dart';
@@ -26,12 +33,56 @@ enum BrowserTileAvail { available, platform, offline }
 const tileBrowserShowAuto = 'auto';
 const tileBrowserShowAlways = 'always';
 
+/// Device-local store for first-failure times. Not synced to the account.
+abstract class BrowserHidePersist {
+  Future<Map<String, dynamic>?> load();
+  Future<void> save(Map<String, dynamic> json);
+}
+
+/// In-memory store (tests, and a stand-in until [PrefsBrowserHidePersist] is wired).
+class MemoryBrowserHidePersist implements BrowserHidePersist {
+  Map<String, dynamic> data = {};
+
+  @override
+  Future<Map<String, dynamic>?> load() async => data.isEmpty
+      ? null
+      : jsonDecode(jsonEncode(data)) as Map<String, dynamic>;
+
+  @override
+  Future<void> save(Map<String, dynamic> json) async {
+    data = jsonDecode(jsonEncode(json)) as Map<String, dynamic>;
+  }
+}
+
+/// Web localStorage / app SharedPreferences. Never written into the account sync.
+class PrefsBrowserHidePersist implements BrowserHidePersist {
+  static const key = 'molaplan.browserHideClock';
+
+  @override
+  Future<Map<String, dynamic>?> load() async {
+    final p = await SharedPreferences.getInstance();
+    final s = p.getString(key);
+    if (s == null || s.isEmpty) return null;
+    final v = jsonDecode(s);
+    return v is Map ? Map<String, dynamic>.from(v) : null;
+  }
+
+  @override
+  Future<void> save(Map<String, dynamic> json) async {
+    final p = await SharedPreferences.getInstance();
+    await p.setString(key, jsonEncode(json));
+  }
+}
+
 /// In-memory, this device only. First moment a tile was seen as platform-unusable or offline
-/// (for the grace period). Cleared when the tile is available again.
+/// (for the grace period). Cleared when the tile is available again. Times are also persisted
+/// when [persist] is set, so a reload does not start the grace over.
 class BrowserHideClock extends ChangeNotifier {
   BrowserHideClock();
 
   Timer? _timer;
+  BrowserHidePersist? persist;
+  bool _persistReady = false;
 
   /// Tests replace this.
   static DateTime Function() now = DateTime.now;
@@ -55,12 +106,54 @@ class BrowserHideClock extends ChangeNotifier {
   /// Tests only: force an error string for a tile (no live runtime needed).
   static final debugError = <String, String>{};
 
+  Future<void> restore() async {
+    final p = persist;
+    if (p == null) {
+      _persistReady = true;
+      return;
+    }
+    try {
+      final j = await p.load();
+      if (j != null) {
+        _readTimes(firstOfflineAt, j['offline']);
+        _readTimes(firstPlatformAt, j['platform']);
+      }
+    } catch (_) {}
+    _persistReady = true;
+  }
+
+  void _readTimes(Map<String, DateTime> into, Object? raw) {
+    if (raw is! Map) return;
+    for (final e in raw.entries) {
+      final at = DateTime.tryParse('${e.value}');
+      if (at != null) into['${e.key}'] = at;
+    }
+  }
+
+  void _save() {
+    final p = persist;
+    if (p == null || !_persistReady) return;
+    unawaited(
+      p.save({
+        'offline': {
+          for (final e in firstOfflineAt.entries)
+            e.key: e.value.toIso8601String(),
+        },
+        'platform': {
+          for (final e in firstPlatformAt.entries)
+            e.key: e.value.toIso8601String(),
+        },
+      }),
+    );
+  }
+
   void reportCamera(String tileId, {String? error, bool ok = false}) {
     var changed = false;
     if (ok) {
       changed = cameraError.remove(tileId) != null || cameraOk.add(tileId);
       firstPlatformAt.remove(tileId);
       firstOfflineAt.remove(tileId);
+      if (changed) _save();
     } else if (error != null && error.isNotEmpty) {
       changed = cameraError[tileId] != error;
       cameraError[tileId] = error;
@@ -69,27 +162,44 @@ class BrowserHideClock extends ChangeNotifier {
     if (changed) notifyListeners();
   }
 
-  void note(String tileId, BrowserTileAvail avail) {
+  /// Record a classification. [confirmedAvailable] must be true only when the tile has
+  /// actually answered (a value and no error). An in-progress poll or a fresh page load
+  /// with no result yet must not clear a persisted failure time.
+  void note(
+    String tileId,
+    BrowserTileAvail avail, {
+    bool confirmedAvailable = false,
+  }) {
+    var changed = false;
     switch (avail) {
       case BrowserTileAvail.available:
-        firstPlatformAt.remove(tileId);
-        firstOfflineAt.remove(tileId);
+        if (!confirmedAvailable) return;
+        changed =
+            firstPlatformAt.remove(tileId) != null ||
+            firstOfflineAt.remove(tileId) != null;
       case BrowserTileAvail.platform:
         firstOfflineAt.remove(tileId);
         firstPlatformAt.putIfAbsent(tileId, now);
+        changed = true;
       case BrowserTileAvail.offline:
         firstPlatformAt.remove(tileId);
         firstOfflineAt.putIfAbsent(tileId, now);
+        changed = true;
     }
+    if (changed) _save();
   }
 
-  void reset() {
+  void reset({bool clearPersist = true}) {
     firstPlatformAt.clear();
     firstOfflineAt.clear();
     cameraError.clear();
     cameraOk.clear();
     debugError.clear();
     stopTimer();
+    if (clearPersist) {
+      persist = null;
+      _persistReady = false;
+    }
   }
 
   void ping() => notifyListeners();
@@ -134,13 +244,17 @@ Iterable<String> tileConnectionIds(TileConfig t) sync* {
   }
 }
 
-/// True when the browser can talk to this connection itself or through a home-bridge relay.
-bool browserCanReachConnection(ConnectionConfig c, {required bool hasBridge}) {
+/// True when the browser can talk to this connection itself or through a *live* home-bridge
+/// relay. A saved pairing without a connected relay is not a path.
+bool browserCanReachConnection(
+  ConnectionConfig c, {
+  required bool hasWorkingRelay,
+}) {
   if (RemoteRouter.webInternetTypes.contains(c.type) ||
       RemoteRouter.webDirectTypes.contains(c.type)) {
     return true;
   }
-  return hasBridge;
+  return hasWorkingRelay;
 }
 
 /// The latest error text known for a tile (runtime and/or camera).
@@ -172,9 +286,21 @@ bool browserTileHasValue(TileConfig t, [BrowserHideClock? clock]) {
   return false;
 }
 
-bool isBrowserPlatformError(String? err) {
+/// The home bridge is down or was never a usable path from this browser.
+bool isBrowserBridgeDownError(String? err) {
   if (err == null || err.isEmpty) return false;
   if (err.contains(AppOnlyError.marker)) return true;
+  final s = err.toLowerCase();
+  return s.contains('kotisilta ei vastaa') ||
+      s.contains('home bridge not responding') ||
+      s.contains('not_paired') ||
+      s.contains('no bridge') ||
+      s.contains('remoteunavailable');
+}
+
+bool isBrowserPlatformError(String? err) {
+  if (err == null || err.isEmpty) return false;
+  if (isBrowserBridgeDownError(err)) return true;
   final s = err.toLowerCase();
   if (s.contains('no video decoder available')) return true;
   if (s.contains('rtsp still:')) return true;
@@ -191,7 +317,7 @@ bool isBrowserPlatformError(String? err) {
   return false;
 }
 
-/// Device-not-answering style errors (a path exists). Auth / config problems stay visible.
+/// Device-not-answering style errors (a *live* path exists). Auth / config problems stay visible.
 bool isBrowserOfflineError(String? err) {
   if (err == null || err.isEmpty) return false;
   if (isBrowserPlatformError(err)) return false;
@@ -217,10 +343,6 @@ bool isBrowserOfflineError(String? err) {
       s.contains('timeout') ||
       s.contains('connection timed') ||
       s.contains('connection refused') ||
-      s.contains('kotisilta ei vastaa') ||
-      s.contains('home bridge not responding') ||
-      s.contains('remoteunavailable') ||
-      s.contains('not_paired') ||
       s.contains('offline');
 }
 
@@ -245,6 +367,7 @@ BrowserTileAvail classifyBrowserTile({
   String? error,
   bool hasValue = false,
   bool isWeb = true,
+  BrowserHideClock? clock,
 }) {
   if (!isWeb) return BrowserTileAvail.available;
   if (isBrowserServiceTile(tile, connection)) {
@@ -260,13 +383,20 @@ BrowserTileAvail classifyBrowserTile({
     for (final id in tileConnectionIds(tile))
       if (connection(id) != null) connection(id)!,
   ];
+  // hasBridge here means a *working* (live) relay path, not merely a saved pairing.
   final reachable = conns.isEmpty
       // No connection: a local-only tile (script / scene / label) works in the browser.
       ? true
-      : conns.any((c) => browserCanReachConnection(c, hasBridge: hasBridge));
+      : conns.any(
+          (c) => browserCanReachConnection(c, hasWorkingRelay: hasBridge),
+        );
 
   if (!reachable) return BrowserTileAvail.platform;
   if (isBrowserOfflineError(error)) return BrowserTileAvail.offline;
+  // In progress (no error yet): keep a failure already noted or persisted.
+  final c = clock ?? browserHide;
+  if (c.firstOfflineAt[tile.id] != null) return BrowserTileAvail.offline;
+  if (c.firstPlatformAt[tile.id] != null) return BrowserTileAvail.platform;
   return BrowserTileAvail.available;
 }
 
@@ -294,8 +424,13 @@ bool shouldHideBrowserTile({
     error: error,
     hasValue: hasValue,
     isWeb: isWeb,
+    clock: c,
   );
-  c.note(tile.id, avail);
+  c.note(
+    tile.id,
+    avail,
+    confirmedAvailable: hasValue && (error == null || error.isEmpty),
+  );
   if (avail == BrowserTileAvail.available) return false;
   final t = at ?? BrowserHideClock.now();
   if (avail == BrowserTileAvail.platform) {
@@ -305,6 +440,23 @@ bool shouldHideBrowserTile({
   }
   final first = c.firstOfflineAt[tile.id] ?? t;
   return t.difference(first) >= BrowserHideClock.offlineGrace;
+}
+
+/// Finnish / English compact-row label. One device uses the singular.
+String browserHiddenCountLabel(
+  int n, {
+  required String Function(String fi, String en) tr,
+}) {
+  if (n == 1) {
+    return tr(
+      '1 laite piilotettu – ei käytettävissä selaimessa',
+      '1 device hidden – not available in the browser',
+    );
+  }
+  return tr(
+    '{p0} laitetta piilotettu – ei käytettävissä selaimessa',
+    '{p0} devices hidden – not available in the browser',
+  ).replaceFirst('{p0}', '$n');
 }
 
 /// User-facing reason (Finnish / English pair) for a hidden tile.
@@ -329,6 +481,12 @@ bool shouldHideBrowserTile({
       'A still picture could not be made from the video stream in the browser.',
     );
   }
+  if (isBrowserBridgeDownError(error)) {
+    return (
+      'Kotisilta ei ole juuri nyt yhteydessä.',
+      'The home bridge is not connected right now.',
+    );
+  }
   return (
     'Tätä laitetta ei voi käyttää selaimesta.',
     'This device cannot be used from the browser.',
@@ -339,6 +497,7 @@ bool shouldHideBrowserTile({
   BrowserTileAvail avail, {
   String? error,
   bool hasBridge = false,
+  bool paired = false,
 }) {
   if (avail == BrowserTileAvail.offline) {
     return (
@@ -361,6 +520,12 @@ bool shouldHideBrowserTile({
     return (
       'Laite toimii Molaplan-sovelluksessa.',
       'The device works in the Molaplan app.',
+    );
+  }
+  if (paired) {
+    return (
+      'Tarkista, että kotona oleva laite (kotisilta) on päällä, niin tämä toimii myös selaimessa.',
+      'Check that the device at home (the home bridge) is on, so this also works in the browser.',
     );
   }
   return (

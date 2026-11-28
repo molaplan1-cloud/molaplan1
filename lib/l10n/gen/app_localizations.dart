@@ -24688,6 +24688,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Low / mid / high'**
   String get sfad2bc2059;
+
+  /// fi: 1 laite piilotettu – ei käytettävissä selaimessa
+  ///
+  /// In en, this message translates to:
+  /// **'1 device hidden – not available in the browser'**
+  String get s8a182c3f94;
+
+  /// fi: Näytä jo lisätyt ({p0})
+  ///
+  /// In en, this message translates to:
+  /// **'Show already added ({p0})'**
+  String sbc5e70ca74(String p0);
+
+  /// fi: Kaikki löydetyt on jo lisätty
+  ///
+  /// In en, this message translates to:
+  /// **'Everything found is already added'**
+  String get sc931a2bb07;
+
+  /// fi: Kotisilta ei ole juuri nyt yhteydessä.
+  ///
+  /// In en, this message translates to:
+  /// **'The home bridge is not connected right now.'**
+  String get s0a8a0d1b3c;
+
+  /// fi: Tarkista, että kotona oleva laite (kotisilta) on päällä, niin tämä toimii myös selaimessa.
+  ///
+  /// In en, this message translates to:
+  /// **'Check that the device at home (the home bridge) is on, so this also works in the browser.'**
+  String get sbb24d77d02;
 }
 
 class _AppLocalizationsDelegate

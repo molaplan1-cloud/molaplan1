@@ -22469,5 +22469,35 @@
  "@sfad2bc2059": {
   "description": "fi: Matala / keski / korkea",
   "x-where": "models/color_ranges.dart:219"
+ },
+ "s8a182c3f94": "1 device hidden – not available in the browser",
+ "@s8a182c3f94": {
+  "description": "fi: 1 laite piilotettu – ei käytettävissä selaimessa",
+  "x-where": "state/browser_tile_hide.dart"
+ },
+ "sbc5e70ca74": "Show already added ({p0})",
+ "@sbc5e70ca74": {
+  "description": "fi: Näytä jo lisätyt ({p0})",
+  "x-where": "ui/already_added.dart",
+  "placeholders": {
+   "p0": {
+    "type": "String"
+   }
+  }
+ },
+ "sc931a2bb07": "Everything found is already added",
+ "@sc931a2bb07": {
+  "description": "fi: Kaikki löydetyt on jo lisätty",
+  "x-where": "ui/already_added.dart"
+ },
+ "s0a8a0d1b3c": "The home bridge is not connected right now.",
+ "@s0a8a0d1b3c": {
+  "description": "fi: Kotisilta ei ole juuri nyt yhteydessä.",
+  "x-where": "state/browser_tile_hide.dart"
+ },
+ "sbb24d77d02": "Check that the device at home (the home bridge) is on, so this also works in the browser.",
+ "@sbb24d77d02": {
+  "description": "fi: Tarkista, että kotona oleva laite (kotisilta) on päällä, niin tämä toimii myös selaimessa.",
+  "x-where": "state/browser_tile_hide.dart"
  }
 }

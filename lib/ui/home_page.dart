@@ -771,7 +771,12 @@ class _DashboardGridState extends State<_DashboardGrid> {
             AppScope.of(context).config.tileDensity,
           );
           final byId = {for (final t in dashboard.tiles) t.id: t};
-          final ids = _order ?? [for (final t in dashboard.tiles) t.id];
+          final rawIds = _order ?? [for (final t in dashboard.tiles) t.id];
+          final seenIds = <String>{};
+          final ids = [
+            for (final id in rawIds)
+              if (seenIds.add(id)) id,
+          ];
           final hidden = [
             for (final id in ids)
               if (byId[id] != null &&
@@ -818,7 +823,8 @@ class _DashboardGridState extends State<_DashboardGrid> {
                   if (!widget.editing)
                     BrowserHiddenTilesRow(
                       tiles: hidden,
-                      hasBridge: st.remote.isPaired,
+                      hasBridge: st.remote.relayPathLive,
+                      paired: st.remote.isPaired,
                     ),
                   // Keep hidden tiles mounted so their runtime keeps polling and they reappear
                   // as soon as they answer (R622). No layout gap: they are offstage.
