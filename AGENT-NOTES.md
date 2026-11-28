@@ -308,3 +308,12 @@ v0.18.0:n CI:n android-job kaatui: values/strings.xml molaplan_widget_descriptio
 ### v0.20.1 (hotfix t306u R450 + t302u/t303u R430–R435)
 - Widgets showed "Widgetiä ei voi ladata" since v0.18.1: `<View>` in `res/layout/tile_status_widget.xml` (RemoteViews only inflates @RemoteView classes). Accent is now `ImageView` + background. Widget layouts: only FrameLayout/LinearLayout/RelativeLayout/GridLayout, TextView, ImageView, Button, ImageButton, ProgressBar, Chronometer, AnalogClock, TextClock, ViewFlipper, ListView/GridView/StackView/AdapterViewFlipper, ViewStub (CheckBox/Switch/RadioButton/RadioGroup only in layout-v31). Guards: test/android_widget_layouts_t306_test.dart (source) and tool/android/verify_widget_layouts.py (aapt2 on the built APK, called by verify_release_apk.sh).
 - Merged fix/t301u-web-tile-drag (R420: web tile drag by pointer kind + Siirrä menu) and fix/t302u-spot-tomorrow-chart (price tomorrow complete + price tile editor settings). relay/src/prices.ts window change deployed with this release.
+
+## v0.20.9 / v0.20.10 – Bosch (t322u, 28.11.2026)
+- Bosch Smart Home Controller (`lib/devices/bosch_shc.dart`), Home Connect (`lib/devices/home_connect.dart`), KM200 heating
+  (`lib/heatpumps/km200.dart`), Bosch IP camera preset. Overview: docs/BOSCH.md, R540–R549. All untested on hardware.
+- Tag v0.20.9 has NO release assets: CI stopped on test/color_ranges_t318_test.dart (used DateTime.now with points fixed
+  on 27.11.2026). Fixed with a `clock:` parameter on launcherWidgetPayload; same code released as v0.20.10+51. Tag not deleted.
+- dart format: always `-l 120` (repo width); plain `dart format` reflows whole files.
+- Screenshots without a Linux desktop: widget test + FontLoader (Roboto/MaterialIcons from
+  $FLUTTER_ROOT/bin/cache/artifacts/material_fonts) + RepaintBoundary.toImage → PNG.

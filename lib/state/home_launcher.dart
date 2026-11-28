@@ -154,8 +154,7 @@ LauncherPriceSummary? launcherPriceSummary(Map data, DateTime now, {TileConfig? 
   );
 }
 
-String _num(num value) =>
-    value == value.roundToDouble() ? '${value.round()}' : value.toStringAsFixed(1);
+String _num(num value) => value == value.roundToDouble() ? '${value.round()}' : value.toStringAsFixed(1);
 
 /// The tile's real primary value out of a JSON / map reading – never the word 'Tila' (R471).
 Object? _primaryOf(Map m) {
@@ -240,12 +239,14 @@ Map<String, dynamic> launcherWidgetPayload(
   required String lang,
   String tap = 'open',
   DateTime? at,
+  // Clock for tests (the price bars are picked around "now").
+  DateTime? clock,
 }) {
   if (value is TimedValue) {
     at ??= value.at;
     value = value.value;
   }
-  final now = DateTime.now();
+  final now = clock ?? DateTime.now();
   final when = (at ?? now).toLocal();
   String two(int n) => n.toString().padLeft(2, '0');
   var hhmm = '${two(when.hour)}:${two(when.minute)}';

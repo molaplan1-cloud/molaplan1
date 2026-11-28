@@ -176,7 +176,7 @@ void main() {
         for (var h = 0; h < 48; h++)
           [DateTime(2026, 11, 27, h).millisecondsSinceEpoch, h < 12 ? 5.0 : (h < 30 ? 15.0 : 25.0)],
       ];
-      final p = launcherWidgetPayload(tile, {'points': pts, 'res': 3600}, lang: 'fi');
+      final p = launcherWidgetPayload(tile, {'points': pts, 'res': 3600}, lang: 'fi', clock: now);
       final colors = (p['barColors'] as List).cast<int>();
       expect(colors.first, 0xFF4CAF50);
       expect(colors[20], 0xFFFFC107);
