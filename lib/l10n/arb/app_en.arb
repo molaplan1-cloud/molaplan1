@@ -1566,9 +1566,9 @@
   "description": "fi: Osalle kulutuksesta ei ollut hintaa (pörssihinta puuttui).",
   "x-where": "ui/energy_pages.dart:236"
  },
- "sbbd89fbc05": "Use is recorded while the app is open (all the time on the home tablet).",
- "@sbbd89fbc05": {
-  "description": "fi: Kulutus kirjataan, kun sovellus on auki (kodin tabletilla jatkuvasti).",
+ "sf14a153dac": "Use is recorded while the app is open (for example continuously on the home bridge).",
+ "@sf14a153dac": {
+  "description": "fi: Kulutus kirjataan, kun sovellus on auki (esimerkiksi kotisillalla jatkuvasti).",
   "x-where": "ui/energy_pages.dart:244"
  },
  "s64382718ff": "Meters",
@@ -1881,9 +1881,9 @@
   "description": "fi: Sähkön hinta -näkymä (ei kirjautumista)",
   "x-where": "ui/tile_shortcuts_page.dart:168"
  },
- "s0174ef9ba6": "The price now and today''s and tomorrow''s bars, as on the tablet. Works for anyone without an account: the link holds only the price area, VAT, margin and transfer.",
- "@s0174ef9ba6": {
-  "description": "fi: Hinta nyt ja tämän päivän ja huomisen pylväät kuten tabletilla. Toimii kenellä tahansa ilman tiliä: linkissä on vain hin",
+ "s433d095042": "The price now and today''s and tomorrow''s bars. Works for anyone without an account: the link holds only the price area, VAT, margin and transfer.",
+ "@s433d095042": {
+  "description": "fi: Hinta nyt ja tämän päivän ja huomisen pylväät. Toimii kenellä tahansa ilman tiliä: linkissä on vain hinta-alue, ALV, mar",
   "x-where": "ui/tile_shortcuts_page.dart:170"
  },
  "s418e567059": "Tile full screen",
@@ -1926,8 +1926,8 @@
   "description": "fi: Tilasyöte widgetille",
   "x-where": "ui/tile_shortcuts_page.dart:216"
  },
- "s8d62579a16": "Molaplan publishes the tile''s state (text, colour) to a random, read-only address. The feed is updated by a device where the tile is shown (e.g. a wall tablet). Anyone with the address can see the state but cannot control anything.",
- "@s8d62579a16": {
+ "s0d66c9fdf7": "Molaplan publishes the tile''s state (text, colour) to a random, read-only address. The feed is updated by a device where the tile is shown (e.g. the home bridge). Anyone with the address can see the state but cannot control anything.",
+ "@s0d66c9fdf7": {
   "description": "fi: Molaplan julkaisee laatan tilan (teksti, väri) satunnaiseen, vain lukemiseen tarkoitettuun osoitteeseen. Syötettä päivit",
   "x-where": "ui/tile_shortcuts_page.dart:218"
  },
@@ -5914,9 +5914,9 @@
   "description": "fi: Lämmitys toimii hinnan ja sään mukaan",
   "x-where": "ui/smart_heating_pages.dart:225"
  },
- "s6b83aed534": "Needs a home bridge: set up remote access on the home tablet or PC (Settings → Remote access).",
- "@s6b83aed534": {
-  "description": "fi: Tarvitsee kotisillan: ota etäyhteys käyttöön kodin tabletilla tai PC:llä (Asetukset → Etäkäyttö).",
+ "sbde5e80158": "Needs a home bridge: set up remote access on a device at home (Settings → Remote access).",
+ "@sbde5e80158": {
+  "description": "fi: Tarvitsee kotisillan: ota etäyhteys käyttöön kotona olevalla laitteella (Asetukset → Etäkäyttö).",
   "x-where": "ui/smart_heating_pages.dart:229"
  },
  "s830cace8fe": "Update the home bridge (needs Molaplan 0.10.0).",
@@ -7943,9 +7943,9 @@
   "description": "fi: Lämpötilaa ei saada",
   "x-where": "ui/thermostat_pages.dart:119"
  },
- "s4f1166fe24": "No home bridge: the thermostat is not controlling yet. Set up remote access on the home tablet.",
- "@s4f1166fe24": {
-  "description": "fi: Ei kotisiltaa: termostaatti ei ohjaa vielä. Ota etäyhteys käyttöön kodin tabletilla.",
+ "s31be5697ba": "No home bridge: the thermostat is not controlling yet. Set up remote access on a device at home.",
+ "@s31be5697ba": {
+  "description": "fi: Ei kotisiltaa: termostaatti ei ohjaa vielä. Ota etäyhteys käyttöön kotona olevalla laitteella.",
   "x-where": "ui/thermostat_pages.dart:128"
  },
  "s29fd8d5b5e": "Now",
@@ -8143,9 +8143,9 @@
   "description": "fi: Termostaatti toimii kotisillalla",
   "x-where": "ui/thermostat_pages.dart:969"
  },
- "s2a7e9fe291": "Set up remote access on the home tablet (Settings → Remote access). Until then it does not control anything.",
- "@s2a7e9fe291": {
-  "description": "fi: Ota etäyhteys käyttöön kodin tabletilla (Asetukset → Etäkäyttö). Siihen asti termostaatti ei ohjaa.",
+ "sa4701693b6": "Set up remote access on a device at home (Settings → Remote access). Until then it does not control anything.",
+ "@sa4701693b6": {
+  "description": "fi: Ota etäyhteys käyttöön kotona olevalla laitteella (Asetukset → Etäkäyttö). Siihen asti termostaatti ei ohjaa.",
   "x-where": "ui/thermostat_pages.dart:976"
  },
  "s06cda8c0de": "Runs on this device (home bridge).",
@@ -15641,9 +15641,9 @@
   "description": "fi: 5) Kopioi samasta näkymästä Client secret. Se tallennetaan vain tähän laitteeseen ja tiliisi salattuna.",
   "x-where": "templates/device_templates.dart:1011"
  },
- "sc76f519144": "Wave, Wave Plus, Wave Mini and Wave Radon use Bluetooth only. Read by an Android device or the home bridge (e.g. a wall tablet) within about 10 m.",
- "@sc76f519144": {
-  "description": "fi: Wave, Wave Plus, Wave Mini ja Wave Radon toimivat vain Bluetoothilla. Lukee Android-laite tai kotisilta (esim. seinätabl",
+ "s2d1dc6624d": "Wave, Wave Plus, Wave Mini and Wave Radon use Bluetooth only. Read by an Android device or the home bridge within about 10 m.",
+ "@s2d1dc6624d": {
+  "description": "fi: Wave, Wave Plus, Wave Mini ja Wave Radon toimivat vain Bluetoothilla. Lukee Android-laite tai kotisilta enintään 10 m pä",
   "x-where": "templates/device_templates.dart:1032"
  },
  "sff5f25f96f": "On the back of the monitor (10 digits). The start tells the model: 2930 = Wave Plus, 2950 = Wave Radon, 2920 = Wave Mini.",
@@ -15656,9 +15656,9 @@
   "description": "fi: Lue kotisillan kautta",
   "x-where": "templates/device_templates.dart:1051"
  },
- "s5e605a88ef": "On when the home bridge (e.g. a wall tablet near the monitor) does the Bluetooth reading.",
- "@s5e605a88ef": {
-  "description": "fi: Päälle, kun Bluetooth-lukija on kotisilta (esim. seinätabletti mittarin lähellä).",
+ "s501a17e478": "On when the home bridge (e.g. an always-on device near the sensor) does the Bluetooth reading.",
+ "@s501a17e478": {
+  "description": "fi: Päälle, kun Bluetooth-lukija on kotisilta (esim. aina päällä oleva laite mittarin lähellä).",
   "x-where": "templates/device_templates.dart:1051"
  },
  "s3330126b01": "Ventilation unit or heat pump (Modbus TCP)",

@@ -1024,8 +1024,8 @@ class AppLocalizationsEs extends AppLocalizations {
       'Parte del uso no tenía precio (el precio del spot faltaba).';
 
   @override
-  String get sbbd89fbc05 =>
-      'El uso se registra mientras la aplicación está abierta (todo el tiempo en la tableta de inicio).';
+  String get sf14a153dac =>
+      'El uso se registra mientras la aplicación está abierta (por ejemplo, de forma continua en el puente doméstico).';
 
   @override
   String get s64382718ff => 'Medidores';
@@ -1219,8 +1219,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get se5b7d50d32 => 'Vista del precio de la luz (sin iniciar sesión)';
 
   @override
-  String get s0174ef9ba6 =>
-      'El precio actual y las barras de hoy y mañana, como en la tableta. Funciona para cualquiera sin cuenta: el enlace solo contiene la zona de precio, el IVA, el margen y el peaje.';
+  String get s433d095042 =>
+      'El precio actual y las barras de hoy y mañana. Funciona para cualquiera sin cuenta: el enlace solo contiene la zona de precio, el IVA, el margen y el peaje.';
 
   @override
   String get s418e567059 => 'Ficha a pantalla completa';
@@ -1251,8 +1251,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s4de0571af7 => 'Canal de estado para el widget';
 
   @override
-  String get s8d62579a16 =>
-      'Molaplan publica el estado de la ficha (texto, color) en una dirección aleatoria de solo lectura. El canal lo actualiza un dispositivo donde se muestra la ficha (p. ej. una tableta de pared). Quien tenga la dirección puede ver el estado, pero no controlar nada.';
+  String get s0d66c9fdf7 =>
+      'Molaplan publica el estado de la ficha (texto, color) en una dirección aleatoria de solo lectura. El canal lo actualiza un dispositivo donde se muestra la ficha (p. ej. el puente doméstico). Quien tenga la dirección puede ver el estado, pero no controlar nada.';
 
   @override
   String get s694ea6d8d2 => 'Widget de la ficha (Scriptable)';
@@ -3744,8 +3744,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s035459d8bb => 'Calefacción sigue precio y tiempo';
 
   @override
-  String get s6b83aed534 =>
-      'Necesita un puente casero: configurar el acceso remoto en la tableta o PC (Configuración → Acceso remoto).';
+  String get sbde5e80158 =>
+      'Necesita un puente doméstico: configura el acceso remoto en un dispositivo en casa (Ajustes → Acceso remoto).';
 
   @override
   String get s830cace8fe =>
@@ -4978,8 +4978,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s28dc9bc46a => 'Sin lectura de temperatura';
 
   @override
-  String get s4f1166fe24 =>
-      'No hay puente casero: el termostato todavía no controla. Configurar acceso remoto en la tableta casera.';
+  String get s31be5697ba =>
+      'No hay puente doméstico: el termostato todavía no controla. Configura el acceso remoto en un dispositivo en casa.';
 
   @override
   String get s29fd8d5b5e => 'Ahora';
@@ -5106,8 +5106,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sdd309c0a63 => 'El termostato funciona en el puente de casa';
 
   @override
-  String get s2a7e9fe291 =>
-      'Configurar acceso remoto en la tableta de inicio (Configuración → Acceso remoto). Hasta entonces no controla nada.';
+  String get sa4701693b6 =>
+      'Configura el acceso remoto en un dispositivo en casa (Ajustes → Acceso remoto). Hasta entonces no controla nada.';
 
   @override
   String get s06cda8c0de => 'Funciona en este dispositivo (puente de casa).';
@@ -9742,8 +9742,8 @@ class AppLocalizationsEs extends AppLocalizations {
       '5) Copiar el secreto del Cliente desde la misma vista. Se almacena sólo en este dispositivo y se encripta en su cuenta.';
 
   @override
-  String get sc76f519144 =>
-      'Wave, Wave Plus, Wave Mini y Wave Radon solo utilizan Bluetooth. Lea por un dispositivo Android o el puente de inicio (por ejemplo, una tableta de pared) en unos 10 m.';
+  String get s2d1dc6624d =>
+      'Wave, Wave Plus, Wave Mini y Wave Radon solo utilizan Bluetooth. Los lee un dispositivo Android o el puente doméstico a unos 10 m.';
 
   @override
   String get sff5f25f96f =>
@@ -9753,8 +9753,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s8de2de9178 => 'Lea a través del puente casero';
 
   @override
-  String get s5e605a88ef =>
-      'En cuando el puente casero (p. ej. una tableta de pared cerca del monitor) hace la lectura Bluetooth.';
+  String get s501a17e478 =>
+      'Activado cuando el puente doméstico (p. ej. un dispositivo siempre encendido cerca del sensor) hace la lectura Bluetooth.';
 
   @override
   String get s3330126b01 =>

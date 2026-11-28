@@ -1015,8 +1015,8 @@ class AppLocalizationsEn extends AppLocalizations {
       'Part of the use had no price (the spot price was missing).';
 
   @override
-  String get sbbd89fbc05 =>
-      'Use is recorded while the app is open (all the time on the home tablet).';
+  String get sf14a153dac =>
+      'Use is recorded while the app is open (for example continuously on the home bridge).';
 
   @override
   String get s64382718ff => 'Meters';
@@ -1210,8 +1210,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get se5b7d50d32 => 'Electricity price view (no sign-in)';
 
   @override
-  String get s0174ef9ba6 =>
-      'The price now and today\'s and tomorrow\'s bars, as on the tablet. Works for anyone without an account: the link holds only the price area, VAT, margin and transfer.';
+  String get s433d095042 =>
+      'The price now and today\'s and tomorrow\'s bars. Works for anyone without an account: the link holds only the price area, VAT, margin and transfer.';
 
   @override
   String get s418e567059 => 'Tile full screen';
@@ -1242,8 +1242,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s4de0571af7 => 'Status feed for the widget';
 
   @override
-  String get s8d62579a16 =>
-      'Molaplan publishes the tile\'s state (text, colour) to a random, read-only address. The feed is updated by a device where the tile is shown (e.g. a wall tablet). Anyone with the address can see the state but cannot control anything.';
+  String get s0d66c9fdf7 =>
+      'Molaplan publishes the tile\'s state (text, colour) to a random, read-only address. The feed is updated by a device where the tile is shown (e.g. the home bridge). Anyone with the address can see the state but cannot control anything.';
 
   @override
   String get s694ea6d8d2 => 'Tile widget (Scriptable)';
@@ -3705,8 +3705,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s035459d8bb => 'Heating follows price and weather';
 
   @override
-  String get s6b83aed534 =>
-      'Needs a home bridge: set up remote access on the home tablet or PC (Settings → Remote access).';
+  String get sbde5e80158 =>
+      'Needs a home bridge: set up remote access on a device at home (Settings → Remote access).';
 
   @override
   String get s830cace8fe => 'Update the home bridge (needs Molaplan 0.10.0).';
@@ -4931,8 +4931,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s28dc9bc46a => 'No temperature reading';
 
   @override
-  String get s4f1166fe24 =>
-      'No home bridge: the thermostat is not controlling yet. Set up remote access on the home tablet.';
+  String get s31be5697ba =>
+      'No home bridge: the thermostat is not controlling yet. Set up remote access on a device at home.';
 
   @override
   String get s29fd8d5b5e => 'Now';
@@ -5056,8 +5056,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get sdd309c0a63 => 'The thermostat runs on the home bridge';
 
   @override
-  String get s2a7e9fe291 =>
-      'Set up remote access on the home tablet (Settings → Remote access). Until then it does not control anything.';
+  String get sa4701693b6 =>
+      'Set up remote access on a device at home (Settings → Remote access). Until then it does not control anything.';
 
   @override
   String get s06cda8c0de => 'Runs on this device (home bridge).';
@@ -9652,8 +9652,8 @@ class AppLocalizationsEn extends AppLocalizations {
       '5) Copy the Client secret from the same view. It is stored only on this device and encrypted in your account.';
 
   @override
-  String get sc76f519144 =>
-      'Wave, Wave Plus, Wave Mini and Wave Radon use Bluetooth only. Read by an Android device or the home bridge (e.g. a wall tablet) within about 10 m.';
+  String get s2d1dc6624d =>
+      'Wave, Wave Plus, Wave Mini and Wave Radon use Bluetooth only. Read by an Android device or the home bridge within about 10 m.';
 
   @override
   String get sff5f25f96f =>
@@ -9663,8 +9663,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s8de2de9178 => 'Read through the home bridge';
 
   @override
-  String get s5e605a88ef =>
-      'On when the home bridge (e.g. a wall tablet near the monitor) does the Bluetooth reading.';
+  String get s501a17e478 =>
+      'On when the home bridge (e.g. an always-on device near the sensor) does the Bluetooth reading.';
 
   @override
   String get s3330126b01 => 'Ventilation unit or heat pump (Modbus TCP)';

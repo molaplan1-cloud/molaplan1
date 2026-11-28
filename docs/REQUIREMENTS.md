@@ -4,8 +4,10 @@ Every user request in the project, so nothing gets skipped. Kept up to date with
 Status: **Done** · **Partial** (what is missing is said) · **Planned** (version) · **Later** (agreed, not scheduled) · **Blocked** (needs something from the user).
 Source = the request id (tNNNu) or the brief/round it came from. Version = the release that delivered it.
 
-## Rule zero – built for everyone (t158u)
+## Rule zero – built for everyone (t158u, t324u)
 **Molaplan is built for everyone, worldwide – not for one home.** The owner's network is only a test bed. Never hardcode an IP, subnet, device name, Home Assistant host or register map of the test home. Brand support comes from presets that all have a public source (AirFi is one preset among many). Scanning and identification are generic: any subnet, any locale, all private IPv4 ranges (10/8, 172.16/12, 192.168/16), several network adapters. Data captured from the test home appears only as test fixtures, labelled as such.
+
+**User-facing text must stay generic too (R560–R569).** Help, guides, wizards, tooltips, the website, brochures and the README must not refer to the owner's test setup: a named tablet or phone (for example Galaxy Tab or HTC 5G Hub), a place such as a warehouse, a specific camera, relay, panel, ntfy topic, IP or person, or phrases like "kuten tabletilla" / "as on the tablet" / "kodin tabletilla" that assume a particular device. Write "an Android device", "another device" or "the home bridge", not "the tablet". Platform lists (PC, tablet, phone, browser) and a tablet as one example of a home-bridge device are fine. See R560.
 
 ## Foundation and platforms
 | ID | Requirement | Source | Status | Version |
@@ -495,3 +497,17 @@ Generic for every user (nothing hard-coded, no assumptions about the user's devi
 | R547 | Home Connect tiles by appliance type: state, program, time left, progress, door, oven temperature, fridge / freezer setpoint sliders, fridge door alarm (alarm sensor), power on/off/standby, start the selected program (with confirmation; clear "turn on Remote Start" error), stop | t322u | Done (tests; testaamatta laitteella) | 0.20.10 |
 | R548 | Home Connect rate limits respected (1000 requests/day): all reads come from a per-appliance snapshot (15 min, 60 min while events flow), live changes over one shared SSE event stream with backoff, 429 Retry-After blocks calls locally, 401 refreshes once. Internet service: never routed through the home bridge in the app; the web app uses the bridge (no CORS) | t322u | Done (tests; testaamatta laitteella) | 0.20.10 |
 | R549 | Bosch IP cameras (Flexidome, Dinion, Autodome): camera preset (ONVIF, RTSP `rtsp_tunnel`, snapshot) and RTSP catalogue hints. Not feasible and documented: Bosch EasyControl CT200 / HomeCom Easy / K30/K40 RF (no official public API – use Home Assistant or KM200) and Bosch Smart Home Eyes / 360 video (no local stream; only privacy, notification and light switches) | t322u | Done (tests; testaamatta laitteella) | 0.20.10 |
+
+## Generic help text – no test-setup copy (t324u)
+| ID | Requirement | Source | Status | Version |
+|---|---|---|---|---|
+| R560 | Standing rule: all user-facing text (in-app help and guides, setup wizards, tooltips, l10n strings, molaplan.com shop/help/landing, README and brochures) is generic for every user worldwide. It must not describe or assume the owner's test setup: named devices (Galaxy Tab, HTC 5G Hub, SM-T575, …), places (warehouse/varasto, a particular home), specific cameras, relays, panels, ntfy topics, IPs, personal names, or phrases such as "kuten tabletilla" / "niin kuin tabletilla" / "as on the tablet" / "kodin tabletilla" / "the home tablet" that treat one test device as the user's device. Say "Android-laitteella", "toisella laitteella" or "kotisillalla". Listing supported platforms (PC, tablet, phone, browser) or naming a tablet as one possible always-on home-bridge device is allowed. Product brand names (e.g. Airthings) stay. | t324u | Done (lint; testaamatta laitteella) | 0.20.11 |
+| R561 | Automated check `test/generic_copy_test.dart` (and `tool/l10n/check_generic_copy.py`) greps l10n ARB sources, overrides, in-app help/wizard string sources, website copy and the README for the banned setup-specific terms, in Finnish and in en/sv/et/es, so old phrasing cannot remain in translations. | t324u | Done | 0.20.11 |
+| R562 | Existing help/guide strings that assumed a home tablet or wall tablet were rewritten generically (price-view help, energy recording, thermostat and heating remote-access hints, tile-feed help, Airthings Bluetooth help). | t324u | Done (testaamatta laitteella) | 0.20.11 |
+| R563 | Reserved | t324u | – | – |
+| R564 | Reserved | t324u | – | – |
+| R565 | Reserved | t324u | – | – |
+| R566 | Reserved | t324u | – | – |
+| R567 | Reserved | t324u | – | – |
+| R568 | Reserved | t324u | – | – |
+| R569 | Reserved | t324u | – | – |

@@ -127,8 +127,8 @@ class _ThermostatTileState extends State<ThermostatTile> {
                     Tooltip(
                       message: tx(
                         context,
-                        'Ei kotisiltaa: termostaatti ei ohjaa vielä. Ota etäyhteys käyttöön kodin tabletilla.',
-                        'No home bridge: the thermostat is not controlling yet. Set up remote access on the home tablet.',
+                        'Ei kotisiltaa: termostaatti ei ohjaa vielä. Ota etäyhteys käyttöön kotona olevalla laitteella.',
+                        'No home bridge: the thermostat is not controlling yet. Set up remote access on a device at home.',
                       ),
                       child: Icon(Icons.cloud_off, size: 18, color: cs.error),
                     ),
@@ -975,8 +975,8 @@ class _ThermostatPageState extends State<ThermostatPage> {
                 subtitle: Text(
                   tx(
                     context,
-                    'Ota etäyhteys käyttöön kodin tabletilla (Asetukset → Etäkäyttö). Siihen asti termostaatti ei ohjaa.',
-                    'Set up remote access on the home tablet (Settings → Remote access). Until then it does not control anything.',
+                    'Ota etäyhteys käyttöön kotona olevalla laitteella (Asetukset → Etäkäyttö). Siihen asti termostaatti ei ohjaa.',
+                    'Set up remote access on a device at home (Settings → Remote access). Until then it does not control anything.',
                   ),
                 ),
               ),

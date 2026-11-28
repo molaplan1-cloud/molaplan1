@@ -863,10 +863,7 @@
  "@s2e8700e0cf": {
   "x-mt": true
  },
- "sbbd89fbc05": "Användning spelas in medan appen är öppen (hela tiden på hemmatabletten).",
- "@sbbd89fbc05": {
-  "x-mt": true
- },
+ "sf14a153dac": "Användning spelas in medan appen är öppen (till exempel hela tiden på hembron).",
  "s64382718ff": "Mätare",
  "s9a3a0d414e": "Inga kraft- eller energikort (W, kW, Wh, kWh). Lägg till t.ex. en Shelly-mätare.",
  "@s9a3a0d414e": {
@@ -943,7 +940,7 @@
  "s793336a278": "Öppnar Molaplan och kör rutans kommando efter bekräftelse (och PIN-kod vid behov).",
  "s4ada3d547a": "Egen ikon på hemskärmen",
  "se5b7d50d32": "Elprisvy (ingen inloggning)",
- "s0174ef9ba6": "Priset nu och staplar för i dag och i morgon, som på surfplattan. Fungerar för alla utan konto: länken innehåller bara prisområde, moms, påslag och överföring.",
+ "s433d095042": "Priset nu och staplar för i dag och i morgon. Fungerar för alla utan konto: länken innehåller bara prisområde, moms, påslag och överföring.",
  "s418e567059": "Rutan i helskärm",
  "s854b37962a": "Bara den här rutan, uppdateras av sig själv. Kräver inloggning med samma konto.",
  "sb377843191": "iPhone: öppna länken i Safari → Dela → Lägg till på hemskärmen. Android: Chrome → ⋮ → Lägg till på startskärmen. Dator: Chrome eller Edge → Installera app. En hemskärmsapp har egen lagring: logga in där en gång.",
@@ -952,7 +949,7 @@
  "s37a2c08789": "Elpris-widget (Scriptable)",
  "s6345f88fa0": "Hämtar priserna direkt från Molaplans pristjänst – inget konto eller påslagen enhet behövs.",
  "s4de0571af7": "Statusflöde för widgeten",
- "s8d62579a16": "Molaplan publicerar rutans status (text, färg) på en slumpmässig adress som bara kan läsas. Flödet uppdateras av en enhet där rutan visas (t.ex. en väggplatta). Den som har adressen kan se statusen men inte styra något.",
+ "s0d66c9fdf7": "Molaplan publicerar rutans status (text, färg) på en slumpmässig adress som bara kan läsas. Flödet uppdateras av en enhet där rutan visas (t.ex. hembron). Den som har adressen kan se statusen men inte styra något.",
  "s694ea6d8d2": "Rutans widget (Scriptable)",
  "sd6c9e55bce": "Ny adress (den gamla slutar fungera)",
  "s32d2c87e84": "Genvägar och Siri (iPhone)",
@@ -3046,10 +3043,7 @@
  "@s035459d8bb": {
   "x-mt": true
  },
- "s6b83aed534": "Behov av en hembro: ställa in fjärråtkomst på hem surfplattan eller PC (inställningar → fjärråtkomst).",
- "@s6b83aed534": {
-  "x-mt": true
- },
+ "sbde5e80158": "Behöver en hembro: ställ in fjärråtkomst på en enhet i hemmet (Inställningar → Fjärråtkomst).",
  "s830cace8fe": "Uppdatera hembron (behöver Molaplan 0.10.0).",
  "@s830cace8fe": {
   "x-mt": true
@@ -4383,10 +4377,7 @@
  "s156712ac0c": "väntar",
  "s8a1f52a37b": "Termostaten borttagen",
  "s28dc9bc46a": "Ingen temperaturavläsning",
- "s4f1166fe24": "Ingen hembro: termostaten styr ännu inte. Ställ in fjärråtkomst på hemmatabletten.",
- "@s4f1166fe24": {
-  "x-mt": true
- },
+ "s31be5697ba": "Ingen hembro: termostaten styr ännu inte. Ställ in fjärråtkomst på en enhet i hemmet.",
  "s29fd8d5b5e": "Nu",
  "see9111ba68": "Relä eller brytare (på/av)",
  "seaed91ad78": "Värmepump eller AC (börvärde)",
@@ -4459,10 +4450,7 @@
  "s87984716cb": "Ta bort termostaten?",
  "s79786b9f7d": "Mål",
  "sdd309c0a63": "Termostaten körs på hembryggan",
- "s2a7e9fe291": "Ställ in fjärråtkomst på hemmatabletten (Inställningar → Fjärråtkomst). Tills dess kontrollerar det inte någonting.",
- "@s2a7e9fe291": {
-  "x-mt": true
- },
+ "sa4701693b6": "Ställ in fjärråtkomst på en enhet i hemmet (Inställningar → Fjärråtkomst). Tills dess styr den ingenting.",
  "s06cda8c0de": "Körs på den här enheten (hembrygga).",
  "s2342536aea": "Körs på hembryggan.",
  "s2c5993c1fd": "Förvärmning före dyr el och kallt väder, och låter temperaturen sjunka lite i dyra timmar.",
@@ -8826,10 +8814,7 @@
  "@sb6a852ab13": {
   "x-mt": true
  },
- "sc76f519144": "Wave, Wave Plus, Wave Mini och Wave Radon använder endast Bluetooth. Läs av en Android-enhet eller hembron (t.ex. en väggtablett) inom cirka 10 m.",
- "@sc76f519144": {
-  "x-mt": true
- },
+ "s2d1dc6624d": "Wave, Wave Plus, Wave Mini och Wave Radon använder endast Bluetooth. Läs av en Android-enhet eller hembron inom cirka 10 m.",
  "sff5f25f96f": "På baksidan av bildskärmen (10 siffror). Början berättar modellen: 2930 = Wave Plus, 2950 = Wave Radon, 2920 = Wave Mini.",
  "@sff5f25f96f": {
   "x-mt": true
@@ -8838,10 +8823,7 @@
  "@s8de2de9178": {
   "x-mt": true
  },
- "s5e605a88ef": "När hembron (t.ex. en väggtablett nära bildskärmen) läser Bluetooth-läsningen.",
- "@s5e605a88ef": {
-  "x-mt": true
- },
+ "s501a17e478": "På när hembron (t.ex. en enhet som alltid är på nära mätaren) gör Bluetooth-läsningen.",
  "s3330126b01": "Ventilationsenhet eller värmepump (Modbus TCP)",
  "@s3330126b01": {
   "x-mt": true

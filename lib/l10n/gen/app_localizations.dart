@@ -1934,11 +1934,11 @@ abstract class AppLocalizations {
   /// **'Part of the use had no price (the spot price was missing).'**
   String get s2e8700e0cf;
 
-  /// fi: Kulutus kirjataan, kun sovellus on auki (kodin tabletilla jatkuvasti).
+  /// fi: Kulutus kirjataan, kun sovellus on auki (esimerkiksi kotisillalla jatkuvasti).
   ///
   /// In en, this message translates to:
-  /// **'Use is recorded while the app is open (all the time on the home tablet).'**
-  String get sbbd89fbc05;
+  /// **'Use is recorded while the app is open (for example continuously on the home bridge).'**
+  String get sf14a153dac;
 
   /// fi: Mittarit
   ///
@@ -2306,11 +2306,11 @@ abstract class AppLocalizations {
   /// **'Electricity price view (no sign-in)'**
   String get se5b7d50d32;
 
-  /// fi: Hinta nyt ja tämän päivän ja huomisen pylväät kuten tabletilla. Toimii kenellä tahansa ilman tiliä: linkissä on vain hin
+  /// fi: Hinta nyt ja tämän päivän ja huomisen pylväät. Toimii kenellä tahansa ilman tiliä: linkissä on vain hinta-alue, ALV, mar
   ///
   /// In en, this message translates to:
-  /// **'The price now and today\'\'s and tomorrow\'\'s bars, as on the tablet. Works for anyone without an account: the link holds only the price area, VAT, margin and transfer.'**
-  String get s0174ef9ba6;
+  /// **'The price now and today\'\'s and tomorrow\'\'s bars. Works for anyone without an account: the link holds only the price area, VAT, margin and transfer.'**
+  String get s433d095042;
 
   /// fi: Laatta koko näytöllä
   ///
@@ -2363,8 +2363,8 @@ abstract class AppLocalizations {
   /// fi: Molaplan julkaisee laatan tilan (teksti, väri) satunnaiseen, vain lukemiseen tarkoitettuun osoitteeseen. Syötettä päivit
   ///
   /// In en, this message translates to:
-  /// **'Molaplan publishes the tile\'\'s state (text, colour) to a random, read-only address. The feed is updated by a device where the tile is shown (e.g. a wall tablet). Anyone with the address can see the state but cannot control anything.'**
-  String get s8d62579a16;
+  /// **'Molaplan publishes the tile\'\'s state (text, colour) to a random, read-only address. The feed is updated by a device where the tile is shown (e.g. the home bridge). Anyone with the address can see the state but cannot control anything.'**
+  String get s0d66c9fdf7;
 
   /// fi: Laatan widget (Scriptable)
   ///
@@ -6842,11 +6842,11 @@ abstract class AppLocalizations {
   /// **'Heating follows price and weather'**
   String get s035459d8bb;
 
-  /// fi: Tarvitsee kotisillan: ota etäyhteys käyttöön kodin tabletilla tai PC:llä (Asetukset → Etäkäyttö).
+  /// fi: Tarvitsee kotisillan: ota etäyhteys käyttöön kotona olevalla laitteella (Asetukset → Etäkäyttö).
   ///
   /// In en, this message translates to:
-  /// **'Needs a home bridge: set up remote access on the home tablet or PC (Settings → Remote access).'**
-  String get s6b83aed534;
+  /// **'Needs a home bridge: set up remote access on a device at home (Settings → Remote access).'**
+  String get sbde5e80158;
 
   /// fi: Päivitä kotisilta (vaatii Molaplan 0.10.0).
   ///
@@ -9087,11 +9087,11 @@ abstract class AppLocalizations {
   /// **'No temperature reading'**
   String get s28dc9bc46a;
 
-  /// fi: Ei kotisiltaa: termostaatti ei ohjaa vielä. Ota etäyhteys käyttöön kodin tabletilla.
+  /// fi: Ei kotisiltaa: termostaatti ei ohjaa vielä. Ota etäyhteys käyttöön kotona olevalla laitteella.
   ///
   /// In en, this message translates to:
-  /// **'No home bridge: the thermostat is not controlling yet. Set up remote access on the home tablet.'**
-  String get s4f1166fe24;
+  /// **'No home bridge: the thermostat is not controlling yet. Set up remote access on a device at home.'**
+  String get s31be5697ba;
 
   /// fi: Nyt
   ///
@@ -9327,11 +9327,11 @@ abstract class AppLocalizations {
   /// **'The thermostat runs on the home bridge'**
   String get sdd309c0a63;
 
-  /// fi: Ota etäyhteys käyttöön kodin tabletilla (Asetukset → Etäkäyttö). Siihen asti termostaatti ei ohjaa.
+  /// fi: Ota etäyhteys käyttöön kotona olevalla laitteella (Asetukset → Etäkäyttö). Siihen asti termostaatti ei ohjaa.
   ///
   /// In en, this message translates to:
-  /// **'Set up remote access on the home tablet (Settings → Remote access). Until then it does not control anything.'**
-  String get s2a7e9fe291;
+  /// **'Set up remote access on a device at home (Settings → Remote access). Until then it does not control anything.'**
+  String get sa4701693b6;
 
   /// fi: Ohjaus toimii tällä laitteella (kotisilta).
   ///
@@ -17471,11 +17471,11 @@ abstract class AppLocalizations {
   /// **'5) Copy the Client secret from the same view. It is stored only on this device and encrypted in your account.'**
   String get sb6a852ab13;
 
-  /// fi: Wave, Wave Plus, Wave Mini ja Wave Radon toimivat vain Bluetoothilla. Lukee Android-laite tai kotisilta (esim. seinätabl
+  /// fi: Wave, Wave Plus, Wave Mini ja Wave Radon toimivat vain Bluetoothilla. Lukee Android-laite tai kotisilta enintään 10 m pä
   ///
   /// In en, this message translates to:
-  /// **'Wave, Wave Plus, Wave Mini and Wave Radon use Bluetooth only. Read by an Android device or the home bridge (e.g. a wall tablet) within about 10 m.'**
-  String get sc76f519144;
+  /// **'Wave, Wave Plus, Wave Mini and Wave Radon use Bluetooth only. Read by an Android device or the home bridge within about 10 m.'**
+  String get s2d1dc6624d;
 
   /// fi: Mittarin takana (10 numeroa). Alku kertoo mallin: 2930 = Wave Plus, 2950 = Wave Radon, 2920 = Wave Mini.
   ///
@@ -17489,11 +17489,11 @@ abstract class AppLocalizations {
   /// **'Read through the home bridge'**
   String get s8de2de9178;
 
-  /// fi: Päälle, kun Bluetooth-lukija on kotisilta (esim. seinätabletti mittarin lähellä).
+  /// fi: Päälle, kun Bluetooth-lukija on kotisilta (esim. aina päällä oleva laite mittarin lähellä).
   ///
   /// In en, this message translates to:
-  /// **'On when the home bridge (e.g. a wall tablet near the monitor) does the Bluetooth reading.'**
-  String get s5e605a88ef;
+  /// **'On when the home bridge (e.g. an always-on device near the sensor) does the Bluetooth reading.'**
+  String get s501a17e478;
 
   /// fi: IV-kone tai lämpöpumppu (Modbus TCP)
   ///

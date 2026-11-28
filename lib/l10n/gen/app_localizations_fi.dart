@@ -1021,8 +1021,8 @@ class AppLocalizationsFi extends AppLocalizations {
       'Osalle kulutuksesta ei ollut hintaa (pörssihinta puuttui).';
 
   @override
-  String get sbbd89fbc05 =>
-      'Kulutus kirjataan, kun sovellus on auki (kodin tabletilla jatkuvasti).';
+  String get sf14a153dac =>
+      'Kulutus kirjataan, kun sovellus on auki (esimerkiksi kotisillalla jatkuvasti).';
 
   @override
   String get s64382718ff => 'Mittarit';
@@ -1216,8 +1216,8 @@ class AppLocalizationsFi extends AppLocalizations {
   String get se5b7d50d32 => 'Sähkön hinta -näkymä (ei kirjautumista)';
 
   @override
-  String get s0174ef9ba6 =>
-      'Hinta nyt ja tämän päivän ja huomisen pylväät kuten tabletilla. Toimii kenellä tahansa ilman tiliä: linkissä on vain hinta-alue, ALV, marginaali ja siirto.';
+  String get s433d095042 =>
+      'Hinta nyt ja tämän päivän ja huomisen pylväät. Toimii kenellä tahansa ilman tiliä: linkissä on vain hinta-alue, ALV, marginaali ja siirto.';
 
   @override
   String get s418e567059 => 'Laatta koko näytöllä';
@@ -1248,8 +1248,8 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s4de0571af7 => 'Tilasyöte widgetille';
 
   @override
-  String get s8d62579a16 =>
-      'Molaplan julkaisee laatan tilan (teksti, väri) satunnaiseen, vain lukemiseen tarkoitettuun osoitteeseen. Syötettä päivittää laite, jossa laatta on näkyvissä (esim. seinätabletti). Kuka tahansa, jolla on osoite, näkee tilan, mutta ei voi ohjata mitään.';
+  String get s0d66c9fdf7 =>
+      'Molaplan julkaisee laatan tilan (teksti, väri) satunnaiseen, vain lukemiseen tarkoitettuun osoitteeseen. Syötettä päivittää laite, jossa laatta on näkyvissä (esim. kotisilta). Kuka tahansa, jolla on osoite, näkee tilan, mutta ei voi ohjata mitään.';
 
   @override
   String get s694ea6d8d2 => 'Laatan widget (Scriptable)';
@@ -3723,8 +3723,8 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s035459d8bb => 'Lämmitys toimii hinnan ja sään mukaan';
 
   @override
-  String get s6b83aed534 =>
-      'Tarvitsee kotisillan: ota etäyhteys käyttöön kodin tabletilla tai PC:llä (Asetukset → Etäkäyttö).';
+  String get sbde5e80158 =>
+      'Tarvitsee kotisillan: ota etäyhteys käyttöön kotona olevalla laitteella (Asetukset → Etäkäyttö).';
 
   @override
   String get s830cace8fe => 'Päivitä kotisilta (vaatii Molaplan 0.10.0).';
@@ -4950,8 +4950,8 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s28dc9bc46a => 'Lämpötilaa ei saada';
 
   @override
-  String get s4f1166fe24 =>
-      'Ei kotisiltaa: termostaatti ei ohjaa vielä. Ota etäyhteys käyttöön kodin tabletilla.';
+  String get s31be5697ba =>
+      'Ei kotisiltaa: termostaatti ei ohjaa vielä. Ota etäyhteys käyttöön kotona olevalla laitteella.';
 
   @override
   String get s29fd8d5b5e => 'Nyt';
@@ -5076,8 +5076,8 @@ class AppLocalizationsFi extends AppLocalizations {
   String get sdd309c0a63 => 'Termostaatti toimii kotisillalla';
 
   @override
-  String get s2a7e9fe291 =>
-      'Ota etäyhteys käyttöön kodin tabletilla (Asetukset → Etäkäyttö). Siihen asti termostaatti ei ohjaa.';
+  String get sa4701693b6 =>
+      'Ota etäyhteys käyttöön kotona olevalla laitteella (Asetukset → Etäkäyttö). Siihen asti termostaatti ei ohjaa.';
 
   @override
   String get s06cda8c0de => 'Ohjaus toimii tällä laitteella (kotisilta).';
@@ -9708,8 +9708,8 @@ class AppLocalizationsFi extends AppLocalizations {
       '5) Kopioi samasta näkymästä Client secret. Se tallennetaan vain tähän laitteeseen ja tiliisi salattuna.';
 
   @override
-  String get sc76f519144 =>
-      'Wave, Wave Plus, Wave Mini ja Wave Radon toimivat vain Bluetoothilla. Lukee Android-laite tai kotisilta (esim. seinätabletti) enintään 10 m päässä.';
+  String get s2d1dc6624d =>
+      'Wave, Wave Plus, Wave Mini ja Wave Radon toimivat vain Bluetoothilla. Lukee Android-laite tai kotisilta enintään 10 m päässä.';
 
   @override
   String get sff5f25f96f =>
@@ -9719,8 +9719,8 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s8de2de9178 => 'Lue kotisillan kautta';
 
   @override
-  String get s5e605a88ef =>
-      'Päälle, kun Bluetooth-lukija on kotisilta (esim. seinätabletti mittarin lähellä).';
+  String get s501a17e478 =>
+      'Päälle, kun Bluetooth-lukija on kotisilta (esim. aina päällä oleva laite mittarin lähellä).';
 
   @override
   String get s3330126b01 => 'IV-kone tai lämpöpumppu (Modbus TCP)';

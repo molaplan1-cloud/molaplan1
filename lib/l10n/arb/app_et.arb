@@ -863,10 +863,7 @@
  "@s2e8700e0cf": {
   "x-mt": true
  },
- "sbbd89fbc05": "Kasutamine registreeritakse, kui rakendus on avatud (kogu aeg kodus tahvelarvutis).",
- "@sbbd89fbc05": {
-  "x-mt": true
- },
+ "sf14a153dac": "Kasutamine registreeritakse, kui rakendus on avatud (näiteks kogu aeg kodusillal).",
  "s64382718ff": "Arvestid",
  "s9a3a0d414e": "Võimsus- või energiakaardid puuduvad (W, kW, Wh, kWh). Lisada näiteks Shelly arvesti.",
  "@s9a3a0d414e": {
@@ -943,7 +940,7 @@
  "s793336a278": "Avab Molaplani ja käivitab paani käsu pärast kinnitust (ja vajadusel PIN-koodi).",
  "s4ada3d547a": "Oma ikoon avakuval",
  "se5b7d50d32": "Elektrihinna vaade (sisselogimiseta)",
- "s0174ef9ba6": "Hind praegu ning tänase ja homse tulbad nagu tahvelarvutis. Töötab igaühele ilma kontota: lingis on ainult hinnapiirkond, käibemaks, marginaal ja võrgutasu.",
+ "s433d095042": "Hind praegu ning tänase ja homse tulbad. Töötab igaühele ilma kontota: lingis on ainult hinnapiirkond, käibemaks, marginaal ja võrgutasu.",
  "s418e567059": "Paan täisekraanil",
  "s854b37962a": "Ainult see paan, uueneb ise. Vajab sisselogimist sama kontoga.",
  "sb377843191": "iPhone: ava link Safaris → Jaga → Lisa avakuvale. Android: Chrome → ⋮ → Lisa avakuvale. Arvuti: Chrome või Edge → Installi rakendus. Avakuva rakendusel on oma salvestusruum: logi seal üks kord sisse.",
@@ -952,7 +949,7 @@
  "s37a2c08789": "Elektrihinna vidin (Scriptable)",
  "s6345f88fa0": "Võtab hinnad otse Molaplani hinnateenusest – kontot ega sisselülitatud seadet pole vaja.",
  "s4de0571af7": "Olekuvoog vidinale",
- "s8d62579a16": "Molaplan avaldab paani oleku (tekst, värv) juhuslikul, ainult lugemiseks mõeldud aadressil. Voogu uuendab seade, kus paan on nähtaval (nt seinatahvel). Igaüks, kellel on aadress, näeb olekut, kuid ei saa midagi juhtida.",
+ "s0d66c9fdf7": "Molaplan avaldab paani oleku (tekst, värv) juhuslikul, ainult lugemiseks mõeldud aadressil. Voogu uuendab seade, kus paan on nähtaval (nt kodusild). Igaüks, kellel on aadress, näeb olekut, kuid ei saa midagi juhtida.",
  "s694ea6d8d2": "Paani vidin (Scriptable)",
  "sd6c9e55bce": "Uus aadress (vana lakkab töötamast)",
  "s32d2c87e84": "Shortcuts ja Siri (iPhone)",
@@ -3058,10 +3055,7 @@
  "@s035459d8bb": {
   "x-mt": true
  },
- "s6b83aed534": "Vajab kodusilla: seadistage kaugjuurdepääs kodus tahvelarvutis või arvutis (Seaded → Kaugjuurdepääs).",
- "@s6b83aed534": {
-  "x-mt": true
- },
+ "sbde5e80158": "Vajab kodusilda: võta kaugjuurdepääs kasutusele kodus oleval seadmel (Seaded → Kaugjuurdepääs).",
  "s830cace8fe": "Uuenda kodusilla (vajab Molaplan 0.10.0).",
  "@s830cace8fe": {
   "x-mt": true
@@ -4395,10 +4389,7 @@
  "s156712ac0c": "ootel",
  "s8a1f52a37b": "Termostaat eemaldatud",
  "s28dc9bc46a": "Temperatuurinäit puudub",
- "s4f1166fe24": "Kodusild puudub: termostaat ei kontrolli veel. Seadke kaugjuurdepääs kodutahvlile.",
- "@s4f1166fe24": {
-  "x-mt": true
- },
+ "s31be5697ba": "Kodusild puudub: termostaat ei juhi veel. Võta kaugjuurdepääs kasutusele kodus oleval seadmel.",
  "s29fd8d5b5e": "Praegu",
  "see9111ba68": "Relee või lüliti (sees/väljas)",
  "seaed91ad78": "Soojuspump või konditsioneer (seadeväärtus)",
@@ -4471,10 +4462,7 @@
  "s87984716cb": "Kustutada termostaat?",
  "s79786b9f7d": "Siht",
  "sdd309c0a63": "Termostaat töötab kodusillal",
- "s2a7e9fe291": "Võrguühenduse loomine kodutahvlil (Seaded → Kaugjuurdepääs). Kuni selle ajani ei kontrolli see midagi.",
- "@s2a7e9fe291": {
-  "x-mt": true
- },
+ "sa4701693b6": "Võta kaugjuurdepääs kasutusele kodus oleval seadmel (Seaded → Kaugjuurdepääs). Seni termostaat ei juhi.",
  "s06cda8c0de": "Töötab selles seadmes (kodusild).",
  "s2342536aea": "Töötab kodusillal.",
  "s2c5993c1fd": "Soojeneb enne kallist elektrit ja külma ilma ning laseb kallitel tundidel temperatuuri veidi langeda.",
@@ -8868,10 +8856,7 @@
  "@sb6a852ab13": {
   "x-mt": true
  },
- "sc76f519144": "Wave, Wave Plus, Wave Mini ja Wave Radon kasutavad ainult Bluetoothi. Seda loeb Android-seade või kodusild (nt seinatahvel) umbes 10 m raadiuses.",
- "@sc76f519144": {
-  "x-mt": true
- },
+ "s2d1dc6624d": "Wave, Wave Plus, Wave Mini ja Wave Radon kasutavad ainult Bluetoothi. Seda loeb Android-seade või kodusild umbes 10 m raadiuses.",
  "sff5f25f96f": "Monitori tagaküljel (10 numbrit). Algus ütleb mudelile: 2930 = Wave Plus, 2950 = Wave Radon, 2920 = Wave Mini.",
  "@sff5f25f96f": {
   "x-mt": true
@@ -8880,10 +8865,7 @@
  "@s8de2de9178": {
   "x-mt": true
  },
- "s5e605a88ef": "Kui kodusild (nt seinatahvel monitori lähedal) teeb Bluetoothi lugemist.",
- "@s5e605a88ef": {
-  "x-mt": true
- },
+ "s501a17e478": "Sees, kui Bluetoothi loeb kodusild (nt alati sees olev seade anduri lähedal).",
  "s3330126b01": "Ventilatsiooniseade või soojuspump (Modbus TCP)",
  "@s3330126b01": {
   "x-mt": true

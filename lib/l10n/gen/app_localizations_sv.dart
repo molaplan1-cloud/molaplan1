@@ -1013,8 +1013,8 @@ class AppLocalizationsSv extends AppLocalizations {
       'En del av användningen hade inget pris (punktpriset saknades).';
 
   @override
-  String get sbbd89fbc05 =>
-      'Användning spelas in medan appen är öppen (hela tiden på hemmatabletten).';
+  String get sf14a153dac =>
+      'Användning spelas in medan appen är öppen (till exempel hela tiden på hembron).';
 
   @override
   String get s64382718ff => 'Mätare';
@@ -1208,8 +1208,8 @@ class AppLocalizationsSv extends AppLocalizations {
   String get se5b7d50d32 => 'Elprisvy (ingen inloggning)';
 
   @override
-  String get s0174ef9ba6 =>
-      'Priset nu och staplar för i dag och i morgon, som på surfplattan. Fungerar för alla utan konto: länken innehåller bara prisområde, moms, påslag och överföring.';
+  String get s433d095042 =>
+      'Priset nu och staplar för i dag och i morgon. Fungerar för alla utan konto: länken innehåller bara prisområde, moms, påslag och överföring.';
 
   @override
   String get s418e567059 => 'Rutan i helskärm';
@@ -1240,8 +1240,8 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s4de0571af7 => 'Statusflöde för widgeten';
 
   @override
-  String get s8d62579a16 =>
-      'Molaplan publicerar rutans status (text, färg) på en slumpmässig adress som bara kan läsas. Flödet uppdateras av en enhet där rutan visas (t.ex. en väggplatta). Den som har adressen kan se statusen men inte styra något.';
+  String get s0d66c9fdf7 =>
+      'Molaplan publicerar rutans status (text, färg) på en slumpmässig adress som bara kan läsas. Flödet uppdateras av en enhet där rutan visas (t.ex. hembron). Den som har adressen kan se statusen men inte styra något.';
 
   @override
   String get s694ea6d8d2 => 'Rutans widget (Scriptable)';
@@ -3708,8 +3708,8 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s035459d8bb => 'Värme följer pris och väder';
 
   @override
-  String get s6b83aed534 =>
-      'Behov av en hembro: ställa in fjärråtkomst på hem surfplattan eller PC (inställningar → fjärråtkomst).';
+  String get sbde5e80158 =>
+      'Behöver en hembro: ställ in fjärråtkomst på en enhet i hemmet (Inställningar → Fjärråtkomst).';
 
   @override
   String get s830cace8fe => 'Uppdatera hembron (behöver Molaplan 0.10.0).';
@@ -4935,8 +4935,8 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s28dc9bc46a => 'Ingen temperaturavläsning';
 
   @override
-  String get s4f1166fe24 =>
-      'Ingen hembro: termostaten styr ännu inte. Ställ in fjärråtkomst på hemmatabletten.';
+  String get s31be5697ba =>
+      'Ingen hembro: termostaten styr ännu inte. Ställ in fjärråtkomst på en enhet i hemmet.';
 
   @override
   String get s29fd8d5b5e => 'Nu';
@@ -5060,8 +5060,8 @@ class AppLocalizationsSv extends AppLocalizations {
   String get sdd309c0a63 => 'Termostaten körs på hembryggan';
 
   @override
-  String get s2a7e9fe291 =>
-      'Ställ in fjärråtkomst på hemmatabletten (Inställningar → Fjärråtkomst). Tills dess kontrollerar det inte någonting.';
+  String get sa4701693b6 =>
+      'Ställ in fjärråtkomst på en enhet i hemmet (Inställningar → Fjärråtkomst). Tills dess styr den ingenting.';
 
   @override
   String get s06cda8c0de => 'Körs på den här enheten (hembrygga).';
@@ -9659,8 +9659,8 @@ class AppLocalizationsSv extends AppLocalizations {
       '5) Kopiera kundens hemlighet från samma vy. Den lagras endast på den här enheten och krypteras i ditt konto.';
 
   @override
-  String get sc76f519144 =>
-      'Wave, Wave Plus, Wave Mini och Wave Radon använder endast Bluetooth. Läs av en Android-enhet eller hembron (t.ex. en väggtablett) inom cirka 10 m.';
+  String get s2d1dc6624d =>
+      'Wave, Wave Plus, Wave Mini och Wave Radon använder endast Bluetooth. Läs av en Android-enhet eller hembron inom cirka 10 m.';
 
   @override
   String get sff5f25f96f =>
@@ -9670,8 +9670,8 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s8de2de9178 => 'Läs igenom hembron';
 
   @override
-  String get s5e605a88ef =>
-      'När hembron (t.ex. en väggtablett nära bildskärmen) läser Bluetooth-läsningen.';
+  String get s501a17e478 =>
+      'På när hembron (t.ex. en enhet som alltid är på nära mätaren) gör Bluetooth-läsningen.';
 
   @override
   String get s3330126b01 => 'Ventilationsenhet eller värmepump (Modbus TCP)';

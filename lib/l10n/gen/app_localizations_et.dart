@@ -1013,8 +1013,8 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s2e8700e0cf => 'Osal kasutusest puudus hind (hetkhind puudus).';
 
   @override
-  String get sbbd89fbc05 =>
-      'Kasutamine registreeritakse, kui rakendus on avatud (kogu aeg kodus tahvelarvutis).';
+  String get sf14a153dac =>
+      'Kasutamine registreeritakse, kui rakendus on avatud (näiteks kogu aeg kodusillal).';
 
   @override
   String get s64382718ff => 'Arvestid';
@@ -1208,8 +1208,8 @@ class AppLocalizationsEt extends AppLocalizations {
   String get se5b7d50d32 => 'Elektrihinna vaade (sisselogimiseta)';
 
   @override
-  String get s0174ef9ba6 =>
-      'Hind praegu ning tänase ja homse tulbad nagu tahvelarvutis. Töötab igaühele ilma kontota: lingis on ainult hinnapiirkond, käibemaks, marginaal ja võrgutasu.';
+  String get s433d095042 =>
+      'Hind praegu ning tänase ja homse tulbad. Töötab igaühele ilma kontota: lingis on ainult hinnapiirkond, käibemaks, marginaal ja võrgutasu.';
 
   @override
   String get s418e567059 => 'Paan täisekraanil';
@@ -1240,8 +1240,8 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s4de0571af7 => 'Olekuvoog vidinale';
 
   @override
-  String get s8d62579a16 =>
-      'Molaplan avaldab paani oleku (tekst, värv) juhuslikul, ainult lugemiseks mõeldud aadressil. Voogu uuendab seade, kus paan on nähtaval (nt seinatahvel). Igaüks, kellel on aadress, näeb olekut, kuid ei saa midagi juhtida.';
+  String get s0d66c9fdf7 =>
+      'Molaplan avaldab paani oleku (tekst, värv) juhuslikul, ainult lugemiseks mõeldud aadressil. Voogu uuendab seade, kus paan on nähtaval (nt kodusild). Igaüks, kellel on aadress, näeb olekut, kuid ei saa midagi juhtida.';
 
   @override
   String get s694ea6d8d2 => 'Paani vidin (Scriptable)';
@@ -3703,8 +3703,8 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s035459d8bb => 'Kütmine järgib hinda ja ilma';
 
   @override
-  String get s6b83aed534 =>
-      'Vajab kodusilla: seadistage kaugjuurdepääs kodus tahvelarvutis või arvutis (Seaded → Kaugjuurdepääs).';
+  String get sbde5e80158 =>
+      'Vajab kodusilda: võta kaugjuurdepääs kasutusele kodus oleval seadmel (Seaded → Kaugjuurdepääs).';
 
   @override
   String get s830cace8fe => 'Uuenda kodusilla (vajab Molaplan 0.10.0).';
@@ -4928,8 +4928,8 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s28dc9bc46a => 'Temperatuurinäit puudub';
 
   @override
-  String get s4f1166fe24 =>
-      'Kodusild puudub: termostaat ei kontrolli veel. Seadke kaugjuurdepääs kodutahvlile.';
+  String get s31be5697ba =>
+      'Kodusild puudub: termostaat ei juhi veel. Võta kaugjuurdepääs kasutusele kodus oleval seadmel.';
 
   @override
   String get s29fd8d5b5e => 'Praegu';
@@ -5054,8 +5054,8 @@ class AppLocalizationsEt extends AppLocalizations {
   String get sdd309c0a63 => 'Termostaat töötab kodusillal';
 
   @override
-  String get s2a7e9fe291 =>
-      'Võrguühenduse loomine kodutahvlil (Seaded → Kaugjuurdepääs). Kuni selle ajani ei kontrolli see midagi.';
+  String get sa4701693b6 =>
+      'Võta kaugjuurdepääs kasutusele kodus oleval seadmel (Seaded → Kaugjuurdepääs). Seni termostaat ei juhi.';
 
   @override
   String get s06cda8c0de => 'Töötab selles seadmes (kodusild).';
@@ -9641,8 +9641,8 @@ class AppLocalizationsEt extends AppLocalizations {
       '5) Kopeerib kliendi saladuse samast vaatest. See salvestatakse ainult sellesse seadmesse ja krüptitakse sinu kontol.';
 
   @override
-  String get sc76f519144 =>
-      'Wave, Wave Plus, Wave Mini ja Wave Radon kasutavad ainult Bluetoothi. Seda loeb Android-seade või kodusild (nt seinatahvel) umbes 10 m raadiuses.';
+  String get s2d1dc6624d =>
+      'Wave, Wave Plus, Wave Mini ja Wave Radon kasutavad ainult Bluetoothi. Seda loeb Android-seade või kodusild umbes 10 m raadiuses.';
 
   @override
   String get sff5f25f96f =>
@@ -9652,8 +9652,8 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s8de2de9178 => 'Loe läbi kodusilla';
 
   @override
-  String get s5e605a88ef =>
-      'Kui kodusild (nt seinatahvel monitori lähedal) teeb Bluetoothi lugemist.';
+  String get s501a17e478 =>
+      'Sees, kui Bluetoothi loeb kodusild (nt alati sees olev seade anduri lähedal).';
 
   @override
   String get s3330126b01 => 'Ventilatsiooniseade või soojuspump (Modbus TCP)';

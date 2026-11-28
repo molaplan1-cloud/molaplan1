@@ -860,10 +860,7 @@
  "@s2e8700e0cf": {
   "x-mt": true
  },
- "sbbd89fbc05": "El uso se registra mientras la aplicación está abierta (todo el tiempo en la tableta de inicio).",
- "@sbbd89fbc05": {
-  "x-mt": true
- },
+ "sf14a153dac": "El uso se registra mientras la aplicación está abierta (por ejemplo, de forma continua en el puente doméstico).",
  "s64382718ff": "Medidores",
  "s9a3a0d414e": "No hay tarjetas de alimentación o energía (W, kW, Wh, kWh). Añadir por ejemplo un medidor de Shelly.",
  "@s9a3a0d414e": {
@@ -940,7 +937,7 @@
  "s793336a278": "Abre Molaplan y ejecuta el comando de la ficha tras la confirmación (y el PIN, si hace falta).",
  "s4ada3d547a": "Icono propio en la pantalla de inicio",
  "se5b7d50d32": "Vista del precio de la luz (sin iniciar sesión)",
- "s0174ef9ba6": "El precio actual y las barras de hoy y mañana, como en la tableta. Funciona para cualquiera sin cuenta: el enlace solo contiene la zona de precio, el IVA, el margen y el peaje.",
+ "s433d095042": "El precio actual y las barras de hoy y mañana. Funciona para cualquiera sin cuenta: el enlace solo contiene la zona de precio, el IVA, el margen y el peaje.",
  "s418e567059": "Ficha a pantalla completa",
  "s854b37962a": "Solo esta ficha, se actualiza sola. Requiere iniciar sesión con la misma cuenta.",
  "sb377843191": "iPhone: abre el enlace en Safari → Compartir → Añadir a pantalla de inicio. Android: Chrome → ⋮ → Añadir a pantalla de inicio. PC: Chrome o Edge → Instalar aplicación. Una app de la pantalla de inicio tiene su propio almacenamiento: inicia sesión allí una vez.",
@@ -949,7 +946,7 @@
  "s37a2c08789": "Widget del precio de la luz (Scriptable)",
  "s6345f88fa0": "Obtiene los precios directamente del servicio de precios de Molaplan: no hace falta cuenta ni un dispositivo encendido.",
  "s4de0571af7": "Canal de estado para el widget",
- "s8d62579a16": "Molaplan publica el estado de la ficha (texto, color) en una dirección aleatoria de solo lectura. El canal lo actualiza un dispositivo donde se muestra la ficha (p. ej. una tableta de pared). Quien tenga la dirección puede ver el estado, pero no controlar nada.",
+ "s0d66c9fdf7": "Molaplan publica el estado de la ficha (texto, color) en una dirección aleatoria de solo lectura. El canal lo actualiza un dispositivo donde se muestra la ficha (p. ej. el puente doméstico). Quien tenga la dirección puede ver el estado, pero no controlar nada.",
  "s694ea6d8d2": "Widget de la ficha (Scriptable)",
  "sd6c9e55bce": "Nueva dirección (la antigua deja de funcionar)",
  "s32d2c87e84": "Atajos y Siri (iPhone)",
@@ -3049,10 +3046,7 @@
  "@s035459d8bb": {
   "x-mt": true
  },
- "s6b83aed534": "Necesita un puente casero: configurar el acceso remoto en la tableta o PC (Configuración → Acceso remoto).",
- "@s6b83aed534": {
-  "x-mt": true
- },
+ "sbde5e80158": "Necesita un puente doméstico: configura el acceso remoto en un dispositivo en casa (Ajustes → Acceso remoto).",
  "s830cace8fe": "Actualizar el puente de inicio (necesita Molaplan 0.10.0).",
  "@s830cace8fe": {
   "x-mt": true
@@ -4377,10 +4371,7 @@
  "s156712ac0c": "en espera",
  "s8a1f52a37b": "Termostato eliminado",
  "s28dc9bc46a": "Sin lectura de temperatura",
- "s4f1166fe24": "No hay puente casero: el termostato todavía no controla. Configurar acceso remoto en la tableta casera.",
- "@s4f1166fe24": {
-  "x-mt": true
- },
+ "s31be5697ba": "No hay puente doméstico: el termostato todavía no controla. Configura el acceso remoto en un dispositivo en casa.",
  "s29fd8d5b5e": "Ahora",
  "see9111ba68": "Relé o interruptor (encendido/apagado)",
  "seaed91ad78": "Bomba de calor o aire acondicionado (consigna)",
@@ -4453,10 +4444,7 @@
  "s87984716cb": "¿Eliminar el termostato?",
  "s79786b9f7d": "Objetivo",
  "sdd309c0a63": "El termostato funciona en el puente de casa",
- "s2a7e9fe291": "Configurar acceso remoto en la tableta de inicio (Configuración → Acceso remoto). Hasta entonces no controla nada.",
- "@s2a7e9fe291": {
-  "x-mt": true
- },
+ "sa4701693b6": "Configura el acceso remoto en un dispositivo en casa (Ajustes → Acceso remoto). Hasta entonces no controla nada.",
  "s06cda8c0de": "Funciona en este dispositivo (puente de casa).",
  "s2342536aea": "Funciona en el puente de casa.",
  "s2c5993c1fd": "Precalentamientos antes de la electricidad costosa y el clima frío, y permite que la temperatura baja un poco en horas costosas.",
@@ -8808,10 +8796,7 @@
  "@sb6a852ab13": {
   "x-mt": true
  },
- "sc76f519144": "Wave, Wave Plus, Wave Mini y Wave Radon solo utilizan Bluetooth. Lea por un dispositivo Android o el puente de inicio (por ejemplo, una tableta de pared) en unos 10 m.",
- "@sc76f519144": {
-  "x-mt": true
- },
+ "s2d1dc6624d": "Wave, Wave Plus, Wave Mini y Wave Radon solo utilizan Bluetooth. Los lee un dispositivo Android o el puente doméstico a unos 10 m.",
  "sff5f25f96f": "En la parte posterior del monitor (10 dígitos). El inicio indica el modelo: 2930 = Wave Plus, 2950 = Wave Radon, 2920 = Wave Mini.",
  "@sff5f25f96f": {
   "x-mt": true
@@ -8820,10 +8805,7 @@
  "@s8de2de9178": {
   "x-mt": true
  },
- "s5e605a88ef": "En cuando el puente casero (p. ej. una tableta de pared cerca del monitor) hace la lectura Bluetooth.",
- "@s5e605a88ef": {
-  "x-mt": true
- },
+ "s501a17e478": "Activado cuando el puente doméstico (p. ej. un dispositivo siempre encendido cerca del sensor) hace la lectura Bluetooth.",
  "s3330126b01": "Unidad de ventilación o bomba de calor (Modbus TCP)",
  "@s3330126b01": {
   "x-mt": true

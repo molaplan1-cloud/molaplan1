@@ -228,8 +228,8 @@ class _SmartHeatingPageState extends State<SmartHeatingPage> {
                   where == null
                       ? tx(
                           context,
-                          'Tarvitsee kotisillan: ota etäyhteys käyttöön kodin tabletilla tai PC:llä (Asetukset → Etäkäyttö).',
-                          'Needs a home bridge: set up remote access on the home tablet or PC (Settings → Remote access).',
+                          'Tarvitsee kotisillan: ota etäyhteys käyttöön kotona olevalla laitteella (Asetukset → Etäkäyttö).',
+                          'Needs a home bridge: set up remote access on a device at home (Settings → Remote access).',
                         )
                       : st.heatingBridgeOld
                       ? tx(

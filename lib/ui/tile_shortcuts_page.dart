@@ -169,8 +169,8 @@ class _TileShortcutsPageState extends State<TileShortcutsPage> {
               webPriceLink(price),
               help: tx(
                 context,
-                'Hinta nyt ja tämän päivän ja huomisen pylväät kuten tabletilla. Toimii kenellä tahansa ilman tiliä: linkissä on vain hinta-alue, ALV, marginaali ja siirto.',
-                'The price now and today\'s and tomorrow\'s bars, as on the tablet. Works for anyone without an account: the link holds only the price area, VAT, margin and transfer.',
+                'Hinta nyt ja tämän päivän ja huomisen pylväät. Toimii kenellä tahansa ilman tiliä: linkissä on vain hinta-alue, ALV, marginaali ja siirto.',
+                'The price now and today\'s and tomorrow\'s bars. Works for anyone without an account: the link holds only the price area, VAT, margin and transfer.',
               ),
             ),
           _link(
@@ -217,8 +217,8 @@ class _TileShortcutsPageState extends State<TileShortcutsPage> {
             subtitle: Text(
               tx(
                 context,
-                'Molaplan julkaisee laatan tilan (teksti, väri) satunnaiseen, vain lukemiseen tarkoitettuun osoitteeseen. Syötettä päivittää laite, jossa laatta on näkyvissä (esim. seinätabletti). Kuka tahansa, jolla on osoite, näkee tilan, mutta ei voi ohjata mitään.',
-                'Molaplan publishes the tile\'s state (text, colour) to a random, read-only address. The feed is updated by a device where the tile is shown (e.g. a wall tablet). Anyone with the address can see the state but cannot control anything.',
+                'Molaplan julkaisee laatan tilan (teksti, väri) satunnaiseen, vain lukemiseen tarkoitettuun osoitteeseen. Syötettä päivittää laite, jossa laatta on näkyvissä (esim. kotisilta). Kuka tahansa, jolla on osoite, näkee tilan, mutta ei voi ohjata mitään.',
+                'Molaplan publishes the tile\'s state (text, colour) to a random, read-only address. The feed is updated by a device where the tile is shown (e.g. the home bridge). Anyone with the address can see the state but cannot control anything.',
               ),
             ),
             onChanged: (on) => _setFeed(on ? newFeedTopic() : null),

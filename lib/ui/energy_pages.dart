@@ -243,8 +243,8 @@ class _EnergyPageState extends State<EnergyPage> {
             Text(
               tx(
                 context,
-                'Kulutus kirjataan, kun sovellus on auki (kodin tabletilla jatkuvasti).',
-                'Use is recorded while the app is open (all the time on the home tablet).',
+                'Kulutus kirjataan, kun sovellus on auki (esimerkiksi kotisillalla jatkuvasti).',
+                'Use is recorded while the app is open (for example continuously on the home bridge).',
               ),
               style: text.bodySmall,
             ),
